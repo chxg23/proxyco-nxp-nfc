@@ -1,0 +1,30 @@
+#
+# @Copyright Proxy
+#
+
+pkg.name: apps/nfc_ecp2
+pkg.type: app
+pkg.description: "Example app for ECP2.0 from NXP NFC library"
+pkg.author: "Vipul Rahane <vipul@proxy.com>"
+pkg.homepage: "www.proxy.com"
+pkg.keywords: nfc, ECP2.0
+
+pkg.deps:
+    - "@apache-mynewt-core/kernel/os"
+    - "@apache-mynewt-core/hw/hal"
+    - "@apache-mynewt-core/sys/console/full"
+    - "@apache-mynewt-core/sys/id"
+    - "@apache-mynewt-core/sys/log/stub"
+    - "@apache-mynewt-core/sys/id"
+    - "@apache-mynewt-core/sys/stats/full"
+    - "@apache-mynewt-core/hw/bus"
+    - "@fw-nrf/lib/bootutil"
+    - lib/nxp_nfc
+
+pkg.cflags:
+    - "-DPH_OSAL_MYNEWT"
+    - "-DPHOSAL_MYNEWT_STATIC_MEM_ALLOCATION"
+    - "-DPHDRIVER_NRF5340DK_PN5180_BOARD"
+    - "-DNXPBUILD__PHAL_MFP"
+    - "-DNXPBUILD__PHAC_DISCLOOP_SW_ECP"
+    - "-DNXPBUILD__PHPAL_I14443P3A_SW_ECP"

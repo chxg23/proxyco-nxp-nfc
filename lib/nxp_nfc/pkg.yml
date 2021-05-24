@@ -1,0 +1,24 @@
+pkg.name: lib/nxp_nfc
+pkg.description: "NFC Library for NXP"
+pkg.author: "Vipul Rahane <vipul@proxy.com>"
+pkg.homepage: "https://proxy.com"
+pkg.keywords: nxp, nfc, 6.10
+
+pkg.deps:
+  - "@apache-mynewt-core/kernel/os"
+  - "@apache-mynewt-core/sys/log/modlog"
+  - "@apache-mynewt-core/hw/hal"
+  - "@apache-mynewt-core/hw/mcu/nordic/nrf5340"
+  - "@fw-nrf/lib/util"
+
+pkg.deps.PN5180_CLI:
+  - "@apache-mynewt-core/sys/shell"
+  - "@apache-mynewt-core/util/parse"
+
+pkg.cflags:
+    - "-DNXPBUILD__PHAL_MFP"
+    - "-DNXPBUILD__PHAC_DISCLOOP_SW_ECP"
+    - "-DNXPBUILD__PHPAL_I14443P3A_SW_ECP"
+
+pkg.init.PN5180_CLI:
+    pn5180_shell_init: 600

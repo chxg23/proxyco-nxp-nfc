@@ -1,0 +1,55 @@
+#
+# @Copyright Proxy
+#
+
+syscfg.defs:
+    PN5180_HAL_TIMER:
+        description: 'Set the HAL timer to use with PN5180 for guard time'
+        value: 1
+        restrictions:
+            - '((TIMER_0 && (PN5180_HAL_TIMER == 0)) || (TIMER_1 && (PN5180_HAL_TIMER == 1)) ||
+                (TIMER_2 && (PN5180_HAL_TIMER == 2)) || (TIMER_3 && (PN5180_HAL_TIMER == 3)) ||
+                (TIMER_4 && (PN5180_HAL_TIMER == 4)) || (TIMER_5 && (PN5180_HAL_TIMER == 5)))'
+
+    PN5180_HAL_TIMER_FREQ:
+        description: >
+            - 'Set the HAL timer frequency, each tick will be 32 micro seconds, we cannot
+               go beyond that since max divisor can be 512 since pre-scalar can be 2^9.'
+        value: 31250
+
+    PN5180_MAX_INTERRUPTS_PINS:
+        description: 'Maximum number of interupt pins of PN5180'
+        value: 1
+
+    PN5180_RXTX_HEXDUMP:
+        description: 'Print hexdump of the transmitted and received data from the chip'
+        value: 1
+
+    PHDRIVER_PIN_RESET:
+        description: >
+            - 'Set the reset pin for PN5180 on the host MCU'
+        value: 7
+
+    PHDRIVER_PIN_IRQ:
+        description: >
+            - 'Interrupt pin from Frontend to Host'
+        value: 'MYNEWT_VAL(PN5180_ONB_INT_PIN)'
+
+    PHDRIVER_PIN_BUSY:
+        description: >
+            - 'Frontends Busy Status'
+        value: 39
+
+    PHDRIVER_PIN_DWL:
+        description: >
+            - 'Download mode pin of Frontend'
+        value: -1
+
+    PN5180_CLI:
+        description: 'CLI to experiment with PN5180'
+        value: 1
+
+    PN5180_LOG_EVENTS_MAX:
+        description: >
+            - 'Log events for logging hexdump'
+        value: 10

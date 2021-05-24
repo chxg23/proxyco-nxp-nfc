@@ -1,0 +1,10 @@
+comps/phalP40CmdPub/
+comps/phalP40CmdPriv/
+comps/phdlAmp/
+comps/phdlMstAmpOsc/
+comps/phdlOsci/
+comps/phdlRdFpga/
+comps/phdlStepper/
+comps/phdlThstrm/
+
+_log_st_pub.txt
