@@ -69,6 +69,47 @@ struct os_eventq MYNEWT_VAL(PHOSAL_EVQ);
 #include <nxp_nfc/phbalReg.h>
 #include "NfcrdlibEx2_ECP.h"
 
+#if MYNEWT_VAL(PN5180_ONB) && !MYNEWT_VAL(BOOT_LOADER)
+#include "../../../lib/nxp_nfc/src/comps/phhalHw/src/Pn5180/phhalHw_Pn5180.h"
+static struct pn5180 g_pn5180;
+struct pn5180_itf g_pn5180_itf = {
+  .pi_ints = {
+    {
+      .host_pin = MYNEWT_VAL(PN5180_ONB_INT_PIN),
+      .device_pin = MYNEWT_VAL(PN5180_INT1_PIN_DEVICE),
+      .active = MYNEWT_VAL(PN5180_INT1_CFG_ACTIVE)
+    },
+  }
+};
+#endif
+
+#if MYNEWT_VAL(PN5180_ONB) && !MYNEWT_VAL(BOOT_LOADER)
+void
+config_pn5180(void)
+{
+  struct os_dev *dev;
+  struct pn5180 *pn5180;
+
+  dev = (struct os_dev *) os_dev_open("pn5180_0", OS_TIMEOUT_NEVER, NULL);
+  assert(dev != NULL);
+
+  pn5180 = (struct pn5180 *)dev;
+  pn5180->cfg.wId      = PH_COMP_DRIVER;
+  pn5180->cfg.bBalType = PHBAL_REG_TYPE_SPI;
+}
+#endif
+
+static void
+pn5180_dev_create(void)
+{
+#if MYNEWT_VAL(PN5180_ONB) && !MYNEWT_VAL(BOOT_LOADER)
+  int rc;
+  rc = pn5180_create_spi_dev(&g_pn5180.spi_node, "pn5180_0",
+          &pn5180_spi_cfg, &g_pn5180_itf);
+  SYSINIT_PANIC_ASSERT(rc == 0);
+#endif
+}
+
 /* Task 1 */
 #define TASK1_PRIO (8)
 #define TASK1_STACK_SIZE    OS_STACK_ALIGN(512)
@@ -194,6 +235,9 @@ int main(void)
 
   /* Initialize packages (see: syscfg.yml). */
   sysinit();
+
+  /* Creating a pn5180 device here */
+  pn5180_dev_create();
 
   config_pn5180();
   pn5180 = (struct pn5180 *)os_dev_lookup("pn5180_0");

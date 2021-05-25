@@ -3,6 +3,35 @@ syscfg.defs:
         description: 'Specify phOsal eventq'
         value: 'adv_disc_evq'
 
+    PN5180_ONB:
+        description: 'PN5180 is connected externally'
+        value : 1
+
+    PN5180_ONB_BUS:
+        description: 'SPI interface used for PN5180'
+        value: '"spi0"'
+
+    PN5180_ONB_BAUDRATE:
+        description: 'PN5180 SPI speed'
+        value: 4000
+
+    PN5180_ONB_CS:
+        description: 'SPI CS pin for PN5180'
+        value: 11
+
+    PN5180_INT1_PIN_DEVICE:
+        desctipion: 'Interrupt pin on the PN5180 device'
+        value: 39
+
+    PN5180_ONB_INT_PIN:
+        description: 'Host interrupt pin for PN5180'
+        value: 32
+
+    PN5180_INT1_CFG_ACTIVE:
+        desctipion: 'Interrupt active or not'
+        value: 1
+
+
 syscfg.vals:
     CONSOLE_UART: 0
     CONSOLE_RTT: 1
@@ -13,6 +42,7 @@ syscfg.vals:
     SHELL_COMPAT: 1
     SHELL_MGMT: 0
     PN5180_RXTX_HEXDUMP: 1
+    TIMER_1: 1
 
 syscfg.vals.PN5180_CLI:
     RTT_TERMINAL_BUFFER_SIZE_DOWN: 128

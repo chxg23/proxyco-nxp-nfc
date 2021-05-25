@@ -18,7 +18,7 @@ pkg.deps:
     - "@apache-mynewt-core/sys/id"
     - "@apache-mynewt-core/sys/stats/full"
     - "@apache-mynewt-core/hw/bus"
-    - "@fw-nrf/lib/bootutil"
+    - "@mcuboot/boot/bootutil"
     - lib/nxp_nfc
 
 pkg.cflags:

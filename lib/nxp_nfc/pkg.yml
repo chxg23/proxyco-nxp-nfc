@@ -9,7 +9,6 @@ pkg.deps:
   - "@apache-mynewt-core/sys/log/modlog"
   - "@apache-mynewt-core/hw/hal"
   - "@apache-mynewt-core/hw/mcu/nordic/nrf5340"
-  - "@fw-nrf/lib/util"
 
 pkg.deps.PN5180_CLI:
   - "@apache-mynewt-core/sys/shell"
