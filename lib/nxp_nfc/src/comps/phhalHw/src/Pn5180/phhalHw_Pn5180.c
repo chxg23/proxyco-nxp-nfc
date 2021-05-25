@@ -23,7 +23,6 @@
 #include <nxp_nfc/ph_Status.h>
 #include <nxp_nfc/phhalHw.h>
 #include <nxp_nfc/ph_RefDefs.h>
-#include <util/util.h>
 
 #ifdef NXPBUILD__PH_KEYSTORE
 #include <nxp_nfc/phKeyStore.h>
@@ -339,6 +338,24 @@ log_cb(struct os_event *ev)
   os_memblock_put(&pn5180_log_evt_pool, ctxt);
 }
 
+int
+printf_hex(char *dst, size_t size, const void *val, size_t len)
+{
+  int i, offset;
+  for (i = 0, offset = 0; i < len; i++) {
+    if (size > offset) {
+      snprintf(dst + offset, (size - offset), "%02x ", ((uint8_t *) val)[i]);
+    }
+    offset += 3;
+  }
+  if (offset < size) {
+    dst[offset - 1] = '\0';
+  } else {
+    dst[size - 1] = '\0';
+  }
+  return offset;
+}
+
 static void
 sched_log_evt(uint8_t is_tx, uint8_t *logbuf, uint16_t len)
 {
@@ -351,7 +368,7 @@ sched_log_evt(uint8_t is_tx, uint8_t *logbuf, uint16_t len)
       .ev_cb = log_cb
     }
   };
-  snprintf_hex(ctxt->buf, sizeof(ctxt->buf), logbuf, len);
+  printf_hex(ctxt->buf, sizeof(ctxt->buf), logbuf, len);
   os_eventq_put(os_eventq_dflt_get(), &ctxt->evt);
 }
 #endif

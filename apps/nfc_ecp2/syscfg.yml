@@ -3,6 +3,7 @@ syscfg.defs:
         description: 'Specify phOsal eventq'
         value: 'adv_disc_evq'
 
+syscfg.defs.!IS_NANO_V3:
     PN5180_ONB:
         description: 'PN5180 is connected externally'
         value : 1
@@ -42,7 +43,16 @@ syscfg.vals:
     SHELL_COMPAT: 1
     SHELL_MGMT: 0
     PN5180_RXTX_HEXDUMP: 1
+
+syscfg.vals.!IS_NANO_V3:
     TIMER_1: 1
+    SPI_0_MASTER: 1
+    SPI_0_MASTER_PIN_MISO: 10
+    SPI_0_MASTER_PIN_MOSI: 9
+    SPI_0_MASTER_PIN_SCK: 8
+    # Disable UART_0 & I2C_0 because only one peripheral can use the bus
+    I2C_0: 0
+    UART_0: 0
 
 syscfg.vals.PN5180_CLI:
     RTT_TERMINAL_BUFFER_SIZE_DOWN: 128
