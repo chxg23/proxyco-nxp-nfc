@@ -47,7 +47,7 @@ syscfg.defs:
 
     PN5180_CLI:
         description: 'CLI to experiment with PN5180'
-        value: 1
+        value: 0
 
     PN5180_LOG_EVENTS_MAX:
         description: >
