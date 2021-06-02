@@ -173,19 +173,28 @@ phStatus_t phpalI14443p3a_Sw_VASUpA(
   uint16_t    PH_MEMLOC_REM wRegister;
 
   if (pCmdBytes == NULL) {
+    console_printf("VASUPA cmd bytes NULL err:%u\n",
+                   PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
     return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A);
   }
 
   if (bFormatByte == 1U) {
     if (bLenCmdBytes != 3U) {
+      console_printf("VASUPA Format byte == 1 lencmdbytes != 3 err:%u\n",
+                     PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
       return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A);
     }
   } else if (bFormatByte == 2U) {
     if ((bLenCmdBytes > 18U) || (bLenCmdBytes < 3U) ||
         ((pCmdBytes[0] & 0x0FU) != (bLenCmdBytes - 3U))) {
+      console_printf("VASUPA Format byte == 2 || lencmdbytes > 18(%u) pCmdBytes[0]: %u err:%u\n",
+          bLenCmdBytes, pCmdBytes[0],
+          PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
       return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A);
     }
   } else {
+    console_printf("VASUPA Format byte err:%u\n",
+                   PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
     return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A);
   }
 
@@ -331,6 +340,8 @@ phStatus_t phpalI14443p3a_Sw_Anticollision(
 
   /* Check for invalid bNvbUidIn parameter */
   if ((bNvbUidIn > 0x40U) || ((bNvbUidIn & 0x0FU) > 0x07U)) {
+    console_printf("anti_col err:%u\n",
+                   PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
     return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A);
   }
 
@@ -343,6 +354,8 @@ phStatus_t phpalI14443p3a_Sw_Anticollision(
     case PHPAL_I14443P3A_CASCADE_LEVEL_3:
       break;
     default:
+      console_printf("invalid cascade idx err:%u\n",
+                     PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
       return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A);
   }
 
@@ -581,6 +594,8 @@ phStatus_t phpalI14443p3a_Sw_ActivateCard(
       (bLenUidIn != 10U) &&
       (pDataParams->bPollCmd != PHPAL_I14443P3A_USE_WUPA)) {
     /* Given UID length is invalid, return error */
+    console_printf("invalid UID length err:%u\n",
+                   PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
     return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A);
   }
   /* initialise to zero, for VS studio warning */
