@@ -120,8 +120,8 @@ phStatus_t phhalHw_Pn5180_WaitIrq(
           os_cputime_delay_usecs(1000);
         } else {
           /* When delay is atleast 1 OS tick, which is 7.8ms use non-blocking delay */
-          if (pDataParams->wWaitIRQDelayWithTestBus > 1000 / OS_TICKS_PER_SEC) {
-            os_time_delay((OS_TICKS_PER_SEC / 1000 + 1) * pDataParams->wWaitIRQDelayWithTestBus);
+          if (pDataParams->wWaitIRQDelayWithTestBus > (1000 / OS_TICKS_PER_SEC)) {
+            os_time_delay((OS_TICKS_PER_SEC * pDataParams->wWaitIRQDelayWithTestBus) / 1000 + 1);
           } else {
             /* When delay is less than 1 OS tick, use a blocking delay */
             os_cputime_delay_usecs(1000 * pDataParams->wWaitIRQDelayWithTestBus);
