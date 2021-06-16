@@ -314,9 +314,11 @@ void phhalHw_Pn5180_hal_timer_cb(void *arg)
 
 #if MYNEWT_VAL(PN5180_RXTX_HEXDUMP)
 struct log_ctxt {
-  char buf[INSTR_BUFFER_SIZE];
-  uint8_t is_tx;
+  uint64_t ts;
   struct os_event evt;
+  uint16_t len;
+  uint8_t buf[INSTR_BUFFER_SIZE];
+  uint8_t is_tx;
 };
 
 #define PN5180_LOG_EVT_MEMPOOL_SIZE  \
@@ -326,19 +328,7 @@ struct log_ctxt {
 static struct os_mempool pn5180_log_evt_pool;
 static os_membuf_t pn5180_log_evt_area[PN5180_LOG_EVT_MEMPOOL_SIZE];
 
-static void
-log_cb(struct os_event *ev)
-{
-  struct log_ctxt *ctxt = ev->ev_arg;
-  if (ctxt->is_tx) {
-    console_printf("TX DATA: %s\n", ctxt->buf);
-  } else {
-    console_printf("RX DATA: %s\n", ctxt->buf);
-  }
-  os_memblock_put(&pn5180_log_evt_pool, ctxt);
-}
-
-int
+static int
 printf_hex(char *dst, size_t size, const void *val, size_t len)
 {
   int i, offset;
@@ -357,18 +347,37 @@ printf_hex(char *dst, size_t size, const void *val, size_t len)
 }
 
 static void
-sched_log_evt(uint8_t is_tx, uint8_t *logbuf, uint16_t len)
+log_cb(struct os_event *ev)
+{
+  /* Maximum size for hex-formatted data. */
+  char log_buf[INSTR_BUFFER_SIZE * 3];
+  struct log_ctxt *ctxt = ev->ev_arg;
+
+  printf_hex(log_buf, sizeof(log_buf), ctxt->buf, ctxt->len);
+
+  if (ctxt->is_tx) {
+    console_printf("[ts=%lluus] TX DATA: %s\n", ctxt->ts, log_buf);
+  } else {
+    console_printf("[ts=%lluus] RX DATA: %s\n", ctxt->ts, log_buf);
+  }
+  os_memblock_put(&pn5180_log_evt_pool, ctxt);
+}
+
+static void
+sched_log_evt(uint8_t is_tx, uint8_t *buf, uint16_t len)
 {
   struct log_ctxt *ctxt = os_memblock_get(&pn5180_log_evt_pool);
   memset(ctxt, 0, sizeof(*ctxt));
   *ctxt = (struct log_ctxt) {
-    .is_tx = is_tx,
     .evt = (struct os_event) {
       .ev_arg = ctxt,
       .ev_cb = log_cb
-    }
+    },
+    .len = len,
+    .is_tx = is_tx,
+    .ts = os_get_uptime_usec()
   };
-  printf_hex(ctxt->buf, sizeof(ctxt->buf), logbuf, len);
+  memcpy(ctxt->buf, buf, len < sizeof(ctxt->buf) ? len : sizeof(ctxt->buf));
   os_eventq_put(os_eventq_dflt_get(), &ctxt->evt);
 }
 #endif
