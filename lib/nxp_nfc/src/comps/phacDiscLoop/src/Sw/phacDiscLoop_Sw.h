@@ -16,7 +16,7 @@
 * for Starting the discovery loop, Set & Get Configuration and Card Activation,
 * as part of the Reader Library Framework.
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 *
 */

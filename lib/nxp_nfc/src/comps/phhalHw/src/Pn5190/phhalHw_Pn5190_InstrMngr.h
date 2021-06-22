@@ -15,7 +15,7 @@
 * Instruction Manager routines definitions for Pn5190 HAL.
 *
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 */
 

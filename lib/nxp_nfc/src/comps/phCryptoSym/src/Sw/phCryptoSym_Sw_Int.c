@@ -15,7 +15,7 @@
 /** \file
 * Internal functions for SW functionality of the Symmetric Cryptography component.
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 *
 * History:

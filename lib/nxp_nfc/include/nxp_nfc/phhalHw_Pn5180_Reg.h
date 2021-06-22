@@ -15,7 +15,7 @@
 /** \file
 * PN5180 Register map.
 ** $Author:nxp62726 $
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 */
 #ifndef PHHALHW_PN5180_REG_H

@@ -15,7 +15,7 @@
 /** \file
 * Internal functions and defines of Generic Keystore application layer.
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 *
 * History:

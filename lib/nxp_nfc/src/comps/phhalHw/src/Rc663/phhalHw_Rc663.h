@@ -15,7 +15,7 @@
 /** \file
 * RC663 specific HAL-Component of Reader Library Framework.
 * $Author: Purnank G (ing05193) $
-* $Revision: 5076 $ (v06.10.00)
+* $Revision: 5076 $ (v06.11.00)
 * $Date: 2016-06-13 17:29:09 +0530 (Mon, 13 Jun 2016) $
 *
 * History:

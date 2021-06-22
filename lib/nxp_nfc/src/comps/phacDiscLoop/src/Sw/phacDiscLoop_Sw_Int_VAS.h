@@ -14,7 +14,7 @@
 /** \file
 * Discovery Loop Activities for VAS polling.
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 *
 */

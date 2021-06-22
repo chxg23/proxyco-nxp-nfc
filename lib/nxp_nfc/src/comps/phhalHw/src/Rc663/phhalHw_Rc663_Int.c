@@ -15,7 +15,7 @@
 /** \file
 * Internal functions for Rc663 specific HAL-Component of Reader Library Framework.
 * $Author: Ankur Srivastava (nxp79569) $
-* $Revision: 6279 $ (v06.10.00)
+* $Revision: 6279 $ (v06.11.00)
 * $Date: 2016-10-04 18:30:45 +0530 (Tue, 04 Oct 2016) $
 *
 * History:

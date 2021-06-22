@@ -14,7 +14,7 @@
 /** \file
 * Generic Virtual Card Architecture (R) Application Component of Reader Library Framework.
 * $Author: Rajendran Kumar (nxp99556) $
-* $Revision: 6111 $ (v06.10.00)
+* $Revision: 6111 $ (v06.11.00)
 * $Date: 2020-05-14 22:18:00 +0530 (Thu, 14 May 2020) $
 *
 * History:

@@ -15,7 +15,7 @@
 /** \file
 * Internal definitions for Rc663 specific HAL-Component of Reader Library Framework.
 * $Author: Ankur Srivastava (nxp79569) $
-* $Revision: 5076 $ (v06.10.00)
+* $Revision: 5076 $ (v06.11.00)
 * $Date: 2017-01-23 17:29:09 +0530 (Mon, 23 Jan 2017) $
 *
 * History:

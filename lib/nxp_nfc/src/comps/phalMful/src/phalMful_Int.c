@@ -14,7 +14,7 @@
 /** \file
 * Internal functions of Software implementation of MIFARE Ultralight contactless IC application layer.
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 *
 * History:

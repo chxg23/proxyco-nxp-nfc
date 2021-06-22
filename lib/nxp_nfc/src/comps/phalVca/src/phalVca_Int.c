@@ -14,7 +14,7 @@
 /** \file
 * Internal functions of Virtual Card Architecture Application Component.
 * $Author: Rajendran Kumar (nxp99556) $
-* $Revision: 6146 $ (v06.10.00)
+* $Revision: 6146 $ (v06.11.00)
 * $Date: 2020-07-13 14:31:23 +0530 (Mon, 13 Jul 2020) $
 *
 * History:

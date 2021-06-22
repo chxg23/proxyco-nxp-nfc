@@ -14,7 +14,7 @@
 /** \file
 * Software MIFARE DESFire Light contactless IC Application Component of Reader Library Framework.
 * $Author: nxp79567 $
-* $Revision: 1546 $ (v06.10.00)
+* $Revision: 1546 $ (v06.11.00)
 * $Date: 2016-02-03 10:32:15 +0530 (Wed, 03 Feb 2016) $
 */
 

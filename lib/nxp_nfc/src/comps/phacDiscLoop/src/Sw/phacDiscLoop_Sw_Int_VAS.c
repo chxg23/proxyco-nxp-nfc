@@ -14,7 +14,7 @@
 /** \file
 * Discovery Loop Activities for VAS (Type A Tech) polling.
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 *
 */
@@ -27,6 +27,7 @@
 #include <nxp_nfc/phpalI14443p3a.h>
 
 #ifdef NXPBUILD__PHAC_DISCLOOP_SW
+#ifdef NXPBUILD__PHAC_DISCLOOP_SW_ECP
 #include "phacDiscLoop_Sw_Int.h"
 #include "phacDiscLoop_Sw_Int_VAS.h"
 
@@ -41,7 +42,6 @@ phStatus_t phacDiscLoop_Sw_DetTechTypeVAS(
     phacDiscLoop_Sw_DataParams_t *pDataParams
 )
 {
-#if defined (NXPBUILD__PHAC_DISCLOOP_SW_ECP)
   phStatus_t PH_MEMLOC_REM wStatus;
 
   if ((pDataParams->bVASPollMode == PHAC_DISCLOOP_VAS_IN_COMPATIBILITY_MODE) &&
@@ -80,11 +80,6 @@ phStatus_t phacDiscLoop_Sw_DetTechTypeVAS(
   } else {
     return wStatus;
   }
-
-  return PH_ADD_COMPCODE_FIXED(PHAC_DISCLOOP_TECH_DETECTED, PH_COMP_AC_DISCLOOP);
-#else /* NXPBUILD__PHAC_DISCLOOP_SW_ECP */
-  return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_COMMAND, PH_COMP_AC_DISCLOOP);
-#endif /* NXPBUILD__PHAC_DISCLOOP_SW_ECP */
 }
 
 phStatus_t phacDiscLoop_Sw_Int_CollisionResolutionVAS(
@@ -104,4 +99,5 @@ phStatus_t phacDiscLoop_Sw_Int_ActivateVAS(
   return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_COMMAND, PH_COMP_AC_DISCLOOP);
 }
 
+#endif /* NXPBUILD__PHAC_DISCLOOP_SW_ECP */
 #endif /* NXPBUILD__PHAC_DISCLOOP_SW */

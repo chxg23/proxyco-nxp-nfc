@@ -16,7 +16,7 @@
 /** \file
 * Discovery Loop Activities for Type V polling.
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 *
 * History:
@@ -30,6 +30,7 @@
 #include <nxp_nfc/ph_Status.h>
 
 #ifdef NXPBUILD__PHAC_DISCLOOP_SW
+#ifdef NXPBUILD__PHAC_DISCLOOP_SW_ECP
 /* *****************************************************************************************************************
  * Includes
  * ***************************************************************************************************************** */
@@ -50,5 +51,6 @@ phStatus_t phacDiscLoop_Sw_Int_ActivateV(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint8_t bTypeVTagIdx
 );
+#endif /* NXPBUILD__PHAC_DISCLOOP_SW_ECP */
 #endif /* NXPBUILD__PHAC_DISCLOOP_SW */
 #endif /* PHACDISCLOOP_SW_INT_V_H */

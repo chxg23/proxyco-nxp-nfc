@@ -22,7 +22,7 @@
  *
  * $Date$
  * $Author$
- * $Revision$ (v06.10.00)
+ * $Revision$ (v06.11.00)
  *
  */
 #ifndef PHHALHW_PN7462AU_H

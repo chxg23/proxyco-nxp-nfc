@@ -14,7 +14,7 @@
 /** \file
 * Internal functions of Software implementation for MIFARE Plus EVx contactless IC (Ev1, and future versions) contactless IC application layer.
 * $Author: NXP99556 $
-* $Revision: 3340 $ (v06.10.00)
+* $Revision: 3340 $ (v06.11.00)
 * $Date: 2017-04-05 16:07:29 +0530 (Wed, 05 Apr 2017) $
 *
 * History:

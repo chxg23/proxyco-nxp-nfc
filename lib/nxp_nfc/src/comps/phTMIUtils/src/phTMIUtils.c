@@ -14,7 +14,7 @@
 /** \file
 * Log Component of Reader Library Framework.
 * $Author: nxp79920 $
-* $Revision: 673 $ (v06.10.00)
+* $Revision: 673 $ (v06.11.00)
 * $Date: 2014-07-28 17:56:08 +0530 (Mon, 28 Jul 2014) $
 *
 * History:

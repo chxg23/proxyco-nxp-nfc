@@ -15,7 +15,7 @@
 /** \file
 * DES implementation of the Symmetric Cryptography Library.
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 *
 * History:

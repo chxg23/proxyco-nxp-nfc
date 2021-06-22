@@ -14,7 +14,7 @@
 /** \file
 * Software MIFARE Component of Reader Library Framework.
 * $Author: Rajendran Kumar (nxp99556) $
-* $Revision: 6155 $ (v06.10.00)
+* $Revision: 6155 $ (v06.11.00)
 * $Date: 2020-07-20 22:32:37 +0530 (Mon, 20 Jul 2020) $
 *
 * History:

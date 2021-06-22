@@ -15,7 +15,7 @@
 * Internal functions of Software implementation of MIFARE DESFire EV1 contactless IC
 * Application layer.
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 */
 

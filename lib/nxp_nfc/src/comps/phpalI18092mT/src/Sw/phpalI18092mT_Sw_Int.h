@@ -15,7 +15,7 @@
 /** \file
 * Internal definitions for software ISO18092 target mode Component of Reader Library Framework.
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 *
 * History:

@@ -15,7 +15,7 @@
 /** \file
 * Software Implementation of the CTR_DRBG algorithm as specified in NIST SP 800-90 using the AES algorithm.
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 *
 * History:

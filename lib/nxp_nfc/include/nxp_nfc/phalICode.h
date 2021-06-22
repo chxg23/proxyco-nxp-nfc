@@ -15,7 +15,7 @@
 /** \file
  * Generic ICode Application Component of Reader Library Framework.
  * $Author: nxp99556 $
- * $Revision: 2536 $ (v06.10.00)
+ * $Revision: 2536 $ (v06.11.00)
  * $Date: 2017-01-02 12:00:10 +0530 (Mon, 02 Jan 2017) $
  *
  * History:

@@ -14,7 +14,7 @@
 /** \file
 * Internal functions of Software implementation of MIFARE Ntag42XDna application layer.
 * $Author: nxf18805 $
-* $Revision: 1546 $ (v06.10.00)
+* $Revision: 1546 $ (v06.11.00)
 * $Date: 2016-02-03 10:32:15 +0530 (Wed, 03 Feb 2016) $
 */
 

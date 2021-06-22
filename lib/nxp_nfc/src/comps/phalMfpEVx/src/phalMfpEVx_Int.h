@@ -14,7 +14,7 @@
 /** \file
 * Internal functions of Software implementation of MIFARE (R) application layer.
 * $Author: Rajendran Kumar (nxp99556) $
-* $Revision: 6138 $ (v06.10.00)
+* $Revision: 6138 $ (v06.11.00)
 * $Date: 2020-05-25 23:21:48 +0530 (Mon, 25 May 2020) $
 *
 * History:

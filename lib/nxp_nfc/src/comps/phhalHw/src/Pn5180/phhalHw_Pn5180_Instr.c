@@ -16,7 +16,7 @@
 * PN5180 Instruction HAL interface.
 *
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 */
 
