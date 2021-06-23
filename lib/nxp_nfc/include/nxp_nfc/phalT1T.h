@@ -16,7 +16,7 @@
 * Internal functions for Tag Operation Application Layer component of
 * Reader Library Framework.
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 */
 #ifndef PHALT1T_H

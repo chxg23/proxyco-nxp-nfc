@@ -14,7 +14,7 @@
 /** \file
 * Generic MIFARE Plus EVx contactless IC (Ev1, and future versions) contactless IC Application Component of Reader Library Framework.
 * $Author: Rajendran Kumar (nxp99556) $
-* $Revision: 4433 $ (v06.10.00)
+* $Revision: 4433 $ (v06.11.00)
 * $Date: 2018-02-12 19:35:06 +0530 (Mon, 12 Feb 2018) $
 *
 * History:

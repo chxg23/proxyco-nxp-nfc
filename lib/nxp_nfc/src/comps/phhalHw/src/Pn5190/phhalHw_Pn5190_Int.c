@@ -15,7 +15,7 @@
 * Internal functions for Pn5190 HAL.
 *
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 */
 
@@ -35,11 +35,12 @@
 #include "phhalHw_Pn5190_Reg.h"
 #include "phhalHw_Pn5190_Instr.h"
 
-#define PHHAL_HW_15693_26KBPS           (0x00000000)
-#define PHHAL_HW_15693_53KBPS           (0x00000020)
-#define PHHAL_HW_15693_106KBPS          (0x00000040)
-#define PHHAL_HW_15693_212KBPS          (0x00000060)
+#define PHHAL_HW_15693_26KBPS                             (0x00000000)
+#define PHHAL_HW_15693_53KBPS                             (0x00000020)
+#define PHHAL_HW_15693_106KBPS                            (0x00000040)
+#define PHHAL_HW_15693_212KBPS                            (0x00000060)
 
+#define CLIF_SIGPRO_RM_ENABLES_RM_OOK_COL_LOW_SLOPE_MASK  (0x00018000UL)
 #ifndef _WIN32
 extern phOsal_Event_t xEventHandle;
 #endif
@@ -296,6 +297,10 @@ phStatus_t phhalHw_Pn5190_SetConfig_Int(
         PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_Pn5190_Instr_WriteRegisterMultiple(pDataParams,
                 wRegTypeValueSets, wSizeOfRegTypeValueSets));
 
+        if (pDataParams->bCardType == PHHAL_HW_CARDTYPE_ISO14443A) {
+          PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_Pn5190_Instr_WriteRegisterAndMask(pDataParams,
+                  CLIF_SIGPRO_RM_ENABLES, (uint32_t)(~CLIF_SIGPRO_RM_ENABLES_RM_OOK_COL_LOW_SLOPE_MASK)));
+        }
       }
       break;
 

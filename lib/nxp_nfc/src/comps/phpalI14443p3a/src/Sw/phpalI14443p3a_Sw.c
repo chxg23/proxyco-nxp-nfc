@@ -14,7 +14,7 @@
 /** \file
 * Software ISO14443-3A Component of Reader Library Framework.
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 *
 * History:
@@ -174,14 +174,14 @@ phStatus_t phpalI14443p3a_Sw_VASUpA(
 
   if (pCmdBytes == NULL) {
     console_printf("VASUPA cmd bytes NULL err:%u\n",
-                   PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
+        PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
     return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A);
   }
 
   if (bFormatByte == 1U) {
     if (bLenCmdBytes != 3U) {
       console_printf("VASUPA Format byte == 1 lencmdbytes != 3 err:%u\n",
-                     PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
+          PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
       return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A);
     }
   } else if (bFormatByte == 2U) {
@@ -194,7 +194,7 @@ phStatus_t phpalI14443p3a_Sw_VASUpA(
     }
   } else {
     console_printf("VASUPA Format byte err:%u\n",
-                   PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
+        PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
     return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A);
   }
 
@@ -341,7 +341,7 @@ phStatus_t phpalI14443p3a_Sw_Anticollision(
   /* Check for invalid bNvbUidIn parameter */
   if ((bNvbUidIn > 0x40U) || ((bNvbUidIn & 0x0FU) > 0x07U)) {
     console_printf("anti_col err:%u\n",
-                   PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
+        PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
     return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A);
   }
 
@@ -355,7 +355,7 @@ phStatus_t phpalI14443p3a_Sw_Anticollision(
       break;
     default:
       console_printf("invalid cascade idx err:%u\n",
-                     PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
+          PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
       return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A);
   }
 
@@ -595,7 +595,7 @@ phStatus_t phpalI14443p3a_Sw_ActivateCard(
       (pDataParams->bPollCmd != PHPAL_I14443P3A_USE_WUPA)) {
     /* Given UID length is invalid, return error */
     console_printf("invalid UID length err:%u\n",
-                   PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
+        PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
     return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A);
   }
   /* initialise to zero, for VS studio warning */

@@ -16,7 +16,7 @@
 /** \file
 * Discovery Loop Activities for ISO 18000p3m3 polling.
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 *
 * History:

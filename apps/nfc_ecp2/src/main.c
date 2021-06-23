@@ -36,7 +36,7 @@
 * execute the project which is present in the same project directory.
 *
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 */
 
@@ -573,7 +573,7 @@ static phStatus_t LoadProfile(phacDiscLoop_Profile_t bProfile)
 #ifdef NXPBUILD__PHAC_DISCLOOP_TYPEB_TAGS
   wPasPollConfig |= PHAC_DISCLOOP_POS_BIT_MASK_B;
 #endif
-#ifdef NXPBUILD__PHAC_DISCLOOP_SW_ECP
+#if defined(NXPBUILD__PHAC_DISCLOOP_SW_ECP) && !defined(ENABLE_ECP_COMPATIBILITY_MODE)
   wPasPollConfig |= PHAC_DISCLOOP_POS_BIT_MASK_VAS;
 #endif /* NXPBUILD__PHAC_DISCLOOP_SW_ECP */
 

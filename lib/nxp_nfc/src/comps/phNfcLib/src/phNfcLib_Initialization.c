@@ -14,7 +14,7 @@
 /** \file
 * NFC Library Top Level API of Reader Library Framework.
 * $Author: NXP $
-* $Revision: $ (v06.10.00)
+* $Revision: $ (v06.11.00)
 * $Date: $
 *
 */

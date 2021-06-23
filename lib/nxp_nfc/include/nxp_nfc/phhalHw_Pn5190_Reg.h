@@ -15,7 +15,7 @@
 * PN5190 HAL Register definition header file.
 *
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 */
 

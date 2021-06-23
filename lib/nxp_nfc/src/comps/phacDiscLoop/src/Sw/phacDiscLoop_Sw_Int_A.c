@@ -14,7 +14,7 @@
 /** \file
 * Discovery Loop Activities for Type A polling.
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 *
 */
@@ -96,8 +96,7 @@ phStatus_t phacDiscLoop_Sw_DetTechTypeA(
 #ifdef NXPBUILD__PHAC_DISCLOOP_SW_ECP
     if ((pDataParams->bVASPollMode == PHAC_DISCLOOP_VAS_IN_COMPATIBILITY_MODE) &&
         (pDataParams->bOpeMode == RD_LIB_MODE_NFC) &&
-        (pDataParams->bNfcActivityVersion == PHAC_DISCLOOP_NFC_ACTIVITY_VERSION_1_0) &&
-        ((pDataParams->bPasPollTechCfg & PHAC_DISCLOOP_POS_BIT_MASK_VAS) != 0U)) {
+        (pDataParams->bNfcActivityVersion == PHAC_DISCLOOP_NFC_ACTIVITY_VERSION_1_0)) {
       PH_CHECK_ABORT_FCT(wStatustmp, phpalI14443p3a_SetConfig(pDataParams->pPal1443p3aDataParams,
               PHPAL_I14443P3A_CONFIG_SKIP_SETTING_TIMEOUT,
               PH_ON));

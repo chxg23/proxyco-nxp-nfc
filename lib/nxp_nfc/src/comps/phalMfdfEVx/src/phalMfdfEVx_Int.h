@@ -14,7 +14,7 @@
 /** \file
 * Internal functions of Software implementation of MIFARE DESFire EVx contactless IC application layer.
 * $Author: Rajendran Kumar (nxp99556) $
-* $Revision: 5949 $ (v06.10.00)
+* $Revision: 5949 $ (v06.11.00)
 * $Date: 2020-01-29 19:49:02 +0530 (Wed, 29 Jan 2020) $
 */
 

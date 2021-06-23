@@ -14,7 +14,7 @@
 /** \file
 * Rc663 EEPROM Protocol setting for 65x65 antenna.
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 */
 

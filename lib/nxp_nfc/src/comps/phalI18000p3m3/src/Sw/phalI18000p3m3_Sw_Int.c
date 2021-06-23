@@ -15,7 +15,7 @@
 /** \file
 * Software ISO18000-3 Mode3 Application Layer (Internals).
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 *
 * History:

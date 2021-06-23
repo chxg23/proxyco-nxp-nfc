@@ -14,7 +14,7 @@
 /** \file
 * Generic MIFARE DESFire EVx contactless IC (EV1, EV2, EV3, future versions ) Application Component of Reader Library Framework.
 * $Author: Rajendran Kumar (nxp99556) $
-* $Revision: 6116 $ (v06.10.00)
+* $Revision: 6116 $ (v06.11.00)
 * $Date: 2020-05-15 19:22:24 +0530 (Fri, 15 May 2020) $
 *
 */

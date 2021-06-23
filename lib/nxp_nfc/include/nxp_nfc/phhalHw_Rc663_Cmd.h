@@ -15,7 +15,7 @@
 /** \file
 * Command functions for Rc663 specific HAL-Component of Reader Library Framework.
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 *
 * History:

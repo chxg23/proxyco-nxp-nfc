@@ -15,7 +15,7 @@
 * Software Tag Operation Application Layer Component of
 * Reader Library Framework.
 * $Author: Purnank G (ing05193) $
-* $Revision: 5316 $ (v06.10.00)
+* $Revision: 5316 $ (v06.11.00)
 * $Date: 2016-06-29 12:19:39 +0530 (Wed, 29 Jun 2016) $
 */
 

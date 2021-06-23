@@ -14,7 +14,7 @@
 /** \file
 * Generic MIFARE Ntag42XDna Application Component of Reader Library Framework.
 * $Author: nxf18805 $
-* $Revision: 1505 $ (v06.10.00)
+* $Revision: 1505 $ (v06.11.00)
 * $Date: 2016-01-11 14:51:50 +0530 (Mon, 11 Jan 2016) $
 *
 */

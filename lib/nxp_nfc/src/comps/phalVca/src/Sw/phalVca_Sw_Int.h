@@ -14,7 +14,7 @@
 /** \file
 * Internal functions of Software implementation of Virtual Card Architecture.
 * $Author: Rajendran Kumar (nxp99556) $
-* $Revision: 5951 $ (v06.10.00)
+* $Revision: 5951 $ (v06.11.00)
 * $Date: 2020-01-31 17:48:03 +0530 (Fri, 31 Jan 2020) $
 *
 * History:

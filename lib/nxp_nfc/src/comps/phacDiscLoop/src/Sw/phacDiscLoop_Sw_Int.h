@@ -17,7 +17,7 @@
 * for performing activities defined by NFC Forum
 * as part of the Reader Library Framework.
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 *
 * History:

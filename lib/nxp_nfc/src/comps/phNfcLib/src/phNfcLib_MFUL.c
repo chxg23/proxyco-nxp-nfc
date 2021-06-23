@@ -15,7 +15,7 @@
 /** \file
 * NFC Library Top Level API of Reader Library Framework.
 * $Author: jenkins_ cm (nxp92197) $
-* $Revision: 4184 $ (v06.10.00)
+* $Revision: 4184 $ (v06.11.00)
 * $Date: 2016-05-20 18:04:59 +0530 (Fri, 20 May 2016) $
 *
 * History:

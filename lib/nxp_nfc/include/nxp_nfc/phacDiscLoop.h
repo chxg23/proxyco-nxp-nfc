@@ -14,7 +14,7 @@
 /** \file
 * Generic Discovery Loop Activities Component of Reader Library Framework.
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 *
 * History:
@@ -85,16 +85,16 @@ extern "C" {
 
 #if !defined (NXPBUILD__PHAC_DISCLOOP_SW_ECP)
 /**
-* Maximum (NFC + proprietary) technologies support in passive poll mode.
-*
-* Supported technologies are:\n
-* - Type A (As per NFC Activity 1.1 and EMVCo Specification 2.3.1a)\n
-* - Type B (As per NFC Activity 1.1 and EMVCo Specification 2.3.1a)\n
-* - Type F @ 212 kbps (As per NFC Activity 1.1)\n
-* - Type F @ 424 kbps (As per NFC Activity 1.1)\n
-* - Type V (ISO 15693) (As per NFC Activity draft specification)\n
-* - ISO 18000P3M3 (Proprietary)
-* */
+ * Maximum (NFC + proprietary) technologies support in passive poll mode.
+ *
+ * Supported technologies are:\n
+ * - Type A (As per NFC Activity 1.1 and EMVCo Specification 2.3.1a)\n
+ * - Type B (As per NFC Activity 1.1 and EMVCo Specification 2.3.1a)\n
+ * - Type F @ 212 kbps (As per NFC Activity 1.1)\n
+ * - Type F @ 424 kbps (As per NFC Activity 1.1)\n
+ * - Type V (ISO 15693) (As per NFC Activity draft specification)\n
+ * - ISO 18000P3M3 (Proprietary)
+ * */
 #define PHAC_DISCLOOP_PASS_POLL_MAX_TECHS_SUPPORTED           0x06U
 #endif /* NXPBUILD__PHAC_DISCLOOP_SW_ECP */
 
@@ -708,6 +708,22 @@ typedef struct {
    * */
 #endif /* NXPBUILD__PHAC_DISCLOOP_SW_ECP */
 
+#if !defined (NXPBUILD__PHAC_DISCLOOP_SW_ECP)
+  /**
+   * Technologies to poll for in passive mode.
+   *
+   * #PHAC_DISCLOOP_POS_BIT_MASK_A         -> Detect Type A.\n
+   * #PHAC_DISCLOOP_POS_BIT_MASK_B         -> Detect Type B.\n
+   * #PHAC_DISCLOOP_POS_BIT_MASK_F212      -> Detect Type FeliCa @ 212 kbps.\n
+   * #PHAC_DISCLOOP_POS_BIT_MASK_F424      -> Detect Type FeliCa @ 424 kbps.\n
+   * #PHAC_DISCLOOP_POS_BIT_MASK_V         -> Detect Type V / ISO 15693.\n
+   * #PHAC_DISCLOOP_POS_BIT_MASK_18000P3M3 -> Detect ISO 18000p3m3/ EPC Gen2.\n
+   *
+   * Use \ref phacDiscLoop_SetConfig with #PHAC_DISCLOOP_CONFIG_PAS_POLL_TECH_CFG
+   * option to configure above values.
+   * */
+#endif /* NXPBUILD__PHAC_DISCLOOP_SW_ECP */
+
   uint8_t bPasPollTechCfg;
 
   /**
@@ -812,6 +828,21 @@ typedef struct {
    * */
 #endif /* NXPBUILD__PHAC_DISCLOOP_SW_ECP */
 
+#if !defined (NXPBUILD__PHAC_DISCLOOP_SW_ECP)
+  /**
+   * Contains guard times for different technologies in passive poll mode.
+   *
+   * #PHAC_DISCLOOP_CONFIG_GTA_VALUE_US         -> Guard time for Type A.\n
+   * #PHAC_DISCLOOP_CONFIG_GTB_VALUE_US         -> Guard time for Type B.\n
+   * #PHAC_DISCLOOP_CONFIG_GTFB_VALUE_US        -> Guard time for Type F. Guard time is applied when polling for Type B is preceded by polling for Type F.\n
+   * #PHAC_DISCLOOP_CONFIG_GTBF_VALUE_US        -> Guard time for Type F. Guard time is applied when polling for Type F is preceded by polling for Type B.\n
+   * #PHAC_DISCLOOP_CONFIG_GTV_VALUE_US         -> Guard time for Type V.\n
+   * #PHAC_DISCLOOP_CONFIG_GT18000P3M3_VALUE_US -> Guard time for ISO 18000p3m3/ EPC Gen2.\n
+   *
+   * Use \ref phacDiscLoop_SetConfig with above options to configure guard time.
+   * */
+#endif /* NXPBUILD__PHAC_DISCLOOP_SW_ECP */
+
   uint16_t waPasPollGTimeUs[PHAC_DISCLOOP_PASS_POLL_MAX_TECHS_SUPPORTED];
 
   /**
@@ -902,6 +933,28 @@ typedef struct {
    * #PHAC_DISCLOOP_POS_BIT_MASK_V         -> Detected Type V / ISO 15693.\n
    * #PHAC_DISCLOOP_POS_BIT_MASK_18000P3M3 -> Detected ISO 18000p3m3/ EPC Gen2.\n
    * #PHAC_DISCLOOP_POS_BIT_MASK_VAS       -> Detected VAS Type A.\n
+   *
+   * Active technologies:\n
+   * #PHAC_DISCLOOP_ACT_POS_BIT_MASK_106   -> Detected active target @ 106 kbps.\n
+   * #PHAC_DISCLOOP_ACT_POS_BIT_MASK_212   -> Detected active target @ 212 kbps.\n
+   * #PHAC_DISCLOOP_ACT_POS_BIT_MASK_424   -> Detected active target @ 424 kbps.\n
+   *
+   * Use \ref phacDiscLoop_GetConfig with #PHAC_DISCLOOP_CONFIG_TECH_DETECTED
+   * option to get detected technologies.
+   * */
+#endif /* NXPBUILD__PHAC_DISCLOOP_SW_ECP */
+
+#if !defined (NXPBUILD__PHAC_DISCLOOP_SW_ECP)
+  /**
+   * Detected technologies during poll mode.
+   *
+   * Passive technologies:\n
+   * #PHAC_DISCLOOP_POS_BIT_MASK_A         -> Detected Type A.\n
+   * #PHAC_DISCLOOP_POS_BIT_MASK_B         -> Detected Type B.\n
+   * #PHAC_DISCLOOP_POS_BIT_MASK_F212      -> Detected FeliCa @ 212 kbps.\n
+   * #PHAC_DISCLOOP_POS_BIT_MASK_F424      -> Detected FeliCa @ 424 kbps.\n
+   * #PHAC_DISCLOOP_POS_BIT_MASK_V         -> Detected Type V / ISO 15693.\n
+   * #PHAC_DISCLOOP_POS_BIT_MASK_18000P3M3 -> Detected ISO 18000p3m3/ EPC Gen2.\n
    *
    * Active technologies:\n
    * #PHAC_DISCLOOP_ACT_POS_BIT_MASK_106   -> Detected active target @ 106 kbps.\n
@@ -1701,7 +1754,7 @@ phStatus_t phacDiscLoop_Sw_Init(
 
 #ifdef NXPRDLIB_REM_GEN_INTFS
 
-#include "../../src/comps/phacDiscLoop/src/Sw/phacDiscLoop_Sw.h"
+#include "../comps/phacDiscLoop/src/Sw/phacDiscLoop_Sw.h"
 
 #define phacDiscLoop_Run(pDataParams, bEntryPoint) \
         phacDiscLoop_Sw_Run((phacDiscLoop_Sw_DataParams_t *)pDataParams, bEntryPoint)

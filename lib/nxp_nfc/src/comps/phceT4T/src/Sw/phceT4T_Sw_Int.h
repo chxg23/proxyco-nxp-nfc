@@ -19,7 +19,7 @@
 /** \file
 * Card Emulation component for Type 4A Tag.
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 */
 

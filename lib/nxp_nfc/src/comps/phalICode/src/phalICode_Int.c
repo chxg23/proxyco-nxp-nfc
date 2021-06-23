@@ -14,7 +14,7 @@
 /** \file
  * Internal functions of both Software and SamNonX implementation of ICode application layer.
  * $Author: nxp99556 $
- * $Revision: 2536 $ (v06.10.00)
+ * $Revision: 2536 $ (v06.11.00)
  * $Date: 2017-01-02 12:00:04 +0530 (Mon, 02 Jan 2017) $
  *
  */

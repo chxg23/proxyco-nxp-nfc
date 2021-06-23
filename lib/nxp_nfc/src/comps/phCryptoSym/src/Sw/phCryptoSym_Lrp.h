@@ -14,7 +14,7 @@
 /** \file
 * LRP Functions for Crypto Library
 * $Author$
-* $Revision$ (v06.10.00)
+* $Revision$ (v06.11.00)
 * $Date$
 */
 
