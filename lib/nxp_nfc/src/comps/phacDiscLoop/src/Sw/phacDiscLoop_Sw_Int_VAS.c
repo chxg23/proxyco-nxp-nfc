@@ -80,6 +80,7 @@ phStatus_t phacDiscLoop_Sw_DetTechTypeVAS(
   } else {
     return wStatus;
   }
+  return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AC_DISCLOOP);
 }
 
 phStatus_t phacDiscLoop_Sw_Int_CollisionResolutionVAS(
