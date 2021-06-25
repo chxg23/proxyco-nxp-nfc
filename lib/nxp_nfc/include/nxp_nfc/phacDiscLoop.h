@@ -1754,7 +1754,7 @@ phStatus_t phacDiscLoop_Sw_Init(
 
 #ifdef NXPRDLIB_REM_GEN_INTFS
 
-#include "../comps/phacDiscLoop/src/Sw/phacDiscLoop_Sw.h"
+#include "../../src/comps/phacDiscLoop/src/Sw/phacDiscLoop_Sw.h"
 
 #define phacDiscLoop_Run(pDataParams, bEntryPoint) \
         phacDiscLoop_Sw_Run((phacDiscLoop_Sw_DataParams_t *)pDataParams, bEntryPoint)
