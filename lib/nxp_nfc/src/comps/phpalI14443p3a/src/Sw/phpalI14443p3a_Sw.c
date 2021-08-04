@@ -33,6 +33,30 @@
 
 #include "phpalI14443p3a_Sw.h"
 #include "phpalI14443p3a_Sw_Int.h"
+#include <stats/stats.h>
+
+/* Global variable used to hold stats data */
+STATS_SECT_DECL(nfc_I14443_stats_section) g_nfc_I14443_stats;
+
+STATS_SECT_START(nfc_I14443_stats_section)
+STATS_SECT_ENTRY(reqa_err)
+STATS_SECT_ENTRY(wupa_err)
+STATS_SECT_ENTRY(vasupa_err)
+STATS_SECT_ENTRY(hlta_err)
+STATS_SECT_ENTRY(anticoll_err)
+STATS_SECT_ENTRY(select_err)
+STATS_SECT_ENTRY(act_card_err)
+STATS_SECT_END
+
+STATS_NAME_START(nfc_I14443_stats_section)
+STATS_NAME(nfc_I14443_stats_section, reqa_err)
+STATS_NAME(nfc_I14443_stats_section, wupa_err)
+STATS_NAME(nfc_I14443_stats_section, vasupa_err)
+STATS_NAME(nfc_I14443_stats_section, hlta_err)
+STATS_NAME(nfc_I14443_stats_section, anticoll_err)
+STATS_NAME(nfc_I14443_stats_section, select_err)
+STATS_NAME(nfc_I14443_stats_section, act_card_err)
+STATS_NAME_END(nfc_I14443_stats_section)
 
 phStatus_t phpalI14443p3a_Sw_Init(
     phpalI14443p3a_Sw_DataParams_t *pDataParams,
@@ -45,6 +69,11 @@ phStatus_t phpalI14443p3a_Sw_Init(
   }
   PH_ASSERT_NULL(pDataParams);
   PH_ASSERT_NULL(pHalDataParams);
+
+  stats_init_and_reg(STATS_HDR(g_nfc_I14443_stats),
+      STATS_SIZE_INIT_PARMS(g_nfc_I14443_stats, STATS_SIZE_16),
+      STATS_NAME_INIT_PARMS(nfc_I14443_stats_section),
+      "nfc_I14443_stats");
 
   /* init private data */
   pDataParams->wId            = PH_COMP_PAL_ISO14443P3A | PHPAL_I14443P3A_SW_ID;
@@ -145,7 +174,12 @@ phStatus_t phpalI14443p3a_Sw_RequestA(
     uint8_t *pAtqa
 )
 {
-  return phpalI14443p3a_Sw_RequestAEx(pDataParams, PHPAL_I14443P3A_REQUEST_CMD, pAtqa);
+  phStatus_t status = phpalI14443p3a_Sw_RequestAEx(pDataParams, PHPAL_I14443P3A_REQUEST_CMD, pAtqa);
+  if (status) {
+    STATS_INC(g_nfc_I14443_stats, reqa_err);
+  }
+
+  return status;
 }
 
 phStatus_t phpalI14443p3a_Sw_WakeUpA(
@@ -153,7 +187,12 @@ phStatus_t phpalI14443p3a_Sw_WakeUpA(
     uint8_t *pAtqa
 )
 {
-  return phpalI14443p3a_Sw_RequestAEx(pDataParams, PHPAL_I14443P3A_WAKEUP_CMD, pAtqa);
+  phStatus_t status = phpalI14443p3a_Sw_RequestAEx(pDataParams, PHPAL_I14443P3A_WAKEUP_CMD, pAtqa);
+  if (status) {
+    STATS_INC(g_nfc_I14443_stats, wupa_err);
+  }
+
+  return status;
 }
 
 #ifdef NXPBUILD__PHPAL_I14443P3A_SW_ECP
@@ -175,6 +214,7 @@ phStatus_t phpalI14443p3a_Sw_VASUpA(
   if (pCmdBytes == NULL) {
     console_printf("VASUPA cmd bytes NULL err:%u\n",
         PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
+    STATS_INC(g_nfc_I14443_stats, vasupa_err);
     return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A);
   }
 
@@ -182,6 +222,7 @@ phStatus_t phpalI14443p3a_Sw_VASUpA(
     if (bLenCmdBytes != 3U) {
       console_printf("VASUPA Format byte == 1 lencmdbytes != 3 err:%u\n",
           PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
+      STATS_INC(g_nfc_I14443_stats, vasupa_err);
       return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A);
     }
   } else if (bFormatByte == 2U) {
@@ -190,57 +231,95 @@ phStatus_t phpalI14443p3a_Sw_VASUpA(
       console_printf("VASUPA Format byte == 2 || lencmdbytes > 18(%u) pCmdBytes[0]: %u err:%u\n",
           bLenCmdBytes, pCmdBytes[0],
           PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
+      STATS_INC(g_nfc_I14443_stats, vasupa_err);
       return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A);
     }
   } else {
     console_printf("VASUPA Format byte err:%u\n",
         PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
+    STATS_INC(g_nfc_I14443_stats, vasupa_err);
     return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A);
   }
 
   /* Reset default data rates */
-  PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_SetConfig(
+  statusTmp = phhalHw_SetConfig(
           pDataParams->pHalDataParams,
           PHHAL_HW_CONFIG_TXDATARATE_FRAMING,
-          PHHAL_HW_RF_DATARATE_106));
-  PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_SetConfig(
+          PHHAL_HW_RF_DATARATE_106);
+  if (statusTmp != PH_ERR_SUCCESS) {
+    STATS_INC(g_nfc_I14443_stats, vasupa_err);
+    return statusTmp;
+  }
+
+  statusTmp = phhalHw_SetConfig(
           pDataParams->pHalDataParams,
           PHHAL_HW_CONFIG_RXDATARATE_FRAMING,
-          PHHAL_HW_RF_DATARATE_106));
+          PHHAL_HW_RF_DATARATE_106);
+  if (statusTmp != PH_ERR_SUCCESS) {
+    STATS_INC(g_nfc_I14443_stats, vasupa_err);
+    return statusTmp;
+  }
+  
 
   if (pDataParams->bSkipTOSet == PH_OFF) {
     /* Set FDT timeout */
-    PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_SetConfig(
+    statusTmp = phhalHw_SetConfig(
             pDataParams->pHalDataParams,
             PHHAL_HW_CONFIG_TIMEOUT_VALUE_US,
-            PHPAL_I14443P3A_SELECTION_TIME_US + PHPAL_I14443P3A_EXT_TIME_US));
+            PHPAL_I14443P3A_SELECTION_TIME_US + PHPAL_I14443P3A_EXT_TIME_US);
+    if (statusTmp != PH_ERR_SUCCESS) {
+      STATS_INC(g_nfc_I14443_stats, vasupa_err);
+      return statusTmp;
+    }
   }
 
   /* Retrieve RxWaitTime */
-  PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_GetConfig(pDataParams->pHalDataParams,
-          PHHAL_HW_CONFIG_RXWAIT_US, &wRegister));
+  statusTmp = phhalHw_GetConfig(pDataParams->pHalDataParams,
+          PHHAL_HW_CONFIG_RXWAIT_US, &wRegister);
+  if (statusTmp != PH_ERR_SUCCESS) {
+    STATS_INC(g_nfc_I14443_stats, vasupa_err);
+    return statusTmp;
+  }
+  
   /* Set RxWaitTime to 76 microseconds equivalent to 8 Bits. */
-  PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_SetConfig(pDataParams->pHalDataParams,
-          PHHAL_HW_CONFIG_RXWAIT_US, 76));
+  statusTmp = phhalHw_SetConfig(pDataParams->pHalDataParams,
+          PHHAL_HW_CONFIG_RXWAIT_US, 76);
+  if (statusTmp != PH_ERR_SUCCESS) {
+    STATS_INC(g_nfc_I14443_stats, vasupa_err);
+    return statusTmp;
+  }
 
   /* Switch ON Tx CRC and OFF Rx CRC. */
-  PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_SetConfig(pDataParams->pHalDataParams,
-          PHHAL_HW_CONFIG_TXCRC, PH_ON));
-  PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_SetConfig(pDataParams->pHalDataParams,
-          PHHAL_HW_CONFIG_RXCRC, PH_OFF));
+  statusTmp = phhalHw_SetConfig(pDataParams->pHalDataParams,
+          PHHAL_HW_CONFIG_TXCRC, PH_ON);
+  if (statusTmp != PH_ERR_SUCCESS) {
+    STATS_INC(g_nfc_I14443_stats, vasupa_err);
+    return statusTmp;
+  }
+
+  statusTmp = phhalHw_SetConfig(pDataParams->pHalDataParams,
+          PHHAL_HW_CONFIG_RXCRC, PH_OFF);
+  if (statusTmp != PH_ERR_SUCCESS) {
+    STATS_INC(g_nfc_I14443_stats, vasupa_err);
+    return statusTmp;
+  }
 
   /* Send VASUP-A command */
   aCmd[0] = 0x6AU;
   aCmd[1] = bFormatByte;
 
   /* Send first two byte of VASUP-A Command. */
-  PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_Exchange(
+  statusTmp = phhalHw_Exchange(
           pDataParams->pHalDataParams,
           PH_EXCHANGE_BUFFER_FIRST,
           aCmd,
           2,
           NULL,
-          NULL));
+          NULL);
+  if (statusTmp != PH_ERR_SUCCESS) {
+    STATS_INC(g_nfc_I14443_stats, vasupa_err);
+    return statusTmp;
+  }
 
   /* Send rest of the bytes of VASUP-A Command. */
   statusTmp = phhalHw_Exchange(
@@ -252,10 +331,18 @@ phStatus_t phpalI14443p3a_Sw_VASUpA(
           &wRespLength);
 
   /* Restore previous RxWaitTime */
-  PH_CHECK_SUCCESS_FCT(Status, phhalHw_SetConfig(pDataParams->pHalDataParams,
-          PHHAL_HW_CONFIG_RXWAIT_US, wRegister));
+  Status = phhalHw_SetConfig(pDataParams->pHalDataParams,
+          PHHAL_HW_CONFIG_RXWAIT_US, wRegister);
+  if (Status != PH_ERR_SUCCESS) {
+    STATS_INC(g_nfc_I14443_stats, vasupa_err);
+    return Status;
+  }
 
-  PH_CHECK_SUCCESS(statusTmp);
+  if (statusTmp != PH_ERR_SUCCESS) {
+    STATS_INC(g_nfc_I14443_stats, vasupa_err);
+    return statusTmp;
+  }
+
   /* Check and copy ATQA */
   if (wRespLength == PHPAL_I14443P3A_ATQA_LENGTH) {
     (void)memcpy(pAtqa, pResp, PHPAL_I14443P3A_ATQA_LENGTH);
@@ -264,12 +351,14 @@ phStatus_t phpalI14443p3a_Sw_VASUpA(
     if (pDataParams->bOpeMode == RD_LIB_MODE_EMVCO) {
       /* Check if Most Significant byte is '0'. */
       if (0U != pAtqa[1]) {
+        STATS_INC(g_nfc_I14443_stats, vasupa_err);
         return PH_ADD_COMPCODE_FIXED(PH_ERR_PROTOCOL_ERROR, PH_COMP_PAL_ISO14443P3A);
       }
     } else {
       /* Check what need to be done in case of ISO or NFCForum profile is configured. */
     }
   } else {
+    STATS_INC(g_nfc_I14443_stats, vasupa_err);
     return PH_ADD_COMPCODE_FIXED(PH_ERR_PROTOCOL_ERROR, PH_COMP_PAL_ISO14443P3A);
   }
 
@@ -288,15 +377,28 @@ phStatus_t phpalI14443p3a_Sw_HaltA(
   uint16_t    PH_MEMLOC_REM wRespLength = 0;
 
   /* Set halt timeout */
-  PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_SetConfig(
+  statusTmp = phhalHw_SetConfig(
           pDataParams->pHalDataParams,
           PHHAL_HW_CONFIG_TIMEOUT_VALUE_US,
-          PHPAL_I14443P3A_HALT_TIME_US + PHPAL_I14443P3A_EXT_TIME_US));
+          PHPAL_I14443P3A_HALT_TIME_US + PHPAL_I14443P3A_EXT_TIME_US);
+  if (statusTmp != PH_ERR_SUCCESS) {
+    STATS_INC(g_nfc_I14443_stats, hlta_err);
+    return statusTmp;
+  }
 
-  PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_SetConfig(pDataParams->pHalDataParams,
-          PHHAL_HW_CONFIG_TXCRC, PH_ON));
-  PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_SetConfig(pDataParams->pHalDataParams,
-          PHHAL_HW_CONFIG_RXCRC, PH_ON));
+  statusTmp = phhalHw_SetConfig(pDataParams->pHalDataParams,
+          PHHAL_HW_CONFIG_TXCRC, PH_ON);
+  if (statusTmp != PH_ERR_SUCCESS) {
+    STATS_INC(g_nfc_I14443_stats, hlta_err);
+    return statusTmp;
+  }
+
+  statusTmp = phhalHw_SetConfig(pDataParams->pHalDataParams,
+          PHHAL_HW_CONFIG_RXCRC, PH_ON);
+  if (statusTmp != PH_ERR_SUCCESS) {
+    STATS_INC(g_nfc_I14443_stats, hlta_err);
+    return statusTmp;
+  }
 
   /* Send HltA command */
   cmd[0] = PHPAL_I14443P3A_HALT_CMD;
@@ -311,6 +413,7 @@ phStatus_t phpalI14443p3a_Sw_HaltA(
       return PH_ERR_SUCCESS;
     /* Return protocol error */
     case PH_ERR_SUCCESS:
+      STATS_INC(g_nfc_I14443_stats, hlta_err);
       return PH_ADD_COMPCODE_FIXED(PH_ERR_PROTOCOL_ERROR, PH_COMP_PAL_ISO14443P3A);
     /* Return other errors */
     default:
@@ -342,6 +445,7 @@ phStatus_t phpalI14443p3a_Sw_Anticollision(
   if ((bNvbUidIn > 0x40U) || ((bNvbUidIn & 0x0FU) > 0x07U)) {
     console_printf("anti_col err:%u\n",
         PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
+    STATS_INC(g_nfc_I14443_stats, anticoll_err);
     return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A);
   }
 
@@ -356,6 +460,7 @@ phStatus_t phpalI14443p3a_Sw_Anticollision(
     default:
       console_printf("invalid cascade idx err:%u\n",
           PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
+      STATS_INC(g_nfc_I14443_stats, anticoll_err);
       return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A);
   }
 
@@ -365,18 +470,34 @@ phStatus_t phpalI14443p3a_Sw_Anticollision(
   /* ANTICOLLISION: Disable CRC */
   if (bNvbUidIn != 0x40U) {
     bIsSelect = 0;
-    PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_SetConfig(pDataParams->pHalDataParams,
-            PHHAL_HW_CONFIG_TXCRC, PH_OFF));
-    PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_SetConfig(pDataParams->pHalDataParams,
-            PHHAL_HW_CONFIG_RXCRC, PH_OFF));
+    statusTmp = phhalHw_SetConfig(pDataParams->pHalDataParams,
+            PHHAL_HW_CONFIG_TXCRC, PH_OFF);
+    if (statusTmp != PH_ERR_SUCCESS) {
+      STATS_INC(g_nfc_I14443_stats, anticoll_err);
+      return statusTmp;
+    }
+    statusTmp = phhalHw_SetConfig(pDataParams->pHalDataParams,
+            PHHAL_HW_CONFIG_RXCRC, PH_OFF);
+    if (statusTmp != PH_ERR_SUCCESS) {
+      STATS_INC(g_nfc_I14443_stats, anticoll_err);
+      return statusTmp;
+    }
   }
   /* SELECT: Enable CRC */
   else {
     bIsSelect = 1;
-    PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_SetConfig(pDataParams->pHalDataParams,
-            PHHAL_HW_CONFIG_TXCRC, PH_ON));
-    PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_SetConfig(pDataParams->pHalDataParams,
-            PHHAL_HW_CONFIG_RXCRC, PH_ON));
+    statusTmp = phhalHw_SetConfig(pDataParams->pHalDataParams,
+            PHHAL_HW_CONFIG_TXCRC, PH_ON);
+    if (statusTmp != PH_ERR_SUCCESS) {
+      STATS_INC(g_nfc_I14443_stats, anticoll_err);
+      return statusTmp;
+    }
+    statusTmp = phhalHw_SetConfig(pDataParams->pHalDataParams,
+            PHHAL_HW_CONFIG_RXCRC, PH_ON);
+    if (statusTmp != PH_ERR_SUCCESS) {
+      STATS_INC(g_nfc_I14443_stats, anticoll_err);
+      return statusTmp;
+    }
   }
 
   /* Init. command buffer */
@@ -400,20 +521,32 @@ phStatus_t phpalI14443p3a_Sw_Anticollision(
   bCmdBuffer[1] = bNvbUidIn + 0x20U;
 
   /* Adjust Rx-Align */
-  PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_SetConfig(pDataParams->pHalDataParams,
-          PHHAL_HW_CONFIG_RXALIGN, (((uint16_t)bNvbUidIn) & 0x07U)));
+  statusTmp = phhalHw_SetConfig(pDataParams->pHalDataParams,
+          PHHAL_HW_CONFIG_RXALIGN, (((uint16_t)bNvbUidIn) & 0x07U));
+  if (statusTmp != PH_ERR_SUCCESS) {
+    STATS_INC(g_nfc_I14443_stats, anticoll_err);
+    return statusTmp;
+  }
 
   /* Adjust TxBits */
-  PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_SetConfig(pDataParams->pHalDataParams,
-          PHHAL_HW_CONFIG_TXLASTBITS, (((uint16_t)bNvbUidIn) & 0x07U)));
+  statusTmp = phhalHw_SetConfig(pDataParams->pHalDataParams,
+          PHHAL_HW_CONFIG_TXLASTBITS, (((uint16_t)bNvbUidIn) & 0x07U));
+  if (statusTmp != PH_ERR_SUCCESS) {
+    STATS_INC(g_nfc_I14443_stats, anticoll_err);
+    return statusTmp;
+  }
 
   /* Send the ANTICOLLISION command */
   status = phhalHw_Exchange(pDataParams->pHalDataParams, PH_EXCHANGE_DEFAULT, bCmdBuffer, wSndBytes,
           &pRcvBuffer, &wRcvBytes);
 
   /* Reset RxAlignment */
-  PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_SetConfig(pDataParams->pHalDataParams,
-          PHHAL_HW_CONFIG_RXALIGN, 0));
+  statusTmp = phhalHw_SetConfig(pDataParams->pHalDataParams,
+          PHHAL_HW_CONFIG_RXALIGN, 0);
+  if (statusTmp != PH_ERR_SUCCESS) {
+    STATS_INC(g_nfc_I14443_stats, anticoll_err);
+    return statusTmp;
+  }
 
   /* Check status, Collision is allowed for anti-collision command. */
   if ((bIsSelect == 0U) && ((status & PH_ERR_MASK) == PH_ERR_COLLISION_ERROR)) {
@@ -423,6 +556,7 @@ phStatus_t phpalI14443p3a_Sw_Anticollision(
   } else {
     /* Check for protocol error */
     if ((status & PH_ERR_MASK) == PH_ERR_SUCCESS_INCOMPLETE_BYTE) {
+      STATS_INC(g_nfc_I14443_stats, anticoll_err);
       return PH_ADD_COMPCODE_FIXED(PH_ERR_PROTOCOL_ERROR, PH_COMP_PAL_ISO14443P3A);
     }
     /* Return on other errors */
@@ -452,11 +586,13 @@ phStatus_t phpalI14443p3a_Sw_Anticollision(
 
     /* We do not tolerate more than (5u * 8 =)40 bits because it would lead to buffer overflows */
     if (*pNvbUidOut > 0x50U) {
+      STATS_INC(g_nfc_I14443_stats, anticoll_err);
       return PH_ADD_COMPCODE_FIXED(PH_ERR_PROTOCOL_ERROR, PH_COMP_PAL_ISO14443P3A);
     }
 
     /* After successfull reception, the UID must be exact 40 bits */
     if (((status & PH_ERR_MASK) == PH_ERR_SUCCESS) && (*pNvbUidOut != 0x50U)) {
+      STATS_INC(g_nfc_I14443_stats, anticoll_err);
       return PH_ADD_COMPCODE_FIXED(PH_ERR_PROTOCOL_ERROR, PH_COMP_PAL_ISO14443P3A);
     }
 
@@ -482,6 +618,7 @@ phStatus_t phpalI14443p3a_Sw_Anticollision(
     if (*pNvbUidOut > 0x40U) {
       /* Collision in BCC byte can never happen */
       if (*pNvbUidOut < 0x50U) {
+        STATS_INC(g_nfc_I14443_stats, anticoll_err);
         return PH_ADD_COMPCODE_FIXED(PH_ERR_FRAMING_ERROR, PH_COMP_PAL_ISO14443P3A);
       }
 
@@ -491,6 +628,7 @@ phStatus_t phpalI14443p3a_Sw_Anticollision(
 
       /* BCC Check */
       if ((bCmdBuffer[2] ^ bCmdBuffer[3] ^ bCmdBuffer[4] ^ bCmdBuffer[5]) != bCmdBuffer[6]) {
+        STATS_INC(g_nfc_I14443_stats, anticoll_err);
         return PH_ADD_COMPCODE_FIXED(PH_ERR_FRAMING_ERROR, PH_COMP_PAL_ISO14443P3A);
       }
     }
@@ -502,6 +640,7 @@ phStatus_t phpalI14443p3a_Sw_Anticollision(
   else {
     /* only one byte allowed */
     if (wRcvBytes != 1U) {
+      STATS_INC(g_nfc_I14443_stats, anticoll_err);
       return PH_ADD_COMPCODE_FIXED(PH_ERR_PROTOCOL_ERROR, PH_COMP_PAL_ISO14443P3A);
     }
 
@@ -509,11 +648,13 @@ phStatus_t phpalI14443p3a_Sw_Anticollision(
     if (0U != (pRcvBuffer[0] & 0x04U)) {
       /* If additional cascade levels are impossible -> protocol error */
       if (bCascadeLevel == PHPAL_I14443P3A_CASCADE_LEVEL_3) {
+        STATS_INC(g_nfc_I14443_stats, anticoll_err);
         return PH_ADD_COMPCODE_FIXED(PH_ERR_PROTOCOL_ERROR, PH_COMP_PAL_ISO14443P3A);
       }
 
       /* Cascade tag does not match -> protocol error */
       if (pUidIn[0] != PHPAL_I14443P3A_CASCADE_TAG) {
+        STATS_INC(g_nfc_I14443_stats, anticoll_err);
         return PH_ADD_COMPCODE_FIXED(PH_ERR_PROTOCOL_ERROR, PH_COMP_PAL_ISO14443P3A);
       }
 
@@ -527,6 +668,7 @@ phStatus_t phpalI14443p3a_Sw_Anticollision(
     else {
       /* Cascade tag does not match -> protocol error */
       if (pUidIn[0] == PHPAL_I14443P3A_CASCADE_TAG) {
+        STATS_INC(g_nfc_I14443_stats, anticoll_err);
         return PH_ADD_COMPCODE_FIXED(PH_ERR_PROTOCOL_ERROR, PH_COMP_PAL_ISO14443P3A);
       }
 
@@ -540,14 +682,22 @@ phStatus_t phpalI14443p3a_Sw_Anticollision(
       pDataParams->bUidComplete = 1;
 
       /* set default card timeout */
-      PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_SetConfig(
+      statusTmp = phhalHw_SetConfig(
               pDataParams->pHalDataParams,
               PHHAL_HW_CONFIG_TIMEOUT_VALUE_MS,
-              PHPAL_I14443P3A_TIMEOUT_DEFAULT_MS));
+              PHPAL_I14443P3A_TIMEOUT_DEFAULT_MS);
+      if (statusTmp != PH_ERR_SUCCESS) {
+        STATS_INC(g_nfc_I14443_stats, anticoll_err);
+        return statusTmp;
+      }
     }
 
     /* Copy SAK */
     pUidOut[0] = pRcvBuffer[0];
+  }
+
+  if (status != PH_ERR_SUCCESS) {
+    STATS_INC(g_nfc_I14443_stats, anticoll_err);
   }
 
   return PH_ADD_COMPCODE(status, PH_COMP_PAL_ISO14443P3A);
@@ -561,7 +711,12 @@ phStatus_t phpalI14443p3a_Sw_Select(
 )
 {
   uint8_t PH_MEMLOC_REM bDummy;
-  return phpalI14443p3a_Sw_Anticollision(pDataParams, bCascadeLevel, pUidIn, 0x40, pSak, &bDummy);
+  phStatus_t status = phpalI14443p3a_Sw_Anticollision(pDataParams, bCascadeLevel, pUidIn, 0x40, pSak, &bDummy);
+  
+  if (status != PH_ERR_SUCCESS) {
+    STATS_INC(g_nfc_I14443_stats, select_err);
+  }
+  return status;
 }
 
 phStatus_t phpalI14443p3a_Sw_ActivateCard(
@@ -596,6 +751,7 @@ phStatus_t phpalI14443p3a_Sw_ActivateCard(
     /* Given UID length is invalid, return error */
     console_printf("invalid UID length err:%u\n",
         PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A));
+    STATS_INC(g_nfc_I14443_stats, act_card_err);
     return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_PAL_ISO14443P3A);
   }
   /* initialise to zero, for VS studio warning */
@@ -643,6 +799,7 @@ phStatus_t phpalI14443p3a_Sw_ActivateCard(
   if ((status & PH_ERR_MASK) == PH_ERR_COLLISION_ERROR) {
     /* Emvco: case_id TA304_XY */
     if (pDataParams->bOpeMode == RD_LIB_MODE_EMVCO) {
+      STATS_INC(g_nfc_I14443_stats, act_card_err);
       return status;
     }
     bCollDetected = PH_ON;
@@ -652,6 +809,9 @@ phStatus_t phpalI14443p3a_Sw_ActivateCard(
   }
   /* Status check */
   else {
+    if (status) {
+      STATS_INC(g_nfc_I14443_stats, act_card_err);
+    }
     PH_CHECK_SUCCESS(status);
   }
 
@@ -723,6 +883,7 @@ phStatus_t phpalI14443p3a_Sw_ActivateCard(
       if ((status & PH_ERR_MASK) == PH_ERR_COLLISION_ERROR) {
         /* Emvco: case_id TA302_00 */
         if (pDataParams->bOpeMode == RD_LIB_MODE_EMVCO) {
+          STATS_INC(g_nfc_I14443_stats, act_card_err);
           /* Report Error to Application and Application will perform PICC Reset */
           return status;
         }
@@ -740,6 +901,9 @@ phStatus_t phpalI14443p3a_Sw_ActivateCard(
         }
       } else {
         /* Check success */
+        if (status) {
+          STATS_INC(g_nfc_I14443_stats, act_card_err);
+        }
         PH_CHECK_SUCCESS(status);
       }
 
@@ -757,6 +921,7 @@ phStatus_t phpalI14443p3a_Sw_ActivateCard(
                 (((bAtqa[0] & 0xC0U) == 0x40U) && (bCascadeLevel == PHPAL_I14443P3A_CASCADE_LEVEL_2))) &&
             (bUid[0] == PHPAL_I14443P3A_CASCADE_TAG)
         ) {
+          STATS_INC(g_nfc_I14443_stats, act_card_err);
           return PH_ADD_COMPCODE_FIXED(PH_ERR_PROTOCOL_ERROR, PH_COMP_PAL_ISO14443P3A);
         }
       }
@@ -781,6 +946,10 @@ phStatus_t phpalI14443p3a_Sw_ActivateCard(
     }
 
     /* Emvco: Case_id TA305. EMVCo Req. 9.6.1.2 */
+    if (statusTmp) {
+      STATS_INC(g_nfc_I14443_stats, act_card_err);
+    }
+
     PH_CHECK_SUCCESS(statusTmp);
 
     /* Cascade Bit is cleared -> no further cascade levels */
