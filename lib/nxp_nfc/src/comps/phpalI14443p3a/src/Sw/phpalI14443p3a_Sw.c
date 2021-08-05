@@ -70,7 +70,7 @@ phStatus_t phpalI14443p3a_Sw_Init(
   PH_ASSERT_NULL(pDataParams);
   PH_ASSERT_NULL(pHalDataParams);
 
-  stats_init_and_reg(STATS_HDR(g_nfc_I14443_stats),
+  (void)stats_init_and_reg(STATS_HDR(g_nfc_I14443_stats),
       STATS_SIZE_INIT_PARMS(g_nfc_I14443_stats, STATS_SIZE_16),
       STATS_NAME_INIT_PARMS(nfc_I14443_stats_section),
       "nfc_I14443_stats");
