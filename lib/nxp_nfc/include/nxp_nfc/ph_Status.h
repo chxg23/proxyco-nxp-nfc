@@ -183,6 +183,7 @@
 #define PH_COMP_AL_I18000P3M3           (0x1800U) /**< ISO18000-3 Mode3 AL-Component Code. */
 #define PH_COMP_AL_MFDF                 (0x1900U) /**< MIFARE DESFire EV1 contactless IC AL Component Code. */
 #define PH_COMP_AL_MFDFEV2              (0x2000U) /**< MIFARE DESFire EV2 contactless IC AL Component Code. */
+#define PH_COMP_AL_MFDFEVX              (0x2000U) /**< MIFARE DESFIRE EVx contactless IC(for Ev2, Ev3 and future versions) AL Component Code. */
 #define PH_COMP_AL_ICODEDNA             (0x2200U) /**< ICode DNA AL Component Code. */
 #define PH_COMP_AL_MFDFLIGHT            (0x2300U) /**< MIFARE Prime Match AL Component Code. */
 #define PH_COMP_AL_MFNTAG42XDNA         (0x2600U) /**< MIFARE Prime Ntag42XDna AL Component Code. */
@@ -305,6 +306,9 @@ Completes Rx chaining with the card if RxBuffer is full.
 
 /** Mask for custom exchange bits. These 4 bits can be used for custom exchange behavior. */
 #define PH_EXCHANGE_CUSTOM_BITS_MASK    0x00F0U
+
+/** Masking out the exchange bits. */
+#define PH_EXCHANGE_BUFFER_MASK         0xF000U
 
 /**
 Does not clear the internal buffer before operation.

@@ -48,10 +48,12 @@
 #define NXPBUILD__PHHAL_HW_RC663                      /**< RC663 HAL Component is included */
 #define NXPBUILD__PHHAL_HW_PN5180                       /**< PN5180 HAL Component is included */
 #define NXPBUILD__PHHAL_HW_PN5190                       /**< PN5190 HAL Component is included */
+#define NXPBUILD__PHHAL_HW_SAMAV3
 //#endif /* NXPBUILD__PHHAL_HW_PN7462AU */
 
 #if defined(NXPBUILD__PHHAL_HW_PN5180) || \
     defined(NXPBUILD__PHHAL_HW_PN5190) || \
+    defined(NXPBUILD__PHHAL_HW_SAMAV3) || \
     defined(NXPBUILD__PHHAL_HW_PN7462AU)
 #define NXPBUILD__PHHAL_HW_TARGET                       /**< Dependency checking if target mode macros should be enabled */
 #endif

@@ -53,3 +53,42 @@ syscfg.defs:
         description: >
             - 'Log events for logging hexdump'
         value: 10
+
+    SAMAV3_HAL_TIMER:
+        description: 'Set the HAL timer to use with SAM AV3 for guard time'
+        value: 2
+        restrictions:
+            - '((TIMER_0 && (SAMAV3_HAL_TIMER == 0)) || (TIMER_1 && (SAMAV3_HAL_TIMER == 1)) ||
+                (TIMER_2 && (SAMAV3_HAL_TIMER == 2)) || (TIMER_3 && (SAMAV3_HAL_TIMER == 3)) ||
+                (TIMER_4 && (SAMAV3_HAL_TIMER == 4)) || (TIMER_5 && (SAMAV3_HAL_TIMER == 5)))'
+
+    SAMAV3_HAL_TIMER_ACTIVATION_FREQ:
+        description: 'Set the SAM AV3 HAL timer frequency'
+        value: 2000000
+
+    SAMAV3_PWM:
+        description: 'PWM definition to be used for SAM AV3 CLK generation'
+        value: 1
+        restrictions:
+            - '((PWM_0 && (SAMAV3_PWM == 0)) || (PWM_1 && (SAMAV3_PWM == 1)) ||
+                (PWM_2 && (SAMAV3_PWM == 2)) || (PWM_3 && (SAMAV3_PWM == 3)) )'
+
+    SAMAV3_PWM_COUNT:
+        description: '16MHz clock cycles to get 1.778MHz clk signal'
+        value: 9
+
+    SAMAV3_PWM_DUTY_CYCLE:
+        description: 'duty cycle value to get a 55% in the 1.778MHz clk signal'
+        value: 5
+
+    SAMAV3_UART:
+        description: 'Set the UART to be used for the transmission layer of the SAM AV3'
+        value: 1
+        restrictions:
+            - '((UART_0 && (SAMAV3_UART == 0)) || (UART_1 && (SAMAV3_UART == 1)) ||
+                (UART_2 && (SAMAV3_UART == 2)) || (UART_3 && (SAMAV3_UART == 3)) )'
+
+    SAMAV3_PWM_CH:
+        description: 'Set PWM channel to be used for the SAM AV3 CLK signal'
+        value: 0
+

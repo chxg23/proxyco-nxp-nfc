@@ -65,6 +65,7 @@
 #endif
 
 #if defined(NXPBUILD__PHHAL_HW_PN5180) || \
+    defined(NXPBUILD__PHHAL_HW_SAMAV3) || \
     defined(NXPBUILD__PHHAL_HW_PN7462AU)
 #define NXPBUILD__PHHAL_HW_TARGET                       /**< Dependency checking if target mode macros should be enabled */
 #endif
@@ -248,6 +249,7 @@
 #define NXPBUILD__PH_NDA_MFDFEV2                    /**< MIFARE DESFire EV2 implementation under NDA */
 #define NXPBUILD__PH_NDA_MFP                        /**< MIFARE Plus implementation under NDA */
 #define NXPBUILD__PH_NDA_MFPEV1                     /**< MIFARE Plus EV1 implementation under NDA */
+
 #endif
 #endif
 #endif /* NXPBUILD__PHPAL_MIFARE_SW */
