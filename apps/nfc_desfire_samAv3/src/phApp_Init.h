@@ -116,6 +116,12 @@ extern phhalHw_SamAV3_DataParams_t    *pHalSam;
     console_printf("Line: %u   Error - (0x%04X) has occurred : 0xCCEE CC-Component ID, EE-Error code. Refer-ph_Status.h\n", __LINE__, (x));    \
 }
 
+#define CHECK_SUCCESS_AND_CONTINUE(x)						 \
+if ((x) != PH_ERR_SUCCESS)                               	 \
+{                                                            \
+	console_printf("Line: %u   Error - (0x%04X) has occurred : 0xCCEE CC-Component ID, EE-Error code. Refer-ph_Status.h\n", __LINE__, (x));    \
+	continue;												 \
+}
 /* prints if error is detected */
 #define CHECK_SUCCESS(x)              \
     if ((x) != PH_ERR_SUCCESS)        \

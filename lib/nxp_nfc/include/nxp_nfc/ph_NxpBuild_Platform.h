@@ -70,9 +70,10 @@
 #define PH_PLATFORM_HAS_ICFRONTEND /* Platform has IC Frontend */
 #endif
 
-#if defined(NXPBUILD__PHHAL_HW_PN5180) || \
-    defined(NXPBUILD__PHHAL_HW_SAMAV3) || \
-    defined(NXPBUILD__PHHAL_HW_PN7462AU)
+#if defined(NXPBUILD__PHHAL_HW_PN5180)   || \
+    defined(NXPBUILD__PHHAL_HW_PN5190)   || \
+    defined(NXPBUILD__PHHAL_HW_PN7462AU) || \
+    defined(NXPBUILD__PHHAL_HW_SAMAV3)
 #define NXPBUILD__PHHAL_HW_TARGET                       /**< Dependency checking if target mode macros should be enabled */
 #endif
 
@@ -274,8 +275,7 @@
 #if defined(NXPBUILD__PH_CRYPTOSYM_SW) || defined(NXPBUILD__PH_CRYPTORNG_SW)
 #define NXPBUILD__PHAL_MFDFEVX_NDA                  /**< MIFARE DESFire EVx build macro for IP Protection */
 #define NXPBUILD__PH_NDA_MFP                        /**< MIFARE Plus implementation under NDA */
-#define NXPBUILD__PH_NDA_MFPEV1                     /**< MIFARE Plus EV1 implementation under NDA */
-
+#define NXPBUILD__PHAL_MFPEVX_NDA                   /**< MIFARE Plus EVx implementation under NDA */
 #endif
 #endif
 #endif /* NXPBUILD__PHPAL_MIFARE_SW */

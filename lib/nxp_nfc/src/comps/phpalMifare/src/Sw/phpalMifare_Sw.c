@@ -192,6 +192,7 @@ phStatus_t phpalMifare_Sw_ExchangeL3(
 
   return PH_ADD_COMPCODE(status, PH_COMP_PAL_MIFARE);
 }
+#include <console/console.h>
 
 phStatus_t phpalMifare_Sw_ExchangeL4(
     phpalMifare_Sw_DataParams_t *pDataParams,
@@ -218,6 +219,12 @@ phStatus_t phpalMifare_Sw_ExchangeL4(
   PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_SetConfig(pDataParams->pHalDataParams,
           PHHAL_HW_CONFIG_RXCRC, PH_ON));
 
+  console_printf("L4 > ");
+  for (int i = 0; i < wTxLength; i++) {
+	  console_printf("%02x ", pTxBuffer[i]);
+  }
+  console_printf("\n");
+
   /* Perform Exchange */
   PH_CHECK_SUCCESS_FCT(statusTmp,  phpalI14443p4_Exchange(
           pDataParams->pPalI14443p4DataParams,
@@ -226,6 +233,13 @@ phStatus_t phpalMifare_Sw_ExchangeL4(
           wTxLength,
           ppRxBuffer,
           pRxLength));
+
+  console_printf("L4 < ");
+  for (int i = 0; i < *pRxLength; i++) {
+	  console_printf("%02x ", (*ppRxBuffer)[i]);
+  }
+  console_printf("\n");
+
 
   return PH_ERR_SUCCESS;
 #else

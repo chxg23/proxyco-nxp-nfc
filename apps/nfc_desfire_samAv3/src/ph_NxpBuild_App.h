@@ -181,7 +181,7 @@
 
 //#define NXPBUILD__PH_CIDMANAGER_SW                            /**< CID Manager SW Component is included. */
 
-//#define NXPBUILD__PH_KEYSTORE_SW                                /**< SW KeyStore Component is included. */
+#define NXPBUILD__PH_KEYSTORE_SW                                /**< SW KeyStore Component is included. */
 
 #if defined(NXPBUILD__PHHAL_HW_RC663) && !defined(NXPBUILD__PH_KEYSTORE_SW)
 #define NXPBUILD__PH_KEYSTORE_RC663                         /**< RC663 KeyStore Component is included. */

@@ -55,10 +55,11 @@
 
 /* HAL components */
 
-#if defined (NXPBUILD__PHHAL_HW_RC663) || \
+#if defined (NXPBUILD__PHHAL_HW_RC663)    || \
     defined (NXPBUILD__PHHAL_HW_PN7462AU) || \
-    defined (NXPBUILD__PHHAL_HW_SAMAV3) || \
-    defined (NXPBUILD__PHHAL_HW_PN5180)
+    defined (NXPBUILD__PHHAL_HW_PN5180)   || \
+    defined (NXPBUILD__PHHAL_HW_PN5190)   || \
+    defined (NXPBUILD__PHHAL_HW_SAMAV3)
 #define NXPBUILD__PHHAL_HW                  /**< Generic HAL definition */
 #endif
 
