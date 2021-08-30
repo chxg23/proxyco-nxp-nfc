@@ -76,14 +76,14 @@ syscfg.defs:
 
     SAMAV3_PWM:
         description: 'PWM definition to be used for SAM AV3 CLK generation'
-        value: NRF_PWM0
+        value:
         restrictions:
             - '((PWM_0 && (SAMAV3_PWM == "NRF_PWM0")) || (PWM_1 && (SAMAV3_PWM == "NRF_PWM1")) ||
                 (PWM_2 && (SAMAV3_PWM == "NRF_PWM2")) || (PWM_3 && (SAMAV3_PWM == "NRF_PWM3")) )'
 
     SAMAV3_PWM_DRV:
         description: 'PWM driver definition to be used for SAM AV3 CLK generation'
-        value: NRFX_PWM0_INST_IDX
+        value:
         restrictions:
             - '((PWM_0 && (SAMAV3_PWM_DRV == "NRFX_PWM0_INST_IDX")) || (PWM_1 && (SAMAV3_PWM_DRV == "NRFX_PWM1_INST_IDX")) ||
                 (PWM_2 && (SAMAV3_PWM_DRV == "NRFX_PWM2_INST_IDX")) || (PWM_3 && (SAMAV3_PWM_DRV == "NRFX_PWM3_INST_IDX")) )'
@@ -102,14 +102,14 @@ syscfg.defs:
 
     SAMAV3_UART:
         description: 'Set the UART to be used for the transmission layer of the SAM AV3'
-        value: NRF_UARTE0
+        value:
         restrictions:
             - '((UART_0 && (SAMAV3_UART == "NRF_UARTE0")) || (UART_1 && (SAMAV3_UART == "NRF_UARTE1")) ||
                 (UART_2 && (SAMAV3_UART == "NRF_UARTE2")) || (UART_3 && (SAMAV3_UART == "NRF_UARTE3")) )'
 
     SAMAV3_UART_DRV:
         description: 'Set the UART driver instance to be used for the transmission layer of the SAM AV3'
-        value: NRFX_UARTE0_INST_IDX
+        value:
         restrictions:
             - '((UART_0 && (SAMAV3_UART_DRV == "NRFX_UARTE0_INST_IDX")) || (UART_1 && (SAMAV3_UART_DRV == "NRFX_UARTE1_INST_IDX")) ||
                 (UART_2 && (SAMAV3_UART_DRV == "NRFX_UARTE2_INST_IDX")) || (UART_3 && (SAMAV3_UART_DRV == "NRFX_UARTE3_INST_IDX")) )'

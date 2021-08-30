@@ -69,13 +69,19 @@ phStatus_t phhalHw_SamAV3_MfcAuthenticateKeyNo(phhalHw_SamAV3_DataParams_t * pDa
 
 void phhalHw_SamAV3_WarmReset(void);
 
+/**
+ * Interface struct used by the driver
+ * */
 struct samAV3 {
-//  struct hal_uart uart_node;
 	phbalReg_T1SamAV3_DataParams_t *bal_params;
 	phhalHw_SamAV3_DataParams_t *hal_params;
 	phbalReg_T1SamAV3_tml_t *tml;
 };
 
+/**
+ * mynewt device struct for
+ * MF4SAM3 MIFARE SAM AV3
+ * */
 struct mf4sam3 {
   struct os_dev dev;
   /* Interface to SAMAV3 driver */
