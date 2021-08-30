@@ -1077,6 +1077,12 @@ phStatus_t phhalHw_Pn5190_SetConfig(
         }
         PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_Pn5190_Instr_WriteRegister(pDataParams, EMD_CONTROL,
                 dwRegister));
+
+        /* Set the RM RESYNC ENABLE in SIGPRO RM ENABLE Register. */
+        if (pDataParams->bCardType == PHHAL_HW_CARDTYPE_ISO14443A) {
+          PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_Pn5190_Instr_WriteRegisterOrMask(pDataParams,
+                  CLIF_SIGPRO_RM_ENABLES, CLIF_SIGPRO_RM_ENABLES_RM_RESYNC_RESET_ENABLE_MASK));
+        }
       } else {
         /* Clear EMD Enable bit in EMD Control Register */
         PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_Pn5190_Instr_WriteRegisterAndMask(pDataParams,

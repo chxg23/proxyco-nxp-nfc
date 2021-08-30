@@ -87,6 +87,21 @@ phStatus_t phalMfdf_Authenticate(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_Authenticate(pDataParams,
+			wOption,
+			wKeyNo,
+			wKeyVer,
+			bKeyNoCard,
+			pDivInput,
+			bDivLen);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -155,6 +170,22 @@ phStatus_t phalMfdf_AuthenticateISO(
               bDivLen);
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_AuthenticateISO(
+			pDataParams,
+			wOption,
+			wKeyNo,
+			wKeyVer,
+			bKeyNoCard,
+			pDivInput,
+			bDivLen);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -227,6 +258,22 @@ phStatus_t phalMfdf_AuthenticateAES(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_AuthenticateAES(
+			pDataParams,
+			wOption,
+			wKeyNo,
+			wKeyVer,
+			bKeyNoCard,
+			pDivInput,
+			bDivLen);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -280,6 +327,15 @@ phStatus_t phalMfdf_ChangeKeySettings(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_ChangeKeySettings(pDataParams, bKeySettings);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -322,6 +378,15 @@ phStatus_t phalMfdf_GetKeySettings(
       status = phalMfdf_Sw_GetKeySettings((phalMfdf_Sw_DataParams_t *)pDataParams, pResponse);
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_GetKeySettings(pDataParams, pResponse);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -412,6 +477,24 @@ phStatus_t phalMfdf_ChangeKey(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_ChangeKey(pDataParams,
+			wOption,
+			wOldKeyNo,
+			wOldKeyVer,
+			wNewKeyNo,
+			wNewKeyVer,
+			bKeyNoCard,
+			pDivInput,
+			bDivLen
+			);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -462,6 +545,15 @@ phStatus_t phalMfdf_GetKeyVersion(
       status = phalMfdf_Sw_GetKeyVersion((phalMfdf_Sw_DataParams_t *)pDataParams, bKeyNo, pResponse);
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_GetKeyVersion(pDataParams, bKeyNo, pResponse);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -549,6 +641,22 @@ phStatus_t phalMfdf_CreateApplication(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_CreateApplication(pDataParams,
+			bOption,
+			pAid,
+			bKeySettings1,
+			bKeySettings2,
+			pISOFileId,
+			pISODFName,
+			bISODFNameLen);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -597,6 +705,15 @@ phStatus_t phalMfdf_DeleteApplication(
       status = phalMfdf_Sw_DeleteApplication((phalMfdf_Sw_DataParams_t *)pDataParams, pAid);
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_DeleteApplication(pDataParams, pAid);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -651,6 +768,15 @@ phStatus_t phalMfdf_GetApplicationIDs(
               pNumAIDs);
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_GetApplicationIDs(pDataParams, pAidBuff, pNumAIDs);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -708,6 +834,15 @@ phStatus_t phalMfdf_GetDFNames(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_GetDFNames(pDataParams, bOption, pDFBuffer, pDFInfoLen);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -757,6 +892,15 @@ phStatus_t phalMfdf_SelectApplication(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_SelectApplication(pDataParams, pAppId);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -798,6 +942,15 @@ phStatus_t phalMfdf_FormatPICC(
       status = phalMfdf_Sw_FormatPICC((phalMfdf_Sw_DataParams_t *)pDataParams);
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_FormatPICC(pDataParams);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -846,6 +999,15 @@ phStatus_t phalMfdf_GetVersion(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_GetVersion(pDataParams, pVerInfo);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -893,6 +1055,15 @@ phStatus_t phalMfdf_FreeMem(
       status = phalMfdf_Sw_FreeMem((phalMfdf_Sw_DataParams_t *)pDataParams, pMemInfo);
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_FreeMem(pDataParams, pMemInfo);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -949,6 +1120,15 @@ phStatus_t phalMfdf_SetConfiguration(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_SetConfiguration(pDataParams, bOption, pData, bDataSize);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -994,6 +1174,15 @@ phStatus_t phalMfdf_GetCardUID(
       status = phalMfdf_Sw_GetCardUID((phalMfdf_Sw_DataParams_t *)pDataParams, pUid);
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_GetCardUID(pDataParams, pUid);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -1045,6 +1234,15 @@ phStatus_t phalMfdf_GetFileIDs(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_GetFileIDs(pDataParams, pResponse, bNumFIDs);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -1095,6 +1293,15 @@ phStatus_t phalMfdf_GetISOFileIDs(
       status = phalMfdf_Sw_GetISOFileIDs((phalMfdf_Sw_DataParams_t *)pDataParams, pFidBuffer, pNumFIDs);
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_GetISOFileIDs(pDataParams, pFidBuffer, pNumFIDs);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -1148,6 +1355,15 @@ phStatus_t phalMfdf_GetFileSettings(
               bBufferLen);
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_GetFileSettings(pDataParams, bFileNo, pFSBuffer, bBufferLen);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -1205,6 +1421,15 @@ phStatus_t phalMfdf_ChangeFileSettings(
               bCommSett, pAccessRights);
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_ChangeFileSettings(pDataParams, bOption, bFileNo, bCommSett, pAccessRights);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -1283,6 +1508,22 @@ phStatus_t phalMfdf_CreateStdDataFile(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_CreateStdDataFile(pDataParams,
+			bOption,
+			bFileNo,
+			pISOFileId,
+			bCommSett,
+			pAccessRights,
+			pFileSize
+			);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -1357,6 +1598,22 @@ phStatus_t phalMfdf_CreateBackupDataFile(
           );
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_CreateBackupDataFile(pDataParams,
+			bOption,
+			bFileNo,
+			pISOFileId,
+			bCommSett,
+			pAccessRights,
+			pFileSize
+			);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -1433,6 +1690,21 @@ phStatus_t phalMfdf_CreateValueFile(
           );
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+	case PHAL_MFDF_SAMAV2_ID:
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_CreateValueFile(pDataParams,
+			bFileNo,
+			bCommSett,
+			pAccessRights,
+			pLowerLmit,
+			pUpperLmit,
+			pValue,
+			bLimitedCredit
+			);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -1515,6 +1787,21 @@ phStatus_t phalMfdf_CreateLinearRecordFile(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+	case PHAL_MFDF_SAMAV2_ID:
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_CreateLinearRecordFile(pDataParams,
+			bOption,
+			bFileNo,
+			pIsoFileId,
+			bCommSett,
+			pAccessRights,
+			pRecordSize,
+			pMaxNoOfRec
+			);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -1595,6 +1882,21 @@ phStatus_t phalMfdf_CreateCyclicRecordFile(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+	case PHAL_MFDF_SAMAV2_ID:
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_CreateCyclicRecordFile(pDataParams,
+			bOption,
+			bFileNo,
+			pIsoFileId,
+			bCommSett,
+			pAccessRights,
+			pRecordSize,
+			pMaxNoOfRec
+			);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -1641,6 +1943,13 @@ phStatus_t phalMfdf_DeleteFile(
           );
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+	case PHAL_MFDF_SAMAV2_ID:
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_DeleteFile(pDataParams, bFileNo);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -1711,6 +2020,20 @@ phStatus_t phalMfdf_ReadData(
           );
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+	case PHAL_MFDF_SAMAV2_ID:
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_ReadData(pDataParams,
+			bOption,
+			bFileNo,
+			pOffset,
+			pLength,
+			ppRxdata,
+			pRxdataLen
+			);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -1791,6 +2114,19 @@ phStatus_t phalMfdf_WriteData(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+	case PHAL_MFDF_SAMAV2_ID:
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_WriteData(pDataParams,
+			bCommOption,
+			bFileNo,
+			pOffset,
+			pTxData,
+			pTxDataLen
+			);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -1848,6 +2184,17 @@ phStatus_t phalMfdf_GetValue(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+	case PHAL_MFDF_SAMAV2_ID:
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_GetValue(pDataParams,
+			bCommOption,
+			bFileNo,
+			pValue
+			);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -1904,6 +2251,17 @@ phStatus_t phalMfdf_Credit(
           );
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+	case PHAL_MFDF_SAMAV2_ID:
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_Credit(pDataParams,
+			bCommOption,
+			bFileNo,
+			pValue
+			);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -1963,6 +2321,20 @@ phStatus_t phalMfdf_Debit(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_Debit(
+			pDataParams,
+			bCommOption,
+			bFileNo,
+			pValue
+			);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -2021,6 +2393,20 @@ phStatus_t phalMfdf_LimitedCredit(
           );
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+        status = phalMfdf_Sam_NonX_LimitedCredit(
+            pDataParams,
+            bCommOption,
+            bFileNo,
+            pValue
+            );
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -2087,10 +2473,18 @@ phStatus_t phalMfdf_WriteRecord(
   switch (PH_GET_COMPID(pDataParams)) {
 #ifdef NXPBUILD__PHAL_MFDF_SW
     case PHAL_MFDF_SW_ID:
-      status = phalMfdf_Sw_WriteRecord((phalMfdf_Sw_DataParams_t *)pDataParams, bCommOption, bFileNo,
-              pOffset, pData, pDataLen);
-      break;
+        status = phalMfdf_Sam_NonX_WriteRecord((phalMfdf_Sw_DataParams_t *)pDataParams, bCommOption, bFileNo, pOffset, pData, pDataLen);
+        break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sw_WriteRecord(pDataParams, bCommOption, bFileNo, pOffset, pData, pDataLen);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -2163,6 +2557,23 @@ phStatus_t phalMfdf_ReadRecords(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_ReadRecords(pDataParams,
+			bCommOption,
+			bFileNo,
+			pOffset,
+			pNumRec,
+			pRecSize,
+			ppRxdata,
+			pRxdataLen
+			);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -2212,6 +2623,15 @@ phStatus_t phalMfdf_ClearRecordFile(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_ClearRecordFile(pDataParams, bFileNo);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -2254,6 +2674,15 @@ phStatus_t phalMfdf_CommitTransaction(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_CommitTransaction(pDataParams);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -2295,6 +2724,15 @@ phStatus_t phalMfdf_AbortTransaction(
       status = phalMfdf_Sw_AbortTransaction((phalMfdf_Sw_DataParams_t *)pDataParams);
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_AbortTransaction(pDataParams);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -2365,6 +2803,23 @@ phStatus_t phalMfdf_IsoSelectFile(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_IsoSelectFile(pDataParams,
+			bOption,
+			bSelector,
+			pFid,
+			pDFname,
+			bDFnameLen,
+			ppFCI,
+			pwFCILen
+			);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -2430,6 +2885,22 @@ phStatus_t phalMfdf_IsoReadBinary(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_IsoReadBinary(pDataParams,
+			wOption,
+			bOffset,
+			bSfid,
+			bBytesToRead,
+			ppRxBuffer,
+			pBytesRead
+			);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -2493,6 +2964,20 @@ phStatus_t phalMfdf_IsoUpdateBinary(
           );
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_IsoUpdateBinary(pDataParams,
+			bOffset,
+			bSfid,
+			pData,
+			bDataLen
+			);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -2565,6 +3050,23 @@ phStatus_t phalMfdf_IsoReadRecords(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_IsoReadRecords(pDataParams,
+			wOption,
+			bRecNo,
+			bReadAllFromP1,
+			bSfid,
+			bBytesToRead,
+			ppRxBuffer,
+			pBytesRead
+			);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -2623,6 +3125,19 @@ phStatus_t phalMfdf_IsoAppendRecord(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_IsoAppendRecord(pDataParams,
+			bSfid,
+			pData,
+			bDataLen
+			);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -2677,6 +3192,15 @@ phStatus_t phalMfdf_IsoGetChallenge(
               bLe, pRPICC1);
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_IsoGetChallenge(pDataParams, wKeyNo, wKeyVer, bLe, pRPICC1);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -2734,6 +3258,20 @@ phStatus_t phalMfdf_IsoExternalAuthenticate(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_IsoExternalAuthenticate(pDataParams,
+			pDataIn,
+			bInputLen,
+			pDataOut,
+			pOutLen
+			);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -2788,6 +3326,20 @@ phStatus_t phalMfdf_IsoInternalAuthenticate(
           );
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_IsoInternalAuthenticate(pDataParams,
+			pDataIn,
+			bInputLen,
+			pDataOut,
+			pOutLen
+			);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
@@ -2849,6 +3401,20 @@ phStatus_t phalMfdf_IsoAuthenticate(
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_IsoAuthenticate(pDataParams,
+			wKeyNo,
+			wKeyVer,
+			bKeyNoCard,
+			isPICCkey
+			);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -2898,6 +3464,16 @@ phStatus_t phalMfdf_GetConfig(
       status = phalMfdf_Sw_GetConfig((phalMfdf_Sw_DataParams_t *)pDataParams, wConfig, pValue);
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_GetConfig(pDataParams, wConfig, pValue);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -2949,6 +3525,16 @@ phStatus_t phalMfdf_SetConfig(
       status = phalMfdf_Sw_SetConfig((phalMfdf_Sw_DataParams_t *)pDataParams, wConfig, wValue);
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_SetConfig(pDataParams, wConfig, wValue);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);
       break;
@@ -2989,6 +3575,15 @@ phStatus_t phalMfdf_ResetAuthStatus(void *pDataParams)
       status = phalMfdf_Sw_ResetAuthStatus((phalMfdf_Sw_DataParams_t *)pDataParams);
       break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
+
+#ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
+#ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
+    case PHAL_MFDF_SAMAV2_ID:
+#endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
+	case PHAL_MFDF_SAMAV3_NONX_ID:
+		status = phalMfdf_Sam_NonX_ResetAuthStatus(pDataParams);
+		break;
+#endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF);

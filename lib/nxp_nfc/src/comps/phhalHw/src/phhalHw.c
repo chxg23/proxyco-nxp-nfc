@@ -39,6 +39,10 @@
 #include "Pn5190/phhalHw_Pn5190.h"
 #endif /* NXPBUILD__PHHAL_HW_PN5190 */
 
+#ifdef NXPBUILD__PHHAL_HW_SAMAV3
+#include "SamAV3/phhalHw_SamAv3.h"
+#endif /* NXPBUILD__PHHAL_HW_SAMAV3 */
+
 #ifdef NXPBUILD__PHHAL_HW
 
 #ifndef _WIN32
@@ -306,6 +310,13 @@ phStatus_t phhalHw_Exchange(
       break;
 #endif  /* NXPBUILD__PHHAL_HW_PN5190 */
 
+#ifdef NXPBUILD__PHHAL_HW_SAMAV3
+    case PHHAL_HW_SAMAV3_ID:
+      status = phhalHw_SamAV3_Exchange((phhalHw_SamAV3_DataParams_t *)pDataParams, wOption, pTxBuffer,
+              wTxLength, ppRxBuffer, pRxLength);
+      break;
+#endif  /* NXPBUILD__PHHAL_HW_SAMAV3 */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_HAL);
       break;
@@ -379,7 +390,11 @@ phStatus_t phhalHw_ApplyProtocolSettings(
       status = phhalHw_Pn5190_ApplyProtocolSettings((phhalHw_Pn5190_DataParams_t *)pDataParams, bMode);
       break;
 #endif  /* NXPBUILD__PHHAL_HW_PN5190 */
-
+#ifdef NXPBUILD__PHHAL_HW_SAMAV3
+    case PHHAL_HW_SAMAV3_ID:
+      status = phhalHw_SamAV3_ApplyProtocolSettings((phhalHw_SamAV3_DataParams_t *)pDataParams, bMode);
+      break;
+#endif  /* NXPBUILD__PHHAL_HW_SAMAV3 */
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_HAL);
       break;
@@ -501,6 +516,12 @@ phStatus_t phhalHw_SetConfig(
       break;
 #endif  /* NXPBUILD__PHHAL_HW_PN5190 */
 
+#ifdef NXPBUILD__PHHAL_HW_SAMAV3
+    case PHHAL_HW_SAMAV3_ID:
+      status = phhalHw_SamAV3_SetConfig((phhalHw_SamAV3_DataParams_t *)pDataParams, wConfig, wValue);
+      break;
+#endif  /* NXPBUILD__PHHAL_HW_SAMAV3 */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_HAL);
       break;
@@ -603,6 +624,18 @@ phStatus_t phhalHw_MfcAuthenticateKeyNo(
       break;
 #endif /* NXPBUILD__PHHAL_HW_PN7462AU */
 
+#ifdef NXPBUILD__PHHAL_HW_SAMAV3
+    case PHHAL_HW_SAMAV3_ID:
+      status = phhalHw_SamAV3_MfcAuthenticateKeyNo(
+    		  (phhalHw_SamAV3_DataParams_t *) pDataParams,
+    		  bBlockNo,
+              bKeyType,
+              wKeyNo,
+              wKeyVersion,
+              pUid);
+      break;
+#endif  /* NXPBUILD__PHHAL_HW_SAMAV3 */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_HAL);
       break;
@@ -691,6 +724,13 @@ phStatus_t phhalHw_MfcAuthenticate(
       break;
 #endif /* NXPBUILD__PHHAL_HW_PN5190 */
 
+#ifdef NXPBUILD__PHHAL_HW_SAMAV3
+    case PHHAL_HW_SAMAV3_ID:
+      status = phhalHw_SamAV3_MfcAuthenticate((phhalHw_SamAV3_DataParams_t *)pDataParams,
+    		  bBlockNo, bKeyType, pKey, pUid);
+      break;
+#endif  /* NXPBUILD__PHHAL_HW_SAMAV3 */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_HAL);
       break;
@@ -761,6 +801,12 @@ phStatus_t phhalHw_GetConfig(
       break;
 #endif /* NXPBUILD__PHHAL_HW_PN5190 */
 
+#ifdef NXPBUILD__PHHAL_HW_SAMAV3
+    case PHHAL_HW_SAMAV3_ID:
+      status = phhalHw_SamAV3_GetConfig((phhalHw_SamAV3_DataParams_t *)pDataParams, wConfig, pValue);
+      break;
+#endif  /* NXPBUILD__PHHAL_HW_SAMAV3 */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_HAL);
       break;
@@ -823,6 +869,12 @@ phStatus_t phhalHw_FieldOn(
       status = phhalHw_Pn5190_FieldOn((phhalHw_Pn5190_DataParams_t *)pDataParams);
       break;
 #endif /* NXPBUILD__PHHAL_HW_PN5190 */
+
+#ifdef NXPBUILD__PHHAL_HW_SAMAV3
+    case PHHAL_HW_SAMAV3_ID:
+      status = phhalHw_SamAV3_FieldOn((phhalHw_SamAV3_DataParams_t *)pDataParams);
+      break;
+#endif  /* NXPBUILD__PHHAL_HW_SAMAV3 */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_HAL);
@@ -948,6 +1000,12 @@ phStatus_t phhalHw_FieldReset(
       break;
 #endif /* NXPBUILD__PHHAL_HW_PN5190 */
 
+#ifdef NXPBUILD__PHHAL_HW_SAMAV3
+    case PHHAL_HW_SAMAV3_ID:
+      status = phhalHw_SamAV3_FieldReset((phhalHw_SamAV3_DataParams_t *)pDataParams);
+      break;
+#endif  /* NXPBUILD__PHHAL_HW_SAMAV3 */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_HAL);
       break;
@@ -1018,6 +1076,12 @@ phStatus_t phhalHw_Wait(
       status = phhalHw_Pn5190_Wait((phhalHw_Pn5190_DataParams_t *) pDataParams, bUnit, wTimeout);
       break;
 #endif /* NXPBUILD__PHHAL_HW_PN5190 */
+
+#ifdef NXPBUILD__PHHAL_HW_SAMAV3
+    case PHHAL_HW_SAMAV3_ID:
+      status = phhalHw_SamAV3_Wait((phhalHw_SamAV3_DataParams_t *) pDataParams, bUnit, wTimeout);
+      break;
+#endif  /* NXPBUILD__PHHAL_HW_SAMAV3 */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_HAL);
@@ -1096,6 +1160,13 @@ phStatus_t phhalHw_Transmit(
               wTxLength);
       break;
 #endif /* NXPBUILD__PHHAL_HW_PN5190 */
+
+#ifdef NXPBUILD__PHHAL_HW_SAMAV3
+    case PHHAL_HW_SAMAV3_ID:
+      status = phhalHw_Pn5190_Transmit((phhalHw_SamAV3_DataParams_t *)pDataParams, wOption, pTxBuffer,
+              wTxLength);
+      break;
+#endif  /* NXPBUILD__PHHAL_HW_SAMAV3 */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_HAL);

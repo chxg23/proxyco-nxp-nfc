@@ -139,7 +139,6 @@ static phbalReg_T1SamAV3_error_t phbalReg_T1SamAV3_transceive(
 	}
 	PN5180_LOG_INFO("\n");
 
-
 	/* NAD */
 	if (ctx->block[0] != PHBAL_REG_T1SAMAV3_SE_TO_HD_NAD) {
 		err = PHBAL_REG_T1SAMAV3_RCV_UNEXPECTED_NAD;

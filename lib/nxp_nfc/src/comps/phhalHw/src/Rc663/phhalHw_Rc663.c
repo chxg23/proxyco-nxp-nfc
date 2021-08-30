@@ -23,6 +23,7 @@
 */
 
 #include <nxp_nfc/ph_Status.h>
+#include <nxp_nfc/phDriver.h>
 #include <nxp_nfc/phhalHw.h>
 #include <nxp_nfc/ph_RefDefs.h>
 #include <nxp_nfc/phNxpNfcRdLib_Config.h>
@@ -576,6 +577,9 @@ phStatus_t phhalHw_Rc663_Exchange(
       /* First Jewel byte to be transmitted is with 7 bits. */
       PH_CHECK_FAILURE_FCT(statusTmp, phhalHw_Rc663_SetConfig(pDataParams, PHHAL_HW_CONFIG_TXLASTBITS,
               7));
+
+      PH_CHECK_FAILURE_FCT(statusTmp, phhalHw_Rc663_SetConfig(pDataParams, PHHAL_HW_CONFIG_TXWAIT_US,
+              500));
     }
 
     /* check for TX CRC enable or not ?? */
@@ -919,7 +923,9 @@ phStatus_t phhalHw_Rc663_Exchange(
           PHHAL_HW_RC663_BIT_IDLEIRQ | PHHAL_HW_RC663_BIT_EMDIRQ;
     }
 
-    if (pDataParams->bCheckEmdErr != PH_ON) {
+    /* EMD Handling logic will be enabled only when EMD is enabled and SPI interface is selected. */
+    if ((pDataParams->bCheckEmdErr != PH_ON) ||
+        (pDataParams->bBalConnectionType != PHHAL_HW_BAL_CONNECTION_SPI)) {
       /* wait until reception */
       PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_Rc663_WaitIrq(
               pDataParams,
@@ -938,8 +944,12 @@ phStatus_t phhalHw_Rc663_Exchange(
           PHHAL_HW_RC663_BIT_IDLEIRQ | PHHAL_HW_RC663_BIT_EMDIRQ;
       bIrq1WaitFor = PHHAL_HW_RC663_BIT_TIMER1IRQ;
 
-      status = phhalHw_Rc663_CheckForEmdError(pDataParams, bIrq0WaitFor, bIrq1WaitFor, &dwMultiReg,
-              &dwSaveReg);
+      PH_CHECK_SUCCESS_FCT(status, phhalHw_Rc663_CheckForEmdError(
+              pDataParams,
+              bIrq0WaitFor,
+              bIrq1WaitFor,
+              &dwMultiReg,
+              &dwSaveReg));
 
       /* Parse Irq0 and Irq1 data */
       bIrq0Reg = (uint8_t)dwMultiReg;
@@ -1082,9 +1092,7 @@ phStatus_t phhalHw_Rc663_Exchange(
     * read the error register
     */
     status =  phhalHw_Rc663_GetErrorStatus(pDataParams, &wTmpBufferLen, &wTmpBufferSize);
-    /* Emvco: case_id TA335_XY */
-    if ((pDataParams->bOpeMode != RD_LIB_MODE_ISO) &&
-        (status == PH_ERR_FRAMING_ERROR)) {
+    if (status == PH_ERR_FRAMING_ERROR) {
       if ((dwMultiReg >> 24U) == 0x05U) {
         status = PH_ERR_SUCCESS;
       }
@@ -1946,11 +1954,13 @@ phStatus_t phhalHw_Rc663_ApplyProtocolSettings(
         SET_RC663_SHADOW(wRc663_Emvco_I14443a_DefaultShadow);
 
         /* Max EMD noise length is 2 bytes (excluding 2 bytes of CRC) */
-        pDataParams->bEmdNoiseMaxDataLen = PHHAL_HW_RC663_EMV_NOISE_MAXLEN;
+        pDataParams->bEmdNoiseMaxDataLen = PHHAL_HW_RC663_EMD_NOISE_MAXLEN;
       } else {
         /* Use 14443a default shadow */
         SET_RC663_SHADOW(wRc663_DefaultShadow_I14443a);
-        pDataParams->bEmdNoiseMaxDataLen = 0x00;
+
+        /* Max EMD noise length is 1 byte (excluding 2 bytes of CRC) */
+        pDataParams->bEmdNoiseMaxDataLen = PHHAL_HW_RC663_EMD_NOISE_MAXLEN_ISO_MODE;
       }
       break;
 
@@ -1970,11 +1980,16 @@ phStatus_t phhalHw_Rc663_ApplyProtocolSettings(
         * For Type B, RX last bits will not be updated in register. So
         * to manage noise error due to residual bits, max noise length
         * is set to 3 bytes (2u + 1 bytes). */
-        pDataParams->bEmdNoiseMaxDataLen = PHHAL_HW_RC663_EMV_NOISE_MAXLEN + 1U;
+        pDataParams->bEmdNoiseMaxDataLen = PHHAL_HW_RC663_EMD_NOISE_MAXLEN + 1U;
       } else {
         /* Use 14443b shadow */
         SET_RC663_SHADOW(wRc663_DefaultShadow_I14443b);
-        pDataParams->bEmdNoiseMaxDataLen = 0x00;
+
+        /* Max EMD noise length is 1 byte (excluding 2 bytes of CRC).
+        * For Type B, RX last bits will not be updated in register. So
+        * to manage noise error due to residual bits, max noise length
+        * is set to 2 bytes (1u + 1 bytes). */
+        pDataParams->bEmdNoiseMaxDataLen = PHHAL_HW_RC663_EMD_NOISE_MAXLEN_ISO_MODE + 1U;
       }
       break;
 
@@ -3798,12 +3813,12 @@ phStatus_t phhalHw_Rc663_I18000p3m3Inventory(
     /* Perform SELECT */
     if ((bSelCmdLen > 0U) &&
         (pSelCmd != NULL)) {
-      status = phhalHw_Rc663_18000p3m3_Sw_Select(
+      PH_CHECK_SUCCESS_FCT(status, phhalHw_Rc663_18000p3m3_Sw_Select(
               pDataParams,
               pSelCmd,
               bSelCmdLen,
-              bNumValidBitsinLastByte);
-
+              bNumValidBitsinLastByte
+          ));
     }
   }
 

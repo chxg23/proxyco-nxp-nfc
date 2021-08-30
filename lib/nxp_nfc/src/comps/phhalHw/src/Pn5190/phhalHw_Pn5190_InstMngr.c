@@ -26,7 +26,7 @@
 #ifdef NXPBUILD__PHHAL_HW_PN5190
 #ifndef _WIN32
 #include <nxp_nfc/phOsal.h>
-#include "nxp_nfc/BoardSelection.h"
+#include <nxp_nfc/BoardSelection.h>
 #else
 
 #define PH_DRIVER_SET_LOW  0

@@ -25,7 +25,7 @@
 #include <string.h>
 #include <nxp_nfc/phpalMifare.h>
 #include <nxp_nfc/phalMfdfLight.h>
-#include "nxp_nfc/phalMfdfLight_Int.h"
+#include <nxp_nfc/phalMfdfLight_Int.h>
 #include <nxp_nfc/ph_RefDefs.h>
 
 phStatus_t phalMfdfLight_Int_ComputeErrorResponse(void *pDataParams, uint16_t wStatus)

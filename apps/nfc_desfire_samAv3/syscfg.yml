@@ -1,0 +1,28 @@
+syscfg.defs:
+    PHOSAL_EVQ:
+        description: 'Specify phOsal eventq'
+        value:
+
+    POLL_IDLE_TIME_MS:
+        description: 'Polling idle time in milli-seconds'
+        value: 25
+
+syscfg.vals:
+    # OS main/default task
+    OS_MAIN_STACK_SIZE: 2048
+    LOG_LEVEL: 0
+    SPI_0_MASTER: 1
+    BUS_DRIVER_PRESENT: 1
+    CONSOLE_UART: 0
+    CONSOLE_RTT: 1
+    CONSOLE_ECHO: 0
+    OS_CLI: 1
+    PN5180_CLI: 1
+    SHELL_MGMT: 0
+    SHELL_TASK: 1
+    SHELL_COMPAT: 1
+
+syscfg.vals.'(PN5180_CLI && CONSOLE_RTT)':
+    RTT_TERMINAL_BUFFER_SIZE_DOWN: 512
+    RTT_TERMINAL_BUFFER_SIZE_UP: 2024
+    RTT_NUM_BUFFERS_UP: 4

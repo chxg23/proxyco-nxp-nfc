@@ -14,7 +14,7 @@
 /** \file
 * Build System Definitions for Reader Library Framework.
 * $Author$
-* $Revision$ (v05.22.00)
+* $Revision$ (v06.11.00)
 * $Date$
 *
 * History:
@@ -59,8 +59,14 @@
 //#   define NXPBUILD__PHHAL_HW_RC663_CUSTOM_DEBUG
 #endif
 
-#if defined(NXPBUILD__PHHAL_HW_RC663)      || \
-    defined(NXPBUILD__PHHAL_HW_PN5180)
+#if defined(PHDRIVER_LPC1769PN5190_BOARD) \
+    || defined(PHDRIVER_K82F_PNEV5190B_BOARD)
+#define NXPBUILD__PHHAL_HW_PN5190
+#endif
+
+#if defined(NXPBUILD__PHHAL_HW_RC663)  || \
+    defined(NXPBUILD__PHHAL_HW_PN5180) || \
+    defined(NXPBUILD__PHHAL_HW_PN5190)
 #define PH_PLATFORM_HAS_ICFRONTEND /* Platform has IC Frontend */
 #endif
 
@@ -69,6 +75,9 @@
     defined(NXPBUILD__PHHAL_HW_PN7462AU)
 #define NXPBUILD__PHHAL_HW_TARGET                       /**< Dependency checking if target mode macros should be enabled */
 #endif
+
+#define NXPBUILD__PHHAL_HW_SAMAV3						/**< Include component SAM AV3 */
+#define NXPBUILD__PHBAL_REG_T1SAMAV3
 
 /*********************************************************************************************************************************************************************************/
 
@@ -95,10 +104,16 @@
 #endif
 
 #define NXPBUILD__PHPAL_I18092MPI_SW                        /**< PAL ISO18092 (P2P) SW Component is included. */
+#ifdef NXPBUILD__PHPAL_I18092MPI_SW                             /**< If FE HAL is RC663, then include EPC UID PAL as required, otherwise exclude. */
+#define NXPBUILD__PHPAL_I18092MPI_SW_PROPRIETARY_PSL        /**< PAL ISO 18092 Initiator Mode proprietary PSL support. */
+#endif /* NXPBUILD__PHPAL_I18092MPI_SW */
 
 #ifndef NXPBUILD__PHHAL_HW_RC663                            /**< If FE HAL is RC663, then exclude ISO14443 Card Mode PAL & ISO18092 Target Mode PAL, otherwise include as required. */
 #define NXPBUILD__PHPAL_I14443P4MC_SW               /**< PAL ISO 14443-4 Card Mode SW Component is included. */
 #define NXPBUILD__PHPAL_I18092MT_SW                 /**< PAL ISO 18092 Target Mode SW Component is included. */
+#ifdef NXPBUILD__PHPAL_I18092MT_SW                             /**< If FE HAL is RC663, then include EPC UID PAL as required, otherwise exclude. */
+#define NXPBUILD__PHPAL_I18092MT_SW_PROPRIETARY_PSL /**< PAL ISO 18092 Target Mode proprietary PSL support. */
+#endif /* NXPBUILD__PHPAL_I18092MT_SW */
 #endif /* NXPBUILD__PHHAL_HW_RC663 */
 
 /*********************************************************************************************************************************************************************************/
@@ -108,8 +123,9 @@
 #ifdef NXPBUILD__PHAC_DISCLOOP_SW                           /**< If DiscLoop SW Component is included,  macros( & it's dependencies) to include/exclude SRC/DATA within Discloop is defined. */
 
 #if defined (NXPBUILD__PHHAL_HW_PN5180)   || \
-            defined (NXPBUILD__PHHAL_HW_RC663) || \
-            defined (NXPBUILD__PHHAL_HW_PN7462AU)
+        defined (NXPBUILD__PHHAL_HW_PN5190)   || \
+        defined (NXPBUILD__PHHAL_HW_RC663)    || \
+        defined (NXPBUILD__PHHAL_HW_PN7462AU)
 #define NXPBUILD__PHAC_DISCLOOP_LPCD        /**< SRC to enable LPCD is included. */
 #endif
 
@@ -213,6 +229,10 @@
 #define NXPBUILD__PH_KEYSTORE_RC663                         /**< RC663 KeyStore Component is included. */
 #endif
 
+#if defined(NXPBUILD__PHHAL_HW_SAMAV3) && !defined(NXPBUILD__PH_KEYSTORE_SW)
+#define NXPBUILD__PH_KEYSTORE_SAMAV3                        /**< SAMAV3 KeyStore Component is included. */
+#endif
+
 #define NXPBUILD__PH_CRYPTOSYM_SW                               /**< Crypto Symbols SW Component is included. */
 
 #define NXPBUILD__PH_CRYPTORNG_SW                               /**< Crypto RNG SW Component is included. */
@@ -239,14 +259,20 @@
 #define NXPBUILD__PH_NDA_MFDF                           /**< MIFARE DESFire implementation under NDA */
 #endif
 
+#if defined (NXPBUILD__PHHAL_HW_SAMAV3)
+#define NXPBUILD__PHAL_MFDF
+#define NXPBUILD__PH_NDA_MFDF
+#define NXPBUILD__PHAL_MFDF_SAMAV3_NONX
+#endif
+
 #if defined(NXPBUILD__PH_TMIUTILS) || defined(NXPBUILD__PHAL_VCA_SW)
-#define NXPBUILD__PHAL_MFDFEV2_SW                       /**< AL MIFARE DESFire EV2 contactless IC SW Component is included */
-/*#define RDR_LIB_PARAM_CHECK*/                             /**< AL MIFARE DESFire EV2 parameter check compilation switch */
+#define NXPBUILD__PHAL_MFDFEVX_SW                       /**< AL MIFARE DESFire EVX contactless IC SW Component is included */
+/*#define RDR_LIB_PARAM_CHECK*/                         /**< AL MIFARE DESFire EVX parameter check compilation switch */
 #define NXPBUILD__PHAL_MFP_SW                           /**< AL MIFARE Plus contactless IC SW Component is included */
-#define NXPBUILD__PHAL_MFPEV1_SW                        /**< AL MIFARE Plus EV1 contactless IC SW Component is included */
+#define NXPBUILD__PHAL_MFPEVX_SW                        /**< AL MIFARE Plus EVx contactless IC SW Component is included */
 
 #if defined(NXPBUILD__PH_CRYPTOSYM_SW) || defined(NXPBUILD__PH_CRYPTORNG_SW)
-#define NXPBUILD__PH_NDA_MFDFEV2                    /**< MIFARE DESFire EV2 implementation under NDA */
+#define NXPBUILD__PHAL_MFDFEVX_NDA                  /**< MIFARE DESFire EVx build macro for IP Protection */
 #define NXPBUILD__PH_NDA_MFP                        /**< MIFARE Plus implementation under NDA */
 #define NXPBUILD__PH_NDA_MFPEV1                     /**< MIFARE Plus EV1 implementation under NDA */
 

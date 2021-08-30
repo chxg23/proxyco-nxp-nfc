@@ -25,7 +25,8 @@
 
 #ifdef NXPBUILD__PHHAL_HW_PN5190
 #ifndef _WIN32
-#include "nxp_nfc/BoardSelection.h"
+#include <nxp_nfc/phDriver.h>
+#include <nxp_nfc/BoardSelection.h>
 #endif
 #include <nxp_nfc/phTools.h>
 #include "phhalHw_Pn5190.h"

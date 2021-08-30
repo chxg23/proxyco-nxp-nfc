@@ -18,7 +18,7 @@
 #include <string.h>
 #include <nxp_nfc/phpalMifare.h>
 #include <nxp_nfc/phalMfNtag42XDna.h>
-#include "nxp_nfc/phalMfNtag42XDna_Int.h"
+#include <nxp_nfc/phalMfNtag42XDna_Int.h>
 #include <nxp_nfc/ph_RefDefs.h>
 
 phStatus_t phalMfNtag42XDna_Int_ComputeErrorResponse(void *pDataParams, uint16_t wStatus)

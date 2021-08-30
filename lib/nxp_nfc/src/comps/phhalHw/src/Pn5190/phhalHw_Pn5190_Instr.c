@@ -22,6 +22,7 @@
 #include <nxp_nfc/ph_RefDefs.h>
 #include <nxp_nfc/ph_Status.h>
 #include <nxp_nfc/phhalHw.h>
+#include <nxp_nfc/phDriver.h>
 
 #ifdef _WIN32
 

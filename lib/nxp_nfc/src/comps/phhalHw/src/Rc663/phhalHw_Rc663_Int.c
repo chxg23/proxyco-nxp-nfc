@@ -27,6 +27,7 @@
 #include <nxp_nfc/phNxpNfcRdLib_Config.h>
 
 #ifdef NXPBUILD__PHHAL_HW_RC663
+#include <nxp_nfc/phDriver.h>
 #include "nxp_nfc/BoardSelection.h"
 
 #include "phhalHw_Rc663.h"
@@ -775,8 +776,8 @@ phStatus_t phhalHw_Rc663_SetCardMode(
   uint16_t        PH_MEMLOC_COUNT wIndex;
   uint8_t         PH_MEMLOC_REM bTxConfig;
   uint8_t         PH_MEMLOC_REM bRxConfig;
-  const uint8_t *PH_MEMLOC_REM pTxRegisterSet;
-  const uint8_t *PH_MEMLOC_REM pRxRegisterSet;
+  const uint8_t *PH_MEMLOC_REM pTxRegisterSet = NULL;
+  const uint8_t *PH_MEMLOC_REM pRxRegisterSet = NULL;
   uint16_t        PH_MEMLOC_REM wEEAddress;
   uint8_t         PH_MEMLOC_REM bRegAddress;
   uint8_t         PH_MEMLOC_REM bNumBytes;
@@ -785,6 +786,8 @@ phStatus_t phhalHw_Rc663_SetCardMode(
   uint8_t         PH_MEMLOC_REM bNoRxReg;
   uint32_t        PH_MEMLOC_REM dwAddrIndex;
   uint32_t        PH_MEMLOC_REM dwRxAddrIndex;
+  uint8_t         PH_MEMLOC_REM bDerivative = 0;
+  uint8_t         PH_MEMLOC_REM bVersion = 0;
 
   /* Default Value. */
   bAsynBaudrate = PH_OFF;
@@ -795,8 +798,13 @@ phStatus_t phhalHw_Rc663_SetCardMode(
   /* No RegisterSet by default */
   pTxRegisterSet = NULL;
 
-  switch (pDataParams->bCardType) {
-    case PHHAL_HW_CARDTYPE_ISO14443A:
+  /* Read the RC663 derivative used. */
+  PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_Rc663_Int_ReadDerivative(pDataParams, &bDerivative,
+          &bVersion));
+
+  if (bDerivative != PHHAL_HW_CTN53003_PRODUCT_ID) {
+    switch (pDataParams->bCardType) {
+      case PHHAL_HW_CARDTYPE_ISO14443A:
 
       switch (wTxDataRate) {
         case PHHAL_HW_RF_DATARATE_106:
@@ -1045,7 +1053,61 @@ phStatus_t phhalHw_Rc663_SetCardMode(
       break;
     default:
 
-      return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_HAL);
+        return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_HAL);
+    }
+  } else {
+    switch (pDataParams->bCardType) {
+      case PHHAL_HW_CARDTYPE_ISO14443A:
+        if ((wTxDataRate != PHHAL_HW_RF_DATARATE_106) || (wRxDataRate != PHHAL_HW_RF_DATARATE_106)) {
+          return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_PARAMETER, PH_COMP_HAL);
+        }
+        bTxConfig = PHHAL_HW_RC663_RXTX_I14443A_106;
+        bRxConfig = PHHAL_HW_RC663_RXTX_I14443A_106;
+        dwAddrIndex = PHHAL_HW_RC663_ARR_INDEX_I14443A_106;
+        break;
+      case PHHAL_HW_CARDTYPE_ISO14443B:
+        if ((wTxDataRate != PHHAL_HW_RF_DATARATE_106) || (wRxDataRate != PHHAL_HW_RF_DATARATE_106)) {
+          return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_PARAMETER, PH_COMP_HAL);
+        }
+        bTxConfig = 0x01U;
+        bRxConfig = 0x01U;
+        if (pDataParams->bOpeMode == RD_LIB_MODE_EMVCO) {
+          dwAddrIndex = PHHAL_HW_RC663_ARR_INDEX_I14443B_EMVCO_106;
+        } else {
+          dwAddrIndex = PHHAL_HW_RC663_ARR_INDEX_I14443B_106;
+        }
+        break;
+      case PHHAL_HW_CARDTYPE_FELICA_212:
+        if ((wTxDataRate != PHHAL_HW_RF_DATARATE_212) || (wRxDataRate != PHHAL_HW_RF_DATARATE_212)) {
+          return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_PARAMETER, PH_COMP_HAL);
+        }
+        bTxConfig = 0x02U;
+        bRxConfig = 0x02U;
+        dwAddrIndex = PHHAL_HW_RC663_ARR_INDEX_FELICA_212;
+        break;
+      case PHHAL_HW_CARDTYPE_ISO15693:
+        if ((wTxDataRate != PHHAL_HW_RF_TX_DATARATE_1_OUT_OF_4) ||
+            (wSubcarrier == PHHAL_HW_SUBCARRIER_DUAL)) {
+          return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_PARAMETER, PH_COMP_HAL);
+        }
+        bTxConfig = 0x03U;
+
+        switch (wRxDataRate) {
+          case PHHAL_HW_RF_RX_DATARATE_HIGH:
+            bRxConfig = 0x03U;
+            dwAddrIndex = PHHAL_HW_RC663_ARR_INDEX_I15693_HIGH;
+            break;
+          case PHHAL_HW_RF_RX_DATARATE_FAST_HIGH:
+            bRxConfig = 0x04U;
+            dwAddrIndex = PHHAL_HW_RC663_ARR_INDEX_I15693_FAST_HIGH;
+            break;
+          default:
+            return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_PARAMETER, PH_COMP_HAL);
+        }
+        break;
+      default:
+        return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_PARAMETER, PH_COMP_HAL);
+    }
   }
 
   /* Perform LoadProtocol */
@@ -2590,20 +2652,22 @@ phStatus_t phhalHw_Rc663_CheckForEmdError(phhalHw_Rc663_DataParams_t *pDataParam
     PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_Rc663_GetMultiReg(pDataParams, (uint8_t *)&aTempRxBuf));
     bRxBitCtrl = aTempRxBuf[5] & PHHAL_HW_RC663_MASK_RXLASTBITS;
 
+    /* Increment Rx data count if required.
+     * Note: For Type A, in case of protocol error due to residual bits,
+     *       RC663 HW is giving Rx data count correctly only when residual bits count is 7,
+     *       in all other cases(residual bits 1 to 6), HW is giving Rx data count one byte lesser than actual count.
+     */
+    if ((pDataParams->bCardType == PHHAL_HW_CARDTYPE_ISO14443A) &&
+        ((0U != (bRxBitCtrl)) && ((bRxBitCtrl) < 7U)) &&
+        (0U != (PHHAL_HW_RC663_BIT_PROTERR & aTempRxBuf[3]))) {
+      aTempRxBuf[4] += 1U;
+    }
+
     if (((0U != (PHHAL_HW_EMD_NOISE_CHECK(aTempRxBuf[3]))) &&
             (0U != (aTempRxBuf[1] & PHHAL_HW_RC663_BIT_RXIRQ))) &&
         (((aTempRxBuf[4] & 0xFFU) < (pDataParams->bEmdNoiseMaxDataLen)) ||
             ((bRxBitCtrl != 0x00U) &&
                 ((aTempRxBuf[4] & 0xFFU) <= (pDataParams->bEmdNoiseMaxDataLen))))) {
-      /* For Type A, in case of protocol error due to residual bits, last
-       * received data byte (partial byte) will not be written to FIFO. */
-      if ((pDataParams->bCardType == PHHAL_HW_CARDTYPE_ISO14443A) &&
-          (0U != (bRxBitCtrl)) &&
-          (0U != (PHHAL_HW_RC663_BIT_PROTERR & aTempRxBuf[3])) &&
-          ((aTempRxBuf[4] & 0xFFU) == (pDataParams->bEmdNoiseMaxDataLen))) {
-        break;
-      }
-
       /* Restart reception */
       PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_Rc663_WriteRegister(pDataParams,
               PHHAL_HW_RC663_REG_COMMAND,
@@ -3275,6 +3339,7 @@ phStatus_t phhalHw_Rc663_Int_ProtocolSupport(phhalHw_Rc663_DataParams_t *pDataPa
       if ((bDerivative == PHHAL_HW_CLRC663_PRODUCT_ID) ||
           (bDerivative == PHHAL_HW_MFRC631_PRODUCT_ID)  ||
           ((bDerivative == PHHAL_HW_CLRC661_PRODUCT_ID) && (bVersion == PHHAL_HW_CLRC663PLUS_VERSION))  ||
+          ((bDerivative == PHHAL_HW_CTN53003_PRODUCT_ID) && (bVersion == PHHAL_HW_CLRC663PLUS_VERSION))  ||
           (bDerivative == PHHAL_HW_MFRC630_PRODUCT_ID)) {
         status = PH_ERR_SUCCESS;
       } else {
@@ -3285,6 +3350,7 @@ phStatus_t phhalHw_Rc663_Int_ProtocolSupport(phhalHw_Rc663_DataParams_t *pDataPa
     case PHHAL_HW_CARDTYPE_ISO14443B:
 
       if ((bDerivative == PHHAL_HW_CLRC663_PRODUCT_ID) ||
+          ((bDerivative == PHHAL_HW_CTN53003_PRODUCT_ID) && (bVersion == PHHAL_HW_CLRC663PLUS_VERSION))  ||
           (bDerivative == PHHAL_HW_MFRC631_PRODUCT_ID)) {
         status = PH_ERR_SUCCESS;
       } else {
@@ -3293,7 +3359,8 @@ phStatus_t phhalHw_Rc663_Int_ProtocolSupport(phhalHw_Rc663_DataParams_t *pDataPa
       break;
 
     case PHHAL_HW_CARDTYPE_FELICA_212:
-      if (bDerivative == PHHAL_HW_CLRC663_PRODUCT_ID) {
+      if ((bDerivative == PHHAL_HW_CLRC663_PRODUCT_ID) ||
+          ((bDerivative == PHHAL_HW_CTN53003_PRODUCT_ID) && (bVersion == PHHAL_HW_CLRC663PLUS_VERSION))) {
         status = PH_ERR_SUCCESS;
       } else {
         status = PH_ERR_USE_CONDITION;

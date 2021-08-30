@@ -10,7 +10,7 @@
 
 #ifdef PH_OSAL_NULLOS
 
-#include "phOsal_Cortex_Port.h"
+#include "nxp_nfc/phOsal_Cortex_Port.h"
 
 #ifdef __GNUC__
 #define __ENABLE_IRQ() __asm volatile ("cpsie i")

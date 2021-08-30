@@ -218,6 +218,10 @@
 #define NXPBUILD__PH_KEYSTORE_RC663                         /**< RC663 KeyStore Component is included. */
 #endif
 
+#if defined(NXPBUILD__PHHAL_HW_SAMAV3) && !defined(NXPBUILD__PH_KEYSTORE_SW)
+#define NXPBUILD__PH_KEYSTORE_SAMAV3                         /**< SAMAV3 KeyStore Component is included. */
+#endif
+
 #define NXPBUILD__PH_CRYPTOSYM_SW                               /**< Crypto Symbols SW Component is included. */
 
 #define NXPBUILD__PH_CRYPTORNG_SW                               /**< Crypto RNG SW Component is included. */

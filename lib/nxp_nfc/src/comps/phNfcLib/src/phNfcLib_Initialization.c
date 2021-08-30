@@ -28,7 +28,7 @@
 /*******************************************************************************
 **   Macro Declaration
 *******************************************************************************/
-#if defined (NXPBUILD__PH_KEYSTORE_SW) || defined(NXPBUILD__PH_KEYSTORE_RC663)
+#if defined (NXPBUILD__PH_KEYSTORE_SW) || defined(NXPBUILD__PH_KEYSTORE_RC663) || defined(NXPBUILD__PH_KEYSTORE_SAMAV3)
 #define PH_NFCLIB_KEYSTORE_DATAPARAMS    (&gphNfcLib_Params.sKeyStore)
 #else
 #define PH_NFCLIB_KEYSTORE_DATAPARAMS (NULL)
@@ -132,8 +132,18 @@ uint8_t aAppHCEBuf[PH_NXPNFCRDLIB_CONFIG_HCE_BUFF_LENGTH];
 
 #ifdef NXPBUILD__PH_CRYPTOSYM_SW
 #   define PTR_sCryptoSym (&gphNfcLib_Params.sCryptoSym)
+#   define PTR_sCryptoEnc (&gphNfcLib_Params.PTR_sCryptoEnc)
+#   define PTR_sCryptoMAC (&gphNfcLib_Params.sCryptoMAC)
+#   define PTR_sCryptoSymRnd (&gphNfcLib_Params.sCryptoSymRnd)
+#   define PTR_sPLUpload_CryptoEnc (&gphNfcLib_Params.sPLUpload_CryptoEnc)
+#   define PTR_sPLUpload_CryptoMAC (&gphNfcLib_Params.sPLUpload_CryptoMAC)
 #else
 #   define PTR_sCryptoSym NULL
+#   define PTR_sCryptoEnc NULL
+#   define PTR_sCryptoMAC NULL
+#   define PTR_sCryptoSymRnd NULL
+#   define PTR_sPLUpload_CryptoEnc NULL
+#   define PTR_sPLUpload_CryptoMAC NULL
 #endif
 
 #ifdef NXPBUILD__PH_CRYPTORNG_SW
@@ -467,6 +477,16 @@ static phStatus_t phNfcLib_AL_Init(void)
             &sCryptoMac,
             sizeof(phCryptoSym_Sw_DataParams_t),
             NULL));
+
+    PH_CHECK_NFCLIB_INIT_FCT(wStatus, phCryptoSym_Sw_Init(
+            &sPLUpload_CryptoEnc,
+            sizeof(phCryptoSym_Sw_DataParams_t),
+            &gphNfcLib_Params.sKeyStore));
+
+    PH_CHECK_NFCLIB_INIT_FCT(wStatus, phCryptoSym_Sw_Init(
+            &sPLUpload_CryptoMAC,
+            sizeof(phCryptoSym_Sw_DataParams_t),
+			&gphNfcLib_Params.sKeyStore));
 
     /* Initialize CryptoSym for key diversification. */
     PH_CHECK_NFCLIB_INIT_FCT(wStatus, phCryptoSym_Sw_Init(
@@ -813,7 +833,6 @@ void *phNfcLib_GetDataParams(
 )
 {
   void *pDataparam = NULL;
-
   if (((phNfcLib_StateMachine_t)gphNfcLib_State.bNfcLibState) != eNfcLib_ResetState) {
     switch (wComponent) {
 #ifdef NXPBUILD__PHHAL_HW
@@ -821,7 +840,6 @@ void *phNfcLib_GetDataParams(
         pDataparam = (void *) &gphNfcLib_Params.sHal;
         break;
 #endif /* NXPBUILD__PHHAL_HW */
-
 
 #ifdef NXPBUILD__PHHAL_HW_SAMAV3
       case (PH_COMP_HAL | PHHAL_HW_SAMAV3_ID):
@@ -980,7 +998,7 @@ void *phNfcLib_GetDataParams(
         break;
 #endif /* NXPBUILD__PHCE_T4T_SW */
 
-#if defined(NXPBUILD__PH_KEYSTORE_SW) || defined(NXPBUILD__PH_KEYSTORE_RC663)
+#if defined(NXPBUILD__PH_KEYSTORE_SW) || defined(NXPBUILD__PH_KEYSTORE_RC663) || defined(NXPBUILD__PH_KEYSTORE_SAMAV3)
       case PH_COMP_KEYSTORE:
         pDataparam = (void *) &gphNfcLib_Params.sKeyStore;
         break;

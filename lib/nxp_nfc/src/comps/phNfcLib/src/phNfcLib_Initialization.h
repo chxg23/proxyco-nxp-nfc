@@ -250,9 +250,14 @@ typedef struct {
 #endif /* NXPBUILD__PHHAL_HW_SAMAV3 */
   uint8_t  *pRxBuffer;                                           /* Pointer to the RX */
   uint16_t wRxLength;                                            /* Stores the length of the received Data */
-  uint16_t  wRxDataPoin;                                         /* Points to the starting address of the rx buffer to perform Chaining */
+  uint16_t wRxDataPoin;                                          /* Points to the starting address of the rx buffer to perform Chaining */
   uint8_t  bHalBufferTx[PH_NXPNFCRDLIB_CONFIG_HAL_TX_BUFFSIZE];  /* HAL TX buffer. */
   uint8_t  bHalBufferRx[PH_NXPNFCRDLIB_CONFIG_HAL_RX_BUFFSIZE];  /* HAL RX buffer. */
+#ifdef NXPBUILD__PHHAL_HW_SAMAV3
+  uint8_t  bHalBufferTxSam[PH_NXPNFCRDLIB_CONFIG_HAL_TX_BUFFSIZE_SAM];
+  uint8_t  bHalBufferRxSam[PH_NXPNFCRDLIB_CONFIG_HAL_RX_BUFFSIZE_SAM];
+  uint8_t  bPLUploadBufSam[PH_NXPNFCRDLIB_CONFIG_HAL_PLUPLOAD_BUFFSIZE_SAM];
+#endif /* NXPBUILD__PHHAL_HW_SAMAV3 */
   uint8_t bWrappedMode;                                          /* Tells about the MIFARE DESFire Wrapped Mode Status */
   uint8_t bAuthMode;                                             /* Tells about the MIFARE DESFire Auth Mode */
   uint16_t wActivatedUIDLength;                                  /* Length of the activated UID */

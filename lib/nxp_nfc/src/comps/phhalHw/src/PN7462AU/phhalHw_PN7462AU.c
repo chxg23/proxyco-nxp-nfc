@@ -415,7 +415,10 @@ phStatus_t phhalHw_PN7462AU_SetConfig(phhalHw_PN7462AU_DataParams_t *pDataParams
             break;
         }
       }
-      pDataParams->wTxDataRate = wValue;
+
+      if ((pDataParams->bCardType != PHHAL_HW_CARDTYPE_I18000P3M3) && (status == PH_ERR_SUCCESS)) {
+        pDataParams->wTxDataRate = wValue;
+      }
     }
     break;
 
@@ -595,7 +598,10 @@ phStatus_t phhalHw_PN7462AU_SetConfig(phhalHw_PN7462AU_DataParams_t *pDataParams
             break;
         }
       }
-      pDataParams->wRxDataRate = wValue;
+
+      if (status == PH_ERR_SUCCESS) {
+        pDataParams->wRxDataRate = wValue;
+      }
     }
     break;
 
@@ -1160,6 +1166,12 @@ phStatus_t phhalHw_PN7462AU_FieldOn(phhalHw_PN7462AU_DataParams_t *pDataParams P
  */
 phStatus_t phhalHw_PN7462AU_FieldOff(phhalHw_PN7462AU_DataParams_t *pDataParams PH_UNUSED)
 {
+  phStatus_t status = (phStatus_t)PH_ERR_INTERNAL_ERROR;
+
+  /* Disable the EMD */
+  PH_CHECK_SUCCESS_FCT(status, phhalHw_PN7462AU_SetConfig(pDataParams, PHHAL_HW_CONFIG_SET_EMD,
+          PH_OFF));
+
   (void)phhalRf_FieldOff();
 
   return PH_ERR_SUCCESS;
@@ -1176,6 +1188,10 @@ phStatus_t phhalHw_PN7462AU_ApplyProtocolSettings(phhalHw_PN7462AU_DataParams_t 
     uint8_t bCardType)
 {
   phStatus_t status = (phStatus_t)(PH_ERR_INTERNAL_ERROR);
+
+  /* Disable the EMD */
+  PH_CHECK_SUCCESS_FCT(status, phhalHw_PN7462AU_SetConfig(pDataParams, PHHAL_HW_CONFIG_SET_EMD,
+          PH_OFF));
 
   /* Store new card type */
   if (bCardType == PHHAL_HW_CARDTYPE_CURRENT) {
@@ -1707,6 +1723,10 @@ phStatus_t phhalHw_PN7462AU_Autocoll(phhalHw_PN7462AU_DataParams_t *pDataParams,
   phhalRf_TargetActivatedParam_t sProtParams;
   uint8_t bLoop;
 
+  /* Disable the EMD */
+  PH_CHECK_SUCCESS_FCT(status, phhalHw_PN7462AU_SetConfig(pDataParams, PHHAL_HW_CONFIG_SET_EMD,
+          PH_OFF));
+
   do {
     bLoop = PH_OFF;
     pDataParams->wRxDataRate = 0x00;
@@ -1889,6 +1909,10 @@ phStatus_t phhalHw_PN7462AU_Lpcd(phhalHw_PN7462AU_DataParams_t *pDataParams)
 phStatus_t phhalHw_PN7462AU_FieldReset(phhalHw_PN7462AU_DataParams_t *pDataParams)
 {
   phStatus_t status = PH_ERR_INTERNAL_ERROR;
+
+  /* Disable the EMD */
+  PH_CHECK_SUCCESS_FCT(status, phhalHw_PN7462AU_SetConfig(pDataParams, PHHAL_HW_CONFIG_SET_EMD,
+          PH_OFF));
 
   status =  phhalRf_FieldReset(pDataParams->wFieldOffTime, pDataParams->wFieldRecoveryTime);
 

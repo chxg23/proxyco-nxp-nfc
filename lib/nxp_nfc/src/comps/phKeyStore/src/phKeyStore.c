@@ -36,6 +36,10 @@
 #include "Rc663/phKeyStore_Rc663.h"
 #endif /* NXPBUILD__PH_KEYSTORE_RC663 */
 
+#ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
+#include "SamAV3/phKeyStore_SamAv3.h"
+#endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
+
 #ifdef NXPBUILD__PH_KEYSTORE
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
@@ -85,6 +89,13 @@ phStatus_t phKeyStore_FormatKeyEntry(
               wNewKeyType);
       break;
 #endif /* NXPBUILD__PH_KEYSTORE_RC663 */
+
+#ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
+    case PH_KEYSTORE_SAMAV3_ID:
+        status = phKeyStore_SamAV3_FormatKeyEntry((phKeyStore_SamAV3_DataParams_t *)pDataParams,wKeyNo,
+        	  wNewKeyType);
+        break;
+#endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_KEYSTORE);
@@ -154,6 +165,13 @@ phStatus_t phKeyStore_SetKey(
       break;
 #endif /* NXPBUILD__PH_KEYSTORE_RC663 */
 
+#ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
+    case PH_KEYSTORE_SAMAV3_ID:
+		status = phKeyStore_SamAV3_SetKey((phKeyStore_SamAV3_DataParams_t *)pDataParams, wKeyNo,
+			  wKeyVersion, wKeyType, pNewKey, wNewKeyVersion);
+        break;
+#endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_KEYSTORE);
       break;
@@ -222,6 +240,13 @@ phStatus_t phKeyStore_SetKeyAtPos(
       break;
 #endif /* NXPBUILD__PH_KEYSTORE_RC663 */
 
+#ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
+    case PH_KEYSTORE_SAMAV3_ID:
+        status = phKeyStore_SamAV3_SetKeyAtPos((phKeyStore_SamAV3_DataParams_t *)pDataParams, wKeyNo, wPos,
+        	  wKeyType, pNewKey, wNewKeyVersion);
+        break;
+#endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_KEYSTORE);
       break;
@@ -276,6 +301,12 @@ phStatus_t phKeyStore_SetKUC(
       status = phKeyStore_Rc663_SetKUC((phKeyStore_Rc663_DataParams_t *)pDataParams, wKeyNo, wRefNoKUC);
       break;
 #endif /* NXPBUILD__PH_KEYSTORE_RC663 */
+
+#ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
+    case PH_KEYSTORE_SAMAV3_ID:
+		status = phKeyStore_SamAV3_SetKUC((phKeyStore_SamAV3_DataParams_t *)pDataParams, wKeyNo, wRefNoKUC);
+        break;
+#endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_KEYSTORE);
@@ -416,6 +447,13 @@ phStatus_t phKeyStore_GetKeyEntry(
       break;
 #endif /* NXPBUILD__PH_KEYSTORE_RC663 */
 
+#ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
+    case PH_KEYSTORE_SAMAV3_ID:
+		status = phKeyStore_SamAV3_GetKeyEntry((phKeyStore_SamAV3_DataParams_t *)pDataParams, wKeyNo,
+				wKeyVersion, wKeyVersionLength, pKeyType);
+        break;
+#endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_KEYSTORE);
       break;
@@ -489,6 +527,13 @@ phStatus_t phKeyStore_GetKey(
       break;
 #endif /* NXPBUILD__PH_KEYSTORE_RC663 */
 
+#ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
+    case PH_KEYSTORE_SAMAV3_ID:
+        status = phKeyStore_SamAV3_GetKey((phKeyStore_SamAV3_DataParams_t *)pDataParams, wKeyNo,
+        		wKeyVersion, bKeyBufSize, pKey, pKeyType);
+        break;
+#endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_KEYSTORE);
       break;
@@ -552,6 +597,13 @@ phStatus_t phKeyStore_SetConfig(
       break;
 #endif /* NXPBUILD__PH_KEYSTORE_RC663 */
 
+#ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
+    case PH_KEYSTORE_SAMAV3_ID:
+        status = phKeyStore_SamAV3_SetConfig((phKeyStore_SamAV3_DataParams_t *)pDataParams, wConfig,
+        	  wValue);
+        break;
+#endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_KEYSTORE);
       break;
@@ -613,6 +665,13 @@ phStatus_t phKeyStore_SetConfigStr(
       break;
 #endif /* NXPBUILD__PH_KEYSTORE_RC663 */
 
+#ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
+    case PH_KEYSTORE_SAMAV3_ID:
+		status = phKeyStore_SamAV3_SetConfigStr((phKeyStore_SamAV3_DataParams_t *)pDataParams, wConfig,
+			  pBuffer, wBufferLength);
+        break;
+#endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_KEYSTORE);
       break;
@@ -668,6 +727,13 @@ phStatus_t phKeyStore_GetConfig(
               pValue);
       break;
 #endif /* NXPBUILD__PH_KEYSTORE_RC663 */
+
+#ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
+    case PH_KEYSTORE_SAMAV3_ID:
+        status = phKeyStore_SamAV3_GetConfig((phKeyStore_SamAV3_DataParams_t *)pDataParams, wConfig,
+        	  pValue);
+        break;
+#endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_KEYSTORE);
@@ -734,6 +800,13 @@ phStatus_t phKeyStore_GetConfigStr(
       break;
 #endif /* NXPBUILD__PH_KEYSTORE_RC663 */
 
+#ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
+    case PH_KEYSTORE_SAMAV3_ID:
+		status = phKeyStore_SamAV3_GetConfigStr((phKeyStore_SamAV3_DataParams_t *)pDataParams, wConfig,
+			  ppBuffer, pBufferLength);
+        break;
+#endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_KEYSTORE);
       break;
@@ -796,6 +869,13 @@ phStatus_t phKeyStore_ChangeKUC(
       break;
 #endif /* NXPBUILD__PH_KEYSTORE_RC663 */
 
+#ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
+    case PH_KEYSTORE_SAMAV3_ID:
+		status = phKeyStore_SamAV3_ChangeKUC((phKeyStore_SamAV3_DataParams_t *)pDataParams, wRefNoKUC,
+			  dwLimit);
+        break;
+#endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
+
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_KEYSTORE);
       break;
@@ -855,6 +935,13 @@ phStatus_t phKeyStore_GetKUC(
               pdwLimit, pdwCurVal);
       break;
 #endif /* NXPBUILD__PH_KEYSTORE_RC663 */
+
+#ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
+    case PH_KEYSTORE_SAMAV3_ID:
+		status = phKeyStore_SamAV3_GetKUC((phKeyStore_SamAV3_DataParams_t *)pDataParams, wRefNoKUC,
+			  pdwLimit, pdwCurVal);
+        break;
+#endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
 
     default:
       status = PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_KEYSTORE);

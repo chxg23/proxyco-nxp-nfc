@@ -15,11 +15,8 @@
 /** \file
 * Status Code definitions for Reader Library Framework.
 * $Author$
-* $Revision$ (v05.22.00)
+* $Revision$ (v06.11.00)
 * $Date$
-*
-* History:
-*  CHu: Generated 19. May 2009
 *
 */
 
@@ -82,7 +79,8 @@
 #define PH_ERR_RX_NAK_ERROR             ((phStatus_t)0x000FU) /**< RX request Rejected sanely by the counterpart. */
 #define PH_ERR_EXT_RF_ERROR             ((phStatus_t)0x0010U) /**< Error due to External RF. */
 #define PH_ERR_NOISE_ERROR              ((phStatus_t)0x0011U) /**< EMVCo EMD Noise Error. */
-#define PH_ERR_ABORTED                  ((phStatus_t)0x0012U) /**< Used when HAL ShutDown is called. */
+#define PH_ERR_ABORTED                  ((phStatus_t)0x0012U) /**< Used when HAL Abort is called. */
+#define PH_ERR_LPCD_ABORTED             ((phStatus_t)0x0013U) /**< LPCD is exited, without card detection. */
 #define PH_ERR_INTERNAL_ERROR           ((phStatus_t)0x007FU) /**< An internal error occurred. */
 #define PH_ERR_AUTH_DELAY               ((phStatus_t)0x00ADU) /**< Authentication Delay. */
 /*@}*/
@@ -175,14 +173,14 @@
 #define PH_COMP_AL_MFC                  (0x1000U) /**< MIFARE Classic contactless IC AL-Component Code. */
 #define PH_COMP_AL_MFUL                 (0x1100U) /**< MIFARE Ultralight contactless IC AL-Component Code. */
 #define PH_COMP_AL_MFP                  (0x1200U) /**< MIFARE Plus contactless IC AL-Component Code. */
-#define PH_COMP_AL_MFPEV1               (0x2100U) /**< MIFARE Plus contactless IC EV1 AL-Component Code. */
+#define PH_COMP_AL_MFPEVX               (0x2100U) /**< MIFARE Plus contactless IC EV1 AL-Component Code. */
 #define PH_COMP_AL_VCA                  (0x1300U) /**< Virtual Card Architecture AL-Component Code. */
 #define PH_COMP_AL_FELICA               (0x1400U) /**< Open FeliCa AL-Component Code. */
 #define PH_COMP_AL_ICODE                (0x1500U) /**< ICode AL-Component Code. */
 #define PH_COMP_AL_SLI                  (0x1600U) /**< ICode SLI AL-Component Code. */
 #define PH_COMP_AL_I18000P3M3           (0x1800U) /**< ISO18000-3 Mode3 AL-Component Code. */
 #define PH_COMP_AL_MFDF                 (0x1900U) /**< MIFARE DESFire EV1 contactless IC AL Component Code. */
-#define PH_COMP_AL_MFDFEV2              (0x2000U) /**< MIFARE DESFire EV2 contactless IC AL Component Code. */
+#define PH_COMP_AL_MFDFEVX              (0x2000U) /**< MIFARE DESFIRE EVx contactless IC(for Ev2, Ev3 and future versions) AL Component Code. */
 #define PH_COMP_AL_ICODEDNA             (0x2200U) /**< ICode DNA AL Component Code. */
 #define PH_COMP_AL_MFDFLIGHT            (0x2300U) /**< MIFARE Prime Match AL Component Code. */
 #define PH_COMP_AL_MFNTAG42XDNA         (0x2600U) /**< MIFARE Prime Ntag42XDna AL Component Code. */
@@ -193,7 +191,7 @@
 #define PH_COMP_DL_AMP                  (0x3000U) /**< Amplifier DL-Component Code. */
 #define PH_COMP_DL_THSTRM               (0x3100U) /**< Thermostream DL-Component Code. */
 #define PH_COMP_DL_OSCI                 (0x3200U) /**< Oscilloscope DL-Component Code. */
-#define PH_COMP_DL_RDFPGA               (0x3300U)    /**< Reader FPGA Box DL-Component Code. */
+#define PH_COMP_DL_RDFPGA               (0x3300U) /**< Reader FPGA Box DL-Component Code. */
 #define PH_COMP_DL_MSTAMPOSC            (0x3400U) /**< Master Amplifier Oscilloscope DL-Component Code. */
 #define PH_COMP_DL_STEPPER              (0x3500U) /**< Stepper DL-Component Code. */
 #define PH_COMP_AC_DISCLOOP             (0x4000U) /**< Discovery Loop. */
@@ -205,8 +203,8 @@
 #define PH_COMP_KEYSTORE                (0xE200U) /**< KeyStore Component Code. */
 #define PH_COMP_TOOLS                   (0xE300U) /**< Tools Component Code. */
 #define PH_COMP_CRYPTORNG               (0xE400U) /**< CryptoRng Component Code. */
-#define PH_COMP_LOG                     (0xEF00U) /**< Log Component Code. */
 #define PH_COMP_TMIUTILS                (0xE500U) /**< TMI Utilities Code. */
+#define PH_COMP_LOG                     (0xEF00U) /**< Log Component Code. */
 #define PH_COMP_OSAL                    (0xF000U) /**< OS AL component code. */
 #define PH_COMP_DRIVER                  (0xF100U) /**< External phDriver component code. */
 /*@}*/

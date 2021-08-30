@@ -15,7 +15,7 @@
 /** \file
 * Type definitions for Reader Library Framework.
 * $Author$
-* $Revision$ (v05.22.00)
+* $Revision$ (v06.11.00)
 * $Date$
 *
 *

@@ -24,6 +24,7 @@
 #include <nxp_nfc/phhalHw.h>
 #include <nxp_nfc/phpalI14443p4mC.h>
 #include <nxp_nfc/ph_RefDefs.h>
+#include <nxp_nfc/phDriver.h>
 
 #ifdef NXPBUILD__PHPAL_I14443P4MC_SW
 

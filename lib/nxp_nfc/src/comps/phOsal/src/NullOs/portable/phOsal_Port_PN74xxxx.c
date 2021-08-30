@@ -14,7 +14,7 @@
  */
 #if defined(PH_OSAL_NULLOS) && (defined(__PN74XXXX__) || defined (__PN73XXXX__))
 
-#include "phOsal_Cortex_Port.h"
+#include "nxp_nfc/phOsal_Cortex_Port.h"
 
 #ifdef __GNUC__
 #define __ENABLE_IRQ() __asm volatile ("cpsie i")

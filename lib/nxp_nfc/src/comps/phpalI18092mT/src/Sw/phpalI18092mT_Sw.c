@@ -26,6 +26,8 @@
 #include <nxp_nfc/phpalI18092mT.h>
 #include <nxp_nfc/ph_RefDefs.h>
 
+#include <nxp_nfc/phDriver.h>
+
 #ifdef NXPBUILD__PHPAL_I18092MT_SW
 
 #include "phpalI18092mT_Sw.h"
