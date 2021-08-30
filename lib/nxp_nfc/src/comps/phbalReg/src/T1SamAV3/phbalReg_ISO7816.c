@@ -1,5 +1,6 @@
 #include "os/mynewt.h"
-#include <console/console.h>
+#include <modlog/modlog.h>
+// #include <console/console.h>
 
 #ifdef NXPBUILD__PHBAL_REG_T1SAMAV3
 #include <nrfx.h>
@@ -11,20 +12,18 @@
 #define PPS_MSG_LEN  4
 // #define ATR_MSG_LEN  28
 
-static nrfx_pwm_t * pwmInst;
-static nrfx_uarte_t * uartInst;
-static nrfx_uarte_config_t uarteCfg;
-
-// static uint32_t uartBaudrate;
+static nrfx_pwm_t * g_pwmInst;
+static nrfx_uarte_t * g_uartInst;
+static uint32_t g_uartBaudrate;
 
 static uint8_t uarte_RX_data [PHBAL_REG_T1SAMAV3_MAX_APDU_LEN + PHBAL_REG_T1SAMAV3_HEADER_LEN + PHBAL_REG_T1SAMAV3_LRC_LEN];
 static uint8_t ppsMsg[PPS_MSG_LEN] = {0xff, 0x11, 0x01, 0xef};
 
-// volatile int loop = 1;
 
-phbalReg_T1SamAV3_error_t phbalReg_T1SamAV3_ISO7816_init (void)
+static phbalReg_T1SamAV3_error_t phbalReg_T1SamAV3_ISO7816_init (void)
 {
 	nrfx_err_t error;
+	uint8_t e = 0;
 	//PWM configuration
 	nrfx_pwm_config_t pwmCfg = {
 		.output_pins = {
@@ -40,7 +39,25 @@ phbalReg_T1SamAV3_error_t phbalReg_T1SamAV3_ISO7816_init (void)
 		.load_mode = NRF_PWM_LOAD_COMMON,
 		.step_mode = NRF_PWM_STEP_AUTO
 	};
-	error = nrfx_pwm_init(pwmInst, &pwmCfg, NULL, NULL);
+
+	//initialize UARTE for reading
+	//configuring UART for reading the ATR after power cycling the board
+	/* Only pin connected Rx to receive info from SAM, 4800 bit/s, */
+	nrfx_uarte_config_t uarteCfg = {
+		.pseltxd            = MYNEWT_VAL(MF4SAM3_ONB_IO1),
+		.pselrxd            = MYNEWT_VAL(MF4SAM3_ONB_IO1),
+		.pselcts            = NRF_UARTE_PSEL_DISCONNECTED,
+		.pselrts            = NRF_UARTE_PSEL_DISCONNECTED,
+		.p_context          = NULL,
+		.baudrate           = g_uartBaudrate,
+		.interrupt_priority = NRFX_UARTE_DEFAULT_CONFIG_IRQ_PRIORITY,
+		.hal_cfg.hwfc       = NRF_UARTE_HWFC_DISABLED,
+		.hal_cfg.parity     = NRF_UARTE_PARITY_INCLUDED,
+		.hal_cfg.stop		= NRF_UARTE_STOP_TWO,
+		.hal_cfg.paritytype	= NRF_UARTE_PARITYTYPE_EVEN,
+	};
+
+	error = nrfx_pwm_init(g_pwmInst, &pwmCfg, NULL, NULL);
 	if(error != NRFX_SUCCESS)
 		return PHBAL_REG_T1SAMAV3_ISO7816_CLK_INVALID_INIT;
 
@@ -53,22 +70,7 @@ phbalReg_T1SamAV3_error_t phbalReg_T1SamAV3_ISO7816_init (void)
 		.end_delay       		= 0
 	};
 
-	//initialize UARTE for reading
-	//configuring UART for reading the ATR after power cycling the board
-	/* Only pin connected Rx to receive info from SAM, 4800 bit/s, */
-	uarteCfg.pseltxd            = MYNEWT_VAL(MF4SAM3_ONB_IO1);
-	uarteCfg.pselrxd            = MYNEWT_VAL(MF4SAM3_ONB_IO1);
-	uarteCfg.pselcts            = NRF_UARTE_PSEL_DISCONNECTED;
-	uarteCfg.pselrts            = NRF_UARTE_PSEL_DISCONNECTED;
-	uarteCfg.p_context          = NULL;
-	uarteCfg.baudrate           = NRF_UARTE_BAUDRATE_4800;
-	uarteCfg.interrupt_priority = NRFX_UARTE_DEFAULT_CONFIG_IRQ_PRIORITY;
-	uarteCfg.hal_cfg.hwfc       = NRF_UARTE_HWFC_DISABLED;
-	uarteCfg.hal_cfg.parity     = NRF_UARTE_PARITY_INCLUDED;
-	uarteCfg.hal_cfg.stop		= NRF_UARTE_STOP_TWO;
-	uarteCfg.hal_cfg.paritytype	= NRF_UARTE_PARITYTYPE_EVEN;
-
-	error = nrfx_uarte_init(uartInst, &uarteCfg, NULL);
+	error = nrfx_uarte_init(g_uartInst, &uarteCfg, NULL);
 	if(error != NRFX_SUCCESS){
 		if(error == NRFX_ERROR_INVALID_STATE)
 			return PHBAL_REG_T1SAMAV3_ISO7816_UART_INVALID_INIT;
@@ -77,28 +79,27 @@ phbalReg_T1SamAV3_error_t phbalReg_T1SamAV3_ISO7816_init (void)
 	}
 
 	/* Start PWM based clock */
-	error = nrfx_pwm_simple_playback(pwmInst, &pwmSequence, 1, NRFX_PWM_FLAG_LOOP);
+	error = nrfx_pwm_simple_playback(g_pwmInst, &pwmSequence, 1, NRFX_PWM_FLAG_LOOP);
 	assert(error == 0);
 
 	/* Transceive PPS */
 	os_time_delay(10);
-	nrfx_uarte_tx(uartInst, ppsMsg, PPS_MSG_LEN);
-	nrfx_uarte_rx(uartInst, uarte_RX_data, PPS_MSG_LEN);
-	nrfx_uarte_rx_abort(uartInst);
+	nrfx_uarte_tx(g_uartInst, ppsMsg, PPS_MSG_LEN);
+	nrfx_uarte_rx(g_uartInst, uarte_RX_data, PPS_MSG_LEN);
+	nrfx_uarte_rx_abort(g_uartInst);
 
-	uint8_t e = 0;
-	console_printf("\n %s: PPS exchange response: 0x ", __func__);
+	PN5180_LOG_INFO("%s: PPS exchange response: 0x ", __func__);
 	for(int i=0; i<PPS_MSG_LEN; i++){
-		console_printf("%02X ", uarte_RX_data[i]);
+		PN5180_LOG_INFO("%02X ", uarte_RX_data[i]);
 		if(uarte_RX_data[i] != ppsMsg[i]) {
 			e ++;
 		}
 	}
 
 	if(e == 0) {
-		console_printf("\n %s: PPS exchange is correct \n", __func__);
+		PN5180_LOG_INFO("%s: PPS exchange is correct\n", __func__);
 	} else {
-		console_printf("\n %s: Error in PPS exchange \n", __func__);
+		PN5180_LOG_INFO("%s: Error in PPS exchange\n", __func__);
 		return PHBAL_REG_T1SAMAV3_ISO7816_UART_INVALID_INIT;
 	}
 
@@ -106,15 +107,15 @@ phbalReg_T1SamAV3_error_t phbalReg_T1SamAV3_ISO7816_init (void)
 }
 
 phbalReg_T1SamAV3_error_t phbalReg_T1SamAV3_ISO7816_uinit (void){
-	nrfx_uarte_uninit(uartInst);
-	nrfx_pwm_uninit(pwmInst);
+	nrfx_uarte_uninit(g_uartInst);
+	nrfx_pwm_uninit(g_pwmInst);
 	return PHBAL_REG_T1SAMAV3_SUCCESS;
 }
 
 phbalReg_T1SamAV3_error_t phbalReg_T1SamAV3_ISO7816_snd_blocking(void *data, uint16_t len){
 	nrfx_err_t error;
 
-	error = nrfx_uarte_tx(uartInst, (uint8_t *)data, len);
+	error = nrfx_uarte_tx(g_uartInst, (uint8_t *)data, len);
 
 	switch(error){
 	case NRFX_ERROR_BUSY:
@@ -137,13 +138,14 @@ phbalReg_T1SamAV3_error_t phbalReg_T1SamAV3_ISO7816_rcv_blocking(void *data, uin
 	nrfx_err_t error = NRFX_SUCCESS;
 	*received_bytes = 0;
 
-	error = nrfx_uarte_rx(uartInst, data, expected_bytes);
+	error = nrfx_uarte_rx(g_uartInst, data, expected_bytes);
 
-	console_printf("\n %s: Reading UART error %lX \n",__func__, nrfx_uarte_errorsrc_get(uartInst));
-	console_printf("\n %s: Read bytes: 0x ", __func__);
-	for(int i=0; i<expected_bytes ; i++)
-		console_printf("%02X ", ((uint8_t *)data)[i]);
-	console_printf("\n ");
+	PN5180_LOG_ERROR("%s: Reading UART error %lX \n",__func__, nrfx_uarte_errorsrc_get(g_uartInst));
+	PN5180_LOG_INFO("%s: Read bytes: 0x ", __func__);
+	for(int i=0; i<expected_bytes ; i++) {
+		PN5180_LOG_INFO("%02X ", ((uint8_t *)data)[i]);
+	}
+	PN5180_LOG_INFO("\n");
 
 	switch (error){
 	case NRFX_SUCCESS:
@@ -175,10 +177,10 @@ nrfx_uarte_rx_flush(nrfx_uarte_t const * p_instance)
 }
 
 static void phbalReg_T1SamAV3_ISO7816_flush_rx(void) {
-	nrfx_uarte_rx_abort(uartInst);
-	while(!nrfx_uarte_rx_ready(uartInst));
-	nrfx_uarte_rx_flush(uartInst);
-	while(!nrfx_uarte_rx_ready(uartInst));
+	nrfx_uarte_rx_abort(g_uartInst);
+	while(!nrfx_uarte_rx_ready(g_uartInst));
+	nrfx_uarte_rx_flush(g_uartInst);
+	while(!nrfx_uarte_rx_ready(g_uartInst));
 }
 
 phbalReg_T1SamAV3_error_t phbalReg_T1SamAV3_ISO7816_transceive_blocking(void *data, uint16_t txLen, uint16_t *received_bytes){
@@ -190,7 +192,7 @@ phbalReg_T1SamAV3_error_t phbalReg_T1SamAV3_ISO7816_transceive_blocking(void *da
 	uint16_t read_bytes = 0;
 
 	//Transmit data
-	while(!nrfx_uarte_rx_ready(uartInst));
+	while(!nrfx_uarte_rx_ready(g_uartInst));
 
 	error = phbalReg_T1SamAV3_ISO7816_snd_blocking(data, txLen);
 	if (error != PHBAL_REG_T1SAMAV3_SUCCESS) {
@@ -215,7 +217,7 @@ phbalReg_T1SamAV3_error_t phbalReg_T1SamAV3_ISO7816_transceive_blocking(void *da
 			retry = 0;
 		} else if (read_bytes == 0) {
 			// Make as many as PHBAL_REG_T1SAMAV3_MAX_UART_READ_RETRIES consecutive attempts where 0 bytes can be read from the SAM
-			console_printf("UARTE rcv error : %04lx\n", error);
+			PN5180_LOG_ERROR("UARTE rcv error : %04lx\n", error);
 			retry++;
 		}
 
@@ -242,9 +244,9 @@ phStatus_t phbalReg_T1SamAV3_tml_ISO7816_init(
 	uint32_t baudRate
 )
 {
-	pwmInst = pwmDrv;
-	uartInst = uarteDrv;
-	// uartBaudrate = baudRate;
+	g_pwmInst = pwmDrv;
+	g_uartInst = uarteDrv;
+	g_uartBaudrate = baudRate;
 
 	tml->init = phbalReg_T1SamAV3_ISO7816_init;
 	tml->uninit = phbalReg_T1SamAV3_ISO7816_uinit;

@@ -7,20 +7,12 @@
 #include <nxp_nfc/ph_RefDefs.h>
 #include <nxp_nfc/phTools.h>
 #include <nxp_nfc/phhalHw_SamAv3_Cmd.h>
-
+#include <nxp_nfc/phNfcLib.h>
 #include "phhalHw_SamAv3.h"
 #include "phhalHw_SamAv3_utils.h"
 #include "nxp_nfc/BoardSelection.h"
 #include <console/console.h>
 #include <assert.h>
-
-#include <nrfx/nrfx.h>
-#include <nrfx/drivers/include/nrfx_timer.h>
-#include <nrfx/drivers/include/nrfx_pwm.h>
-#include <nrfx/drivers/include/nrfx_uarte.h>
-
-static nrfx_pwm_t phhalHw_samAv3_Pwm_Inst = NRFX_PWM_INSTANCE(2);
-static nrfx_uarte_t phhalHw_samAv3_Uarte_Inst = NRFX_UARTE_INSTANCE(3);
 
 /* Default shadow for ISO14443-3A Mode */
 static const uint16_t PH_MEMLOC_CONST_ROM wSamAV3_DefaultShadow_I14443a[][2] =
@@ -36,21 +28,38 @@ static const uint16_t PH_MEMLOC_CONST_ROM wSamAV3_DefaultShadow_I14443a[][2] =
     {PHHAL_HW_CONFIG_ASK100,                PH_ON}
 };
 
-int samAV3_create_ISO7816_dev(struct samAV3* samAV3, const char *name)
+int samAV3_create_ISO7816_dev(struct os_dev *odev, void *arg)
 {
-	int rs = 0;
+	assert(odev);
+	(void)(arg);
+
+	int rc;
+	struct mf4sam3 *dev;
+	struct samAV3 *itf;
+
+	dev = (struct mf4sam3 *)odev;
+	itf = dev->sam_itf;
+
+	itf->hal_params = (phhalHw_SamAV3_DataParams_t *) phNfcLib_GetDataParams(
+		PH_COMP_HAL | PHHAL_HW_SAMAV3_ID);
+	assert(itf->hal_params);
+
+	itf->bal_params = (phbalReg_T1SamAV3_DataParams_t *) phNfcLib_GetDataParams(
+		PH_COMP_BAL | PHBAL_REG_T1SAMAV3_ID);
+	assert(itf->bal_params);
+
 	//Initialize GPIOs
-	rs = hal_gpio_init_out(MYNEWT_VAL(MF4SAM3_ONB_RST), 1); //configure reset status for SAM AV3, active LOW
-	rs = hal_gpio_init_out(MYNEWT_VAL(MF4SAM3_ONB_EN), 0); //disable I2C communication with SAM AV3
-	rs = hal_gpio_init_in(MYNEWT_VAL(MF4SAM3_ONB_IO1), HAL_GPIO_PULL_UP); //configuration data as an input with pull up resistor
-	assert(rs == 0);
+	rc = hal_gpio_init_out(MYNEWT_VAL(MF4SAM3_ONB_RST), 1); //configure reset status for SAM AV3, active LOW
+	rc = hal_gpio_init_out(MYNEWT_VAL(MF4SAM3_ONB_EN), 0); //disable I2C communication with SAM AV3
+	rc = hal_gpio_init_in(MYNEWT_VAL(MF4SAM3_ONB_IO1), HAL_GPIO_PULL_UP); //configuration data as an input with pull up resistor
+	assert(rc == 0);
 	//Initialize TML
-	rs = phbalReg_T1SamAV3_tml_ISO7816_init(samAV3->tml, &phhalHw_samAv3_Pwm_Inst, &phhalHw_samAv3_Uarte_Inst, NRF_UARTE_BAUDRATE_4800);
-	assert(rs == PH_ERR_SUCCESS);
+	rc = phbalReg_T1SamAV3_tml_ISO7816_init(itf->tml, &dev->pwm_dev, &dev->uart_dev, dev->uart_baud);
+	assert(rc == PH_ERR_SUCCESS);
 	//Initialized BAL
-	samAV3->bal_params->wId = PH_COMP_BAL | PHBAL_REG_T1SAMAV3_ID;
-	rs = phbalReg_Init(samAV3->bal_params, sizeof(phbalReg_T1SamAV3_DataParams_t), samAV3->tml);
-	assert(rs == PH_ADD_COMPCODE(PH_ERR_SUCCESS, PH_COMP_BAL));
+	itf->bal_params->wId = PH_COMP_BAL | PHBAL_REG_T1SAMAV3_ID;
+	rc = phbalReg_Init(itf->bal_params, sizeof(phbalReg_T1SamAV3_DataParams_t), itf->tml);
+	assert(rc == PH_ADD_COMPCODE(PH_ERR_SUCCESS, PH_COMP_BAL));
 
 	return 0;
 }
@@ -1665,14 +1674,14 @@ phStatus_t phhalHw_SamAV3_MfcAuthenticateKeyNo(phhalHw_SamAV3_DataParams_t * pDa
 }
 
 void phhalHw_SamAV3_WarmReset(void){
-	console_printf("\n %s: Start warm reset. Set RST to 0\n", __func__);
+	PN5180_LOG_INFO("%s: Start warm reset. Set RST to 0\n", __func__);
 	hal_gpio_write(MYNEWT_VAL(MF4SAM3_ONB_RST), 0);
 	//delay 50ms
 	os_time_t ticks;
 	if(OS_EINVAL != os_time_ms_to_ticks(50, &ticks))
 		os_time_delay(ticks);
 	//remove reset status
-	console_printf("\n %s: Start warm reset. Set RST to 1\n", __func__);
+	PN5180_LOG_INFO("%s: Start warm reset. Set RST to 1\n", __func__);
 	hal_gpio_write(MYNEWT_VAL(MF4SAM3_ONB_RST), 1);
 }
 

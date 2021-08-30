@@ -18,12 +18,12 @@
 #define PHBAL_REG_T1SAMAV3_SE_TO_HD_NAD 		0x00
 #define PHBAL_REG_T1SAMAV3__M_BIT 				0x20
 
-#define PHBAL_REG_T1SAMAV3__DFLT_ISFC	254
-#define PHBAL_REG_T1SAMAV3__DFLT_MPOT	100
-#define PHBAL_REG_T1SAMAV3__DFLT_SEGT	1 //10
+#define PHBAL_REG_T1SAMAV3__DFLT_ISFC			254
+#define PHBAL_REG_T1SAMAV3__DFLT_MPOT			100
+#define PHBAL_REG_T1SAMAV3__DFLT_SEGT			1 //10
 
-#define PHBAL_REG_T1SAMAV3__MIN_MPOT		1 //5
-#define PHBAL_REG_T1SAMAV3__MIN_SEGT		1
+#define PHBAL_REG_T1SAMAV3__MIN_MPOT			1 //5
+#define PHBAL_REG_T1SAMAV3__MIN_SEGT			1
 
 #define PHBAL_REG_T1SAMAV3_RBLOCK_ACK			0x0
 #define PHBAL_REG_T1SAMAV3_RBLOCK_LRC_ERR		0x1
@@ -97,7 +97,7 @@ static phbalReg_T1SamAV3_error_t phbalReg_T1SamAV3_transceive(
 		uint16_t inf_len
 )
 {
-	console_printf("\n %s: Transceiving data\n", __func__);
+	PN5180_LOG_INFO("%s: Transceiving data\n", __func__);
 	phbalReg_T1SamAV3_error_t err = PHBAL_REG_T1SAMAV3_SUCCESS;
 	uint8_t *ptr = ctx->block;
 	uint16_t lrc;
@@ -119,23 +119,25 @@ static phbalReg_T1SamAV3_error_t phbalReg_T1SamAV3_transceive(
 
 	*ptr++ = lrc & 0xff;
 
-	console_printf("\n %s: Sending:\n 0x ", __func__);
-	for(uint16_t i=0; i< (ptr - ctx->block); i++)
-		console_printf("%02X ", ctx->block[i]);
-	console_printf("\n");
+	PN5180_LOG_INFO("%s: Sending:\n 0x ", __func__);
+	for(uint16_t i=0; i< (ptr - ctx->block); i++) {
+		PN5180_LOG_INFO("%02X ", ctx->block[i]);
+	}
+	PN5180_LOG_INFO("\n");
 
 	if ((err = ctx->tml->transceive(ctx->block, ptr - ctx->block, &resp_len)) != PHBAL_REG_T1SAMAV3_SUCCESS) {
-		console_printf("\n %s: Error transceiving data: %lX \n 0x ", __func__, err);
+		PN5180_LOG_ERROR("%s: Error transceiving data: %lX \n 0x ", __func__, err);
 		phbalReg_T1SamAV3_seq(ctx);
 		PHBAL_REG_T1SAMAV3__SEGT_DELAY(ctx);
 		goto exit;
 	}
 
 	// Check packet integrity
-	console_printf("\n %s: Received APDU: \n 0x ", __func__);
-	for(uint16_t i=0; i< resp_len; i++)
-		console_printf("%02X ", ctx->block[i]);
-	console_printf("\n");
+	PN5180_LOG_INFO("%s: Received APDU: \n 0x ", __func__);
+	for(uint16_t i=0; i< resp_len; i++) {
+		PN5180_LOG_INFO("%02X ", ctx->block[i]);
+	}
+	PN5180_LOG_INFO("\n");
 
 
 	/* NAD */
@@ -187,11 +189,11 @@ phStatus_t phbalReg_T1SamAV3_Exchange(
     *pRxLength = 0;
     memset(ctx->block, 0x00, sizeof(ctx->block));
 
-    console_printf("\n %s: Starting APDU transmission\n", __func__);
+    PN5180_LOG_INFO("%s: Starting APDU transmission\n", __func__);
     pcb = phbalReg_T1SamAV3_seq(ctx) << 6;
 	err = phbalReg_T1SamAV3_transceive(ctx, pcb, pTxBuffer, wTxLength);
 	if (err != PHBAL_REG_T1SAMAV3_SUCCESS) {
-		console_printf("\n %s: Error during transceive %lX \n", __func__, err);
+		PN5180_LOG_ERROR("%s: Error during transceive %lX \n", __func__, err);
 		goto exit;
 	}
 
@@ -200,10 +202,11 @@ phStatus_t phbalReg_T1SamAV3_Exchange(
 		pRxBuffer[i] = ctx->block[3+i];
 
 
-	console_printf("\n %s: Received DATA: \n 0x ", __func__);
-	for(uint16_t i=0; i< *pRxLength; i++)
-		console_printf("%02X ", pRxBuffer[i]);
-	console_printf("\n");
+	PN5180_LOG_INFO("%s: Received DATA: \n 0x ", __func__);
+	for(uint16_t i=0; i< *pRxLength; i++) {
+		PN5180_LOG_INFO("%02X ", pRxBuffer[i]);
+	}
+	PN5180_LOG_INFO("\n");
 
 exit:
 	if(err == PHBAL_REG_T1SAMAV3_SUCCESS)

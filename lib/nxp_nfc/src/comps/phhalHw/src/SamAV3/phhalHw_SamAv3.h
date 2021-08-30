@@ -7,6 +7,11 @@
 #include <hal/hal_uart.h>
 #include "../../../phbalReg/src/T1SamAV3/phbalReg_ISO7816.h"
 
+#include <nrfx/nrfx.h>
+#include <nrfx/drivers/include/nrfx_timer.h>
+#include <nrfx/drivers/include/nrfx_pwm.h>
+#include <nrfx/drivers/include/nrfx_uarte.h>
+
 #ifdef NXPBUILD__PHHAL_HW_SAMAV3
 
 #define PHHAL_HW_SAMAV3_MAX_TIMER_FREQ_16MHz 			16000000
@@ -64,14 +69,26 @@ phStatus_t phhalHw_SamAV3_MfcAuthenticateKeyNo(phhalHw_SamAV3_DataParams_t * pDa
 
 void phhalHw_SamAV3_WarmReset(void);
 
-struct samAV3{
+struct samAV3 {
 //  struct hal_uart uart_node;
 	phbalReg_T1SamAV3_DataParams_t *bal_params;
 	phhalHw_SamAV3_DataParams_t *hal_params;
 	phbalReg_T1SamAV3_tml_t *tml;
 };
 
-int samAV3_create_ISO7816_dev(struct samAV3* samAV3, const char *name);
+struct mf4sam3 {
+  struct os_dev dev;
+  /* Interface to SAMAV3 driver */
+  struct samAV3 *sam_itf;
+  /* PWM struct */
+  nrfx_pwm_t pwm_dev;
+  /* UART struct */
+  nrfx_uarte_t uart_dev;
+  /* UART baud rate */
+  uint32_t uart_baud;
+};
+
+int samAV3_create_ISO7816_dev(struct os_dev *odev, void *arg);
 
 #endif /*NXPBUILD__PHHAL_HW_SAMAV3*/
 #endif /* PHHALHW_PN5180_H */

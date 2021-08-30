@@ -292,10 +292,11 @@ phStatus_t phhalHw_SamAV3_Cmd_7816Exchange(phhalHw_SamAV3_DataParams_t * pDataPa
         }
     }
 
-    console_printf("\n%s: Call to phbalReg_Exchange with this data: \n 0x ", __func__);
-    for(uint8_t i = wTxStartPosTmp; i<(wTxStartPosTmp + wTxLengthTmp); i++)
-    	console_printf("%02X ", pTxBuffer[i]);
-    console_printf("\n");
+    PN5180_LOG_INFO("\n%s: Call to phbalReg_Exchange with this data: \n 0x ", __func__);
+    for(uint8_t i = wTxStartPosTmp; i<(wTxStartPosTmp + wTxLengthTmp); i++) {
+    	PN5180_LOG_INFO("%02X ", pTxBuffer[i]);
+    }
+    PN5180_LOG_INFO("\n");
 
     /* Perform command exchange */
     status = phbalReg_Exchange(
@@ -523,10 +524,11 @@ phStatus_t phhalHw_SamAV3_Cmd_SAM_LockUnlock(phhalHw_SamAV3_DataParams_t * pData
 	aCmdBuf[PHHAL_HW_SAMAV3_ISO7816_LC_POS] = bLcLen;
 
 	/* Buffer the command information to exchange buffer and exchange the bufferred information to Sam hardware. */
-	console_printf("\n %s: Send to Exchange: 0x ", __func__);
-	for(int i=0; i<(bLcLen + PHHAL_HW_SAMAV3_ISO7816_HEADER_LE_LENGTH) ; i++)
-		console_printf("%02X ", aCmdBuf[i]);
-	console_printf("\n ");
+	PN5180_LOG_INFO("\n %s: Send to Exchange: 0x ", __func__);
+	for(int i=0; i<(bLcLen + PHHAL_HW_SAMAV3_ISO7816_HEADER_LE_LENGTH) ; i++) {
+		PN5180_LOG_INFO("%02X ", aCmdBuf[i]);
+    }
+	PN5180_LOG_INFO("\n ");
 
 	wStatus = phhalHw_SamAV3_Cmd_7816Exchange(
 		pDataParams,
@@ -543,10 +545,11 @@ phStatus_t phhalHw_SamAV3_Cmd_SAM_LockUnlock(phhalHw_SamAV3_DataParams_t * pData
 //	pResponse = &r[0];
 //	wStatus = (PH_COMP_HAL | PHHAL_HW_SAMAV3_ERR_OK_CHAINING_ACTIVE);
 
-	console_printf("\n %s: Response: 0x ", __func__);
-	for(int i=0; i<14 ; i++)
-		console_printf("%02X ", pResponse[i]);
-	console_printf("\n ");
+	PN5180_LOG_INFO("\n %s: Response: 0x ", __func__);
+	for(int i = 0; i < 14 ; i++) {
+		PN5180_LOG_INFO("%02X ", pResponse[i]);
+    }
+	PN5180_LOG_INFO("\n ");
 
 	/* Reset P1 information byte to default value in command buffer. */
 	aCmdBuf[PHHAL_HW_SAMAV3_ISO7816_P1_POS] = 0;
@@ -592,19 +595,19 @@ phStatus_t phhalHw_SamAV3_Cmd_SAM_LockUnlock(phhalHw_SamAV3_DataParams_t * pData
 	aCmdBuf[PHHAL_HW_SAMAV3_ISO7816_LC_POS] = bMacLen /* MAC */ + 12/* RND1 */ ;
 
 	/* Buffer the command information to exchange buffer. */
-//	console_printf("\n %s: Send to phhalHw_SamAV3_Cmd_7816Exchange: 0x ", __func__);
+//	PN5180_LOG_INFO("\n %s: Send to phhalHw_SamAV3_Cmd_7816Exchange: 0x ", __func__);
 //	for(int i=0; i< 5 ; i++)
-//		console_printf("%02X ", aCmdBuf[i]);
-//	console_printf("  ");
+//		PN5180_LOG_INFO("%02X ", aCmdBuf[i]);
+//	PN5180_LOG_INFO("  ");
 //	for(int i=0; i< bMacLen ; i++)
-//		console_printf("%02X ", aMac[i]);
-//	console_printf("  ");
+//		PN5180_LOG_INFO("%02X ", aMac[i]);
+//	PN5180_LOG_INFO("  ");
 //	for(int i=0; i< 12 ; i++)
-//		console_printf("%02X ", aRnd1[i]);
-//	console_printf("  ");
+//		PN5180_LOG_INFO("%02X ", aRnd1[i]);
+//	PN5180_LOG_INFO("  ");
 //	for(int i=0; i< 1; i++)
-//		console_printf("%02X ", gaDefaultLe[i]);
-//	console_printf("\n ");
+//		PN5180_LOG_INFO("%02X ", gaDefaultLe[i]);
+//	PN5180_LOG_INFO("\n ");
 
 	PH_CHECK_SUCCESS_FCT(wStatus, phhalHw_SamAV3_Cmd_7816Exchange(
 		pDataParams,
@@ -1131,10 +1134,11 @@ phStatus_t phhalHw_SamAV3_Cmd_SAM_GetVersion(phhalHw_SamAV3_DataParams_t * pData
 	aCmdBuf[PHHAL_HW_SAMAV3_ISO7816_P2_POS]			= PHHAL_HW_SAMAV3_ISO7816_DEFAULT_P2_BYTE;
 	aCmdBuf[PHHAL_HW_SAMAV3_ISO7816_LE_NO_LC_POS]	= PHHAL_HW_SAMAV3_ISO7816_DEFAULT_LE_BYTE;
 
-    console_printf("\n%s: Call to phhalHw_SamAV3_Cmd_7816Exchange with this data: \n 0x ", __func__);
-    for(uint8_t i = PHHAL_HW_SAMAV3_ISO7816_CLA_POS; i<(PHHAL_HW_SAMAV3_ISO7816_CLA_POS + PHHAL_HW_SAMAV3_ISO7816_HEADER_LENGTH); i++)
-    	console_printf("%02X ", aCmdBuf[i]);
-    console_printf("\n ");
+    PN5180_LOG_INFO("\n%s: Call to phhalHw_SamAV3_Cmd_7816Exchange with this data: \n 0x ", __func__);
+    for(uint8_t i = PHHAL_HW_SAMAV3_ISO7816_CLA_POS; i<(PHHAL_HW_SAMAV3_ISO7816_CLA_POS + PHHAL_HW_SAMAV3_ISO7816_HEADER_LENGTH); i++) {
+    	PN5180_LOG_INFO("%02X ", aCmdBuf[i]);
+    }
+    PN5180_LOG_INFO("\n ");
 
 	/* Exchange the command information to Sam hardware. */
 	PH_CHECK_SUCCESS_FCT(wStatus, phhalHw_SamAV3_Cmd_7816Exchange(
