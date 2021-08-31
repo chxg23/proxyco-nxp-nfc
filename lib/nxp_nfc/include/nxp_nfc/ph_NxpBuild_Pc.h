@@ -183,7 +183,7 @@
 #define NXPBUILD__PHAL_MFDF_SW                  /**< Software MIFARE DESFire contactless IC */
 #define NXPBUILD__PHAL_MFDFEVX_SW               /**< Software MIFARE DESFire EVx contactless IC */
 #define NXPBUILD__PHAL_MFDFEVX_NDA              /**< MIFARE DESFire EVx build macro for IP Protection */
-#define NXPBUILD__PHAL_MFDFEVX_SAM_NONX       /**< Sam NonX MIFARE DESFire EVx */
+#define NXPBUILD__PHAL_MFDFEVX_SAM_NONX         /**< Sam NonX MIFARE DESFire EVx */
 //#define NXPBUILD__PHAL_MFDFEVX_SAM_X          /**< Sam X-Mode MIFARE DESFire EVx */
 
 /* AL MIFARE MATCH components */

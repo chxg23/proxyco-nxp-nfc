@@ -62,18 +62,6 @@ syscfg.defs:
         description: 'Minimum level for PN5180 logs'
         value: 1
 
-    SAMAV3_HAL_TIMER:
-        description: 'Set the HAL timer to use with SAM AV3 for guard time'
-        value: 2
-        restrictions:
-            - '((TIMER_0 && (SAMAV3_HAL_TIMER == 0)) || (TIMER_1 && (SAMAV3_HAL_TIMER == 1)) ||
-                (TIMER_2 && (SAMAV3_HAL_TIMER == 2)) || (TIMER_3 && (SAMAV3_HAL_TIMER == 3)) ||
-                (TIMER_4 && (SAMAV3_HAL_TIMER == 4)) || (TIMER_5 && (SAMAV3_HAL_TIMER == 5)))'
-
-    SAMAV3_HAL_TIMER_ACTIVATION_FREQ:
-        description: 'Set the SAM AV3 HAL timer frequency'
-        value: 2000000
-
     SAMAV3_PWM:
         description: 'PWM definition to be used for SAM AV3 CLK generation'
         value:
@@ -92,12 +80,8 @@ syscfg.defs:
         description: '16MHz clock cycles to get 1.778MHz clk signal'
         value: 9
 
-    SAMAV3_PWM_CH:
-        description: 'Set PWM channel to be used for the SAM AV3 CLK signal'
-        value: 0
-
     SAMAV3_PWM_DUTY_CYCLE:
-        description: 'duty cycle value to get a 55% in the 1.778MHz clk signal'
+        description: 'Duty cycle value to get a 55% in the 1.778MHz clk signal'
         value: 5
 
     SAMAV3_UART:

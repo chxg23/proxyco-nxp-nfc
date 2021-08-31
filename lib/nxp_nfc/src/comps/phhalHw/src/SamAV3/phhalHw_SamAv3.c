@@ -14,13 +14,16 @@
 #include <console/console.h>
 #include <assert.h>
 
+/* Warm reset delay in ms */
+#define WARM_RESET_DELAY (50)
+
 /* Default shadow for ISO14443-3A Mode */
 static const uint16_t PH_MEMLOC_CONST_ROM wSamAV3_DefaultShadow_I14443a[][2] =
 {
     {PHHAL_HW_CONFIG_PARITY,                PH_ON},
     {PHHAL_HW_CONFIG_TXCRC,                 PH_OFF},
     {PHHAL_HW_CONFIG_RXCRC,                 PH_OFF},
-    {PHHAL_HW_CONFIG_RXWAIT_US,             0x0008}, //equivalent in us to 8 etu
+    {PHHAL_HW_CONFIG_RXWAIT_US,             0x0008}, /* Equivalent in us to 8 etu */
     {PHHAL_HW_CONFIG_TXDATARATE_FRAMING,    PHHAL_HW_RF_DATARATE_106},
     {PHHAL_HW_CONFIG_RXDATARATE_FRAMING,    PHHAL_HW_RF_DATARATE_106},
     {PHHAL_HW_CONFIG_TIMEOUT_VALUE_US,      PHHAL_HW_SAMAV3_DEFAULT_TIMEOUT},
@@ -48,15 +51,22 @@ int samAV3_create_ISO7816_dev(struct os_dev *odev, void *arg)
 		PH_COMP_BAL | PHBAL_REG_T1SAMAV3_ID);
 	assert(itf->bal_params);
 
-	//Initialize GPIOs
-	rc = hal_gpio_init_out(MYNEWT_VAL(MF4SAM3_ONB_RST), 1); //configure reset status for SAM AV3, active LOW
-	rc = hal_gpio_init_out(MYNEWT_VAL(MF4SAM3_ONB_EN), 0); //disable I2C communication with SAM AV3
-	rc = hal_gpio_init_in(MYNEWT_VAL(MF4SAM3_ONB_IO1), HAL_GPIO_PULL_UP); //configuration data as an input with pull up resistor
+	/* Initialize GPIOs */
+	/* Configure reset status for SAM AV3, active LOW */
+	rc = hal_gpio_init_out(MYNEWT_VAL(MF4SAM3_ONB_RST), 1);
 	assert(rc == 0);
-	//Initialize TML
+	/* Disable I2C communication with SAM AV3, we will use UART */
+	rc = hal_gpio_init_out(MYNEWT_VAL(MF4SAM3_ONB_EN), 0);
+	assert(rc == 0);
+	/* Configuration data as an input with pull up resistor */
+	rc = hal_gpio_init_in(MYNEWT_VAL(MF4SAM3_ONB_IO1), HAL_GPIO_PULL_UP);
+	assert(rc == 0);
+
+	/* Initialize TML */
 	rc = phbalReg_T1SamAV3_tml_ISO7816_init(itf->tml, &dev->pwm_dev, &dev->uart_dev, dev->uart_baud);
 	assert(rc == PH_ERR_SUCCESS);
-	//Initialized BAL
+
+	/* Initialized BAL */
 	itf->bal_params->wId = PH_COMP_BAL | PHBAL_REG_T1SAMAV3_ID;
 	rc = phbalReg_Init(itf->bal_params, sizeof(phbalReg_T1SamAV3_DataParams_t), itf->tml);
 	assert(rc == PH_ADD_COMPCODE(PH_ERR_SUCCESS, PH_COMP_BAL));
@@ -1667,20 +1677,24 @@ phStatus_t phhalHw_SamAV3_MfcAuthenticateKeyNo(phhalHw_SamAV3_DataParams_t * pDa
 		PH_CHECK_SUCCESS_FCT(wStatus, phhalHw_SamAV3_Cmd_SAM_AuthenticateMIFARE_Part2(pDataParams, pResponse, (uint8_t) wRespLen));
 	}
 
-	/* MIAFRE Crypto is now enabled */
+	/* MIFARE Crypto is now enabled */
 	pDataParams->bMifareCryptoDisabled = PH_OFF;
 
 	return PH_ADD_COMPCODE(PH_ERR_SUCCESS, PH_COMP_HAL);
 }
 
-void phhalHw_SamAV3_WarmReset(void){
+void phhalHw_SamAV3_WarmReset(void)
+{
+	os_time_t ticks;
+
 	PN5180_LOG_INFO("%s: Start warm reset. Set RST to 0\n", __func__);
 	hal_gpio_write(MYNEWT_VAL(MF4SAM3_ONB_RST), 0);
-	//delay 50ms
-	os_time_t ticks;
-	if(OS_EINVAL != os_time_ms_to_ticks(50, &ticks))
+
+	if(OS_EINVAL != os_time_ms_to_ticks(WARM_RESET_DELAY, &ticks)) {
 		os_time_delay(ticks);
-	//remove reset status
+    }
+
+	/* Remove reset status */
 	PN5180_LOG_INFO("%s: Start warm reset. Set RST to 1\n", __func__);
 	hal_gpio_write(MYNEWT_VAL(MF4SAM3_ONB_RST), 1);
 }

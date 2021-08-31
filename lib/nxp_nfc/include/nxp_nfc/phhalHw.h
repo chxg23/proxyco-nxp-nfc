@@ -1484,7 +1484,7 @@ phStatus_t phhalHw_Pn5190_SetListenParameters(
 
 /** \name Operation modes */
 /** @{ */
-#define PHHAL_HW_SAMAV3_OPMODE_NON_X                          0x00  /**< Non-X operation mode. */
+#define PHHAL_HW_SAMAV3_OPMODE_NON_X                            0x00  /**< Non-X operation mode. */
 #define PHHAL_HW_SAMAV3_OPMODE_X_RC523                          0x01  /**< X-Mode operation (using Rc523). */
 #define PHHAL_HW_SAMAV3_OPMODE_X_RC663                          0x02  /**< X-Mode operation (using Rc663). */
 /** @} */
