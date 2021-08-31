@@ -34,9 +34,6 @@
 /* Status header */
 #include <ph_Status.h>
 
-/* Driver Header */
-#include <phDriver.h>
-
 /* NFCLIB Header */
 #include <phNfcLib.h>
 

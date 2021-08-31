@@ -89,6 +89,8 @@ static phCryptoSym_Sw_DataParams_t sCryptoEnc;
 static phCryptoSym_Sw_DataParams_t sCryptoMac;
 static phCryptoSym_Sw_DataParams_t sCryptoSymRng;
 static phCryptoRng_Sw_DataParams_t sCryptoRng;
+static phCryptoSym_Sw_DataParams_t sPLUpload_CryptoEnc;
+static phCryptoSym_Sw_DataParams_t sPLUpload_CryptoMAC;
 
 static phTMIUtils_t                sTMI;
 static phalVca_Sw_DataParams_t     sVca;

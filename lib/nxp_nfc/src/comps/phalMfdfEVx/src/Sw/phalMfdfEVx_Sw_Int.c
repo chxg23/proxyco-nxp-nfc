@@ -28,7 +28,7 @@
 #ifdef NXPBUILD__PHAL_MFDFEVX_SW
 
 #include "../phalMfdfEVx_Int.h"
-#include "nxp_nfc/phalMfdfEVx_Sw_Int.h"
+#include "phalMfdfEVx_Sw_Int.h"
 
 phStatus_t
 phalMfdfEVx_Sw_Int_CardExchange(phalMfdfEVx_Sw_DataParams_t *pDataParams,

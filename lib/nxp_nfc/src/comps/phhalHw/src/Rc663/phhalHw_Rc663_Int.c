@@ -27,7 +27,6 @@
 #include <nxp_nfc/phNxpNfcRdLib_Config.h>
 
 #ifdef NXPBUILD__PHHAL_HW_RC663
-#include <nxp_nfc/phDriver.h>
 #include "nxp_nfc/BoardSelection.h"
 
 #include "phhalHw_Rc663.h"

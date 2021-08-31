@@ -77,9 +77,6 @@
 #define NXPBUILD__PHHAL_HW_TARGET                       /**< Dependency checking if target mode macros should be enabled */
 #endif
 
-#define NXPBUILD__PHHAL_HW_SAMAV3						/**< Include component SAM AV3 */
-#define NXPBUILD__PHBAL_REG_T1SAMAV3
-
 /*********************************************************************************************************************************************************************************/
 
 #define NXPBUILD__PHPAL_I14443P3A_SW                        /**< PAL ISO 14443-3A SW Component is included. */

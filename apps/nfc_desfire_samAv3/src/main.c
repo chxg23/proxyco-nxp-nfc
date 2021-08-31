@@ -120,9 +120,7 @@ static uint8_t aHostAuthKey[16] = {
 **   Static Defines
 *******************************************************************************/
 static uint16_t bSavePollTechCfg;
-static struct samAV3 g_samAV3;
-static phbalReg_T1SamAV3_tml_t g_tml;
-
+static struct samAV3 *g_sam_itf;
 /*******************************************************************************
 **   Function Declarations
 *******************************************************************************/
@@ -174,7 +172,7 @@ Desfire_Detection_Demo(void *pDataParams)
   for (uint8_t i = 0; i < 2; i++) {
     os_time_delay(50);
     console_printf("\n starting SAM AV3 GetVersion, loop iteration %d: \n", i + 1);
-    phhalHw_SamAV3_Cmd_SAM_GetVersion(g_samAV3.hal_params, versionBuffer, &versionLen);
+    phhalHw_SamAV3_Cmd_SAM_GetVersion(g_sam_itf->hal_params, versionBuffer, &versionLen);
 
     console_printf("\n SAM AV3 GetVersion response: \n 0x ");
     for (uint8_t i = 0; i < versionLen; i++) {
@@ -186,7 +184,7 @@ Desfire_Detection_Demo(void *pDataParams)
       unlocked = 1;
       os_time_delay(10);
       console_printf(" Activating SAM AV3 \n");
-      status = phhalHw_SamAV3_Cmd_SAM_LockUnlock(g_samAV3.hal_params,
+      status = phhalHw_SamAV3_Cmd_SAM_LockUnlock(g_sam_itf->hal_params,
               PHHAL_HW_SAMAV3_CMD_SAM_LOCK_UNLOCK_TYPE_ACTIVATE_SAM,
               SAM_MASTER_KEY_ADDRESS, SAM_MASTER_KEY_VERSION, SAM_MASTER_KEY, 0, 0, 0, 0);
       CHECK_STATUS(status);
@@ -198,7 +196,7 @@ Desfire_Detection_Demo(void *pDataParams)
 
   //Check if the DES keys are stored in the SAM
   console_printf("\n\n\n SAM AV3 Get DES keys\n");
-  status = phhalHw_SamAV3_Cmd_SAM_GetKeyEntry(g_samAV3.hal_params, SAM_DES_KEY_ENTRY,
+  status = phhalHw_SamAV3_Cmd_SAM_GetKeyEntry(g_sam_itf->hal_params, SAM_DES_KEY_ENTRY,
           PHHAL_HW_SAMAV3_CMD_SAM_GET_KEY_ENTRY_KEY_ENTRY_NEW,
           aKeyEntry, &bKeyEntryLen);
   CHECK_STATUS(status);
@@ -217,7 +215,7 @@ Desfire_Detection_Demo(void *pDataParams)
 
       //Authenticate Host before to write new keys
       console_printf("\n SAM AV3 host authentication\n");
-      status = phhalHw_SamAV3_Cmd_SAM_AuthenticateHost(g_samAV3.hal_params,
+      status = phhalHw_SamAV3_Cmd_SAM_AuthenticateHost(g_sam_itf->hal_params,
               PHHAL_HW_SAMAV3_CMD_SAM_AUTHENTICATE_HOST_MODE_FULL,
               SAM_MASTER_KEY_ADDRESS, SAM_MASTER_KEY_VERSION, SAM_MASTER_KEY, 0);
       CHECK_STATUS(status);
@@ -244,7 +242,7 @@ Desfire_Detection_Demo(void *pDataParams)
       aKeyEntry[62] = 0x00;		/* KeyNoAEK */
       aKeyEntry[63] = 0x00;		/* KeyVAEK */
 
-      status = phhalHw_SamAV3_Cmd_SAM_ChangeKeyEntry(g_samAV3.hal_params, SAM_DES_KEY_ENTRY,
+      status = phhalHw_SamAV3_Cmd_SAM_ChangeKeyEntry(g_sam_itf->hal_params, SAM_DES_KEY_ENTRY,
               (PHHAL_HW_SAMAV3_CMD_SAM_CHANGE_KEY_ENTRY_UPDATE_KEY_VA |
                   PHHAL_HW_SAMAV3_CMD_SAM_CHANGE_KEY_ENTRY_UPDATE_KEY_VB |
                   PHHAL_HW_SAMAV3_CMD_SAM_CHANGE_KEY_ENTRY_UPDATE_KEY_VC |
@@ -258,7 +256,7 @@ Desfire_Detection_Demo(void *pDataParams)
       //Check if the DES keys are stored in the SAM
       console_printf("\n SAM AV3 Get DES keys\n");
       memset(aKeyEntry, 0x00, sizeof(aKeyEntry));
-      status = phhalHw_SamAV3_Cmd_SAM_GetKeyEntry(g_samAV3.hal_params, SAM_DES_KEY_ENTRY,
+      status = phhalHw_SamAV3_Cmd_SAM_GetKeyEntry(g_sam_itf->hal_params, SAM_DES_KEY_ENTRY,
               PHHAL_HW_SAMAV3_CMD_SAM_GET_KEY_ENTRY_KEY_ENTRY_NEW,
               aKeyEntry, &bKeyEntryLen);
       CHECK_STATUS(status);
@@ -284,7 +282,7 @@ Desfire_Detection_Demo(void *pDataParams)
   //Check if the AES keys are stored in the SAM
   console_printf("\n\n\n SAM AV3 Get AES keys\n");
   memset(aKeyEntry, 0x00, sizeof(aKeyEntry));
-  status = phhalHw_SamAV3_Cmd_SAM_GetKeyEntry(g_samAV3.hal_params, SAM_AES_KEY_ENTRY,
+  status = phhalHw_SamAV3_Cmd_SAM_GetKeyEntry(g_sam_itf->hal_params, SAM_AES_KEY_ENTRY,
           PHHAL_HW_SAMAV3_CMD_SAM_GET_KEY_ENTRY_KEY_ENTRY_NEW,
           aKeyEntry, &bKeyEntryLen);
   CHECK_STATUS(status);
@@ -303,7 +301,7 @@ Desfire_Detection_Demo(void *pDataParams)
 
       //Authenticate Host before to write new keys
       console_printf("\n SAM AV3 host authentication\n");
-      status = phhalHw_SamAV3_Cmd_SAM_AuthenticateHost(g_samAV3.hal_params,
+      status = phhalHw_SamAV3_Cmd_SAM_AuthenticateHost(g_sam_itf->hal_params,
               PHHAL_HW_SAMAV3_CMD_SAM_AUTHENTICATE_HOST_MODE_FULL,
               SAM_MASTER_KEY_ADDRESS, SAM_MASTER_KEY_VERSION, SAM_MASTER_KEY, 0);
       CHECK_STATUS(status);
@@ -330,7 +328,7 @@ Desfire_Detection_Demo(void *pDataParams)
       aKeyEntry[62] = 0x00;		/* KeyNoAEK */
       aKeyEntry[63] = 0x00;		/* KeyVAEK */
 
-      status = phhalHw_SamAV3_Cmd_SAM_ChangeKeyEntry(g_samAV3.hal_params, SAM_AES_KEY_ENTRY,
+      status = phhalHw_SamAV3_Cmd_SAM_ChangeKeyEntry(g_sam_itf->hal_params, SAM_AES_KEY_ENTRY,
               (PHHAL_HW_SAMAV3_CMD_SAM_CHANGE_KEY_ENTRY_UPDATE_KEY_VA |
                   PHHAL_HW_SAMAV3_CMD_SAM_CHANGE_KEY_ENTRY_UPDATE_KEY_VB |
                   PHHAL_HW_SAMAV3_CMD_SAM_CHANGE_KEY_ENTRY_UPDATE_KEY_VC |
@@ -344,7 +342,7 @@ Desfire_Detection_Demo(void *pDataParams)
       //Check if the AES keys are stored in the SAM
       console_printf("\n SAM AV3 Get AES keys\n");
       memset(aKeyEntry, 0x00, sizeof(aKeyEntry));
-      status = phhalHw_SamAV3_Cmd_SAM_GetKeyEntry(g_samAV3.hal_params, SAM_AES_KEY_ENTRY,
+      status = phhalHw_SamAV3_Cmd_SAM_GetKeyEntry(g_sam_itf->hal_params, SAM_AES_KEY_ENTRY,
               PHHAL_HW_SAMAV3_CMD_SAM_GET_KEY_ENTRY_KEY_ENTRY_NEW,
               aKeyEntry, &bKeyEntryLen);
       CHECK_STATUS(status);
@@ -737,15 +735,15 @@ main(void)
   phNfcLib_AppContext_t AppContext = {0};
   phStatus_t status 	= PH_ERR_INTERNAL_ERROR;
   phNfcLib_Status_t dwStatus;
-  int rc = 0;
 
   console_printf("\n MIFARE DESFIRE example started: \n");
   /* Initialize packages (see: syscfg.yml). */
   sysinit();
 
   /* Initialize reader component: HAL + BAL*/
-  //pn5180
+  /* pn5180 */
   struct pn5180 *pn5180 = NULL;
+  struct mf4sam3 *mf4sam3 = NULL;
   config_pn5180();
   pn5180 = (struct pn5180 *)os_dev_lookup("pn5180_0");
   assert(pn5180);
@@ -762,20 +760,13 @@ main(void)
     assert(0);
   }
 
-  //SAM AV3
-  g_samAV3.hal_params = (phhalHw_SamAV3_DataParams_t *)  phNfcLib_GetDataParams(
-          PH_COMP_HAL | PHHAL_HW_SAMAV3_ID);
-  if (g_samAV3.hal_params == NULL) {
-    console_printf("\n SAM AV3 HAL Data Params is NULL: \n");
-  }
-  g_samAV3.bal_params = (phbalReg_T1SamAV3_DataParams_t *) phNfcLib_GetDataParams(
-          PH_COMP_BAL | PHBAL_REG_T1SAMAV3_ID);
-  if (g_samAV3.hal_params == NULL) {
-    console_printf("\n SAM AV3 BAL Data Params is NULL: \n");
-  }
-  g_samAV3.tml = &g_tml;
-  rc = samAV3_create_ISO7816_dev(&g_samAV3, "samAV3_0");
-  SYSINIT_PANIC_ASSERT(rc == 0);
+  /* Create SAM AV3 device */
+  mf4sam3_create_dev();
+  mf4sam3 = (struct mf4sam3 *)os_dev_lookup("mf4sam3_0");
+  assert(mf4sam3);
+
+  g_sam_itf = mf4sam3->sam_itf;
+  assert(g_sam_itf);
 
   /* Set the generic pointer */
   pHal = phNfcLib_GetDataParams(PH_COMP_HAL);
@@ -826,7 +817,7 @@ main(void)
 #else
     //Initialize SAM KeyStore with application parameters
     status = phKeyStore_SAMAV3_Init(pKeyStore, sizeof(phKeyStore_SamAV3_DataParams_t),
-            g_samAV3.hal_params);
+            g_sam_itf->hal_params);
     CHECK_SUCCESS(status);
     //Initialize palMfdf initialization is required using a phalMfdf_SamAV3_NonX_DataParams_t
 

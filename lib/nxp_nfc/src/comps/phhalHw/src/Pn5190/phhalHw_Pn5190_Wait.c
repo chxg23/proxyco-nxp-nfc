@@ -26,7 +26,6 @@
 
 #ifndef _WIN32
 #include <nxp_nfc/phOsal.h>
-#include <nxp_nfc/phDriver.h>
 #include <nxp_nfc/phNxpNfcRdLib_Config.h>
 #endif
 #include <nxp_nfc/phhalHw.h>

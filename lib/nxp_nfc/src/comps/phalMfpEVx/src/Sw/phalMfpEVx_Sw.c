@@ -42,10 +42,10 @@
 #ifdef NXPBUILD__PHAL_MFPEVX_SW
 
 #include "../phalMfpEVx_Int.h"
-#include "nxp_nfc/phalMfpEVx_Sw.h"
+#include "phalMfpEVx_Sw.h"
 
 #ifdef NXPBUILD__PHAL_MFPEVX_NDA
-#include "nxp_nfc/phalMfpEVx_Sw_Int.h"
+#include "phalMfpEVx_Sw_Int.h"
 #endif /* NXPBUILD__PHAL_MFPEVX_NDA */
 
 #ifdef NXPBUILD__PHAL_MFPEVX_NDA

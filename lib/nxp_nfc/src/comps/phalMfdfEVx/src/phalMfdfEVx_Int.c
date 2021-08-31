@@ -18,7 +18,7 @@
 #include <string.h>
 #include <nxp_nfc/phpalMifare.h>
 #include <nxp_nfc/phalMfdfEVx.h>
-#include <nxp_nfc/phalMfdfEVx_Int.h>
+#include <comps/phalMfdfEVx/src/phalMfdfEVx_Int.h>
 #include <nxp_nfc/ph_RefDefs.h>
 
 phStatus_t

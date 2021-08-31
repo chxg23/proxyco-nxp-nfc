@@ -32,8 +32,8 @@
 #ifdef NXPBUILD__PHAL_MFDFEVX_SW
 
 #include "../phalMfdfEVx_Int.h"
-#include "nxp_nfc/phalMfdfEVx_Sw.h"
-#include "nxp_nfc/phalMfdfEVx_Sw_Int.h"
+#include "phalMfdfEVx_Sw.h"
+#include "phalMfdfEVx_Sw_Int.h"
 
 /* APP level keys are invalid between 0x0D to 0x21. */
 #define IS_INVALID_APP_KEY(keyNo) ((((keyNo) & 0x7fU) > 0x0DU)     && (((keyNo) & 0x7fU) < 0x21U))
