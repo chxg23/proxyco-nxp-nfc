@@ -33,7 +33,8 @@
 #include "phalI18000p3m3_Sw.h"
 #include "phalI18000p3m3_Sw_Int.h"
 
-phStatus_t phalI18000p3m3_Sw_Init(
+phStatus_t
+phalI18000p3m3_Sw_Init(
     phalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pPalI18000p3m3DataParams
@@ -54,7 +55,8 @@ phStatus_t phalI18000p3m3_Sw_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalI18000p3m3_Sw_Ack(
+phStatus_t
+phalI18000p3m3_Sw_Ack(
     phalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t **ppRxBuffer,
     uint16_t *pRxBitLength
@@ -94,7 +96,8 @@ phStatus_t phalI18000p3m3_Sw_Ack(
   return status;
 }
 
-phStatus_t phalI18000p3m3_Sw_ReqRn(
+phStatus_t
+phalI18000p3m3_Sw_ReqRn(
     phalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t bOption,
     uint8_t **ppRxBuffer
@@ -178,7 +181,8 @@ phStatus_t phalI18000p3m3_Sw_ReqRn(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalI18000p3m3_Sw_Read(
+phStatus_t
+phalI18000p3m3_Sw_Read(
     phalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t bMemBank,
     uint8_t *pWordPtr,
@@ -283,7 +287,8 @@ phStatus_t phalI18000p3m3_Sw_Read(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalI18000p3m3_Sw_Write(
+phStatus_t
+phalI18000p3m3_Sw_Write(
     phalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t bOption,
     uint8_t bMemBank,
@@ -388,7 +393,8 @@ phStatus_t phalI18000p3m3_Sw_Write(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalI18000p3m3_Sw_Kill(
+phStatus_t
+phalI18000p3m3_Sw_Kill(
     phalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t bOption,
     uint8_t *pPassword,
@@ -549,7 +555,8 @@ phStatus_t phalI18000p3m3_Sw_Kill(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalI18000p3m3_Sw_Lock(
+phStatus_t
+phalI18000p3m3_Sw_Lock(
     phalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t *pMask,
     uint8_t *pAction
@@ -620,7 +627,8 @@ phStatus_t phalI18000p3m3_Sw_Lock(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalI18000p3m3_Sw_Access(
+phStatus_t
+phalI18000p3m3_Sw_Access(
     phalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t bOption,
     uint8_t *pPassword
@@ -753,7 +761,8 @@ phStatus_t phalI18000p3m3_Sw_Access(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalI18000p3m3_Sw_BlockWrite(
+phStatus_t
+phalI18000p3m3_Sw_BlockWrite(
     phalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t bMemBank,
     uint8_t *pWordPtr,
@@ -897,7 +906,8 @@ phStatus_t phalI18000p3m3_Sw_BlockWrite(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalI18000p3m3_Sw_BlockErase(
+phStatus_t
+phalI18000p3m3_Sw_BlockErase(
     phalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t bMemBank,
     uint8_t *pWordPtr,
@@ -972,7 +982,8 @@ phStatus_t phalI18000p3m3_Sw_BlockErase(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalI18000p3m3_Sw_BlockPermaLock(
+phStatus_t
+phalI18000p3m3_Sw_BlockPermaLock(
     phalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t bRFU,
     uint8_t bReadLock,
@@ -1156,7 +1167,8 @@ phStatus_t phalI18000p3m3_Sw_BlockPermaLock(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalI18000p3m3_Sw_SetHandle(
+phStatus_t
+phalI18000p3m3_Sw_SetHandle(
     phalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t *pHandle
 )

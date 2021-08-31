@@ -32,7 +32,8 @@
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phalTop_ReadNdef(
+phStatus_t
+phalTop_ReadNdef(
     void *pDataParams,
     uint8_t *pData,
     uint16_t *pLength
@@ -81,7 +82,8 @@ phStatus_t phalTop_ReadNdef(
   return status;
 }
 
-phStatus_t phalTop_WriteNdef(
+phStatus_t
+phalTop_WriteNdef(
     void *pDataParams,
     uint8_t *pData,
     uint16_t wLength
@@ -127,7 +129,8 @@ phStatus_t phalTop_WriteNdef(
   return status;
 }
 
-phStatus_t phalTop_CheckNdef(
+phStatus_t
+phalTop_CheckNdef(
     void *pDataParams,
     uint8_t *pTagState
 )
@@ -170,7 +173,8 @@ phStatus_t phalTop_CheckNdef(
   return status;
 }
 
-phStatus_t phalTop_Reset(
+phStatus_t
+phalTop_Reset(
     void *pDataParams
 )
 {
@@ -209,7 +213,8 @@ phStatus_t phalTop_Reset(
   return status;
 }
 
-phStatus_t phalTop_SetConfig(
+phStatus_t
+phalTop_SetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -254,7 +259,8 @@ phStatus_t phalTop_SetConfig(
   return status;
 }
 
-phStatus_t phalTop_GetConfig(
+phStatus_t
+phalTop_GetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -300,7 +306,8 @@ phStatus_t phalTop_GetConfig(
   return status;
 }
 
-phStatus_t phalTop_EraseNdef(
+phStatus_t
+phalTop_EraseNdef(
     void *pDataParams
 )
 {
@@ -339,7 +346,8 @@ phStatus_t phalTop_EraseNdef(
   return status;
 }
 
-phStatus_t phalTop_FormatNdef(
+phStatus_t
+phalTop_FormatNdef(
     void *pDataParams
 )
 {
@@ -380,7 +388,8 @@ phStatus_t phalTop_FormatNdef(
 
 #ifdef __DEBUG
 
-phStatus_t phalTop_SetPtr(
+phStatus_t
+phalTop_SetPtr(
     void *pDataParams,
     void *pT1T,
     void *pT2T,

@@ -37,7 +37,8 @@
 /* *****************************************************************************************************************
  * Internal Definitions
  * ***************************************************************************************************************** */
-phStatus_t phacDiscLoop_Sw_DetTechTypeB(
+phStatus_t
+phacDiscLoop_Sw_DetTechTypeB(
     phacDiscLoop_Sw_DataParams_t *pDataParams
 )
 {
@@ -72,7 +73,8 @@ phStatus_t phacDiscLoop_Sw_DetTechTypeB(
 #endif /* NXPBUILD__PHAC_DISCLOOP_TYPEB_TAGS */
 }
 
-phStatus_t phacDiscLoop_Sw_Int_CollisionResolutionB(
+phStatus_t
+phacDiscLoop_Sw_Int_CollisionResolutionB(
     phacDiscLoop_Sw_DataParams_t *pDataParams
 )
 {
@@ -316,7 +318,8 @@ phStatus_t phacDiscLoop_Sw_Int_CollisionResolutionB(
 #endif /* NXPBUILD__PHAC_DISCLOOP_TYPEB_TAGS */
 }
 
-phStatus_t phacDiscLoop_Sw_Int_ActivateB(
+phStatus_t
+phacDiscLoop_Sw_Int_ActivateB(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint8_t bTypeBTagIdx
 )

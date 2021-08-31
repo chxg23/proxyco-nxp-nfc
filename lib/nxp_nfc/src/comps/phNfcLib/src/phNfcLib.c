@@ -77,7 +77,8 @@ static const pphNfcLib_Transmit pTransmit[] = {
   &phNfcLib_ISO_Transmit
 };
 
-static phStatus_t phNfcLib_Config_NFC_Profile(void)
+static phStatus_t
+phNfcLib_Config_NFC_Profile(void)
 {
   /* TODO : NFC Profile coding is yet to be done. */
   phStatus_t wStatus = PH_NFCLIB_STATUS_INVALID_PARAMETER;
@@ -85,7 +86,8 @@ static phStatus_t phNfcLib_Config_NFC_Profile(void)
   return wStatus;
 }
 
-static phStatus_t phNfcLib_Config_EMVCo_Profile(void)
+static phStatus_t
+phNfcLib_Config_EMVCo_Profile(void)
 {
   phStatus_t wStatus = PH_ERR_SUCCESS;
 #ifdef NXPBUILD__PH_NFCLIB_EMVCO
@@ -228,7 +230,8 @@ static phStatus_t phNfcLib_Config_EMVCo_Profile(void)
   return wStatus;
 }
 
-static phStatus_t phNfcLib_Config_ISO_Profile(void)
+static phStatus_t
+phNfcLib_Config_ISO_Profile(void)
 {
   phStatus_t wStatus = PH_ERR_SUCCESS;
 #ifdef  NXPBUILD__PH_NFCLIB_ISO
@@ -513,7 +516,8 @@ static phStatus_t phNfcLib_Config_ISO_Profile(void)
 }
 
 #ifdef NXPBUILD__PH_NFCLIB_EMVCO
-static phStatus_t phNfcLib_EmvcoRfReset(void)
+static phStatus_t
+phNfcLib_EmvcoRfReset(void)
 {
   phStatus_t wStatus = PH_ERR_SUCCESS;
 
@@ -531,7 +535,8 @@ static phStatus_t phNfcLib_EmvcoRfReset(void)
 #endif /* NXPBUILD__PH_NFCLIB_EMVCO */
 
 #ifdef NXPBUILD__PH_NFCLIB_EMVCO
-static phStatus_t phNfcLib_Configure_DiscLoop_EMVCo(uint16_t wTechnologyMask)
+static phStatus_t
+phNfcLib_Configure_DiscLoop_EMVCo(uint16_t wTechnologyMask)
 {
   phStatus_t wStatus = PH_ERR_SUCCESS;
   uint16_t   wPollTech = (PHAC_DISCLOOP_POS_BIT_MASK_A | PHAC_DISCLOOP_POS_BIT_MASK_B);
@@ -585,7 +590,8 @@ static phStatus_t phNfcLib_Configure_DiscLoop_EMVCo(uint16_t wTechnologyMask)
 #endif /* NXPBUILD__PH_NFCLIB_EMVCO*/
 
 #ifdef NXPBUILD__PH_NFCLIB_ISO
-static phStatus_t phNfcLib_Configure_DiscLoop_ISO(uint16_t wTechnologyMask)
+static phStatus_t
+phNfcLib_Configure_DiscLoop_ISO(uint16_t wTechnologyMask)
 {
   phStatus_t wStatus = PH_ERR_SUCCESS;
 
@@ -637,7 +643,8 @@ static phStatus_t phNfcLib_Configure_DiscLoop_ISO(uint16_t wTechnologyMask)
 }
 #endif /* NXPBUILD__PH_NFCLIB_ISO*/
 
-static phStatus_t phNfcLib_Activate_NFC_Profile(uint16_t wTechnologyMask)
+static phStatus_t
+phNfcLib_Activate_NFC_Profile(uint16_t wTechnologyMask)
 {
   /* TODO : NFC Profile coding is yet to be done. */
   phStatus_t wStatus = PH_NFCLIB_STATUS_INVALID_PARAMETER;
@@ -645,7 +652,8 @@ static phStatus_t phNfcLib_Activate_NFC_Profile(uint16_t wTechnologyMask)
   return wStatus;
 }
 
-static phStatus_t phNfcLib_Activate_EMVCo_Profile(uint16_t wTechnologyMask)
+static phStatus_t
+phNfcLib_Activate_EMVCo_Profile(uint16_t wTechnologyMask)
 {
   phStatus_t wtmpStatus = PH_ERR_INTERNAL_ERROR;
 #ifdef NXPBUILD__PH_NFCLIB_EMVCO
@@ -716,7 +724,8 @@ static phStatus_t phNfcLib_Activate_EMVCo_Profile(uint16_t wTechnologyMask)
   return wtmpStatus;
 }
 
-static phStatus_t phNfcLib_Activate_ISO_Profile(uint16_t wTechnologyMask)
+static phStatus_t
+phNfcLib_Activate_ISO_Profile(uint16_t wTechnologyMask)
 {
   phStatus_t wtmpStatus = PH_ERR_INTERNAL_ERROR;
 #ifdef NXPBUILD__PH_NFCLIB_ISO
@@ -996,7 +1005,8 @@ static phStatus_t phNfcLib_Activate_ISO_Profile(uint16_t wTechnologyMask)
 
 }
 
-static phStatus_t phNfcLib_Deactivate_NFC_Profile(void)
+static phStatus_t
+phNfcLib_Deactivate_NFC_Profile(void)
 {
   /* TODO : NFC Profile coding is yet to be done. */
   phStatus_t wStatus = PH_NFCLIB_STATUS_INVALID_PARAMETER;
@@ -1005,7 +1015,8 @@ static phStatus_t phNfcLib_Deactivate_NFC_Profile(void)
 }
 
 #ifdef NXPBUILD__PH_NFCLIB_EMVCO
-static phStatus_t phNfcLib_EMVCo_ConfigureRemoval_Cycle(void)
+static phStatus_t
+phNfcLib_EMVCo_ConfigureRemoval_Cycle(void)
 {
   phStatus_t wStatus  = PH_ERR_INTERNAL_ERROR;
 
@@ -1041,7 +1052,8 @@ static phStatus_t phNfcLib_EMVCo_ConfigureRemoval_Cycle(void)
 }
 #endif /* NXPBUILD__PH_NFCLIB_EMVCO */
 
-static phStatus_t phNfcLib_EMVCo_Removal_Cycle(void)
+static phStatus_t
+phNfcLib_EMVCo_Removal_Cycle(void)
 {
   phStatus_t wStatus  = PH_ERR_INTERNAL_ERROR;
 #ifdef NXPBUILD__PH_NFCLIB_EMVCO
@@ -1104,7 +1116,8 @@ static phStatus_t phNfcLib_EMVCo_Removal_Cycle(void)
   return wStatus;
 }
 
-static phStatus_t phNfcLib_Deactivate_EMVCo_Profile(void)
+static phStatus_t
+phNfcLib_Deactivate_EMVCo_Profile(void)
 {
   phStatus_t wStatus = PH_ERR_SUCCESS;
 #ifdef NXPBUILD__PH_NFCLIB_EMVCO
@@ -1135,7 +1148,8 @@ static phStatus_t phNfcLib_Deactivate_EMVCo_Profile(void)
   return wStatus;
 }
 
-static phStatus_t phNfcLib_Deactivate_ISO_Profile(void)
+static phStatus_t
+phNfcLib_Deactivate_ISO_Profile(void)
 {
   phStatus_t wStatus = PH_NFCLIB_STATUS_INTERNAL_ERROR;
 #ifdef NXPBUILD__PH_NFCLIB_ISO
@@ -1230,7 +1244,8 @@ static phStatus_t phNfcLib_Deactivate_ISO_Profile(void)
   return wStatus;
 }
 
-static phStatus_t  phNfcLib_NFC_Transmit(void *const pTxBuffer, uint16_t wTxBufferLength)
+static phStatus_t
+phNfcLib_NFC_Transmit(void *const pTxBuffer, uint16_t wTxBufferLength)
 {
   /* TODO : NFC Profile coding is yet to be done. */
   phStatus_t wStatus = PH_NFCLIB_STATUS_INVALID_PARAMETER;
@@ -1239,7 +1254,8 @@ static phStatus_t  phNfcLib_NFC_Transmit(void *const pTxBuffer, uint16_t wTxBuff
   return wStatus;
 }
 
-static phStatus_t phNfcLib_EMVCo_Transmit(void *const pTxBuffer, uint16_t wTxBufferLength)
+static phStatus_t
+phNfcLib_EMVCo_Transmit(void *const pTxBuffer, uint16_t wTxBufferLength)
 {
   phStatus_t wStatus = PH_NFCLIB_STATUS_INTERNAL_ERROR;
 #ifdef NXPBUILD__PH_NFCLIB_EMVCO
@@ -1263,7 +1279,8 @@ static phStatus_t phNfcLib_EMVCo_Transmit(void *const pTxBuffer, uint16_t wTxBuf
   return wStatus;
 }
 
-static phStatus_t phNfcLib_ISO_Transmit(void *const pTxBuffer, uint16_t wTxBufferLength)
+static phStatus_t
+phNfcLib_ISO_Transmit(void *const pTxBuffer, uint16_t wTxBufferLength)
 {
   phStatus_t wStatus = PH_NFCLIB_STATUS_INTERNAL_ERROR;
 #ifdef NXPBUILD__PH_NFCLIB_ISO
@@ -1353,7 +1370,8 @@ static phStatus_t phNfcLib_ISO_Transmit(void *const pTxBuffer, uint16_t wTxBuffe
   return wStatus;
 }
 
-phNfcLib_Status_t phNfcLib_SetConfig_Value(
+phNfcLib_Status_t
+phNfcLib_SetConfig_Value(
     uint8_t bConfigTag,
     uint32_t dwValue
 )
@@ -1451,7 +1469,8 @@ phNfcLib_Status_t phNfcLib_SetConfig_Value(
   return dwStatus;
 }
 
-phNfcLib_Status_t phNfcLib_SetConfig(
+phNfcLib_Status_t
+phNfcLib_SetConfig(
     uint8_t bConfigTag,
     const uint8_t *pConfigParam,
     uint16_t wConfigParamLength
@@ -1464,7 +1483,8 @@ phNfcLib_Status_t phNfcLib_SetConfig(
   return dwStatus;
 }
 
-phNfcLib_Status_t phNfcLib_GetConfig(
+phNfcLib_Status_t
+phNfcLib_GetConfig(
     uint8_t bConfigTag,
     uint8_t *pConfigParam,
     uint16_t *pConfigParamLength
@@ -1514,7 +1534,8 @@ phNfcLib_Status_t phNfcLib_GetConfig(
   return dwStatus;
 }
 
-phNfcLib_Status_t phNfcLib_Activate(
+phNfcLib_Status_t
+phNfcLib_Activate(
     uint16_t wTechnologyMask,
     phNfcLib_PeerInfo_t *peerInfo,
     pphNfcLib_ErrCallbck  ErrCallbck
@@ -1585,7 +1606,8 @@ phNfcLib_Status_t phNfcLib_Activate(
   return dwStatus;
 }
 
-phNfcLib_Status_t phNfcLib_Transmit(
+phNfcLib_Status_t
+phNfcLib_Transmit(
     void *const pTxBuffer,
     uint16_t wTxBufferLength
 )
@@ -1642,7 +1664,8 @@ phNfcLib_Status_t phNfcLib_Transmit(
   return dwStatus;
 }
 
-phNfcLib_Status_t phNfcLib_Receive(
+phNfcLib_Status_t
+phNfcLib_Receive(
     uint8_t *const pRxBuffer,
     uint16_t *pNumberOfBytes,
     uint8_t *pMoreDataAvailable
@@ -1703,7 +1726,8 @@ phNfcLib_Status_t phNfcLib_Receive(
   return dwStatus;
 }
 
-phNfcLib_Status_t phNfcLib_Deactivate(
+phNfcLib_Status_t
+phNfcLib_Deactivate(
     uint8_t bDeactivateMode,
     phNfcLib_PeerInfo_t *peerInfo
 )
@@ -1769,7 +1793,8 @@ phNfcLib_Status_t phNfcLib_Deactivate(
   return dwStatus;
 }
 
-phNfcLib_Status_t phNfcLib_AsyncAbort(void)
+phNfcLib_Status_t
+phNfcLib_AsyncAbort(void)
 {
   phStatus_t        wStatus  = PH_ERR_SUCCESS;
   phNfcLib_Status_t dwStatus = PH_NFCLIB_STATUS_INVALID_STATE;

@@ -37,7 +37,8 @@
 
 static void phMemcpy(void *dest, void *src, uint16_t wLength);
 
-phStatus_t phalTop_Sw_Int_LockBlock(
+phStatus_t
+phalTop_Sw_Int_LockBlock(
     phalTop_T5T_t *pT5T,
     uint16_t wBlockNum
 )
@@ -63,7 +64,8 @@ phStatus_t phalTop_Sw_Int_LockBlock(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T5T_Read(
+phStatus_t
+phalTop_Sw_Int_T5T_Read(
     phalTop_T5T_t *pT5T,
     uint16_t wBlockNum,
     uint16_t wNumberOfBlocks,
@@ -152,7 +154,8 @@ phStatus_t phalTop_Sw_Int_T5T_Read(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T5T_Write(
+phStatus_t
+phalTop_Sw_Int_T5T_Write(
     phalTop_T5T_t *pT5T,
     uint16_t wBlockNum,
     uint8_t *pRxBuffer,
@@ -184,7 +187,8 @@ phStatus_t phalTop_Sw_Int_T5T_Write(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T5T_ClearState(
+phStatus_t
+phalTop_Sw_Int_T5T_ClearState(
     phalTop_Sw_DataParams_t *pDataParams,
     phalTop_T5T_t *pT5T
 )
@@ -202,7 +206,8 @@ phStatus_t phalTop_Sw_Int_T5T_ClearState(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T5T_SetReadOnly(
+phStatus_t
+phalTop_Sw_Int_T5T_SetReadOnly(
     phalTop_Sw_DataParams_t *pDataParams
 )
 {
@@ -269,7 +274,8 @@ phStatus_t phalTop_Sw_Int_T5T_SetReadOnly(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T5T_DetectTlvBlocks(
+phStatus_t
+phalTop_Sw_Int_T5T_DetectTlvBlocks(
     phalTop_Sw_DataParams_t *pDataParams,
     phalTop_T5T_t *pT5T
 )
@@ -413,7 +419,8 @@ phStatus_t phalTop_Sw_Int_T5T_DetectTlvBlocks(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T5T_CheckNdef(
+phStatus_t
+phalTop_Sw_Int_T5T_CheckNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pTagState
 )
@@ -529,7 +536,8 @@ phStatus_t phalTop_Sw_Int_T5T_CheckNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T5T_EraseNdef(
+phStatus_t
+phalTop_Sw_Int_T5T_EraseNdef(
     phalTop_Sw_DataParams_t *pDataParams
 )
 {
@@ -586,7 +594,8 @@ phStatus_t phalTop_Sw_Int_T5T_EraseNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T5T_FormatNdef(
+phStatus_t
+phalTop_Sw_Int_T5T_FormatNdef(
     phalTop_Sw_DataParams_t *pDataParams
 )
 {
@@ -761,7 +770,8 @@ phStatus_t phalTop_Sw_Int_T5T_FormatNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T5T_ReadNdef(
+phStatus_t
+phalTop_Sw_Int_T5T_ReadNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pData,
     uint16_t *pLength
@@ -857,7 +867,8 @@ phStatus_t phalTop_Sw_Int_T5T_ReadNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T5T_WriteNdef(
+phStatus_t
+phalTop_Sw_Int_T5T_WriteNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pData,
     uint16_t wLength
@@ -1187,7 +1198,8 @@ phStatus_t phalTop_Sw_Int_T5T_WriteNdef(
   return PH_ERR_SUCCESS;
 
 }
-phStatus_t phalTop_Sw_Int_T5T_CalculateTLVLength(
+phStatus_t
+phalTop_Sw_Int_T5T_CalculateTLVLength(
     phalTop_T5T_t *pT5T,
     uint16_t wIndex,
     uint8_t *pLength,
@@ -1259,7 +1271,8 @@ phStatus_t phalTop_Sw_Int_T5T_CalculateTLVLength(
   return PH_ERR_SUCCESS;
 }
 
-static void phMemcpy(void *dest, void *src, uint16_t wLength)
+static void
+phMemcpy(void *dest, void *src, uint16_t wLength)
 {
   uint32_t dwCpyLength = 0;
   dwCpyLength = wLength;

@@ -46,7 +46,8 @@ static const uint8_t bLlcpLtoTimerName[] = "LLCPLtoTimer";
 * Private Functions
 * ***************************************************************************************************************** */
 
-phStatus_t phlnLlcp_Timers_InitSym(phlnLlcp_Sw_DataParams_t *pDataParams,
+phStatus_t
+phlnLlcp_Timers_InitSym(phlnLlcp_Sw_DataParams_t *pDataParams,
     phlnLlcpTimer_notify_function_t pCB)
 {
   phStatus_t bRetstatus = PH_ERR_INTERNAL_ERROR;
@@ -68,7 +69,8 @@ phStatus_t phlnLlcp_Timers_InitSym(phlnLlcp_Sw_DataParams_t *pDataParams,
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phlnLlcp_Timers_InitLto(phlnLlcp_Sw_DataParams_t *pDataParams,
+phStatus_t
+phlnLlcp_Timers_InitLto(phlnLlcp_Sw_DataParams_t *pDataParams,
     phlnLlcpTimer_notify_function_t pCB)
 {
   phStatus_t bRetstatus = PH_ERR_INTERNAL_ERROR;
@@ -90,7 +92,8 @@ phStatus_t phlnLlcp_Timers_InitLto(phlnLlcp_Sw_DataParams_t *pDataParams,
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phlnLlcp_Timers_DeInitSym(phlnLlcp_Sw_DataParams_t *pDataParams)
+phStatus_t
+phlnLlcp_Timers_DeInitSym(phlnLlcp_Sw_DataParams_t *pDataParams)
 {
   phStatus_t wStatus = PH_ERR_SUCCESS;
   if (pDataParams->LlcpSymTimerObj.TimerHandle != NULL) {
@@ -100,7 +103,8 @@ phStatus_t phlnLlcp_Timers_DeInitSym(phlnLlcp_Sw_DataParams_t *pDataParams)
   return (phStatus_t)wStatus;
 }
 
-phStatus_t phlnLlcp_Timers_DeInitLto(phlnLlcp_Sw_DataParams_t *pDataParams)
+phStatus_t
+phlnLlcp_Timers_DeInitLto(phlnLlcp_Sw_DataParams_t *pDataParams)
 {
   phStatus_t wStatus = PH_ERR_SUCCESS;
   if (pDataParams->LlcpLtoTimerObj.TimerHandle != NULL) {
@@ -110,7 +114,8 @@ phStatus_t phlnLlcp_Timers_DeInitLto(phlnLlcp_Sw_DataParams_t *pDataParams)
   return (phStatus_t)wStatus;
 }
 
-phStatus_t phlnLlcp_Timers_StopLto(phlnLlcp_Sw_DataParams_t *pDataParams)
+phStatus_t
+phlnLlcp_Timers_StopLto(phlnLlcp_Sw_DataParams_t *pDataParams)
 {
   phStatus_t wStatus = PH_ERR_SUCCESS;
 
@@ -120,7 +125,8 @@ phStatus_t phlnLlcp_Timers_StopLto(phlnLlcp_Sw_DataParams_t *pDataParams)
   return (phStatus_t)wStatus;
 }
 
-phStatus_t phlnLlcp_Timers_SymStart(phlnLlcp_Sw_DataParams_t *pDataParams)
+phStatus_t
+phlnLlcp_Timers_SymStart(phlnLlcp_Sw_DataParams_t *pDataParams)
 {
   phStatus_t wStatus;
 
@@ -133,7 +139,8 @@ phStatus_t phlnLlcp_Timers_SymStart(phlnLlcp_Sw_DataParams_t *pDataParams)
   return phOsal_TimerStart(&pDataParams->LlcpSymTimerObj.TimerHandle);
 }
 
-phStatus_t phlnLlcp_Timers_LtoStart(phlnLlcp_Sw_DataParams_t *pDataParams)
+phStatus_t
+phlnLlcp_Timers_LtoStart(phlnLlcp_Sw_DataParams_t *pDataParams)
 {
   phStatus_t wStatus;
 
@@ -146,7 +153,8 @@ phStatus_t phlnLlcp_Timers_LtoStart(phlnLlcp_Sw_DataParams_t *pDataParams)
   return phOsal_TimerStart(&pDataParams->LlcpLtoTimerObj.TimerHandle);
 }
 
-void phlnLlcp_SymTimerCallback(void *arg)
+void
+phlnLlcp_SymTimerCallback(void *arg)
 {
   /* Check whether the DTS message q mutex is available */
   /* If available post a SymmPdu to the DataToBeSent */
@@ -167,7 +175,8 @@ void phlnLlcp_SymTimerCallback(void *arg)
   (void)arg;
 }
 
-void phlnLlcp_LtoTimerCallback(void *arg)
+void
+phlnLlcp_LtoTimerCallback(void *arg)
 {
   (void)arg;
 

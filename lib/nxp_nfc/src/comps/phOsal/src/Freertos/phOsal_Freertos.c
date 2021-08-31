@@ -79,7 +79,8 @@ static phStatus_t phOsal_TimeToTick(phOsal_TimerPeriodObj_t timerObj, TickType_t
 /* *****************************************************************************************************************
  * Public Functions
  * ***************************************************************************************************************** */
-phStatus_t phOsal_Init(void)
+phStatus_t
+phOsal_Init(void)
 {
 #ifdef PHOSAL_FREERTOS_STATIC_MEM_ALLOCATION
 
@@ -101,7 +102,8 @@ phStatus_t phOsal_Init(void)
   return PH_OSAL_SUCCESS;
 }
 
-phStatus_t phOsal_ThreadCreate(phOsal_Thread_t *threadHandle, const pphOsal_ThreadObj_t threadObj,
+phStatus_t
+phOsal_ThreadCreate(phOsal_Thread_t *threadHandle, const pphOsal_ThreadObj_t threadObj,
     pphOsal_StartFunc_t startFunc, void *arg)
 {
   BaseType_t status;
@@ -173,7 +175,8 @@ phStatus_t phOsal_ThreadCreate(phOsal_Thread_t *threadHandle, const pphOsal_Thre
   return PH_OSAL_SUCCESS;
 }
 
-phStatus_t phOsal_ThreadChangePrio(phOsal_Thread_t *threadHandle, uint32_t newPrio)
+phStatus_t
+phOsal_ThreadChangePrio(phOsal_Thread_t *threadHandle, uint32_t newPrio)
 {
   if ((threadHandle == NULL) || ((*threadHandle) == NULL)) {
     return (PH_OSAL_ERROR | PH_COMP_OSAL);
@@ -184,7 +187,8 @@ phStatus_t phOsal_ThreadChangePrio(phOsal_Thread_t *threadHandle, uint32_t newPr
   return PH_OSAL_SUCCESS;
 }
 
-phStatus_t phOsal_ThreadExit(void)
+phStatus_t
+phOsal_ThreadExit(void)
 {
   TaskHandle_t threadHandle;
 
@@ -193,7 +197,8 @@ phStatus_t phOsal_ThreadExit(void)
   return phOsal_ThreadDelete(threadHandle);
 }
 
-phStatus_t phOsal_ThreadDelete(phOsal_Thread_t *threadHandle)
+phStatus_t
+phOsal_ThreadDelete(phOsal_Thread_t *threadHandle)
 {
   vTaskDelete(*threadHandle);
 
@@ -208,14 +213,16 @@ phStatus_t phOsal_ThreadDelete(phOsal_Thread_t *threadHandle)
   return PH_OSAL_SUCCESS;
 }
 
-phStatus_t phOsal_ThreadDelay(phOsal_Ticks_t ticksToSleep)
+phStatus_t
+phOsal_ThreadDelay(phOsal_Ticks_t ticksToSleep)
 {
   vTaskDelay(ticksToSleep);
 
   return PH_OSAL_SUCCESS;
 }
 
-phStatus_t phOsal_EventCreate(phOsal_Event_t *eventHandle, pphOsal_EventObj_t eventObj)
+phStatus_t
+phOsal_EventCreate(phOsal_Event_t *eventHandle, pphOsal_EventObj_t eventObj)
 {
 #ifdef PHOSAL_FREERTOS_STATIC_MEM_ALLOCATION
 
@@ -251,7 +258,8 @@ phStatus_t phOsal_EventCreate(phOsal_Event_t *eventHandle, pphOsal_EventObj_t ev
   return PH_OSAL_SUCCESS;
 }
 
-phStatus_t phOsal_EventPend(volatile phOsal_Event_t *eventHandle, phOsal_EventOpt_t options,
+phStatus_t
+phOsal_EventPend(volatile phOsal_Event_t *eventHandle, phOsal_EventOpt_t options,
     phOsal_Ticks_t ticksToWait, phOsal_EventBits_t FlagsToWait, phOsal_EventBits_t *pCurrFlags)
 {
   phOsal_EventBits_t CurrentFlags;
@@ -283,7 +291,8 @@ phStatus_t phOsal_EventPend(volatile phOsal_Event_t *eventHandle, phOsal_EventOp
   }
 }
 
-phStatus_t phOsal_EventPost(phOsal_Event_t *eventHandle, phOsal_EventOpt_t options,
+phStatus_t
+phOsal_EventPost(phOsal_Event_t *eventHandle, phOsal_EventOpt_t options,
     phOsal_EventBits_t FlagsToPost, phOsal_EventBits_t *pCurrFlags)
 {
   BaseType_t HigherPriorityTaskWoken;
@@ -311,7 +320,8 @@ phStatus_t phOsal_EventPost(phOsal_Event_t *eventHandle, phOsal_EventOpt_t optio
   return PH_OSAL_SUCCESS;
 }
 
-phStatus_t phOsal_EventClear(phOsal_Event_t *eventHandle, phOsal_EventOpt_t options,
+phStatus_t
+phOsal_EventClear(phOsal_Event_t *eventHandle, phOsal_EventOpt_t options,
     phOsal_EventBits_t FlagsToClear, phOsal_EventBits_t *pCurrFlags)
 {
   phOsal_EventBits_t CurrentFlags;
@@ -333,7 +343,8 @@ phStatus_t phOsal_EventClear(phOsal_Event_t *eventHandle, phOsal_EventOpt_t opti
   return PH_OSAL_SUCCESS;
 }
 
-phStatus_t phOsal_EventGet(phOsal_Event_t *eventHandle, phOsal_EventBits_t *pCurrFlags)
+phStatus_t
+phOsal_EventGet(phOsal_Event_t *eventHandle, phOsal_EventBits_t *pCurrFlags)
 {
   phOsal_EventBits_t CurrentFlags;
 
@@ -349,7 +360,8 @@ phStatus_t phOsal_EventGet(phOsal_Event_t *eventHandle, phOsal_EventBits_t *pCur
   return PH_OSAL_SUCCESS;
 }
 
-phStatus_t phOsal_EventDelete(phOsal_Event_t *eventHandle)
+phStatus_t
+phOsal_EventDelete(phOsal_Event_t *eventHandle)
 {
   if ((eventHandle == NULL) || ((*eventHandle) == NULL)) {
     return (PH_OSAL_ERROR | PH_COMP_OSAL);
@@ -368,7 +380,8 @@ phStatus_t phOsal_EventDelete(phOsal_Event_t *eventHandle)
   return PH_OSAL_SUCCESS;
 }
 
-phStatus_t phOsal_SemCreate(phOsal_Semaphore_t *semHandle, pphOsal_SemObj_t semObj,
+phStatus_t
+phOsal_SemCreate(phOsal_Semaphore_t *semHandle, pphOsal_SemObj_t semObj,
     phOsal_SemOpt_t opt)
 {
 #ifdef PHOSAL_FREERTOS_STATIC_MEM_ALLOCATION
@@ -423,7 +436,8 @@ phStatus_t phOsal_SemCreate(phOsal_Semaphore_t *semHandle, pphOsal_SemObj_t semO
   return PH_OSAL_SUCCESS;
 }
 
-phStatus_t phOsal_SemPend(phOsal_Semaphore_t *semHandle, phOsal_TimerPeriodObj_t timePeriodToWait)
+phStatus_t
+phOsal_SemPend(phOsal_Semaphore_t *semHandle, phOsal_TimerPeriodObj_t timePeriodToWait)
 {
   BaseType_t HigherPriorityTaskWoken;
   BaseType_t statusTmp;
@@ -455,7 +469,8 @@ phStatus_t phOsal_SemPend(phOsal_Semaphore_t *semHandle, phOsal_TimerPeriodObj_t
   }
 }
 
-phStatus_t phOsal_SemPost(phOsal_Semaphore_t *semHandle, phOsal_SemOpt_t opt)
+phStatus_t
+phOsal_SemPost(phOsal_Semaphore_t *semHandle, phOsal_SemOpt_t opt)
 {
   BaseType_t HigherPriorityTaskWoken;
   BaseType_t statusTmp;
@@ -480,7 +495,8 @@ phStatus_t phOsal_SemPost(phOsal_Semaphore_t *semHandle, phOsal_SemOpt_t opt)
   }
 }
 
-phStatus_t phOsal_SemDelete(phOsal_Semaphore_t *semHandle)
+phStatus_t
+phOsal_SemDelete(phOsal_Semaphore_t *semHandle)
 {
   if ((semHandle == NULL) || ((*semHandle) == NULL)) {
     return (PH_OSAL_ERROR | PH_COMP_OSAL);
@@ -499,7 +515,8 @@ phStatus_t phOsal_SemDelete(phOsal_Semaphore_t *semHandle)
   return PH_OSAL_SUCCESS;
 }
 
-phStatus_t phOsal_MutexCreate(phOsal_Mutex_t *mutexHandle, pphOsal_MutexObj_t mutexObj)
+phStatus_t
+phOsal_MutexCreate(phOsal_Mutex_t *mutexHandle, pphOsal_MutexObj_t mutexObj)
 {
 #ifdef PHOSAL_FREERTOS_STATIC_MEM_ALLOCATION
 
@@ -539,7 +556,8 @@ phStatus_t phOsal_MutexCreate(phOsal_Mutex_t *mutexHandle, pphOsal_MutexObj_t mu
   return PH_OSAL_SUCCESS;
 }
 
-phStatus_t phOsal_MutexLock(phOsal_Mutex_t *mutexHandle, phOsal_TimerPeriodObj_t timePeriodToWait)
+phStatus_t
+phOsal_MutexLock(phOsal_Mutex_t *mutexHandle, phOsal_TimerPeriodObj_t timePeriodToWait)
 {
   if ((mutexHandle == NULL) || ((*mutexHandle) == NULL)) {
     return (PH_OSAL_ERROR | PH_COMP_OSAL);
@@ -552,7 +570,8 @@ phStatus_t phOsal_MutexLock(phOsal_Mutex_t *mutexHandle, phOsal_TimerPeriodObj_t
   }
 }
 
-phStatus_t phOsal_MutexUnLock(phOsal_Mutex_t *mutexHandle)
+phStatus_t
+phOsal_MutexUnLock(phOsal_Mutex_t *mutexHandle)
 {
   if ((mutexHandle == NULL) || ((*mutexHandle) == NULL)) {
     return (PH_OSAL_ERROR | PH_COMP_OSAL);
@@ -565,7 +584,8 @@ phStatus_t phOsal_MutexUnLock(phOsal_Mutex_t *mutexHandle)
   }
 }
 
-phStatus_t phOsal_MutexDelete(phOsal_Mutex_t *mutexHandle)
+phStatus_t
+phOsal_MutexDelete(phOsal_Mutex_t *mutexHandle)
 {
   if ((mutexHandle == NULL) || ((*mutexHandle) == NULL)) {
     return (PH_OSAL_ERROR | PH_COMP_OSAL);
@@ -584,7 +604,8 @@ phStatus_t phOsal_MutexDelete(phOsal_Mutex_t *mutexHandle)
   return PH_OSAL_SUCCESS;
 }
 
-phStatus_t phOsal_TimerCreate(phOsal_Timer_t *timerHandle, pphOsal_TimerObj_t timerObj)
+phStatus_t
+phOsal_TimerCreate(phOsal_Timer_t *timerHandle, pphOsal_TimerObj_t timerObj)
 {
   TickType_t TimerPeriod;
 
@@ -634,7 +655,8 @@ phStatus_t phOsal_TimerCreate(phOsal_Timer_t *timerHandle, pphOsal_TimerObj_t ti
   return PH_OSAL_SUCCESS;
 }
 
-phStatus_t phOsal_TimerStart(phOsal_Timer_t *timerHandle)
+phStatus_t
+phOsal_TimerStart(phOsal_Timer_t *timerHandle)
 {
   BaseType_t statusTmp;
   BaseType_t HigherPriorityTaskWoken;
@@ -655,7 +677,8 @@ phStatus_t phOsal_TimerStart(phOsal_Timer_t *timerHandle)
   }
 }
 
-phStatus_t phOsal_TimerStop(phOsal_Timer_t *timerHandle)
+phStatus_t
+phOsal_TimerStop(phOsal_Timer_t *timerHandle)
 {
   BaseType_t statusTmp;
   BaseType_t HigherPriorityTaskWoken;
@@ -675,7 +698,8 @@ phStatus_t phOsal_TimerStop(phOsal_Timer_t *timerHandle)
   }
 }
 
-phStatus_t phOsal_TimerGetCurrent(phOsal_Timer_t *timerHandle, uint32_t *pdwGetElapsedTime)
+phStatus_t
+phOsal_TimerGetCurrent(phOsal_Timer_t *timerHandle, uint32_t *pdwGetElapsedTime)
 {
 #if tskKERNEL_VERSION_MAJOR >= 9
   *pdwGetElapsedTime = xTimerGetExpiryTime(*timerHandle);
@@ -685,7 +709,8 @@ phStatus_t phOsal_TimerGetCurrent(phOsal_Timer_t *timerHandle, uint32_t *pdwGetE
 #endif
 }
 
-phStatus_t phOsal_TimerModify(phOsal_Timer_t *timerHandle, pphOsal_TimerObj_t timerObj)
+phStatus_t
+phOsal_TimerModify(phOsal_Timer_t *timerHandle, pphOsal_TimerObj_t timerObj)
 {
   BaseType_t statusTmp;
   BaseType_t HigherPriorityTaskWoken;
@@ -709,7 +734,8 @@ phStatus_t phOsal_TimerModify(phOsal_Timer_t *timerHandle, pphOsal_TimerObj_t ti
   }
 }
 
-phStatus_t phOsal_TimerDelete(phOsal_Timer_t *timerHandle)
+phStatus_t
+phOsal_TimerDelete(phOsal_Timer_t *timerHandle)
 {
   if (xTimerDelete(*timerHandle, 0) == pdPASS) {
 
@@ -726,7 +752,8 @@ phStatus_t phOsal_TimerDelete(phOsal_Timer_t *timerHandle)
   }
 }
 
-void phOsal_StartScheduler(void)
+void
+phOsal_StartScheduler(void)
 {
   vTaskStartScheduler();
 }
@@ -735,7 +762,8 @@ void phOsal_StartScheduler(void)
  * ***************************************************************************************************************** */
 #ifdef PHOSAL_FREERTOS_STATIC_MEM_ALLOCATION
 
-static phStatus_t phOsal_FreeRtos_GetFreeIndex(uint32_t *dwFreeIndex, uint32_t dwBitMap,
+static phStatus_t
+phOsal_FreeRtos_GetFreeIndex(uint32_t *dwFreeIndex, uint32_t dwBitMap,
     uint32_t dwMaxLimit)
 {
   phStatus_t status;
@@ -757,7 +785,8 @@ static phStatus_t phOsal_FreeRtos_GetFreeIndex(uint32_t *dwFreeIndex, uint32_t d
 
 #endif /* PHOSAL_FREERTOS_STATIC_MEM_ALLOCATION */
 
-static phStatus_t phOsal_TimeToTick(phOsal_TimerPeriodObj_t timerObj, TickType_t *TimerPeriod)
+static phStatus_t
+phOsal_TimeToTick(phOsal_TimerPeriodObj_t timerObj, TickType_t *TimerPeriod)
 {
   phStatus_t status;
 

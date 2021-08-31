@@ -32,7 +32,8 @@
 
 #include "phalTop_Sw_Int_T2T.h"
 
-phStatus_t phalTop_Sw_Int_T2T_SetReadOnly(
+phStatus_t
+phalTop_Sw_Int_T2T_SetReadOnly(
     phalTop_Sw_DataParams_t *pDataParams
 )
 {
@@ -207,7 +208,8 @@ phStatus_t phalTop_Sw_Int_T2T_SetReadOnly(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T2T_ClearState(
+phStatus_t
+phalTop_Sw_Int_T2T_ClearState(
     phalTop_Sw_DataParams_t *pDataParams,
     phalTop_T2T_t *pT2T
 )
@@ -229,7 +231,8 @@ phStatus_t phalTop_Sw_Int_T2T_ClearState(
 }
 
 /* Finds the count and position of memory, lock and NDEF TLV */
-phStatus_t phalTop_Sw_Int_T2T_DetectTlvBlocks(
+phStatus_t
+phalTop_Sw_Int_T2T_DetectTlvBlocks(
     phalTop_Sw_DataParams_t *pDataParams,
     phalTop_T2T_t *pT2T
 )
@@ -411,7 +414,8 @@ phStatus_t phalTop_Sw_Int_T2T_DetectTlvBlocks(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T2T_CheckNdef(
+phStatus_t
+phalTop_Sw_Int_T2T_CheckNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pTagState
 )
@@ -507,7 +511,8 @@ phStatus_t phalTop_Sw_Int_T2T_CheckNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T2T_EraseNdef(
+phStatus_t
+phalTop_Sw_Int_T2T_EraseNdef(
     phalTop_Sw_DataParams_t *pDataParams
 )
 {
@@ -563,7 +568,8 @@ phStatus_t phalTop_Sw_Int_T2T_EraseNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T2T_FormatNdef(
+phStatus_t
+phalTop_Sw_Int_T2T_FormatNdef(
     phalTop_Sw_DataParams_t *pDataParams
 )
 {
@@ -743,7 +749,8 @@ phStatus_t phalTop_Sw_Int_T2T_FormatNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T2T_Read(
+phStatus_t
+phalTop_Sw_Int_T2T_Read(
     phalTop_T2T_t *pT2T,
     uint16_t wOffset,
     uint8_t *pData
@@ -771,7 +778,8 @@ phStatus_t phalTop_Sw_Int_T2T_Read(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T2T_Write(
+phStatus_t
+phalTop_Sw_Int_T2T_Write(
     phalTop_T2T_t *pT2T,
     uint16_t wOffset,
     uint8_t *pData
@@ -799,7 +807,8 @@ phStatus_t phalTop_Sw_Int_T2T_Write(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T2T_ReadNdef(
+phStatus_t
+phalTop_Sw_Int_T2T_ReadNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pData,
     uint16_t *pLength
@@ -881,7 +890,8 @@ phStatus_t phalTop_Sw_Int_T2T_ReadNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T2T_WriteNdef(
+phStatus_t
+phalTop_Sw_Int_T2T_WriteNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pData,
     uint16_t wLength
@@ -1065,7 +1075,8 @@ phStatus_t phalTop_Sw_Int_T2T_WriteNdef(
   return PH_ERR_SUCCESS;
 }
 
-uint8_t phalTop_Sw_Int_T2T_CheckLockReservedOtp(
+uint8_t
+phalTop_Sw_Int_T2T_CheckLockReservedOtp(
     phalTop_T2T_t *pT2T,
     uint16_t wIndex
 )
@@ -1079,7 +1090,8 @@ uint8_t phalTop_Sw_Int_T2T_CheckLockReservedOtp(
   }
 }
 
-void phalTop_Sw_Int_T2T_CalculateMaxNdefSize(
+void
+phalTop_Sw_Int_T2T_CalculateMaxNdefSize(
     phalTop_Sw_DataParams_t *pDataParams,
     phalTop_T2T_t *pT2T
 )
@@ -1134,7 +1146,8 @@ void phalTop_Sw_Int_T2T_CalculateMaxNdefSize(
   }
 }
 
-phStatus_t phalTop_Sw_Int_T2T_UpdateLockReservedOtp(
+phStatus_t
+phalTop_Sw_Int_T2T_UpdateLockReservedOtp(
     phalTop_T2T_t *pT2T,
     uint8_t bSector
 )

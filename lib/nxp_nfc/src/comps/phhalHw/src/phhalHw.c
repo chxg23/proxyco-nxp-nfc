@@ -46,7 +46,8 @@
 #ifdef NXPBUILD__PHHAL_HW
 
 #ifndef _WIN32
-phStatus_t phhalHw_Nfc_IC_Init(
+phStatus_t
+phhalHw_Nfc_IC_Init(
     phhalHw_Nfc_Ic_DataParams_t   *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pBalDataParams,
@@ -127,7 +128,8 @@ phStatus_t phhalHw_Nfc_IC_Init(
 #endif
 
 #ifdef _WIN32
-phStatus_t phhalHw_WriteRegister(
+phStatus_t
+phhalHw_WriteRegister(
     void *pDataParams,
     uint8_t bAddress,
     uint8_t bValue
@@ -180,7 +182,8 @@ phStatus_t phhalHw_WriteRegister(
   return status;
 }
 
-phStatus_t phhalHw_ReadRegister(
+phStatus_t
+phhalHw_ReadRegister(
     void *pDataParams,
     uint8_t bAddress,
     uint8_t *pValue
@@ -239,7 +242,8 @@ phStatus_t phhalHw_ReadRegister(
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phhalHw_Exchange(
+phStatus_t
+phhalHw_Exchange(
     void *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -338,7 +342,8 @@ phStatus_t phhalHw_Exchange(
   return status;
 }
 
-phStatus_t phhalHw_ApplyProtocolSettings(
+phStatus_t
+phhalHw_ApplyProtocolSettings(
     void *pDataParams,
     uint8_t bMode
 )
@@ -407,7 +412,8 @@ phStatus_t phhalHw_ApplyProtocolSettings(
   return status;
 }
 
-phStatus_t phhalHw_SetConfigMultiple(
+phStatus_t
+phhalHw_SetConfigMultiple(
     void *pDataParams,
     uint16_t wNumOfConfigs,
     uint16_t (*arr2dConfig)[PHHAL_HW_ARRY_COLUMNS_SIZE]
@@ -457,7 +463,8 @@ phStatus_t phhalHw_SetConfigMultiple(
   return status;
 }
 
-phStatus_t phhalHw_SetConfig(
+phStatus_t
+phhalHw_SetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -534,7 +541,8 @@ phStatus_t phhalHw_SetConfig(
   return status;
 }
 
-phStatus_t phhalHw_MfcAuthenticateKeyNo(
+phStatus_t
+phhalHw_MfcAuthenticateKeyNo(
     void *pDataParams,
     uint8_t bBlockNo,
     uint8_t bKeyType,
@@ -627,8 +635,8 @@ phStatus_t phhalHw_MfcAuthenticateKeyNo(
 #ifdef NXPBUILD__PHHAL_HW_SAMAV3
     case PHHAL_HW_SAMAV3_ID:
       status = phhalHw_SamAV3_MfcAuthenticateKeyNo(
-    		  (phhalHw_SamAV3_DataParams_t *) pDataParams,
-    		  bBlockNo,
+              (phhalHw_SamAV3_DataParams_t *) pDataParams,
+              bBlockNo,
               bKeyType,
               wKeyNo,
               wKeyVersion,
@@ -648,7 +656,8 @@ phStatus_t phhalHw_MfcAuthenticateKeyNo(
   return status;
 }
 
-phStatus_t phhalHw_MfcAuthenticate(
+phStatus_t
+phhalHw_MfcAuthenticate(
     void *pDataParams,
     uint8_t bBlockNo,
     uint8_t bKeyType,
@@ -727,7 +736,7 @@ phStatus_t phhalHw_MfcAuthenticate(
 #ifdef NXPBUILD__PHHAL_HW_SAMAV3
     case PHHAL_HW_SAMAV3_ID:
       status = phhalHw_SamAV3_MfcAuthenticate((phhalHw_SamAV3_DataParams_t *)pDataParams,
-    		  bBlockNo, bKeyType, pKey, pUid);
+              bBlockNo, bKeyType, pKey, pUid);
       break;
 #endif  /* NXPBUILD__PHHAL_HW_SAMAV3 */
 
@@ -743,7 +752,8 @@ phStatus_t phhalHw_MfcAuthenticate(
   return status;
 }
 
-phStatus_t phhalHw_GetConfig(
+phStatus_t
+phhalHw_GetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -820,7 +830,8 @@ phStatus_t phhalHw_GetConfig(
   return status;
 }
 
-phStatus_t phhalHw_FieldOn(
+phStatus_t
+phhalHw_FieldOn(
     void *pDataParams
 )
 {
@@ -888,7 +899,8 @@ phStatus_t phhalHw_FieldOn(
   return status;
 }
 
-phStatus_t phhalHw_FieldOff(
+phStatus_t
+phhalHw_FieldOff(
     void *pDataParams
 )
 {
@@ -950,7 +962,8 @@ phStatus_t phhalHw_FieldOff(
   return status;
 }
 
-phStatus_t phhalHw_FieldReset(
+phStatus_t
+phhalHw_FieldReset(
     void *pDataParams
 )
 {
@@ -1018,7 +1031,8 @@ phStatus_t phhalHw_FieldReset(
   return status;
 }
 
-phStatus_t phhalHw_Wait(
+phStatus_t
+phhalHw_Wait(
     void *pDataParams,
     uint8_t bUnit,
     uint16_t wTimeout
@@ -1095,7 +1109,8 @@ phStatus_t phhalHw_Wait(
   return status;
 }
 
-phStatus_t phhalHw_Transmit(
+phStatus_t
+phhalHw_Transmit(
     void *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -1180,7 +1195,8 @@ phStatus_t phhalHw_Transmit(
   return status;
 }
 
-phStatus_t phhalHw_Receive(
+phStatus_t
+phhalHw_Receive(
     void *pDataParams,
     uint16_t wOption,
     uint8_t **ppRxBuffer,
@@ -1262,7 +1278,8 @@ phStatus_t phhalHw_Receive(
   return status;
 }
 
-phStatus_t phhalHw_Autocoll(
+phStatus_t
+phhalHw_Autocoll(
     void *pDataParams,
     uint16_t wMode,
     uint8_t **ppRxBuffer,
@@ -1341,7 +1358,8 @@ phStatus_t phhalHw_Autocoll(
   return status;
 }
 
-phStatus_t phhalHw_Lpcd(
+phStatus_t
+phhalHw_Lpcd(
     void *pDataParams
 )
 {
@@ -1401,7 +1419,8 @@ phStatus_t phhalHw_Lpcd(
   return status;
 }
 
-phStatus_t phhalHw_AsyncAbort(
+phStatus_t
+phhalHw_AsyncAbort(
     void *pDataParams
 )
 {
@@ -1462,7 +1481,8 @@ phStatus_t phhalHw_AsyncAbort(
   return status;
 }
 
-phStatus_t phhalHw_I18000p3m3Inventory(
+phStatus_t
+phhalHw_I18000p3m3Inventory(
     void *pDataParams,
     uint8_t *pSelCmd,
     uint8_t bSelCmdLen,
@@ -1567,7 +1587,8 @@ phStatus_t phhalHw_I18000p3m3Inventory(
   return status;
 }
 
-phStatus_t phhalHw_I18000p3m3ResumeInventory(
+phStatus_t
+phhalHw_I18000p3m3ResumeInventory(
     void *pDataParams,
     uint8_t **ppRxBuffer,
     uint16_t *wRxBufferLen
@@ -1638,7 +1659,8 @@ phStatus_t phhalHw_I18000p3m3ResumeInventory(
   return status;
 }
 
-phStatus_t phhalHw_EventWait(
+phStatus_t
+phhalHw_EventWait(
     void *pDataParams,
     uint32_t dwEventTimeout
 )
@@ -1699,7 +1721,8 @@ phStatus_t phhalHw_EventWait(
   return status;
 }
 
-phStatus_t phhalHw_EventConsume(
+phStatus_t
+phhalHw_EventConsume(
     void *pDataParams
 )
 {
@@ -1759,7 +1782,8 @@ phStatus_t phhalHw_EventConsume(
   return status;
 }
 
-phStatus_t phhalHw_DeInit(
+phStatus_t
+phhalHw_DeInit(
     void *pDataParams
 )
 {

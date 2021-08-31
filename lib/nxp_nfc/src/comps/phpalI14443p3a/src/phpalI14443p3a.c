@@ -31,7 +31,8 @@
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phpalI14443p3a_SetConfig(
+phStatus_t
+phpalI14443p3a_SetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -75,7 +76,8 @@ phStatus_t phpalI14443p3a_SetConfig(
   return status;
 }
 
-phStatus_t phpalI14443p3a_GetConfig(
+phStatus_t
+phpalI14443p3a_GetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -119,7 +121,8 @@ phStatus_t phpalI14443p3a_GetConfig(
   return status;
 }
 
-phStatus_t phpalI14443p3a_RequestA(
+phStatus_t
+phpalI14443p3a_RequestA(
     void *pDataParams,
     uint8_t *pAtqa
 )
@@ -171,7 +174,8 @@ phStatus_t phpalI14443p3a_RequestA(
   return status;
 }
 
-phStatus_t phpalI14443p3a_WakeUpA(
+phStatus_t
+phpalI14443p3a_WakeUpA(
     void *pDataParams,
     uint8_t *pAtqa
 )
@@ -224,7 +228,8 @@ phStatus_t phpalI14443p3a_WakeUpA(
 }
 
 #ifdef NXPBUILD__PHPAL_I14443P3A_SW_ECP
-phStatus_t phpalI14443p3a_VASUpA(
+phStatus_t
+phpalI14443p3a_VASUpA(
     void *pDataParams,
     uint8_t  bFormatByte,
     uint8_t   *pCmdBytes,
@@ -284,7 +289,8 @@ phStatus_t phpalI14443p3a_VASUpA(
 }
 #endif /* NXPBUILD__PHPAL_I14443P3A_SW_ECP */
 
-phStatus_t phpalI14443p3a_HaltA(
+phStatus_t
+phpalI14443p3a_HaltA(
     void *pDataParams
 )
 {
@@ -328,7 +334,8 @@ phStatus_t phpalI14443p3a_HaltA(
   return status;
 }
 
-phStatus_t phpalI14443p3a_Anticollision(
+phStatus_t
+phpalI14443p3a_Anticollision(
     void *pDataParams,
     uint8_t bCascadeLevel,
     uint8_t *pUidIn,
@@ -412,7 +419,8 @@ phStatus_t phpalI14443p3a_Anticollision(
   return status;
 }
 
-phStatus_t phpalI14443p3a_Select(
+phStatus_t
+phpalI14443p3a_Select(
     void *pDataParams,
     uint8_t bCascadeLevel,
     uint8_t *pUidIn,
@@ -468,7 +476,8 @@ phStatus_t phpalI14443p3a_Select(
   return status;
 }
 
-phStatus_t phpalI14443p3a_ActivateCard(
+phStatus_t
+phpalI14443p3a_ActivateCard(
     void *pDataParams,
     uint8_t *pUidIn,
     uint8_t bLenUidIn,
@@ -538,7 +547,8 @@ phStatus_t phpalI14443p3a_ActivateCard(
   return status;
 }
 
-phStatus_t phpalI14443p3a_Exchange(
+phStatus_t
+phpalI14443p3a_Exchange(
     void *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -605,7 +615,8 @@ phStatus_t phpalI14443p3a_Exchange(
   return status;
 }
 
-phStatus_t phpalI14443p3a_GetSerialNo(
+phStatus_t
+phpalI14443p3a_GetSerialNo(
     void *pDataParams,
     uint8_t *pUidOut,
     uint8_t *pLenUidOut

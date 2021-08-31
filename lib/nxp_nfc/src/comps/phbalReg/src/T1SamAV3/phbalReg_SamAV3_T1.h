@@ -1,4 +1,3 @@
-
 #ifndef PHBALREG_T1SAMAV3_H
 #define PHBALREG_T1SAMAV3_H
 
@@ -7,7 +6,8 @@
 #include <stdint.h>
 
 phStatus_t phbalReg_T1SamAV3_Exchange(
-	phbalReg_T1SamAV3_DataParams_t * pDataParams, 		/**< [In] Pointer to this layer's parameter structure. */
+    phbalReg_T1SamAV3_DataParams_t
+    *pDataParams, 		/**< [In] Pointer to this layer's parameter structure. */
     uint16_t wOption,      								/**< [In] Option parameter, for future use. */
     uint8_t *pTxBuffer,    								/**< [In] Data to transmit. */
     uint16_t wTxLength,    								/**< [In] Number of bytes to transmit, if 0 Tx is not performed. */

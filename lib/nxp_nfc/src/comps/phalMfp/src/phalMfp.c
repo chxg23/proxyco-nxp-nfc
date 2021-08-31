@@ -31,7 +31,8 @@
 
 #ifdef NXPBUILD__PHAL_MFP
 
-phStatus_t phalMfp_WritePerso(
+phStatus_t
+phalMfp_WritePerso(
     void *pDataParams,
     uint8_t bLayer4Comm,
     uint16_t wBlockNr,
@@ -85,7 +86,8 @@ phStatus_t phalMfp_WritePerso(
   return status;
 }
 
-phStatus_t phalMfp_CommitPerso(
+phStatus_t
+phalMfp_CommitPerso(
     void *pDataParams,
     uint8_t bLayer4Comm
 )
@@ -131,7 +133,8 @@ phStatus_t phalMfp_CommitPerso(
   return status;
 }
 #ifdef NXPBUILD__PH_NDA_MFP
-phStatus_t phalMfp_AuthenticateSL0(
+phStatus_t
+phalMfp_AuthenticateSL0(
     void *pDataParams,
     uint8_t bLayer4Comm,
     uint8_t bFirstAuth,
@@ -217,7 +220,8 @@ phStatus_t phalMfp_AuthenticateSL0(
   return status;
 }
 
-phStatus_t phalMfp_AuthenticateSL1(
+phStatus_t
+phalMfp_AuthenticateSL1(
     void *pDataParams,
     uint8_t bLayer4Comm,
     uint8_t bFirstAuth,
@@ -303,7 +307,8 @@ phStatus_t phalMfp_AuthenticateSL1(
   return status;
 }
 
-phStatus_t phalMfp_AuthenticateSL2(
+phStatus_t
+phalMfp_AuthenticateSL2(
     void *pDataParams,
     uint8_t bLayer4Comm,
     uint8_t bFirstAuth,
@@ -394,7 +399,8 @@ phStatus_t phalMfp_AuthenticateSL2(
 }
 #endif /* NXPBUILD__PH_NDA_MFP */
 
-phStatus_t phalMfp_AuthenticateClassicSL2(
+phStatus_t
+phalMfp_AuthenticateClassicSL2(
     void *pDataParams,
     uint8_t bBlockNo,
     uint8_t bKeyType,
@@ -455,7 +461,8 @@ phStatus_t phalMfp_AuthenticateClassicSL2(
   return status;
 }
 
-phStatus_t phalMfp_MultiBlockRead(
+phStatus_t
+phalMfp_MultiBlockRead(
     void *pDataParams,
     uint8_t bBlockNr,
     uint8_t bNumBlocks,
@@ -513,7 +520,8 @@ phStatus_t phalMfp_MultiBlockRead(
   return status;
 }
 
-phStatus_t phalMfp_MultiBlockWrite(
+phStatus_t
+phalMfp_MultiBlockWrite(
     void *pDataParams,
     uint8_t bBlockNr,
     uint8_t bNumBlocks,
@@ -567,7 +575,8 @@ phStatus_t phalMfp_MultiBlockWrite(
   return status;
 }
 #ifdef  NXPBUILD__PH_NDA_MFP
-phStatus_t phalMfp_Write(
+phStatus_t
+phalMfp_Write(
     void *pDataParams,
     uint8_t bEncrypted,
     uint8_t bWriteMaced,
@@ -627,7 +636,8 @@ phStatus_t phalMfp_Write(
   return status;
 }
 
-phStatus_t phalMfp_WriteValue(
+phStatus_t
+phalMfp_WriteValue(
     void *pDataParams,
     uint8_t bEncrypted,
     uint8_t bWriteMaced,
@@ -687,7 +697,8 @@ phStatus_t phalMfp_WriteValue(
   return status;
 }
 
-phStatus_t phalMfp_ChangeKey(
+phStatus_t
+phalMfp_ChangeKey(
     void *pDataParams,
     uint8_t bChangeKeyMaced,
     uint16_t wBlockNr,
@@ -749,7 +760,8 @@ phStatus_t phalMfp_ChangeKey(
 
   return status;
 }
-phStatus_t phalMfp_AuthenticateSL3(
+phStatus_t
+phalMfp_AuthenticateSL3(
     void *pDataParams,
     uint8_t bFirstAuth,
     uint16_t wBlockNr,
@@ -831,7 +843,8 @@ phStatus_t phalMfp_AuthenticateSL3(
   return status;
 }
 
-phStatus_t phalMfp_Read(
+phStatus_t
+phalMfp_Read(
     void *pDataParams,
     uint8_t bEncrypted,
     uint8_t bReadMaced,
@@ -898,7 +911,8 @@ phStatus_t phalMfp_Read(
   return status;
 }
 
-phStatus_t phalMfp_ReadValue(
+phStatus_t
+phalMfp_ReadValue(
     void *pDataParams,
     uint8_t bEncrypted,
     uint8_t bReadMaced,
@@ -967,7 +981,8 @@ phStatus_t phalMfp_ReadValue(
 }
 #endif /* NXPBUILD__PH_NDA_MFP */
 
-phStatus_t phalMfp_ResetAuth(
+phStatus_t
+phalMfp_ResetAuth(
     void *pDataParams
 )
 {
@@ -1010,7 +1025,8 @@ phStatus_t phalMfp_ResetAuth(
   return status;
 }
 #ifdef NXPBUILD__PH_NDA_MFP
-phStatus_t phalMfp_Increment(
+phStatus_t
+phalMfp_Increment(
     void *pDataParams,
     uint8_t bIncrementMaced,
     uint16_t wBlockNr,
@@ -1064,7 +1080,8 @@ phStatus_t phalMfp_Increment(
   return status;
 }
 
-phStatus_t phalMfp_Decrement(
+phStatus_t
+phalMfp_Decrement(
     void *pDataParams,
     uint8_t bDecrementMaced,
     uint16_t wBlockNr,
@@ -1118,7 +1135,8 @@ phStatus_t phalMfp_Decrement(
   return status;
 }
 
-phStatus_t phalMfp_IncrementTransfer(
+phStatus_t
+phalMfp_IncrementTransfer(
     void *pDataParams,
     uint8_t bIncrementTransferMaced,
     uint16_t wSourceBlockNr,
@@ -1177,7 +1195,8 @@ phStatus_t phalMfp_IncrementTransfer(
   return status;
 }
 
-phStatus_t phalMfp_DecrementTransfer(
+phStatus_t
+phalMfp_DecrementTransfer(
     void *pDataParams,
     uint8_t bDecrementTransferMaced,
     uint16_t wSourceBlockNr,
@@ -1236,7 +1255,8 @@ phStatus_t phalMfp_DecrementTransfer(
   return status;
 }
 
-phStatus_t phalMfp_Transfer(
+phStatus_t
+phalMfp_Transfer(
     void *pDataParams,
     uint8_t bTransferMaced,
     uint16_t wBlockNr
@@ -1285,7 +1305,8 @@ phStatus_t phalMfp_Transfer(
   return status;
 }
 
-phStatus_t phalMfp_Restore(
+phStatus_t
+phalMfp_Restore(
     void *pDataParams,
     uint8_t bRestoreMaced,
     uint16_t wBlockNr
@@ -1334,7 +1355,8 @@ phStatus_t phalMfp_Restore(
   return status;
 }
 
-phStatus_t phalMfp_ProximityCheck(
+phStatus_t
+phalMfp_ProximityCheck(
     void *pDataParams,
     uint8_t bGenerateRndC,
     uint8_t *pRndC,
@@ -1405,7 +1427,8 @@ phStatus_t phalMfp_ProximityCheck(
 }
 #endif  /* NXPBUILD__PH_NDA_MFP */
 
-phStatus_t phalMfp_ResetSecMsgState(
+phStatus_t
+phalMfp_ResetSecMsgState(
     void *pDataParams
 )
 {

@@ -60,7 +60,8 @@ static void phTools_Q_Push(phTools_Q_t **ppsQHead, phTools_Q_t *psMsgQueue, uint
 * Public Functions
 * ***************************************************************************************************************** */
 
-phStatus_t phTools_Q_Init(void)
+phStatus_t
+phTools_Q_Init(void)
 {
   uint8_t count;
   phTools_Q_t *psQueue = NULL;
@@ -101,7 +102,8 @@ phStatus_t phTools_Q_Init(void)
   return PH_ERR_SUCCESS;
 }
 
-phTools_Q_t *phTools_Q_Receive(uint32_t dwBlockTime)
+phTools_Q_t *
+phTools_Q_Receive(uint32_t dwBlockTime)
 {
   phStatus_t bRetstatus;
   phOsal_TimerPeriodObj_t timePeriodToWait;
@@ -118,7 +120,8 @@ phTools_Q_t *phTools_Q_Receive(uint32_t dwBlockTime)
   return phTools_Q_PopInt(&gpphTools_Q_Msgs, gphTools_Q_MsgMutex.MutexHandle, dwBlockTime, PH_ON);
 }
 
-phTools_Q_t *phTools_Q_Get(uint32_t dwBlockTime, uint8_t bPriority)
+phTools_Q_t *
+phTools_Q_Get(uint32_t dwBlockTime, uint8_t bPriority)
 {
   phTools_Q_t *pEmptyMsg = phTools_Q_PopInt(&gpphTools_Q_PoolHead, gphTools_Q_Mutex.MutexHandle,
           dwBlockTime, bPriority);
@@ -132,7 +135,8 @@ phTools_Q_t *phTools_Q_Get(uint32_t dwBlockTime, uint8_t bPriority)
   return pEmptyMsg;
 }
 
-static phTools_Q_t *phTools_Q_PopInt(phTools_Q_t **ppQHead, phOsal_Mutex_t pMutex,
+static phTools_Q_t *
+phTools_Q_PopInt(phTools_Q_t **ppQHead, phOsal_Mutex_t pMutex,
     uint32_t dwBlockTime, uint8_t bPriority)
 {
   void *pQueue;
@@ -173,7 +177,8 @@ static phTools_Q_t *phTools_Q_PopInt(phTools_Q_t **ppQHead, phOsal_Mutex_t pMute
   return pQueue;
 }
 
-phStatus_t phTools_Q_Release(phTools_Q_t *psMsgQueue, uint32_t dwBlockTime)
+phStatus_t
+phTools_Q_Release(phTools_Q_t *psMsgQueue, uint32_t dwBlockTime)
 {
   phStatus_t wStatus;
   phStatus_t bRetstatus = PH_ERR_INTERNAL_ERROR;
@@ -201,7 +206,8 @@ phStatus_t phTools_Q_Release(phTools_Q_t *psMsgQueue, uint32_t dwBlockTime)
   return PH_ERR_SUCCESS;
 }
 
-static phStatus_t phTools_Q_SendInt(phTools_Q_t *psMsgQueue, uint8_t bFront, uint32_t dwBlockTime,
+static phStatus_t
+phTools_Q_SendInt(phTools_Q_t *psMsgQueue, uint8_t bFront, uint32_t dwBlockTime,
     uint16_t wFrameOpt)
 {
   static uint8_t bNoOfMsgs = 0;
@@ -236,7 +242,8 @@ static phStatus_t phTools_Q_SendInt(phTools_Q_t *psMsgQueue, uint8_t bFront, uin
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phTools_Q_Send(
+phStatus_t
+phTools_Q_Send(
     phTools_Q_t *psMsgQueue,
     uint32_t dwBlockTime,
     uint16_t wFrameOpt
@@ -245,7 +252,8 @@ phStatus_t phTools_Q_Send(
   return phTools_Q_SendInt(psMsgQueue, (uint8_t)PH_OFF, dwBlockTime, wFrameOpt);
 }
 
-phStatus_t phTools_Q_SendFront(
+phStatus_t
+phTools_Q_SendFront(
     phTools_Q_t *psMsgQueue,
     uint32_t dwBlockTime,
     uint16_t wFrameOpt
@@ -254,7 +262,8 @@ phStatus_t phTools_Q_SendFront(
   return phTools_Q_SendInt(psMsgQueue, (uint8_t)PH_ON, dwBlockTime, wFrameOpt);
 }
 
-static void phTools_Q_Push(phTools_Q_t **ppsQHead, phTools_Q_t *psMsgQueue, uint8_t bFront)
+static void
+phTools_Q_Push(phTools_Q_t **ppsQHead, phTools_Q_t *psMsgQueue, uint8_t bFront)
 {
   phTools_Q_t *psQList = NULL;
 
@@ -281,7 +290,8 @@ static void phTools_Q_Push(phTools_Q_t **ppsQHead, phTools_Q_t *psMsgQueue, uint
   return;
 }
 
-void phTools_Q_DeInit(void)
+void
+phTools_Q_DeInit(void)
 {
   gpphTools_Q_PoolHead = NULL;
   bQCount = 0;

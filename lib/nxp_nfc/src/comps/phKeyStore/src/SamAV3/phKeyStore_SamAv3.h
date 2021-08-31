@@ -12,7 +12,6 @@
 *                          arising from its use.
 */
 
-
 #ifndef PHKEYSTORE_SAMAV3_H
 #define PHKEYSTORE_SAMAV3_H
 
@@ -27,24 +26,23 @@
 /**
  * \brief SamAV3 Key Entry Structure
  */
-typedef struct
-{
-	uint8_t  aKeyData[48];								/**< Concatenated KeyA, KeyB, KeyC (used only for ChangeKeyEntry, cleared by GetKeyEntry).*/
-	uint8_t  aDFAid[3];									/**< DESfire AID. */
-	uint8_t  bDFKeyNo;									/**< Corresponding DESFire key number (of DESFire AID). */
-	uint8_t  bKeyNoCEK;									/**< Key reference number of change entry key. */
-	uint8_t  bKeyVCEK;									/**< Key version of change entry key. */
-	uint8_t  bRefNoKUC;									/**< Reference number of key usage counter. */
-	uint8_t  bKeyNoAEK;									/**< Key reference number of Access Key Entry. */
-	uint8_t  bKeyVAEK;									/**< Key reference version of Access Key Entry. */
-	uint8_t  aSet[2];									/**< Configuration settings of this key entry. */
-	uint8_t  bVersionKeyA;								/**< Version of Key A. */
-	uint8_t  bVersionKeyB;								/**< Version of Key B. */
-	uint8_t  bVersionKeyC;								/**< Version of Key C. */
-	uint8_t  aExtSet[2];								/**< Extended configuration settings of this key entry. */
-	uint8_t  bVersionKeyBValid;							/**< Indicates whether Key B Version is available or not. */
-	uint8_t  bVersionKeyCValid;							/**< Indicates whether Key C Version is available or not. */
-}phKeyStore_SamAV3_KeyEntry_t;
+typedef struct {
+  uint8_t  aKeyData[48];								/**< Concatenated KeyA, KeyB, KeyC (used only for ChangeKeyEntry, cleared by GetKeyEntry).*/
+  uint8_t  aDFAid[3];									/**< DESfire AID. */
+  uint8_t  bDFKeyNo;									/**< Corresponding DESFire key number (of DESFire AID). */
+  uint8_t  bKeyNoCEK;									/**< Key reference number of change entry key. */
+  uint8_t  bKeyVCEK;									/**< Key version of change entry key. */
+  uint8_t  bRefNoKUC;									/**< Reference number of key usage counter. */
+  uint8_t  bKeyNoAEK;									/**< Key reference number of Access Key Entry. */
+  uint8_t  bKeyVAEK;									/**< Key reference version of Access Key Entry. */
+  uint8_t  aSet[2];									/**< Configuration settings of this key entry. */
+  uint8_t  bVersionKeyA;								/**< Version of Key A. */
+  uint8_t  bVersionKeyB;								/**< Version of Key B. */
+  uint8_t  bVersionKeyC;								/**< Version of Key C. */
+  uint8_t  aExtSet[2];								/**< Extended configuration settings of this key entry. */
+  uint8_t  bVersionKeyBValid;							/**< Indicates whether Key B Version is available or not. */
+  uint8_t  bVersionKeyCValid;							/**< Indicates whether Key C Version is available or not. */
+} phKeyStore_SamAV3_KeyEntry_t;
 
 /**
  * \brief Format a key entry to a new KeyType.
@@ -63,10 +61,11 @@ typedef struct
  * \retval Other Depending on implementation and underlaying component.
  */
 phStatus_t phKeyStore_SamAV3_FormatKeyEntry(
-		phKeyStore_SamAV3_DataParams_t * pDataParams,	/**< [In] Pointer to this layers parameter structure. */
-		uint16_t wKeyNo,								/**< [In] KeyEntry number to be formatted. */
-		uint16_t wKeyType								/**< [In] New key type of the KeyEntry (predefined type of KeyType). */
-	);
+    phKeyStore_SamAV3_DataParams_t
+    *pDataParams,	/**< [In] Pointer to this layers parameter structure. */
+    uint16_t wKeyNo,								/**< [In] KeyEntry number to be formatted. */
+    uint16_t wKeyType								/**< [In] New key type of the KeyEntry (predefined type of KeyType). */
+);
 
 /**
  * \brief Change a key entry at a given version.
@@ -86,13 +85,14 @@ phStatus_t phKeyStore_SamAV3_FormatKeyEntry(
  * \retval Other Depending on implementation and underlaying component.
  */
 phStatus_t phKeyStore_SamAV3_SetKey(
-		phKeyStore_SamAV3_DataParams_t * pDataParams,	/**< [In] Pointer to this layers parameter structure. */
-		uint16_t wKeyNo,								/**< [In] Key number of the key to be loaded. */
-		uint16_t wKeyVer,								/**< [In] Key version of the key to be loaded. */
-		uint16_t wKeyType,								/**< [In] New key type of the KeyEntry (predefined type of KeyType). */
-		uint8_t * pNewKey,								/**< [In] The key information to be updated. */
-		uint16_t wNewKeyVer								/**< [In] New Key version of the key to be updated. */
-	);
+    phKeyStore_SamAV3_DataParams_t
+    *pDataParams,	/**< [In] Pointer to this layers parameter structure. */
+    uint16_t wKeyNo,								/**< [In] Key number of the key to be loaded. */
+    uint16_t wKeyVer,								/**< [In] Key version of the key to be loaded. */
+    uint16_t wKeyType,								/**< [In] New key type of the KeyEntry (predefined type of KeyType). */
+    uint8_t *pNewKey,								/**< [In] The key information to be updated. */
+    uint16_t wNewKeyVer								/**< [In] New Key version of the key to be updated. */
+);
 
 /**
  * \brief Change a key entry at the specified position.
@@ -112,14 +112,14 @@ phStatus_t phKeyStore_SamAV3_SetKey(
  * \retval Other Depending on implementation and underlaying component.
  */
 phStatus_t phKeyStore_SamAV3_SetKeyAtPos(
-		phKeyStore_SamAV3_DataParams_t * pDataParams,	/**< [In] Pointer to this layers parameter structure. */
-		uint16_t wKeyNo,								/**< [In] Key number of the key to be loaded. */
-		uint16_t wPos,									/**< [In] Key position to be updated. */
-		uint16_t wKeyType,								/**< [In] New key type of the KeyEntry (predefined type of KeyType). */
-		uint8_t * pKey,									/**< [In] The key information to be loaded. */
-		uint16_t wKeyVer								/**< [In] Key version of the key to be updated. */
-	);
-
+    phKeyStore_SamAV3_DataParams_t
+    *pDataParams,	/**< [In] Pointer to this layers parameter structure. */
+    uint16_t wKeyNo,								/**< [In] Key number of the key to be loaded. */
+    uint16_t wPos,									/**< [In] Key position to be updated. */
+    uint16_t wKeyType,								/**< [In] New key type of the KeyEntry (predefined type of KeyType). */
+    uint8_t *pKey,									/**< [In] The key information to be loaded. */
+    uint16_t wKeyVer								/**< [In] Key version of the key to be updated. */
+);
 
 /**
  * \brief Change the KUC of a key entry.
@@ -132,10 +132,11 @@ phStatus_t phKeyStore_SamAV3_SetKeyAtPos(
  * \retval Other Depending on implementation and underlaying component.
  */
 phStatus_t phKeyStore_SamAV3_SetKUC(
-		phKeyStore_SamAV3_DataParams_t * pDataParams,	/**< [In] Pointer to this layers parameter structure. */
-		uint16_t wKeyNo,								/**< [In] Key number of the key to be loaded. */
-		uint16_t wRefNoKUC								/**< [In] Reference Number of the key usage counter used together with that key.*/
-	);
+    phKeyStore_SamAV3_DataParams_t
+    *pDataParams,	/**< [In] Pointer to this layers parameter structure. */
+    uint16_t wKeyNo,								/**< [In] Key number of the key to be loaded. */
+    uint16_t wRefNoKUC								/**< [In] Reference Number of the key usage counter used together with that key.*/
+);
 
 /**
  * \brief Change a full key entry.
@@ -158,14 +159,15 @@ phStatus_t phKeyStore_SamAV3_SetKUC(
  * \retval Other Depending on implementation and underlaying component.
  */
 phStatus_t phKeyStore_SamAV3_SetFullKeyEntry(
-		phKeyStore_SamAV3_DataParams_t * pDataParams,	/**< [In] Pointer to this layers parameter structure. */
-		uint16_t wNoOfKeys,								/**< [In] Number of keys in pNewKeys. */
-		uint16_t wKeyNo,								/**< [In] Number of the keys to be changed in the entry. */
-		uint16_t wNewRefNoKUC,							/**< [In] Reference number of the key usage counter to be used. */
-		uint16_t wNewKeyType,							/**< [In] Key type of the new key. */
-		uint8_t * pNewKeys,								/**< [In] Buffer containing the Keys to be updated. This buffer has to be wNoOfKeys * keylength bytes long. */
-		uint16_t * pNewKeyVerList						/**< [In] KeyVersionList of the key to be loaded. This buffer has to be wNoOfKeys * 2 bytes long. */
-	);
+    phKeyStore_SamAV3_DataParams_t
+    *pDataParams,	/**< [In] Pointer to this layers parameter structure. */
+    uint16_t wNoOfKeys,								/**< [In] Number of keys in pNewKeys. */
+    uint16_t wKeyNo,								/**< [In] Number of the keys to be changed in the entry. */
+    uint16_t wNewRefNoKUC,							/**< [In] Reference number of the key usage counter to be used. */
+    uint16_t wNewKeyType,							/**< [In] Key type of the new key. */
+    uint8_t *pNewKeys,								/**< [In] Buffer containing the Keys to be updated. This buffer has to be wNoOfKeys * keylength bytes long. */
+    uint16_t *pNewKeyVerList						/**< [In] KeyVersionList of the key to be loaded. This buffer has to be wNoOfKeys * 2 bytes long. */
+);
 
 /**
  * \brief Get a key entry information block.
@@ -181,12 +183,13 @@ phStatus_t phKeyStore_SamAV3_SetFullKeyEntry(
  * \retval Other Depending on implementation and underlaying component.
  */
 phStatus_t phKeyStore_SamAV3_GetKeyEntry(
-		phKeyStore_SamAV3_DataParams_t * pDataParams,	/**< [In] Pointer to this layers parameter structure. */
-		uint16_t wKeyNo,								/**< [In] Key number of the key entry of interest.*/
-		uint16_t * pKeyVer,								/**< [Out] Array for version information.*/
-		uint16_t * pKeyVerLen,							/**< [Out] Length of valid data in wKeyVer.*/
-		uint16_t * pKeyType								/**< [Out] Type of the key.*/
-	);
+    phKeyStore_SamAV3_DataParams_t
+    *pDataParams,	/**< [In] Pointer to this layers parameter structure. */
+    uint16_t wKeyNo,								/**< [In] Key number of the key entry of interest.*/
+    uint16_t *pKeyVer,								/**< [Out] Array for version information.*/
+    uint16_t *pKeyVerLen,							/**< [Out] Length of valid data in wKeyVer.*/
+    uint16_t *pKeyType								/**< [Out] Type of the key.*/
+);
 
 /**
  * \brief Get a key.
@@ -202,13 +205,14 @@ phStatus_t phKeyStore_SamAV3_GetKeyEntry(
  * \retval Other Depending on implementation and underlaying component.
  */
 phStatus_t phKeyStore_SamAV3_GetKey(
-		phKeyStore_SamAV3_DataParams_t * pDataParams,	/**< [In] Pointer to this layers parameter structure. */
-		uint16_t wKeyNo,								/**< [In] Key number of the key to be retrieved. */
-		uint16_t wKeyVer,								/**< [In] Key version of the key to be retrieved. */
-		uint8_t bKeyBufSize,							/**< [In] Size of the key buffer. */
-		uint8_t * pKey,									/**< [Out] Pointer to the key itself. */
-		uint16_t * pKeyType								/**< [Out] Type of the key. */
-	);
+    phKeyStore_SamAV3_DataParams_t
+    *pDataParams,	/**< [In] Pointer to this layers parameter structure. */
+    uint16_t wKeyNo,								/**< [In] Key number of the key to be retrieved. */
+    uint16_t wKeyVer,								/**< [In] Key version of the key to be retrieved. */
+    uint8_t bKeyBufSize,							/**< [In] Size of the key buffer. */
+    uint8_t *pKey,									/**< [Out] Pointer to the key itself. */
+    uint16_t *pKeyType								/**< [Out] Type of the key. */
+);
 
 /**
  * \brief Set configuration parameter.
@@ -217,10 +221,11 @@ phStatus_t phKeyStore_SamAV3_GetKey(
  * \retval Other Depending on implementation and underlaying component.
  */
 phStatus_t phKeyStore_SamAV3_SetConfig(
-		phKeyStore_SamAV3_DataParams_t * pDataParams,	/**< [In] Pointer to this layers parameter structure. */
-		uint16_t wConfig,								/**< [In] Configuration Identifier */
-		uint16_t wValue									/**< [In] Configuration Value */
-	);
+    phKeyStore_SamAV3_DataParams_t
+    *pDataParams,	/**< [In] Pointer to this layers parameter structure. */
+    uint16_t wConfig,								/**< [In] Configuration Identifier */
+    uint16_t wValue									/**< [In] Configuration Value */
+);
 
 /**
  * \brief Set the Desfire Application Identifier.
@@ -229,11 +234,12 @@ phStatus_t phKeyStore_SamAV3_SetConfig(
  * \retval Other Depending on implementation and underlaying component.
  */
 phStatus_t phKeyStore_SamAV3_SetConfigStr(
-		phKeyStore_SamAV3_DataParams_t * pDataParams,	/**< [In] Pointer to this layers parameter structure. */
-		uint16_t wConfig,								/**< [In] Configuration Identifier, mainly #PH_KEYSTORE_SAMAV3_CONFIG_DF_AID. */
-		uint8_t *pBuffer,								/**< [In] Buffer containing the Defire Application Identifier. */
-		uint16_t wBufferLen								/**< [In] Length of data available in pBuffer. */
-	);
+    phKeyStore_SamAV3_DataParams_t
+    *pDataParams,	/**< [In] Pointer to this layers parameter structure. */
+    uint16_t wConfig,								/**< [In] Configuration Identifier, mainly #PH_KEYSTORE_SAMAV3_CONFIG_DF_AID. */
+    uint8_t *pBuffer,								/**< [In] Buffer containing the Defire Application Identifier. */
+    uint16_t wBufferLen								/**< [In] Length of data available in pBuffer. */
+);
 
 /**
  * \brief Get configuration parameter.
@@ -242,10 +248,11 @@ phStatus_t phKeyStore_SamAV3_SetConfigStr(
  * \retval Other Depending on implementation and underlaying component.
  */
 phStatus_t phKeyStore_SamAV3_GetConfig(
-		phKeyStore_SamAV3_DataParams_t * pDataParams,	/**< [In] Pointer to this layers parameter structure. */
-		uint16_t wConfig,								/**< [In] Configuration Identifier */
-		uint16_t * pValue								/**< [Out] Configuration Value */
-	);
+    phKeyStore_SamAV3_DataParams_t
+    *pDataParams,	/**< [In] Pointer to this layers parameter structure. */
+    uint16_t wConfig,								/**< [In] Configuration Identifier */
+    uint16_t *pValue								/**< [Out] Configuration Value */
+);
 
 /**
  * \brief Get the Desfire Application Identifier.
@@ -254,11 +261,12 @@ phStatus_t phKeyStore_SamAV3_GetConfig(
  * \retval Other Depending on implementation and underlaying component.
  */
 phStatus_t phKeyStore_SamAV3_GetConfigStr(
-		phKeyStore_SamAV3_DataParams_t * pDataParams,	/**< [In] Pointer to this layers parameter structure. */
-		uint16_t wConfig,								/**< [In] Configuration Identifier, mainly #PH_KEYSTORE_SAMAV3_CONFIG_DF_AID */
-		uint8_t ** ppBuffer,							/**< [Out] Buffer containing the Defire Application Identifier. */
-		uint16_t * pBufferLen							/**< [Out] Length of data available in pBuffer. */
-	);
+    phKeyStore_SamAV3_DataParams_t
+    *pDataParams,	/**< [In] Pointer to this layers parameter structure. */
+    uint16_t wConfig,								/**< [In] Configuration Identifier, mainly #PH_KEYSTORE_SAMAV3_CONFIG_DF_AID */
+    uint8_t **ppBuffer,							/**< [Out] Buffer containing the Defire Application Identifier. */
+    uint16_t *pBufferLen							/**< [Out] Length of data available in pBuffer. */
+);
 
 /**
  * \brief Change a key usage counter entry.
@@ -271,10 +279,11 @@ phStatus_t phKeyStore_SamAV3_GetConfigStr(
  * \retval Other Depending on implementation and underlaying component.
  */
 phStatus_t phKeyStore_SamAV3_ChangeKUC(
-		phKeyStore_SamAV3_DataParams_t * pDataParams,	/**< [In] Pointer to this layers parameter structure. */
-		uint16_t wRefNoKUC,								/**< [In] Number of the key usage counter.*/
-		uint32_t dwLimit								/**< [In] Limit of the Key Usage Counter. */
-    );
+    phKeyStore_SamAV3_DataParams_t
+    *pDataParams,	/**< [In] Pointer to this layers parameter structure. */
+    uint16_t wRefNoKUC,								/**< [In] Number of the key usage counter.*/
+    uint32_t dwLimit								/**< [In] Limit of the Key Usage Counter. */
+);
 
 /**
  * \brief Obtain a key usage counter entry.
@@ -288,11 +297,12 @@ phStatus_t phKeyStore_SamAV3_ChangeKUC(
  * \retval Other Depending on implementation and underlaying component.
  */
 phStatus_t phKeyStore_SamAV3_GetKUC(
-		phKeyStore_SamAV3_DataParams_t * pDataParams,	/**< [In] Pointer to this layers parameter structure. */
-		uint16_t wRefNoKUC,								/**< [In] Number of the key usage counter to be looked at (00h to 0Fh)*/
-		uint32_t * pdwLimit,							/**< [Out] Currently set Limit in the KUC. */
-		uint32_t * pdwCurVal							/**< [Out] Currently value in the KUC. */
-	);
+    phKeyStore_SamAV3_DataParams_t
+    *pDataParams,	/**< [In] Pointer to this layers parameter structure. */
+    uint16_t wRefNoKUC,								/**< [In] Number of the key usage counter to be looked at (00h to 0Fh)*/
+    uint32_t *pdwLimit,							/**< [Out] Currently set Limit in the KUC. */
+    uint32_t *pdwCurVal							/**< [Out] Currently value in the KUC. */
+);
 
 /** end of phKeyStore_SamAV3 @} */
 

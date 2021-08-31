@@ -35,7 +35,8 @@
 
 #ifndef  NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phpalMifare_ExchangeL3(
+phStatus_t
+phpalMifare_ExchangeL3(
     void *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -108,7 +109,8 @@ phStatus_t phpalMifare_ExchangeL3(
   return status;
 }
 
-phStatus_t phpalMifare_ExchangeL4(
+phStatus_t
+phpalMifare_ExchangeL4(
     void *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -181,7 +183,8 @@ phStatus_t phpalMifare_ExchangeL4(
   return status;
 }
 
-phStatus_t phpalMifare_ExchangePc(
+phStatus_t
+phpalMifare_ExchangePc(
     void *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -254,7 +257,8 @@ phStatus_t phpalMifare_ExchangePc(
   return status;
 }
 
-phStatus_t phpalMifare_ExchangeRaw(
+phStatus_t
+phpalMifare_ExchangeRaw(
     void *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -335,7 +339,8 @@ phStatus_t phpalMifare_ExchangeRaw(
   return status;
 }
 
-phStatus_t phpalMifare_MfcAuthenticateKeyNo(
+phStatus_t
+phpalMifare_MfcAuthenticateKeyNo(
     void *pDataParams,
     uint8_t bBlockNo,
     uint8_t bKeyType,
@@ -402,7 +407,8 @@ phStatus_t phpalMifare_MfcAuthenticateKeyNo(
   return status;
 }
 
-phStatus_t phpalMifare_MfcAuthenticate(
+phStatus_t
+phpalMifare_MfcAuthenticate(
     void *pDataParams,
     uint8_t bBlockNo,
     uint8_t bKeyType,
@@ -465,7 +471,8 @@ phStatus_t phpalMifare_MfcAuthenticate(
 
   return status;
 }
-phStatus_t phpalMifare_SetMinFdtPc(void *pDataParams, uint16_t wValue)
+phStatus_t
+phpalMifare_SetMinFdtPc(void *pDataParams, uint16_t wValue)
 {
   phStatus_t PH_MEMLOC_REM status;
   /* perform operation on active layer */
@@ -486,7 +493,8 @@ phStatus_t phpalMifare_SetMinFdtPc(void *pDataParams, uint16_t wValue)
   return status;
 }
 
-phStatus_t phpalMifare_GetConfig(
+phStatus_t
+phpalMifare_GetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue

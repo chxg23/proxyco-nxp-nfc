@@ -35,7 +35,8 @@
 
 #define PH_NFCLIB_MFUL_READ_BLOCK_LENGTH         16U    /**< Length of a read MIFARE(R) Ultralight contactless IC data block. */
 
-phStatus_t phNfcLib_MFUL_Transmit(void *const pTxBuffer, uint16_t wTxBufferLength)
+phStatus_t
+phNfcLib_MFUL_Transmit(void *const pTxBuffer, uint16_t wTxBufferLength)
 {
   phStatus_t wStatus = PH_ERR_INVALID_PARAMETER;
   uint8_t    aCommand[6] = {0};

@@ -82,7 +82,8 @@ static phStatus_t phhalHw_Pn5190_InstMngr_PrepTlv_RFData(phhalHw_Pn5190_DataPara
 static phStatus_t phhalHw_Pn5190_InstMngr_Transceive(phhalHw_Pn5190_DataParams_t *pDataParams,
     phhalHw_InstMngr_CmdParams_t *pCmdParams, uint16_t wTlv_Length);
 
-phStatus_t phhalHw_Pn5190_InstMngr_HandleCmd(phhalHw_Pn5190_DataParams_t *pDataParams,
+phStatus_t
+phhalHw_Pn5190_InstMngr_HandleCmd(phhalHw_Pn5190_DataParams_t *pDataParams,
     phhalHw_InstMngr_CmdParams_t *pCmdParams, uint16_t wOptions)
 {
   phStatus_t  PH_MEMLOC_REM status = PH_ERR_SUCCESS;
@@ -118,7 +119,8 @@ phStatus_t phhalHw_Pn5190_InstMngr_HandleCmd(phhalHw_Pn5190_DataParams_t *pDataP
   return status;
 }
 
-static phStatus_t phhalHw_Pn5190_InstMngr_Procss_Cmds(phhalHw_Pn5190_DataParams_t *pDataParams,
+static phStatus_t
+phhalHw_Pn5190_InstMngr_Procss_Cmds(phhalHw_Pn5190_DataParams_t *pDataParams,
     phhalHw_InstMngr_CmdParams_t *pCmdParams, uint16_t wOptions)
 {
   phStatus_t PH_MEMLOC_REM status = PH_ERR_SUCCESS;
@@ -139,7 +141,8 @@ static phStatus_t phhalHw_Pn5190_InstMngr_Procss_Cmds(phhalHw_Pn5190_DataParams_
   return status;
 }
 
-static phStatus_t phhalHw_Pn5190_InstMngr_Exchange(phhalHw_Pn5190_DataParams_t *pDataParams,
+static phStatus_t
+phhalHw_Pn5190_InstMngr_Exchange(phhalHw_Pn5190_DataParams_t *pDataParams,
     phhalHw_InstMngr_CmdParams_t *pCmdParams, uint8_t bExchAction)
 {
 
@@ -168,7 +171,8 @@ static phStatus_t phhalHw_Pn5190_InstMngr_Exchange(phhalHw_Pn5190_DataParams_t *
   return status;
 }
 
-static phStatus_t phhalHw_Pn5190_InstMngr_PrepTlv_RFData(phhalHw_Pn5190_DataParams_t *pDataParams,
+static phStatus_t
+phhalHw_Pn5190_InstMngr_PrepTlv_RFData(phhalHw_Pn5190_DataParams_t *pDataParams,
     phhalHw_InstMngr_CmdParams_t *pCmdParams, uint8_t *pTxBuffer, uint8_t bExchAction)
 {
   uint8_t   PH_MEMLOC_REM  bTxBuffOffset = 0U;
@@ -217,7 +221,8 @@ static phStatus_t phhalHw_Pn5190_InstMngr_PrepTlv_RFData(phhalHw_Pn5190_DataPara
   return PH_ERR_SUCCESS;
 }
 
-static uint16_t  phhalHw_Pn5190_InstMngr_PrepSnglTlv(phhalHw_Pn5190_DataParams_t *pDataParams,
+static uint16_t
+phhalHw_Pn5190_InstMngr_PrepSnglTlv(phhalHw_Pn5190_DataParams_t *pDataParams,
     phhalHw_InstMngr_CmdParams_t *pCmdParams, uint16_t wTxBuff_Offset, uint8_t *pTxBuffer)
 {
   uint16_t    PH_MEMLOC_REM  wDataLength = 0U;
@@ -251,7 +256,8 @@ static uint16_t  phhalHw_Pn5190_InstMngr_PrepSnglTlv(phhalHw_Pn5190_DataParams_t
   return wTxIndex;
 }
 
-static phStatus_t  phhalHw_Pn5190_InstMngr_Transceive(phhalHw_Pn5190_DataParams_t *pDataParams,
+static phStatus_t
+phhalHw_Pn5190_InstMngr_Transceive(phhalHw_Pn5190_DataParams_t *pDataParams,
     phhalHw_InstMngr_CmdParams_t *pCmdParams, uint16_t wTlv_Length)
 {
   phStatus_t  PH_MEMLOC_REM status = PH_ERR_SUCCESS;
@@ -301,7 +307,8 @@ static phStatus_t  phhalHw_Pn5190_InstMngr_Transceive(phhalHw_Pn5190_DataParams_
  * phhalHw_Pn5190_InstMngr_SendBuffdData is helper function to transmits the
  * buffered data from Tx_Buffer using BAL interface.
  */
-static phStatus_t phhalHw_Pn5190_InstMngr_SendBuffdData(phhalHw_Pn5190_DataParams_t *pDataParams)
+static phStatus_t
+phhalHw_Pn5190_InstMngr_SendBuffdData(phhalHw_Pn5190_DataParams_t *pDataParams)
 {
   uint16_t    PH_MEMLOC_REM wBuffrdDataLength = 0U;
   uint16_t    PH_MEMLOC_REM wBufferSize = 0U;
@@ -315,7 +322,8 @@ static phStatus_t phhalHw_Pn5190_InstMngr_SendBuffdData(phhalHw_Pn5190_DataParam
   return phhalHw_Pn5190_Send(pDataParams, pTxBuffer, (wBuffrdDataLength + 1), PH_ON);
 }
 
-static phStatus_t  phhalHw_Pn5190_InstMngr_SendSnglTlv(phhalHw_Pn5190_DataParams_t *pDataParams,
+static phStatus_t
+phhalHw_Pn5190_InstMngr_SendSnglTlv(phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wSnglTLVLenght)
 {
   pDataParams->pInstrBuffer[0] = PHHAL_HW_PN5190_INT_SPI_WRITE;
@@ -327,7 +335,8 @@ static phStatus_t  phhalHw_Pn5190_InstMngr_SendSnglTlv(phhalHw_Pn5190_DataParams
  *  phhalHw_Pn5190_InstMngr_ReadRsp processes the data read by HAL IsrCallback.
  *  if response is not complete, it reads remaining number of byte from the Front End.
  */
-phStatus_t  phhalHw_Pn5190_InstMngr_ReadRsp(phhalHw_Pn5190_DataParams_t *pDataParams,
+phStatus_t
+phhalHw_Pn5190_InstMngr_ReadRsp(phhalHw_Pn5190_DataParams_t *pDataParams,
     phhalHw_InstMngr_CmdParams_t *pCmdParams)
 {
   phStatus_t  PH_MEMLOC_REM status = PH_ERR_SUCCESS;
@@ -424,7 +433,8 @@ phStatus_t  phhalHw_Pn5190_InstMngr_ReadRsp(phhalHw_Pn5190_DataParams_t *pDataPa
   return status;
 }
 
-phStatus_t phhalHw_Pn5190_Send(phhalHw_Pn5190_DataParams_t *pDataParams,
+phStatus_t
+phhalHw_Pn5190_Send(phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t *pTxBuffer, uint16_t wTxLength, uint8_t bCheckIRQ)
 {
   phStatus_t  PH_MEMLOC_REM status = PH_ERR_SUCCESS;
@@ -507,7 +517,8 @@ phStatus_t phhalHw_Pn5190_Send(phhalHw_Pn5190_DataParams_t *pDataParams,
 /**
  * phhalHw_Pn5190_InstMngr_Read API does the actual reading of data from Front End using BAL
  */
-phStatus_t phhalHw_Pn5190_Read(phhalHw_Pn5190_DataParams_t *pDataParams, uint8_t *pRxBuffer,
+phStatus_t
+phhalHw_Pn5190_Read(phhalHw_Pn5190_DataParams_t *pDataParams, uint8_t *pRxBuffer,
     uint16_t wRxLength)
 {
   phStatus_t  PH_MEMLOC_REM status = PH_ERR_SUCCESS;
@@ -540,7 +551,8 @@ phStatus_t phhalHw_Pn5190_Read(phhalHw_Pn5190_DataParams_t *pDataParams, uint8_t
   return status;
 }
 
-static uint8_t  phhalHw_Pn5190_InstMngr_CheckBuffSpace(phhalHw_Pn5190_DataParams_t *pDataParams,
+static uint8_t
+phhalHw_Pn5190_InstMngr_CheckBuffSpace(phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wCurrSpaceNeeded)
 {
   uint16_t    PH_MEMLOC_REM    wPrevBuffrdDataLen = 0U;

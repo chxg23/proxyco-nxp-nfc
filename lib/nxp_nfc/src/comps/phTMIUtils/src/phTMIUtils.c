@@ -29,7 +29,8 @@
 #include <nxp_nfc/ph_Status.h>
 #include <nxp_nfc/ph_RefDefs.h>
 
-phStatus_t phTMIUtils_Init(
+phStatus_t
+phTMIUtils_Init(
     phTMIUtils_t *pDataParams,
     uint8_t *pTMIBuffer,
     uint32_t dwBufLen
@@ -49,7 +50,8 @@ phStatus_t phTMIUtils_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phTMIUtils_ActivateTMICollection(
+phStatus_t
+phTMIUtils_ActivateTMICollection(
     phTMIUtils_t *pDataParams,
     uint8_t bOption
 )
@@ -94,7 +96,8 @@ phStatus_t phTMIUtils_ActivateTMICollection(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phTMIUtils_GetTMI(
+phStatus_t
+phTMIUtils_GetTMI(
     phTMIUtils_t *pDataParams,
     uint8_t **ppTMIBuffer,
     uint32_t *dwTMILen
@@ -108,7 +111,8 @@ phStatus_t phTMIUtils_GetTMI(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phTMIUtils_CollectTMI(
+phStatus_t
+phTMIUtils_CollectTMI(
     phTMIUtils_t *pDataParams,
     uint8_t bOption,
     uint8_t *pCmdBuff,
@@ -176,7 +180,8 @@ phStatus_t phTMIUtils_CollectTMI(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phTMIUtils_SetConfig(
+phStatus_t
+phTMIUtils_SetConfig(
     phTMIUtils_t *pDataParams,
     uint16_t wConfig,
     uint32_t dwValue
@@ -197,7 +202,8 @@ phStatus_t phTMIUtils_SetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phTMIUtils_GetConfig(
+phStatus_t
+phTMIUtils_GetConfig(
     phTMIUtils_t *pDataParams,
     uint16_t wConfig,
     uint32_t *pValue

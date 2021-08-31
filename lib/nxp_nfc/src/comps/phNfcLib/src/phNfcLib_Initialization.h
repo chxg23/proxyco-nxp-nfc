@@ -78,7 +78,8 @@ typedef struct {
 #endif /* NXPBUILD__PH_KEYSTORE_RC663 */
 
 #ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
-  phKeyStore_SamAV3_DataParams_t      sKeyStore;          /**< SamAV3 HW Keystore component holder */
+  phKeyStore_SamAV3_DataParams_t
+  sKeyStore;          /**< SamAV3 HW Keystore component holder */
 #endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
 
   pphNfcLib_ErrCallbck

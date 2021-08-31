@@ -63,7 +63,8 @@
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_ReadSingleBlock(void *pDataParams, uint8_t bOption, uint8_t bBlockNo,
+phStatus_t
+phalICode_ReadSingleBlock(void *pDataParams, uint8_t bOption, uint8_t bBlockNo,
     uint8_t **ppData, uint16_t *pDataLen)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
@@ -149,7 +150,8 @@ phStatus_t phalICode_ReadSingleBlock(void *pDataParams, uint8_t bOption, uint8_t
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_WriteSingleBlock(void *pDataParams, uint8_t bOption, uint8_t bBlockNo,
+phStatus_t
+phalICode_WriteSingleBlock(void *pDataParams, uint8_t bOption, uint8_t bBlockNo,
     uint8_t *pData, uint8_t bDataLen)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
@@ -228,7 +230,8 @@ phStatus_t phalICode_WriteSingleBlock(void *pDataParams, uint8_t bOption, uint8_
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_LockBlock(void *pDataParams, uint8_t bOption, uint8_t bBlockNo)
+phStatus_t
+phalICode_LockBlock(void *pDataParams, uint8_t bOption, uint8_t bBlockNo)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
 
@@ -307,7 +310,8 @@ phStatus_t phalICode_LockBlock(void *pDataParams, uint8_t bOption, uint8_t bBloc
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_ReadMultipleBlocks(void *pDataParams, uint8_t bOption, uint8_t bBlockNo,
+phStatus_t
+phalICode_ReadMultipleBlocks(void *pDataParams, uint8_t bOption, uint8_t bBlockNo,
     uint8_t bNumBlocks,
     uint8_t *pData, uint16_t *pDataLen)
 {
@@ -395,7 +399,8 @@ phStatus_t phalICode_ReadMultipleBlocks(void *pDataParams, uint8_t bOption, uint
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_WriteAFI(void *pDataParams, uint8_t bOption, uint8_t bAfi)
+phStatus_t
+phalICode_WriteAFI(void *pDataParams, uint8_t bOption, uint8_t bAfi)
 {
   phStatus_t  PH_MEMLOC_REM wStatus = 0;
 
@@ -469,7 +474,8 @@ phStatus_t phalICode_WriteAFI(void *pDataParams, uint8_t bOption, uint8_t bAfi)
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_LockAFI(void *pDataParams, uint8_t bOption)
+phStatus_t
+phalICode_LockAFI(void *pDataParams, uint8_t bOption)
 {
   phStatus_t  PH_MEMLOC_REM wStatus = 0;
 
@@ -542,7 +548,8 @@ phStatus_t phalICode_LockAFI(void *pDataParams, uint8_t bOption)
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_WriteDSFID(void *pDataParams, uint8_t bOption, uint8_t bDsfid)
+phStatus_t
+phalICode_WriteDSFID(void *pDataParams, uint8_t bOption, uint8_t bDsfid)
 {
   phStatus_t  PH_MEMLOC_REM wStatus = 0;
 
@@ -615,7 +622,8 @@ phStatus_t phalICode_WriteDSFID(void *pDataParams, uint8_t bOption, uint8_t bDsf
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_LockDSFID(void *pDataParams, uint8_t bOption)
+phStatus_t
+phalICode_LockDSFID(void *pDataParams, uint8_t bOption)
 {
   phStatus_t  PH_MEMLOC_REM wStatus = 0;
 
@@ -675,7 +683,8 @@ phStatus_t phalICode_LockDSFID(void *pDataParams, uint8_t bOption)
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_GetSystemInformation(void *pDataParams, uint8_t **ppSystemInfo,
+phStatus_t
+phalICode_GetSystemInformation(void *pDataParams, uint8_t **ppSystemInfo,
     uint16_t *pSystemInfoLen)
 {
   phStatus_t  PH_MEMLOC_REM wStatus = 0;
@@ -747,7 +756,8 @@ phStatus_t phalICode_GetSystemInformation(void *pDataParams, uint8_t **ppSystemI
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_GetMultipleBlockSecurityStatus(void *pDataParams, uint8_t bBlockNo,
+phStatus_t
+phalICode_GetMultipleBlockSecurityStatus(void *pDataParams, uint8_t bBlockNo,
     uint8_t bNoOfBlocks,
     uint8_t *pStatus, uint16_t *pStatusLen)
 {
@@ -837,7 +847,8 @@ phStatus_t phalICode_GetMultipleBlockSecurityStatus(void *pDataParams, uint8_t b
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_FastReadMultipleBlocks(void *pDataParams, uint8_t bOption, uint8_t bBlockNo,
+phStatus_t
+phalICode_FastReadMultipleBlocks(void *pDataParams, uint8_t bOption, uint8_t bBlockNo,
     uint8_t bNumBlocks,
     uint8_t *pData, uint16_t *pDataLen)
 {
@@ -926,7 +937,8 @@ phStatus_t phalICode_FastReadMultipleBlocks(void *pDataParams, uint8_t bOption, 
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_ExtendedReadSingleBlock(void *pDataParams, uint8_t bOption,
+phStatus_t
+phalICode_ExtendedReadSingleBlock(void *pDataParams, uint8_t bOption,
     uint16_t wBlockNo, uint8_t **ppData, uint16_t *pDataLen)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
@@ -1013,7 +1025,8 @@ phStatus_t phalICode_ExtendedReadSingleBlock(void *pDataParams, uint8_t bOption,
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_ExtendedWriteSingleBlock(void *pDataParams, uint8_t bOption,
+phStatus_t
+phalICode_ExtendedWriteSingleBlock(void *pDataParams, uint8_t bOption,
     uint16_t wBlockNo, uint8_t *pData, uint8_t bDataLen)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
@@ -1093,7 +1106,8 @@ phStatus_t phalICode_ExtendedWriteSingleBlock(void *pDataParams, uint8_t bOption
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_ExtendedLockBlock(void *pDataParams, uint8_t bOption, uint16_t wBlockNo)
+phStatus_t
+phalICode_ExtendedLockBlock(void *pDataParams, uint8_t bOption, uint16_t wBlockNo)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
 
@@ -1175,7 +1189,8 @@ phStatus_t phalICode_ExtendedLockBlock(void *pDataParams, uint8_t bOption, uint1
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_ExtendedReadMultipleBlocks(void *pDataParams, uint8_t bOption,
+phStatus_t
+phalICode_ExtendedReadMultipleBlocks(void *pDataParams, uint8_t bOption,
     uint16_t wBlockNo, uint16_t wNumBlocks,
     uint8_t *pData, uint16_t *pDataLen)
 {
@@ -1257,7 +1272,8 @@ phStatus_t phalICode_ExtendedReadMultipleBlocks(void *pDataParams, uint8_t bOpti
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_AuthenticateTAM1(void *pDataParams, uint8_t bOption, uint8_t bKeyNo,
+phStatus_t
+phalICode_AuthenticateTAM1(void *pDataParams, uint8_t bOption, uint8_t bKeyNo,
     uint8_t bKeyVer, uint8_t bKeyNoCard,
     uint8_t *pDivInput, uint8_t bDivLen)
 {
@@ -1356,7 +1372,8 @@ phStatus_t phalICode_AuthenticateTAM1(void *pDataParams, uint8_t bOption, uint8_
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_AuthenticateTAM2(void *pDataParams, uint8_t bOption, uint8_t bKeyNo,
+phStatus_t
+phalICode_AuthenticateTAM2(void *pDataParams, uint8_t bOption, uint8_t bKeyNo,
     uint8_t bKeyVer, uint8_t bKeyNoCard,
     uint8_t *pDivInput, uint8_t bDivLen, uint8_t bBlockSize, uint8_t bBlockCount, uint8_t bProfile,
     uint8_t bProtMode, uint16_t wOffset,
@@ -1456,7 +1473,8 @@ phStatus_t phalICode_AuthenticateTAM2(void *pDataParams, uint8_t bOption, uint8_
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_AuthenticateMAM(void *pDataParams, uint8_t bOption, uint8_t bKeyNo,
+phStatus_t
+phalICode_AuthenticateMAM(void *pDataParams, uint8_t bOption, uint8_t bKeyNo,
     uint8_t bKeyVer, uint8_t bKeyNoCard,
     uint8_t bPurposeMAM2, uint8_t *pDivInput, uint8_t bDivLen)
 {
@@ -1533,7 +1551,8 @@ phStatus_t phalICode_AuthenticateMAM(void *pDataParams, uint8_t bOption, uint8_t
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_Challenge(void *pDataParams, uint8_t bKeyNoCard)
+phStatus_t
+phalICode_Challenge(void *pDataParams, uint8_t bKeyNoCard)
 {
   phStatus_t  PH_MEMLOC_REM wStatus = 0;
 
@@ -1604,7 +1623,8 @@ phStatus_t phalICode_Challenge(void *pDataParams, uint8_t bKeyNoCard)
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_ReadBuffer(void *pDataParams, uint8_t bVerify, uint8_t bKeyNo,
+phStatus_t
+phalICode_ReadBuffer(void *pDataParams, uint8_t bVerify, uint8_t bKeyNo,
     uint8_t bKeyVer, uint8_t **ppResponse,
     uint16_t *pRespLen)
 {
@@ -1691,7 +1711,8 @@ phStatus_t phalICode_ReadBuffer(void *pDataParams, uint8_t bVerify, uint8_t bKey
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_ExtendedGetSystemInformation(void *pDataParams, uint8_t bInfoParams,
+phStatus_t
+phalICode_ExtendedGetSystemInformation(void *pDataParams, uint8_t bInfoParams,
     uint8_t  **ppSystemInfo,
     uint16_t *pSystemInfoLen)
 {
@@ -1766,7 +1787,8 @@ phStatus_t phalICode_ExtendedGetSystemInformation(void *pDataParams, uint8_t bIn
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_ExtendedGetMultipleBlockSecurityStatus(void *pDataParams, uint16_t wBlockNo,
+phStatus_t
+phalICode_ExtendedGetMultipleBlockSecurityStatus(void *pDataParams, uint16_t wBlockNo,
     uint16_t wNoOfBlocks,
     uint8_t *pStatus, uint16_t *pStatusLen)
 {
@@ -1858,7 +1880,8 @@ phStatus_t phalICode_ExtendedGetMultipleBlockSecurityStatus(void *pDataParams, u
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_ExtendedFastReadMultipleBlocks(void *pDataParams, uint8_t bOption,
+phStatus_t
+phalICode_ExtendedFastReadMultipleBlocks(void *pDataParams, uint8_t bOption,
     uint16_t wBlockNo, uint16_t wNumBlocks,
     uint8_t *pData, uint16_t *pDataLen)
 {
@@ -1933,7 +1956,8 @@ phStatus_t phalICode_ExtendedFastReadMultipleBlocks(void *pDataParams, uint8_t b
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_SetEAS(void *pDataParams, uint8_t bOption)
+phStatus_t
+phalICode_SetEAS(void *pDataParams, uint8_t bOption)
 {
   phStatus_t  PH_MEMLOC_REM wStatus = 0;
 
@@ -1993,7 +2017,8 @@ phStatus_t phalICode_SetEAS(void *pDataParams, uint8_t bOption)
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_ResetEAS(void *pDataParams, uint8_t bOption)
+phStatus_t
+phalICode_ResetEAS(void *pDataParams, uint8_t bOption)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
 
@@ -2053,7 +2078,8 @@ phStatus_t phalICode_ResetEAS(void *pDataParams, uint8_t bOption)
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_LockEAS(void *pDataParams, uint8_t bOption)
+phStatus_t
+phalICode_LockEAS(void *pDataParams, uint8_t bOption)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
 
@@ -2132,7 +2158,8 @@ phStatus_t phalICode_LockEAS(void *pDataParams, uint8_t bOption)
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_EASAlarm(void *pDataParams, uint8_t bOption, uint8_t *pEasIdValue,
+phStatus_t
+phalICode_EASAlarm(void *pDataParams, uint8_t bOption, uint8_t *pEasIdValue,
     uint8_t bEasIdMaskLen, uint8_t **ppEas, uint16_t *pEasLen)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
@@ -2203,7 +2230,8 @@ phStatus_t phalICode_EASAlarm(void *pDataParams, uint8_t bOption, uint8_t *pEasI
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_PasswordProtectEAS(void *pDataParams)
+phStatus_t
+phalICode_PasswordProtectEAS(void *pDataParams)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
 
@@ -2258,7 +2286,8 @@ phStatus_t phalICode_PasswordProtectEAS(void *pDataParams)
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_PasswordProtectAFI(void *pDataParams)
+phStatus_t
+phalICode_PasswordProtectAFI(void *pDataParams)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
 
@@ -2314,7 +2343,8 @@ phStatus_t phalICode_PasswordProtectAFI(void *pDataParams)
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_WriteEASID(void *pDataParams, uint8_t *pEasIdValue)
+phStatus_t
+phalICode_WriteEASID(void *pDataParams, uint8_t *pEasIdValue)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
 
@@ -2375,7 +2405,8 @@ phStatus_t phalICode_WriteEASID(void *pDataParams, uint8_t *pEasIdValue)
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_ReadEPC(void *pDataParams, uint8_t **ppEpc, uint16_t *pEpcLen)
+phStatus_t
+phalICode_ReadEPC(void *pDataParams, uint8_t **ppEpc, uint16_t *pEpcLen)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
 
@@ -2439,7 +2470,8 @@ phStatus_t phalICode_ReadEPC(void *pDataParams, uint8_t **ppEpc, uint16_t *pEpcL
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_GetNXPSystemInformation(void *pDataParams, uint8_t **ppSystemInfo,
+phStatus_t
+phalICode_GetNXPSystemInformation(void *pDataParams, uint8_t **ppSystemInfo,
     uint16_t  *pSystemInfoLen)
 {
   phStatus_t  PH_MEMLOC_REM wStatus = 0;
@@ -2508,7 +2540,8 @@ phStatus_t phalICode_GetNXPSystemInformation(void *pDataParams, uint8_t **ppSyst
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_GetRandomNumber(void *pDataParams, uint8_t **ppRnd, uint16_t *pRndLen)
+phStatus_t
+phalICode_GetRandomNumber(void *pDataParams, uint8_t **ppRnd, uint16_t *pRndLen)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
 
@@ -2588,7 +2621,8 @@ phStatus_t phalICode_GetRandomNumber(void *pDataParams, uint8_t **ppRnd, uint16_
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_SetPassword(void *pDataParams, uint8_t bPwdIdentifier, uint8_t *pXorPwd)
+phStatus_t
+phalICode_SetPassword(void *pDataParams, uint8_t bPwdIdentifier, uint8_t *pXorPwd)
 {
   phStatus_t PH_MEMLOC_REM wStatus;
 
@@ -2658,7 +2692,8 @@ phStatus_t phalICode_SetPassword(void *pDataParams, uint8_t bPwdIdentifier, uint
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_WritePassword(void *pDataParams, uint8_t bPwdIdentifier, uint8_t *pPwd)
+phStatus_t
+phalICode_WritePassword(void *pDataParams, uint8_t bPwdIdentifier, uint8_t *pPwd)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
 
@@ -2725,7 +2760,8 @@ phStatus_t phalICode_WritePassword(void *pDataParams, uint8_t bPwdIdentifier, ui
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_LockPassword(void *pDataParams, uint8_t bPwdIdentifier)
+phStatus_t
+phalICode_LockPassword(void *pDataParams, uint8_t bPwdIdentifier)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
 
@@ -2799,7 +2835,8 @@ phStatus_t phalICode_LockPassword(void *pDataParams, uint8_t bPwdIdentifier)
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_ProtectPage(void *pDataParams, uint8_t bPPAdd_PageNo,
+phStatus_t
+phalICode_ProtectPage(void *pDataParams, uint8_t bPPAdd_PageNo,
     uint8_t bProtectionStatus)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
@@ -2862,7 +2899,8 @@ phStatus_t phalICode_ProtectPage(void *pDataParams, uint8_t bPPAdd_PageNo,
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_LockPageProtectionCondition(void *pDataParams, uint8_t bPageNo)
+phStatus_t
+phalICode_LockPageProtectionCondition(void *pDataParams, uint8_t bPageNo)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
 
@@ -2931,7 +2969,8 @@ phStatus_t phalICode_LockPageProtectionCondition(void *pDataParams, uint8_t bPag
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_GetMultipleBlockProtectionStatus(void *pDataParams, uint8_t bBlockNo,
+phStatus_t
+phalICode_GetMultipleBlockProtectionStatus(void *pDataParams, uint8_t bBlockNo,
     uint8_t bNoOfBlocks, uint8_t *pProtectionStates,
     uint16_t *pNumReceivedStates)
 {
@@ -3010,7 +3049,8 @@ phStatus_t phalICode_GetMultipleBlockProtectionStatus(void *pDataParams, uint8_t
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_Destroy(void *pDataParams, uint8_t *pXorPwd)
+phStatus_t
+phalICode_Destroy(void *pDataParams, uint8_t *pXorPwd)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
 
@@ -3076,7 +3116,8 @@ phStatus_t phalICode_Destroy(void *pDataParams, uint8_t *pXorPwd)
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_EnablePrivacy(void *pDataParams, uint8_t *pXorPwd)
+phStatus_t
+phalICode_EnablePrivacy(void *pDataParams, uint8_t *pXorPwd)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
 
@@ -3137,7 +3178,8 @@ phStatus_t phalICode_EnablePrivacy(void *pDataParams, uint8_t *pXorPwd)
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_64BitPasswordProtection(void *pDataParams)
+phStatus_t
+phalICode_64BitPasswordProtection(void *pDataParams)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
 
@@ -3195,7 +3237,8 @@ phStatus_t phalICode_64BitPasswordProtection(void *pDataParams)
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_ReadSignature(void *pDataParams, uint8_t **ppSign, uint16_t *pSignLen)
+phStatus_t
+phalICode_ReadSignature(void *pDataParams, uint8_t **ppSign, uint16_t *pSignLen)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
 
@@ -3265,7 +3308,8 @@ phStatus_t phalICode_ReadSignature(void *pDataParams, uint8_t **ppSign, uint16_t
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_ReadConfig(void *pDataParams, uint8_t bBlockAddr, uint8_t bNoOfBlocks,
+phStatus_t
+phalICode_ReadConfig(void *pDataParams, uint8_t bBlockAddr, uint8_t bNoOfBlocks,
     uint8_t **ppData, uint16_t *pDataLen)
 {
   phStatus_t  PH_MEMLOC_REM wStatus = 0;
@@ -3338,7 +3382,8 @@ phStatus_t phalICode_ReadConfig(void *pDataParams, uint8_t bBlockAddr, uint8_t b
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_WriteConfig(void *pDataParams, uint8_t bOption, uint8_t bBlockAddr,
+phStatus_t
+phalICode_WriteConfig(void *pDataParams, uint8_t bOption, uint8_t bBlockAddr,
     uint8_t  *pData)
 {
   phStatus_t  PH_MEMLOC_REM wStatus = 0;
@@ -3402,7 +3447,8 @@ phStatus_t phalICode_WriteConfig(void *pDataParams, uint8_t bOption, uint8_t bBl
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_PickRandomID(void *pDataParams)
+phStatus_t
+phalICode_PickRandomID(void *pDataParams)
 {
   phStatus_t  PH_MEMLOC_REM wStatus = 0;
 
@@ -3472,7 +3518,8 @@ phStatus_t phalICode_PickRandomID(void *pDataParams)
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_ParameterRequest(void *pDataParams, uint8_t *pBitRate, uint8_t *pTiming)
+phStatus_t
+phalICode_ParameterRequest(void *pDataParams, uint8_t *pBitRate, uint8_t *pTiming)
 {
   phStatus_t  PH_MEMLOC_REM wStatus = 0;
 
@@ -3552,7 +3599,8 @@ phStatus_t phalICode_ParameterRequest(void *pDataParams, uint8_t *pBitRate, uint
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_ParameterSelect(void *pDataParams, uint8_t bBitRate, uint8_t bTiming)
+phStatus_t
+phalICode_ParameterSelect(void *pDataParams, uint8_t bBitRate, uint8_t bTiming)
 {
   phStatus_t  PH_MEMLOC_REM wStatus = 0;
 
@@ -3628,7 +3676,8 @@ phStatus_t phalICode_ParameterSelect(void *pDataParams, uint8_t bBitRate, uint8_
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_ReadSRAM(void *pDataParams, uint8_t bOption, uint8_t bBlockNo,
+phStatus_t
+phalICode_ReadSRAM(void *pDataParams, uint8_t bOption, uint8_t bBlockNo,
     uint8_t bNumBlocks, uint8_t *pData, uint16_t *pDataLen)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
@@ -3712,7 +3761,8 @@ phStatus_t phalICode_ReadSRAM(void *pDataParams, uint8_t bOption, uint8_t bBlock
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_WriteSRAM(void *pDataParams, uint8_t bOption, uint8_t bBlockNo,
+phStatus_t
+phalICode_WriteSRAM(void *pDataParams, uint8_t bOption, uint8_t bBlockNo,
     uint8_t bNumBlocks, uint8_t *pData, uint16_t wDataLen)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
@@ -3791,7 +3841,8 @@ phStatus_t phalICode_WriteSRAM(void *pDataParams, uint8_t bOption, uint8_t bBloc
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_I2CMRead(void *pDataParams, uint8_t bAddr_Config, uint8_t bDataLen,
+phStatus_t
+phalICode_I2CMRead(void *pDataParams, uint8_t bAddr_Config, uint8_t bDataLen,
     uint8_t  *pData)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
@@ -3870,7 +3921,8 @@ phStatus_t phalICode_I2CMRead(void *pDataParams, uint8_t bAddr_Config, uint8_t b
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_I2CMWrite(void *pDataParams, uint8_t bAddr_Config, uint8_t *pData,
+phStatus_t
+phalICode_I2CMWrite(void *pDataParams, uint8_t bAddr_Config, uint8_t *pData,
     uint8_t bDataLen)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
@@ -3945,7 +3997,8 @@ phStatus_t phalICode_I2CMWrite(void *pDataParams, uint8_t bAddr_Config, uint8_t 
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_GetConfig(void *pDataParams, uint16_t wConfig, uint16_t *pValue)
+phStatus_t
+phalICode_GetConfig(void *pDataParams, uint16_t wConfig, uint16_t *pValue)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
 
@@ -4015,7 +4068,8 @@ phStatus_t phalICode_GetConfig(void *pDataParams, uint16_t wConfig, uint16_t *pV
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_SetConfig(void *pDataParams, uint16_t wConfig, uint16_t wValue)
+phStatus_t
+phalICode_SetConfig(void *pDataParams, uint16_t wConfig, uint16_t wValue)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
 
@@ -4085,7 +4139,8 @@ phStatus_t phalICode_SetConfig(void *pDataParams, uint16_t wConfig, uint16_t wVa
  *          PH_ERR_SUCCESS for successfull operation.
  *          Other Depending on implementation and underlaying component.
  */
-phStatus_t phalICode_GetTagType(void *pDataParams, uint16_t *pTagType)
+phStatus_t
+phalICode_GetTagType(void *pDataParams, uint16_t *pTagType)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
 

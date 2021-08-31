@@ -41,7 +41,8 @@ static phStatus_t phalMfcTop_Sw_ReadNfcSector(phalTop_Sw_DataParams_t *pDataPara
     uint64_t lwNFCSectorCount, uint8_t *pTagState);
 static void phMemCopy(void *dest, void *src, uint16_t wLength);
 
-phStatus_t phalTop_Sw_Int_MfcTop_CheckNdef(
+phStatus_t
+phalTop_Sw_Int_MfcTop_CheckNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pTagState
 )
@@ -167,7 +168,8 @@ phStatus_t phalTop_Sw_Int_MfcTop_CheckNdef(
   return PH_ADD_COMPCODE(status, PH_COMP_AL_TOP);
 }
 
-phStatus_t phalTop_Sw_Int_MfcTop_ReadNdef(
+phStatus_t
+phalTop_Sw_Int_MfcTop_ReadNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pData,
     uint16_t *pLength
@@ -299,7 +301,8 @@ phStatus_t phalTop_Sw_Int_MfcTop_ReadNdef(
   return PH_ADD_COMPCODE(status, PH_COMP_AL_TOP);
 }
 
-phStatus_t phalTop_Sw_Int_MfcTop_WriteNdef(
+phStatus_t
+phalTop_Sw_Int_MfcTop_WriteNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pData,
     uint16_t wLength
@@ -539,7 +542,8 @@ phStatus_t phalTop_Sw_Int_MfcTop_WriteNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_MfcTop_FormatNdef(
+phStatus_t
+phalTop_Sw_Int_MfcTop_FormatNdef(
     phalTop_Sw_DataParams_t *pDataParams
 )
 {
@@ -822,7 +826,8 @@ phStatus_t phalTop_Sw_Int_MfcTop_FormatNdef(
   return PH_ADD_COMPCODE(status, PH_COMP_AL_TOP);
 }
 
-static phStatus_t phalMfcTop_Sw_Write(
+static phStatus_t
+phalMfcTop_Sw_Write(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pData,
     uint8_t bBlockNumber
@@ -845,7 +850,8 @@ static phStatus_t phalMfcTop_Sw_Write(
   return status;
 }
 
-static phStatus_t phalMfcTop_Sw_MifareWrite(phalTop_Sw_DataParams_t *pDataParams,
+static phStatus_t
+phalMfcTop_Sw_MifareWrite(phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pTxBuffer, uint16_t wTxLength)
 {
   phStatus_t PH_MEMLOC_REM status = PH_ERR_INTERNAL_ERROR;
@@ -882,7 +888,8 @@ static phStatus_t phalMfcTop_Sw_MifareWrite(phalTop_Sw_DataParams_t *pDataParams
   return status;
 }
 
-static phStatus_t phalMfcTop_Sw_ReadNfcSector(
+static phStatus_t
+phalMfcTop_Sw_ReadNfcSector(
     phalTop_Sw_DataParams_t *pDataParams,
     uint64_t lwNFCSectorCount,
     uint8_t *pTagState
@@ -1106,7 +1113,8 @@ static phStatus_t phalMfcTop_Sw_ReadNfcSector(
   return PH_ADD_COMPCODE(status, PH_COMP_AL_TOP);
 }
 
-phStatus_t phalTop_Sw_Int_MfcTop_EraseNdef(
+phStatus_t
+phalTop_Sw_Int_MfcTop_EraseNdef(
     phalTop_Sw_DataParams_t *pDataParams
 )
 {
@@ -1196,7 +1204,8 @@ phStatus_t phalTop_Sw_Int_MfcTop_EraseNdef(
   return PH_ERR_SUCCESS;
 }
 
-static void phMemCopy(void *dest, void *src, uint16_t wLength)
+static void
+phMemCopy(void *dest, void *src, uint16_t wLength)
 {
   uint32_t dwLength = 0;
   dwLength = wLength;

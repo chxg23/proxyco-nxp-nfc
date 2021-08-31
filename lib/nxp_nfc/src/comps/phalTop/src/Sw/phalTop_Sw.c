@@ -284,7 +284,8 @@ pfphalTop_Sw_Int_SetReadOnly[PHAL_TOP_MAX_TAGTYPE_SUPPORTED] = {
   NULL
 };
 
-phStatus_t phalTop_Sw_Init(
+phStatus_t
+phalTop_Sw_Init(
     phalTop_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pAlT1T,
@@ -317,7 +318,8 @@ phStatus_t phalTop_Sw_Init(
   return phalTop_Sw_Reset(pDataParams);
 }
 
-phStatus_t phalTop_Sw_CheckNdef(
+phStatus_t
+phalTop_Sw_CheckNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pTagState
 )
@@ -338,7 +340,8 @@ phStatus_t phalTop_Sw_CheckNdef(
   }
 }
 
-phStatus_t phalTop_Sw_ReadNdef(
+phStatus_t
+phalTop_Sw_ReadNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pData,
     uint16_t *pLength
@@ -361,7 +364,8 @@ phStatus_t phalTop_Sw_ReadNdef(
   }
 }
 
-phStatus_t phalTop_Sw_WriteNdef(
+phStatus_t
+phalTop_Sw_WriteNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pData,
     uint16_t wLength
@@ -384,7 +388,8 @@ phStatus_t phalTop_Sw_WriteNdef(
   }
 }
 
-phStatus_t phalTop_Sw_EraseNdef(
+phStatus_t
+phalTop_Sw_EraseNdef(
     phalTop_Sw_DataParams_t *pDataParams
 )
 {
@@ -402,7 +407,8 @@ phStatus_t phalTop_Sw_EraseNdef(
   }
 }
 
-phStatus_t phalTop_Sw_FormatNdef(
+phStatus_t
+phalTop_Sw_FormatNdef(
     phalTop_Sw_DataParams_t *pDataParams
 )
 {
@@ -420,7 +426,8 @@ phStatus_t phalTop_Sw_FormatNdef(
   }
 }
 
-phStatus_t phalTop_Sw_Reset(
+phStatus_t
+phalTop_Sw_Reset(
     phalTop_Sw_DataParams_t *pDataParams
 )
 {
@@ -437,7 +444,8 @@ phStatus_t phalTop_Sw_Reset(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_SetConfig(
+phStatus_t
+phalTop_Sw_SetConfig(
     phalTop_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -608,7 +616,8 @@ phStatus_t phalTop_Sw_SetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_GetConfig(
+phStatus_t
+phalTop_Sw_GetConfig(
     phalTop_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t   *wValue
@@ -644,7 +653,8 @@ phStatus_t phalTop_Sw_GetConfig(
 
 #if defined(__DEBUG)
 /* This API would be available only for debugging purpose */
-phStatus_t phalTop_Sw_SetPtr(
+phStatus_t
+phalTop_Sw_SetPtr(
     phalTop_Sw_DataParams_t *pDataParams,
     void *pT1T,
     void *pT2T,

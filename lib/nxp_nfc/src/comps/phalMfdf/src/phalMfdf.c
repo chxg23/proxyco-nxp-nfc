@@ -37,7 +37,8 @@
 
 #ifdef NXPBUILD__PH_NDA_MFDF
 
-phStatus_t phalMfdf_Authenticate(
+phStatus_t
+phalMfdf_Authenticate(
     void *pDataParams,
     uint16_t wOption,
     uint16_t wKeyNo,
@@ -91,15 +92,15 @@ phStatus_t phalMfdf_Authenticate(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_Authenticate(pDataParams,
-			wOption,
-			wKeyNo,
-			wKeyVer,
-			bKeyNoCard,
-			pDivInput,
-			bDivLen);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_Authenticate(pDataParams,
+              wOption,
+              wKeyNo,
+              wKeyVer,
+              bKeyNoCard,
+              pDivInput,
+              bDivLen);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -114,7 +115,8 @@ phStatus_t phalMfdf_Authenticate(
   return status;
 }
 
-phStatus_t phalMfdf_AuthenticateISO(
+phStatus_t
+phalMfdf_AuthenticateISO(
     void *pDataParams,
     uint16_t wOption,
     uint16_t wKeyNo,
@@ -175,16 +177,16 @@ phStatus_t phalMfdf_AuthenticateISO(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_AuthenticateISO(
-			pDataParams,
-			wOption,
-			wKeyNo,
-			wKeyVer,
-			bKeyNoCard,
-			pDivInput,
-			bDivLen);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_AuthenticateISO(
+              pDataParams,
+              wOption,
+              wKeyNo,
+              wKeyVer,
+              bKeyNoCard,
+              pDivInput,
+              bDivLen);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -199,7 +201,8 @@ phStatus_t phalMfdf_AuthenticateISO(
   return status;
 }
 
-phStatus_t phalMfdf_AuthenticateAES(
+phStatus_t
+phalMfdf_AuthenticateAES(
     void *pDataParams,
     uint16_t wOption,
     uint16_t wKeyNo,
@@ -262,16 +265,16 @@ phStatus_t phalMfdf_AuthenticateAES(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_AuthenticateAES(
-			pDataParams,
-			wOption,
-			wKeyNo,
-			wKeyVer,
-			bKeyNoCard,
-			pDivInput,
-			bDivLen);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_AuthenticateAES(
+              pDataParams,
+              wOption,
+              wKeyNo,
+              wKeyVer,
+              bKeyNoCard,
+              pDivInput,
+              bDivLen);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -286,7 +289,8 @@ phStatus_t phalMfdf_AuthenticateAES(
   return status;
 }
 
-phStatus_t phalMfdf_ChangeKeySettings(
+phStatus_t
+phalMfdf_ChangeKeySettings(
     void *pDataParams,
     uint8_t bKeySettings
 )
@@ -331,9 +335,9 @@ phStatus_t phalMfdf_ChangeKeySettings(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_ChangeKeySettings(pDataParams, bKeySettings);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_ChangeKeySettings(pDataParams, bKeySettings);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -348,7 +352,8 @@ phStatus_t phalMfdf_ChangeKeySettings(
   return status;
 }
 
-phStatus_t phalMfdf_GetKeySettings(
+phStatus_t
+phalMfdf_GetKeySettings(
     void *pDataParams,
     uint8_t *pResponse
 )
@@ -383,9 +388,9 @@ phStatus_t phalMfdf_GetKeySettings(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_GetKeySettings(pDataParams, pResponse);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_GetKeySettings(pDataParams, pResponse);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -401,7 +406,8 @@ phStatus_t phalMfdf_GetKeySettings(
   return status;
 }
 
-phStatus_t phalMfdf_ChangeKey(
+phStatus_t
+phalMfdf_ChangeKey(
     void *pDataParams,
     uint16_t wOption,
     uint16_t wOldKeyNo,
@@ -481,18 +487,18 @@ phStatus_t phalMfdf_ChangeKey(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_ChangeKey(pDataParams,
-			wOption,
-			wOldKeyNo,
-			wOldKeyVer,
-			wNewKeyNo,
-			wNewKeyVer,
-			bKeyNoCard,
-			pDivInput,
-			bDivLen
-			);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_ChangeKey(pDataParams,
+              wOption,
+              wOldKeyNo,
+              wOldKeyVer,
+              wNewKeyNo,
+              wNewKeyVer,
+              bKeyNoCard,
+              pDivInput,
+              bDivLen
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -506,7 +512,8 @@ phStatus_t phalMfdf_ChangeKey(
   return status;
 }
 
-phStatus_t phalMfdf_GetKeyVersion(
+phStatus_t
+phalMfdf_GetKeyVersion(
     void *pDataParams,
     uint8_t bKeyNo,
     uint8_t *pResponse
@@ -550,9 +557,9 @@ phStatus_t phalMfdf_GetKeyVersion(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_GetKeyVersion(pDataParams, bKeyNo, pResponse);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_GetKeyVersion(pDataParams, bKeyNo, pResponse);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -574,7 +581,8 @@ phStatus_t phalMfdf_GetKeyVersion(
 * PICC level commands
 */
 
-phStatus_t phalMfdf_CreateApplication(
+phStatus_t
+phalMfdf_CreateApplication(
     void *pDataParams,
     uint8_t bOption,
     uint8_t *pAid,
@@ -645,16 +653,16 @@ phStatus_t phalMfdf_CreateApplication(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_CreateApplication(pDataParams,
-			bOption,
-			pAid,
-			bKeySettings1,
-			bKeySettings2,
-			pISOFileId,
-			pISODFName,
-			bISODFNameLen);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_CreateApplication(pDataParams,
+              bOption,
+              pAid,
+              bKeySettings1,
+              bKeySettings2,
+              pISOFileId,
+              pISODFName,
+              bISODFNameLen);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -671,7 +679,8 @@ phStatus_t phalMfdf_CreateApplication(
 
 #ifdef NXPBUILD__PH_NDA_MFDF
 
-phStatus_t phalMfdf_DeleteApplication(
+phStatus_t
+phalMfdf_DeleteApplication(
     void *pDataParams,
     uint8_t *pAid
 )
@@ -710,9 +719,9 @@ phStatus_t phalMfdf_DeleteApplication(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_DeleteApplication(pDataParams, pAid);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_DeleteApplication(pDataParams, pAid);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -727,7 +736,8 @@ phStatus_t phalMfdf_DeleteApplication(
   return status;
 }
 
-phStatus_t phalMfdf_GetApplicationIDs(
+phStatus_t
+phalMfdf_GetApplicationIDs(
     void *pDataParams,
     uint8_t *pAidBuff,
     uint8_t *pNumAIDs
@@ -773,9 +783,9 @@ phStatus_t phalMfdf_GetApplicationIDs(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_GetApplicationIDs(pDataParams, pAidBuff, pNumAIDs);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_GetApplicationIDs(pDataParams, pAidBuff, pNumAIDs);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -792,7 +802,8 @@ phStatus_t phalMfdf_GetApplicationIDs(
   return status;
 }
 
-phStatus_t phalMfdf_GetDFNames(
+phStatus_t
+phalMfdf_GetDFNames(
     void *pDataParams,
     uint8_t bOption,
     uint8_t *pDFBuffer,
@@ -838,9 +849,9 @@ phStatus_t phalMfdf_GetDFNames(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_GetDFNames(pDataParams, bOption, pDFBuffer, pDFInfoLen);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_GetDFNames(pDataParams, bOption, pDFBuffer, pDFInfoLen);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -859,7 +870,8 @@ phStatus_t phalMfdf_GetDFNames(
 
 #endif /* NXPBUILD__PH_NDA_MFDF */
 
-phStatus_t phalMfdf_SelectApplication(
+phStatus_t
+phalMfdf_SelectApplication(
     void *pDataParams,
     uint8_t *pAppId
 )
@@ -896,9 +908,9 @@ phStatus_t phalMfdf_SelectApplication(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_SelectApplication(pDataParams, pAppId);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_SelectApplication(pDataParams, pAppId);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -915,7 +927,8 @@ phStatus_t phalMfdf_SelectApplication(
 
 #ifdef NXPBUILD__PH_NDA_MFDF
 
-phStatus_t phalMfdf_FormatPICC(
+phStatus_t
+phalMfdf_FormatPICC(
     void *pDataParams
 )
 {
@@ -947,9 +960,9 @@ phStatus_t phalMfdf_FormatPICC(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_FormatPICC(pDataParams);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_FormatPICC(pDataParams);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -966,7 +979,8 @@ phStatus_t phalMfdf_FormatPICC(
 
 #endif /* NXPBUILD__PH_NDA_MFDF */
 
-phStatus_t phalMfdf_GetVersion(
+phStatus_t
+phalMfdf_GetVersion(
     void *pDataParams,
     uint8_t *pVerInfo
 )
@@ -1003,9 +1017,9 @@ phStatus_t phalMfdf_GetVersion(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_GetVersion(pDataParams, pVerInfo);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_GetVersion(pDataParams, pVerInfo);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -1023,7 +1037,8 @@ phStatus_t phalMfdf_GetVersion(
 
 #ifdef NXPBUILD__PH_NDA_MFDF
 
-phStatus_t phalMfdf_FreeMem(
+phStatus_t
+phalMfdf_FreeMem(
     void *pDataParams,
     uint8_t *pMemInfo
 )
@@ -1060,9 +1075,9 @@ phStatus_t phalMfdf_FreeMem(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_FreeMem(pDataParams, pMemInfo);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_FreeMem(pDataParams, pMemInfo);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -1078,7 +1093,8 @@ phStatus_t phalMfdf_FreeMem(
   return status;
 }
 
-phStatus_t phalMfdf_SetConfiguration(
+phStatus_t
+phalMfdf_SetConfiguration(
     void *pDataParams,
     uint8_t bOption,
     uint8_t *pData,
@@ -1124,9 +1140,9 @@ phStatus_t phalMfdf_SetConfiguration(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_SetConfiguration(pDataParams, bOption, pData, bDataSize);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_SetConfiguration(pDataParams, bOption, pData, bDataSize);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -1141,7 +1157,8 @@ phStatus_t phalMfdf_SetConfiguration(
   return status;
 }
 
-phStatus_t phalMfdf_GetCardUID(
+phStatus_t
+phalMfdf_GetCardUID(
     void *pDataParams,
     uint8_t *pUid
 )
@@ -1179,9 +1196,9 @@ phStatus_t phalMfdf_GetCardUID(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_GetCardUID(pDataParams, pUid);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_GetCardUID(pDataParams, pUid);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -1197,7 +1214,8 @@ phStatus_t phalMfdf_GetCardUID(
   return status;
 }
 
-phStatus_t phalMfdf_GetFileIDs(
+phStatus_t
+phalMfdf_GetFileIDs(
     void *pDataParams,
     uint8_t *pResponse,
     uint8_t *bNumFIDs
@@ -1238,9 +1256,9 @@ phStatus_t phalMfdf_GetFileIDs(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_GetFileIDs(pDataParams, pResponse, bNumFIDs);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_GetFileIDs(pDataParams, pResponse, bNumFIDs);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -1257,7 +1275,8 @@ phStatus_t phalMfdf_GetFileIDs(
   return status;
 }
 
-phStatus_t phalMfdf_GetISOFileIDs(
+phStatus_t
+phalMfdf_GetISOFileIDs(
     void *pDataParams,
     uint8_t *pFidBuffer,
     uint8_t *pNumFIDs
@@ -1298,9 +1317,9 @@ phStatus_t phalMfdf_GetISOFileIDs(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_GetISOFileIDs(pDataParams, pFidBuffer, pNumFIDs);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_GetISOFileIDs(pDataParams, pFidBuffer, pNumFIDs);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -1317,7 +1336,8 @@ phStatus_t phalMfdf_GetISOFileIDs(
   return status;
 }
 
-phStatus_t phalMfdf_GetFileSettings(
+phStatus_t
+phalMfdf_GetFileSettings(
     void *pDataParams,
     uint8_t bFileNo,
     uint8_t *pFSBuffer,
@@ -1360,9 +1380,9 @@ phStatus_t phalMfdf_GetFileSettings(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_GetFileSettings(pDataParams, bFileNo, pFSBuffer, bBufferLen);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_GetFileSettings(pDataParams, bFileNo, pFSBuffer, bBufferLen);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -1379,7 +1399,8 @@ phStatus_t phalMfdf_GetFileSettings(
   return status;
 }
 
-phStatus_t phalMfdf_ChangeFileSettings(
+phStatus_t
+phalMfdf_ChangeFileSettings(
     void *pDataParams,
     uint8_t bOption,
     uint8_t bFileNo,
@@ -1426,9 +1447,10 @@ phStatus_t phalMfdf_ChangeFileSettings(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_ChangeFileSettings(pDataParams, bOption, bFileNo, bCommSett, pAccessRights);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_ChangeFileSettings(pDataParams, bOption, bFileNo, bCommSett,
+              pAccessRights);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -1445,7 +1467,8 @@ phStatus_t phalMfdf_ChangeFileSettings(
 
 #endif /* NXPBUILD__PH_NDA_MFDF */
 
-phStatus_t phalMfdf_CreateStdDataFile(
+phStatus_t
+phalMfdf_CreateStdDataFile(
     void *pDataParams,
     uint8_t bOption,
     uint8_t bFileNo,
@@ -1512,16 +1535,16 @@ phStatus_t phalMfdf_CreateStdDataFile(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_CreateStdDataFile(pDataParams,
-			bOption,
-			bFileNo,
-			pISOFileId,
-			bCommSett,
-			pAccessRights,
-			pFileSize
-			);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_CreateStdDataFile(pDataParams,
+              bOption,
+              bFileNo,
+              pISOFileId,
+              bCommSett,
+              pAccessRights,
+              pFileSize
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -1538,7 +1561,8 @@ phStatus_t phalMfdf_CreateStdDataFile(
 
 #ifdef NXPBUILD__PH_NDA_MFDF
 
-phStatus_t phalMfdf_CreateBackupDataFile(
+phStatus_t
+phalMfdf_CreateBackupDataFile(
     void *pDataParams,
     uint8_t bOption,
     uint8_t bFileNo,
@@ -1603,16 +1627,16 @@ phStatus_t phalMfdf_CreateBackupDataFile(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_CreateBackupDataFile(pDataParams,
-			bOption,
-			bFileNo,
-			pISOFileId,
-			bCommSett,
-			pAccessRights,
-			pFileSize
-			);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_CreateBackupDataFile(pDataParams,
+              bOption,
+              bFileNo,
+              pISOFileId,
+              bCommSett,
+              pAccessRights,
+              pFileSize
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -1627,7 +1651,8 @@ phStatus_t phalMfdf_CreateBackupDataFile(
   return status;
 }
 
-phStatus_t phalMfdf_CreateValueFile(
+phStatus_t
+phalMfdf_CreateValueFile(
     void *pDataParams,
     uint8_t bFileNo,
     uint8_t bCommSett,
@@ -1692,18 +1717,18 @@ phStatus_t phalMfdf_CreateValueFile(
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
 #ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
-	case PHAL_MFDF_SAMAV2_ID:
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_CreateValueFile(pDataParams,
-			bFileNo,
-			bCommSett,
-			pAccessRights,
-			pLowerLmit,
-			pUpperLmit,
-			pValue,
-			bLimitedCredit
-			);
-		break;
+    case PHAL_MFDF_SAMAV2_ID:
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_CreateValueFile(pDataParams,
+              bFileNo,
+              bCommSett,
+              pAccessRights,
+              pLowerLmit,
+              pUpperLmit,
+              pValue,
+              bLimitedCredit
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -1718,7 +1743,8 @@ phStatus_t phalMfdf_CreateValueFile(
   return status;
 }
 
-phStatus_t phalMfdf_CreateLinearRecordFile(
+phStatus_t
+phalMfdf_CreateLinearRecordFile(
     void *pDataParams,
     uint8_t bOption,
     uint8_t  bFileNo,
@@ -1788,18 +1814,18 @@ phStatus_t phalMfdf_CreateLinearRecordFile(
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
 #ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
-	case PHAL_MFDF_SAMAV2_ID:
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_CreateLinearRecordFile(pDataParams,
-			bOption,
-			bFileNo,
-			pIsoFileId,
-			bCommSett,
-			pAccessRights,
-			pRecordSize,
-			pMaxNoOfRec
-			);
-		break;
+    case PHAL_MFDF_SAMAV2_ID:
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_CreateLinearRecordFile(pDataParams,
+              bOption,
+              bFileNo,
+              pIsoFileId,
+              bCommSett,
+              pAccessRights,
+              pRecordSize,
+              pMaxNoOfRec
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -1814,7 +1840,8 @@ phStatus_t phalMfdf_CreateLinearRecordFile(
   return status;
 }
 
-phStatus_t phalMfdf_CreateCyclicRecordFile(
+phStatus_t
+phalMfdf_CreateCyclicRecordFile(
     void *pDataParams,
     uint8_t bOption,
     uint8_t  bFileNo,
@@ -1883,18 +1910,18 @@ phStatus_t phalMfdf_CreateCyclicRecordFile(
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
 #ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
-	case PHAL_MFDF_SAMAV2_ID:
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_CreateCyclicRecordFile(pDataParams,
-			bOption,
-			bFileNo,
-			pIsoFileId,
-			bCommSett,
-			pAccessRights,
-			pRecordSize,
-			pMaxNoOfRec
-			);
-		break;
+    case PHAL_MFDF_SAMAV2_ID:
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_CreateCyclicRecordFile(pDataParams,
+              bOption,
+              bFileNo,
+              pIsoFileId,
+              bCommSett,
+              pAccessRights,
+              pRecordSize,
+              pMaxNoOfRec
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -1909,7 +1936,8 @@ phStatus_t phalMfdf_CreateCyclicRecordFile(
   return status;
 }
 
-phStatus_t phalMfdf_DeleteFile(
+phStatus_t
+phalMfdf_DeleteFile(
     void *pDataParams,
     uint8_t bFileNo
 )
@@ -1945,10 +1973,10 @@ phStatus_t phalMfdf_DeleteFile(
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
 #ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
-	case PHAL_MFDF_SAMAV2_ID:
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_DeleteFile(pDataParams, bFileNo);
-		break;
+    case PHAL_MFDF_SAMAV2_ID:
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_DeleteFile(pDataParams, bFileNo);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -1963,7 +1991,8 @@ phStatus_t phalMfdf_DeleteFile(
   return status;
 }
 
-phStatus_t phalMfdf_ReadData(
+phStatus_t
+phalMfdf_ReadData(
     void *pDataParams,
     uint8_t bOption,
     uint8_t bFileNo,
@@ -2022,17 +2051,17 @@ phStatus_t phalMfdf_ReadData(
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
 #ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
-	case PHAL_MFDF_SAMAV2_ID:
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_ReadData(pDataParams,
-			bOption,
-			bFileNo,
-			pOffset,
-			pLength,
-			ppRxdata,
-			pRxdataLen
-			);
-		break;
+    case PHAL_MFDF_SAMAV2_ID:
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_ReadData(pDataParams,
+              bOption,
+              bFileNo,
+              pOffset,
+              pLength,
+              ppRxdata,
+              pRxdataLen
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -2053,7 +2082,8 @@ phStatus_t phalMfdf_ReadData(
 
 #endif /* NXPBUILD__PH_NDA_MFDF */
 
-phStatus_t phalMfdf_WriteData(
+phStatus_t
+phalMfdf_WriteData(
     void *pDataParams,
     uint8_t bCommOption,
     uint8_t bFileNo,
@@ -2115,16 +2145,16 @@ phStatus_t phalMfdf_WriteData(
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
 #ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
-	case PHAL_MFDF_SAMAV2_ID:
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_WriteData(pDataParams,
-			bCommOption,
-			bFileNo,
-			pOffset,
-			pTxData,
-			pTxDataLen
-			);
-		break;
+    case PHAL_MFDF_SAMAV2_ID:
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_WriteData(pDataParams,
+              bCommOption,
+              bFileNo,
+              pOffset,
+              pTxData,
+              pTxDataLen
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -2141,7 +2171,8 @@ phStatus_t phalMfdf_WriteData(
 
 #ifdef NXPBUILD__PH_NDA_MFDF
 
-phStatus_t phalMfdf_GetValue(
+phStatus_t
+phalMfdf_GetValue(
     void *pDataParams,
     uint8_t bCommOption,
     uint8_t bFileNo,
@@ -2185,14 +2216,14 @@ phStatus_t phalMfdf_GetValue(
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
 #ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
-	case PHAL_MFDF_SAMAV2_ID:
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_GetValue(pDataParams,
-			bCommOption,
-			bFileNo,
-			pValue
-			);
-		break;
+    case PHAL_MFDF_SAMAV2_ID:
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_GetValue(pDataParams,
+              bCommOption,
+              bFileNo,
+              pValue
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -2208,7 +2239,8 @@ phStatus_t phalMfdf_GetValue(
   return status;
 }
 
-phStatus_t phalMfdf_Credit(
+phStatus_t
+phalMfdf_Credit(
     void *pDataParams,
     uint8_t bCommOption,
     uint8_t bFileNo,
@@ -2253,14 +2285,14 @@ phStatus_t phalMfdf_Credit(
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
 #ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
-	case PHAL_MFDF_SAMAV2_ID:
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_Credit(pDataParams,
-			bCommOption,
-			bFileNo,
-			pValue
-			);
-		break;
+    case PHAL_MFDF_SAMAV2_ID:
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_Credit(pDataParams,
+              bCommOption,
+              bFileNo,
+              pValue
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -2276,7 +2308,8 @@ phStatus_t phalMfdf_Credit(
 
 }
 
-phStatus_t phalMfdf_Debit(
+phStatus_t
+phalMfdf_Debit(
     void *pDataParams,
     uint8_t bCommOption,
     uint8_t bFileNo,
@@ -2325,14 +2358,14 @@ phStatus_t phalMfdf_Debit(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_Debit(
-			pDataParams,
-			bCommOption,
-			bFileNo,
-			pValue
-			);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_Debit(
+              pDataParams,
+              bCommOption,
+              bFileNo,
+              pValue
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -2348,7 +2381,8 @@ phStatus_t phalMfdf_Debit(
   return status;
 }
 
-phStatus_t phalMfdf_LimitedCredit(
+phStatus_t
+phalMfdf_LimitedCredit(
     void *pDataParams,
     uint8_t bCommOption,
     uint8_t bFileNo,
@@ -2398,14 +2432,14 @@ phStatus_t phalMfdf_LimitedCredit(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-        status = phalMfdf_Sam_NonX_LimitedCredit(
-            pDataParams,
-            bCommOption,
-            bFileNo,
-            pValue
-            );
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_LimitedCredit(
+              pDataParams,
+              bCommOption,
+              bFileNo,
+              pValue
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -2420,7 +2454,8 @@ phStatus_t phalMfdf_LimitedCredit(
   return status;
 }
 
-phStatus_t phalMfdf_WriteRecord(
+phStatus_t
+phalMfdf_WriteRecord(
     void *pDataParams,
     uint8_t bCommOption,
     uint8_t bFileNo,
@@ -2473,17 +2508,18 @@ phStatus_t phalMfdf_WriteRecord(
   switch (PH_GET_COMPID(pDataParams)) {
 #ifdef NXPBUILD__PHAL_MFDF_SW
     case PHAL_MFDF_SW_ID:
-        status = phalMfdf_Sam_NonX_WriteRecord((phalMfdf_Sw_DataParams_t *)pDataParams, bCommOption, bFileNo, pOffset, pData, pDataLen);
-        break;
+      status = phalMfdf_Sam_NonX_WriteRecord((phalMfdf_Sw_DataParams_t *)pDataParams, bCommOption,
+              bFileNo, pOffset, pData, pDataLen);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SW */
 
 #ifdef NXPBUILD__PHAL_MFDF_SAM_NONX
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sw_WriteRecord(pDataParams, bCommOption, bFileNo, pOffset, pData, pDataLen);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sw_WriteRecord(pDataParams, bCommOption, bFileNo, pOffset, pData, pDataLen);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -2498,7 +2534,8 @@ phStatus_t phalMfdf_WriteRecord(
   return status;
 }
 
-phStatus_t phalMfdf_ReadRecords(
+phStatus_t
+phalMfdf_ReadRecords(
     void *pDataParams,
     uint8_t bCommOption,
     uint8_t bFileNo,
@@ -2561,17 +2598,17 @@ phStatus_t phalMfdf_ReadRecords(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_ReadRecords(pDataParams,
-			bCommOption,
-			bFileNo,
-			pOffset,
-			pNumRec,
-			pRecSize,
-			ppRxdata,
-			pRxdataLen
-			);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_ReadRecords(pDataParams,
+              bCommOption,
+              bFileNo,
+              pOffset,
+              pNumRec,
+              pRecSize,
+              ppRxdata,
+              pRxdataLen
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -2590,7 +2627,8 @@ phStatus_t phalMfdf_ReadRecords(
   return status;
 }
 
-phStatus_t phalMfdf_ClearRecordFile(
+phStatus_t
+phalMfdf_ClearRecordFile(
     void *pDataParams,
     uint8_t bFileNo
 )
@@ -2627,9 +2665,9 @@ phStatus_t phalMfdf_ClearRecordFile(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_ClearRecordFile(pDataParams, bFileNo);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_ClearRecordFile(pDataParams, bFileNo);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -2644,7 +2682,8 @@ phStatus_t phalMfdf_ClearRecordFile(
   return status;
 }
 
-phStatus_t phalMfdf_CommitTransaction(
+phStatus_t
+phalMfdf_CommitTransaction(
     void *pDataParams
 )
 {
@@ -2678,9 +2717,9 @@ phStatus_t phalMfdf_CommitTransaction(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_CommitTransaction(pDataParams);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_CommitTransaction(pDataParams);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -2695,7 +2734,8 @@ phStatus_t phalMfdf_CommitTransaction(
   return status;
 }
 
-phStatus_t phalMfdf_AbortTransaction(
+phStatus_t
+phalMfdf_AbortTransaction(
     void *pDataParams
 )
 {
@@ -2729,9 +2769,9 @@ phStatus_t phalMfdf_AbortTransaction(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_AbortTransaction(pDataParams);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_AbortTransaction(pDataParams);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -2748,7 +2788,8 @@ phStatus_t phalMfdf_AbortTransaction(
 
 #endif /* NXPBUILD__PH_NDA_MFDF */
 
-phStatus_t phalMfdf_IsoSelectFile(
+phStatus_t
+phalMfdf_IsoSelectFile(
     void *pDataParams,
     uint8_t bOption,
     uint8_t bSelector,
@@ -2807,17 +2848,17 @@ phStatus_t phalMfdf_IsoSelectFile(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_IsoSelectFile(pDataParams,
-			bOption,
-			bSelector,
-			pFid,
-			pDFname,
-			bDFnameLen,
-			ppFCI,
-			pwFCILen
-			);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_IsoSelectFile(pDataParams,
+              bOption,
+              bSelector,
+              pFid,
+              pDFname,
+              bDFnameLen,
+              ppFCI,
+              pwFCILen
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -2832,7 +2873,8 @@ phStatus_t phalMfdf_IsoSelectFile(
   return status;
 }
 
-phStatus_t phalMfdf_IsoReadBinary(
+phStatus_t
+phalMfdf_IsoReadBinary(
     void *pDataParams,
     uint16_t wOption,
     uint8_t bOffset,
@@ -2889,16 +2931,16 @@ phStatus_t phalMfdf_IsoReadBinary(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_IsoReadBinary(pDataParams,
-			wOption,
-			bOffset,
-			bSfid,
-			bBytesToRead,
-			ppRxBuffer,
-			pBytesRead
-			);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_IsoReadBinary(pDataParams,
+              wOption,
+              bOffset,
+              bSfid,
+              bBytesToRead,
+              ppRxBuffer,
+              pBytesRead
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -2915,7 +2957,8 @@ phStatus_t phalMfdf_IsoReadBinary(
   return status;
 }
 
-phStatus_t phalMfdf_IsoUpdateBinary(
+phStatus_t
+phalMfdf_IsoUpdateBinary(
     void *pDataParams,
     uint8_t bOffset,
     uint8_t bSfid,
@@ -2969,14 +3012,14 @@ phStatus_t phalMfdf_IsoUpdateBinary(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_IsoUpdateBinary(pDataParams,
-			bOffset,
-			bSfid,
-			pData,
-			bDataLen
-			);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_IsoUpdateBinary(pDataParams,
+              bOffset,
+              bSfid,
+              pData,
+              bDataLen
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -2993,7 +3036,8 @@ phStatus_t phalMfdf_IsoUpdateBinary(
 
 #ifdef NXPBUILD__PH_NDA_MFDF
 
-phStatus_t phalMfdf_IsoReadRecords(
+phStatus_t
+phalMfdf_IsoReadRecords(
     void *pDataParams,
     uint16_t wOption,
     uint8_t bRecNo,
@@ -3054,17 +3098,17 @@ phStatus_t phalMfdf_IsoReadRecords(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_IsoReadRecords(pDataParams,
-			wOption,
-			bRecNo,
-			bReadAllFromP1,
-			bSfid,
-			bBytesToRead,
-			ppRxBuffer,
-			pBytesRead
-			);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_IsoReadRecords(pDataParams,
+              wOption,
+              bRecNo,
+              bReadAllFromP1,
+              bSfid,
+              bBytesToRead,
+              ppRxBuffer,
+              pBytesRead
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -3081,7 +3125,8 @@ phStatus_t phalMfdf_IsoReadRecords(
   return status;
 }
 
-phStatus_t phalMfdf_IsoAppendRecord(
+phStatus_t
+phalMfdf_IsoAppendRecord(
     void *pDataParams,
     uint8_t bSfid,
     uint8_t *pData,
@@ -3129,13 +3174,13 @@ phStatus_t phalMfdf_IsoAppendRecord(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_IsoAppendRecord(pDataParams,
-			bSfid,
-			pData,
-			bDataLen
-			);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_IsoAppendRecord(pDataParams,
+              bSfid,
+              pData,
+              bDataLen
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -3150,7 +3195,8 @@ phStatus_t phalMfdf_IsoAppendRecord(
   return status;
 }
 
-phStatus_t phalMfdf_IsoGetChallenge(
+phStatus_t
+phalMfdf_IsoGetChallenge(
     void *pDataParams,
     uint16_t wKeyNo,
     uint16_t wKeyVer,
@@ -3197,9 +3243,9 @@ phStatus_t phalMfdf_IsoGetChallenge(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_IsoGetChallenge(pDataParams, wKeyNo, wKeyVer, bLe, pRPICC1);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_IsoGetChallenge(pDataParams, wKeyNo, wKeyVer, bLe, pRPICC1);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -3215,7 +3261,8 @@ phStatus_t phalMfdf_IsoGetChallenge(
   return status;
 }
 
-phStatus_t phalMfdf_IsoExternalAuthenticate(
+phStatus_t
+phalMfdf_IsoExternalAuthenticate(
     void *pDataParams,
     uint8_t *pDataIn,
     uint8_t bInputLen,
@@ -3262,14 +3309,14 @@ phStatus_t phalMfdf_IsoExternalAuthenticate(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_IsoExternalAuthenticate(pDataParams,
-			pDataIn,
-			bInputLen,
-			pDataOut,
-			pOutLen
-			);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_IsoExternalAuthenticate(pDataParams,
+              pDataIn,
+              bInputLen,
+              pDataOut,
+              pOutLen
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -3284,7 +3331,8 @@ phStatus_t phalMfdf_IsoExternalAuthenticate(
   return status;
 }
 
-phStatus_t phalMfdf_IsoInternalAuthenticate(
+phStatus_t
+phalMfdf_IsoInternalAuthenticate(
     void *pDataParams,
     uint8_t *pDataIn,
     uint8_t bInputLen,
@@ -3331,14 +3379,14 @@ phStatus_t phalMfdf_IsoInternalAuthenticate(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_IsoInternalAuthenticate(pDataParams,
-			pDataIn,
-			bInputLen,
-			pDataOut,
-			pOutLen
-			);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_IsoInternalAuthenticate(pDataParams,
+              pDataIn,
+              bInputLen,
+              pDataOut,
+              pOutLen
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -3353,7 +3401,8 @@ phStatus_t phalMfdf_IsoInternalAuthenticate(
   return status;
 }
 
-phStatus_t phalMfdf_IsoAuthenticate(
+phStatus_t
+phalMfdf_IsoAuthenticate(
     void *pDataParams,
     uint16_t wKeyNo,
     uint16_t wKeyVer,
@@ -3405,14 +3454,14 @@ phStatus_t phalMfdf_IsoAuthenticate(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_IsoAuthenticate(pDataParams,
-			wKeyNo,
-			wKeyVer,
-			bKeyNoCard,
-			isPICCkey
-			);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_IsoAuthenticate(pDataParams,
+              wKeyNo,
+              wKeyVer,
+              bKeyNoCard,
+              isPICCkey
+          );
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -3429,7 +3478,8 @@ phStatus_t phalMfdf_IsoAuthenticate(
 
 #endif /* NXPBUILD__PH_NDA_MFDF */
 
-phStatus_t phalMfdf_GetConfig(
+phStatus_t
+phalMfdf_GetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -3469,9 +3519,9 @@ phStatus_t phalMfdf_GetConfig(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_GetConfig(pDataParams, wConfig, pValue);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_GetConfig(pDataParams, wConfig, pValue);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -3490,7 +3540,8 @@ phStatus_t phalMfdf_GetConfig(
   return status;
 }
 
-phStatus_t phalMfdf_SetConfig(
+phStatus_t
+phalMfdf_SetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -3530,9 +3581,9 @@ phStatus_t phalMfdf_SetConfig(
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_SetConfig(pDataParams, wConfig, wValue);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_SetConfig(pDataParams, wConfig, wValue);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:
@@ -3548,7 +3599,8 @@ phStatus_t phalMfdf_SetConfig(
 }
 
 #ifdef NXPBUILD__PH_NDA_MFDF
-phStatus_t phalMfdf_ResetAuthStatus(void *pDataParams)
+phStatus_t
+phalMfdf_ResetAuthStatus(void *pDataParams)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -3580,9 +3632,9 @@ phStatus_t phalMfdf_ResetAuthStatus(void *pDataParams)
 #ifdef NXPBUILD__PHAL_MFP_SAMAV2_NONX
     case PHAL_MFDF_SAMAV2_ID:
 #endif /* NXPBUILD__PHAL_MFP_SAMAV2_NONX */
-	case PHAL_MFDF_SAMAV3_NONX_ID:
-		status = phalMfdf_Sam_NonX_ResetAuthStatus(pDataParams);
-		break;
+    case PHAL_MFDF_SAMAV3_NONX_ID:
+      status = phalMfdf_Sam_NonX_ResetAuthStatus(pDataParams);
+      break;
 #endif /* NXPBUILD__PHAL_MFDF_SAM_NONX */
 
     default:

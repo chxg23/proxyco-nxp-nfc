@@ -31,7 +31,8 @@
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phalT1T_ReadUID(
+phStatus_t
+phalT1T_ReadUID(
     void     *pDataParams,                    /**< [In] */
     uint8_t *pUid,                            /**< [Out] */
     uint16_t *pLength                         /**< [Out] */
@@ -85,7 +86,8 @@ phStatus_t phalT1T_ReadUID(
   return status;
 }
 
-phStatus_t phalT1T_ReadAll(
+phStatus_t
+phalT1T_ReadAll(
     void *pDataParams,                         /**< [In] */
     uint8_t *pUid,                             /**< [In] */
     uint8_t **pData,                           /**< [Out] */
@@ -139,7 +141,8 @@ phStatus_t phalT1T_ReadAll(
   return status;
 }
 
-phStatus_t phalT1T_ReadByte(
+phStatus_t
+phalT1T_ReadByte(
     void *pDataParams,                         /**< [In] */
     uint8_t *pUid,                             /**< [In] */
     uint8_t   bAddress,                        /**< [In] */
@@ -197,7 +200,8 @@ phStatus_t phalT1T_ReadByte(
   return status;
 }
 
-phStatus_t phalT1T_WriteEraseByte(
+phStatus_t
+phalT1T_WriteEraseByte(
     void *pDataParams,                         /**< [In] */
     uint8_t *pUid,                             /**< [In] */
     uint8_t   bAddress,                        /**< [In] */
@@ -258,7 +262,8 @@ phStatus_t phalT1T_WriteEraseByte(
   return status;
 }
 
-phStatus_t phalT1T_WriteNoEraseByte(
+phStatus_t
+phalT1T_WriteNoEraseByte(
     void *pDataParams,                         /**< [In] */
     uint8_t *pUid,                             /**< [In] */
     uint8_t   bAddress,                        /**< [In] */
@@ -319,7 +324,8 @@ phStatus_t phalT1T_WriteNoEraseByte(
   return status;
 }
 
-phStatus_t phalT1T_ReadSegment(
+phStatus_t
+phalT1T_ReadSegment(
     void *pDataParams,                         /**< [In] */
     uint8_t *pUid,                             /**< [In] */
     uint8_t   bAddress,                        /**< [In] */
@@ -377,7 +383,8 @@ phStatus_t phalT1T_ReadSegment(
   return status;
 }
 
-phStatus_t phalT1T_ReadBlock(
+phStatus_t
+phalT1T_ReadBlock(
     void *pDataParams,                         /**< [In] */
     uint8_t *pUid,                             /**< [In] */
     uint8_t   bAddress,                        /**< [In] */
@@ -435,7 +442,8 @@ phStatus_t phalT1T_ReadBlock(
   return status;
 }
 
-phStatus_t phalT1T_WriteEraseBlock(
+phStatus_t
+phalT1T_WriteEraseBlock(
     void *pDataParams,                         /**< [In] */
     uint8_t *pUid,                             /**< [In] */
     uint8_t   bAddress,                        /**< [In] */
@@ -497,7 +505,8 @@ phStatus_t phalT1T_WriteEraseBlock(
   return status;
 }
 
-phStatus_t phalT1T_WriteNoEraseBlock(
+phStatus_t
+phalT1T_WriteNoEraseBlock(
     void *pDataParams,                         /**< [In] */
     uint8_t *pUid,                             /**< [In] */
     uint8_t   bAddress,                        /**< [In] */

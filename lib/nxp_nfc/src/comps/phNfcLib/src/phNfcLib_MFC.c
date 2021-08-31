@@ -39,7 +39,8 @@
 #define PH_NFCLIB_MFC_TRANSFER    0xB0U    /**< MIFARE Classic Transfer command byte */
 #define PH_NFCLIB_MFC_PERSOUID    0x40U    /**< MIFARE Classic Personalize UID command */
 
-phStatus_t phNfcLib_MFC_Transmit(void *const pTxBuffer, uint16_t wTxBufferLength)
+phStatus_t
+phNfcLib_MFC_Transmit(void *const pTxBuffer, uint16_t wTxBufferLength)
 {
   phStatus_t wStatus = PH_ERR_INVALID_PARAMETER;
   uint8_t    aCommand[2] = {0};

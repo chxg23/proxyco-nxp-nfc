@@ -204,7 +204,8 @@ static phStatus_t phNfcLib_AL_Init(void);
 /*******************************************************************************
 **   Function Definitions
 *******************************************************************************/
-phNfcLib_Status_t phNfcLib_SetContext(phNfcLib_AppContext_t *pAppContext)
+phNfcLib_Status_t
+phNfcLib_SetContext(phNfcLib_AppContext_t *pAppContext)
 {
   if (pAppContext == NULL) {
     return PH_NFCLIB_STATUS_INVALID_PARAMETER;
@@ -225,7 +226,8 @@ phNfcLib_Status_t phNfcLib_SetContext(phNfcLib_AppContext_t *pAppContext)
 /**
 * This function will initialize Reader LIbrary PAL Components
 */
-static phStatus_t phNfcLib_PAL_Init(void)
+static phStatus_t
+phNfcLib_PAL_Init(void)
 {
   phStatus_t wStatus = PH_ERR_SUCCESS;
 
@@ -340,7 +342,8 @@ static phStatus_t phNfcLib_PAL_Init(void)
 /**
 * This function will initialize the Reader Library AL Components
 */
-static phStatus_t phNfcLib_AL_Init(void)
+static phStatus_t
+phNfcLib_AL_Init(void)
 {
   phStatus_t wStatus = PH_ERR_SUCCESS;
 
@@ -486,7 +489,7 @@ static phStatus_t phNfcLib_AL_Init(void)
     PH_CHECK_NFCLIB_INIT_FCT(wStatus, phCryptoSym_Sw_Init(
             &sPLUpload_CryptoMAC,
             sizeof(phCryptoSym_Sw_DataParams_t),
-			&gphNfcLib_Params.sKeyStore));
+            &gphNfcLib_Params.sKeyStore));
 
     /* Initialize CryptoSym for key diversification. */
     PH_CHECK_NFCLIB_INIT_FCT(wStatus, phCryptoSym_Sw_Init(
@@ -600,7 +603,8 @@ static phStatus_t phNfcLib_AL_Init(void)
   return wStatus;
 }
 
-phNfcLib_Status_t phNfcLib_Init(void)
+phNfcLib_Status_t
+phNfcLib_Init(void)
 {
   phStatus_t        wStatus  = PH_ERR_SUCCESS;
   phNfcLib_Status_t dwStatus = PH_NFCLIB_STATUS_INVALID_STATE;
@@ -799,7 +803,8 @@ phNfcLib_Status_t phNfcLib_Init(void)
   return dwStatus;
 }
 
-phNfcLib_Status_t phNfcLib_DeInit(void)
+phNfcLib_Status_t
+phNfcLib_DeInit(void)
 {
   phNfcLib_Status_t dwStatus = PH_NFCLIB_STATUS_INVALID_STATE;
   phStatus_t  wStatus;
@@ -828,7 +833,8 @@ phNfcLib_Status_t phNfcLib_DeInit(void)
   return dwStatus;
 }
 
-void *phNfcLib_GetDataParams(
+void *
+phNfcLib_GetDataParams(
     uint16_t wComponent
 )
 {
@@ -852,7 +858,6 @@ void *phNfcLib_GetDataParams(
         pDataparam = (void *) &gphNfcLib_Params.sBalSam;
         break;
 #endif /* NXPBUILD__PHBAL_REG_T1SAMAV3 */
-
 
 #ifdef NXPBUILD__PHPAL_I14443P3A_SW
       case PH_COMP_PAL_ISO14443P3A:

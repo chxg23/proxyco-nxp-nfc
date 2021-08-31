@@ -34,7 +34,8 @@
 #include <nxp_nfc/phhalHw_Rc663_Reg.h>
 #include "nxp_nfc/phOsal.h"
 
-phStatus_t phhalHw_Rc663_WaitIrq(
+phStatus_t
+phhalHw_Rc663_WaitIrq(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint8_t bEnableIrqs,
     uint8_t bWaitUntilPowerUp,

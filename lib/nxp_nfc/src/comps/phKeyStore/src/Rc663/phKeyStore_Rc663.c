@@ -34,7 +34,8 @@
 #include "nxp_nfc/phKeyStore_Rc663_Int.h"
 #include <nxp_nfc/phhalHw_Rc663_Reg.h>
 
-phStatus_t phKeyStore_Rc663_Init(
+phStatus_t
+phKeyStore_Rc663_Init(
     phKeyStore_Rc663_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pHalDataParams
@@ -54,7 +55,8 @@ phStatus_t phKeyStore_Rc663_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phKeyStore_Rc663_FormatKeyEntry(
+phStatus_t
+phKeyStore_Rc663_FormatKeyEntry(
     phKeyStore_Rc663_DataParams_t *pDataParams,
     uint16_t wKeyNo,
     uint16_t wNewKeyType
@@ -68,7 +70,8 @@ phStatus_t phKeyStore_Rc663_FormatKeyEntry(
   return phKeyStore_Rc663_SetKeyAtPos(pDataParams, wKeyNo, 0, wNewKeyType, bKey, 0);
 }
 
-phStatus_t phKeyStore_Rc663_SetKey(
+phStatus_t
+phKeyStore_Rc663_SetKey(
     phKeyStore_Rc663_DataParams_t *pDataParams,
     uint16_t wKeyNo,
     uint16_t wKeyVersion,
@@ -82,7 +85,8 @@ phStatus_t phKeyStore_Rc663_SetKey(
   return (phKeyStore_Rc663_SetKeyAtPos(pDataParams, wKeyNo, 0, wKeyType, pNewKey, wNewKeyVersion));
 }
 
-phStatus_t phKeyStore_Rc663_SetKeyAtPos(
+phStatus_t
+phKeyStore_Rc663_SetKeyAtPos(
     phKeyStore_Rc663_DataParams_t *pDataParams,
     uint16_t wKeyNo,
     uint16_t wPos,
@@ -135,7 +139,8 @@ phStatus_t phKeyStore_Rc663_SetKeyAtPos(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phKeyStore_Rc663_SetKUC(
+phStatus_t
+phKeyStore_Rc663_SetKUC(
     phKeyStore_Rc663_DataParams_t *pDataParams,
     uint16_t wKeyNo,
     uint16_t wRefNoKUC
@@ -146,7 +151,8 @@ phStatus_t phKeyStore_Rc663_SetKUC(
   return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_COMMAND, PH_COMP_KEYSTORE);
 }
 
-phStatus_t phKeyStore_Rc663_SetFullKeyEntry(
+phStatus_t
+phKeyStore_Rc663_SetFullKeyEntry(
     phKeyStore_Rc663_DataParams_t *pDataParams,
     uint16_t wNoOfKeys,
     uint16_t wKeyNo,
@@ -177,7 +183,8 @@ phStatus_t phKeyStore_Rc663_SetFullKeyEntry(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phKeyStore_Rc663_GetKeyEntry(
+phStatus_t
+phKeyStore_Rc663_GetKeyEntry(
     phKeyStore_Rc663_DataParams_t *pDataParams,
     uint16_t wKeyNo,
     uint16_t wKeyVersionBufSize,
@@ -191,7 +198,8 @@ phStatus_t phKeyStore_Rc663_GetKeyEntry(
   return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_COMMAND, PH_COMP_KEYSTORE);
 }
 
-phStatus_t phKeyStore_Rc663_GetKey(
+phStatus_t
+phKeyStore_Rc663_GetKey(
     phKeyStore_Rc663_DataParams_t *pDataParams,
     uint16_t wKeyNo,
     uint16_t wKeyVersion,
@@ -205,7 +213,8 @@ phStatus_t phKeyStore_Rc663_GetKey(
   return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_COMMAND, PH_COMP_KEYSTORE);
 }
 
-phStatus_t phKeyStore_Rc663_SetConfig(
+phStatus_t
+phKeyStore_Rc663_SetConfig(
     phKeyStore_Rc663_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -216,7 +225,8 @@ phStatus_t phKeyStore_Rc663_SetConfig(
   return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_PARAMETER, PH_COMP_KEYSTORE);
 }
 
-phStatus_t phKeyStore_Rc663_SetConfigStr(
+phStatus_t
+phKeyStore_Rc663_SetConfigStr(
     phKeyStore_Rc663_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint8_t *pBuffer,
@@ -228,7 +238,8 @@ phStatus_t phKeyStore_Rc663_SetConfigStr(
   return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_PARAMETER, PH_COMP_KEYSTORE);
 }
 
-phStatus_t phKeyStore_Rc663_GetConfig(
+phStatus_t
+phKeyStore_Rc663_GetConfig(
     phKeyStore_Rc663_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -239,7 +250,8 @@ phStatus_t phKeyStore_Rc663_GetConfig(
   return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_PARAMETER, PH_COMP_KEYSTORE);
 }
 
-phStatus_t phKeyStore_Rc663_GetConfigStr(
+phStatus_t
+phKeyStore_Rc663_GetConfigStr(
     phKeyStore_Rc663_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint8_t **ppBuffer,
@@ -251,7 +263,8 @@ phStatus_t phKeyStore_Rc663_GetConfigStr(
   return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_PARAMETER, PH_COMP_KEYSTORE);
 }
 
-phStatus_t phKeyStore_Rc663_ChangeKUC(
+phStatus_t
+phKeyStore_Rc663_ChangeKUC(
     phKeyStore_Rc663_DataParams_t *pDataParams,
     uint16_t wRefNoKUC,
     uint32_t dwLimit
@@ -262,7 +275,8 @@ phStatus_t phKeyStore_Rc663_ChangeKUC(
   return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_COMMAND, PH_COMP_KEYSTORE);
 }
 
-phStatus_t phKeyStore_Rc663_GetKUC(
+phStatus_t
+phKeyStore_Rc663_GetKUC(
     phKeyStore_Rc663_DataParams_t *pDataParams,
     uint16_t wRefNoKUC,
     uint32_t *pdwLimit,
@@ -275,7 +289,8 @@ phStatus_t phKeyStore_Rc663_GetKUC(
   return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_COMMAND, PH_COMP_KEYSTORE);
 }
 
-phStatus_t phKeyStore_Rc663_StoreKeyE2_Int(
+phStatus_t
+phKeyStore_Rc663_StoreKeyE2_Int(
     phKeyStore_Rc663_DataParams_t *pDataParams,
     uint8_t bKeyNumber,
     uint8_t *pKey,

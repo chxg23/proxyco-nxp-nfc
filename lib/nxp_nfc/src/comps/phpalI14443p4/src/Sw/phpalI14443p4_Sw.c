@@ -119,7 +119,8 @@ static const uint16_t PH_MEMLOC_CONST_ROM bI14443p4_FsTable[13] = {16, 24, 32,
     ? 1u : 0u                                                                 \
     )
 
-phStatus_t phpalI14443p4_Sw_Init(
+phStatus_t
+phpalI14443p4_Sw_Init(
     phpalI14443p4_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pHalDataParams
@@ -140,7 +141,8 @@ phStatus_t phpalI14443p4_Sw_Init(
   return phpalI14443p4_Sw_ResetProtocol(pDataParams);
 }
 
-phStatus_t phpalI14443p4_Sw_SetProtocol(
+phStatus_t
+phpalI14443p4_Sw_SetProtocol(
     phpalI14443p4_Sw_DataParams_t *pDataParams,
     uint8_t   bCidEnable,
     uint8_t   bCid,
@@ -174,7 +176,8 @@ phStatus_t phpalI14443p4_Sw_SetProtocol(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4_Sw_ResetProtocol(
+phStatus_t
+phpalI14443p4_Sw_ResetProtocol(
     phpalI14443p4_Sw_DataParams_t *pDataParams
 )
 {
@@ -197,7 +200,8 @@ phStatus_t phpalI14443p4_Sw_ResetProtocol(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4_Sw_Deselect(
+phStatus_t
+phpalI14443p4_Sw_Deselect(
     phpalI14443p4_Sw_DataParams_t *pDataParams
 )
 {
@@ -288,7 +292,8 @@ phStatus_t phpalI14443p4_Sw_Deselect(
   return status;
 }
 
-phStatus_t phpalI14443p4_Sw_PresCheck(
+phStatus_t
+phpalI14443p4_Sw_PresCheck(
     phpalI14443p4_Sw_DataParams_t *pDataParams
 )
 {
@@ -331,7 +336,8 @@ phStatus_t phpalI14443p4_Sw_PresCheck(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4_Sw_Exchange(
+phStatus_t
+phpalI14443p4_Sw_Exchange(
     phpalI14443p4_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -808,7 +814,8 @@ phStatus_t phpalI14443p4_Sw_Exchange(
   return status;
 }
 
-phStatus_t phpalI14443p4_Sw_IsoHandling(
+phStatus_t
+phpalI14443p4_Sw_IsoHandling(
     phpalI14443p4_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t bRetryCount,
@@ -1270,7 +1277,8 @@ phStatus_t phpalI14443p4_Sw_IsoHandling(
   return status;
 }
 
-phStatus_t phpalI14443p4_Sw_IsValidIBlock(
+phStatus_t
+phpalI14443p4_Sw_IsValidIBlock(
     uint8_t bCheckCid,
     uint8_t bCid,
     uint8_t bCheckNad,
@@ -1342,7 +1350,8 @@ phStatus_t phpalI14443p4_Sw_IsValidIBlock(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4_Sw_IsValidRBlock(
+phStatus_t
+phpalI14443p4_Sw_IsValidRBlock(
     uint8_t bCheckCid,
     uint8_t bCid,
     uint8_t *pRxBuffer,
@@ -1389,7 +1398,8 @@ phStatus_t phpalI14443p4_Sw_IsValidRBlock(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4_Sw_IsValidSBlock(
+phStatus_t
+phpalI14443p4_Sw_IsValidSBlock(
     uint8_t bCheckCid,
     uint8_t bCid,
     uint8_t *pRxBuffer,
@@ -1441,7 +1451,8 @@ phStatus_t phpalI14443p4_Sw_IsValidSBlock(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4_Sw_BuildIBlock(
+phStatus_t
+phpalI14443p4_Sw_BuildIBlock(
     uint8_t bCidEnabled,
     uint8_t bCid,
     uint8_t bNadEnabled,
@@ -1477,7 +1488,8 @@ phStatus_t phpalI14443p4_Sw_BuildIBlock(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4_Sw_BuildRBlock(
+phStatus_t
+phpalI14443p4_Sw_BuildRBlock(
     uint8_t bCidEnabled,
     uint8_t bCid,
     uint8_t bPcbBlockNum,
@@ -1505,7 +1517,8 @@ phStatus_t phpalI14443p4_Sw_BuildRBlock(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4_Sw_BuildSBlock(
+phStatus_t
+phpalI14443p4_Sw_BuildSBlock(
     uint8_t bCidEnabled,
     uint8_t bCid,
     uint8_t bIsWtx,
@@ -1536,7 +1549,8 @@ phStatus_t phpalI14443p4_Sw_BuildSBlock(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4_Sw_SetConfig(
+phStatus_t
+phpalI14443p4_Sw_SetConfig(
     phpalI14443p4_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -1610,7 +1624,8 @@ phStatus_t phpalI14443p4_Sw_SetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4_Sw_GetConfig(
+phStatus_t
+phpalI14443p4_Sw_GetConfig(
     phpalI14443p4_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue

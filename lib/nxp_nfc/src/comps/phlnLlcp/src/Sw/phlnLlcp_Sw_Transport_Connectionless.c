@@ -33,7 +33,8 @@
 #include "phlnLlcp_Sw_Int.h"
 #include "phlnLlcp_Sw_Mac.h"
 
-phStatus_t phlnLlcp_Sw_Transport_Socket_SendTo(
+phStatus_t
+phlnLlcp_Sw_Transport_Socket_SendTo(
     phlnLlcp_Sw_DataParams_t *pDataParams,
     phlnLlcp_Transport_Socket_t *pClientSocket,
     uint8_t   bDsap,
@@ -61,7 +62,8 @@ phStatus_t phlnLlcp_Sw_Transport_Socket_SendTo(
   return wStatus;
 }
 
-phStatus_t phlnLlcp_Sw_Int_Pdu_ConnectionLess_InfoEx(phlnLlcp_Transport_Socket_t *psSocket,
+phStatus_t
+phlnLlcp_Sw_Int_Pdu_ConnectionLess_InfoEx(phlnLlcp_Transport_Socket_t *psSocket,
     uint8_t *pbTxData,
     uint16_t wLength,
     uint16_t wFrameOpt,

@@ -21,7 +21,8 @@
 #include <nxp_nfc/phalMfdfEVx_Int.h>
 #include <nxp_nfc/ph_RefDefs.h>
 
-phStatus_t phalMfdfEVx_Int_ComputeErrorResponse(void *pDataParams, uint16_t wStatus)
+phStatus_t
+phalMfdfEVx_Int_ComputeErrorResponse(void *pDataParams, uint16_t wStatus)
 {
   phStatus_t  PH_MEMLOC_REM status = PH_ERR_SUCCESS;
   phStatus_t  PH_MEMLOC_REM statusTmp;
@@ -172,7 +173,8 @@ phStatus_t phalMfdfEVx_Int_ComputeErrorResponse(void *pDataParams, uint16_t wSta
 /* Should take care of wrapping and unwrapping if ISO 7816 Wrapped mode
  * Does not handle any chaining or CMAC generation/verification or encryption/decryption
  */
-phStatus_t phalMfdfEVx_ExchangeCmd(void *pDataParams, void *pPalMifareDataParams,
+phStatus_t
+phalMfdfEVx_ExchangeCmd(void *pDataParams, void *pPalMifareDataParams,
     uint8_t bWrappedMode, uint8_t *pSendBuff, uint16_t wCmdLen,
     uint8_t **ppResponse, uint16_t *pRxlen)
 {
@@ -252,7 +254,8 @@ phStatus_t phalMfdfEVx_ExchangeCmd(void *pDataParams, void *pPalMifareDataParams
   }
 }
 
-phStatus_t phalMfdfEVx_Int_Send7816Apdu(void *pDataParams, void *pPalMifareDataParams,
+phStatus_t
+phalMfdfEVx_Int_Send7816Apdu(void *pDataParams, void *pPalMifareDataParams,
     uint8_t bOption, uint8_t bIns, uint8_t bP1, uint8_t bP2,
     uint32_t bLc, uint8_t bExtendedLenApdu, uint8_t *pDataIn, uint32_t bLe, uint8_t **ppDataOut,
     uint16_t *pDataLen)
@@ -316,7 +319,8 @@ phStatus_t phalMfdfEVx_Int_Send7816Apdu(void *pDataParams, void *pPalMifareDataP
   return statusTmp;
 }
 
-phStatus_t phalMfdfEVx_Int_ISOSelectFile(void *pDataParams, void *pPalMifareDataParams,
+phStatus_t
+phalMfdfEVx_Int_ISOSelectFile(void *pDataParams, void *pPalMifareDataParams,
     uint8_t bOption, uint8_t *bCmdBuff, uint16_t wCmdLen,
     uint8_t bLc, uint8_t bExtendedLenApdu, uint8_t *pDataIn, uint8_t bLe, uint8_t **ppDataOut,
     uint16_t *pDataLen)
@@ -420,7 +424,8 @@ phStatus_t phalMfdfEVx_Int_ISOSelectFile(void *pDataParams, void *pPalMifareData
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfEVx_Int_ISOUpdateBinary(void *pDataParams, void *pPalMifareDataParams,
+phStatus_t
+phalMfdfEVx_Int_ISOUpdateBinary(void *pDataParams, void *pPalMifareDataParams,
     uint8_t bOption, uint8_t *bCmdBuff, uint16_t wCmdLen,
     uint32_t dwLc, uint8_t bExtendedLenApdu, uint8_t *pDataIn, uint8_t **ppDataOut,
     uint16_t *pDataLen)
@@ -495,7 +500,8 @@ phStatus_t phalMfdfEVx_Int_ISOUpdateBinary(void *pDataParams, void *pPalMifareDa
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfEVx_Int_ISOAppendRecord(void *pDataParams, void *pPalMifareDataParams,
+phStatus_t
+phalMfdfEVx_Int_ISOAppendRecord(void *pDataParams, void *pPalMifareDataParams,
     uint8_t bOption, uint8_t *bCmdBuff, uint16_t wCmdLen,
     uint32_t dwLc, uint8_t bExtendedLenApdu, uint8_t *pDataIn, uint8_t **ppDataOut,
     uint16_t *pDataLen)
@@ -568,7 +574,8 @@ phStatus_t phalMfdfEVx_Int_ISOAppendRecord(void *pDataParams, void *pPalMifareDa
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfEVx_Int_ISOGetChallenge(void *pDataParams, void *pPalMifareDataParams,
+phStatus_t
+phalMfdfEVx_Int_ISOGetChallenge(void *pDataParams, void *pPalMifareDataParams,
     uint8_t bOption, uint8_t *bCmdBuff, uint16_t wCmdLen,
     uint8_t bLe, uint8_t bExtendedLenApdu, uint8_t **ppDataOut, uint16_t *pDataLen)
 {
@@ -626,7 +633,8 @@ phStatus_t phalMfdfEVx_Int_ISOGetChallenge(void *pDataParams, void *pPalMifareDa
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfEVx_Int_ISOExternalAuthenticate(void *pDataParams, void *pPalMifareDataParams,
+phStatus_t
+phalMfdfEVx_Int_ISOExternalAuthenticate(void *pDataParams, void *pPalMifareDataParams,
     uint8_t bOption, uint8_t *bCmdBuff, uint16_t wCmdLen,
     uint8_t bLc, uint8_t bExtendedLenApdu, uint8_t *pDataIn, uint8_t **ppDataOut, uint16_t *pDataLen)
 {
@@ -689,7 +697,8 @@ phStatus_t phalMfdfEVx_Int_ISOExternalAuthenticate(void *pDataParams, void *pPal
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfEVx_Int_ISOInternalAuthenticate(void *pDataParams, void *pPalMifareDataParams,
+phStatus_t
+phalMfdfEVx_Int_ISOInternalAuthenticate(void *pDataParams, void *pPalMifareDataParams,
     uint8_t bOption, uint8_t *bCmdBuff, uint16_t wCmdLen,
     uint8_t bLc, uint8_t bExtendedLenApdu, uint8_t *pDataIn, uint32_t dwLe, uint8_t **ppDataOut,
     uint16_t *pDataLen)
@@ -779,7 +788,8 @@ phStatus_t phalMfdfEVx_Int_ISOInternalAuthenticate(void *pDataParams, void *pPal
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfEVx_Int_GetCmdCode(void *pDataParams, uint8_t *pCmdCode)
+phStatus_t
+phalMfdfEVx_Int_GetCmdCode(void *pDataParams, uint8_t *pCmdCode)
 {
   phStatus_t  PH_MEMLOC_REM wStatus = PH_ERR_SUCCESS;
 
@@ -796,7 +806,8 @@ phStatus_t phalMfdfEVx_Int_GetCmdCode(void *pDataParams, uint8_t *pCmdCode)
   return wStatus;
 }
 
-phStatus_t phalMfdfEVx_Int_SetCmdCode(void *pDataParams, uint8_t bCmdCode)
+phStatus_t
+phalMfdfEVx_Int_SetCmdCode(void *pDataParams, uint8_t bCmdCode)
 {
   phStatus_t  PH_MEMLOC_REM wStatus = PH_ERR_SUCCESS;
 

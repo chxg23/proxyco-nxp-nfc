@@ -43,7 +43,8 @@
 #ifdef NXPBUILD__PHAC_DISCLOOP_TYPEF_TAGS
 
 /* Perform check whether same TypeF tag/device already detected with higher baud rate */
-static phStatus_t phacDiscLoop_Sw_Int_CheckForDuplication(
+static phStatus_t
+phacDiscLoop_Sw_Int_CheckForDuplication(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint8_t *pID,
     uint8_t *pIsDuplicate
@@ -69,7 +70,8 @@ static phStatus_t phacDiscLoop_Sw_Int_CheckForDuplication(
 #ifdef NXPBUILD__PHAC_DISCLOOP_TYPEF_TAGS
 
 /* Parse and update greedy collection with Responses */
-static phStatus_t phacDiscLoop_Sw_Int_UpdateSensFResp(
+static phStatus_t
+phacDiscLoop_Sw_Int_UpdateSensFResp(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint8_t *pID,
     uint8_t bIdLen,
@@ -115,7 +117,8 @@ static phStatus_t phacDiscLoop_Sw_Int_UpdateSensFResp(
 #ifdef NXPBUILD__PHAC_DISCLOOP_TYPEF_TAGS
 
 /* Send SENSF_REQ command and process received response */
-static phStatus_t phacDiscLoop_Sw_Int_SendSensFReq(
+static phStatus_t
+phacDiscLoop_Sw_Int_SendSensFReq(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint8_t bNumTimeSlots,
     uint16_t wCurrentBaudBitPos
@@ -184,7 +187,8 @@ static phStatus_t phacDiscLoop_Sw_Int_SendSensFReq(
 }
 #endif /* NXPBUILD__PHAC_DISCLOOP_TYPEF_TAGS */
 
-phStatus_t phacDiscLoop_Sw_DetTechTypeF(
+phStatus_t
+phacDiscLoop_Sw_DetTechTypeF(
     phacDiscLoop_Sw_DataParams_t *pDataParams
 )
 {
@@ -226,7 +230,8 @@ phStatus_t phacDiscLoop_Sw_DetTechTypeF(
 #endif /* NXPBUILD__PHAC_DISCLOOP_TYPEF_TAGS */
 }
 
-phStatus_t phacDiscLoop_Sw_Int_CollisionResolutionF(
+phStatus_t
+phacDiscLoop_Sw_Int_CollisionResolutionF(
     phacDiscLoop_Sw_DataParams_t *pDataParams
 )
 {
@@ -325,7 +330,8 @@ phStatus_t phacDiscLoop_Sw_Int_CollisionResolutionF(
 #endif /* NXPBUILD__PHAC_DISCLOOP_TYPEF_TAGS */
 }
 
-phStatus_t phacDiscLoop_Sw_Int_ActivateF(
+phStatus_t
+phacDiscLoop_Sw_Int_ActivateF(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint8_t  bTypeFTagIdx
 )
@@ -435,7 +441,8 @@ phStatus_t phacDiscLoop_Sw_Int_ActivateF(
 }
 
 #ifdef NXPBUILD__PHAC_DISCLOOP_TYPEF_TAGS
-phStatus_t phacDiscLoop_Sw_Int_Config_GTF(
+phStatus_t
+phacDiscLoop_Sw_Int_Config_GTF(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint8_t bTechIndex
 )

@@ -40,7 +40,8 @@
 #include "nxp_nfc/phalMfdfLight_Sw_Int.h"
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalMfdfLight_Sw_Int_AuthenticateEv2(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_Int_AuthenticateEv2(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bAuthOption, uint16_t wOption, uint16_t wKeyNo, uint16_t wKeyVer,
     uint8_t bKeyNoCard, uint8_t *pDivInput, uint8_t bDivLen, uint8_t bLenPcdCapsIn,
     uint8_t *pPcdCapsIn, uint8_t *pPcdCapsOut, uint8_t *pPdCapsOut)
@@ -433,7 +434,8 @@ phStatus_t phalMfdfLight_Sw_Int_AuthenticateEv2(phalMfdfLight_Sw_DataParams_t *p
       );
 }
 
-phStatus_t phalMfdfLight_Sw_Int_ReadData_Enc(phalMfdfLight_Sw_DataParams_t *UNALIGNED pDataParams,
+phStatus_t
+phalMfdfLight_Sw_Int_ReadData_Enc(phalMfdfLight_Sw_DataParams_t *UNALIGNED pDataParams,
     uint8_t bOption, uint8_t *bCmdBuff, uint16_t wCmdLen,
     uint8_t **ppRxdata, uint16_t *pRxdataLen)
 {
@@ -747,7 +749,8 @@ phStatus_t phalMfdfLight_Sw_Int_ReadData_Enc(phalMfdfLight_Sw_DataParams_t *UNAL
   return status;
 }
 
-phStatus_t phalMfdfLight_Sw_Int_Write_Enc(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_Int_Write_Enc(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bIns, uint8_t *bCmdBuff, uint16_t wCmdLen, uint8_t bPaddingOption,
     uint8_t bCommOption, uint8_t *pData, uint16_t wDataLen)
 {
@@ -1275,7 +1278,8 @@ phStatus_t phalMfdfLight_Sw_Int_Write_Enc(phalMfdfLight_Sw_DataParams_t *pDataPa
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfLight_Sw_Int_ComputeIv(uint8_t bIsResponse, uint8_t *pTi, uint16_t wCmdCtr,
+phStatus_t
+phalMfdfLight_Sw_Int_ComputeIv(uint8_t bIsResponse, uint8_t *pTi, uint16_t wCmdCtr,
     uint8_t *pIv)
 {
   uint8_t PH_MEMLOC_REM bIndex = 0;
@@ -1310,7 +1314,8 @@ phStatus_t phalMfdfLight_Sw_Int_ComputeIv(uint8_t bIsResponse, uint8_t *pTi, uin
 }
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 
-phStatus_t phalMfdfLight_Sw_Int_GetData(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_Int_GetData(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t *pSendBuff, uint16_t wCmdLen, uint8_t **pResponse,
     uint16_t *pRxlen)
 {
@@ -1547,7 +1552,8 @@ phStatus_t phalMfdfLight_Sw_Int_GetData(phalMfdfLight_Sw_DataParams_t *pDataPara
   return phalMfdfLight_Int_ComputeErrorResponse(pDataParams, bStatusByte);
 }
 
-phStatus_t phalMfdfLight_Sw_Int_ISOGetData(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_Int_ISOGetData(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t *pSendBuff, uint16_t wCmdLen, uint8_t **pResponse,
     uint16_t *pRxlen)
 {
@@ -1745,7 +1751,8 @@ phStatus_t phalMfdfLight_Sw_Int_ISOGetData(phalMfdfLight_Sw_DataParams_t *pDataP
   return phalMfdfLight_Int_ComputeErrorResponse(pDataParams, statusTmp);
 }
 
-phStatus_t phalMfdfLight_Sw_Int_ReadData_Plain(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_Int_ReadData_Plain(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bOption, uint8_t *bCmdBuff, uint16_t wCmdLen,
     uint8_t **ppRxdata, uint16_t *pRxdataLen)
 {
@@ -2005,7 +2012,8 @@ phStatus_t phalMfdfLight_Sw_Int_ReadData_Plain(phalMfdfLight_Sw_DataParams_t *pD
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfLight_Sw_Int_Write_Plain(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_Int_Write_Plain(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bIns, uint8_t *bCmdBuff, uint16_t wCmdLen, uint8_t bCommOption,
     uint8_t *pData, uint16_t wDataLen)
 {
@@ -2513,7 +2521,8 @@ phStatus_t phalMfdfLight_Sw_Int_Write_Plain(phalMfdfLight_Sw_DataParams_t *pData
   return PH_ERR_SUCCESS;
 }
 
-void phalMfdfLight_Sw_Int_ResetAuthStatus(phalMfdfLight_Sw_DataParams_t *pDataParams)
+void
+phalMfdfLight_Sw_Int_ResetAuthStatus(phalMfdfLight_Sw_DataParams_t *pDataParams)
 {
   memset(pDataParams->bSesAuthENCKey, 0x00, sizeof(pDataParams->bSesAuthENCKey)); /* PRQA S 3200 */
   memset(pDataParams->bSesAuthMACKey, 0x00, sizeof(pDataParams->bSesAuthMACKey)); /* PRQA S 3200 */
@@ -2530,7 +2539,8 @@ void phalMfdfLight_Sw_Int_ResetAuthStatus(phalMfdfLight_Sw_DataParams_t *pDataPa
       PH_TMIUTILS_RESET_TMI);
 }
 
-phStatus_t phalMfdfLight_Sw_Int_SendDataToPICC(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_Int_SendDataToPICC(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bIns, uint8_t bCommOption, uint8_t *pCmd, uint16_t wCmdLen,
     uint8_t *pData, uint16_t wDataLen, uint8_t *bLastChunk, uint16_t wLastChunkLen, uint8_t *pResp,
     uint16_t *pRespLen)
@@ -2733,7 +2743,8 @@ phStatus_t phalMfdfLight_Sw_Int_SendDataToPICC(phalMfdfLight_Sw_DataParams_t *pD
   return phalMfdfLight_Int_ComputeErrorResponse(pDataParams, bStatusByte);
 }
 
-phStatus_t phalMfdfLight_Sw_Int_SendDataAndAddDataToPICC(phalMfdfLight_Sw_DataParams_t
+phStatus_t
+phalMfdfLight_Sw_Int_SendDataAndAddDataToPICC(phalMfdfLight_Sw_DataParams_t
     *pDataParams, uint8_t bIns, uint8_t *pCmd, uint16_t wCmdLen, uint8_t *pData,
     uint16_t wDataLen, uint8_t *pAddData, uint16_t wAddDataLen, uint8_t *pResp, uint16_t *pRespLen)
 {
@@ -3051,7 +3062,8 @@ phStatus_t phalMfdfLight_Sw_Int_SendDataAndAddDataToPICC(phalMfdfLight_Sw_DataPa
   return phalMfdfLight_Int_ComputeErrorResponse(pDataParams, bStatusByte);
 }
 
-phStatus_t phalMfdfLight_Sw_Int_IsoRead(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_Int_IsoRead(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint16_t wOption, uint8_t *bCmdBuff, uint16_t wCmdLen, uint8_t **ppRxBuffer,
     uint32_t *pBytesRead)
 {
@@ -3194,7 +3206,8 @@ phStatus_t phalMfdfLight_Sw_Int_IsoRead(phalMfdfLight_Sw_DataParams_t *pDataPara
   return PH_ADD_COMPCODE((status & PH_ERR_MASK), PH_COMP_AL_MFDFLIGHT);
 }
 
-void phalMfdfLight_Sw_Int_TruncateMac(uint8_t *pMac)
+void
+phalMfdfLight_Sw_Int_TruncateMac(uint8_t *pMac)
 {
   uint8_t PH_MEMLOC_REM bIndex;
   uint8_t PH_MEMLOC_REM bIndex2;
@@ -3204,7 +3217,8 @@ void phalMfdfLight_Sw_Int_TruncateMac(uint8_t *pMac)
   }
 }
 
-phStatus_t phalMfdfLight_Sw_Int_GetFrameLength(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_Int_GetFrameLength(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint16_t *pFSD, uint16_t *pFSC)
 {
   uint16_t    PH_MEMLOC_REM statusTmp;
@@ -3285,7 +3299,8 @@ phStatus_t phalMfdfLight_Sw_Int_GetFrameLength(phalMfdfLight_Sw_DataParams_t *pD
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfLight_Sw_Int_buildLrpSV(uint8_t *pRndA, uint8_t *pRndB, uint8_t *pSV)
+phStatus_t
+phalMfdfLight_Sw_Int_buildLrpSV(uint8_t *pRndA, uint8_t *pRndB, uint8_t *pSV)
 {
   /* SV = 0x00||0x01||0x00||0x80||RndA[15::14]||(RndA[13::8]  RndB[15::10])||RndB[9::0]||RndA[7::0]||0x69||0x69 */
   uint8_t bSVprefix[4] = { 0x00, 0x01, 0x00, 0x80 };

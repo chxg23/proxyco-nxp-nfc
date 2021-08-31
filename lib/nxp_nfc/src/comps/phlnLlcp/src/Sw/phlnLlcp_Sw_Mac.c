@@ -52,7 +52,8 @@ static uint32_t gphlnLlcp_MacType;
 /* *****************************************************************************************************************
 * Private Functions
 * ***************************************************************************************************************** */
-phStatus_t phlnLlcp_Sw_MacInit(phlnLlcp_Sw_DataParams_t *pDataParams, uint8_t bConfig,
+phStatus_t
+phlnLlcp_Sw_MacInit(phlnLlcp_Sw_DataParams_t *pDataParams, uint8_t bConfig,
     uint16_t *wSymmTime, uint16_t *wLtoTime)
 {
   phStatus_t PH_MEMLOC_REM wStatus;
@@ -159,7 +160,8 @@ phStatus_t phlnLlcp_Sw_MacInit(phlnLlcp_Sw_DataParams_t *pDataParams, uint8_t bC
   return wStatus;
 }
 
-phStatus_t phlnLlcp_MacTransmit(uint16_t wFrameOpt, uint8_t *pTxBuffer, uint16_t wTxLength)
+phStatus_t
+phlnLlcp_MacTransmit(uint16_t wFrameOpt, uint8_t *pTxBuffer, uint16_t wTxLength)
 {
   phStatus_t PH_MEMLOC_REM wStatus = PH_ERR_USE_CONDITION;
   if (gphlnLlcp_MacType == PHLN_LLCP_INITIATOR) {
@@ -174,7 +176,8 @@ phStatus_t phlnLlcp_MacTransmit(uint16_t wFrameOpt, uint8_t *pTxBuffer, uint16_t
   return wStatus;
 }
 
-phStatus_t phlnLlcp_MacReceive(uint16_t wFrameOpt, uint8_t **ppRxBuffer, uint16_t *pRxLength)
+phStatus_t
+phlnLlcp_MacReceive(uint16_t wFrameOpt, uint8_t **ppRxBuffer, uint16_t *pRxLength)
 {
   phStatus_t PH_MEMLOC_REM wStatus = PH_ERR_USE_CONDITION;
   if (gphlnLlcp_MacType == PHLN_LLCP_INITIATOR) {
@@ -189,7 +192,8 @@ phStatus_t phlnLlcp_MacReceive(uint16_t wFrameOpt, uint8_t **ppRxBuffer, uint16_
   return wStatus;
 }
 
-phStatus_t phlnLlcp_MacSetConfig(uint16_t wConfig, uint16_t wValue)
+phStatus_t
+phlnLlcp_MacSetConfig(uint16_t wConfig, uint16_t wValue)
 {
   phStatus_t PH_MEMLOC_REM wStatus = PH_ERR_USE_CONDITION;
   if (gphlnLlcp_MacType == PHLN_LLCP_INITIATOR) {
@@ -204,7 +208,8 @@ phStatus_t phlnLlcp_MacSetConfig(uint16_t wConfig, uint16_t wValue)
   return wStatus;
 }
 
-phStatus_t phlnLlcp_MacGetConfig(uint16_t wConfig, uint16_t *pwValue)
+phStatus_t
+phlnLlcp_MacGetConfig(uint16_t wConfig, uint16_t *pwValue)
 {
   phStatus_t PH_MEMLOC_REM wStatus = PH_ERR_USE_CONDITION;
   if (gphlnLlcp_MacType == PHLN_LLCP_INITIATOR) {
@@ -219,7 +224,8 @@ phStatus_t phlnLlcp_MacGetConfig(uint16_t wConfig, uint16_t *pwValue)
   return wStatus;
 }
 
-phStatus_t phlnLlcp_MacDeactivation(phlnLlcp_Sw_DataParams_t *pDataParams)
+phStatus_t
+phlnLlcp_MacDeactivation(phlnLlcp_Sw_DataParams_t *pDataParams)
 {
   phStatus_t PH_MEMLOC_REM wStatus = PH_ERR_SUCCESS;
 #ifdef NXPBUILD__PHPAL_I18092MPI
@@ -272,7 +278,8 @@ phStatus_t phlnLlcp_MacDeactivation(phlnLlcp_Sw_DataParams_t *pDataParams)
   return wStatus;
 }
 
-void phlnLlcp_Sw_MacHAL_ShutDown(void)
+void
+phlnLlcp_Sw_MacHAL_ShutDown(void)
 {
 #ifdef NXPBUILD__PHPAL_I18092MPI
   phpalI18092mPI_Sw_DataParams_t PH_MEMLOC_REM *pPalI18092mPIDataParams = NULL;

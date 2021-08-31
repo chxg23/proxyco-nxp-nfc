@@ -30,7 +30,8 @@
 
 #include "phnpSnep_Sw.h"
 
-phStatus_t phnpSnep_Sw_Init(
+phStatus_t
+phnpSnep_Sw_Init(
     phnpSnep_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *plnLlcpDataparams,
@@ -55,7 +56,8 @@ phStatus_t phnpSnep_Sw_Init(
 /**
  * Assembles and returns the SNEP header for the specified Req/Res field.
  */
-void phnpSnep_GetHeader(uint8_t eReqResField, uint32_t dwLength, uint8_t *pbHeader)
+void
+phnpSnep_GetHeader(uint8_t eReqResField, uint32_t dwLength, uint8_t *pbHeader)
 {
   pbHeader[0] = PHNP_SNEP_VER;
   pbHeader[1] = eReqResField;
@@ -67,7 +69,8 @@ void phnpSnep_GetHeader(uint8_t eReqResField, uint32_t dwLength, uint8_t *pbHead
   pbHeader[5] = (uint8_t)(dwLength);
 }
 
-phStatus_t phnpSnep_Sw_ClientInit(
+phStatus_t
+phnpSnep_Sw_ClientInit(
     phnpSnep_Sw_DataParams_t *pDataParams,
     phnpSnep_Server_type_t eServerType,
     uint8_t *pNonDefaultUri,
@@ -112,7 +115,8 @@ phStatus_t phnpSnep_Sw_ClientInit(
   return wStatus;
 }
 
-phStatus_t phnpSnep_Sw_ClientDeInit(phnpSnep_Sw_DataParams_t *pDataParams)
+phStatus_t
+phnpSnep_Sw_ClientDeInit(phnpSnep_Sw_DataParams_t *pDataParams)
 {
   phStatus_t PH_MEMLOC_REM wStatus;
 
@@ -124,13 +128,15 @@ phStatus_t phnpSnep_Sw_ClientDeInit(phnpSnep_Sw_DataParams_t *pDataParams)
   return wStatus;
 }
 
-phStatus_t phnpSnep_Sw_ServerDeInit(phnpSnep_Sw_DataParams_t *pDataParams)
+phStatus_t
+phnpSnep_Sw_ServerDeInit(phnpSnep_Sw_DataParams_t *pDataParams)
 {
   return phlnLlcp_Transport_Socket_Unregister(pDataParams->plnLlcpDataParams,
           pDataParams->psSocket);
 }
 
-phStatus_t phnpSnep_Sw_ServerInit(
+phStatus_t
+phnpSnep_Sw_ServerInit(
     phnpSnep_Sw_DataParams_t *pDataParams,
     phnpSnep_Server_type_t eServerType,
     uint8_t *pNonDefaultUri,
@@ -171,7 +177,8 @@ phStatus_t phnpSnep_Sw_ServerInit(
           pDataParams->psSocket, NULL);
 }
 
-phStatus_t phnpSnep_Sw_ServerListen(
+phStatus_t
+phnpSnep_Sw_ServerListen(
     phnpSnep_Sw_DataParams_t *pDataParams,
     uint32_t   dwGetReqBuffSize,
     uint8_t   *pGetReqData,
@@ -262,7 +269,8 @@ phStatus_t phnpSnep_Sw_ServerListen(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phnpSnep_Sw_ServerSendResponse(
+phStatus_t
+phnpSnep_Sw_ServerSendResponse(
     phnpSnep_Sw_DataParams_t *pDataParams,
     uint8_t bClientReq,
     uint8_t *pRespDataForGet,
@@ -428,7 +436,8 @@ phStatus_t phnpSnep_Sw_ServerSendResponse(
   return wStatus;
 }
 
-phStatus_t phnpSnep_Sw_Put(
+phStatus_t
+phnpSnep_Sw_Put(
     phnpSnep_Sw_DataParams_t *pDataParams,
     uint8_t *pTxBuffer,
     uint32_t dwTxBufferSize
@@ -534,7 +543,8 @@ phStatus_t phnpSnep_Sw_Put(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phnpSnep_Sw_Get(
+phStatus_t
+phnpSnep_Sw_Get(
     phnpSnep_Sw_DataParams_t *pDataParams,
     uint8_t *pNdefMsg,
     uint32_t dwNdefMsgLen,
@@ -663,7 +673,8 @@ phStatus_t phnpSnep_Sw_Get(
   return wStatus;
 }
 
-phStatus_t phnpSnep_Sw_SendCmds(
+phStatus_t
+phnpSnep_Sw_SendCmds(
     phnpSnep_Sw_DataParams_t *pDataParams,
     uint8_t eReqResField
 )

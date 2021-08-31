@@ -31,7 +31,8 @@
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
 /* MIFARE NTAG 42xDNA secure messaging related commands. ----------------------------------------------------------------------------- */
-phStatus_t phalMfNtag42XDna_AuthenticateEv2(void *pDataParams, uint8_t bAuthOption,
+phStatus_t
+phalMfNtag42XDna_AuthenticateEv2(void *pDataParams, uint8_t bAuthOption,
     uint16_t wOption, uint16_t wKeyNo, uint16_t wKeyVer, uint8_t bKeyNoCard,
     uint8_t *pDivInput, uint8_t bDivLen, uint8_t bLenPcdCapsIn, uint8_t *bPcdCapsIn,
     uint8_t *bPcdCapsOut, uint8_t *bPdCapsOut)
@@ -106,7 +107,8 @@ phStatus_t phalMfNtag42XDna_AuthenticateEv2(void *pDataParams, uint8_t bAuthOpti
 
 /* MIFARE NTAG 42xDNA Memory and Configuration mamangement commands. ----------------------------------------------------------------- */
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalMfNtag42XDna_SetConfiguration(void *pDataParams, uint8_t bOption, uint8_t *pData,
+phStatus_t
+phalMfNtag42XDna_SetConfiguration(void *pDataParams, uint8_t bOption, uint8_t *pData,
     uint8_t bDataLen)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -157,7 +159,8 @@ phStatus_t phalMfNtag42XDna_SetConfiguration(void *pDataParams, uint8_t bOption,
 }
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 
-phStatus_t phalMfNtag42XDna_GetVersion(void *pDataParams, uint8_t *pVerInfo)
+phStatus_t
+phalMfNtag42XDna_GetVersion(void *pDataParams, uint8_t *pVerInfo)
 {
   phStatus_t PH_MEMLOC_REM status;
   uint8_t PH_MEMLOC_REM bVersionLength = 0;
@@ -205,7 +208,8 @@ phStatus_t phalMfNtag42XDna_GetVersion(void *pDataParams, uint8_t *pVerInfo)
 }
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalMfNtag42XDna_GetCardUID(void *pDataParams, uint8_t *pUid)
+phStatus_t
+phalMfNtag42XDna_GetCardUID(void *pDataParams, uint8_t *pUid)
 {
   phStatus_t PH_MEMLOC_REM status;
   uint8_t PH_MEMLOC_REM bCardUidLength = 0;
@@ -256,7 +260,8 @@ phStatus_t phalMfNtag42XDna_GetCardUID(void *pDataParams, uint8_t *pUid)
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
 /* MIFARE NTAG 42xDNA Key mamangement commands. -------------------------------------------------------------------------------------- */
-phStatus_t phalMfNtag42XDna_ChangeKey(void *pDataParams, uint16_t wOption, uint16_t wOldKeyNo,
+phStatus_t
+phalMfNtag42XDna_ChangeKey(void *pDataParams, uint16_t wOption, uint16_t wOldKeyNo,
     uint16_t wOldKeyVer, uint16_t wNewKeyNo, uint16_t wNewKeyVer,
     uint8_t bKeyNoCard, uint8_t *pDivInput, uint8_t bDivLen)
 {
@@ -326,7 +331,8 @@ phStatus_t phalMfNtag42XDna_ChangeKey(void *pDataParams, uint16_t wOption, uint1
   return status;
 }
 
-phStatus_t phalMfNtag42XDna_GetKeyVersion(void *pDataParams, uint8_t bKeyNo, uint8_t bKeySetNo,
+phStatus_t
+phalMfNtag42XDna_GetKeyVersion(void *pDataParams, uint8_t bKeyNo, uint8_t bKeySetNo,
     uint8_t *pKeyVersion, uint8_t *bRxLen)
 {
   /**
@@ -383,7 +389,8 @@ phStatus_t phalMfNtag42XDna_GetKeyVersion(void *pDataParams, uint8_t bKeyNo, uin
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 
 /* MIFARE NTAG 42xDNA File mamangement commands. ------------------------------------------------------------------------------------- */
-phStatus_t phalMfNtag42XDna_GetFileSettings(void *pDataParams, uint8_t bFileNo,
+phStatus_t
+phalMfNtag42XDna_GetFileSettings(void *pDataParams, uint8_t bFileNo,
     uint8_t *pFSBuffer, uint8_t *bBufferLen)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -434,7 +441,8 @@ phStatus_t phalMfNtag42XDna_GetFileSettings(void *pDataParams, uint8_t bFileNo,
 }
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalMfNtag42XDna_GetFileCounters(void *pDataParams, uint8_t bOption, uint8_t bFileNo,
+phStatus_t
+phalMfNtag42XDna_GetFileCounters(void *pDataParams, uint8_t bOption, uint8_t bFileNo,
     uint8_t *pFileCounters, uint8_t *pRxLen)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -490,7 +498,8 @@ phStatus_t phalMfNtag42XDna_GetFileCounters(void *pDataParams, uint8_t bOption, 
   return status;
 }
 
-phStatus_t phalMfNtag42XDna_ChangeFileSettings(void *pDataParams, uint8_t bCommMode,
+phStatus_t
+phalMfNtag42XDna_ChangeFileSettings(void *pDataParams, uint8_t bCommMode,
     uint8_t bFileNo, uint8_t bFileOption, uint8_t *pAccessRights,
     uint8_t bAdditionalInfoLen, uint8_t *bAdditionalInfo)
 {
@@ -552,7 +561,8 @@ phStatus_t phalMfNtag42XDna_ChangeFileSettings(void *pDataParams, uint8_t bCommM
   return status;
 }
 
-phStatus_t phalMfNtag42XDna_ChangeFileSettingsSDM(void *pDataParams, uint8_t bOption,
+phStatus_t
+phalMfNtag42XDna_ChangeFileSettingsSDM(void *pDataParams, uint8_t bOption,
     uint8_t bFileNo, uint8_t bFileOption, uint8_t *pAccessRights,
     uint8_t bSdmOptions, uint8_t *pSdmAccessRights, uint8_t *pVCUIDOffset, uint8_t *pSDMReadCtrOffset,
     uint8_t *pPICCDataOffset,
@@ -659,7 +669,8 @@ phStatus_t phalMfNtag42XDna_ChangeFileSettingsSDM(void *pDataParams, uint8_t bOp
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 
 /* MIFARE NTAG 42xDNA Data mamangement commands. ------------------------------------------------------------------------------------- */
-phStatus_t phalMfNtag42XDna_ReadData(void *pDataParams, uint8_t bOption, uint8_t bIns,
+phStatus_t
+phalMfNtag42XDna_ReadData(void *pDataParams, uint8_t bOption, uint8_t bIns,
     uint8_t bFileNo, uint8_t *pOffset, uint8_t *pLength,
     uint8_t **ppRxdata, uint16_t *pRxdataLen)
 {
@@ -724,7 +735,8 @@ phStatus_t phalMfNtag42XDna_ReadData(void *pDataParams, uint8_t bOption, uint8_t
   return status;
 }
 
-phStatus_t phalMfNtag42XDna_WriteData(void *pDataParams, uint8_t bOption, uint8_t bIns,
+phStatus_t
+phalMfNtag42XDna_WriteData(void *pDataParams, uint8_t bOption, uint8_t bIns,
     uint8_t bFileNo, uint8_t *pOffset, uint8_t *pTxData,
     uint8_t *pTxDataLen)
 {
@@ -793,7 +805,8 @@ phStatus_t phalMfNtag42XDna_WriteData(void *pDataParams, uint8_t bOption, uint8_
 }
 
 /* MIFARE NTAG 42xDNA ISO7816-4 commands. -------------------------------------------------------------------------------------------- */
-phStatus_t phalMfNtag42XDna_IsoSelectFile(void *pDataParams, uint8_t bOption, uint8_t bSelector,
+phStatus_t
+phalMfNtag42XDna_IsoSelectFile(void *pDataParams, uint8_t bOption, uint8_t bSelector,
     uint8_t *pFid, uint8_t *pDFname,
     uint8_t bDFnameLen, uint8_t bExtendedLenApdu, uint8_t **ppFCI, uint16_t *pwFCILen)
 {
@@ -851,7 +864,8 @@ phStatus_t phalMfNtag42XDna_IsoSelectFile(void *pDataParams, uint8_t bOption, ui
   return status;
 }
 
-phStatus_t phalMfNtag42XDna_IsoReadBinary(void *pDataParams, uint16_t wOption, uint8_t bOffset,
+phStatus_t
+phalMfNtag42XDna_IsoReadBinary(void *pDataParams, uint16_t wOption, uint8_t bOffset,
     uint8_t bSfid, uint32_t dwBytesToRead,
     uint8_t bExtendedLenApdu, uint8_t **ppRxBuffer, uint32_t *pBytesRead)
 {
@@ -909,7 +923,8 @@ phStatus_t phalMfNtag42XDna_IsoReadBinary(void *pDataParams, uint16_t wOption, u
   return status;
 }
 
-phStatus_t phalMfNtag42XDna_IsoUpdateBinary(void *pDataParams, uint8_t bOffset, uint8_t bSfid,
+phStatus_t
+phalMfNtag42XDna_IsoUpdateBinary(void *pDataParams, uint8_t bOffset, uint8_t bSfid,
     uint8_t bExtendedLenApdu, uint8_t *pData,
     uint32_t dwDataLen)
 {
@@ -965,7 +980,8 @@ phStatus_t phalMfNtag42XDna_IsoUpdateBinary(void *pDataParams, uint8_t bOffset, 
 }
 
 /* MIFARE NTAG 42xDNA Originality Check functions. ----------------------------------------------------------------------------------- */
-phStatus_t phalMfNtag42XDna_ReadSign(void *pDataParams, uint8_t bAddr, uint8_t **pSignature)
+phStatus_t
+phalMfNtag42XDna_ReadSign(void *pDataParams, uint8_t bAddr, uint8_t **pSignature)
 {
   phStatus_t PH_MEMLOC_REM status = 0;
   PH_LOG_HELPER_ALLOCATE_TEXT(bFunctionName, "phalMfNtag42XDna_ReadSign");
@@ -1012,7 +1028,8 @@ phStatus_t phalMfNtag42XDna_ReadSign(void *pDataParams, uint8_t bAddr, uint8_t *
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
 /* MIFARE NTAG 42xDNA Tag Tamper Protection functions. ------------------------------------------------------------------------------- */
-phStatus_t phalMfNtag42XDna_GetTagTamperStatus(void *pDataParams, uint8_t *pRxBuffer,
+phStatus_t
+phalMfNtag42XDna_GetTagTamperStatus(void *pDataParams, uint8_t *pRxBuffer,
     uint8_t *pRxLen)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -1064,7 +1081,8 @@ phStatus_t phalMfNtag42XDna_GetTagTamperStatus(void *pDataParams, uint8_t *pRxBu
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 
 /* MIFARE NTAG 42xDNA Miscellaneous functions. --------------------------------------------------------------------------------------- */
-phStatus_t phalMfNtag42XDna_GetConfig(void *pDataParams, uint16_t wConfig, uint16_t *pValue)
+phStatus_t
+phalMfNtag42XDna_GetConfig(void *pDataParams, uint16_t wConfig, uint16_t *pValue)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1114,7 +1132,8 @@ phStatus_t phalMfNtag42XDna_GetConfig(void *pDataParams, uint16_t wConfig, uint1
   return status;
 }
 
-phStatus_t phalMfNtag42XDna_SetConfig(void *pDataParams, uint16_t wConfig, uint16_t wValue)
+phStatus_t
+phalMfNtag42XDna_SetConfig(void *pDataParams, uint16_t wConfig, uint16_t wValue)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1159,7 +1178,8 @@ phStatus_t phalMfNtag42XDna_SetConfig(void *pDataParams, uint16_t wConfig, uint1
   return status;
 }
 
-phStatus_t phalMfNtag42XDna_ResetAuthentication(void *pDataParams)
+phStatus_t
+phalMfNtag42XDna_ResetAuthentication(void *pDataParams)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1201,7 +1221,8 @@ phStatus_t phalMfNtag42XDna_ResetAuthentication(void *pDataParams)
 }
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalMfNtag42XDna_CalculateMACSDM(void *pDataParams, uint8_t bSdmOption,
+phStatus_t
+phalMfNtag42XDna_CalculateMACSDM(void *pDataParams, uint8_t bSdmOption,
     uint16_t wSDMMacKeyNo, uint16_t wSDMMacKeyVer,
     uint16_t wRamKeyNo, uint16_t wRamKeyVer, uint8_t *pUid, uint8_t bUidLen, uint8_t *pSDMReadCtr,
     uint8_t *pInData,
@@ -1276,7 +1297,8 @@ phStatus_t phalMfNtag42XDna_CalculateMACSDM(void *pDataParams, uint8_t bSdmOptio
   return status;
 }
 
-phStatus_t phalMfNtag42XDna_DecryptSDMENCFileData(void *pDataParams, uint8_t bSdmOption,
+phStatus_t
+phalMfNtag42XDna_DecryptSDMENCFileData(void *pDataParams, uint8_t bSdmOption,
     uint16_t wEncKeyNo, uint16_t wEncKeyVer,
     uint16_t wRamKeyNo, uint16_t wRamKeyVer, uint8_t *pUid, uint8_t bUidLen, uint8_t *pSDMReadCtr,
     uint8_t *pEncdata,
@@ -1350,7 +1372,8 @@ phStatus_t phalMfNtag42XDna_DecryptSDMENCFileData(void *pDataParams, uint8_t bSd
   return status;
 }
 
-phStatus_t phalMfNtag42XDna_DecryptSDMPICCData(void *pDataParams, uint16_t wKeyNo,
+phStatus_t
+phalMfNtag42XDna_DecryptSDMPICCData(void *pDataParams, uint16_t wKeyNo,
     uint16_t wKeyVer, uint8_t *pEncdata, uint16_t wEncDataLen,
     uint8_t *pPlainData)
 {

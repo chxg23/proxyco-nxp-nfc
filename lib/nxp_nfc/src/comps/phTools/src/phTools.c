@@ -39,7 +39,8 @@
 
 static uint8_t phTools_CalcParity(uint8_t bDataByte, uint8_t bOption);
 
-phStatus_t phTools_EncodeParity(
+phStatus_t
+phTools_EncodeParity(
     uint8_t bOption,
     uint8_t *pInBuffer,
     uint16_t wInBufferLength,
@@ -141,7 +142,8 @@ phStatus_t phTools_EncodeParity(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phTools_DecodeParity(
+phStatus_t
+phTools_DecodeParity(
     uint8_t bOption,
     uint8_t *pInBuffer,
     uint16_t wInBufferLength,
@@ -250,7 +252,8 @@ phStatus_t phTools_DecodeParity(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phTools_CalculateCrc5(
+phStatus_t
+phTools_CalculateCrc5(
     uint8_t bOption,
     uint8_t bPreset,
     uint8_t bPolynom,
@@ -333,7 +336,8 @@ phStatus_t phTools_CalculateCrc5(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phTools_CalculateCrc8(
+phStatus_t
+phTools_CalculateCrc8(
     uint8_t bOption,
     uint8_t bPreset,
     uint8_t bPolynom,
@@ -403,7 +407,8 @@ phStatus_t phTools_CalculateCrc8(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phTools_CalculateCrc16(
+phStatus_t
+phTools_CalculateCrc16(
     uint8_t bOption,
     uint16_t wPreset,
     uint16_t wPolynom,
@@ -473,7 +478,8 @@ phStatus_t phTools_CalculateCrc16(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phTools_CalculateCrc32(
+phStatus_t
+phTools_CalculateCrc32(
     uint8_t bOption,
     uint32_t dwPreset,
     uint32_t dwPolynom,
@@ -543,7 +549,8 @@ phStatus_t phTools_CalculateCrc32(
   return PH_ERR_SUCCESS;
 }
 
-static uint8_t phTools_CalcParity(
+static uint8_t
+phTools_CalcParity(
     uint8_t bDataByte,
     uint8_t bOption
 )
@@ -565,7 +572,8 @@ static uint8_t phTools_CalcParity(
   return bParity & 0x01U;
 }
 
-static void phTools_UpdateCrc_B(uint8_t bCh, uint16_t *pLpwCrc)
+static void
+phTools_UpdateCrc_B(uint8_t bCh, uint16_t *pLpwCrc)
 {
   bCh = (bCh ^ (uint8_t)((*pLpwCrc) & 0x00FFU));
   bCh = (bCh ^ (bCh << 4U));
@@ -573,7 +581,8 @@ static void phTools_UpdateCrc_B(uint8_t bCh, uint16_t *pLpwCrc)
               uint16_t)bCh >> 4U);
 }
 
-phStatus_t phTools_ComputeCrc_B(
+phStatus_t
+phTools_ComputeCrc_B(
     uint8_t *pData,
     uint32_t dwLength,
     uint8_t *pCrc)
@@ -598,7 +607,8 @@ phStatus_t phTools_ComputeCrc_B(
 #   define __min(X,Y) (((X) < (Y)) ? (X) : (Y))
 #endif
 
-phStatus_t phTools_GetVersion(
+phStatus_t
+phTools_GetVersion(
     uint8_t *pProductVer,
     uint16_t *pMajor,
     uint8_t *pMinor,

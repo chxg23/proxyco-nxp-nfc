@@ -35,7 +35,8 @@
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phpalI14443p4_SetProtocol(
+phStatus_t
+phpalI14443p4_SetProtocol(
     void *pDataParams,
     uint8_t   bCidEnable,
     uint8_t   bCid,
@@ -108,7 +109,8 @@ phStatus_t phpalI14443p4_SetProtocol(
   return status;
 }
 
-phStatus_t phpalI14443p4_ResetProtocol(
+phStatus_t
+phpalI14443p4_ResetProtocol(
     void *pDataParams
 )
 {
@@ -152,7 +154,8 @@ phStatus_t phpalI14443p4_ResetProtocol(
   return status;
 }
 
-phStatus_t phpalI14443p4_Deselect(
+phStatus_t
+phpalI14443p4_Deselect(
     void *pDataParams
 )
 {
@@ -196,7 +199,8 @@ phStatus_t phpalI14443p4_Deselect(
   return status;
 }
 
-phStatus_t phpalI14443p4_PresCheck(
+phStatus_t
+phpalI14443p4_PresCheck(
     void *pDataParams
 )
 {
@@ -240,7 +244,8 @@ phStatus_t phpalI14443p4_PresCheck(
   return status;
 }
 
-phStatus_t phpalI14443p4_Exchange(
+phStatus_t
+phpalI14443p4_Exchange(
     void *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -307,7 +312,8 @@ phStatus_t phpalI14443p4_Exchange(
   return status;
 }
 
-phStatus_t phpalI14443p4_SetConfig(
+phStatus_t
+phpalI14443p4_SetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -358,7 +364,8 @@ phStatus_t phpalI14443p4_SetConfig(
   return status;
 }
 
-phStatus_t phpalI14443p4_GetConfig(
+phStatus_t
+phpalI14443p4_GetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue

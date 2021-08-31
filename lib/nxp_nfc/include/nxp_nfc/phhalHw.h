@@ -850,70 +850,69 @@ phStatus_t phhalHw_Pn5190_SetListenParameters(
 /** @} */
 
 /** \brief SamAV3 HAL parameter structure */
-typedef struct
-{
-	uint16_t wId;																				/**< Layer ID for this component, NEVER MODIFY! */
-	void  * pBalDataParams;																		/**< Pointer to the lower layers parameter structure. */
-	void * pReaderHalDataParams;																/**< Pointer to the hal data params of a reader. NULL in case of X-Mode. */
-	void * pKeyStoreDataParams;																	/**< Pointer to the KeyStore used for Host Authentication. */
-	void * pENCCryptoDataParams;																/**< Pointer to the ENC crypto layers parameter structure. */
-	void * pMACCryptoDataParams;																/**< Pointer to the MAC crypto layers parameter structure. */
-	void * pCryptoRngDataParams;																/**< Pointer to the parameter structure of the CryptoRng layer. */
-	void * pPLUpload_ENCCryptoDataParams;														/**< pointer to the ENC crypto layers parameter structure. This will be used for ProgrammableLogic feature only. */
-	void * pPLUpload_MACCryptoDataParams;														/**< pointer to the MAC crypto layers parameter structure. This will be used for ProgrammableLogic feature only. */
-	uint32_t Cmd_Ctr;																			/**< Command counter for Secure Messaging. */
-	uint8_t bHostMode;																			/**< Indicates #PHHAL_HW_SAMAV3_HC_AV2_MODE or #PHHAL_HW_SAMAV3_HC_AV3_MODE Host-Communication modes. */
-	uint8_t bAuthType;																			/**< The current Authentication Type used for SM. */
-	uint8_t bKeyNo;																				/**< Store the current authentication key. */
-	uint8_t bPendingEncCmdData[16];																/**< Command Data pending for encryption. */
-	uint8_t bPendingEncCmdDataLength;															/**< Length of pending command data to encrypt. */
-	uint8_t bPendingCmdIv[16];																	/**< Initvector for pending CMD-Data encryption. */
-	uint8_t bPendingMacCmdData[16];																/**< Command Data pending for MACing. */
-	uint8_t bPendingMacCmdDataLength;															/**< Length of pending command data to MAC. */
-	uint8_t bPendingCmdMac[16];																	/**< Initvector for pending CMD-Data MACing. */
-	uint8_t bPendingMacRespData[16];															/**< Response Data pending for MACing. */
-	uint8_t bPendingMacRespDataLength;															/**< Length of pending receive data to MAC. */
-	uint8_t bPendingRespMac[16];																/**< Intermediate response MAC. */
-	uint8_t bPendingRespIv[16];																	/**< Initvector for pending receive-Data decryption. */
-	uint8_t bPendingRespData[16];																/**< Pending (unreturned) response data. */
-	uint8_t bPendingRespDataLength;																/**< Length of pending response data. */
-	uint8_t bCmdSM;																				/**< Type of secure messaging for current command. */
-	uint8_t bRespSM;																			/**< Type of secure messaging for current response. */
-	uint8_t bCommandChaining;																	/**< Whether command chaining is active or not. */
-	uint8_t bResponseChaining;																	/**< Whether response chaining is active or not. */
-	uint8_t bUid[0x07U];																		/**< SAM UID. */
-	uint8_t bMasterKeyCmacMode;																	/**< Whether CMAC mode is enabled in the master key. */
-	uint8_t bOpMode;																			/**< Operation mode. One of the below values
+typedef struct {
+  uint16_t wId;																				/**< Layer ID for this component, NEVER MODIFY! */
+  void   *pBalDataParams;																		/**< Pointer to the lower layers parameter structure. */
+  void *pReaderHalDataParams;																/**< Pointer to the hal data params of a reader. NULL in case of X-Mode. */
+  void *pKeyStoreDataParams;																	/**< Pointer to the KeyStore used for Host Authentication. */
+  void *pENCCryptoDataParams;																/**< Pointer to the ENC crypto layers parameter structure. */
+  void *pMACCryptoDataParams;																/**< Pointer to the MAC crypto layers parameter structure. */
+  void *pCryptoRngDataParams;																/**< Pointer to the parameter structure of the CryptoRng layer. */
+  void *pPLUpload_ENCCryptoDataParams;														/**< pointer to the ENC crypto layers parameter structure. This will be used for ProgrammableLogic feature only. */
+  void *pPLUpload_MACCryptoDataParams;														/**< pointer to the MAC crypto layers parameter structure. This will be used for ProgrammableLogic feature only. */
+  uint32_t Cmd_Ctr;																			/**< Command counter for Secure Messaging. */
+  uint8_t bHostMode;																			/**< Indicates #PHHAL_HW_SAMAV3_HC_AV2_MODE or #PHHAL_HW_SAMAV3_HC_AV3_MODE Host-Communication modes. */
+  uint8_t bAuthType;																			/**< The current Authentication Type used for SM. */
+  uint8_t bKeyNo;																				/**< Store the current authentication key. */
+  uint8_t bPendingEncCmdData[16];																/**< Command Data pending for encryption. */
+  uint8_t bPendingEncCmdDataLength;															/**< Length of pending command data to encrypt. */
+  uint8_t bPendingCmdIv[16];																	/**< Initvector for pending CMD-Data encryption. */
+  uint8_t bPendingMacCmdData[16];																/**< Command Data pending for MACing. */
+  uint8_t bPendingMacCmdDataLength;															/**< Length of pending command data to MAC. */
+  uint8_t bPendingCmdMac[16];																	/**< Initvector for pending CMD-Data MACing. */
+  uint8_t bPendingMacRespData[16];															/**< Response Data pending for MACing. */
+  uint8_t bPendingMacRespDataLength;															/**< Length of pending receive data to MAC. */
+  uint8_t bPendingRespMac[16];																/**< Intermediate response MAC. */
+  uint8_t bPendingRespIv[16];																	/**< Initvector for pending receive-Data decryption. */
+  uint8_t bPendingRespData[16];																/**< Pending (unreturned) response data. */
+  uint8_t bPendingRespDataLength;																/**< Length of pending response data. */
+  uint8_t bCmdSM;																				/**< Type of secure messaging for current command. */
+  uint8_t bRespSM;																			/**< Type of secure messaging for current response. */
+  uint8_t bCommandChaining;																	/**< Whether command chaining is active or not. */
+  uint8_t bResponseChaining;																	/**< Whether response chaining is active or not. */
+  uint8_t bUid[0x07U];																		/**< SAM UID. */
+  uint8_t bMasterKeyCmacMode;																	/**< Whether CMAC mode is enabled in the master key. */
+  uint8_t bOpMode;																			/**< Operation mode. One of the below values
 																								 *		\arg #PHHAL_HW_SAMAV3_OPMODE_NON_X
 																								 *		\arg #PHHAL_HW_SAMAV3_OPMODE_X_RC523
 																								 *		\arg #PHHAL_HW_SAMAV3_OPMODE_X_RC663
 																								 */
-	uint8_t bLogicalChannel;																	/**< Logical channel number to select for Authenthication*/
-	uint8_t * pTxBuffer;																		/**< Pointer to global transmit buffer used by the Exchange() function. */
-	uint16_t wTxBufSize;																		/**< Size of the global transmit buffer. */
-	uint16_t wTxBufLen;																			/**< Number of valid bytes for exchange within the transmit buffer. */
-	uint16_t wTxBufLen_Cmd;																		/**< Number of valid bytes for other commands within the transmit buffer. */
-	uint8_t * pRxBuffer;																		/**< Pointer to global receive buffer used by the Exchange() function. */
-	uint16_t wRxBufSize;																		/**< Size of the global receive buffer. */
-	uint16_t wRxBufLen;																			/**< Number of valid bytes within the receive buffer. */
-	uint16_t wRxBufStartPos;																	/**< Starting position within the global receive buffer. */
-	uint16_t wTxBufStartPos;																	/**< Starting position within the global transmit buffer (used if \b TxBuffer equals \b RxBuffer). */
-	uint16_t wCfgShadow[0x000FU];																/**< Configuration shadow; Stores configuration for current cardtype. */
-	uint8_t bCardType;																			/**< Type of card for which the hal is configured for. */
-	uint8_t bTimeoutUnit;																		/**< Unit of current timeout value (either #PHHAL_HW_TIME_MICROSECONDS or #PHHAL_HW_TIME_MILLISECONDS). */
-	uint16_t wFieldOffTime;																		/**< Field-Off-Time in milliseconds. */
-	uint16_t wFieldRecoveryTime;																/**< Field-Recovery-Time in milliseconds. */
-	uint16_t wAdditionalInfo;																	/**< Storage for additional error information. */
-	uint16_t wTimingMode;																		/**< Disables/Enables time measurement. */
-	uint32_t dwTimingUs;																		/**< Current timing value. */
-	uint8_t bMifareCryptoDisabled;																/**< Contains information about MIFARE Crypto enabled state. */
-	uint8_t bRfResetAfterTo;																	/**< Storage for #PHHAL_HW_CONFIG_RFRESET_ON_TIMEOUT setting. */
-	uint8_t bDisableNonXCfgMapping;																/**< Storage for #PHHAL_HW_SAMAV3_CONFIG_DISABLE_NONX_CFG_MAPPING setting. */
-	uint16_t dwFdtPc;																			/**< Current timing value backup for PC*/
-	uint8_t * pPLUploadBuf;																		/**< Buffer to store the complete segment information of PLUpload command. The buffer should have a memory size equivalent to the complete PLUpload Segment(s) size. */
-	uint16_t wPLUploadBufLen;																	/**< The size of bytes available in PLUploadBuff buffer. */
-	uint8_t aPLUploadSessMAC0[32];																/**< Programmable Logic Initial session key for macing the data. */
-	uint8_t bPLUploadKeyType;																	/**< The current key type used for crypto operations. */
+  uint8_t bLogicalChannel;																	/**< Logical channel number to select for Authenthication*/
+  uint8_t *pTxBuffer;																		/**< Pointer to global transmit buffer used by the Exchange() function. */
+  uint16_t wTxBufSize;																		/**< Size of the global transmit buffer. */
+  uint16_t wTxBufLen;																			/**< Number of valid bytes for exchange within the transmit buffer. */
+  uint16_t wTxBufLen_Cmd;																		/**< Number of valid bytes for other commands within the transmit buffer. */
+  uint8_t *pRxBuffer;																		/**< Pointer to global receive buffer used by the Exchange() function. */
+  uint16_t wRxBufSize;																		/**< Size of the global receive buffer. */
+  uint16_t wRxBufLen;																			/**< Number of valid bytes within the receive buffer. */
+  uint16_t wRxBufStartPos;																	/**< Starting position within the global receive buffer. */
+  uint16_t wTxBufStartPos;																	/**< Starting position within the global transmit buffer (used if \b TxBuffer equals \b RxBuffer). */
+  uint16_t wCfgShadow[0x000FU];																/**< Configuration shadow; Stores configuration for current cardtype. */
+  uint8_t bCardType;																			/**< Type of card for which the hal is configured for. */
+  uint8_t bTimeoutUnit;																		/**< Unit of current timeout value (either #PHHAL_HW_TIME_MICROSECONDS or #PHHAL_HW_TIME_MILLISECONDS). */
+  uint16_t wFieldOffTime;																		/**< Field-Off-Time in milliseconds. */
+  uint16_t wFieldRecoveryTime;																/**< Field-Recovery-Time in milliseconds. */
+  uint16_t wAdditionalInfo;																	/**< Storage for additional error information. */
+  uint16_t wTimingMode;																		/**< Disables/Enables time measurement. */
+  uint32_t dwTimingUs;																		/**< Current timing value. */
+  uint8_t bMifareCryptoDisabled;																/**< Contains information about MIFARE Crypto enabled state. */
+  uint8_t bRfResetAfterTo;																	/**< Storage for #PHHAL_HW_CONFIG_RFRESET_ON_TIMEOUT setting. */
+  uint8_t bDisableNonXCfgMapping;																/**< Storage for #PHHAL_HW_SAMAV3_CONFIG_DISABLE_NONX_CFG_MAPPING setting. */
+  uint16_t dwFdtPc;																			/**< Current timing value backup for PC*/
+  uint8_t *pPLUploadBuf;																		/**< Buffer to store the complete segment information of PLUpload command. The buffer should have a memory size equivalent to the complete PLUpload Segment(s) size. */
+  uint16_t wPLUploadBufLen;																	/**< The size of bytes available in PLUploadBuff buffer. */
+  uint8_t aPLUploadSessMAC0[32];																/**< Programmable Logic Initial session key for macing the data. */
+  uint8_t bPLUploadKeyType;																	/**< The current key type used for crypto operations. */
 } phhalHw_SamAV3_DataParams_t;
 
 /**
@@ -930,28 +929,29 @@ typedef struct
  * \retval Other Depending on implementation and underlaying component.
  */
 phStatus_t phhalHw_SamAV3_Init(
-		phhalHw_SamAV3_DataParams_t * pDataParams,												/**< [In] Pointer to this layer's parameter structure. */
-		uint16_t wSizeOfDataParams,																/**< [In] Specifies the size of the data parameter structure. */
-		void * pBalDataParams,																	/**< [In] Pointer to the lower layers parameter structure. */
-		void * pReaderHalDataParams,															/**< [In] Pointer to a Reader-HAL in Non-X Mode. Can be NULL if X-Mode is intended. */
-		void * pKeyStoreDataParams,																/**< [In] Pointer to the KeyStore used for Host Authentication. */
-		void * pCryptoENCDataParams,															/**< [In] Pointer to the ENC crypto layers parameter structure. */
-		void * pCryptoMACDataParams,															/**< [In] Pointer to the MAC crypto layers parameter structure. */
-		void * pCryptoRngDataParams,															/**< [In] Pointer to the parameter structure of the CryptoRng layer. */
-		void * pPLUpload_CryptoENCDataParams,													/**< Pointer to the ENC crypto layers parameter structure. This will be used for ProgrammableLogic feature only. */
-		void * pPLUpload_CryptoMACDataParams,													/**< Pointer to the MAC crypto layers parameter structure. This will be used for ProgrammableLogic feature only. */
-		uint8_t bOpMode,																		/**< [In] The desired operation mode
+    phhalHw_SamAV3_DataParams_t
+    *pDataParams,												/**< [In] Pointer to this layer's parameter structure. */
+    uint16_t wSizeOfDataParams,																/**< [In] Specifies the size of the data parameter structure. */
+    void *pBalDataParams,																	/**< [In] Pointer to the lower layers parameter structure. */
+    void *pReaderHalDataParams,															/**< [In] Pointer to a Reader-HAL in Non-X Mode. Can be NULL if X-Mode is intended. */
+    void *pKeyStoreDataParams,																/**< [In] Pointer to the KeyStore used for Host Authentication. */
+    void *pCryptoENCDataParams,															/**< [In] Pointer to the ENC crypto layers parameter structure. */
+    void *pCryptoMACDataParams,															/**< [In] Pointer to the MAC crypto layers parameter structure. */
+    void *pCryptoRngDataParams,															/**< [In] Pointer to the parameter structure of the CryptoRng layer. */
+    void *pPLUpload_CryptoENCDataParams,													/**< Pointer to the ENC crypto layers parameter structure. This will be used for ProgrammableLogic feature only. */
+    void *pPLUpload_CryptoMACDataParams,													/**< Pointer to the MAC crypto layers parameter structure. This will be used for ProgrammableLogic feature only. */
+    uint8_t bOpMode,																		/**< [In] The desired operation mode
 																								 *			\arg #PHHAL_HW_SAMAV3_OPMODE_NON_X.
 																								 *			\arg #PHHAL_HW_SAMAV3_OPMODE_X_RC523.
 																								 *			\arg #PHHAL_HW_SAMAV3_OPMODE_X_RC663.
 																								 */
-		uint8_t bLogicalChannel,																/**< [In] The desired logical channel for this HAL. */
-		uint8_t* pTxBuffer,																		/**< [In] Pointer to global transmit buffer. */
-		uint16_t wTxBufSize,																	/**< [In] Size of the global transmit buffer. */
-		uint8_t* pRxBuffer,																		 /**< [In] Pointer to global receive buffer. */
-		uint16_t wRxBufSize,																	/**< [In] Size of the global receive buffer. */
-		uint8_t* pPLUploadBuf																	/**< [In] Pointer to global PLUpload buffer. */
-	);
+    uint8_t bLogicalChannel,																/**< [In] The desired logical channel for this HAL. */
+    uint8_t *pTxBuffer,																		/**< [In] Pointer to global transmit buffer. */
+    uint16_t wTxBufSize,																	/**< [In] Size of the global transmit buffer. */
+    uint8_t *pRxBuffer,																		 /**< [In] Pointer to global receive buffer. */
+    uint16_t wRxBufSize,																	/**< [In] Size of the global receive buffer. */
+    uint8_t *pPLUploadBuf																	/**< [In] Pointer to global PLUpload buffer. */
+);
 
 /**
  * \brief Detect UID, AV2/AV3 mode and HostAuth settings.
@@ -960,8 +960,9 @@ phStatus_t phhalHw_SamAV3_Init(
  * \retval #PH_ERR_SUCCESS Operation successful.
  */
 phStatus_t phhalHw_SamAV3_DetectMode(
-		phhalHw_SamAV3_DataParams_t * pDataParams												/**< [In] Pointer to this layer's parameter structure. */
-	);
+    phhalHw_SamAV3_DataParams_t
+    *pDataParams												/**< [In] Pointer to this layer's parameter structure. */
+);
 
 #include <nxp_nfc/phhalHw_SamAv3_Cmd.h>
 /**
@@ -1680,17 +1681,16 @@ phStatus_t phhalHw_SamAV3_DetectMode(
 /** @} */
 
 /** \brief SamAV3 HAL parameter structure */
-typedef struct
-{
+typedef struct {
   uint16_t wId;                                       /**< Layer ID for this component, NEVER MODIFY! */
-  void  * pBalDataParams;                                   /**< Pointer to the lower layers parameter structure. */
-  void * pReaderHalDataParams;                                /**< Pointer to the hal data params of a reader. NULL in case of X-Mode. */
-  void * pKeyStoreDataParams;                                 /**< Pointer to the KeyStore used for Host Authentication. */
-  void * pENCCryptoDataParams;                                /**< Pointer to the ENC crypto layers parameter structure. */
-  void * pMACCryptoDataParams;                                /**< Pointer to the MAC crypto layers parameter structure. */
-  void * pCryptoRngDataParams;                                /**< Pointer to the parameter structure of the CryptoRng layer. */
-  void * pPLUpload_ENCCryptoDataParams;                           /**< pointer to the ENC crypto layers parameter structure. This will be used for ProgrammableLogic feature only. */
-  void * pPLUpload_MACCryptoDataParams;                           /**< pointer to the MAC crypto layers parameter structure. This will be used for ProgrammableLogic feature only. */
+  void   *pBalDataParams;                                   /**< Pointer to the lower layers parameter structure. */
+  void *pReaderHalDataParams;                                 /**< Pointer to the hal data params of a reader. NULL in case of X-Mode. */
+  void *pKeyStoreDataParams;                                  /**< Pointer to the KeyStore used for Host Authentication. */
+  void *pENCCryptoDataParams;                                 /**< Pointer to the ENC crypto layers parameter structure. */
+  void *pMACCryptoDataParams;                                 /**< Pointer to the MAC crypto layers parameter structure. */
+  void *pCryptoRngDataParams;                                 /**< Pointer to the parameter structure of the CryptoRng layer. */
+  void *pPLUpload_ENCCryptoDataParams;                            /**< pointer to the ENC crypto layers parameter structure. This will be used for ProgrammableLogic feature only. */
+  void *pPLUpload_MACCryptoDataParams;                            /**< pointer to the MAC crypto layers parameter structure. This will be used for ProgrammableLogic feature only. */
   uint32_t Cmd_Ctr;                                     /**< Command counter for Secure Messaging. */
   uint8_t bHostMode;                                      /**< Indicates #PHHAL_HW_SAMAV3_HC_AV2_MODE or #PHHAL_HW_SAMAV3_HC_AV3_MODE Host-Communication modes. */
   uint8_t bAuthType;                                      /**< The current Authentication Type used for SM. */
@@ -1719,11 +1719,11 @@ typedef struct
                                                  *    \arg #PHHAL_HW_SAMAV3_OPMODE_X_RC663
                                                  */
   uint8_t bLogicalChannel;                                  /**< Logical channel number to select for Authenthication*/
-  uint8_t * pTxBuffer;                                    /**< Pointer to global transmit buffer used by the Exchange() function. */
+  uint8_t *pTxBuffer;                                     /**< Pointer to global transmit buffer used by the Exchange() function. */
   uint16_t wTxBufSize;                                    /**< Size of the global transmit buffer. */
   uint16_t wTxBufLen;                                     /**< Number of valid bytes for exchange within the transmit buffer. */
   uint16_t wTxBufLen_Cmd;                                   /**< Number of valid bytes for other commands within the transmit buffer. */
-  uint8_t * pRxBuffer;                                    /**< Pointer to global receive buffer used by the Exchange() function. */
+  uint8_t *pRxBuffer;                                     /**< Pointer to global receive buffer used by the Exchange() function. */
   uint16_t wRxBufSize;                                    /**< Size of the global receive buffer. */
   uint16_t wRxBufLen;                                     /**< Number of valid bytes within the receive buffer. */
   uint16_t wRxBufStartPos;                                  /**< Starting position within the global receive buffer. */
@@ -1740,7 +1740,7 @@ typedef struct
   uint8_t bRfResetAfterTo;                                  /**< Storage for #PHHAL_HW_CONFIG_RFRESET_ON_TIMEOUT setting. */
   uint8_t bDisableNonXCfgMapping;                               /**< Storage for #PHHAL_HW_SAMAV3_CONFIG_DISABLE_NONX_CFG_MAPPING setting. */
   uint16_t dwFdtPc;                                     /**< Current timing value backup for PC*/
-  uint8_t * pPLUploadBuf;                                   /**< Buffer to store the complete segment information of PLUpload command. The buffer should have a memory size equivalent to the complete PLUpload Segment(s) size. */
+  uint8_t *pPLUploadBuf;                                    /**< Buffer to store the complete segment information of PLUpload command. The buffer should have a memory size equivalent to the complete PLUpload Segment(s) size. */
   uint16_t wPLUploadBufLen;                                 /**< The size of bytes available in PLUploadBuff buffer. */
   uint8_t aPLUploadSessMAC0[32];                                /**< Programmable Logic Initial session key for macing the data. */
   uint8_t bPLUploadKeyType;                                 /**< The current key type used for crypto operations. */
@@ -1760,28 +1760,29 @@ typedef struct
  * \retval Other Depending on implementation and underlaying component.
  */
 phStatus_t phhalHw_SamAV3_Init(
-    phhalHw_SamAV3_DataParams_t * pDataParams,                        /**< [In] Pointer to this layer's parameter structure. */
+    phhalHw_SamAV3_DataParams_t
+    *pDataParams,                         /**< [In] Pointer to this layer's parameter structure. */
     uint16_t wSizeOfDataParams,                               /**< [In] Specifies the size of the data parameter structure. */
-    void * pBalDataParams,                                  /**< [In] Pointer to the lower layers parameter structure. */
-    void * pReaderHalDataParams,                              /**< [In] Pointer to a Reader-HAL in Non-X Mode. Can be NULL if X-Mode is intended. */
-    void * pKeyStoreDataParams,                               /**< [In] Pointer to the KeyStore used for Host Authentication. */
-    void * pCryptoENCDataParams,                              /**< [In] Pointer to the ENC crypto layers parameter structure. */
-    void * pCryptoMACDataParams,                              /**< [In] Pointer to the MAC crypto layers parameter structure. */
-    void * pCryptoRngDataParams,                              /**< [In] Pointer to the parameter structure of the CryptoRng layer. */
-    void * pPLUpload_CryptoENCDataParams,                         /**< Pointer to the ENC crypto layers parameter structure. This will be used for ProgrammableLogic feature only. */
-    void * pPLUpload_CryptoMACDataParams,                         /**< Pointer to the MAC crypto layers parameter structure. This will be used for ProgrammableLogic feature only. */
+    void *pBalDataParams,                                   /**< [In] Pointer to the lower layers parameter structure. */
+    void *pReaderHalDataParams,                               /**< [In] Pointer to a Reader-HAL in Non-X Mode. Can be NULL if X-Mode is intended. */
+    void *pKeyStoreDataParams,                                /**< [In] Pointer to the KeyStore used for Host Authentication. */
+    void *pCryptoENCDataParams,                               /**< [In] Pointer to the ENC crypto layers parameter structure. */
+    void *pCryptoMACDataParams,                               /**< [In] Pointer to the MAC crypto layers parameter structure. */
+    void *pCryptoRngDataParams,                               /**< [In] Pointer to the parameter structure of the CryptoRng layer. */
+    void *pPLUpload_CryptoENCDataParams,                          /**< Pointer to the ENC crypto layers parameter structure. This will be used for ProgrammableLogic feature only. */
+    void *pPLUpload_CryptoMACDataParams,                          /**< Pointer to the MAC crypto layers parameter structure. This will be used for ProgrammableLogic feature only. */
     uint8_t bOpMode,                                    /**< [In] The desired operation mode
                                                  *      \arg #PHHAL_HW_SAMAV3_OPMODE_NON_X.
                                                  *      \arg #PHHAL_HW_SAMAV3_OPMODE_X_RC523.
                                                  *      \arg #PHHAL_HW_SAMAV3_OPMODE_X_RC663.
                                                  */
     uint8_t bLogicalChannel,                                /**< [In] The desired logical channel for this HAL. */
-    uint8_t* pTxBuffer,                                   /**< [In] Pointer to global transmit buffer. */
+    uint8_t *pTxBuffer,                                   /**< [In] Pointer to global transmit buffer. */
     uint16_t wTxBufSize,                                  /**< [In] Size of the global transmit buffer. */
-    uint8_t* pRxBuffer,                                    /**< [In] Pointer to global receive buffer. */
+    uint8_t *pRxBuffer,                                    /**< [In] Pointer to global receive buffer. */
     uint16_t wRxBufSize,                                  /**< [In] Size of the global receive buffer. */
-    uint8_t* pPLUploadBuf                                 /**< [In] Pointer to global PLUpload buffer. */
-  );
+    uint8_t *pPLUploadBuf                                 /**< [In] Pointer to global PLUpload buffer. */
+);
 
 /**
  * \brief Detect UID, AV2/AV3 mode and HostAuth settings.
@@ -1790,8 +1791,9 @@ phStatus_t phhalHw_SamAV3_Init(
  * \retval #PH_ERR_SUCCESS Operation successful.
  */
 phStatus_t phhalHw_SamAV3_DetectMode(
-    phhalHw_SamAV3_DataParams_t * pDataParams                       /**< [In] Pointer to this layer's parameter structure. */
-  );
+    phhalHw_SamAV3_DataParams_t
+    *pDataParams                        /**< [In] Pointer to this layer's parameter structure. */
+);
 
 #include <nxp_nfc/phhalHw_SamAv3_Cmd.h>
 /**
@@ -2410,7 +2412,6 @@ phStatus_t phhalHw_Nfc_IC_Init(
 #include "../../src/comps/phhalHw/src/SamAV3/phhalHw_SamAv3.h"
 
 #endif
-
 
 #ifndef NXPRDLIB_REM_GEN_INTFS /* Without optimization */
 /**

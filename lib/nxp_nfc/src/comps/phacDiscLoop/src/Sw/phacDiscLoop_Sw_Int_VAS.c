@@ -38,7 +38,8 @@
 /* *****************************************************************************************************************
  * Internal Definitions
  * ***************************************************************************************************************** */
-phStatus_t phacDiscLoop_Sw_DetTechTypeVAS(
+phStatus_t
+phacDiscLoop_Sw_DetTechTypeVAS(
     phacDiscLoop_Sw_DataParams_t *pDataParams
 )
 {
@@ -83,7 +84,8 @@ phStatus_t phacDiscLoop_Sw_DetTechTypeVAS(
   return PH_ADD_COMPCODE_FIXED(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AC_DISCLOOP);
 }
 
-phStatus_t phacDiscLoop_Sw_Int_CollisionResolutionVAS(
+phStatus_t
+phacDiscLoop_Sw_Int_CollisionResolutionVAS(
     phacDiscLoop_Sw_DataParams_t *pDataParams
 )
 {
@@ -91,7 +93,8 @@ phStatus_t phacDiscLoop_Sw_Int_CollisionResolutionVAS(
   return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_COMMAND, PH_COMP_AC_DISCLOOP);
 }
 
-phStatus_t phacDiscLoop_Sw_Int_ActivateVAS(
+phStatus_t
+phacDiscLoop_Sw_Int_ActivateVAS(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint8_t bTypeVASTagIdx
 )

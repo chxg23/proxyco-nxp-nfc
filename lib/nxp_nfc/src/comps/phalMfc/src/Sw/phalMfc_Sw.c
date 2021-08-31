@@ -35,7 +35,8 @@
 #include "phalMfc_Sw.h"
 #include "../phalMfc_Int.h"
 
-phStatus_t phalMfc_Sw_Init(
+phStatus_t
+phalMfc_Sw_Init(
     phalMfc_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pPalMifareDataParams,
@@ -56,7 +57,8 @@ phStatus_t phalMfc_Sw_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfc_Sw_Authenticate(
+phStatus_t
+phalMfc_Sw_Authenticate(
     phalMfc_Sw_DataParams_t *pDataParams,
     uint8_t bBlockNo,
     uint8_t bKeyType,
@@ -127,7 +129,8 @@ phStatus_t phalMfc_Sw_Authenticate(
   }
 }
 
-phStatus_t phalMfc_Sw_Read(
+phStatus_t
+phalMfc_Sw_Read(
     phalMfc_Sw_DataParams_t *pDataParams,
     uint8_t bBlockNo,
     uint8_t *pBlockData
@@ -163,7 +166,8 @@ phStatus_t phalMfc_Sw_Read(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfc_Sw_ReadValue(
+phStatus_t
+phalMfc_Sw_ReadValue(
     phalMfc_Sw_DataParams_t *pDataParams,
     uint8_t bBlockNo,
     uint8_t *pValue,
@@ -186,7 +190,8 @@ phStatus_t phalMfc_Sw_ReadValue(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfc_Sw_Write(
+phStatus_t
+phalMfc_Sw_Write(
     phalMfc_Sw_DataParams_t *pDataParams,
     uint8_t bBlockNo,
     uint8_t *pBlockData
@@ -224,7 +229,8 @@ phStatus_t phalMfc_Sw_Write(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfc_Sw_WriteValue(
+phStatus_t
+phalMfc_Sw_WriteValue(
     phalMfc_Sw_DataParams_t *pDataParams,
     uint8_t bBlockNo,
     uint8_t *pValue,
@@ -241,7 +247,8 @@ phStatus_t phalMfc_Sw_WriteValue(
   return phalMfc_Sw_Write(pDataParams, bBlockNo, bBlockData);
 }
 
-phStatus_t phalMfc_Sw_Increment(
+phStatus_t
+phalMfc_Sw_Increment(
     phalMfc_Sw_DataParams_t *pDataParams,
     uint8_t bBlockNo,
     uint8_t *pValue
@@ -251,7 +258,8 @@ phStatus_t phalMfc_Sw_Increment(
           pValue);
 }
 
-phStatus_t phalMfc_Sw_Decrement(
+phStatus_t
+phalMfc_Sw_Decrement(
     phalMfc_Sw_DataParams_t *pDataParams,
     uint8_t bBlockNo,
     uint8_t *pValue
@@ -261,7 +269,8 @@ phStatus_t phalMfc_Sw_Decrement(
           pValue);
 }
 
-phStatus_t phalMfc_Sw_Transfer(
+phStatus_t
+phalMfc_Sw_Transfer(
     phalMfc_Sw_DataParams_t *pDataParams,
     uint8_t bBlockNo
 )
@@ -273,7 +282,8 @@ phStatus_t phalMfc_Sw_Transfer(
       );
 }
 
-phStatus_t phalMfc_Sw_Restore(
+phStatus_t
+phalMfc_Sw_Restore(
     phalMfc_Sw_DataParams_t *pDataParams,
     uint8_t bBlockNo
 )
@@ -287,7 +297,8 @@ phStatus_t phalMfc_Sw_Restore(
           bBuffer);
 }
 
-phStatus_t phalMfc_Sw_IncrementTransfer(
+phStatus_t
+phalMfc_Sw_IncrementTransfer(
     phalMfc_Sw_DataParams_t *pDataParams,
     uint8_t bSrcBlockNo,
     uint8_t bDstBlockNo,
@@ -301,7 +312,8 @@ phStatus_t phalMfc_Sw_IncrementTransfer(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfc_Sw_DecrementTransfer(
+phStatus_t
+phalMfc_Sw_DecrementTransfer(
     phalMfc_Sw_DataParams_t *pDataParams,
     uint8_t bSrcBlockNo,
     uint8_t bDstBlockNo,
@@ -315,7 +327,8 @@ phStatus_t phalMfc_Sw_DecrementTransfer(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfc_Sw_RestoreTransfer(
+phStatus_t
+phalMfc_Sw_RestoreTransfer(
     phalMfc_Sw_DataParams_t *pDataParams,
     uint8_t bSrcBlockNo,
     uint8_t bDstBlockNo
@@ -328,7 +341,8 @@ phStatus_t phalMfc_Sw_RestoreTransfer(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfc_Sw_PersonalizeUid(
+phStatus_t
+phalMfc_Sw_PersonalizeUid(
     phalMfc_Sw_DataParams_t *pDataParams,
     uint8_t bUidType
 )
@@ -352,7 +366,8 @@ phStatus_t phalMfc_Sw_PersonalizeUid(
       );
 }
 
-phStatus_t phalMfc_Sw_GetVersion(
+phStatus_t
+phalMfc_Sw_GetVersion(
     phalMfc_Sw_DataParams_t *pDataParams,
     uint8_t *pVersion
 )

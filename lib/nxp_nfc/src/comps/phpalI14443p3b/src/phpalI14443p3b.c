@@ -34,7 +34,8 @@
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phpalI14443p3b_SetConfig(
+phStatus_t
+phpalI14443p3b_SetConfig(
     void *pDataParams,   /**< [In] Pointer to this layers parameter structure. */
     uint16_t wConfig,    /**< [In]  */
     uint16_t wValue      /**< [In]  */
@@ -83,7 +84,8 @@ phStatus_t phpalI14443p3b_SetConfig(
   return status;
 }
 
-phStatus_t phpalI14443p3b_GetConfig(
+phStatus_t
+phpalI14443p3b_GetConfig(
     void *pDataParams,   /**< [In] Pointer to this layers parameter structure. */
     uint16_t wConfig,    /**< [In]  */
     uint16_t *pValue     /**< [In]  */
@@ -133,7 +135,8 @@ phStatus_t phpalI14443p3b_GetConfig(
   return status;
 }
 
-phStatus_t phpalI14443p3b_RequestB(
+phStatus_t
+phpalI14443p3b_RequestB(
     void *pDataParams,
     uint8_t bNumSlots,
     uint8_t bAfi,
@@ -195,7 +198,8 @@ phStatus_t phpalI14443p3b_RequestB(
   return status;
 }
 
-phStatus_t phpalI14443p3b_WakeUpB(
+phStatus_t
+phpalI14443p3b_WakeUpB(
     void *pDataParams,
     uint8_t bNumSlots,
     uint8_t bAfi,
@@ -257,7 +261,8 @@ phStatus_t phpalI14443p3b_WakeUpB(
   return status;
 }
 
-phStatus_t phpalI14443p3b_SlotMarker(
+phStatus_t
+phpalI14443p3b_SlotMarker(
     void *pDataParams,
     uint8_t bSlotNumber,
     uint8_t *pAtqb,
@@ -313,7 +318,8 @@ phStatus_t phpalI14443p3b_SlotMarker(
   return status;
 }
 
-phStatus_t phpalI14443p3b_HaltB(
+phStatus_t
+phpalI14443p3b_HaltB(
     void *pDataParams
 )
 {
@@ -355,7 +361,8 @@ phStatus_t phpalI14443p3b_HaltB(
   return status;
 }
 
-phStatus_t phpalI14443p3b_Attrib(
+phStatus_t
+phpalI14443p3b_Attrib(
     void *pDataParams,
     uint8_t *pAtqb,
     uint8_t bAtqbLen,
@@ -419,7 +426,8 @@ phStatus_t phpalI14443p3b_Attrib(
   return status;
 }
 
-phStatus_t phpalI14443p3b_ActivateCard(
+phStatus_t
+phpalI14443p3b_ActivateCard(
     void *pDataParams,
     uint8_t *pPupi,
     uint8_t bPupiLength,
@@ -521,7 +529,8 @@ phStatus_t phpalI14443p3b_ActivateCard(
   return status;
 }
 
-phStatus_t phpalI14443p3b_Exchange(
+phStatus_t
+phpalI14443p3b_Exchange(
     void *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -586,7 +595,8 @@ phStatus_t phpalI14443p3b_Exchange(
   return status;
 }
 
-phStatus_t phpalI14443p3b_GetSerialNo(
+phStatus_t
+phpalI14443p3b_GetSerialNo(
     void *pDataParams,
     uint8_t *pPupi
 )
@@ -632,7 +642,8 @@ phStatus_t phpalI14443p3b_GetSerialNo(
   return status;
 }
 
-phStatus_t phpalI14443p3b_SetSerialNo(
+phStatus_t
+phpalI14443p3b_SetSerialNo(
     void *pDataParams,
     uint8_t *pPupi
 )
@@ -677,7 +688,8 @@ phStatus_t phpalI14443p3b_SetSerialNo(
   return status;
 }
 
-phStatus_t phpalI14443p3b_SetHigherLayerInf(
+phStatus_t
+phpalI14443p3b_SetHigherLayerInf(
     void *pDataParams,
     uint8_t *pTxBuffer,
     uint16_t  wTxLength,
@@ -729,7 +741,8 @@ phStatus_t phpalI14443p3b_SetHigherLayerInf(
   return status;
 }
 
-phStatus_t phpalI14443p3b_GetHigherLayerResp(
+phStatus_t
+phpalI14443p3b_GetHigherLayerResp(
     void *pDataParams,
     uint8_t **ppRxBuffer,
     uint16_t *pRxLength
@@ -782,7 +795,8 @@ phStatus_t phpalI14443p3b_GetHigherLayerResp(
   return status;
 }
 
-phStatus_t phpalI14443p3b_GetProtocolParams(
+phStatus_t
+phpalI14443p3b_GetProtocolParams(
     void *pDataParams,
     uint8_t *pCidEnabled,
     uint8_t *pCid,

@@ -35,7 +35,8 @@
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phalMful_UlcAuthenticate(void *pDataParams, uint8_t bOption, uint16_t wKeyNo,
+phStatus_t
+phalMful_UlcAuthenticate(void *pDataParams, uint8_t bOption, uint16_t wKeyNo,
     uint16_t wKeyVer, uint8_t *pDivInput,
     uint8_t bDivInputLen)
 {
@@ -93,7 +94,8 @@ phStatus_t phalMful_UlcAuthenticate(void *pDataParams, uint8_t bOption, uint16_t
   return status;
 }
 
-phStatus_t phalMful_AuthenticateAES(void *pDataParams, uint8_t bOption, uint16_t wKeyNo,
+phStatus_t
+phalMful_AuthenticateAES(void *pDataParams, uint8_t bOption, uint16_t wKeyNo,
     uint16_t wKeyVer, uint8_t bRamKeyNo, uint8_t bRamKeyVer, uint8_t bKeyNoCard,
     uint8_t *pDivInput, uint8_t bDivLen)
 {
@@ -148,7 +150,8 @@ phStatus_t phalMful_AuthenticateAES(void *pDataParams, uint8_t bOption, uint16_t
   return status;
 }
 
-phStatus_t phalMful_Write(
+phStatus_t
+phalMful_Write(
     void *pDataParams,
     uint8_t bAddress,
     uint8_t *pData
@@ -197,7 +200,8 @@ phStatus_t phalMful_Write(
   return status;
 }
 
-phStatus_t phalMful_FastWrite(
+phStatus_t
+phalMful_FastWrite(
     void *pDataParams,
     uint8_t *pData
 )
@@ -243,7 +247,8 @@ phStatus_t phalMful_FastWrite(
   return status;
 }
 
-phStatus_t phalMful_Read(
+phStatus_t
+phalMful_Read(
     void *pDataParams,
     uint8_t bAddress,
     uint8_t *pData
@@ -296,7 +301,8 @@ phStatus_t phalMful_Read(
   return status;
 }
 
-phStatus_t phalMful_CompatibilityWrite(
+phStatus_t
+phalMful_CompatibilityWrite(
     void *pDataParams,
     uint8_t bAddress,
     uint8_t *pData
@@ -345,7 +351,8 @@ phStatus_t phalMful_CompatibilityWrite(
   return status;
 }
 
-phStatus_t phalMful_IncrCnt(
+phStatus_t
+phalMful_IncrCnt(
     void *pDataParams,
     uint8_t bCntNum,
     uint8_t *pCnt
@@ -393,7 +400,8 @@ phStatus_t phalMful_IncrCnt(
   return status;
 }
 
-phStatus_t phalMful_ReadCnt(
+phStatus_t
+phalMful_ReadCnt(
     void *pDataParams,
     uint8_t bCntNum,
     uint8_t *pCntValue
@@ -440,7 +448,8 @@ phStatus_t phalMful_ReadCnt(
   return status;
 }
 
-phStatus_t phalMful_PwdAuth(
+phStatus_t
+phalMful_PwdAuth(
     void *pDataParams,
     uint8_t *pPwd,
     uint8_t *pPack
@@ -488,7 +497,8 @@ phStatus_t phalMful_PwdAuth(
   return status;
 }
 
-phStatus_t phalMful_GetVersion(
+phStatus_t
+phalMful_GetVersion(
     void *pDataParams,
     uint8_t *pVersion
 )
@@ -532,7 +542,8 @@ phStatus_t phalMful_GetVersion(
   return status;
 }
 
-phStatus_t phalMful_FastRead(
+phStatus_t
+phalMful_FastRead(
     void *pDataParams,
     uint8_t  bStartAddr,
     uint8_t bEndAddr,
@@ -598,7 +609,8 @@ phStatus_t phalMful_FastRead(
   return status;
 }
 
-phStatus_t phalMful_SectorSelect(
+phStatus_t
+phalMful_SectorSelect(
     void *pDataParams,
     uint8_t bSecNo
 )
@@ -639,7 +651,8 @@ phStatus_t phalMful_SectorSelect(
   return status;
 }
 
-phStatus_t phalMful_ReadSign(
+phStatus_t
+phalMful_ReadSign(
     void *pDataParams,
     uint8_t bAddr,
     uint8_t **pSignature
@@ -688,7 +701,8 @@ phStatus_t phalMful_ReadSign(
   return status;
 }
 
-phStatus_t phalMful_ChkTearingEvent(
+phStatus_t
+phalMful_ChkTearingEvent(
     void *pDataParams,
     uint8_t bCntNum,
     uint8_t *pValidFlag
@@ -735,7 +749,8 @@ phStatus_t phalMful_ChkTearingEvent(
   return status;
 }
 
-phStatus_t phalMful_WriteSign(
+phStatus_t
+phalMful_WriteSign(
     void *pDataParams,
     uint8_t bAddress,
     uint8_t *pSignature
@@ -782,7 +797,8 @@ phStatus_t phalMful_WriteSign(
   return status;
 }
 
-phStatus_t phalMful_LockSign(
+phStatus_t
+phalMful_LockSign(
     void *pDataParams,
     uint8_t bLockMode
 )
@@ -824,7 +840,8 @@ phStatus_t phalMful_LockSign(
   return status;
 }
 
-phStatus_t phalMful_VirtualCardSelect(
+phStatus_t
+phalMful_VirtualCardSelect(
     void *pDataParams,
     uint8_t *pVCIID,
     uint8_t bVCIIDLen,
@@ -873,7 +890,8 @@ phStatus_t phalMful_VirtualCardSelect(
   return status;
 }
 
-phStatus_t phalMful_ReadTTStatus(void *pDataParams, uint8_t  bAddr, uint8_t *pData)
+phStatus_t
+phalMful_ReadTTStatus(void *pDataParams, uint8_t  bAddr, uint8_t *pData)
 {
   phStatus_t PH_MEMLOC_REM status = 0;
 
@@ -919,7 +937,8 @@ phStatus_t phalMful_ReadTTStatus(void *pDataParams, uint8_t  bAddr, uint8_t *pDa
   return status;
 }
 
-phStatus_t phalMful_GetConfig(void *pDataParams, uint16_t wConfig, uint16_t *pValue)
+phStatus_t
+phalMful_GetConfig(void *pDataParams, uint16_t wConfig, uint16_t *pValue)
 {
   phStatus_t PH_MEMLOC_REM status = 0;
 
@@ -967,7 +986,8 @@ phStatus_t phalMful_GetConfig(void *pDataParams, uint16_t wConfig, uint16_t *pVa
   return status;
 }
 
-phStatus_t phalMful_SetConfig(void *pDataParams, uint16_t wConfig, uint16_t wValue)
+phStatus_t
+phalMful_SetConfig(void *pDataParams, uint16_t wConfig, uint16_t wValue)
 {
   phStatus_t PH_MEMLOC_REM status = 0;
 
@@ -1011,7 +1031,8 @@ phStatus_t phalMful_SetConfig(void *pDataParams, uint16_t wConfig, uint16_t wVal
   return status;
 }
 
-phStatus_t phalMful_CalculateSunCMAC(void *pDataParams, uint16_t wKeyNo, uint16_t wKeyVer,
+phStatus_t
+phalMful_CalculateSunCMAC(void *pDataParams, uint16_t wKeyNo, uint16_t wKeyVer,
     uint8_t *pInData, uint16_t wInDataLen, uint8_t *pRespMac)
 {
 

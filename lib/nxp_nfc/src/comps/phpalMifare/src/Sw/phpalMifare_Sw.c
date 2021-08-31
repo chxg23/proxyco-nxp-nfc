@@ -37,7 +37,8 @@
 #include "phpalMifare_Sw.h"
 #include "../phpalMifare_Int.h"
 
-phStatus_t phpalMifare_Sw_Init(
+phStatus_t
+phpalMifare_Sw_Init(
     phpalMifare_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pHalDataParams,
@@ -57,7 +58,8 @@ phStatus_t phpalMifare_Sw_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalMifare_Sw_ExchangeL3(
+phStatus_t
+phpalMifare_Sw_ExchangeL3(
     phpalMifare_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -194,7 +196,8 @@ phStatus_t phpalMifare_Sw_ExchangeL3(
 }
 #include <console/console.h>
 
-phStatus_t phpalMifare_Sw_ExchangeL4(
+phStatus_t
+phpalMifare_Sw_ExchangeL4(
     phpalMifare_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -221,7 +224,7 @@ phStatus_t phpalMifare_Sw_ExchangeL4(
 
   console_printf("L4 > ");
   for (int i = 0; i < wTxLength; i++) {
-	  console_printf("%02x ", pTxBuffer[i]);
+    console_printf("%02x ", pTxBuffer[i]);
   }
   console_printf("\n");
 
@@ -236,10 +239,9 @@ phStatus_t phpalMifare_Sw_ExchangeL4(
 
   console_printf("L4 < ");
   for (int i = 0; i < *pRxLength; i++) {
-	  console_printf("%02x ", (*ppRxBuffer)[i]);
+    console_printf("%02x ", (*ppRxBuffer)[i]);
   }
   console_printf("\n");
-
 
   return PH_ERR_SUCCESS;
 #else
@@ -249,7 +251,8 @@ phStatus_t phpalMifare_Sw_ExchangeL4(
 #endif
 }
 
-phStatus_t phpalMifare_Sw_ExchangePc(
+phStatus_t
+phpalMifare_Sw_ExchangePc(
     phpalMifare_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -403,7 +406,8 @@ phStatus_t phpalMifare_Sw_ExchangePc(
 #endif
 }
 
-phStatus_t phpalMifare_Sw_ExchangeRaw(
+phStatus_t
+phpalMifare_Sw_ExchangeRaw(
     phpalMifare_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -485,7 +489,8 @@ phStatus_t phpalMifare_Sw_ExchangeRaw(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalMifare_Sw_MfcAuthenticateKeyNo(
+phStatus_t
+phpalMifare_Sw_MfcAuthenticateKeyNo(
     phpalMifare_Sw_DataParams_t *pDataParams,
     uint8_t bBlockNo,
     uint8_t bKeyType,
@@ -514,7 +519,8 @@ phStatus_t phpalMifare_Sw_MfcAuthenticateKeyNo(
   return status;
 }
 
-phStatus_t phpalMifare_Sw_MfcAuthenticate(
+phStatus_t
+phpalMifare_Sw_MfcAuthenticate(
     phpalMifare_Sw_DataParams_t *pDataParams,
     uint8_t bBlockNo,
     uint8_t bKeyType,
@@ -541,7 +547,8 @@ phStatus_t phpalMifare_Sw_MfcAuthenticate(
   return status;
 }
 
-phStatus_t phpalMifare_Sw_SetMinFdtPc(
+phStatus_t
+phpalMifare_Sw_SetMinFdtPc(
     phpalMifare_Sw_DataParams_t *pDataParams,
     uint16_t wValue
 )
@@ -554,7 +561,8 @@ phStatus_t phpalMifare_Sw_SetMinFdtPc(
   return status;
 }
 
-phStatus_t phpalMifare_Sw_GetConfig(
+phStatus_t
+phpalMifare_Sw_GetConfig(
     phpalMifare_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue

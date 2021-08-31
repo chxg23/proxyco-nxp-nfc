@@ -41,7 +41,8 @@ extern phlnLlcp_Transport_Socket_t *gpphlnLlcp_Socket_RegSockets;
 static uint8_t gphlnLlcp_AGFBuffer[PHLN_LLCP_MIU + PHLN_LLCP_HEADER_SIZE];
 #endif /* PHLN_LLCP_AGF */
 
-phStatus_t phlnLlcp_Sw_Int_Transport_Socket_Register(
+phStatus_t
+phlnLlcp_Sw_Int_Transport_Socket_Register(
     phlnLlcp_Transport_Socket_t *pSocket,
     phlnLlcp_Transport_Socket_Type_t eSocketType,
     uint8_t bLsap,
@@ -112,7 +113,8 @@ phStatus_t phlnLlcp_Sw_Int_Transport_Socket_Register(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phlnLlcp_Sw_Int_CheckGenBytes(uint8_t *pGenBytes, uint16_t wLength,
+phStatus_t
+phlnLlcp_Sw_Int_CheckGenBytes(uint8_t *pGenBytes, uint16_t wLength,
     phlnLlcp_LMDataParams_t *pLMBytes)
 {
   uint8_t gkphlnLlcp_MagicNum[PHLN_LLCP_HEADER_SIZE] = {0x46, 0x66, 0x6D};
@@ -129,7 +131,8 @@ phStatus_t phlnLlcp_Sw_Int_CheckGenBytes(uint8_t *pGenBytes, uint16_t wLength,
           pLMBytes);
 }
 
-uint8_t *phlnLlcp_Sw_Int_GetUri(uint8_t *pGenBytes, uint16_t wLength, uint8_t *pbUriLen,
+uint8_t *
+phlnLlcp_Sw_Int_GetUri(uint8_t *pGenBytes, uint16_t wLength, uint8_t *pbUriLen,
     uint8_t *pbTid, uint8_t *pbSDREQPresent)
 {
   uint8_t *PH_MEMLOC_REM pUri = NULL;
@@ -189,7 +192,8 @@ uint8_t *phlnLlcp_Sw_Int_GetUri(uint8_t *pGenBytes, uint16_t wLength, uint8_t *p
   return pUri;
 }
 
-void phlnLlcp_Sw_Int_ParseSAP(uint8_t *pGenBytes, uint16_t wLength, uint8_t bSAPCount,
+void
+phlnLlcp_Sw_Int_ParseSAP(uint8_t *pGenBytes, uint16_t wLength, uint8_t bSAPCount,
     uint8_t *pSAPVal)
 {
   uint16_t   PH_MEMLOC_REM wIndex;
@@ -239,7 +243,8 @@ void phlnLlcp_Sw_Int_ParseSAP(uint8_t *pGenBytes, uint16_t wLength, uint8_t bSAP
   }
 }
 
-phStatus_t phlnLlcp_Sw_Int_ParseGenBytes(uint8_t *pGenBytes, uint16_t wLength,
+phStatus_t
+phlnLlcp_Sw_Int_ParseGenBytes(uint8_t *pGenBytes, uint16_t wLength,
     phlnLlcp_LMDataParams_t *pLMBytes)
 {
   uint16_t   PH_MEMLOC_REM wIndex;
@@ -316,7 +321,8 @@ phStatus_t phlnLlcp_Sw_Int_ParseGenBytes(uint8_t *pGenBytes, uint16_t wLength,
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phlnLlcp_Sw_Int_VersionAgreement(uint8_t    bLocalVersion,
+phStatus_t
+phlnLlcp_Sw_Int_VersionAgreement(uint8_t    bLocalVersion,
     uint8_t    bRemoteVersion,
     uint8_t   *pAgreedVersion)
 {
@@ -342,7 +348,8 @@ phStatus_t phlnLlcp_Sw_Int_VersionAgreement(uint8_t    bLocalVersion,
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phlnLlcp_Sw_Int_Transport_Socket_GetSap(phlnLlcp_Sw_DataParams_t *pDataParams,
+phStatus_t
+phlnLlcp_Sw_Int_Transport_Socket_GetSap(phlnLlcp_Sw_DataParams_t *pDataParams,
     uint8_t *pbSap)
 {
   if (pDataParams->bCurrentClientCnt <= 31U) {
@@ -364,7 +371,8 @@ phStatus_t phlnLlcp_Sw_Int_Transport_Socket_GetSap(phlnLlcp_Sw_DataParams_t *pDa
 *                            | N(S) 4 Bits | N(R) 4 Bits   |
 *
 */
-uint16_t phlnLlcp_Sw_Int_Pdu_FrameHeader(uint8_t ePType,
+uint16_t
+phlnLlcp_Sw_Int_Pdu_FrameHeader(uint8_t ePType,
     uint8_t bDsap,
     uint8_t bSsap,
     uint8_t bNr,
@@ -395,7 +403,8 @@ uint16_t phlnLlcp_Sw_Int_Pdu_FrameHeader(uint8_t ePType,
   return bLength;
 }
 
-phlnLlcp_Transport_Socket_t *phlnLlcp_Transport_Socket_Search(uint8_t bLsap,
+phlnLlcp_Transport_Socket_t *
+phlnLlcp_Transport_Socket_Search(uint8_t bLsap,
     uint8_t bRsap,
     uint8_t bIgnoreRsap)
 {
@@ -418,7 +427,8 @@ phlnLlcp_Transport_Socket_t *phlnLlcp_Transport_Socket_Search(uint8_t bLsap,
   return pSockets;
 }
 
-phlnLlcp_Transport_Socket_t *phlnLlcp_Transport_Socket_SearchUri(uint8_t *pUri,
+phlnLlcp_Transport_Socket_t *
+phlnLlcp_Transport_Socket_SearchUri(uint8_t *pUri,
     uint8_t bUriLen)
 {
   phlnLlcp_Transport_Socket_t *PH_MEMLOC_REM pSockets = NULL;
@@ -443,7 +453,8 @@ phlnLlcp_Transport_Socket_t *phlnLlcp_Transport_Socket_SearchUri(uint8_t *pUri,
   return pSockets;
 }
 
-phStatus_t phlnLlcp_Sw_Int_HandleMsgQueue(uint8_t *pBuffer, uint16_t wLen, uint8_t bType)
+phStatus_t
+phlnLlcp_Sw_Int_HandleMsgQueue(uint8_t *pBuffer, uint16_t wLen, uint8_t bType)
 {
   phTools_Q_t      *PH_MEMLOC_REM psMsgQueue = NULL;
 
@@ -469,7 +480,8 @@ phStatus_t phlnLlcp_Sw_Int_HandleMsgQueue(uint8_t *pBuffer, uint16_t wLen, uint8
   }
 }
 
-phStatus_t phlnLlcp_Sw_Int_PostRxMsgQueue(uint8_t *pRxBuffer, uint16_t wRxLen)
+phStatus_t
+phlnLlcp_Sw_Int_PostRxMsgQueue(uint8_t *pRxBuffer, uint16_t wRxLen)
 {
 #if PHLN_LLCP_AGF
   //  phlnLlcp_PType_t  PH_MEMLOC_REM epType;
@@ -550,7 +562,8 @@ phStatus_t phlnLlcp_Sw_Int_PostRxMsgQueue(uint8_t *pRxBuffer, uint16_t wRxLen)
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phlnLlcp_Sw_Int_Send(phTools_Q_t *psMsgQueue, uint8_t *pbPerformRx)
+phStatus_t
+phlnLlcp_Sw_Int_Send(phTools_Q_t *psMsgQueue, uint8_t *pbPerformRx)
 {
   phStatus_t                    PH_MEMLOC_REM wStatus = PH_ERR_INTERNAL_ERROR;
   phlnLlcp_Transport_Socket_t *PH_MEMLOC_REM psSocket = psMsgQueue->pSender;
@@ -624,7 +637,8 @@ phStatus_t phlnLlcp_Sw_Int_Send(phTools_Q_t *psMsgQueue, uint8_t *pbPerformRx)
   return wStatus;
 }
 
-phStatus_t phlnLlcp_Sw_Int_Pdu_Process(phlnLlcp_Sw_DataParams_t *pDataParams,
+phStatus_t
+phlnLlcp_Sw_Int_Pdu_Process(phlnLlcp_Sw_DataParams_t *pDataParams,
     uint8_t *pRxBuffer,
     uint32_t dwLength,
     uint8_t epType,
@@ -823,7 +837,8 @@ phStatus_t phlnLlcp_Sw_Int_Pdu_Process(phlnLlcp_Sw_DataParams_t *pDataParams,
   return wStatus;
 }
 
-phStatus_t phlnLlcp_Sw_Int_Pdu_Handle(phStatus_t wProcessStatus,
+phStatus_t
+phlnLlcp_Sw_Int_Pdu_Handle(phStatus_t wProcessStatus,
     phlnLlcp_Transport_Socket_t *psSocket,
     uint8_t *pRxData,
     uint16_t wLength)
@@ -965,7 +980,8 @@ phStatus_t phlnLlcp_Sw_Int_Pdu_Handle(phStatus_t wProcessStatus,
   return wStatus;
 }
 
-uint16_t phlnLlcp_Sw_Int_PostEvents(phStatus_t wProcessStatus,
+uint16_t
+phlnLlcp_Sw_Int_PostEvents(phStatus_t wProcessStatus,
     uint8_t epType,
     phlnLlcp_Transport_Socket_t *psSocket,
     uint8_t *pRxData,

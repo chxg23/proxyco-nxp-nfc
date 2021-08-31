@@ -39,7 +39,8 @@
 /* *****************************************************************************
  * Private Functions
  * ****************************************************************************/
-phStatus_t phacDiscLoop_Sw_DetTechTypeI18000p3m3(
+phStatus_t
+phacDiscLoop_Sw_DetTechTypeI18000p3m3(
     phacDiscLoop_Sw_DataParams_t *pDataParams
 )
 {
@@ -101,7 +102,8 @@ phStatus_t phacDiscLoop_Sw_DetTechTypeI18000p3m3(
 #endif /* NXPBUILD__PHAC_DISCLOOP_I18000P3M3_TAGS */
 }
 
-phStatus_t phacDiscLoop_Sw_Int_CollisionResolutionI18000p3m3(
+phStatus_t
+phacDiscLoop_Sw_Int_CollisionResolutionI18000p3m3(
     phacDiscLoop_Sw_DataParams_t *pDataParams
 )
 {
@@ -298,7 +300,8 @@ phStatus_t phacDiscLoop_Sw_Int_CollisionResolutionI18000p3m3(
 #endif /* NXPBUILD__PHAC_DISCLOOP_I18000P3M3_TAGS */
 }
 
-phStatus_t phacDiscLoop_Sw_Int_ActivateI18000p3m3(
+phStatus_t
+phacDiscLoop_Sw_Int_ActivateI18000p3m3(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint8_t bI18000p3m3TagIdx
 )

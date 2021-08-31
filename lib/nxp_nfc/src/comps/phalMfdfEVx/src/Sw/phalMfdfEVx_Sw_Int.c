@@ -30,7 +30,8 @@
 #include "../phalMfdfEVx_Int.h"
 #include "nxp_nfc/phalMfdfEVx_Sw_Int.h"
 
-phStatus_t phalMfdfEVx_Sw_Int_CardExchange(phalMfdfEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfEVx_Sw_Int_CardExchange(phalMfdfEVx_Sw_DataParams_t *pDataParams,
     uint16_t wBufferOption, uint16_t wTotDataLen,
     uint8_t bExchangeLE, uint8_t *pData, uint16_t wDataLen, uint8_t **ppResponse, uint16_t *pRespLen,
     uint8_t *pPiccRetCode)
@@ -203,7 +204,8 @@ phStatus_t phalMfdfEVx_Sw_Int_CardExchange(phalMfdfEVx_Sw_DataParams_t *pDataPar
   return wStatus;
 }
 
-phStatus_t phalMfdfEVx_Sw_Int_GetData(phalMfdfEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfEVx_Sw_Int_GetData(phalMfdfEVx_Sw_DataParams_t *pDataParams,
     uint8_t *pSendBuff, uint16_t wCmdLen,
     uint8_t **pResponse, uint16_t *pRxlen)
 {
@@ -527,7 +529,8 @@ phStatus_t phalMfdfEVx_Sw_Int_GetData(phalMfdfEVx_Sw_DataParams_t *pDataParams,
   return phalMfdfEVx_Int_ComputeErrorResponse(pDataParams, bStatusByte);
 }
 
-phStatus_t phalMfdfEVx_Sw_Int_ISOGetData(phalMfdfEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfEVx_Sw_Int_ISOGetData(phalMfdfEVx_Sw_DataParams_t *pDataParams,
     uint8_t *pSendBuff, uint16_t wCmdLen,
     uint8_t **pResponse, uint16_t *pRxlen)
 {
@@ -769,7 +772,8 @@ phStatus_t phalMfdfEVx_Sw_Int_ISOGetData(phalMfdfEVx_Sw_DataParams_t *pDataParam
   return phalMfdfEVx_Int_ComputeErrorResponse(pDataParams, statusTmp);
 }
 
-phStatus_t phalMfdfEVx_Sw_Int_ReadData_Plain(phalMfdfEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfEVx_Sw_Int_ReadData_Plain(phalMfdfEVx_Sw_DataParams_t *pDataParams,
     uint8_t bOption, uint8_t *bCmdBuff,
     uint16_t wCmdLen, uint8_t **ppRxdata, uint16_t *pRxdataLen)
 {
@@ -1210,7 +1214,8 @@ phStatus_t phalMfdfEVx_Sw_Int_ReadData_Plain(phalMfdfEVx_Sw_DataParams_t *pDataP
 }
 
 #ifdef NXPBUILD__PHAL_MFDFEVX_NDA
-phStatus_t phalMfdfEVx_Sw_Int_ReadData_Enc(phalMfdfEVx_Sw_DataParams_t *UNALIGNED pDataParams,
+phStatus_t
+phalMfdfEVx_Sw_Int_ReadData_Enc(phalMfdfEVx_Sw_DataParams_t *UNALIGNED pDataParams,
     uint8_t bOption, uint8_t *bCmdBuff,
     uint16_t wCmdLen, uint8_t **ppRxdata, uint16_t *pRxdataLen)
 {
@@ -1868,7 +1873,8 @@ phStatus_t phalMfdfEVx_Sw_Int_ReadData_Enc(phalMfdfEVx_Sw_DataParams_t *UNALIGNE
   return status;
 }
 
-phStatus_t phalMfdfEVx_Sw_Int_Write_Enc(phalMfdfEVx_Sw_DataParams_t *pDataParams, uint8_t bIns,
+phStatus_t
+phalMfdfEVx_Sw_Int_Write_Enc(phalMfdfEVx_Sw_DataParams_t *pDataParams, uint8_t bIns,
     uint8_t *bCmdBuff,
     uint16_t wCmdLen, uint8_t bPaddingOption, uint8_t bCommOption, uint8_t *pData, uint16_t wDataLen)
 {
@@ -2692,7 +2698,8 @@ phStatus_t phalMfdfEVx_Sw_Int_Write_Enc(phalMfdfEVx_Sw_DataParams_t *pDataParams
 }
 #endif /* NXPBUILD__PHAL_MFDFEVX_NDA */
 
-phStatus_t phalMfdfEVx_Sw_Int_Write_New(phalMfdfEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfEVx_Sw_Int_Write_New(phalMfdfEVx_Sw_DataParams_t *pDataParams,
     uint8_t bCommOption, uint8_t *pCmdBuff,
     uint16_t wCmdLen, uint8_t *pData, uint16_t wDataLen)
 {
@@ -3075,7 +3082,8 @@ phStatus_t phalMfdfEVx_Sw_Int_Write_New(phalMfdfEVx_Sw_DataParams_t *pDataParams
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfEVx_Sw_Int_Write_Plain(phalMfdfEVx_Sw_DataParams_t *pDataParams, uint8_t bIns,
+phStatus_t
+phalMfdfEVx_Sw_Int_Write_Plain(phalMfdfEVx_Sw_DataParams_t *pDataParams, uint8_t bIns,
     uint8_t *bCmdBuff,
     uint16_t wCmdLen, uint8_t bCommOption, uint8_t *pData, uint16_t wDataLen)
 {
@@ -3991,7 +3999,8 @@ phStatus_t phalMfdfEVx_Sw_Int_Write_Plain(phalMfdfEVx_Sw_DataParams_t *pDataPara
   return PH_ERR_SUCCESS;
 }
 
-void phalMfdfEVx_Sw_Int_ResetAuthStatus(phalMfdfEVx_Sw_DataParams_t *pDataParams)
+void
+phalMfdfEVx_Sw_Int_ResetAuthStatus(phalMfdfEVx_Sw_DataParams_t *pDataParams)
 {
   phStatus_t PH_MEMLOC_REM statusTmp;
   (void)memset(pDataParams->bSesAuthENCKey, 0x00, (size_t)sizeof(pDataParams->bSesAuthENCKey));
@@ -4020,7 +4029,8 @@ void phalMfdfEVx_Sw_Int_ResetAuthStatus(phalMfdfEVx_Sw_DataParams_t *pDataParams
   PH_UNUSED_VARIABLE(statusTmp);
 }
 
-phStatus_t phalMfdfEVx_Sw_Int_SendDataToPICC(phalMfdfEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfEVx_Sw_Int_SendDataToPICC(phalMfdfEVx_Sw_DataParams_t *pDataParams,
     uint8_t bIns, uint8_t bCommOption,
     uint8_t *pCmd, uint16_t wCmdLen, uint8_t *pData, uint16_t wDataLen, uint8_t *bLastChunk,
     uint16_t wLastChunkLen,
@@ -4281,7 +4291,8 @@ phStatus_t phalMfdfEVx_Sw_Int_SendDataToPICC(phalMfdfEVx_Sw_DataParams_t *pDataP
   return phalMfdfEVx_Int_ComputeErrorResponse(pDataParams, bStatusByte);
 }
 
-phStatus_t phalMfdfEVx_Sw_Int_SendDataAndAddDataToPICC(phalMfdfEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfEVx_Sw_Int_SendDataAndAddDataToPICC(phalMfdfEVx_Sw_DataParams_t *pDataParams,
     uint8_t bIns, uint8_t *pCmd,
     uint16_t wCmdLen, uint8_t *pData, uint16_t wDataLen, uint8_t *pAddData, uint16_t wAddDataLen,
     uint8_t *pResp,
@@ -4603,7 +4614,8 @@ phStatus_t phalMfdfEVx_Sw_Int_SendDataAndAddDataToPICC(phalMfdfEVx_Sw_DataParams
   return phalMfdfEVx_Int_ComputeErrorResponse(pDataParams, bStatusByte);
 }
 
-phStatus_t phalMfdfEVx_Sw_Int_IsoRead(phalMfdfEVx_Sw_DataParams_t *pDataParams, uint16_t wOption,
+phStatus_t
+phalMfdfEVx_Sw_Int_IsoRead(phalMfdfEVx_Sw_DataParams_t *pDataParams, uint16_t wOption,
     uint8_t *bCmdBuff,
     uint16_t wCmdLen, uint8_t **ppRxBuffer, uint32_t *pBytesRead)
 {
@@ -4838,7 +4850,8 @@ phStatus_t phalMfdfEVx_Sw_Int_IsoRead(phalMfdfEVx_Sw_DataParams_t *pDataParams, 
 }
 
 #ifdef NXPBUILD__PHAL_MFDFEVX_NDA
-void phalMfdfEVx_Sw_Int_TruncateMac(uint8_t *pMac)
+void
+phalMfdfEVx_Sw_Int_TruncateMac(uint8_t *pMac)
 {
   uint8_t PH_MEMLOC_REM bIndex;
   uint8_t PH_MEMLOC_REM bIndex2;
@@ -4848,7 +4861,8 @@ void phalMfdfEVx_Sw_Int_TruncateMac(uint8_t *pMac)
   }
 }
 
-phStatus_t phalMfdfEVx_Sw_Int_ComputeIv(uint8_t bIsResponse, uint8_t *pTi, uint16_t wCmdCtr,
+phStatus_t
+phalMfdfEVx_Sw_Int_ComputeIv(uint8_t bIsResponse, uint8_t *pTi, uint16_t wCmdCtr,
     uint8_t *pIv)
 {
   uint8_t PH_MEMLOC_REM bIndex = 0;
@@ -4883,7 +4897,8 @@ phStatus_t phalMfdfEVx_Sw_Int_ComputeIv(uint8_t bIsResponse, uint8_t *pTi, uint1
 }
 #endif /* NXPBUILD__PHAL_MFDFEVX_NDA */
 
-phStatus_t phalMfdfEVx_Sw_Int_GetFrameLength(phalMfdfEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfEVx_Sw_Int_GetFrameLength(phalMfdfEVx_Sw_DataParams_t *pDataParams,
     uint16_t *pFSD, uint16_t *pFSC)
 {
   uint16_t    PH_MEMLOC_REM statusTmp;
@@ -4965,7 +4980,8 @@ phStatus_t phalMfdfEVx_Sw_Int_GetFrameLength(phalMfdfEVx_Sw_DataParams_t *pDataP
 }
 
 #ifdef NXPBUILD__PHAL_MFDFEVX_NDA
-phStatus_t phalMfdfEVx_Sw_Int_DecryptSDMData(phalMfdfEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfEVx_Sw_Int_DecryptSDMData(phalMfdfEVx_Sw_DataParams_t *pDataParams,
     uint8_t *pSessEncKey, uint8_t *pIv,
     uint8_t *pInputOutputData, uint16_t wInputDataLen)
 {
@@ -4998,7 +5014,8 @@ phStatus_t phalMfdfEVx_Sw_Int_DecryptSDMData(phalMfdfEVx_Sw_DataParams_t *pDataP
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfEVx_Sw_Int_ComputeSDMSessionVectors(phalMfdfEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfEVx_Sw_Int_ComputeSDMSessionVectors(phalMfdfEVx_Sw_DataParams_t *pDataParams,
     uint8_t bOption,
     uint8_t bSdmOption, uint16_t wSrcKeyNo, uint16_t wSrcKeyVer, uint8_t *pUid, uint8_t bUidLen,
     uint8_t *pSDMReadCtr, uint8_t *pSessionKey)
@@ -5114,7 +5131,8 @@ phStatus_t phalMfdfEVx_Sw_Int_ComputeSDMSessionVectors(phalMfdfEVx_Sw_DataParams
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfEVx_Sw_Int_GenerateSDMSessionKeysAES(phalMfdfEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfEVx_Sw_Int_GenerateSDMSessionKeysAES(phalMfdfEVx_Sw_DataParams_t *pDataParams,
     uint8_t bSdmOption,
     uint16_t wKeyNo, uint16_t wKeyVer, uint8_t *pSDMReadCtr, uint8_t *pVCUID, uint8_t bUidLen,
     uint8_t *pSessEncKey,
@@ -5268,7 +5286,8 @@ phStatus_t phalMfdfEVx_Sw_Int_GenerateSDMSessionKeysAES(phalMfdfEVx_Sw_DataParam
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfEVx_Sw_Int_ComputeSDMIV(phalMfdfEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfEVx_Sw_Int_ComputeSDMIV(phalMfdfEVx_Sw_DataParams_t *pDataParams,
     uint8_t *pSessEncKey, uint8_t *pSDMReadCtr,
     uint8_t *pIV)
 {

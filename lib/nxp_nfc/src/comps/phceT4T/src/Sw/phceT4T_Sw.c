@@ -30,7 +30,8 @@
 
 static const uint8_t bceT4TEventName[] = "HceT4T";
 
-phStatus_t phceT4T_Sw_Init(
+phStatus_t
+phceT4T_Sw_Init(
     phceT4T_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pPalI14443p4mCDataParams,
@@ -73,7 +74,8 @@ phStatus_t phceT4T_Sw_Init(
           (pphOsal_EventObj_t)&pDataParams->T4TEventObj);
 }
 
-phStatus_t phceT4T_Sw_Reset(
+phStatus_t
+phceT4T_Sw_Reset(
     phceT4T_Sw_DataParams_t *pDataParams
 )
 {
@@ -97,7 +99,8 @@ phStatus_t phceT4T_Sw_Reset(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phceT4T_Sw_SetElementaryFile(
+phStatus_t
+phceT4T_Sw_SetElementaryFile(
     phceT4T_Sw_DataParams_t *pDataParams,
     uint8_t bFileType,
     uint8_t *pFile,
@@ -155,7 +158,8 @@ phStatus_t phceT4T_Sw_SetElementaryFile(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phceT4T_Sw_ProcessCmd(
+phStatus_t
+phceT4T_Sw_ProcessCmd(
     phceT4T_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pRxData,
@@ -339,7 +343,8 @@ phStatus_t phceT4T_Sw_ProcessCmd(
   return (status);
 }
 
-phStatus_t phceT4T_Sw_Activate(
+phStatus_t
+phceT4T_Sw_Activate(
     phceT4T_Sw_DataParams_t *pDataParams
 )
 {
@@ -365,7 +370,8 @@ phStatus_t phceT4T_Sw_Activate(
 #endif /* _WIN32 */
 }
 
-phStatus_t phceT4T_Sw_AppProcessCmd(
+phStatus_t
+phceT4T_Sw_AppProcessCmd(
     phceT4T_Sw_DataParams_t *pDataParams,
     phceT4T_AppCallback_t pAppCallback
 )
@@ -498,7 +504,8 @@ phStatus_t phceT4T_Sw_AppProcessCmd(
 #endif /* _WIN32 */
 }
 
-phStatus_t phceT4T_Sw_GetSelectedFileInfo(
+phStatus_t
+phceT4T_Sw_GetSelectedFileInfo(
     phceT4T_Sw_DataParams_t *pDataParams,
     uint16_t *pFileId,
     uint8_t **ppFile,
@@ -520,7 +527,8 @@ phStatus_t phceT4T_Sw_GetSelectedFileInfo(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phceT4T_Sw_SetConfig(
+phStatus_t
+phceT4T_Sw_SetConfig(
     phceT4T_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -620,7 +628,8 @@ phStatus_t phceT4T_Sw_SetConfig(
   return status;
 }
 
-phStatus_t phceT4T_Sw_GetConfig(
+phStatus_t
+phceT4T_Sw_GetConfig(
     phceT4T_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue

@@ -211,7 +211,8 @@ static const uint8_t PH_CRYPTOSYM_SW_CONST_ROM phCryptoSym_Sw_Aes_timesC[256] = 
 #endif /* PH_CRYPTOSYM_SW_ROM_OPTIMIZATION */
 static const uint8_t PH_CRYPTOSYM_SW_CONST_ROM phCryptoSym_Sw_Aes_Rcon[10] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1B, 0x36};
 
-phStatus_t phCryptoSym_Sw_Aes_KeyExpansion(
+phStatus_t
+phCryptoSym_Sw_Aes_KeyExpansion(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     const uint8_t *pKey,
     uint8_t bNkCurrent,
@@ -269,7 +270,8 @@ phStatus_t phCryptoSym_Sw_Aes_KeyExpansion(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phCryptoSym_Sw_Aes_EncryptBlock(
+phStatus_t
+phCryptoSym_Sw_Aes_EncryptBlock(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     uint8_t PH_CRYTOSYM_SW_FAST_RAM *pBlock,
     uint8_t bNumRounds
@@ -346,7 +348,8 @@ phStatus_t phCryptoSym_Sw_Aes_EncryptBlock(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phCryptoSym_Sw_Aes_DecryptBlock(
+phStatus_t
+phCryptoSym_Sw_Aes_DecryptBlock(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     uint8_t PH_CRYTOSYM_SW_FAST_RAM *pBlock,
     uint8_t bNumRounds
@@ -435,7 +438,8 @@ phStatus_t phCryptoSym_Sw_Aes_DecryptBlock(
   return PH_ERR_SUCCESS;
 }
 
-void phCryptoSym_Sw_Aes_SubBytesShiftRows(uint8_t PH_CRYTOSYM_SW_FAST_RAM *pState)
+void
+phCryptoSym_Sw_Aes_SubBytesShiftRows(uint8_t PH_CRYTOSYM_SW_FAST_RAM *pState)
 {
   uint8_t PH_CRYTOSYM_SW_FAST_RAM tmp;
   /* For details, see section Sec. 5.1.1 and See Sec. 5.1.2 in FIPS-197 */
@@ -465,7 +469,8 @@ void phCryptoSym_Sw_Aes_SubBytesShiftRows(uint8_t PH_CRYTOSYM_SW_FAST_RAM *pStat
   pState[3] = tmp;                                        /* Row 4: Shift 3 Position to the left */
 }
 
-void phCryptoSym_Sw_Aes_InvSubBytesShiftRows(uint8_t PH_CRYTOSYM_SW_FAST_RAM *pState)
+void
+phCryptoSym_Sw_Aes_InvSubBytesShiftRows(uint8_t PH_CRYTOSYM_SW_FAST_RAM *pState)
 {
   uint8_t PH_CRYTOSYM_SW_FAST_RAM tmp;
 
@@ -507,7 +512,8 @@ void phCryptoSym_Sw_Aes_InvSubBytesShiftRows(uint8_t PH_CRYTOSYM_SW_FAST_RAM *pS
       tmp;                                           /* Row 4: Shift 3 Position to the right */
 }
 
-void phCryptoSym_Sw_Aes_MixColumns(uint8_t PH_CRYTOSYM_SW_FAST_RAM *pState)
+void
+phCryptoSym_Sw_Aes_MixColumns(uint8_t PH_CRYTOSYM_SW_FAST_RAM *pState)
 {
   uint8_t PH_CRYTOSYM_SW_FAST_RAM tmp[4];
   uint8_t i;
@@ -549,7 +555,8 @@ void phCryptoSym_Sw_Aes_MixColumns(uint8_t PH_CRYTOSYM_SW_FAST_RAM *pState)
   }
 }
 
-void phCryptoSym_Sw_Aes_InvMixColumns(uint8_t PH_CRYTOSYM_SW_FAST_RAM *pState)
+void
+phCryptoSym_Sw_Aes_InvMixColumns(uint8_t PH_CRYTOSYM_SW_FAST_RAM *pState)
 {
   uint8_t PH_CRYTOSYM_SW_FAST_RAM tmp[4];
   uint8_t i;
@@ -597,7 +604,8 @@ void phCryptoSym_Sw_Aes_InvMixColumns(uint8_t PH_CRYTOSYM_SW_FAST_RAM *pState)
   }
 }
 #ifdef PH_CRYPTOSYM_SW_ONLINE_KEYSCHEDULING
-void phCryptoSym_Sw_Aes_AddRoundKey(uint8_t PH_CRYTOSYM_SW_FAST_RAM *pState,
+void
+phCryptoSym_Sw_Aes_AddRoundKey(uint8_t PH_CRYTOSYM_SW_FAST_RAM *pState,
     uint8_t PH_CRYTOSYM_SW_FAST_RAM *pKey, uint8_t *pNkCurrent, uint8_t bNk, uint8_t bMode)
 {
   uint8_t i = 0;
@@ -683,7 +691,8 @@ void phCryptoSym_Sw_Aes_AddRoundKey(uint8_t PH_CRYTOSYM_SW_FAST_RAM *pState,
 #endif /* PH_CRYPTOSYM_SW_ONLINE_KEYSCHEDULING */
 
 #ifndef PH_CRYPTOSYM_SW_ONLINE_KEYSCHEDULING
-void phCryptoSym_Sw_Aes_AddRoundKey(uint8_t PH_CRYTOSYM_SW_FAST_RAM *pState,
+void
+phCryptoSym_Sw_Aes_AddRoundKey(uint8_t PH_CRYTOSYM_SW_FAST_RAM *pState,
     uint8_t PH_MEMLOC_BUF *pKey, uint8_t bCnt)
 {
   uint8_t PH_CRYTOSYM_SW_FAST_RAM i;

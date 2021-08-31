@@ -34,7 +34,8 @@
 
 #ifndef  NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phpalSli15693_Inventory(
+phStatus_t
+phpalSli15693_Inventory(
     void *pDataParams,
     uint8_t bFlags,
     uint8_t bAfi,
@@ -118,7 +119,8 @@ phStatus_t phpalSli15693_Inventory(
   return status;
 }
 
-phStatus_t phpalSli15693_SendEof(
+phStatus_t
+phpalSli15693_SendEof(
     void *pDataParams,
     uint8_t bOption,
     uint8_t *pDsfid,
@@ -193,7 +195,8 @@ phStatus_t phpalSli15693_SendEof(
   return status;
 }
 
-phStatus_t phpalSli15693_StayQuiet(
+phStatus_t
+phpalSli15693_StayQuiet(
     void *pDataParams
 )
 {
@@ -237,7 +240,8 @@ phStatus_t phpalSli15693_StayQuiet(
   return status;
 }
 
-phStatus_t phpalSli15693_Select(
+phStatus_t
+phpalSli15693_Select(
     void *pDataParams
 )
 {
@@ -281,7 +285,8 @@ phStatus_t phpalSli15693_Select(
   return status;
 }
 
-phStatus_t phpalSli15693_ResetToReady(
+phStatus_t
+phpalSli15693_ResetToReady(
     void *pDataParams
 )
 {
@@ -325,7 +330,8 @@ phStatus_t phpalSli15693_ResetToReady(
   return status;
 }
 
-phStatus_t phpalSli15693_Exchange(
+phStatus_t
+phpalSli15693_Exchange(
     void *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -390,7 +396,8 @@ phStatus_t phpalSli15693_Exchange(
   return status;
 }
 
-phStatus_t phpalSli15693_ActivateCard(
+phStatus_t
+phpalSli15693_ActivateCard(
     void    *pDataParams,
     uint8_t  bOption,
     uint8_t  bFlags,
@@ -483,7 +490,8 @@ phStatus_t phpalSli15693_ActivateCard(
   return status;
 }
 
-phStatus_t phpalSli15693_GetSerialNo(
+phStatus_t
+phpalSli15693_GetSerialNo(
     void *pDataParams,
     uint8_t *pUid,
     uint8_t *pUidLength
@@ -538,7 +546,8 @@ phStatus_t phpalSli15693_GetSerialNo(
   return status;
 }
 
-phStatus_t phpalSli15693_SetSerialNo(
+phStatus_t
+phpalSli15693_SetSerialNo(
     void *pDataParams,
     uint8_t *pUid,
     uint8_t bUidLength
@@ -589,7 +598,8 @@ phStatus_t phpalSli15693_SetSerialNo(
   return status;
 }
 
-phStatus_t phpalSli15693_SetConfig(
+phStatus_t
+phpalSli15693_SetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -640,7 +650,8 @@ phStatus_t phpalSli15693_SetConfig(
   return status;
 }
 
-phStatus_t phpalSli15693_GetConfig(
+phStatus_t
+phpalSli15693_GetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -696,7 +707,8 @@ phStatus_t phpalSli15693_GetConfig(
   return status;
 }
 
-phStatus_t phpalSli15693_InventoryRead(
+phStatus_t
+phpalSli15693_InventoryRead(
     void *pDataParams,
     uint8_t bFlags,
     uint8_t bAfi,
@@ -786,7 +798,8 @@ phStatus_t phpalSli15693_InventoryRead(
   return status;
 }
 
-phStatus_t phpalSli15693_InventoryReadExtended(
+phStatus_t
+phpalSli15693_InventoryReadExtended(
     void *pDataParams,
     uint8_t bFlags,
     uint8_t bAfi,
@@ -885,7 +898,8 @@ phStatus_t phpalSli15693_InventoryReadExtended(
   return status;
 }
 
-phStatus_t phpalSli15693_FastInventoryRead(
+phStatus_t
+phpalSli15693_FastInventoryRead(
     void *pDataParams,
     uint8_t bFlags,
     uint8_t bAfi,
@@ -975,7 +989,8 @@ phStatus_t phpalSli15693_FastInventoryRead(
   return status;
 }
 
-phStatus_t phpalSli15693_FastInventoryReadExtended(
+phStatus_t
+phpalSli15693_FastInventoryReadExtended(
     void *pDataParams,         /**< [In] Pointer to this layers parameter structure. */
     uint8_t bFlags,            /**< [In] Request flags byte. */
     uint8_t bAfi,              /**< [In] Application Family Identifier. */
@@ -1086,7 +1101,8 @@ phStatus_t phpalSli15693_FastInventoryReadExtended(
   return status;
 }
 
-phStatus_t phpalSli15693_InventoryPageRead(
+phStatus_t
+phpalSli15693_InventoryPageRead(
     void *pDataParams,
     uint8_t bFlags,
     uint8_t bAfi,
@@ -1186,7 +1202,8 @@ phStatus_t phpalSli15693_InventoryPageRead(
   return status;
 }
 
-phStatus_t phpalSli15693_FastInventoryPageRead(
+phStatus_t
+phpalSli15693_FastInventoryPageRead(
     void *pDataParams,
     uint8_t bFlags,
     uint8_t bAfi,
@@ -1276,7 +1293,8 @@ phStatus_t phpalSli15693_FastInventoryPageRead(
   return status;
 }
 
-phStatus_t phpalSli15693_StayQuietPersistent(
+phStatus_t
+phpalSli15693_StayQuietPersistent(
     void *pDataParams
 )
 {

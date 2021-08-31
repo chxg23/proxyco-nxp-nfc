@@ -41,7 +41,8 @@
 #include "phhalHw_Pn5190_Int.h"
 #include <nxp_nfc/phhalHw_Pn5190_Reg.h>
 
-phStatus_t phhalHw_Pn5190_Instr_WriteRegister(
+phStatus_t
+phhalHw_Pn5190_Instr_WriteRegister(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bRegister,
     uint32_t dwValue
@@ -97,7 +98,8 @@ phStatus_t phhalHw_Pn5190_Instr_WriteRegister(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_WriteRegisterOrMask(
+phStatus_t
+phhalHw_Pn5190_Instr_WriteRegisterOrMask(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bRegister,
     uint32_t dwMask
@@ -153,7 +155,8 @@ phStatus_t phhalHw_Pn5190_Instr_WriteRegisterOrMask(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_WriteRegisterAndMask(
+phStatus_t
+phhalHw_Pn5190_Instr_WriteRegisterAndMask(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bRegister,
     uint32_t dwMask
@@ -209,7 +212,8 @@ phStatus_t phhalHw_Pn5190_Instr_WriteRegisterAndMask(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_WriteRegisterMultiple(
+phStatus_t
+phhalHw_Pn5190_Instr_WriteRegisterMultiple(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t *pRegTypeValueSets,
     uint16_t wSizeOfRegTypeValueSets
@@ -257,7 +261,8 @@ phStatus_t phhalHw_Pn5190_Instr_WriteRegisterMultiple(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_ReadRegister(
+phStatus_t
+phhalHw_Pn5190_Instr_ReadRegister(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bRegister,
     uint32_t *pValue
@@ -316,7 +321,8 @@ phStatus_t phhalHw_Pn5190_Instr_ReadRegister(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_ReadRegisterMultiple(
+phStatus_t
+phhalHw_Pn5190_Instr_ReadRegisterMultiple(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t *pRegisters,
     uint8_t bNumOfRegisters,
@@ -371,7 +377,8 @@ phStatus_t phhalHw_Pn5190_Instr_ReadRegisterMultiple(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_WriteE2Prom(
+phStatus_t
+phhalHw_Pn5190_Instr_WriteE2Prom(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wE2PromAddress,
     uint8_t *pDataToWrite,
@@ -419,7 +426,8 @@ phStatus_t phhalHw_Pn5190_Instr_WriteE2Prom(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_ReadE2Prom(
+phStatus_t
+phhalHw_Pn5190_Instr_ReadE2Prom(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wE2PromAddress,
     uint8_t *pReadData,
@@ -467,7 +475,8 @@ phStatus_t phhalHw_Pn5190_Instr_ReadE2Prom(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);;
 }
 
-phStatus_t phhalHw_Pn5190_Instr_TransmitRFData(
+phStatus_t
+phhalHw_Pn5190_Instr_TransmitRFData(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t bTxLastBits,
@@ -531,7 +540,8 @@ phStatus_t phhalHw_Pn5190_Instr_TransmitRFData(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_RetrieveRFData(
+phStatus_t
+phhalHw_Pn5190_Instr_RetrieveRFData(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t **pRxBuffer,
     uint16_t *pRxDataLength
@@ -584,7 +594,8 @@ phStatus_t phhalHw_Pn5190_Instr_RetrieveRFData(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_ReceiveRFData(
+phStatus_t
+phhalHw_Pn5190_Instr_ReceiveRFData(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bRespConfigMask,
     uint8_t **ppRxBuffer,
@@ -632,7 +643,8 @@ phStatus_t phhalHw_Pn5190_Instr_ReceiveRFData(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_ExchangeRFData(
+phStatus_t
+phhalHw_Pn5190_Instr_ExchangeRFData(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t bTxLastBits,
@@ -705,7 +717,8 @@ phStatus_t phhalHw_Pn5190_Instr_ExchangeRFData(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_SwitchModeStandby(
+phStatus_t
+phhalHw_Pn5190_Instr_SwitchModeStandby(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bConfigMask,
     uint16_t wWakeupCounterInMs
@@ -752,7 +765,8 @@ phStatus_t phhalHw_Pn5190_Instr_SwitchModeStandby(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_LPCD_SetConfig(
+phStatus_t
+phhalHw_Pn5190_Instr_LPCD_SetConfig(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint32_t dwValue
@@ -811,7 +825,8 @@ phStatus_t phhalHw_Pn5190_Instr_LPCD_SetConfig(
   return PH_ADD_COMPCODE(statusTmp, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_LPCD_GetConfig(
+phStatus_t
+phhalHw_Pn5190_Instr_LPCD_GetConfig(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint32_t *pValue
@@ -849,7 +864,8 @@ phStatus_t phhalHw_Pn5190_Instr_LPCD_GetConfig(
   return PH_ERR_PN5190_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5190_Instr_SwitchModeLpcd(
+phStatus_t
+phhalHw_Pn5190_Instr_SwitchModeLpcd(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bLpcdMode,
     uint8_t bWakeUpCntrlHwLpcd,
@@ -899,7 +915,8 @@ phStatus_t phhalHw_Pn5190_Instr_SwitchModeLpcd(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_SwitchModeAutocoll(
+phStatus_t
+phhalHw_Pn5190_Instr_SwitchModeAutocoll(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bRfTechnologyMask,
     uint8_t bAutocollMode
@@ -942,7 +959,8 @@ phStatus_t phhalHw_Pn5190_Instr_SwitchModeAutocoll(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_SwitchModeBootNormal(
+phStatus_t
+phhalHw_Pn5190_Instr_SwitchModeBootNormal(
     phhalHw_Pn5190_DataParams_t *pDataParams
 )
 {
@@ -963,7 +981,8 @@ phStatus_t phhalHw_Pn5190_Instr_SwitchModeBootNormal(
   return phhalHw_Pn5190_Send(pDataParams, &aCmd[0], 4, PH_ON);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_SwitchModeNormal(
+phStatus_t
+phhalHw_Pn5190_Instr_SwitchModeNormal(
     phhalHw_Pn5190_DataParams_t *pDataParams
 )
 {
@@ -996,7 +1015,8 @@ phStatus_t phhalHw_Pn5190_Instr_SwitchModeNormal(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_MifareAuthenticate(
+phStatus_t
+phhalHw_Pn5190_Instr_MifareAuthenticate(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t *pKey,
     uint8_t bKeyType,
@@ -1077,7 +1097,8 @@ phStatus_t phhalHw_Pn5190_Instr_MifareAuthenticate(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_EpcGen2Inventory(
+phStatus_t
+phhalHw_Pn5190_Instr_EpcGen2Inventory(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t *pSelectCommand,
     uint8_t bSelectCommandLength,
@@ -1184,7 +1205,8 @@ phStatus_t phhalHw_Pn5190_Instr_EpcGen2Inventory(
   return PH_ADD_COMPCODE(statusTmp, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_EpcGen2ResumeInventory(
+phStatus_t
+phhalHw_Pn5190_Instr_EpcGen2ResumeInventory(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t **ppRxBuffer,
     uint16_t *pRxDataLength
@@ -1246,7 +1268,8 @@ phStatus_t phhalHw_Pn5190_Instr_EpcGen2ResumeInventory(
   return PH_ADD_COMPCODE(statusTmp, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_LoadRfConfiguration(
+phStatus_t
+phhalHw_Pn5190_Instr_LoadRfConfiguration(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bRfTxConfiguration,
     uint8_t bRfRxConfiguration
@@ -1303,7 +1326,8 @@ phStatus_t phhalHw_Pn5190_Instr_LoadRfConfiguration(
   return  PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_UpdateRfConfiguration(
+phStatus_t
+phhalHw_Pn5190_Instr_UpdateRfConfiguration(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t *pRfConfiguration,
     uint8_t bRfConfigurationSize
@@ -1349,7 +1373,8 @@ phStatus_t phhalHw_Pn5190_Instr_UpdateRfConfiguration(
   return  PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_RetrieveRfConfiguration(
+phStatus_t
+phhalHw_Pn5190_Instr_RetrieveRfConfiguration(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bRfConfiguration,
     uint8_t *pRfConfBuf,
@@ -1395,7 +1420,8 @@ phStatus_t phhalHw_Pn5190_Instr_RetrieveRfConfiguration(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_RfOn(
+phStatus_t
+phhalHw_Pn5190_Instr_RfOn(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bRfOnConfig
 )
@@ -1442,7 +1468,8 @@ phStatus_t phhalHw_Pn5190_Instr_RfOn(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_RfOff(
+phStatus_t
+phhalHw_Pn5190_Instr_RfOff(
     phhalHw_Pn5190_DataParams_t *pDataParams
 )
 {
@@ -1476,7 +1503,8 @@ phStatus_t phhalHw_Pn5190_Instr_RfOff(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_ConfigureTestBusDigital(
+phStatus_t
+phhalHw_Pn5190_Instr_ConfigureTestBusDigital(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bSignalIndex,
     uint8_t bBitIndex,
@@ -1521,7 +1549,8 @@ phStatus_t phhalHw_Pn5190_Instr_ConfigureTestBusDigital(
   return  PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_ConfigureTestBusAnalog(
+phStatus_t
+phhalHw_Pn5190_Instr_ConfigureTestBusAnalog(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bConfig,
     uint8_t bCombinedMode,
@@ -1576,7 +1605,8 @@ phStatus_t phhalHw_Pn5190_Instr_ConfigureTestBusAnalog(
   return  PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_CtsEnable(
+phStatus_t
+phhalHw_Pn5190_Instr_CtsEnable(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bOption
 )
@@ -1621,7 +1651,8 @@ phStatus_t phhalHw_Pn5190_Instr_CtsEnable(
   return  PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_CtsConfig(
+phStatus_t
+phhalHw_Pn5190_Instr_CtsConfig(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     phhalHw_Pn5190_Instr_CtsConfig_t *pCtsConfig
 )
@@ -1663,7 +1694,8 @@ phStatus_t phhalHw_Pn5190_Instr_CtsConfig(
   return  PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_CtsRetrieveLog(
+phStatus_t
+phhalHw_Pn5190_Instr_CtsRetrieveLog(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bChunkSize,
     uint8_t *pLogData,
@@ -1712,7 +1744,8 @@ phStatus_t phhalHw_Pn5190_Instr_CtsRetrieveLog(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_GetDieId(phhalHw_Pn5190_DataParams_t *pDataParams,
+phStatus_t
+phhalHw_Pn5190_Instr_GetDieId(phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t *pDieIdValue)
 {
   phStatus_t PH_MEMLOC_REM status = PH_ERR_PN5190_SUCCESS;
@@ -1750,7 +1783,8 @@ phStatus_t phhalHw_Pn5190_Instr_GetDieId(phhalHw_Pn5190_DataParams_t *pDataParam
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_GetVersion(phhalHw_Pn5190_DataParams_t *pDataParams,
+phStatus_t
+phhalHw_Pn5190_Instr_GetVersion(phhalHw_Pn5190_DataParams_t *pDataParams,
     phhalHw_Pn5190_Version_t *pVersion)
 {
   phStatus_t PH_MEMLOC_REM status = PH_ERR_PN5190_SUCCESS;
@@ -1794,7 +1828,8 @@ phStatus_t phhalHw_Pn5190_Instr_GetVersion(phhalHw_Pn5190_DataParams_t *pDataPar
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_SwitchModeDownload(phhalHw_Pn5190_DataParams_t *pDataParams)
+phStatus_t
+phhalHw_Pn5190_Instr_SwitchModeDownload(phhalHw_Pn5190_DataParams_t *pDataParams)
 {
   phStatus_t PH_MEMLOC_REM status = PH_ERR_PN5190_SUCCESS;
   phhalHw_InstMngr_CmdParams_t sCmdParams = {0U};
@@ -1822,7 +1857,8 @@ phStatus_t phhalHw_Pn5190_Instr_SwitchModeDownload(phhalHw_Pn5190_DataParams_t *
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Instr_PrbsTest(phhalHw_Pn5190_DataParams_t *pDataParams,
+phStatus_t
+phhalHw_Pn5190_Instr_PrbsTest(phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bPrbs_type)
 {
   phStatus_t PH_MEMLOC_REM status = PH_ERR_PN5190_SUCCESS;

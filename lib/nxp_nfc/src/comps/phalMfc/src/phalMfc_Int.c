@@ -32,7 +32,8 @@
 
 #ifdef NXPBUILD__PHAL_MFC
 
-phStatus_t phalMfc_Int_Transfer(
+phStatus_t
+phalMfc_Int_Transfer(
     void *pPalMifareDataParams,
     uint8_t bBlockNo
 )
@@ -56,7 +57,8 @@ phStatus_t phalMfc_Int_Transfer(
       );
 }
 
-phStatus_t phalMfc_Int_Value(
+phStatus_t
+phalMfc_Int_Value(
     void *pPalMifareDataParams,
     uint8_t bCmdCode,
     uint8_t bBlockNo,
@@ -105,7 +107,8 @@ phStatus_t phalMfc_Int_Value(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfc_Int_CreateValueBlock(
+phStatus_t
+phalMfc_Int_CreateValueBlock(
     uint8_t *pValue,
     uint8_t bAddrData,
     uint8_t *pBlock
@@ -130,7 +133,8 @@ phStatus_t phalMfc_Int_CreateValueBlock(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfc_Int_CheckValueBlockFormat(
+phStatus_t
+phalMfc_Int_CheckValueBlockFormat(
     uint8_t *pBlock
 )
 {
@@ -151,7 +155,8 @@ phStatus_t phalMfc_Int_CheckValueBlockFormat(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfc_Int_ResolveReturnCode(
+phStatus_t
+phalMfc_Int_ResolveReturnCode(
     uint8_t bRetCode
 )
 {

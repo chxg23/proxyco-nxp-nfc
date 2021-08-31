@@ -219,30 +219,30 @@ phStatus_t phKeyStore_Rc663_Init(
 /* @} */
 
 /** \brief Sam parameter structure */
-typedef struct
-{
-	uint16_t  wId;																/**< Layer ID for this component, NEVER MODIFY! */
-	phhalHw_SamAV3_DataParams_t * pHalDataParams;								/**< Pointer to the parameter structure of the underlying layer.*/
-	uint8_t aSet[2];															/**< Configuration settings. */
-	uint8_t aExtSet[2];															/**< Extended configuration settings. */
-	uint8_t aDFAid[3];															/**< DESFire application ID. */
-	uint8_t bDFKeyNo;															/**< DESFire key number. */
-	uint8_t bKeyNoCEK;															/**< Key Number of Change Entry Key. */
-	uint8_t bKeyVCEK;															/**< Key Version of Change Entry Key. */
-	uint8_t bRefNoKUC;															/**< Reference number of key usage counter. */
-	uint8_t bKeyNoAEK;															/**< Key Number of Access Entry Key. */
-	uint8_t bKeyVAEK;															/**< Key Version of Access Entry Key. */
-	uint8_t bKeyNoCKUC;															/**< Key Number of Change KUC. */
-	uint8_t bKeyVCKUC;															/**< Key Version of Change KUC. */
-	uint8_t bKeyNoMfDivA;														/**< Key Number used for MIFARE key A diversification (has to point to a DES key). */
-	uint8_t bKeyVMfDivA;														/**< Key Version used for MIFARE key A diversification (has to point to a DES key). */
-	uint8_t bKeyNoMfDivB;														/**< Key Number used for MIFARE key B diversification (has to point to a DES key). */
-	uint8_t bKeyVMfDivB;														/**< Key Version used for MIFARE key B diversification (has to point to a DES key). */
-	uint8_t b2K3DESOption;														/**< Option for single DES and 2 Key Triple DES keys. Can be set either to
+typedef struct {
+  uint16_t  wId;																/**< Layer ID for this component, NEVER MODIFY! */
+  phhalHw_SamAV3_DataParams_t
+  *pHalDataParams;								/**< Pointer to the parameter structure of the underlying layer.*/
+  uint8_t aSet[2];															/**< Configuration settings. */
+  uint8_t aExtSet[2];															/**< Extended configuration settings. */
+  uint8_t aDFAid[3];															/**< DESFire application ID. */
+  uint8_t bDFKeyNo;															/**< DESFire key number. */
+  uint8_t bKeyNoCEK;															/**< Key Number of Change Entry Key. */
+  uint8_t bKeyVCEK;															/**< Key Version of Change Entry Key. */
+  uint8_t bRefNoKUC;															/**< Reference number of key usage counter. */
+  uint8_t bKeyNoAEK;															/**< Key Number of Access Entry Key. */
+  uint8_t bKeyVAEK;															/**< Key Version of Access Entry Key. */
+  uint8_t bKeyNoCKUC;															/**< Key Number of Change KUC. */
+  uint8_t bKeyVCKUC;															/**< Key Version of Change KUC. */
+  uint8_t bKeyNoMfDivA;														/**< Key Number used for MIFARE key A diversification (has to point to a DES key). */
+  uint8_t bKeyVMfDivA;														/**< Key Version used for MIFARE key A diversification (has to point to a DES key). */
+  uint8_t bKeyNoMfDivB;														/**< Key Number used for MIFARE key B diversification (has to point to a DES key). */
+  uint8_t bKeyVMfDivB;														/**< Key Version used for MIFARE key B diversification (has to point to a DES key). */
+  uint8_t b2K3DESOption;														/**< Option for single DES and 2 Key Triple DES keys. Can be set either to
 																				 *   #PH_KEYSTORE_SAMAV3_DES_OPTION_DESFIRE4, #PH_KEYSTORE_SAMAV3_DES_OPTION_ISO_CRC16
 																				 *   or #PH_KEYSTORE_SAMAV3_DES_OPTION_ISO_CRC32
 																				 */
-	uint8_t bIsLRPKey;															/**< Option for LRP key type. If set indicated that the AES key is of LRP type. */
+  uint8_t bIsLRPKey;															/**< Option for LRP key type. If set indicated that the AES key is of LRP type. */
 } phKeyStore_SamAV3_DataParams_t;
 
 /**
@@ -251,10 +251,12 @@ typedef struct
  * \retval #PH_ERR_SUCCESS Operation successful.
  */
 phStatus_t phKeyStore_SamAV3_Init(
-		phKeyStore_SamAV3_DataParams_t * pDataParams,							/**< [In] Pointer to this layer's parameter structure. */
-		uint16_t wSizeOfDataParams,												/**< [In] Specifies the size of the data parameter structure. */
-		phhalHw_SamAV3_DataParams_t * pHalDataParams							/**< [In] Pointer to the parameter structure of the underlying layer.*/
-	);
+    phKeyStore_SamAV3_DataParams_t
+    *pDataParams,							/**< [In] Pointer to this layer's parameter structure. */
+    uint16_t wSizeOfDataParams,												/**< [In] Specifies the size of the data parameter structure. */
+    phhalHw_SamAV3_DataParams_t
+    *pHalDataParams							/**< [In] Pointer to the parameter structure of the underlying layer.*/
+);
 
 /** @} */
 #endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */

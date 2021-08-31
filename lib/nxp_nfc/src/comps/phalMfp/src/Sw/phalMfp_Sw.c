@@ -44,7 +44,8 @@
 */
 static const uint8_t PH_MEMLOC_CONST_ROM phalMfp_Sw_FirstIv[PH_CRYPTOSYM_AES_BLOCK_SIZE] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 #endif /* NXPBUILD__PH_NDA_MFP */
-phStatus_t phalMfp_Sw_Init(
+phStatus_t
+phalMfp_Sw_Init(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pPalMifareDataParams,
@@ -84,7 +85,8 @@ phStatus_t phalMfp_Sw_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfp_Sw_WritePerso(
+phStatus_t
+phalMfp_Sw_WritePerso(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bLayer4Comm,
     uint16_t wBlockNr,
@@ -94,7 +96,8 @@ phStatus_t phalMfp_Sw_WritePerso(
   return phalMfp_Int_WritePerso(pDataParams->pPalMifareDataParams, bLayer4Comm, wBlockNr, pValue);
 }
 
-phStatus_t phalMfp_Sw_CommitPerso(
+phStatus_t
+phalMfp_Sw_CommitPerso(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bLayer4Comm
 )
@@ -102,7 +105,8 @@ phStatus_t phalMfp_Sw_CommitPerso(
   return phalMfp_Int_CommitPerso(pDataParams->pPalMifareDataParams, bLayer4Comm);
 }
 #ifdef NXPBUILD__PH_NDA_MFP
-phStatus_t phalMfp_Sw_AuthenticateSL0(
+phStatus_t
+phalMfp_Sw_AuthenticateSL0(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bLayer4Comm,
     uint8_t bFirstAuth,
@@ -133,7 +137,8 @@ phStatus_t phalMfp_Sw_AuthenticateSL0(
           pPdCap2);
 }
 
-phStatus_t phalMfp_Sw_AuthenticateSL1(
+phStatus_t
+phalMfp_Sw_AuthenticateSL1(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bLayer4Comm,
     uint8_t bFirstAuth,
@@ -164,7 +169,8 @@ phStatus_t phalMfp_Sw_AuthenticateSL1(
           pPdCap2);
 }
 
-phStatus_t phalMfp_Sw_AuthenticateSL2(
+phStatus_t
+phalMfp_Sw_AuthenticateSL2(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bLayer4Comm,
     uint8_t bFirstAuth,
@@ -213,7 +219,8 @@ phStatus_t phalMfp_Sw_AuthenticateSL2(
 }
 #endif /* NXPBUILD__PH_NDA_MFP */
 
-phStatus_t phalMfp_Sw_AuthenticateClassicSL2(
+phStatus_t
+phalMfp_Sw_AuthenticateClassicSL2(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bBlockNo,
     uint8_t bKeyType,
@@ -272,7 +279,8 @@ phStatus_t phalMfp_Sw_AuthenticateClassicSL2(
           &pUid[bUidLength - 4U]);
 }
 
-phStatus_t phalMfp_Sw_MultiBlockRead(
+phStatus_t
+phalMfp_Sw_MultiBlockRead(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bBlockNr,
     uint8_t bNumBlocks,
@@ -283,7 +291,8 @@ phStatus_t phalMfp_Sw_MultiBlockRead(
           pBlocks);
 }
 
-phStatus_t phalMfp_Sw_MultiBlockWrite(
+phStatus_t
+phalMfp_Sw_MultiBlockWrite(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bBlockNr,
     uint8_t bNumBlocks,
@@ -294,7 +303,8 @@ phStatus_t phalMfp_Sw_MultiBlockWrite(
           pBlocks);
 }
 #ifdef NXPBUILD__PH_NDA_MFP
-phStatus_t phalMfp_Sw_Write(
+phStatus_t
+phalMfp_Sw_Write(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bEncrypted,
     uint8_t bWriteMaced,
@@ -331,7 +341,8 @@ phStatus_t phalMfp_Sw_Write(
           bEncrypted);
 }
 
-phStatus_t phalMfp_Sw_WriteValue(
+phStatus_t
+phalMfp_Sw_WriteValue(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bEncrypted,
     uint8_t bWriteMaced,
@@ -346,7 +357,8 @@ phStatus_t phalMfp_Sw_WriteValue(
   return phalMfp_Sw_Write(pDataParams, bEncrypted, bWriteMaced, wBlockNr, 1, pBlock);
 }
 
-phStatus_t phalMfp_Sw_ChangeKey(
+phStatus_t
+phalMfp_Sw_ChangeKey(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bChangeKeyMaced,
     uint16_t wBlockNr,
@@ -406,7 +418,8 @@ phStatus_t phalMfp_Sw_ChangeKey(
           0x01);
 }
 
-phStatus_t phalMfp_Sw_AuthenticateSL3(
+phStatus_t
+phalMfp_Sw_AuthenticateSL3(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bFirstAuth,
     uint16_t wBlockNr,
@@ -436,7 +449,8 @@ phStatus_t phalMfp_Sw_AuthenticateSL3(
           pPdCap2);
 }
 
-phStatus_t phalMfp_Sw_Read(
+phStatus_t
+phalMfp_Sw_Read(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bEncrypted,
     uint8_t bReadMaced,
@@ -826,7 +840,8 @@ phStatus_t phalMfp_Sw_Read(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfp_Sw_ReadValue(
+phStatus_t
+phalMfp_Sw_ReadValue(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bEncrypted,
     uint8_t bReadMaced,
@@ -849,7 +864,8 @@ phStatus_t phalMfp_Sw_ReadValue(
 }
 #endif /* NXPBUILD__PH_NDA_MFP */
 
-phStatus_t phalMfp_Sw_ResetAuth(
+phStatus_t
+phalMfp_Sw_ResetAuth(
     phalMfp_Sw_DataParams_t *pDataParams
 )
 {
@@ -880,7 +896,8 @@ phStatus_t phalMfp_Sw_ResetAuth(
   return PH_ERR_SUCCESS;
 }
 #ifdef NXPBUILD__PH_NDA_MFP
-phStatus_t phalMfp_Sw_Increment(
+phStatus_t
+phalMfp_Sw_Increment(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bIncrementMaced,
     uint16_t wBlockNr,
@@ -907,7 +924,8 @@ phStatus_t phalMfp_Sw_Increment(
           PH_ON); /* Encrypted */
 }
 
-phStatus_t phalMfp_Sw_Decrement(
+phStatus_t
+phalMfp_Sw_Decrement(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bDecrementMaced,
     uint16_t wBlockNr,
@@ -934,7 +952,8 @@ phStatus_t phalMfp_Sw_Decrement(
           PH_ON); /* Encrypted */
 }
 
-phStatus_t phalMfp_Sw_IncrementTransfer(
+phStatus_t
+phalMfp_Sw_IncrementTransfer(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bIncrementTransferMaced,
     uint16_t wSourceBlockNr,
@@ -962,7 +981,8 @@ phStatus_t phalMfp_Sw_IncrementTransfer(
           PH_ON); /* Encrypted */
 }
 
-phStatus_t phalMfp_Sw_DecrementTransfer(
+phStatus_t
+phalMfp_Sw_DecrementTransfer(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bDecrementTransferMaced,
     uint16_t wSourceBlockNr,
@@ -990,7 +1010,8 @@ phStatus_t phalMfp_Sw_DecrementTransfer(
           PH_ON); /* Encrypted */
 }
 
-phStatus_t phalMfp_Sw_Transfer(
+phStatus_t
+phalMfp_Sw_Transfer(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bTransferMaced,
     uint16_t wBlockNr
@@ -1016,7 +1037,8 @@ phStatus_t phalMfp_Sw_Transfer(
           PH_OFF); /* Plain */
 }
 
-phStatus_t phalMfp_Sw_Restore(
+phStatus_t
+phalMfp_Sw_Restore(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bRestoreMaced,
     uint16_t wBlockNr
@@ -1042,7 +1064,8 @@ phStatus_t phalMfp_Sw_Restore(
           PH_OFF); /* Plain */
 }
 
-phStatus_t phalMfp_Sw_ProximityCheck(
+phStatus_t
+phalMfp_Sw_ProximityCheck(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bGenerateRndC,
     uint8_t *pRndC,
@@ -1061,7 +1084,8 @@ phStatus_t phalMfp_Sw_ProximityCheck(
   return (phalMfp_Sw_Cmd_VerifyProximityCheck(pDataParams, pUsedRndRC, bPps1));
 }
 #endif /* NXPBUILD__PH_NDA_MFP */
-phStatus_t phalMfp_Sw_ResetSecMsgState(
+phStatus_t
+phalMfp_Sw_ResetSecMsgState(
     phalMfp_Sw_DataParams_t *pDataParams
 )
 {
@@ -1076,7 +1100,8 @@ phStatus_t phalMfp_Sw_ResetSecMsgState(
 
 #ifdef NXPBUILD__PH_NDA_MFP
 
-phStatus_t phalMfp_Sw_AuthenticateGeneral(
+phStatus_t
+phalMfp_Sw_AuthenticateGeneral(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bLayer4Comm,
     uint8_t bFirstAuth,
@@ -1422,7 +1447,8 @@ phStatus_t phalMfp_Sw_AuthenticateGeneral(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfp_Sw_WriteExt(
+phStatus_t
+phalMfp_Sw_WriteExt(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bCmdCode,
     uint16_t wSrcBnr,
@@ -1657,7 +1683,8 @@ phStatus_t phalMfp_Sw_WriteExt(
 }
 #endif /* NXPBUILD__PH_NDA_MFP */
 
-phStatus_t phalMfp_Sw_Int_ComputeIv(
+phStatus_t
+phalMfp_Sw_Int_ComputeIv(
     uint8_t bIsResponse,
     uint8_t *pTi,
     uint16_t wRCtr,
@@ -1725,7 +1752,8 @@ phStatus_t phalMfp_Sw_Int_ComputeIv(
 }
 
 #ifdef NXPBUILD__PH_NDA_MFP
-phStatus_t phalMfp_Sw_Int_KdfSl2(
+phStatus_t
+phalMfp_Sw_Int_KdfSl2(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t *pRndA,
     uint8_t *pRndB
@@ -1779,7 +1807,8 @@ phStatus_t phalMfp_Sw_Int_KdfSl2(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfp_Sw_Int_KdfSl3(
+phStatus_t
+phalMfp_Sw_Int_KdfSl3(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t *pRndA,
     uint8_t *pRndB
@@ -1876,7 +1905,8 @@ phStatus_t phalMfp_Sw_Int_KdfSl3(
 }
 #endif /* NXPBUILD__PH_NDA_MFP */
 
-void phalMfp_Sw_Int_TruncateMac(
+void
+phalMfp_Sw_Int_TruncateMac(
     uint8_t *pMac,
     uint8_t *pTruncatedMac
 )
@@ -1898,7 +1928,8 @@ void phalMfp_Sw_Int_TruncateMac(
 #endif
 }
 
-phStatus_t phalMfp_Sw_Cmd_PrepareProximityCheck(
+phStatus_t
+phalMfp_Sw_Cmd_PrepareProximityCheck(
     phalMfp_Sw_DataParams_t *pDataParams
 )
 {
@@ -1906,7 +1937,8 @@ phStatus_t phalMfp_Sw_Cmd_PrepareProximityCheck(
 }
 
 #ifdef NXPBUILD__PH_NDA_MFP
-phStatus_t phalMfp_Sw_Cmd_ProximityCheck(
+phStatus_t
+phalMfp_Sw_Cmd_ProximityCheck(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t bGenerateRndC,
     uint8_t *pRndC,
@@ -1942,7 +1974,8 @@ phStatus_t phalMfp_Sw_Cmd_ProximityCheck(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfp_Sw_Cmd_VerifyProximityCheck(
+phStatus_t
+phalMfp_Sw_Cmd_VerifyProximityCheck(
     phalMfp_Sw_DataParams_t *pDataParams,
     uint8_t *pRndRC,
     uint8_t bPps1

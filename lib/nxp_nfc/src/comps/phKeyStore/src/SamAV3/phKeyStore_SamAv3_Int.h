@@ -99,8 +99,9 @@
  *			PH_ERR_SUCCESS for successfull operation.
  *			Other Depending on implementation and underlaying component.
  */
-phStatus_t phKeyStore_SamAV3_Int_GetKeyEntry(phKeyStore_SamAV3_DataParams_t * pDataParams, uint8_t bKeyNo, uint8_t bIsRamKey,
-	phKeyStore_SamAV3_KeyEntry_t * pKeyEntry);
+phStatus_t phKeyStore_SamAV3_Int_GetKeyEntry(phKeyStore_SamAV3_DataParams_t *pDataParams,
+    uint8_t bKeyNo, uint8_t bIsRamKey,
+    phKeyStore_SamAV3_KeyEntry_t *pKeyEntry);
 
 /**
  * Convert the inforamtion available in the key entry structure to bytes.
@@ -119,8 +120,9 @@ phStatus_t phKeyStore_SamAV3_Int_GetKeyEntry(phKeyStore_SamAV3_DataParams_t * pD
  *			PH_ERR_SUCCESS for successfull operation.
  *			Other Depending on implementation and underlaying component.
  */
-phStatus_t phKeyStore_SamAV3_Int_ConvertKeyEntryToBuffer(phKeyStore_SamAV3_DataParams_t * pDataParams, phKeyStore_SamAV3_KeyEntry_t * pKeyEntry,
-	uint8_t * pKey, uint8_t bKeyLen, uint8_t * pKeyEntryBuff, uint8_t * pKeyEntryBuffLen);
+phStatus_t phKeyStore_SamAV3_Int_ConvertKeyEntryToBuffer(phKeyStore_SamAV3_DataParams_t
+    *pDataParams, phKeyStore_SamAV3_KeyEntry_t *pKeyEntry,
+    uint8_t *pKey, uint8_t bKeyLen, uint8_t *pKeyEntryBuff, uint8_t *pKeyEntryBuffLen);
 
 /**
  * Sets the KeyType of the key entry.
@@ -135,7 +137,8 @@ phStatus_t phKeyStore_SamAV3_Int_ConvertKeyEntryToBuffer(phKeyStore_SamAV3_DataP
  *			PH_ERR_SUCCESS for successfull operation.
  *			Other Depending on implementation and underlaying component.
  */
-phStatus_t phKeyStore_SamAV3_Int_SetKeyType(phKeyStore_SamAV3_KeyEntry_t * pKeyEntry, uint16_t wKeyType, uint8_t b2K3DESOption, uint8_t bIsLRPKey);
+phStatus_t phKeyStore_SamAV3_Int_SetKeyType(phKeyStore_SamAV3_KeyEntry_t *pKeyEntry,
+    uint16_t wKeyType, uint8_t b2K3DESOption, uint8_t bIsLRPKey);
 
 /**
  * Gets the KeyType of the key entry.
@@ -151,7 +154,8 @@ phStatus_t phKeyStore_SamAV3_Int_SetKeyType(phKeyStore_SamAV3_KeyEntry_t * pKeyE
  *			PH_ERR_SUCCESS for successfull operation.
  *			Other Depending on implementation and underlaying component.
  */
-phStatus_t phKeyStore_SamAV3_Int_GetKeyType(phKeyStore_SamAV3_KeyEntry_t * pKeyEntry, uint16_t * pKeyType, uint8_t * pIsLRPKey);
+phStatus_t phKeyStore_SamAV3_Int_GetKeyType(phKeyStore_SamAV3_KeyEntry_t *pKeyEntry,
+    uint16_t *pKeyType, uint8_t *pIsLRPKey);
 
 /**
  * Gets the size of key.
@@ -166,6 +170,6 @@ phStatus_t phKeyStore_SamAV3_Int_GetKeyType(phKeyStore_SamAV3_KeyEntry_t * pKeyE
  *			PH_ERR_SUCCESS for successfull operation.
  *			Other Depending on implementation and underlaying component.
  */
-phStatus_t phKeyStore_SamAV3_Int_GetKeySize(uint16_t wKeyType, uint8_t * pKeySize);
+phStatus_t phKeyStore_SamAV3_Int_GetKeySize(uint16_t wKeyType, uint8_t *pKeySize);
 
 #endif /* PHKEYSTORE_SAMAV3_INT_H */

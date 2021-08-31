@@ -34,7 +34,8 @@
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phalFelica_RequestResponse(
+phStatus_t
+phalFelica_RequestResponse(
     void *pDataParams,
     uint8_t *pMode
 )
@@ -85,7 +86,8 @@ phStatus_t phalFelica_RequestResponse(
   return status;
 }
 
-phStatus_t phalFelica_RequestService(
+phStatus_t
+phalFelica_RequestService(
     void *pDataParams,
     uint8_t  bTxNumServices,
     uint8_t *pTxServiceList,
@@ -142,7 +144,8 @@ phStatus_t phalFelica_RequestService(
   return status;
 }
 
-phStatus_t phalFelica_Read(
+phStatus_t
+phalFelica_Read(
     void *pDataParams,
     uint8_t  bNumServices,
     uint8_t *pServiceList,
@@ -207,7 +210,8 @@ phStatus_t phalFelica_Read(
   return status;
 }
 
-phStatus_t phalFelica_Write(
+phStatus_t
+phalFelica_Write(
     void *pDataParams,
     uint8_t  bNumServices,
     uint8_t *pServiceList,
@@ -264,7 +268,8 @@ phStatus_t phalFelica_Write(
   return status;
 }
 
-phStatus_t phalFelica_GetConfig(
+phStatus_t
+phalFelica_GetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -319,7 +324,8 @@ phStatus_t phalFelica_GetConfig(
   return status;
 }
 
-phStatus_t phalFelica_ActivateCard(
+phStatus_t
+phalFelica_ActivateCard(
     void *pDataParams,
     uint8_t *pSystemCode,
     uint8_t bTimeSlot,

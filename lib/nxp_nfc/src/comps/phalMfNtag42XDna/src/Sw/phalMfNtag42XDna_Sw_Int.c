@@ -31,7 +31,8 @@
 #include "../phalMfNtag42XDna_Int.h"
 #include "nxp_nfc/phalMfNtag42XDna_Sw_Int.h"
 
-phStatus_t phalMfNtag42XDna_Sw_Int_GetData(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfNtag42XDna_Sw_Int_GetData(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
     uint8_t  *pSendBuff, uint16_t wCmdLen,
     uint8_t **pResponse, uint16_t *pRxlen)
 {
@@ -267,7 +268,8 @@ phStatus_t phalMfNtag42XDna_Sw_Int_GetData(phalMfNtag42XDna_Sw_DataParams_t *pDa
   return phalMfNtag42XDna_Int_ComputeErrorResponse(pDataParams, bStatusByte);
 }
 
-phStatus_t phalMfNtag42XDna_Sw_Int_ISOGetData(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfNtag42XDna_Sw_Int_ISOGetData(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
     uint8_t *pSendBuff, uint16_t wCmdLen,
     uint8_t **pResponse, uint16_t *pRxlen)
 {
@@ -463,7 +465,8 @@ phStatus_t phalMfNtag42XDna_Sw_Int_ISOGetData(phalMfNtag42XDna_Sw_DataParams_t *
   return phalMfNtag42XDna_Int_ComputeErrorResponse(pDataParams, statusTmp);
 }
 
-phStatus_t phalMfNtag42XDna_Sw_Int_ReadData_Plain(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfNtag42XDna_Sw_Int_ReadData_Plain(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
     uint8_t bOption, uint8_t *bCmdBuff,
     uint16_t wCmdLen, uint8_t **ppRxdata, uint16_t *pRxdataLen)
 {
@@ -725,7 +728,8 @@ phStatus_t phalMfNtag42XDna_Sw_Int_ReadData_Plain(phalMfNtag42XDna_Sw_DataParams
 }
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalMfNtag42XDna_Sw_Int_ReadData_Enc(phalMfNtag42XDna_Sw_DataParams_t *UNALIGNED
+phStatus_t
+phalMfNtag42XDna_Sw_Int_ReadData_Enc(phalMfNtag42XDna_Sw_DataParams_t *UNALIGNED
     pDataParams, uint8_t bOption,
     uint8_t *bCmdBuff, uint16_t wCmdLen, uint8_t **ppRxdata, uint16_t *pRxdataLen)
 {
@@ -1042,7 +1046,8 @@ phStatus_t phalMfNtag42XDna_Sw_Int_ReadData_Enc(phalMfNtag42XDna_Sw_DataParams_t
   return status;
 }
 
-phStatus_t phalMfNtag42XDna_Sw_Int_Write_Enc(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfNtag42XDna_Sw_Int_Write_Enc(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
     uint8_t bIns, uint8_t *bCmdBuff,
     uint16_t wCmdLen, uint8_t bPaddingOption, uint8_t bCommOption, uint8_t *pData, uint16_t wDataLen)
 
@@ -1575,7 +1580,8 @@ phStatus_t phalMfNtag42XDna_Sw_Int_Write_Enc(phalMfNtag42XDna_Sw_DataParams_t *p
 }
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 
-phStatus_t phalMfNtag42XDna_Sw_Int_Write_Plain(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfNtag42XDna_Sw_Int_Write_Plain(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
     uint8_t bIns, uint8_t *bCmdBuff,
     uint16_t wCmdLen, uint8_t bCommOption, uint8_t *pData, uint16_t wDataLen)
 {
@@ -2050,7 +2056,8 @@ phStatus_t phalMfNtag42XDna_Sw_Int_Write_Plain(phalMfNtag42XDna_Sw_DataParams_t 
   return PH_ERR_SUCCESS;
 }
 
-void phalMfNtag42XDna_Sw_Int_ResetAuthStatus(phalMfNtag42XDna_Sw_DataParams_t *pDataParams)
+void
+phalMfNtag42XDna_Sw_Int_ResetAuthStatus(phalMfNtag42XDna_Sw_DataParams_t *pDataParams)
 {
   memset(pDataParams->bSesAuthENCKey, 0x00, sizeof(pDataParams->bSesAuthENCKey)); /* PRQA S 3200 */
   memset(pDataParams->bSesAuthMACKey, 0x00, sizeof(pDataParams->bSesAuthMACKey)); /* PRQA S 3200 */
@@ -2064,7 +2071,8 @@ void phalMfNtag42XDna_Sw_Int_ResetAuthStatus(phalMfNtag42XDna_Sw_DataParams_t *p
   pDataParams->bLastBlockIndex = 0;
 }
 
-phStatus_t phalMfNtag42XDna_Sw_Int_SendDataToPICC(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfNtag42XDna_Sw_Int_SendDataToPICC(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
     uint8_t bIns, uint8_t bCommOption,
     uint8_t *pCmd, uint16_t wCmdLen, uint8_t *pData, uint16_t wDataLen, uint8_t *bLastChunk,
     uint16_t wLastChunkLen,
@@ -2273,7 +2281,8 @@ phStatus_t phalMfNtag42XDna_Sw_Int_SendDataToPICC(phalMfNtag42XDna_Sw_DataParams
   return phalMfNtag42XDna_Int_ComputeErrorResponse(pDataParams, bStatusByte);
 }
 
-phStatus_t phalMfNtag42XDna_Sw_Int_SendDataAndAddDataToPICC(phalMfNtag42XDna_Sw_DataParams_t
+phStatus_t
+phalMfNtag42XDna_Sw_Int_SendDataAndAddDataToPICC(phalMfNtag42XDna_Sw_DataParams_t
     *pDataParams, uint8_t bIns, uint8_t *pCmd,
     uint16_t wCmdLen, uint8_t *pData, uint16_t wDataLen, uint8_t *pAddData, uint16_t wAddDataLen,
     uint8_t *pResp, uint16_t *pRespLen)
@@ -2592,7 +2601,8 @@ phStatus_t phalMfNtag42XDna_Sw_Int_SendDataAndAddDataToPICC(phalMfNtag42XDna_Sw_
   return phalMfNtag42XDna_Int_ComputeErrorResponse(pDataParams, bStatusByte);
 }
 
-phStatus_t phalMfNtag42XDna_Sw_Int_IsoRead(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfNtag42XDna_Sw_Int_IsoRead(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
     uint16_t wOption, uint8_t *bCmdBuff,
     uint16_t wCmdLen, uint8_t **ppRxBuffer, uint32_t *pBytesRead)
 {
@@ -2732,7 +2742,8 @@ phStatus_t phalMfNtag42XDna_Sw_Int_IsoRead(phalMfNtag42XDna_Sw_DataParams_t *pDa
   return PH_ADD_COMPCODE((status & PH_ERR_MASK), PH_COMP_AL_MFNTAG42XDNA);
 }
 
-void phalMfNtag42XDna_Sw_Int_TruncateMac(uint8_t *pMac)
+void
+phalMfNtag42XDna_Sw_Int_TruncateMac(uint8_t *pMac)
 {
   uint8_t PH_MEMLOC_REM bIndex;
   uint8_t PH_MEMLOC_REM bIndex2;
@@ -2743,7 +2754,8 @@ void phalMfNtag42XDna_Sw_Int_TruncateMac(uint8_t *pMac)
 }
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalMfNtag42XDna_Sw_Int_ComputeIv(uint8_t bIsResponse, uint8_t *pTi, uint16_t wCmdCtr,
+phStatus_t
+phalMfNtag42XDna_Sw_Int_ComputeIv(uint8_t bIsResponse, uint8_t *pTi, uint16_t wCmdCtr,
     uint8_t *pIv)
 {
   uint8_t PH_MEMLOC_REM bIndex = 0;
@@ -2778,7 +2790,8 @@ phStatus_t phalMfNtag42XDna_Sw_Int_ComputeIv(uint8_t bIsResponse, uint8_t *pTi, 
 }
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 
-phStatus_t phalMfNtag42XDna_Sw_Int_GetFrameLength(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfNtag42XDna_Sw_Int_GetFrameLength(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
     uint16_t *pFSD, uint16_t *pFSC)
 {
   uint16_t    PH_MEMLOC_REM statusTmp;
@@ -2860,7 +2873,8 @@ phStatus_t phalMfNtag42XDna_Sw_Int_GetFrameLength(phalMfNtag42XDna_Sw_DataParams
 }
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalMfNtag42XDna_Sw_Int_AuthenticateEv2(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfNtag42XDna_Sw_Int_AuthenticateEv2(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
     uint8_t bAuthOption, uint16_t wOption,
     uint16_t wKeyNo, uint16_t wKeyVer, uint8_t bKeyNoCard, uint8_t *pDivInput, uint8_t bDivLen,
     uint8_t bLenPcdCapsIn, uint8_t *pPcdCapsIn,
@@ -3258,7 +3272,8 @@ phStatus_t phalMfNtag42XDna_Sw_Int_AuthenticateEv2(phalMfNtag42XDna_Sw_DataParam
 
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 
-phStatus_t phalMfNtag42XDna_Sw_Int_ComputeSDMIV(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfNtag42XDna_Sw_Int_ComputeSDMIV(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
     uint8_t *pSessEncKey, uint8_t *pSDMReadCtr,
     uint8_t *pIV)
 {
@@ -3321,7 +3336,8 @@ phStatus_t phalMfNtag42XDna_Sw_Int_ComputeSDMIV(phalMfNtag42XDna_Sw_DataParams_t
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfNtag42XDna_Sw_Int_DecryptSDMData(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfNtag42XDna_Sw_Int_DecryptSDMData(phalMfNtag42XDna_Sw_DataParams_t *pDataParams,
     uint8_t *pSessEncKey, uint8_t *pIv,
     uint8_t wIvSize, uint8_t *pInputOutputData, uint16_t wInputDataLen)
 {
@@ -3369,7 +3385,8 @@ phStatus_t phalMfNtag42XDna_Sw_Int_DecryptSDMData(phalMfNtag42XDna_Sw_DataParams
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfNtag42XDna_Sw_Int_GenerateSDMSessionKeysAES(phalMfNtag42XDna_Sw_DataParams_t
+phStatus_t
+phalMfNtag42XDna_Sw_Int_GenerateSDMSessionKeysAES(phalMfNtag42XDna_Sw_DataParams_t
     *pDataParams, uint8_t bSdmOption, uint16_t wKeyNo,
     uint16_t wKeyVer, uint8_t *pSDMReadCtr, uint8_t *pVCUID, uint8_t bUidLen, uint8_t *pSessEncKey,
     uint8_t *pSessMacKey)

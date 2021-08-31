@@ -31,7 +31,8 @@
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
 /* MIFARE DESFire Light Secure Messaging commands. ------------------------------------------------------------------------------------- */
-phStatus_t phalMfdfLight_AuthenticateEv2(void *pDataParams, uint8_t bFirstAuth, uint16_t wOption,
+phStatus_t
+phalMfdfLight_AuthenticateEv2(void *pDataParams, uint8_t bFirstAuth, uint16_t wOption,
     uint16_t wKeyNo, uint16_t wKeyVer, uint8_t bKeyNoCard,
     uint8_t *pDivInput, uint8_t bDivLen, uint8_t bLenPcdCapsIn, uint8_t *bPcdCapsIn,
     uint8_t *bPcdCapsOut, uint8_t *bPdCapsOut)
@@ -104,7 +105,8 @@ phStatus_t phalMfdfLight_AuthenticateEv2(void *pDataParams, uint8_t bFirstAuth, 
 }
 
 /* MIFARE DESFire Light Memory and Configuration commands. ----------------------------------------------------------------------------- */
-phStatus_t phalMfdfLight_SetConfiguration(void *pDataParams, uint8_t bOption, uint8_t *pData,
+phStatus_t
+phalMfdfLight_SetConfiguration(void *pDataParams, uint8_t bOption, uint8_t *pData,
     uint8_t bDataLen)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -155,7 +157,8 @@ phStatus_t phalMfdfLight_SetConfiguration(void *pDataParams, uint8_t bOption, ui
   return status;
 }
 
-phStatus_t phalMfdfLight_GetCardUID(void *pDataParams, uint8_t *pUid)
+phStatus_t
+phalMfdfLight_GetCardUID(void *pDataParams, uint8_t *pUid)
 {
   phStatus_t PH_MEMLOC_REM status;
   uint8_t PH_MEMLOC_REM bCardUidLength = 0;
@@ -204,7 +207,8 @@ phStatus_t phalMfdfLight_GetCardUID(void *pDataParams, uint8_t *pUid)
 }
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 
-phStatus_t phalMfdfLight_GetVersion(void *pDataParams, uint8_t *pVerInfo)
+phStatus_t
+phalMfdfLight_GetVersion(void *pDataParams, uint8_t *pVerInfo)
 {
   phStatus_t PH_MEMLOC_REM status;
   uint8_t PH_MEMLOC_REM bVersionLength = 0;
@@ -254,7 +258,8 @@ phStatus_t phalMfdfLight_GetVersion(void *pDataParams, uint8_t *pVerInfo)
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
 /* MIFARE DESFire Light Key Management commands. --------------------------------------------------------------------------------------- */
-phStatus_t phalMfdfLight_ChangeKey(void *pDataParams, uint16_t wOption, uint16_t wOldKeyNo,
+phStatus_t
+phalMfdfLight_ChangeKey(void *pDataParams, uint16_t wOption, uint16_t wOldKeyNo,
     uint16_t wOldKeyVer, uint16_t wNewKeyNo, uint16_t wNewKeyVer,
     uint8_t bKeyNoCard, uint8_t *pDivInput, uint8_t bDivLen)
 {
@@ -325,7 +330,8 @@ phStatus_t phalMfdfLight_ChangeKey(void *pDataParams, uint16_t wOption, uint16_t
   return status;
 }
 
-phStatus_t phalMfdfLight_GetKeyVersion(void *pDataParams, uint8_t bKeyNo, uint8_t bKeySetNo,
+phStatus_t
+phalMfdfLight_GetKeyVersion(void *pDataParams, uint8_t bKeyNo, uint8_t bKeySetNo,
     uint8_t *pKeyVersion, uint8_t *bRxLen)
 {
   /**
@@ -381,7 +387,8 @@ phStatus_t phalMfdfLight_GetKeyVersion(void *pDataParams, uint8_t bKeyNo, uint8_
 }
 
 /* MIFARE DESFire Light File Management commands. -------------------------------------------------------------------------------------- */
-phStatus_t phalMfdfLight_CreateTransactionMacFile(void *pDataParams, uint8_t bFileNo,
+phStatus_t
+phalMfdfLight_CreateTransactionMacFile(void *pDataParams, uint8_t bFileNo,
     uint8_t bCommMode, uint8_t *pAccessRights, uint8_t bKeyType,
     uint8_t *bTMKey, uint16_t wKeyNo, uint8_t bTMKeyVer, uint8_t *pDivInput, uint8_t bDivInputLen)
 {
@@ -448,7 +455,8 @@ phStatus_t phalMfdfLight_CreateTransactionMacFile(void *pDataParams, uint8_t bFi
   return status;
 }
 
-phStatus_t phalMfdfLight_ChangeFileSettings(void *pDataParams, uint8_t bCommMode, uint8_t bFileNo,
+phStatus_t
+phalMfdfLight_ChangeFileSettings(void *pDataParams, uint8_t bCommMode, uint8_t bFileNo,
     uint8_t bFileOption, uint8_t *pAccessRights,
     uint8_t bTmcLimitLen, uint8_t *pTmcLimit)
 {
@@ -510,7 +518,8 @@ phStatus_t phalMfdfLight_ChangeFileSettings(void *pDataParams, uint8_t bCommMode
 }
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 
-phStatus_t phalMfdfLight_DeleteFile(void *pDataParams, uint8_t bFileNo)
+phStatus_t
+phalMfdfLight_DeleteFile(void *pDataParams, uint8_t bFileNo)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -553,7 +562,8 @@ phStatus_t phalMfdfLight_DeleteFile(void *pDataParams, uint8_t bFileNo)
   return status;
 }
 
-phStatus_t phalMfdfLight_GetFileIDs(void *pDataParams, uint8_t *pFid, uint8_t *bNumFID)
+phStatus_t
+phalMfdfLight_GetFileIDs(void *pDataParams, uint8_t *pFid, uint8_t *bNumFID)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -600,7 +610,8 @@ phStatus_t phalMfdfLight_GetFileIDs(void *pDataParams, uint8_t *pFid, uint8_t *b
   return status;
 }
 
-phStatus_t phalMfdfLight_GetISOFileIDs(void *pDataParams, uint8_t *pFidBuffer, uint8_t *pNumFID)
+phStatus_t
+phalMfdfLight_GetISOFileIDs(void *pDataParams, uint8_t *pFidBuffer, uint8_t *pNumFID)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -648,7 +659,8 @@ phStatus_t phalMfdfLight_GetISOFileIDs(void *pDataParams, uint8_t *pFidBuffer, u
   return status;
 }
 
-phStatus_t phalMfdfLight_GetFileSettings(void *pDataParams, uint8_t bFileNo, uint8_t *pFSBuffer,
+phStatus_t
+phalMfdfLight_GetFileSettings(void *pDataParams, uint8_t bFileNo, uint8_t *pFSBuffer,
     uint8_t *bBufferLen)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -699,7 +711,8 @@ phStatus_t phalMfdfLight_GetFileSettings(void *pDataParams, uint8_t bFileNo, uin
 }
 
 /* MIFARE DESFire Light Data Management commands. -------------------------------------------------------------------------------------- */
-phStatus_t phalMfdfLight_ReadData(void *pDataParams, uint8_t bOption, uint8_t bIns,
+phStatus_t
+phalMfdfLight_ReadData(void *pDataParams, uint8_t bOption, uint8_t bIns,
     uint8_t bFileNo, uint8_t *pOffset, uint8_t *pLength, uint8_t **ppRxdata,
     uint16_t *pRxdataLen)
 {
@@ -763,7 +776,8 @@ phStatus_t phalMfdfLight_ReadData(void *pDataParams, uint8_t bOption, uint8_t bI
   return status;
 }
 
-phStatus_t phalMfdfLight_WriteData(void *pDataParams, uint8_t bOption, uint8_t bIns,
+phStatus_t
+phalMfdfLight_WriteData(void *pDataParams, uint8_t bOption, uint8_t bIns,
     uint8_t bFileNo, uint8_t *pOffset, uint8_t *pTxData, uint8_t *pTxDataLen)
 {
   phStatus_t  PH_MEMLOC_REM status;
@@ -828,7 +842,8 @@ phStatus_t phalMfdfLight_WriteData(void *pDataParams, uint8_t bOption, uint8_t b
   return status;
 }
 
-phStatus_t phalMfdfLight_GetValue(void *pDataParams, uint8_t bOption, uint8_t bFileNo,
+phStatus_t
+phalMfdfLight_GetValue(void *pDataParams, uint8_t bOption, uint8_t bFileNo,
     uint8_t *pValue)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -878,7 +893,8 @@ phStatus_t phalMfdfLight_GetValue(void *pDataParams, uint8_t bOption, uint8_t bF
   return status;
 }
 
-phStatus_t phalMfdfLight_Credit(void *pDataParams, uint8_t bOption, uint8_t bFileNo,
+phStatus_t
+phalMfdfLight_Credit(void *pDataParams, uint8_t bOption, uint8_t bFileNo,
     uint8_t *pValue)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -928,7 +944,8 @@ phStatus_t phalMfdfLight_Credit(void *pDataParams, uint8_t bOption, uint8_t bFil
 
 }
 
-phStatus_t phalMfdfLight_Debit(void *pDataParams, uint8_t bCommOption, uint8_t bFileNo,
+phStatus_t
+phalMfdfLight_Debit(void *pDataParams, uint8_t bCommOption, uint8_t bFileNo,
     uint8_t *pValue)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -978,7 +995,8 @@ phStatus_t phalMfdfLight_Debit(void *pDataParams, uint8_t bCommOption, uint8_t b
   return status;
 }
 
-phStatus_t phalMfdfLight_LimitedCredit(void *pDataParams, uint8_t bCommOption, uint8_t bFileNo,
+phStatus_t
+phalMfdfLight_LimitedCredit(void *pDataParams, uint8_t bCommOption, uint8_t bFileNo,
     uint8_t *pValue)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -1028,7 +1046,8 @@ phStatus_t phalMfdfLight_LimitedCredit(void *pDataParams, uint8_t bCommOption, u
   return status;
 }
 
-phStatus_t phalMfdfLight_ReadRecords(void *pDataParams, uint8_t bCommOption, uint8_t bIns,
+phStatus_t
+phalMfdfLight_ReadRecords(void *pDataParams, uint8_t bCommOption, uint8_t bIns,
     uint8_t bFileNo, uint8_t *pRecNo, uint8_t *pRecCount,
     uint8_t *pRecSize, uint8_t **ppRxdata, uint16_t *pRxdataLen)
 {
@@ -1095,7 +1114,8 @@ phStatus_t phalMfdfLight_ReadRecords(void *pDataParams, uint8_t bCommOption, uin
   return status;
 }
 
-phStatus_t phalMfdfLight_WriteRecord(void *pDataParams, uint8_t bCommOption, uint8_t bIns,
+phStatus_t
+phalMfdfLight_WriteRecord(void *pDataParams, uint8_t bCommOption, uint8_t bIns,
     uint8_t bFileNo, uint8_t *pOffset, uint8_t *pData,
     uint8_t *pDataLen)
 {
@@ -1164,7 +1184,8 @@ phStatus_t phalMfdfLight_WriteRecord(void *pDataParams, uint8_t bCommOption, uin
   return status;
 }
 
-phStatus_t phalMfdfLight_UpdateRecord(void *pDataParams, uint8_t bCommOption, uint8_t bIns,
+phStatus_t
+phalMfdfLight_UpdateRecord(void *pDataParams, uint8_t bCommOption, uint8_t bIns,
     uint8_t bFileNo, uint8_t *pRecNo, uint8_t *pOffset,
     uint8_t *pData, uint8_t *pDataLen)
 {
@@ -1237,7 +1258,8 @@ phStatus_t phalMfdfLight_UpdateRecord(void *pDataParams, uint8_t bCommOption, ui
   return status;
 }
 
-phStatus_t phalMfdfLight_ClearRecordFile(void *pDataParams, uint8_t bFileNo)
+phStatus_t
+phalMfdfLight_ClearRecordFile(void *pDataParams, uint8_t bFileNo)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1281,7 +1303,8 @@ phStatus_t phalMfdfLight_ClearRecordFile(void *pDataParams, uint8_t bFileNo)
 }
 
 /* MIFARE DESFire Light Transaction Management commands. ------------------------------------------------------------------------------- */
-phStatus_t phalMfdfLight_CommitTransaction(void *pDataParams, uint8_t bOption, uint8_t *pTMC,
+phStatus_t
+phalMfdfLight_CommitTransaction(void *pDataParams, uint8_t bOption, uint8_t *pTMC,
     uint8_t *pTMV)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -1336,7 +1359,8 @@ phStatus_t phalMfdfLight_CommitTransaction(void *pDataParams, uint8_t bOption, u
   return status;
 }
 
-phStatus_t phalMfdfLight_AbortTransaction(void *pDataParams)
+phStatus_t
+phalMfdfLight_AbortTransaction(void *pDataParams)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1377,7 +1401,8 @@ phStatus_t phalMfdfLight_AbortTransaction(void *pDataParams)
   return status;
 }
 
-phStatus_t phalMfdfLight_CommitReaderID(void *pDataParams, uint8_t *pTMRI, uint8_t *pEncTMRI)
+phStatus_t
+phalMfdfLight_CommitReaderID(void *pDataParams, uint8_t *pTMRI, uint8_t *pEncTMRI)
 
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -1428,7 +1453,8 @@ phStatus_t phalMfdfLight_CommitReaderID(void *pDataParams, uint8_t *pTMRI, uint8
 }
 
 /* MIFARE DESFire Light ISO7816-4 commands. -------------------------------------------------------------------------------------------- */
-phStatus_t phalMfdfLight_IsoSelectFile(void *pDataParams, uint8_t bOption, uint8_t bSelector,
+phStatus_t
+phalMfdfLight_IsoSelectFile(void *pDataParams, uint8_t bOption, uint8_t bSelector,
     uint8_t *pFid, uint8_t *pDFname, uint8_t bDFnameLen,
     uint8_t bExtendedLenApdu, uint8_t **ppFCI, uint16_t *pwFCILen)
 {
@@ -1485,7 +1511,8 @@ phStatus_t phalMfdfLight_IsoSelectFile(void *pDataParams, uint8_t bOption, uint8
   return status;
 }
 
-phStatus_t phalMfdfLight_IsoReadBinary(void *pDataParams, uint16_t wOption, uint8_t bOffset,
+phStatus_t
+phalMfdfLight_IsoReadBinary(void *pDataParams, uint16_t wOption, uint8_t bOffset,
     uint8_t bSfid, uint32_t dwBytesToRead, uint8_t bExtendedLenApdu,
     uint8_t **ppRxBuffer, uint32_t *pBytesRead)
 {
@@ -1543,7 +1570,8 @@ phStatus_t phalMfdfLight_IsoReadBinary(void *pDataParams, uint16_t wOption, uint
   return status;
 }
 
-phStatus_t phalMfdfLight_IsoUpdateBinary(void *pDataParams, uint8_t bOffset, uint8_t bSfid,
+phStatus_t
+phalMfdfLight_IsoUpdateBinary(void *pDataParams, uint8_t bOffset, uint8_t bSfid,
     uint8_t bExtendedLenApdu, uint8_t *pData, uint32_t dwDataLen)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -1597,7 +1625,8 @@ phStatus_t phalMfdfLight_IsoUpdateBinary(void *pDataParams, uint8_t bOffset, uin
 }
 
 /* MIFARE DESFire Light OriginalityCheck commands. ------------------------------------------------------------------------------------- */
-phStatus_t phalMfdfLight_ReadSign(void *pDataParams, uint8_t bAddr, uint8_t **pSignature)
+phStatus_t
+phalMfdfLight_ReadSign(void *pDataParams, uint8_t bAddr, uint8_t **pSignature)
 {
   phStatus_t PH_MEMLOC_REM status = 0;
   PH_LOG_HELPER_ALLOCATE_TEXT(bFunctionName, "phalMfdfLight_ReadSign");
@@ -1642,7 +1671,8 @@ phStatus_t phalMfdfLight_ReadSign(void *pDataParams, uint8_t bAddr, uint8_t **pS
 }
 
 /* MIFARE DESFire Light Miscellaneous commands. ---------------------------------------------------------------------------------------- */
-phStatus_t phalMfdfLight_GetConfig(void *pDataParams, uint16_t wConfig, uint16_t *pValue)
+phStatus_t
+phalMfdfLight_GetConfig(void *pDataParams, uint16_t wConfig, uint16_t *pValue)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1691,7 +1721,8 @@ phStatus_t phalMfdfLight_GetConfig(void *pDataParams, uint16_t wConfig, uint16_t
   return status;
 }
 
-phStatus_t phalMfdfLight_SetConfig(void *pDataParams, uint16_t wConfig, uint16_t wValue)
+phStatus_t
+phalMfdfLight_SetConfig(void *pDataParams, uint16_t wConfig, uint16_t wValue)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1736,7 +1767,8 @@ phStatus_t phalMfdfLight_SetConfig(void *pDataParams, uint16_t wConfig, uint16_t
   return status;
 }
 
-phStatus_t phalMfdfLight_ResetAuthentication(void *pDataParams)
+phStatus_t
+phalMfdfLight_ResetAuthentication(void *pDataParams)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1777,7 +1809,8 @@ phStatus_t phalMfdfLight_ResetAuthentication(void *pDataParams)
 }
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalMfdfLight_CalculateTMV(void *pDataParams, uint16_t wOption, uint16_t wKeyNoTMACKey,
+phStatus_t
+phalMfdfLight_CalculateTMV(void *pDataParams, uint16_t wOption, uint16_t wKeyNoTMACKey,
     uint16_t wKeyVerTMACKey,
     uint16_t wRamKeyNo, uint16_t wRamKeyVer, uint8_t *pDivInput, uint8_t bDivInputLen, uint8_t *pTMC,
     uint8_t *pUid,
@@ -1861,7 +1894,8 @@ phStatus_t phalMfdfLight_CalculateTMV(void *pDataParams, uint16_t wOption, uint1
   return status;
 }
 
-phStatus_t phalMfdfLight_DecryptReaderID(void *pDataParams, uint16_t wOption,
+phStatus_t
+phalMfdfLight_DecryptReaderID(void *pDataParams, uint16_t wOption,
     uint16_t wKeyNoTMACKey, uint16_t wKeyVerTMACKey,
     uint16_t wRamKeyNo, uint16_t wRamKeyVer, uint8_t *pDivInput, uint8_t bDivInputLen, uint8_t *pTMC,
     uint8_t *pUid,

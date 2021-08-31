@@ -42,7 +42,8 @@
 /* *****************************************************************************************************************
  * Private Functions
  * ***************************************************************************************************************** */
-phStatus_t phacDiscLoop_Sw_DetTechTypeV(
+phStatus_t
+phacDiscLoop_Sw_DetTechTypeV(
     phacDiscLoop_Sw_DataParams_t *pDataParams
 )
 {
@@ -70,7 +71,8 @@ phStatus_t phacDiscLoop_Sw_DetTechTypeV(
 #endif /* NXPBUILD__PHAC_DISCLOOP_TYPEV_TAGS */
 }
 
-phStatus_t phacDiscLoop_Sw_Int_CollisionResolutionV(
+phStatus_t
+phacDiscLoop_Sw_Int_CollisionResolutionV(
     phacDiscLoop_Sw_DataParams_t *pDataParams
 )
 {
@@ -301,7 +303,8 @@ phStatus_t phacDiscLoop_Sw_Int_CollisionResolutionV(
 #endif /* NXPBUILD__PHAC_DISCLOOP_TYPEV_TAGS */
 }
 
-phStatus_t phacDiscLoop_Sw_Int_ActivateV(
+phStatus_t
+phacDiscLoop_Sw_Int_ActivateV(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint8_t bTypeVTagIdx
 )

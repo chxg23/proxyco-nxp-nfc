@@ -32,7 +32,8 @@
 #include "phpalI18092mPI_Sw.h"
 #include "phpalI18092mPI_Sw_Int.h"
 
-phStatus_t phpalI18092mPI_Sw_WriteFrameHeader(
+phStatus_t
+phpalI18092mPI_Sw_WriteFrameHeader(
     phpalI18092mPI_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t bCommandCode,
@@ -63,7 +64,8 @@ phStatus_t phpalI18092mPI_Sw_WriteFrameHeader(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mPI_Sw_WritePduHeader(
+phStatus_t
+phpalI18092mPI_Sw_WritePduHeader(
     phpalI18092mPI_Sw_DataParams_t *pDataParams,
     uint8_t bPduMask,
     uint8_t bOption,
@@ -125,7 +127,8 @@ phStatus_t phpalI18092mPI_Sw_WritePduHeader(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mPI_Sw_UpdatePduHeader(
+phStatus_t
+phpalI18092mPI_Sw_UpdatePduHeader(
     phpalI18092mPI_Sw_DataParams_t *pDataParams,
     uint8_t bDataLength
 )
@@ -171,7 +174,8 @@ phStatus_t phpalI18092mPI_Sw_UpdatePduHeader(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mPI_Sw_GetPduHeaderLength(
+phStatus_t
+phpalI18092mPI_Sw_GetPduHeaderLength(
     phpalI18092mPI_Sw_DataParams_t *pDataParams,
     uint8_t *pProtLength
 )
@@ -197,7 +201,8 @@ phStatus_t phpalI18092mPI_Sw_GetPduHeaderLength(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mPI_Sw_ValidateAndNormalizeResponseFrame(
+phStatus_t
+phpalI18092mPI_Sw_ValidateAndNormalizeResponseFrame(
     phpalI18092mPI_Sw_DataParams_t *pDataParams,
     uint8_t *pFrame,
     uint16_t wFrameLength,
@@ -322,7 +327,8 @@ phStatus_t phpalI18092mPI_Sw_ValidateAndNormalizeResponseFrame(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mPI_Sw_ConvertDatarate(
+phStatus_t
+phpalI18092mPI_Sw_ConvertDatarate(
     uint16_t wHalDatarate,
     uint8_t *pI18092Datarate
 )
@@ -345,7 +351,8 @@ phStatus_t phpalI18092mPI_Sw_ConvertDatarate(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mPI_Sw_TransceivePdu(
+phStatus_t
+phpalI18092mPI_Sw_TransceivePdu(
     phpalI18092mPI_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -747,7 +754,8 @@ phStatus_t phpalI18092mPI_Sw_TransceivePdu(
   return status;
 }
 
-phStatus_t phpalI18092mPI_Sw_ValidateReceivedPdu(
+phStatus_t
+phpalI18092mPI_Sw_ValidateReceivedPdu(
     phpalI18092mPI_Sw_DataParams_t *pDataParams,
     phStatus_t statusRx,
     uint8_t **ppRawResponse,

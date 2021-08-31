@@ -34,7 +34,8 @@
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phnpSnep_ClientInit(
+phStatus_t
+phnpSnep_ClientInit(
     void *pDataParams,
     phnpSnep_Server_type_t eServerType,
     uint8_t *pNonDefaultUri,
@@ -86,7 +87,8 @@ phStatus_t phnpSnep_ClientInit(
   return status;
 }
 
-phStatus_t phnpSnep_ServerInit(
+phStatus_t
+phnpSnep_ServerInit(
     void *pDataParams,
     phnpSnep_Server_type_t eServerType,
     uint8_t *pNonDefaultUri,
@@ -138,7 +140,8 @@ phStatus_t phnpSnep_ServerInit(
   return status;
 }
 
-phStatus_t phnpSnep_Put(
+phStatus_t
+phnpSnep_Put(
     void *pDataParams,
     uint8_t *pTxBuffer,
     uint32_t dwTxBufferSize
@@ -186,7 +189,8 @@ phStatus_t phnpSnep_Put(
   return status;
 }
 
-phStatus_t phnpSnep_Get(
+phStatus_t
+phnpSnep_Get(
     void *pDataParams,
     uint8_t *pNdefMsg,
     uint32_t dwNdefMsgLen,
@@ -245,7 +249,8 @@ phStatus_t phnpSnep_Get(
   return status;
 }
 
-phStatus_t phnpSnep_ServerListen(
+phStatus_t
+phnpSnep_ServerListen(
     void *pDataParams,
     uint32_t   dwGetReqBuffSize,
     uint8_t   *pGetReqData,
@@ -293,7 +298,8 @@ phStatus_t phnpSnep_ServerListen(
   return status ;
 }
 
-phStatus_t phnpSnep_ServerSendResponse(
+phStatus_t
+phnpSnep_ServerSendResponse(
     void *pDataParams,
     uint8_t bClientReq,
     uint8_t *pRespDataForGet,
@@ -343,7 +349,8 @@ phStatus_t phnpSnep_ServerSendResponse(
   return status ;
 }
 
-phStatus_t phnpSnep_ClientDeInit(
+phStatus_t
+phnpSnep_ClientDeInit(
     void *pDataParams
 )
 {
@@ -384,7 +391,8 @@ phStatus_t phnpSnep_ClientDeInit(
   return status ;
 }
 
-phStatus_t phnpSnep_ServerDeInit(
+phStatus_t
+phnpSnep_ServerDeInit(
     void *pDataParams
 )
 {

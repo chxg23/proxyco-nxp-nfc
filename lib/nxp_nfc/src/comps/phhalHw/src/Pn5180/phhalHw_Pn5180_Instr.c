@@ -48,7 +48,8 @@ static const uint8_t PH_MEMLOC_CONST_ROM phhalHw_Pn5180_Instr_RO_Reg_Table[] = {
   SYSTEM_STATUS
 };
 
-static void phhalHw_Pn5180_Instr_GetInstrBuffer(
+static void
+phhalHw_Pn5180_Instr_GetInstrBuffer(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t **pTxBuffer,
     uint16_t *pTxBufferLen
@@ -60,7 +61,8 @@ static void phhalHw_Pn5180_Instr_GetInstrBuffer(
   *pTxBufferLen = INSTR_BUFFER_SIZE;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_Execute(
+phStatus_t
+phhalHw_Pn5180_Instr_Execute(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bInstructionCode,
     uint8_t *pInstrPayload,
@@ -133,7 +135,8 @@ phStatus_t phhalHw_Pn5180_Instr_Execute(
   return PH_ERR_SUCCESS;
 }
 
-static phStatus_t phhalHw_Pn5180_Check_Reg_Readonly(
+static phStatus_t
+phhalHw_Pn5180_Check_Reg_Readonly(
     uint8_t bRegister
 )
 {
@@ -150,7 +153,8 @@ static phStatus_t phhalHw_Pn5180_Check_Reg_Readonly(
 
 }
 
-phStatus_t phhalHw_Pn5180_Instr_WriteRegister(
+phStatus_t
+phhalHw_Pn5180_Instr_WriteRegister(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bRegister,
     uint32_t dwValue
@@ -204,7 +208,8 @@ phStatus_t phhalHw_Pn5180_Instr_WriteRegister(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_WriteRegisterOrMask(
+phStatus_t
+phhalHw_Pn5180_Instr_WriteRegisterOrMask(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bRegister,
     uint32_t dwMask
@@ -258,7 +263,8 @@ phStatus_t phhalHw_Pn5180_Instr_WriteRegisterOrMask(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_WriteRegisterAndMask(
+phStatus_t
+phhalHw_Pn5180_Instr_WriteRegisterAndMask(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bRegister,
     uint32_t dwMask
@@ -311,7 +317,8 @@ phStatus_t phhalHw_Pn5180_Instr_WriteRegisterAndMask(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_WriteRegisterMultiple(
+phStatus_t
+phhalHw_Pn5180_Instr_WriteRegisterMultiple(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t *pRegTypeValueSets,
     uint16_t wSizeOfRegTypeValueSets
@@ -395,7 +402,8 @@ phStatus_t phhalHw_Pn5180_Instr_WriteRegisterMultiple(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_ReadRegister(
+phStatus_t
+phhalHw_Pn5180_Instr_ReadRegister(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bRegister,
     uint32_t *pValue
@@ -448,7 +456,8 @@ phStatus_t phhalHw_Pn5180_Instr_ReadRegister(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_ReadRegisterMultiple(
+phStatus_t
+phhalHw_Pn5180_Instr_ReadRegisterMultiple(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t *pRegisters,
     uint8_t bNumOfRegisters,
@@ -525,7 +534,8 @@ phStatus_t phhalHw_Pn5180_Instr_ReadRegisterMultiple(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_WriteE2Prom(
+phStatus_t
+phhalHw_Pn5180_Instr_WriteE2Prom(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bE2PromAddress,
     uint8_t *pDataToWrite,
@@ -593,7 +603,8 @@ phStatus_t phhalHw_Pn5180_Instr_WriteE2Prom(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_ReadE2Prom(
+phStatus_t
+phhalHw_Pn5180_Instr_ReadE2Prom(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bE2PromAddress,
     uint8_t *pReadData,
@@ -648,7 +659,8 @@ phStatus_t phhalHw_Pn5180_Instr_ReadE2Prom(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_WriteTxData(
+phStatus_t
+phhalHw_Pn5180_Instr_WriteTxData(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t *pTxBuffer,
     uint16_t wTxBufferLength
@@ -707,7 +719,8 @@ phStatus_t phhalHw_Pn5180_Instr_WriteTxData(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_SendData(
+phStatus_t
+phhalHw_Pn5180_Instr_SendData(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t *pTxBuffer,
     uint16_t wTxBufferLength,
@@ -770,7 +783,8 @@ phStatus_t phhalHw_Pn5180_Instr_SendData(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_RetrieveRxData(
+phStatus_t
+phhalHw_Pn5180_Instr_RetrieveRxData(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t **pRxBuffer,
     uint16_t wExpectedRxDataLength
@@ -833,7 +847,8 @@ phStatus_t phhalHw_Pn5180_Instr_RetrieveRxData(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_SwitchModeStandby(
+phStatus_t
+phhalHw_Pn5180_Instr_SwitchModeStandby(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bWakeupControlMask,
     uint16_t wWakeupCounterInMs
@@ -899,7 +914,8 @@ phStatus_t phhalHw_Pn5180_Instr_SwitchModeStandby(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_SwitchModeLpcd(
+phStatus_t
+phhalHw_Pn5180_Instr_SwitchModeLpcd(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint16_t wWakeupCounterInMs
 )
@@ -949,7 +965,8 @@ phStatus_t phhalHw_Pn5180_Instr_SwitchModeLpcd(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_SwitchModeAutocoll(
+phStatus_t
+phhalHw_Pn5180_Instr_SwitchModeAutocoll(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bRfTechnology,
     uint8_t bAutocollMode
@@ -1000,7 +1017,8 @@ phStatus_t phhalHw_Pn5180_Instr_SwitchModeAutocoll(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_SwitchModeNormal(phhalHw_Pn5180_DataParams_t *pDataParams)
+phStatus_t
+phhalHw_Pn5180_Instr_SwitchModeNormal(phhalHw_Pn5180_DataParams_t *pDataParams)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
   uint8_t     PH_MEMLOC_REM wBufferLength;
@@ -1028,7 +1046,8 @@ phStatus_t phhalHw_Pn5180_Instr_SwitchModeNormal(phhalHw_Pn5180_DataParams_t *pD
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_MifareAuthenticate(
+phStatus_t
+phhalHw_Pn5180_Instr_MifareAuthenticate(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t *pKey,
     uint8_t bKeyType,
@@ -1111,7 +1130,8 @@ phStatus_t phhalHw_Pn5180_Instr_MifareAuthenticate(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5180_Instr_EpcGen2Inventory(
+phStatus_t
+phhalHw_Pn5180_Instr_EpcGen2Inventory(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t *pSelectCommand,
     uint8_t bSelectCommandLength,
@@ -1201,7 +1221,8 @@ phStatus_t phhalHw_Pn5180_Instr_EpcGen2Inventory(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_EpcGen2RetrieveResultSize(
+phStatus_t
+phhalHw_Pn5180_Instr_EpcGen2RetrieveResultSize(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint16_t *pResultSize
 )
@@ -1252,7 +1273,8 @@ phStatus_t phhalHw_Pn5180_Instr_EpcGen2RetrieveResultSize(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_EpcGen2RetrieveResult(
+phStatus_t
+phhalHw_Pn5180_Instr_EpcGen2RetrieveResult(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t **ppInventoryResult,
     uint16_t wResultSize
@@ -1313,7 +1335,8 @@ phStatus_t phhalHw_Pn5180_Instr_EpcGen2RetrieveResult(
 
 }
 
-phStatus_t phhalHw_Pn5180_Instr_EpcGen2ResumeInventory(
+phStatus_t
+phhalHw_Pn5180_Instr_EpcGen2ResumeInventory(
     phhalHw_Pn5180_DataParams_t *pDataParams)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
@@ -1348,7 +1371,8 @@ phStatus_t phhalHw_Pn5180_Instr_EpcGen2ResumeInventory(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_LoadRfConfiguration(
+phStatus_t
+phhalHw_Pn5180_Instr_LoadRfConfiguration(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bRfTxConfiguration,
     uint8_t bRfRxConfiguration
@@ -1405,7 +1429,8 @@ phStatus_t phhalHw_Pn5180_Instr_LoadRfConfiguration(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_UpdateRfConfiguration(
+phStatus_t
+phhalHw_Pn5180_Instr_UpdateRfConfiguration(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t *pRfConfiguration,
     uint8_t bRfConfigurationSize
@@ -1464,7 +1489,8 @@ phStatus_t phhalHw_Pn5180_Instr_UpdateRfConfiguration(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_RetrieveRfConfigurationSize(
+phStatus_t
+phhalHw_Pn5180_Instr_RetrieveRfConfigurationSize(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bRfConfiguration,
     uint8_t *pNumOfRegisters
@@ -1517,7 +1543,8 @@ phStatus_t phhalHw_Pn5180_Instr_RetrieveRfConfigurationSize(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_RetrieveRfConfiguration(
+phStatus_t
+phhalHw_Pn5180_Instr_RetrieveRfConfiguration(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bRfConfiguration,
     uint8_t **ppRfConfiguration,
@@ -1586,7 +1613,8 @@ phStatus_t phhalHw_Pn5180_Instr_RetrieveRfConfiguration(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_RfOn(
+phStatus_t
+phhalHw_Pn5180_Instr_RfOn(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bRfOnConfig
 )
@@ -1631,7 +1659,8 @@ phStatus_t phhalHw_Pn5180_Instr_RfOn(
 
 }
 
-phStatus_t phhalHw_Pn5180_Instr_RfOff(
+phStatus_t
+phhalHw_Pn5180_Instr_RfOff(
     phhalHw_Pn5180_DataParams_t *pDataParams
 )
 {
@@ -1669,7 +1698,8 @@ phStatus_t phhalHw_Pn5180_Instr_RfOff(
 
 }
 
-phStatus_t phhalHw_Pn5180_Instr_ConfigureTestBusDigital(
+phStatus_t
+phhalHw_Pn5180_Instr_ConfigureTestBusDigital(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bTBSelect,
     uint8_t *pTBpos,
@@ -1724,7 +1754,8 @@ phStatus_t phhalHw_Pn5180_Instr_ConfigureTestBusDigital(
 
 }
 
-phStatus_t phhalHw_Pn5180_Instr_ConfigureTestBusAnalog(
+phStatus_t
+phhalHw_Pn5180_Instr_ConfigureTestBusAnalog(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bDAC1Config,
     uint8_t bDAC0Config
@@ -1774,7 +1805,8 @@ phStatus_t phhalHw_Pn5180_Instr_ConfigureTestBusAnalog(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Instr_GetHALVersion(
+phStatus_t
+phhalHw_Pn5180_Instr_GetHALVersion(
     uint16_t *pValue
 )
 {
@@ -1783,7 +1815,8 @@ phStatus_t phhalHw_Pn5180_Instr_GetHALVersion(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Int_LPCD_SetConfig(
+phStatus_t
+phhalHw_Pn5180_Int_LPCD_SetConfig(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -1838,7 +1871,8 @@ phStatus_t phhalHw_Pn5180_Int_LPCD_SetConfig(
   return PH_ADD_COMPCODE(statusTmp, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5180_Int_LPCD_GetConfig(
+phStatus_t
+phhalHw_Pn5180_Int_LPCD_GetConfig(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue

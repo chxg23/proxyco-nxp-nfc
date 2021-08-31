@@ -61,7 +61,8 @@ static phStatus_t NfcLib_WriteAlikeHandling(
     phStatus_t wExchangeStatus
 );
 
-phStatus_t phNfcLib_ISO15693_Transmit(void *const pTxBuffer, uint16_t wTxBufferLength)
+phStatus_t
+phNfcLib_ISO15693_Transmit(void *const pTxBuffer, uint16_t wTxBufferLength)
 {
   phStatus_t   statusTmp = PH_ERR_INVALID_PARAMETER;
   uint8_t      bCommand[5];
@@ -727,7 +728,8 @@ phStatus_t phNfcLib_ISO15693_Transmit(void *const pTxBuffer, uint16_t wTxBufferL
   return statusTmp;
 }
 
-static phStatus_t NfcLib_WriteAlikeHandling(
+static phStatus_t
+NfcLib_WriteAlikeHandling(
     phStatus_t wExchangeStatus
 )
 {

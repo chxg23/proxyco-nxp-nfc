@@ -31,7 +31,8 @@
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phpalI14443p4mC_ResetProtocol(
+phStatus_t
+phpalI14443p4mC_ResetProtocol(
     void *pDataParams
 )
 {
@@ -74,7 +75,8 @@ phStatus_t phpalI14443p4mC_ResetProtocol(
   return status;
 }
 
-phStatus_t phpalI14443p4mC_Receive(
+phStatus_t
+phpalI14443p4mC_Receive(
     void *pDataParams,
     uint16_t wOption,
     uint8_t **ppRxBuffer,
@@ -135,7 +137,8 @@ phStatus_t phpalI14443p4mC_Receive(
   return status;
 }
 
-phStatus_t phpalI14443p4mC_Transmit(
+phStatus_t
+phpalI14443p4mC_Transmit(
     void *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -192,7 +195,8 @@ phStatus_t phpalI14443p4mC_Transmit(
   return status;
 }
 
-phStatus_t phpalI14443p4mC_Activate(
+phStatus_t
+phpalI14443p4mC_Activate(
     void *pDataParams,
     uint8_t *pRats,
     uint8_t bRatsLength,
@@ -249,7 +253,8 @@ phStatus_t phpalI14443p4mC_Activate(
   return status;
 }
 
-phStatus_t phpalI14443p4mC_Wtx(
+phStatus_t
+phpalI14443p4mC_Wtx(
     void *pDataParams
 )
 {
@@ -292,7 +297,8 @@ phStatus_t phpalI14443p4mC_Wtx(
   return status;
 }
 
-phStatus_t phpalI14443p4mC_SetConfig(
+phStatus_t
+phpalI14443p4mC_SetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -344,7 +350,8 @@ phStatus_t phpalI14443p4mC_SetConfig(
   return status;
 }
 
-phStatus_t phpalI14443p4mC_GetConfig(
+phStatus_t
+phpalI14443p4mC_GetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue

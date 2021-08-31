@@ -79,7 +79,6 @@ typedef struct {
 #define PHBAL_KERNEL_SPI_MODE_NORMAL		(0x0U)
 #define PHBAL_KERNEL_SPI_MODE_DWL  			(0x1U)
 
-
 #ifdef NXPBUILD__PHBAL_REG_T1SAMAV3
 
 /**
@@ -101,39 +100,41 @@ typedef struct {
 #define PHBAL_REG_T1SAMAV3_MAX_UART_READ_RETRIES	5
 
 typedef enum {
-	PHBAL_REG_T1SAMAV3_IDLE,
-	PHBAL_REG_T1SAMAV3_TX_ONGOING,
-	PHBAL_REG_T1SAMAV3_WAITING_RX,
+  PHBAL_REG_T1SAMAV3_IDLE,
+  PHBAL_REG_T1SAMAV3_TX_ONGOING,
+  PHBAL_REG_T1SAMAV3_WAITING_RX,
 } phbalReg_T1SamAV3_state_t;
 
 /**
  * BAL parameter structure
  */
 typedef struct {
-	phbalReg_T1SamAV3_error_t (*init)(void);
-	phbalReg_T1SamAV3_error_t (*uninit)(void);
-	phbalReg_T1SamAV3_error_t (*snd_blocking)(void *data, uint16_t len);
-	phbalReg_T1SamAV3_error_t (*rcv_blocking)(void *data, uint16_t expected_bytes, uint16_t *received_bytes);
-	phbalReg_T1SamAV3_error_t (*transceive)(void *data, uint16_t txLen, uint16_t *received_bytes);
+  phbalReg_T1SamAV3_error_t (*init)(void);
+  phbalReg_T1SamAV3_error_t (*uninit)(void);
+  phbalReg_T1SamAV3_error_t (*snd_blocking)(void *data, uint16_t len);
+  phbalReg_T1SamAV3_error_t (*rcv_blocking)(void *data, uint16_t expected_bytes,
+      uint16_t *received_bytes);
+  phbalReg_T1SamAV3_error_t (*transceive)(void *data, uint16_t txLen, uint16_t *received_bytes);
 } phbalReg_T1SamAV3_tml_t;
 
-typedef struct
-{
-	uint16_t 	wId;										/**< Layer ID for this BAL component, NEVER MODIFY! */
-	phbalReg_T1SamAV3_state_t 	state;
-	phbalReg_T1SamAV3_tml_t 	*tml;
-	uint8_t 	next_seq;
-	uint8_t 	block[PHBAL_REG_T1SAMAV3_MAX_APDU_LEN + PHBAL_REG_T1SAMAV3_HEADER_LEN + PHBAL_REG_T1SAMAV3_LRC_LEN];
-	uint16_t	inf_len;
-	uint16_t	ifsc;
-	uint16_t	mpot;
-	uint16_t	segt;
+typedef struct {
+  uint16_t 	wId;										/**< Layer ID for this BAL component, NEVER MODIFY! */
+  phbalReg_T1SamAV3_state_t 	state;
+  phbalReg_T1SamAV3_tml_t 	*tml;
+  uint8_t 	next_seq;
+  uint8_t 	block[PHBAL_REG_T1SAMAV3_MAX_APDU_LEN + PHBAL_REG_T1SAMAV3_HEADER_LEN +
+                                      PHBAL_REG_T1SAMAV3_LRC_LEN];
+  uint16_t	inf_len;
+  uint16_t	ifsc;
+  uint16_t	mpot;
+  uint16_t	segt;
 } phbalReg_T1SamAV3_DataParams_t;
 
 phStatus_t phbalReg_T1SamAv3_Init(
-	phbalReg_T1SamAV3_DataParams_t *pDataParams,     	/**< [In] Pointer to this layer's parameter structure phbalReg_Type_t. */
+    phbalReg_T1SamAV3_DataParams_t
+    *pDataParams,     	/**< [In] Pointer to this layer's parameter structure phbalReg_Type_t. */
     uint16_t wSizeOfDataParams,							/**< [In] Size of this layer's parameter structure. */
-	phbalReg_T1SamAV3_tml_t *tml
+    phbalReg_T1SamAV3_tml_t *tml
 );
 
 #endif
@@ -160,37 +161,40 @@ phStatus_t phbalReg_T1SamAv3_Init(
 #define PHBAL_REG_T1SAMAV3_MAX_UART_READ_RETRIES    5
 
 typedef enum {
-    PHBAL_REG_T1SAMAV3_IDLE,
-    PHBAL_REG_T1SAMAV3_TX_ONGOING,
-    PHBAL_REG_T1SAMAV3_WAITING_RX,
+  PHBAL_REG_T1SAMAV3_IDLE,
+  PHBAL_REG_T1SAMAV3_TX_ONGOING,
+  PHBAL_REG_T1SAMAV3_WAITING_RX,
 } phbalReg_T1SamAV3_state_t;
 
 /**
  * BAL parameter structure
  */
 typedef struct {
-    phbalReg_T1SamAV3_error_t (*init)(void);
-    phbalReg_T1SamAV3_error_t (*uninit)(void);
-    phbalReg_T1SamAV3_error_t (*snd_blocking)(void *data, uint16_t len);
-    phbalReg_T1SamAV3_error_t (*rcv_blocking)(void *data, uint16_t expected_bytes, uint16_t *received_bytes);
-    phbalReg_T1SamAV3_error_t (*transceive)(void *data, uint16_t txLen, uint16_t *received_bytes);
+  phbalReg_T1SamAV3_error_t (*init)(void);
+  phbalReg_T1SamAV3_error_t (*uninit)(void);
+  phbalReg_T1SamAV3_error_t (*snd_blocking)(void *data, uint16_t len);
+  phbalReg_T1SamAV3_error_t (*rcv_blocking)(void *data, uint16_t expected_bytes,
+      uint16_t *received_bytes);
+  phbalReg_T1SamAV3_error_t (*transceive)(void *data, uint16_t txLen, uint16_t *received_bytes);
 } phbalReg_T1SamAV3_tml_t;
 
-typedef struct
-{
-    uint16_t    wId;                                        /**< Layer ID for this BAL component, NEVER MODIFY! */
-    phbalReg_T1SamAV3_state_t   state;
-    phbalReg_T1SamAV3_tml_t     *tml;
-    uint8_t     next_seq;
-    uint8_t     block[PHBAL_REG_T1SAMAV3_MAX_APDU_LEN + PHBAL_REG_T1SAMAV3_HEADER_LEN + PHBAL_REG_T1SAMAV3_LRC_LEN];
-    uint16_t    inf_len;
-    uint16_t    ifsc;
-    uint16_t    mpot;
-    uint16_t    segt;
+typedef struct {
+  uint16_t
+  wId;                                        /**< Layer ID for this BAL component, NEVER MODIFY! */
+  phbalReg_T1SamAV3_state_t   state;
+  phbalReg_T1SamAV3_tml_t     *tml;
+  uint8_t     next_seq;
+  uint8_t     block[PHBAL_REG_T1SAMAV3_MAX_APDU_LEN + PHBAL_REG_T1SAMAV3_HEADER_LEN +
+                                      PHBAL_REG_T1SAMAV3_LRC_LEN];
+  uint16_t    inf_len;
+  uint16_t    ifsc;
+  uint16_t    mpot;
+  uint16_t    segt;
 } phbalReg_T1SamAV3_DataParams_t;
 
 phStatus_t phbalReg_T1SamAv3_Init(
-    phbalReg_T1SamAV3_DataParams_t *pDataParams,        /**< [In] Pointer to this layer's parameter structure phbalReg_Type_t. */
+    phbalReg_T1SamAV3_DataParams_t
+    *pDataParams,        /**< [In] Pointer to this layer's parameter structure phbalReg_Type_t. */
     uint16_t wSizeOfDataParams,                         /**< [In] Size of this layer's parameter structure. */
     phbalReg_T1SamAV3_tml_t *tml
 );

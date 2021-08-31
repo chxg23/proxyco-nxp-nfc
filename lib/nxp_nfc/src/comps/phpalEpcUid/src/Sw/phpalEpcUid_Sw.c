@@ -34,7 +34,8 @@
 #include "phpalEpcUid_Sw.h"
 #include "phpalEpcUid_Sw_Int.h"
 
-phStatus_t phpalEpcUid_Sw_Init(
+phStatus_t
+phpalEpcUid_Sw_Init(
     phpalEpcUid_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pHalDataParams
@@ -57,7 +58,8 @@ phStatus_t phpalEpcUid_Sw_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalEpcUid_Sw_ActivateCard(
+phStatus_t
+phpalEpcUid_Sw_ActivateCard(
     phpalEpcUid_Sw_DataParams_t *pDataParams,
     uint8_t bTagType,
     uint8_t bNumSlots,
@@ -166,7 +168,8 @@ phStatus_t phpalEpcUid_Sw_ActivateCard(
   return statusReturned;
 }
 
-phStatus_t phpalEpcUid_Sw_BeginRound(
+phStatus_t
+phpalEpcUid_Sw_BeginRound(
     phpalEpcUid_Sw_DataParams_t *pDataParams,
     uint8_t bTagType,
     uint8_t bNumSlots,
@@ -354,7 +357,8 @@ phStatus_t phpalEpcUid_Sw_BeginRound(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalEpcUid_Sw_CloseSlot(
+phStatus_t
+phpalEpcUid_Sw_CloseSlot(
     phpalEpcUid_Sw_DataParams_t *pDataParams,
     uint8_t bOption,
     uint8_t *pRxBuffer,
@@ -448,7 +452,8 @@ phStatus_t phpalEpcUid_Sw_CloseSlot(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalEpcUid_Sw_FixSlot(
+phStatus_t
+phpalEpcUid_Sw_FixSlot(
     phpalEpcUid_Sw_DataParams_t *pDataParams,
     uint8_t bTagType,
     uint8_t *pMask,
@@ -565,7 +570,8 @@ phStatus_t phpalEpcUid_Sw_FixSlot(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalEpcUid_Sw_Write(
+phStatus_t
+phpalEpcUid_Sw_Write(
     phpalEpcUid_Sw_DataParams_t *pDataParams,
     uint8_t bTagType,
     uint8_t bBlockNo,
@@ -660,7 +666,8 @@ phStatus_t phpalEpcUid_Sw_Write(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalEpcUid_Sw_Destroy(
+phStatus_t
+phpalEpcUid_Sw_Destroy(
     phpalEpcUid_Sw_DataParams_t *pDataParams,
     uint8_t bTagType,
     uint8_t *pData,
@@ -799,7 +806,8 @@ phStatus_t phpalEpcUid_Sw_Destroy(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalEpcUid_Sw_GetSerialNo(
+phStatus_t
+phpalEpcUid_Sw_GetSerialNo(
     phpalEpcUid_Sw_DataParams_t *pDataParams,
     uint8_t *pUidOut,
     uint8_t *pLenUidOut
@@ -820,7 +828,8 @@ phStatus_t phpalEpcUid_Sw_GetSerialNo(
   }
 }
 
-phStatus_t phpalEpcUid_Sw_ParseResponse(
+phStatus_t
+phpalEpcUid_Sw_ParseResponse(
     phpalEpcUid_Sw_DataParams_t *pDataParams,
     uint8_t *pRxBuffer,
     uint16_t wRxLength

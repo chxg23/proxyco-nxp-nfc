@@ -44,7 +44,8 @@ static phStatus_t phhalHw_Rc663_Int_LoadTimer(
     uint8_t  bTimerAdd
 );
 
-static phStatus_t phhalHw_Rc663_Int_LoadTimer(
+static phStatus_t
+phhalHw_Rc663_Int_LoadTimer(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint32_t dwReload,
     uint8_t  bTimerAdd
@@ -62,7 +63,8 @@ static phStatus_t phhalHw_Rc663_Int_LoadTimer(
   return phhalHw_Rc663_WriteRegister(pDataParams, (bTimerAdd + 1U), (uint8_t)(dwReload));
 }
 
-phStatus_t phhalHw_Rc663_Cmd_Lpcd(
+phStatus_t
+phhalHw_Rc663_Cmd_Lpcd(
     phhalHw_Rc663_DataParams_t *pDataParams
 )
 {
@@ -311,7 +313,8 @@ phStatus_t phhalHw_Rc663_Cmd_Lpcd(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Rc663_Cmd_Lpcd_GetConfig(
+phStatus_t
+phhalHw_Rc663_Cmd_Lpcd_GetConfig(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint8_t *pI,
     uint8_t *pQ
@@ -379,7 +382,8 @@ phStatus_t phhalHw_Rc663_Cmd_Lpcd_GetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Rc663_Cmd_LoadKey(
+phStatus_t
+phhalHw_Rc663_Cmd_LoadKey(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint8_t *pKey
 )
@@ -405,7 +409,8 @@ phStatus_t phhalHw_Rc663_Cmd_LoadKey(
           NULL);
 }
 
-phStatus_t phhalHw_Rc663_Cmd_WriteE2(
+phStatus_t
+phhalHw_Rc663_Cmd_WriteE2(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint16_t wAddress,
     uint8_t bData
@@ -443,7 +448,8 @@ phStatus_t phhalHw_Rc663_Cmd_WriteE2(
           NULL);
 }
 
-phStatus_t phhalHw_Rc663_Cmd_WriteE2Page(
+phStatus_t
+phhalHw_Rc663_Cmd_WriteE2Page(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint16_t wAddress,
     uint8_t *pData,
@@ -487,7 +493,8 @@ phStatus_t phhalHw_Rc663_Cmd_WriteE2Page(
           NULL);
 }
 
-phStatus_t phhalHw_Rc663_Cmd_ReadE2(
+phStatus_t
+phhalHw_Rc663_Cmd_ReadE2(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint16_t wAddress,
     uint16_t wNumBytes,
@@ -552,7 +559,8 @@ phStatus_t phhalHw_Rc663_Cmd_ReadE2(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Rc663_Cmd_LoadReg(
+phStatus_t
+phhalHw_Rc663_Cmd_LoadReg(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint16_t wEEAddress,
     uint8_t bRegAddress,
@@ -603,7 +611,8 @@ phStatus_t phhalHw_Rc663_Cmd_LoadReg(
           NULL);
 }
 
-phStatus_t phhalHw_Rc663_Cmd_LoadProtocol(
+phStatus_t
+phhalHw_Rc663_Cmd_LoadProtocol(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint8_t bTxProtocol,
     uint8_t bRxProtocol
@@ -671,7 +680,8 @@ phStatus_t phhalHw_Rc663_Cmd_LoadProtocol(
           NULL);
 }
 
-phStatus_t phhalHw_Rc663_Cmd_LoadKeyE2(
+phStatus_t
+phhalHw_Rc663_Cmd_LoadKeyE2(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint8_t  bKeyNo
 )
@@ -701,7 +711,8 @@ phStatus_t phhalHw_Rc663_Cmd_LoadKeyE2(
           NULL);
 }
 
-phStatus_t phhalHw_Rc663_Cmd_StoreKeyE2(
+phStatus_t
+phhalHw_Rc663_Cmd_StoreKeyE2(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint8_t  bKeyNo,
     uint8_t *pKeys,
@@ -764,7 +775,8 @@ phStatus_t phhalHw_Rc663_Cmd_StoreKeyE2(
           NULL);
 }
 
-phStatus_t phhalHw_Rc663_Cmd_SoftReset(
+phStatus_t
+phhalHw_Rc663_Cmd_SoftReset(
     phhalHw_Rc663_DataParams_t *pDataParams
 )
 {
@@ -773,7 +785,8 @@ phStatus_t phhalHw_Rc663_Cmd_SoftReset(
           PHHAL_HW_RC663_CMD_SOFTRESET);
 }
 
-phStatus_t phhalHw_Rc663_Cmd_AckReq(
+phStatus_t
+phhalHw_Rc663_Cmd_AckReq(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint8_t *pCmdBuffer,
     uint16_t wLen,
@@ -952,7 +965,8 @@ phStatus_t phhalHw_Rc663_Cmd_AckReq(
   return PH_ADD_COMPCODE(statusTmp, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Rc663_Cmd_Lpcd_SetConfig(
+phStatus_t
+phhalHw_Rc663_Cmd_Lpcd_SetConfig(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint8_t bMode,
     uint8_t bI,
@@ -978,7 +992,8 @@ phStatus_t phhalHw_Rc663_Cmd_Lpcd_SetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Rc663_WriteRegister(
+phStatus_t
+phhalHw_Rc663_WriteRegister(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint8_t bAddress,
     uint8_t bValue
@@ -1051,7 +1066,8 @@ phStatus_t phhalHw_Rc663_WriteRegister(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Rc663_ReadRegister(
+phStatus_t
+phhalHw_Rc663_ReadRegister(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint8_t bAddress,
     uint8_t *pValue
@@ -1121,7 +1137,8 @@ phStatus_t phhalHw_Rc663_ReadRegister(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Rc663_Cmd_PRBS(
+phStatus_t
+phhalHw_Rc663_Cmd_PRBS(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint8_t *pBufferStartPos,
     uint16_t wBuffLength

@@ -288,47 +288,57 @@
 				PH_ADD_COMPCODE(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_AL_MFDF)
 #endif /* NXPBUILD__PHAL_MFDF_SAMAV2_NONX */
 
+phStatus_t phalMfdf_Sam_NonX_Int_SetAuthMode(void *pDataParams, uint8_t bAuthMode);
+phStatus_t phalMfdf_Sam_NonX_Int_GetAuthMode(void *pDataParams, uint8_t *pAuthMode);
 
-phStatus_t phalMfdf_Sam_NonX_Int_SetAuthMode(void * pDataParams, uint8_t bAuthMode);
-phStatus_t phalMfdf_Sam_NonX_Int_GetAuthMode(void * pDataParams, uint8_t * pAuthMode);
+phStatus_t phalMfdf_Sam_NonX_Int_SetKeyNo(void *pDataParams, uint8_t bKeyNo);
+phStatus_t phalMfdf_Sam_NonX_Int_GetKeyNo(void *pDataParams, uint8_t *pKeyNo);
 
-phStatus_t phalMfdf_Sam_NonX_Int_SetKeyNo(void * pDataParams, uint8_t bKeyNo);
-phStatus_t phalMfdf_Sam_NonX_Int_GetKeyNo(void * pDataParams, uint8_t * pKeyNo);
+phStatus_t phalMfdf_Sam_NonX_Int_SetWrappedMode(void *pDataParams, uint8_t bWrappedMode);
+phStatus_t phalMfdf_Sam_NonX_Int_GetWrappedMode(void *pDataParams, uint8_t *pWrappedMode);
 
-phStatus_t phalMfdf_Sam_NonX_Int_SetWrappedMode(void * pDataParams, uint8_t bWrappedMode);
-phStatus_t phalMfdf_Sam_NonX_Int_GetWrappedMode(void * pDataParams, uint8_t * pWrappedMode);
+phStatus_t phalMfdf_Sam_NonX_Int_SetAdditionalInfo(void *pDataParams, uint16_t wAdditionalInfo);
+phStatus_t phalMfdf_Sam_NonX_Int_GetAdditionalInfo(void *pDataParams, uint16_t *pAdditionalInfo);
 
-phStatus_t phalMfdf_Sam_NonX_Int_SetAdditionalInfo(void * pDataParams, uint16_t wAdditionalInfo);
-phStatus_t phalMfdf_Sam_NonX_Int_GetAdditionalInfo(void * pDataParams, uint16_t * pAdditionalInfo);
+phStatus_t phalMfdf_Sam_NonX_Int_SetAid(void *pDataParams, uint8_t *pAid);
+phStatus_t phalMfdf_Sam_NonX_Int_GetAid(void *pDataParams, uint8_t *pAid);
 
-phStatus_t phalMfdf_Sam_NonX_Int_SetAid(void * pDataParams, uint8_t * pAid);
-phStatus_t phalMfdf_Sam_NonX_Int_GetAid(void * pDataParams, uint8_t * pAid);
+phStatus_t phalMfdf_Sam_NonX_Int_ValidateResponse(void *pDataParams, uint16_t wStatus,
+    uint16_t wPiccRetCode);
 
-phStatus_t phalMfdf_Sam_NonX_Int_ValidateResponse(void * pDataParams, uint16_t wStatus, uint16_t wPiccRetCode);
+phStatus_t phalMfdf_Sam_NonX_Int_CardExchange(void *pDataParams, uint16_t wBufferOption,
+    uint8_t bCmdOption, uint16_t wTotDataLen, uint8_t bExchangeLE, uint8_t *pData,
+    uint16_t wDataLen, uint8_t **ppResponse, uint16_t *pRespLen, uint8_t *pPiccErrCode);
 
-phStatus_t phalMfdf_Sam_NonX_Int_CardExchange(void * pDataParams, uint16_t wBufferOption, uint8_t bCmdOption, uint16_t wTotDataLen, uint8_t bExchangeLE, uint8_t * pData,
-	uint16_t wDataLen, uint8_t ** ppResponse, uint16_t * pRespLen, uint8_t * pPiccErrCode);
+phStatus_t phalMfdf_Sam_NonX_Int_AuthenticatePICC(void *pDataParams, uint8_t bAuthType,
+    uint16_t wOption, uint16_t wKeyNo, uint16_t wKeyVer, uint8_t bKeyNoCard,
+    uint8_t *pDivInput, uint8_t bDivInputLen);
 
-phStatus_t phalMfdf_Sam_NonX_Int_AuthenticatePICC(void * pDataParams, uint8_t bAuthType, uint16_t wOption, uint16_t wKeyNo, uint16_t wKeyVer, uint8_t bKeyNoCard,
-	uint8_t * pDivInput, uint8_t bDivInputLen);
+phStatus_t phalMfdf_Sam_NonX_Int_ChangeKeyPICC(void *pDataParams, uint16_t wOption,
+    uint8_t bKeyNoCard, uint16_t wCurrKeyNo, uint16_t wCurrKeyVer, uint16_t wNewKeyNo,
+    uint16_t wNewKeyVer, uint8_t *pDivInput, uint8_t bDivInputLen);
 
-phStatus_t phalMfdf_Sam_NonX_Int_ChangeKeyPICC(void * pDataParams, uint16_t wOption, uint8_t bKeyNoCard, uint16_t wCurrKeyNo, uint16_t wCurrKeyVer, uint16_t wNewKeyNo,
-	uint16_t wNewKeyVer, uint8_t * pDivInput, uint8_t bDivInputLen);
+phStatus_t phalMfdf_Sam_NonX_Int_GenerateSM(void *pDataParams, uint16_t wOption,
+    uint8_t bIsWriteCmd, uint8_t bIsReadCmd, uint8_t bCommMode, uint8_t *pCmdBuff,
+    uint16_t wCmdBufLen, uint8_t *pData, uint16_t wDataLen, uint8_t **ppOutBuffer,
+    uint16_t *pOutBufLen);
 
-phStatus_t phalMfdf_Sam_NonX_Int_GenerateSM(void * pDataParams, uint16_t wOption, uint8_t bIsWriteCmd, uint8_t bIsReadCmd, uint8_t bCommMode, uint8_t * pCmdBuff,
-	uint16_t wCmdBufLen, uint8_t * pData, uint16_t wDataLen, uint8_t ** ppOutBuffer, uint16_t * pOutBufLen);
+phStatus_t phalMfdf_Sam_NonX_Int_VerifySM(void *pDataParams, uint16_t wOption, uint8_t bCommMode,
+    uint32_t dwLength, uint8_t *pResponse, uint16_t wRespLen,
+    uint8_t bPiccStat, uint8_t *pRespMac, uint16_t wRespMacLen, uint8_t **ppOutBuffer,
+    uint16_t *pOutBufLen);
 
-phStatus_t phalMfdf_Sam_NonX_Int_VerifySM(void * pDataParams, uint16_t wOption, uint8_t bCommMode, uint32_t dwLength, uint8_t * pResponse, uint16_t wRespLen,
-	uint8_t bPiccStat, uint8_t * pRespMac, uint16_t wRespMacLen, uint8_t ** ppOutBuffer, uint16_t * pOutBufLen);
+phStatus_t phalMfdf_Sam_NonX_Int_ReadData(void *pDataParams, uint16_t wOption, uint8_t bIsDataCmd,
+    uint8_t bCmd_ComMode, uint8_t bResp_ComMode, uint32_t dwLength,
+    uint8_t *pCmdBuff, uint16_t wCmdLen, uint8_t **ppResponse, uint16_t *pRespLen);
 
-phStatus_t phalMfdf_Sam_NonX_Int_ReadData(void * pDataParams, uint16_t wOption, uint8_t bIsDataCmd, uint8_t bCmd_ComMode, uint8_t bResp_ComMode, uint32_t dwLength,
-	uint8_t * pCmdBuff, uint16_t wCmdLen, uint8_t ** ppResponse, uint16_t * pRespLen);
+phStatus_t phalMfdf_Sam_NonX_Int_WriteData(void *pDataParams, uint16_t wOption,
+    uint8_t bIsDataCmd, uint8_t bCmd_ComMode, uint8_t bResp_ComMode, uint8_t bResetAuth,
+    uint8_t *pCmdBuff, uint16_t wCmdLen, uint8_t *pData, uint32_t dwDataLen, uint8_t **ppResponse,
+    uint16_t *pRespLen);
 
-phStatus_t phalMfdf_Sam_NonX_Int_WriteData(void * pDataParams, uint16_t wOption, uint8_t bIsDataCmd, uint8_t bCmd_ComMode, uint8_t bResp_ComMode, uint8_t bResetAuth,
-	uint8_t * pCmdBuff, uint16_t wCmdLen, uint8_t * pData, uint32_t dwDataLen, uint8_t ** ppResponse, uint16_t * pRespLen);
+phStatus_t phalMfdf_Sam_NonX_Int_ResetAuthStatus(void *pDataParams);
 
-phStatus_t phalMfdf_Sam_NonX_Int_ResetAuthStatus(void * pDataParams);
-
-phStatus_t phalMfdf_Sam_NonX_Int_GetFrameLen(void * pDataParams, uint16_t * pFrameLen);
+phStatus_t phalMfdf_Sam_NonX_Int_GetFrameLen(void *pDataParams, uint16_t *pFrameLen);
 
 #endif /* PHALMFDF_SAM_NONX_INT_H */

@@ -91,7 +91,8 @@ PH_NOINIT static phhalRf_RxParams_t gphhalRf_RxParams;
  * \retval #PH_ERR_SUCCESS Operation successful.
  */
 
-phStatus_t phhalHw_PN7462AU_Init(phhalHw_PN7462AU_DataParams_t *pDataParams,
+phStatus_t
+phhalHw_PN7462AU_Init(phhalHw_PN7462AU_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pBalDataParams,
     void *pKeyStoreDataParams,
@@ -162,7 +163,8 @@ phStatus_t phhalHw_PN7462AU_Init(phhalHw_PN7462AU_DataParams_t *pDataParams,
  * \retval #PH_ERR_SUCCESS Operation successful.
  * \retval #PH_ERR_INTERNAL_ERROR None of the configuration matches.
  */
-phStatus_t phhalHw_PN7462AU_SetConfig(phhalHw_PN7462AU_DataParams_t *pDataParams,
+phStatus_t
+phhalHw_PN7462AU_SetConfig(phhalHw_PN7462AU_DataParams_t *pDataParams,
     uint16_t wConfig, uint16_t wValue)
 {
   phStatus_t status = PH_ERR_SUCCESS;
@@ -888,7 +890,8 @@ phStatus_t phhalHw_PN7462AU_SetConfig(phhalHw_PN7462AU_DataParams_t *pDataParams
  * \retval #PH_ERR_SUCCESS Operation successful.
  * \retval #PH_ERR_INTERNAL_ERROR None of the configuration matches.
  */
-phStatus_t phhalHw_PN7462AU_GetConfig(phhalHw_PN7462AU_DataParams_t *pDataParams,
+phStatus_t
+phhalHw_PN7462AU_GetConfig(phhalHw_PN7462AU_DataParams_t *pDataParams,
     uint16_t wConfig, uint16_t *pValue)
 {
   phStatus_t status = PH_ERR_SUCCESS;
@@ -1141,7 +1144,8 @@ phStatus_t phhalHw_PN7462AU_GetConfig(phhalHw_PN7462AU_DataParams_t *pDataParams
  * \retval #PH_ERR_SUCCESS Operation successful.
  * \retval #PH_ERR_INTERNAL_ERROR Operation failure.
  */
-phStatus_t phhalHw_PN7462AU_FieldOn(phhalHw_PN7462AU_DataParams_t *pDataParams PH_UNUSED)
+phStatus_t
+phhalHw_PN7462AU_FieldOn(phhalHw_PN7462AU_DataParams_t *pDataParams PH_UNUSED)
 {
   phStatus_t status = PH_ERR_INTERNAL_ERROR;
 
@@ -1164,7 +1168,8 @@ phStatus_t phhalHw_PN7462AU_FieldOn(phhalHw_PN7462AU_DataParams_t *pDataParams P
  * \retval #PH_ERR_SUCCESS Operation successful.
  * \retval #PH_ERR_INTERNAL_ERROR Operation failure.
  */
-phStatus_t phhalHw_PN7462AU_FieldOff(phhalHw_PN7462AU_DataParams_t *pDataParams PH_UNUSED)
+phStatus_t
+phhalHw_PN7462AU_FieldOff(phhalHw_PN7462AU_DataParams_t *pDataParams PH_UNUSED)
 {
   phStatus_t status = (phStatus_t)PH_ERR_INTERNAL_ERROR;
 
@@ -1184,7 +1189,8 @@ phStatus_t phhalHw_PN7462AU_FieldOff(phhalHw_PN7462AU_DataParams_t *pDataParams 
  * \retval #PH_ERR_SUCCESS Operation successful.
  * \retval #PH_ERR_INTERNAL_ERROR Operation failure.
  */
-phStatus_t phhalHw_PN7462AU_ApplyProtocolSettings(phhalHw_PN7462AU_DataParams_t *pDataParams,
+phStatus_t
+phhalHw_PN7462AU_ApplyProtocolSettings(phhalHw_PN7462AU_DataParams_t *pDataParams,
     uint8_t bCardType)
 {
   phStatus_t status = (phStatus_t)(PH_ERR_INTERNAL_ERROR);
@@ -1301,7 +1307,8 @@ phStatus_t phhalHw_PN7462AU_ApplyProtocolSettings(phhalHw_PN7462AU_DataParams_t 
  * \retval #PH_ERR_SUCCESS Operation successful.
  * \retval #PH_ERR_INTERNAL_ERROR Operation failure.
  */
-phStatus_t phhalHw_PN7462AU_MfcAuthenticate(
+phStatus_t
+phhalHw_PN7462AU_MfcAuthenticate(
     phhalHw_PN7462AU_DataParams_t *pDataParams,
     uint8_t bBlockNo,
     uint8_t bKeyType,
@@ -1344,7 +1351,8 @@ phStatus_t phhalHw_PN7462AU_MfcAuthenticate(
  * \retval #PH_ERR_SUCCESS Operation successful.
  * \retval #PH_ERR_INTERNAL_ERROR Operation failure.
  */
-phStatus_t phhalHw_PN7462AU_MfcAuthenticateKeyNo(
+phStatus_t
+phhalHw_PN7462AU_MfcAuthenticateKeyNo(
     phhalHw_PN7462AU_DataParams_t *pDataParams,
     uint8_t bBlockNo,
     uint8_t bKeyType,
@@ -1413,7 +1421,8 @@ phStatus_t phhalHw_PN7462AU_MfcAuthenticateKeyNo(
  * \return Status code
  * \retval #PH_ERR_SUCCESS Operation successful.
  */
-phStatus_t phhalHw_PN7462AU_Wait(phhalHw_PN7462AU_DataParams_t *pDataParams PH_UNUSED,
+phStatus_t
+phhalHw_PN7462AU_Wait(phhalHw_PN7462AU_DataParams_t *pDataParams PH_UNUSED,
     uint8_t bUnit, uint16_t wTimeout)
 {
   uint32_t dwRdLibTimeout = 0x00;
@@ -1442,7 +1451,8 @@ phStatus_t phhalHw_PN7462AU_Wait(phhalHw_PN7462AU_DataParams_t *pDataParams PH_U
  * \retval #PH_ERR_SUCCESS Operation successful.
  * \retval #PH_ERR_INTERNAL_ERROR Operation failure.
  */
-phStatus_t phhalHw_PN7462AU_Exchange(
+phStatus_t
+phhalHw_PN7462AU_Exchange(
     phhalHw_PN7462AU_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -1575,7 +1585,8 @@ phStatus_t phhalHw_PN7462AU_Exchange(
  * \retval #PH_ERR_SUCCESS Operation successful.
  * \retval #PH_ERR_INTERNAL_ERROR Operation failure.
  */
-phStatus_t phhalHw_PN7462AU_Transmit(phhalHw_PN7462AU_DataParams_t *pDataParams, uint16_t wOption,
+phStatus_t
+phhalHw_PN7462AU_Transmit(phhalHw_PN7462AU_DataParams_t *pDataParams, uint16_t wOption,
     uint8_t *pTxBuffer,
     uint16_t wTxLength)
 {
@@ -1655,7 +1666,8 @@ phStatus_t phhalHw_PN7462AU_Transmit(phhalHw_PN7462AU_DataParams_t *pDataParams,
  * \retval #PH_ERR_SUCCESS Operation successful.
  * \retval #PH_ERR_INTERNAL_ERROR Operation failure.
  */
-phStatus_t phhalHw_PN7462AU_Receive(phhalHw_PN7462AU_DataParams_t *pDataParams, uint16_t wOption,
+phStatus_t
+phhalHw_PN7462AU_Receive(phhalHw_PN7462AU_DataParams_t *pDataParams, uint16_t wOption,
     uint8_t **ppRxBuffer, uint16_t *pRxLength)
 {
 
@@ -1715,7 +1727,8 @@ phStatus_t phhalHw_PN7462AU_Receive(phhalHw_PN7462AU_DataParams_t *pDataParams, 
  * \retval #PH_ERR_SUCCESS Operation successful.
  * \retval #PH_ERR_INTERNAL_ERROR Operation failure.
  */
-phStatus_t phhalHw_PN7462AU_Autocoll(phhalHw_PN7462AU_DataParams_t *pDataParams, uint16_t wMode,
+phStatus_t
+phhalHw_PN7462AU_Autocoll(phhalHw_PN7462AU_DataParams_t *pDataParams, uint16_t wMode,
     uint8_t **ppRxBuffer,
     uint16_t *pRxLength, uint16_t *pProtParams)
 {
@@ -1841,7 +1854,8 @@ phStatus_t phhalHw_PN7462AU_Autocoll(phhalHw_PN7462AU_DataParams_t *pDataParams,
  * \retval #PH_ERR_SUCCESS Operation successful.
  * \retval #PH_ERR_INTERNAL_ERROR Operation failure.
  */
-phStatus_t phhalHw_PN7462AU_SetListenParam(phhalHw_PN7462AU_DataParams_t *pDataParams,
+phStatus_t
+phhalHw_PN7462AU_SetListenParam(phhalHw_PN7462AU_DataParams_t *pDataParams,
     uint8_t *pSensRes,
     uint8_t *pNfcid1, uint8_t bSelRes, uint8_t bSupportT3T, uint8_t *pNfcid2,
     uint8_t *pPad, uint8_t *pSystemCode)
@@ -1889,7 +1903,8 @@ phStatus_t phhalHw_PN7462AU_SetListenParam(phhalHw_PN7462AU_DataParams_t *pDataP
  * \return Status code
  * \retval #PH_ERR_SUCCESS Operation successful.
  */
-phStatus_t phhalHw_PN7462AU_Lpcd(phhalHw_PN7462AU_DataParams_t *pDataParams)
+phStatus_t
+phhalHw_PN7462AU_Lpcd(phhalHw_PN7462AU_DataParams_t *pDataParams)
 {
 
   phStatus_t status = PH_ERR_USE_CONDITION;
@@ -1906,7 +1921,8 @@ phStatus_t phhalHw_PN7462AU_Lpcd(phhalHw_PN7462AU_DataParams_t *pDataParams)
  * \return Status code
  * \retval #PH_ERR_SUCCESS Operation successful.
  */
-phStatus_t phhalHw_PN7462AU_FieldReset(phhalHw_PN7462AU_DataParams_t *pDataParams)
+phStatus_t
+phhalHw_PN7462AU_FieldReset(phhalHw_PN7462AU_DataParams_t *pDataParams)
 {
   phStatus_t status = PH_ERR_INTERNAL_ERROR;
 
@@ -1929,7 +1945,8 @@ phStatus_t phhalHw_PN7462AU_FieldReset(phhalHw_PN7462AU_DataParams_t *pDataParam
  * \return Status code
  * \retval #PH_ERR_SUCCESS Operation successful.
  */
-phStatus_t phhalHw_PN7462AU_AsyncAbort(phhalHw_PN7462AU_DataParams_t *pDataParams)
+phStatus_t
+phhalHw_PN7462AU_AsyncAbort(phhalHw_PN7462AU_DataParams_t *pDataParams)
 {
   phStatus_t status = PH_ERR_INTERNAL_ERROR;
   status = phhalRf_SetIdleState(E_PH_HALRF_ENABLE);
@@ -1943,7 +1960,8 @@ phStatus_t phhalHw_PN7462AU_AsyncAbort(phhalHw_PN7462AU_DataParams_t *pDataParam
  * \return Status code
  * \retval #PH_ERR_SUCCESS Operation successful.
  */
-phStatus_t phhalHw_PN7462AU_DeInit(phhalHw_PN7462AU_DataParams_t *pDataParams PH_UNUSED)
+phStatus_t
+phhalHw_PN7462AU_DeInit(phhalHw_PN7462AU_DataParams_t *pDataParams PH_UNUSED)
 {
   phStatus_t status = PH_ERR_SUCCESS;
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
@@ -1955,7 +1973,8 @@ phStatus_t phhalHw_PN7462AU_DeInit(phhalHw_PN7462AU_DataParams_t *pDataParams PH
  * \return Status code
  * \retval #PH_ERR_SUCCESS Operation successful.
  */
-phStatus_t phhalHw_PN7462AU_I18000p3m3Inventory(
+phStatus_t
+phhalHw_PN7462AU_I18000p3m3Inventory(
     phhalHw_PN7462AU_DataParams_t   *pDataParams,
     uint8_t *pSelCmd,
     uint8_t bSelCmdLen,
@@ -2251,7 +2270,8 @@ phStatus_t phhalHw_PN7462AU_I18000p3m3Inventory(
  * \return Status code
  * \retval #PH_ERR_SUCCESS Operation successful.
  */
-phStatus_t phhalHw_PN7462AU_I18000p3m3ResumeInventory(
+phStatus_t
+phhalHw_PN7462AU_I18000p3m3ResumeInventory(
     phhalHw_PN7462AU_DataParams_t *pDataParams,
     uint8_t **ppRxBuffer,
     uint16_t *pRxBufferLen
@@ -2365,7 +2385,8 @@ phStatus_t phhalHw_PN7462AU_I18000p3m3ResumeInventory(
  * \return Status code
  * \retval #PH_ERR_SUCCESS Operation successful.
  */
-phStatus_t phhalHw_PN7462AU_SetMinFDT(
+phStatus_t
+phhalHw_PN7462AU_SetMinFDT(
     phhalHw_PN7462AU_DataParams_t *pDataParams,
     uint16_t wValue
 )
@@ -2410,13 +2431,15 @@ phStatus_t phhalHw_PN7462AU_SetMinFDT(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_PN7462AU_EventWait(phhalHw_PN7462AU_DataParams_t *pDataParams,
+phStatus_t
+phhalHw_PN7462AU_EventWait(phhalHw_PN7462AU_DataParams_t *pDataParams,
     uint32_t dwEventTimeout)
 {
   return phhalRf_HalEventWaitAny(dwEventTimeout);
 }
 
-phStatus_t phhalHw_PN7462AU_EventConsume(phhalHw_PN7462AU_DataParams_t *pDataParams)
+phStatus_t
+phhalHw_PN7462AU_EventConsume(phhalHw_PN7462AU_DataParams_t *pDataParams)
 {
   return phhalRf_HalEventConsumeAll();
 }

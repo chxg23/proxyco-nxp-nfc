@@ -35,7 +35,8 @@
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phpalI14443p4a_Rats(
+phStatus_t
+phpalI14443p4a_Rats(
     void *pDataParams,
     uint8_t bFsdi,
     uint8_t bCid,
@@ -93,7 +94,8 @@ phStatus_t phpalI14443p4a_Rats(
   return status;
 }
 
-phStatus_t phpalI14443p4a_Pps(
+phStatus_t
+phpalI14443p4a_Pps(
     void *pDataParams,
     uint8_t bDri,
     uint8_t bDsi
@@ -143,7 +145,8 @@ phStatus_t phpalI14443p4a_Pps(
   return status;
 }
 
-phStatus_t phpalI14443p4a_SetConfig(
+phStatus_t
+phpalI14443p4a_SetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -189,7 +192,8 @@ phStatus_t phpalI14443p4a_SetConfig(
   return status;
 }
 
-phStatus_t phpalI14443p4a_ActivateCard(
+phStatus_t
+phpalI14443p4a_ActivateCard(
     void *pDataParams,
     uint8_t bFsdi,
     uint8_t bCid,
@@ -254,7 +258,8 @@ phStatus_t phpalI14443p4a_ActivateCard(
   return status;
 }
 
-phStatus_t phpalI14443p4a_GetProtocolParams(
+phStatus_t
+phpalI14443p4a_GetProtocolParams(
     void *pDataParams,
     uint8_t *pCidEnabled,
     uint8_t *pCid,

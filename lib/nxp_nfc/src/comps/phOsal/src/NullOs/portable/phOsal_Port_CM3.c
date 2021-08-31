@@ -53,7 +53,8 @@ static uint32_t dwSysTickTimerFreq;
 extern uint32_t SystemCoreClock;
 #endif
 
-phStatus_t phOsal_InitTickTimer(pphOsal_TickTimerISRCallBck_t pTickTimerCallback)
+phStatus_t
+phOsal_InitTickTimer(pphOsal_TickTimerISRCallBck_t pTickTimerCallback)
 {
   pTickCallBack = pTickTimerCallback;
 
@@ -69,7 +70,8 @@ phStatus_t phOsal_InitTickTimer(pphOsal_TickTimerISRCallBck_t pTickTimerCallback
   return PH_OSAL_SUCCESS;
 }
 
-static void phOsal_ConfigTick(void)
+static void
+phOsal_ConfigTick(void)
 {
   /* Disable systick */
   SysTick->CTRL = 0x0;
@@ -89,7 +91,8 @@ static void phOsal_ConfigTick(void)
   SysTick->CTRL = SYSTICK_TIMER_CLK | SYSTICK_TIMER_INT | SYSTICK_TIMER_ENABLE;
 }
 
-phStatus_t phOsal_StartTickTimer(uint32_t dwTimeMilliSecs)
+phStatus_t
+phOsal_StartTickTimer(uint32_t dwTimeMilliSecs)
 {
   qwLoadValue = ((uint64_t)dwTimeMilliSecs * (uint64_t)dwSysTickTimerFreq) /
       PH_PLATFORM_TIMER_UNIT_MS;
@@ -99,7 +102,8 @@ phStatus_t phOsal_StartTickTimer(uint32_t dwTimeMilliSecs)
   return PH_OSAL_SUCCESS;
 }
 
-phStatus_t phOsal_StopTickTimer(void)
+phStatus_t
+phOsal_StopTickTimer(void)
 {
   /* Disable systick and clear the Load value. */
   SysTick->CTRL = 0x0;
@@ -108,27 +112,32 @@ phStatus_t phOsal_StopTickTimer(void)
   return PH_OSAL_SUCCESS;
 }
 
-void phOsal_EnterCriticalSection(void)
+void
+phOsal_EnterCriticalSection(void)
 {
   __DISABLE_IRQ();
 }
 
-void phOsal_ExitCriticalSection(void)
+void
+phOsal_ExitCriticalSection(void)
 {
   __ENABLE_IRQ();
 }
 
-void phOsal_Sleep(void)
+void
+phOsal_Sleep(void)
 {
   __WFE();
 }
 
-void phOsal_WakeUp(void)
+void
+phOsal_WakeUp(void)
 {
   __SEV();
 }
 
-void SysTick_Handler(void)
+void
+SysTick_Handler(void)
 {
   if (qwLoadValue) {
     if (qwLoadValue > SYSTICK_TIMER_MAX) {

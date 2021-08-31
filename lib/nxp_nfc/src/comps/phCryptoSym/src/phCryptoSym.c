@@ -34,7 +34,8 @@
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
 
-phStatus_t phCryptoSym_InvalidateKey(
+phStatus_t
+phCryptoSym_InvalidateKey(
     void *pDataParams
 )
 {
@@ -78,7 +79,8 @@ phStatus_t phCryptoSym_InvalidateKey(
   return status;
 }
 
-phStatus_t phCryptoSym_Encrypt(
+phStatus_t
+phCryptoSym_Encrypt(
     void *pDataParams,
     uint16_t wOption,
     const uint8_t *pPlainBuffer,
@@ -141,7 +143,8 @@ phStatus_t phCryptoSym_Encrypt(
   return status;
 }
 
-phStatus_t phCryptoSym_Decrypt(
+phStatus_t
+phCryptoSym_Decrypt(
     void *pDataParams,
     uint16_t wOption,
     const uint8_t *pEncryptedBuffer,
@@ -204,7 +207,8 @@ phStatus_t phCryptoSym_Decrypt(
   return status;
 }
 
-phStatus_t phCryptoSym_CalculateMac(
+phStatus_t
+phCryptoSym_CalculateMac(
     void *pDataParams,
     uint16_t wOption,
     const uint8_t *pData,
@@ -267,7 +271,8 @@ phStatus_t phCryptoSym_CalculateMac(
   return status;
 }
 
-phStatus_t phCryptoSym_LoadIv(
+phStatus_t
+phCryptoSym_LoadIv(
     void *pDataParams,
     const uint8_t *pIV,
     uint8_t bIVLength
@@ -316,7 +321,8 @@ phStatus_t phCryptoSym_LoadIv(
   return status;
 }
 
-phStatus_t phCryptoSym_LoadKey(
+phStatus_t
+phCryptoSym_LoadKey(
     void *pDataParams,
     uint16_t    wKeyNo,
     uint16_t    wKeyVersion,
@@ -370,7 +376,8 @@ phStatus_t phCryptoSym_LoadKey(
   return status;
 }
 
-phStatus_t phCryptoSym_LoadKeyDirect(
+phStatus_t
+phCryptoSym_LoadKeyDirect(
     void *pDataParams,
     const uint8_t    *pKey,
     uint16_t    wKeyType
@@ -422,7 +429,8 @@ phStatus_t phCryptoSym_LoadKeyDirect(
   return status;
 }
 
-phStatus_t phCryptoSym_DiversifyKey(
+phStatus_t
+phCryptoSym_DiversifyKey(
     void *pDataParams,
     uint16_t wOption,
     uint16_t wKeyNo,
@@ -492,7 +500,8 @@ phStatus_t phCryptoSym_DiversifyKey(
   return status;
 }
 
-phStatus_t phCryptoSym_DiversifyDirectKey(
+phStatus_t
+phCryptoSym_DiversifyDirectKey(
     void *pDataParams,
     uint16_t wOption,
     uint8_t *pKey,
@@ -563,7 +572,8 @@ phStatus_t phCryptoSym_DiversifyDirectKey(
 
   return status;
 }
-phStatus_t phCryptoSym_SetConfig(
+phStatus_t
+phCryptoSym_SetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -613,7 +623,8 @@ phStatus_t phCryptoSym_SetConfig(
   return status;
 }
 
-phStatus_t phCryptoSym_GetConfig(
+phStatus_t
+phCryptoSym_GetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -668,7 +679,8 @@ phStatus_t phCryptoSym_GetConfig(
   return status;
 }
 
-phStatus_t phCryptoSym_ApplyPadding(
+phStatus_t
+phCryptoSym_ApplyPadding(
     uint8_t         bOption,
     const uint8_t *pDataIn,
     uint16_t        wDataInLength,
@@ -721,7 +733,8 @@ phStatus_t phCryptoSym_ApplyPadding(
 
 }
 
-phStatus_t phCryptoSym_RemovePadding(
+phStatus_t
+phCryptoSym_RemovePadding(
     uint8_t            bOption,
     const uint8_t     *pDataIn,
     uint16_t           wDataInLength,
@@ -786,7 +799,8 @@ phStatus_t phCryptoSym_RemovePadding(
   return PH_ERR_SUCCESS;
 }
 
-uint16_t phCryptoSym_GetKeySize(
+uint16_t
+phCryptoSym_GetKeySize(
     uint16_t wKeyType
 )
 {

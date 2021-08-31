@@ -35,7 +35,8 @@ static const uint16_t PH_MEMLOC_CONST_ROM aI14443p4mC_FsTable[PHPALI14443P4MC_FS
 /* Data rate table */
 static const uint16_t PH_MEMLOC_CONST_ROM aI14443p4mC_DrTable[PHPALI14443P4MC_DR_INDEX] = {PHHAL_HW_RF_DATARATE_106, PHHAL_HW_RF_DATARATE_212, PHHAL_HW_RF_DATARATE_424, PHHAL_HW_RF_DATARATE_848};
 
-phStatus_t phpalI14443p4mC_Sw_Int_PpsRes(
+phStatus_t
+phpalI14443p4mC_Sw_Int_PpsRes(
     phpalI14443p4mC_Sw_DataParams_t *pDataParams,
     uint8_t *pPps,
     uint8_t bPpsLength
@@ -141,7 +142,8 @@ phStatus_t phpalI14443p4mC_Sw_Int_PpsRes(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4mC_Sw_Int_DslRes(
+phStatus_t
+phpalI14443p4mC_Sw_Int_DslRes(
     phpalI14443p4mC_Sw_DataParams_t *pDataParams
 )
 {
@@ -169,7 +171,8 @@ phStatus_t phpalI14443p4mC_Sw_Int_DslRes(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4mC_Sw_Int_Ack(
+phStatus_t
+phpalI14443p4mC_Sw_Int_Ack(
     phpalI14443p4mC_Sw_DataParams_t *pDataParams
 )
 {
@@ -197,7 +200,8 @@ phStatus_t phpalI14443p4mC_Sw_Int_Ack(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4mC_Sw_Int_StartWtxTimer(
+phStatus_t
+phpalI14443p4mC_Sw_Int_StartWtxTimer(
     phpalI14443p4mC_Sw_DataParams_t *pDataParams
 )
 {
@@ -208,7 +212,8 @@ phStatus_t phpalI14443p4mC_Sw_Int_StartWtxTimer(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4mC_Sw_Int_HandleRxChaining(
+phStatus_t
+phpalI14443p4mC_Sw_Int_HandleRxChaining(
     phpalI14443p4mC_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t **ppRxBuffer,
@@ -379,7 +384,8 @@ phStatus_t phpalI14443p4mC_Sw_Int_HandleRxChaining(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4mC_Sw_Int_GetPduHeaderLength(
+phStatus_t
+phpalI14443p4mC_Sw_Int_GetPduHeaderLength(
     phpalI14443p4mC_Sw_DataParams_t *pDataParams,
     uint8_t bNadInclude,
     uint8_t *pProtLength
@@ -401,7 +407,8 @@ phStatus_t phpalI14443p4mC_Sw_Int_GetPduHeaderLength(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4mC_Sw_Int_ValidateFrame(
+phStatus_t
+phpalI14443p4mC_Sw_Int_ValidateFrame(
     phpalI14443p4mC_Sw_DataParams_t *pDataParams,
     uint8_t *pRxBuffer,
     uint16_t wRxLength,
@@ -649,7 +656,8 @@ phStatus_t phpalI14443p4mC_Sw_Int_ValidateFrame(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4mC_Sw_Int_IsValidIBlock(
+phStatus_t
+phpalI14443p4mC_Sw_Int_IsValidIBlock(
     uint8_t bOpMode,
     uint8_t bCheckCid,
     uint8_t bCid,
@@ -727,7 +735,8 @@ phStatus_t phpalI14443p4mC_Sw_Int_IsValidIBlock(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4mC_Sw_Int_IsValidRBlock(
+phStatus_t
+phpalI14443p4mC_Sw_Int_IsValidRBlock(
     uint8_t bOpMode,
     uint8_t bCheckCid,
     uint8_t bCid,
@@ -782,7 +791,8 @@ phStatus_t phpalI14443p4mC_Sw_Int_IsValidRBlock(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4mC_Sw_Int_IsValidSBlock(
+phStatus_t
+phpalI14443p4mC_Sw_Int_IsValidSBlock(
     uint8_t bOpMode,
     uint8_t bCheckCid,
     uint8_t bCid,

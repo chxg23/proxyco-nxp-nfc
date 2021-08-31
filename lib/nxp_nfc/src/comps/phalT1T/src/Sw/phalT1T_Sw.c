@@ -27,7 +27,8 @@
 #ifdef NXPBUILD__PHAL_T1T_SW
 #include "phalT1T_Sw.h"
 
-phStatus_t phalT1T_Sw_Init(
+phStatus_t
+phalT1T_Sw_Init(
     phalT1T_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pPalI14443p3aDataParams
@@ -47,7 +48,8 @@ phStatus_t phalT1T_Sw_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalT1T_Sw_ReadUID(
+phStatus_t
+phalT1T_Sw_ReadUID(
     phalT1T_Sw_DataParams_t *pDataParams,
     uint8_t *pUid,
     uint16_t *pLength
@@ -105,7 +107,8 @@ phStatus_t phalT1T_Sw_ReadUID(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalT1T_Sw_ReadAll(
+phStatus_t
+phalT1T_Sw_ReadAll(
     phalT1T_Sw_DataParams_t *pDataParams,
     uint8_t *pUid,
     uint8_t **pData,
@@ -149,7 +152,8 @@ phStatus_t phalT1T_Sw_ReadAll(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalT1T_Sw_ReadByte(
+phStatus_t
+phalT1T_Sw_ReadByte(
     phalT1T_Sw_DataParams_t *pDataParams,
     uint8_t *pUid,
     uint8_t bAddress,
@@ -197,7 +201,8 @@ phStatus_t phalT1T_Sw_ReadByte(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalT1T_Sw_WriteEraseByte(
+phStatus_t
+phalT1T_Sw_WriteEraseByte(
     phalT1T_Sw_DataParams_t *pDataParams,
     uint8_t *pUid,
     uint8_t bAddress,
@@ -250,7 +255,8 @@ phStatus_t phalT1T_Sw_WriteEraseByte(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalT1T_Sw_WriteNoEraseByte(
+phStatus_t
+phalT1T_Sw_WriteNoEraseByte(
     phalT1T_Sw_DataParams_t *pDataParams,
     uint8_t *pUid,
     uint8_t bAddress,
@@ -303,7 +309,8 @@ phStatus_t phalT1T_Sw_WriteNoEraseByte(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalT1T_Sw_ReadSegment(
+phStatus_t
+phalT1T_Sw_ReadSegment(
     phalT1T_Sw_DataParams_t *pDataParams,
     uint8_t *pUid,
     uint8_t bAddress,
@@ -351,7 +358,8 @@ phStatus_t phalT1T_Sw_ReadSegment(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalT1T_Sw_ReadBlock(
+phStatus_t
+phalT1T_Sw_ReadBlock(
     phalT1T_Sw_DataParams_t *pDataParams,
     uint8_t *pUid,
     uint8_t bAddress,
@@ -402,7 +410,8 @@ phStatus_t phalT1T_Sw_ReadBlock(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalT1T_Sw_WriteEraseBlock(
+phStatus_t
+phalT1T_Sw_WriteEraseBlock(
     phalT1T_Sw_DataParams_t *pDataParams,
     uint8_t *pUid,
     uint8_t bAddress,
@@ -466,7 +475,8 @@ phStatus_t phalT1T_Sw_WriteEraseBlock(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalT1T_Sw_WriteNoEraseBlock(
+phStatus_t
+phalT1T_Sw_WriteNoEraseBlock(
     phalT1T_Sw_DataParams_t *pDataParams,
     uint8_t *pUid,
     uint8_t bAddress,

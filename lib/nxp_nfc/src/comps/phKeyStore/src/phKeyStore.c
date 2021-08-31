@@ -44,7 +44,8 @@
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phKeyStore_FormatKeyEntry(
+phStatus_t
+phKeyStore_FormatKeyEntry(
     void *pDataParams,             /**< [In] Pointer to this layer's parameter structure. */
     uint16_t wKeyNo,               /**< [In] KeyEntry number to be Formatted (0x00 to F0). */
     uint16_t wNewKeyType            /**< [In] New Key type of the KeyEntry (predefined type of KeyType).*/
@@ -92,9 +93,9 @@ phStatus_t phKeyStore_FormatKeyEntry(
 
 #ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
     case PH_KEYSTORE_SAMAV3_ID:
-        status = phKeyStore_SamAV3_FormatKeyEntry((phKeyStore_SamAV3_DataParams_t *)pDataParams,wKeyNo,
-        	  wNewKeyType);
-        break;
+      status = phKeyStore_SamAV3_FormatKeyEntry((phKeyStore_SamAV3_DataParams_t *)pDataParams, wKeyNo,
+              wNewKeyType);
+      break;
 #endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
 
     default:
@@ -108,7 +109,8 @@ phStatus_t phKeyStore_FormatKeyEntry(
   return status;
 }
 
-phStatus_t phKeyStore_SetKey(
+phStatus_t
+phKeyStore_SetKey(
     void *pDataParams,
     uint16_t wKeyNo,
     uint16_t wKeyVersion,
@@ -167,9 +169,9 @@ phStatus_t phKeyStore_SetKey(
 
 #ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
     case PH_KEYSTORE_SAMAV3_ID:
-		status = phKeyStore_SamAV3_SetKey((phKeyStore_SamAV3_DataParams_t *)pDataParams, wKeyNo,
-			  wKeyVersion, wKeyType, pNewKey, wNewKeyVersion);
-        break;
+      status = phKeyStore_SamAV3_SetKey((phKeyStore_SamAV3_DataParams_t *)pDataParams, wKeyNo,
+              wKeyVersion, wKeyType, pNewKey, wNewKeyVersion);
+      break;
 #endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
 
     default:
@@ -183,7 +185,8 @@ phStatus_t phKeyStore_SetKey(
   return status;
 
 }
-phStatus_t phKeyStore_SetKeyAtPos(
+phStatus_t
+phKeyStore_SetKeyAtPos(
     void *pDataParams,
     uint16_t wKeyNo,
     uint16_t wPos,
@@ -242,9 +245,10 @@ phStatus_t phKeyStore_SetKeyAtPos(
 
 #ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
     case PH_KEYSTORE_SAMAV3_ID:
-        status = phKeyStore_SamAV3_SetKeyAtPos((phKeyStore_SamAV3_DataParams_t *)pDataParams, wKeyNo, wPos,
-        	  wKeyType, pNewKey, wNewKeyVersion);
-        break;
+      status = phKeyStore_SamAV3_SetKeyAtPos((phKeyStore_SamAV3_DataParams_t *)pDataParams, wKeyNo,
+              wPos,
+              wKeyType, pNewKey, wNewKeyVersion);
+      break;
 #endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
 
     default:
@@ -258,7 +262,8 @@ phStatus_t phKeyStore_SetKeyAtPos(
   return status;
 }
 
-phStatus_t phKeyStore_SetKUC(
+phStatus_t
+phKeyStore_SetKUC(
     void *pDataParams,
     uint16_t wKeyNo,
     uint16_t wRefNoKUC
@@ -304,8 +309,9 @@ phStatus_t phKeyStore_SetKUC(
 
 #ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
     case PH_KEYSTORE_SAMAV3_ID:
-		status = phKeyStore_SamAV3_SetKUC((phKeyStore_SamAV3_DataParams_t *)pDataParams, wKeyNo, wRefNoKUC);
-        break;
+      status = phKeyStore_SamAV3_SetKUC((phKeyStore_SamAV3_DataParams_t *)pDataParams, wKeyNo,
+              wRefNoKUC);
+      break;
 #endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
 
     default:
@@ -320,7 +326,8 @@ phStatus_t phKeyStore_SetKUC(
 
 }
 
-phStatus_t phKeyStore_SetFullKeyEntry(
+phStatus_t
+phKeyStore_SetFullKeyEntry(
     void *pDataParams,
     uint16_t wNoOfKeys,
     uint16_t wKeyNo,
@@ -393,7 +400,8 @@ phStatus_t phKeyStore_SetFullKeyEntry(
   return status;
 }
 
-phStatus_t phKeyStore_GetKeyEntry(
+phStatus_t
+phKeyStore_GetKeyEntry(
     void *pDataParams,
     uint16_t wKeyNo,
     uint16_t wKeyVersionBufSize,
@@ -449,9 +457,9 @@ phStatus_t phKeyStore_GetKeyEntry(
 
 #ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
     case PH_KEYSTORE_SAMAV3_ID:
-		status = phKeyStore_SamAV3_GetKeyEntry((phKeyStore_SamAV3_DataParams_t *)pDataParams, wKeyNo,
-				wKeyVersion, wKeyVersionLength, pKeyType);
-        break;
+      status = phKeyStore_SamAV3_GetKeyEntry((phKeyStore_SamAV3_DataParams_t *)pDataParams, wKeyNo,
+              wKeyVersion, wKeyVersionLength, pKeyType);
+      break;
 #endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
 
     default:
@@ -472,7 +480,8 @@ phStatus_t phKeyStore_GetKeyEntry(
   return status;
 }
 
-phStatus_t phKeyStore_GetKey(
+phStatus_t
+phKeyStore_GetKey(
     void *pDataParams,
     uint16_t wKeyNo,
     uint16_t wKeyVersion,
@@ -529,9 +538,9 @@ phStatus_t phKeyStore_GetKey(
 
 #ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
     case PH_KEYSTORE_SAMAV3_ID:
-        status = phKeyStore_SamAV3_GetKey((phKeyStore_SamAV3_DataParams_t *)pDataParams, wKeyNo,
-        		wKeyVersion, bKeyBufSize, pKey, pKeyType);
-        break;
+      status = phKeyStore_SamAV3_GetKey((phKeyStore_SamAV3_DataParams_t *)pDataParams, wKeyNo,
+              wKeyVersion, bKeyBufSize, pKey, pKeyType);
+      break;
 #endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
 
     default:
@@ -552,7 +561,8 @@ phStatus_t phKeyStore_GetKey(
   return status;
 }
 
-phStatus_t phKeyStore_SetConfig(
+phStatus_t
+phKeyStore_SetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -599,9 +609,9 @@ phStatus_t phKeyStore_SetConfig(
 
 #ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
     case PH_KEYSTORE_SAMAV3_ID:
-        status = phKeyStore_SamAV3_SetConfig((phKeyStore_SamAV3_DataParams_t *)pDataParams, wConfig,
-        	  wValue);
-        break;
+      status = phKeyStore_SamAV3_SetConfig((phKeyStore_SamAV3_DataParams_t *)pDataParams, wConfig,
+              wValue);
+      break;
 #endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
 
     default:
@@ -615,7 +625,8 @@ phStatus_t phKeyStore_SetConfig(
   return status;
 }
 
-phStatus_t phKeyStore_SetConfigStr(
+phStatus_t
+phKeyStore_SetConfigStr(
     void *pDataParams,
     uint16_t wConfig,
     uint8_t *pBuffer,
@@ -667,9 +678,9 @@ phStatus_t phKeyStore_SetConfigStr(
 
 #ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
     case PH_KEYSTORE_SAMAV3_ID:
-		status = phKeyStore_SamAV3_SetConfigStr((phKeyStore_SamAV3_DataParams_t *)pDataParams, wConfig,
-			  pBuffer, wBufferLength);
-        break;
+      status = phKeyStore_SamAV3_SetConfigStr((phKeyStore_SamAV3_DataParams_t *)pDataParams, wConfig,
+              pBuffer, wBufferLength);
+      break;
 #endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
 
     default:
@@ -683,7 +694,8 @@ phStatus_t phKeyStore_SetConfigStr(
   return status;
 }
 
-phStatus_t phKeyStore_GetConfig(
+phStatus_t
+phKeyStore_GetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -730,9 +742,9 @@ phStatus_t phKeyStore_GetConfig(
 
 #ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
     case PH_KEYSTORE_SAMAV3_ID:
-        status = phKeyStore_SamAV3_GetConfig((phKeyStore_SamAV3_DataParams_t *)pDataParams, wConfig,
-        	  pValue);
-        break;
+      status = phKeyStore_SamAV3_GetConfig((phKeyStore_SamAV3_DataParams_t *)pDataParams, wConfig,
+              pValue);
+      break;
 #endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
 
     default:
@@ -751,7 +763,8 @@ phStatus_t phKeyStore_GetConfig(
   return status;
 }
 
-phStatus_t phKeyStore_GetConfigStr(
+phStatus_t
+phKeyStore_GetConfigStr(
     void *pDataParams,
     uint16_t wConfig,
     uint8_t **ppBuffer,
@@ -802,9 +815,9 @@ phStatus_t phKeyStore_GetConfigStr(
 
 #ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
     case PH_KEYSTORE_SAMAV3_ID:
-		status = phKeyStore_SamAV3_GetConfigStr((phKeyStore_SamAV3_DataParams_t *)pDataParams, wConfig,
-			  ppBuffer, pBufferLength);
-        break;
+      status = phKeyStore_SamAV3_GetConfigStr((phKeyStore_SamAV3_DataParams_t *)pDataParams, wConfig,
+              ppBuffer, pBufferLength);
+      break;
 #endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
 
     default:
@@ -824,7 +837,8 @@ phStatus_t phKeyStore_GetConfigStr(
   return status;
 }
 
-phStatus_t phKeyStore_ChangeKUC(
+phStatus_t
+phKeyStore_ChangeKUC(
     void *pDataParams,
     uint16_t wRefNoKUC,
     uint32_t dwLimit
@@ -871,9 +885,9 @@ phStatus_t phKeyStore_ChangeKUC(
 
 #ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
     case PH_KEYSTORE_SAMAV3_ID:
-		status = phKeyStore_SamAV3_ChangeKUC((phKeyStore_SamAV3_DataParams_t *)pDataParams, wRefNoKUC,
-			  dwLimit);
-        break;
+      status = phKeyStore_SamAV3_ChangeKUC((phKeyStore_SamAV3_DataParams_t *)pDataParams, wRefNoKUC,
+              dwLimit);
+      break;
 #endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
 
     default:
@@ -887,7 +901,8 @@ phStatus_t phKeyStore_ChangeKUC(
   return status;
 }
 
-phStatus_t phKeyStore_GetKUC(
+phStatus_t
+phKeyStore_GetKUC(
     void *pDataParams,
     uint16_t wRefNoKUC,
     uint32_t *pdwLimit,
@@ -938,9 +953,9 @@ phStatus_t phKeyStore_GetKUC(
 
 #ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
     case PH_KEYSTORE_SAMAV3_ID:
-		status = phKeyStore_SamAV3_GetKUC((phKeyStore_SamAV3_DataParams_t *)pDataParams, wRefNoKUC,
-			  pdwLimit, pdwCurVal);
-        break;
+      status = phKeyStore_SamAV3_GetKUC((phKeyStore_SamAV3_DataParams_t *)pDataParams, wRefNoKUC,
+              pdwLimit, pdwCurVal);
+      break;
 #endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
 
     default:
@@ -962,7 +977,8 @@ phStatus_t phKeyStore_GetKUC(
 
 #endif /* NXPRDLIB_REM_GEN_INTFS  */
 
-uint16_t phKeyStore_GetKeySize(uint16_t wKeyType)
+uint16_t
+phKeyStore_GetKeySize(uint16_t wKeyType)
 {
   switch (wKeyType) {
     case PH_KEYSTORE_KEY_TYPE_MIFARE:

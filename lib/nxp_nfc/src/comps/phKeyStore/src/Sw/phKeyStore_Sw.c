@@ -32,7 +32,8 @@
 #include "phKeyStore_Sw_Int.h"
 #include "../phKeyStore_Int.h"
 
-phStatus_t phKeyStore_Sw_Init(
+phStatus_t
+phKeyStore_Sw_Init(
     phKeyStore_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     phKeyStore_Sw_KeyEntry_t *pKeyEntries,
@@ -83,7 +84,8 @@ phStatus_t phKeyStore_Sw_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phKeyStore_Sw_FormatKeyEntry(
+phStatus_t
+phKeyStore_Sw_FormatKeyEntry(
     phKeyStore_Sw_DataParams_t
     *pDataParams,                 /**< [In] Pointer to this layer's parameter structure. */
     uint16_t wKeyNo,                /**< [In] KeyEntry number to be Formatted (0x00 to F0). */
@@ -128,7 +130,8 @@ phStatus_t phKeyStore_Sw_FormatKeyEntry(
 
 }
 
-phStatus_t phKeyStore_Sw_SetKey(
+phStatus_t
+phKeyStore_Sw_SetKey(
     phKeyStore_Sw_DataParams_t *pDataParams,
     uint16_t wKeyNo,
     uint16_t wKeyVersion,
@@ -154,7 +157,8 @@ phStatus_t phKeyStore_Sw_SetKey(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phKeyStore_Sw_SetKeyAtPos(
+phStatus_t
+phKeyStore_Sw_SetKeyAtPos(
     phKeyStore_Sw_DataParams_t *pDataParams,
     uint16_t wKeyNo,
     uint16_t wPos,
@@ -181,7 +185,8 @@ phStatus_t phKeyStore_Sw_SetKeyAtPos(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phKeyStore_Sw_SetKUC(
+phStatus_t
+phKeyStore_Sw_SetKUC(
     phKeyStore_Sw_DataParams_t *pDataParams,
     uint16_t wKeyNo,
     uint16_t wRefNoKUC
@@ -201,7 +206,8 @@ phStatus_t phKeyStore_Sw_SetKUC(
 
 }
 
-phStatus_t phKeyStore_Sw_SetFullKeyEntry(
+phStatus_t
+phKeyStore_Sw_SetFullKeyEntry(
     phKeyStore_Sw_DataParams_t *pDataParams,
     uint16_t wNoOfKeys,
     uint16_t wKeyNo,
@@ -260,7 +266,8 @@ phStatus_t phKeyStore_Sw_SetFullKeyEntry(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phKeyStore_Sw_GetKeyEntry(
+phStatus_t
+phKeyStore_Sw_GetKeyEntry(
     phKeyStore_Sw_DataParams_t *pDataParams,
     uint16_t wKeyNo,
     uint16_t wKeyVersionBufSize,
@@ -289,7 +296,8 @@ phStatus_t phKeyStore_Sw_GetKeyEntry(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phKeyStore_Sw_GetKey(
+phStatus_t
+phKeyStore_Sw_GetKey(
     phKeyStore_Sw_DataParams_t *pDataParams,
     uint16_t wKeyNo,
     uint16_t wKeyVersion,
@@ -320,7 +328,8 @@ phStatus_t phKeyStore_Sw_GetKey(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phKeyStore_Sw_SetConfig(
+phStatus_t
+phKeyStore_Sw_SetConfig(
     phKeyStore_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -332,7 +341,8 @@ phStatus_t phKeyStore_Sw_SetConfig(
   return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_PARAMETER, PH_COMP_KEYSTORE);
 }
 
-phStatus_t phKeyStore_Sw_SetConfigStr(
+phStatus_t
+phKeyStore_Sw_SetConfigStr(
     phKeyStore_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint8_t *pBuffer,
@@ -346,7 +356,8 @@ phStatus_t phKeyStore_Sw_SetConfigStr(
   return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_PARAMETER, PH_COMP_KEYSTORE);
 }
 
-phStatus_t phKeyStore_Sw_GetConfig(
+phStatus_t
+phKeyStore_Sw_GetConfig(
     phKeyStore_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -358,7 +369,8 @@ phStatus_t phKeyStore_Sw_GetConfig(
   return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_PARAMETER, PH_COMP_KEYSTORE);
 }
 
-phStatus_t phKeyStore_Sw_GetConfigStr(
+phStatus_t
+phKeyStore_Sw_GetConfigStr(
     phKeyStore_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint8_t **ppBuffer,
@@ -372,7 +384,8 @@ phStatus_t phKeyStore_Sw_GetConfigStr(
   return PH_ADD_COMPCODE_FIXED(PH_ERR_UNSUPPORTED_PARAMETER, PH_COMP_KEYSTORE);
 }
 
-phStatus_t phKeyStore_Sw_GetKeyValuePtrPos(
+phStatus_t
+phKeyStore_Sw_GetKeyValuePtrPos(
     phKeyStore_Sw_DataParams_t *pDataParams,
     uint16_t wKeyNumber,
     uint16_t wPos,
@@ -395,7 +408,8 @@ phStatus_t phKeyStore_Sw_GetKeyValuePtrPos(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phKeyStore_Sw_GetKeyValuePtrVersion(
+phStatus_t
+phKeyStore_Sw_GetKeyValuePtrVersion(
     phKeyStore_Sw_DataParams_t *pDataParams,
     uint16_t wKeyNumber,
     uint16_t wKeyVersion,
@@ -422,7 +436,8 @@ phStatus_t phKeyStore_Sw_GetKeyValuePtrVersion(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phKeyStore_Sw_CheckUpdateKUC(
+phStatus_t
+phKeyStore_Sw_CheckUpdateKUC(
     phKeyStore_Sw_DataParams_t *pDataParams,
     uint16_t wKeyUsageCtrNumber
 )
@@ -443,7 +458,8 @@ phStatus_t phKeyStore_Sw_CheckUpdateKUC(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phKeyStore_Sw_ChangeKUC(
+phStatus_t
+phKeyStore_Sw_ChangeKUC(
     phKeyStore_Sw_DataParams_t *pDataParams,
     uint16_t wRefNoKUC,
     uint32_t dwLimit
@@ -458,7 +474,8 @@ phStatus_t phKeyStore_Sw_ChangeKUC(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phKeyStore_Sw_GetKUC(
+phStatus_t
+phKeyStore_Sw_GetKUC(
     phKeyStore_Sw_DataParams_t *pDataParams,
     uint16_t wRefNoKUC,
     uint32_t *pdwLimit,

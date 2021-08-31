@@ -33,7 +33,8 @@
 #include "phlnLlcp_Sw_Int.h"
 #include "phlnLlcp_Sw_Mac.h"
 
-phStatus_t phlnLlcp_Sw_Transport_Socket_Connect(
+phStatus_t
+phlnLlcp_Sw_Transport_Socket_Connect(
     phlnLlcp_Sw_DataParams_t  *pDataParams,
     phlnLlcp_Transport_Socket_t *pClientSocket,
     uint8_t bDsap
@@ -51,7 +52,8 @@ phStatus_t phlnLlcp_Sw_Transport_Socket_Connect(
           PHLN_LLCP_SOCKET_CONN_PEND);
 }
 
-phStatus_t phlnLlcp_Sw_Transport_Socket_ConnectViaUri(
+phStatus_t
+phlnLlcp_Sw_Transport_Socket_ConnectViaUri(
     phlnLlcp_Sw_DataParams_t  *pDataParams,
     phlnLlcp_Transport_Socket_t *pClientSocket,
     uint8_t *pUri
@@ -73,7 +75,8 @@ phStatus_t phlnLlcp_Sw_Transport_Socket_ConnectViaUri(
           PHLN_LLCP_SOCKET_CONN_PEND);
 }
 
-phStatus_t phlnLlcp_Sw_Transport_Socket_WaitForConnection(
+phStatus_t
+phlnLlcp_Sw_Transport_Socket_WaitForConnection(
     void *pDataParams,
     phlnLlcp_Transport_Socket_t *pServerSocket,
     phlnLlcp_Transport_Socket_t *pConnServerSocket
@@ -112,7 +115,8 @@ phStatus_t phlnLlcp_Sw_Transport_Socket_WaitForConnection(
   return PH_ADD_COMPCODE(pServerSocket->wStatus, PH_COMP_LN_LLCP);
 }
 
-phStatus_t phlnLlcp_Sw_Transport_Socket_Send(
+phStatus_t
+phlnLlcp_Sw_Transport_Socket_Send(
     phlnLlcp_Sw_DataParams_t *pDataParams,
     phlnLlcp_Transport_Socket_t *pClientSocket,
     uint8_t *pTxBuffer,
@@ -129,7 +133,8 @@ phStatus_t phlnLlcp_Sw_Transport_Socket_Send(
           PHLN_LLCP_SOCKET_INFO_SEND_EX);
 }
 
-phStatus_t phlnLlcp_Sw_Transport_Socket_DiscoverServices(
+phStatus_t
+phlnLlcp_Sw_Transport_Socket_DiscoverServices(
     phlnLlcp_Sw_DataParams_t *pDataParams,
     phlnLlcp_Transport_Socket_t *pSocket,
     uint8_t  bListSize,
@@ -192,7 +197,8 @@ phStatus_t phlnLlcp_Sw_Transport_Socket_DiscoverServices(
   return (pSocket->wStatus | PH_COMP_LN_LLCP);
 }
 
-phStatus_t phlnLlcp_Sw_Transport_Socket_Disconnect(
+phStatus_t
+phlnLlcp_Sw_Transport_Socket_Disconnect(
     phlnLlcp_Sw_DataParams_t *pDataParams,
     phlnLlcp_Transport_Socket_t *pClientSocket
 )
@@ -215,7 +221,8 @@ phStatus_t phlnLlcp_Sw_Transport_Socket_Disconnect(
   return wStatus;
 }
 
-phStatus_t phlnLlcp_Sw_Int_Pdu_SnlEx(phlnLlcp_Transport_Socket_t *psSocket,
+phStatus_t
+phlnLlcp_Sw_Int_Pdu_SnlEx(phlnLlcp_Transport_Socket_t *psSocket,
     uint8_t *pbTxData,
     uint16_t wLength,
     uint16_t wNoURI)
@@ -266,7 +273,8 @@ phStatus_t phlnLlcp_Sw_Int_Pdu_SnlEx(phlnLlcp_Transport_Socket_t *psSocket,
   return PH_ADD_COMPCODE(wStatus, PH_COMP_LN_LLCP);
 }
 
-phStatus_t phlnLlcp_Sw_Int_Pdu_InfoEx(phlnLlcp_Transport_Socket_t *psSocket,
+phStatus_t
+phlnLlcp_Sw_Int_Pdu_InfoEx(phlnLlcp_Transport_Socket_t *psSocket,
     uint8_t *pbTxData,
     uint16_t wLength,
     uint16_t wFrameOpt,
