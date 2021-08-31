@@ -64,6 +64,11 @@ typedef struct {
   phhalHw_PN7462AU_DataParams_t      sHal;               /**< HAL component holder */
 #endif /* NXPBUILD__PHHAL_HW_PN7462AU */
 
+#ifdef NXPBUILD__PHHAL_HW_SAMAV3
+  phhalHw_SamAV3_DataParams_t        sHalSam;            /**< HAL SAM component holder */
+  phbalReg_T1SamAV3_DataParams_t     sBalSam;            /**< Holds BAL SAM context */
+#endif /* NXPBUILD__PHHAL_HW_SAMAV3 */
+
 #ifdef NXPBUILD__PH_KEYSTORE_SW
   phKeyStore_Sw_DataParams_t         sKeyStore;          /**< SW Keystore component holder */
 #endif /* NXPBUILD__PH_KEYSTORE_SW */
@@ -71,6 +76,10 @@ typedef struct {
 #ifdef NXPBUILD__PH_KEYSTORE_RC663
   phKeyStore_Rc663_DataParams_t      sKeyStore;          /**< Rc663 HW Keystore component holder */
 #endif /* NXPBUILD__PH_KEYSTORE_RC663 */
+
+#ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
+  phKeyStore_SamAV3_DataParams_t      sKeyStore;          /**< SamAV3 HW Keystore component holder */
+#endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
 
   pphNfcLib_ErrCallbck
   pNfcLib_ErrCallbck; /**< Call back in case of error in activation(applicable for activation profile #PH_NFCLIB_ACTIVATION_PROFILE_EMVCO) */
@@ -188,6 +197,11 @@ typedef struct {
   /* Crypto Data Parameter Structures */
 #ifdef NXPBUILD__PH_CRYPTOSYM_SW
   phCryptoSym_Sw_DataParams_t       sCryptoSym;          /* Crypto Sym component */
+  phCryptoSym_Sw_DataParams_t     sCryptoEnc;
+  phCryptoSym_Sw_DataParams_t     sCryptoMAC;
+  phCryptoSym_Sw_DataParams_t     sCryptoSymRnd;
+  phCryptoSym_Sw_DataParams_t     sPLUpload_CryptoEnc;
+  phCryptoSym_Sw_DataParams_t     sPLUpload_CryptoMAC;
 #endif /* NXPBUILD__PH_CRYPTOSYM_SW */
 
 #ifdef NXPBUILD__PH_CRYPTORNG_SW
@@ -229,6 +243,11 @@ typedef struct {
 #ifdef NXPBUILD__PHNFCLIB_PROFILES
   phNfcLib_PeerInfo_t *pPeerInfo;
 #endif /* NXPBUILD__PHNFCLIB_PROFILES */
+#ifdef NXPBUILD__PHHAL_HW_SAMAV3
+  uint8_t  bHalBufferTxSam[PH_NXPNFCRDLIB_CONFIG_HAL_TX_BUFFSIZE_SAM];
+  uint8_t  bHalBufferRxSam[PH_NXPNFCRDLIB_CONFIG_HAL_RX_BUFFSIZE_SAM];
+  uint8_t  bPLUploadBufSam[PH_NXPNFCRDLIB_CONFIG_HAL_PLUPLOAD_BUFFSIZE_SAM];
+#endif /* NXPBUILD__PHHAL_HW_SAMAV3 */
   uint8_t  *pRxBuffer;                                           /* Pointer to the RX */
   uint16_t wRxLength;                                            /* Stores the length of the received Data */
   uint16_t  wRxDataPoin;                                         /* Points to the starting address of the rx buffer to perform Chaining */

@@ -34,6 +34,9 @@
 #if !defined(PH_NXPNFCRDLIB_CONFIG_HAL_TX_BUFFSIZE) && (defined(NXPBUILD__PHHAL_HW_RC663) || defined(NXPBUILD__PHHAL_HW_PN5190))
 #define PH_NXPNFCRDLIB_CONFIG_HAL_TX_BUFFSIZE                    1030U
 #endif
+#if !defined(PH_NXPNFCRDLIB_CONFIG_HAL_TX_BUFFSIZE_SAM) && defined(NXPBUILD__PHHAL_HW_SAMAV3)
+#define PH_NXPNFCRDLIB_CONFIG_HAL_TX_BUFFSIZE_SAM                512U
+#endif
 
 /**< Maximum HAL Rx buffer size by allocated by Simplified API Layer. */
 #if !defined(PH_NXPNFCRDLIB_CONFIG_HAL_RX_BUFFSIZE) && !defined(NXPBUILD__PHHAL_HW_RC663) && !defined(NXPBUILD__PHHAL_HW_PN5190)
@@ -41,6 +44,14 @@
 #endif
 #if !defined(PH_NXPNFCRDLIB_CONFIG_HAL_RX_BUFFSIZE) && (defined(NXPBUILD__PHHAL_HW_RC663) || defined(NXPBUILD__PHHAL_HW_PN5190))
 #define PH_NXPNFCRDLIB_CONFIG_HAL_RX_BUFFSIZE                    2060U
+#endif
+#if !defined(PH_NXPNFCRDLIB_CONFIG_HAL_RX_BUFFSIZE_SAM) && defined(NXPBUILD__PHHAL_HW_SAMAV3)
+#define PH_NXPNFCRDLIB_CONFIG_HAL_RX_BUFFSIZE_SAM                512U
+#endif
+
+/**< Maximum HAL PL Upload buffer size by allocated by Simplified API Layer. */
+#if !defined(PH_NXPNFCRDLIB_CONFIG_HAL_PLUPLOAD_BUFFSIZE_SAM) && defined(NXPBUILD__PHHAL_HW_SAMAV3)
+#define PH_NXPNFCRDLIB_CONFIG_HAL_PLUPLOAD_BUFFSIZE_SAM          4096U
 #endif
 
 #define PH_NXPNFCRDLIB_CONFIG_ATS_BUFF_LENGTH                    64U       /**< Maximum ATS response buffer length. */

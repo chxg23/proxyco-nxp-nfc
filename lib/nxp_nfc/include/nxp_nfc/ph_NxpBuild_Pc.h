@@ -48,6 +48,7 @@
 #define NXPBUILD__PHBAL_REG_PCSCWIN               /**< PcscWin BAL definition */
 #define NXPBUILD__PHBAL_REG_RD70XUSBWIN           /**< Rd70X_UsbWin BAL definition */
 #define NXPBUILD__PHBAL_REG_SOCKETWIN
+#define NXPBUILD__PHBAL_REG_T1SAMAV3
 /* Commenting as this BAL would be available only for LPC platform */
 /*#define NXPBUILD__PHBAL_REG_LPCOPEN_SPI*/       /**< Lpc17xx BAL definition */
 /*#define NXPBUILD__PHBAL_REG_LPCOPEN_I2C*/
@@ -58,6 +59,7 @@
 //#define NXPBUILD__PHHAL_HW_RD70X                /**< Rd70X HAL definition */
 //#define NXPBUILD__PHHAL_HW_RC632                /**< Rc632 HAL definition */
 //#define NXPBUILD__PHHAL_HW_PN5180               /**< PN5180 HAL definition */
+#define NXPBUILD__PHHAL_HW_SAMAV3				  /**< SAMAV3 HAL definition */
 #define NXPBUILD__PHHAL_HW_CALLBACK               /**< Callback HAL definition */
 //#define NXPBUILD__PHHAL_HW_RC663                /**< Rc663 HAL definition */
 //#define NXPBUILD__PHHAL_HW_RD710                /**< Rd710 HAL definition */
@@ -181,7 +183,7 @@
 #define NXPBUILD__PHAL_MFDF_SW                  /**< Software MIFARE DESFire contactless IC */
 #define NXPBUILD__PHAL_MFDFEVX_SW               /**< Software MIFARE DESFire EVx contactless IC */
 #define NXPBUILD__PHAL_MFDFEVX_NDA              /**< MIFARE DESFire EVx build macro for IP Protection */
-//#define NXPBUILD__PHAL_MFDFEVX_SAM_NONX       /**< Sam NonX MIFARE DESFire EVx */
+#define NXPBUILD__PHAL_MFDFEVX_SAM_NONX         /**< Sam NonX MIFARE DESFire EVx */
 //#define NXPBUILD__PHAL_MFDFEVX_SAM_X          /**< Sam X-Mode MIFARE DESFire EVx */
 
 /* AL MIFARE MATCH components */
@@ -284,7 +286,7 @@
 //#define NXPBUILD__PH_KEYSTORE_RC632            /**< RC632 KeyStore */
 //#define NXPBUILD__PH_KEYSTORE_RC663            /**< RC663 KeyStore */
 //#define NXPBUILD__PH_KEYSTORE_RD710            /**< Rd710 KeyStore */
-
+//#define NXPBUILD__PH_KEYSTORE_SAMAV3           /**< SAMAV3 KeyStore */
 /* LN components */
 
 /* #define NXPBUILD__PHLN_LLCP_FRI     */           /**< Software Link layer */

@@ -89,6 +89,7 @@ static phCryptoSym_Sw_DataParams_t sCryptoEnc;
 static phCryptoSym_Sw_DataParams_t sCryptoMac;
 static phCryptoSym_Sw_DataParams_t sCryptoSymRng;
 static phCryptoRng_Sw_DataParams_t sCryptoRng;
+
 static phTMIUtils_t                sTMI;
 static phalVca_Sw_DataParams_t     sVca;
 
@@ -391,6 +392,16 @@ static phStatus_t phNfcLib_AL_Init(void)
             &gphNfcLib_Params.sKeyStore));
 
     PH_CHECK_NFCLIB_INIT_FCT(wStatus, phCryptoSym_Sw_Init(
+            &sPLUpload_CryptoEnc,
+            sizeof(phCryptoSym_Sw_DataParams_t),
+            &gphNfcLib_Params.sKeyStore));
+
+    PH_CHECK_NFCLIB_INIT_FCT(wStatus, phCryptoSym_Sw_Init(
+            &sPLUpload_CryptoMAC,
+            sizeof(phCryptoSym_Sw_DataParams_t),
+            &gphNfcLib_Params.sKeyStore));
+
+    PH_CHECK_NFCLIB_INIT_FCT(wStatus, phCryptoSym_Sw_Init(
             &sCryptoSymRng,
             sizeof(phCryptoSym_Sw_DataParams_t),
             &gphNfcLib_Params.sKeyStore));
@@ -618,6 +629,28 @@ phNfcLib_Status_t phNfcLib_Init(void)
           ));
 #endif /* NXPBUILD__PHHAL_HW_PN5190 */
 
+#ifdef NXPBUILD__PHHAL_HW_SAMAV3
+      PH_CHECK_SUCCESS_FCT(wStatus, phhalHw_SamAV3_Init(
+              &gphNfcLib_Params.sHalSam,
+              (uint16_t)(sizeof(phhalHw_SamAV3_DataParams_t)),
+              &gphNfcLib_Params.sBalSam,
+              &gphNfcLib_Params.sHal,
+              PH_NFCLIB_KEYSTORE_DATAPARAMS,
+              NULL,
+              NULL,
+              NULL,
+              NULL,
+              NULL,
+              PHHAL_HW_SAMAV3_OPMODE_NON_X,
+              0x00,
+              gphNfcLib_State.bHalBufferTxSam,
+              PH_NXPNFCRDLIB_CONFIG_HAL_TX_BUFFSIZE_SAM,
+              gphNfcLib_State.bHalBufferRxSam,
+              PH_NXPNFCRDLIB_CONFIG_HAL_RX_BUFFSIZE_SAM,
+              gphNfcLib_State.bPLUploadBufSam
+          ));
+#endif /* NXPBUILD__PHHAL_HW_SAMAV3 */
+
 #ifdef NXPBUILD__PHHAL_HW_PN7462AU
       /* Initialize the Pn7462AU HAL component */
       PH_CHECK_SUCCESS_FCT(wStatus, phhalHw_PN7462AU_Init(&gphNfcLib_Params.sHal,
@@ -788,6 +821,20 @@ void *phNfcLib_GetDataParams(
         pDataparam = (void *) &gphNfcLib_Params.sHal;
         break;
 #endif /* NXPBUILD__PHHAL_HW */
+
+
+#ifdef NXPBUILD__PHHAL_HW_SAMAV3
+      case (PH_COMP_HAL | PHHAL_HW_SAMAV3_ID):
+        pDataparam = (void *) &gphNfcLib_Params.sHalSam;
+        break;
+#endif /* NXPBUILD__PHHAL_HW_SAMAV3 */
+
+#ifdef NXPBUILD__PHBAL_REG_T1SAMAV3
+      case (PH_COMP_BAL | PHBAL_REG_T1SAMAV3_ID):
+        pDataparam = (void *) &gphNfcLib_Params.sBalSam;
+        break;
+#endif /* NXPBUILD__PHBAL_REG_T1SAMAV3 */
+
 
 #ifdef NXPBUILD__PHPAL_I14443P3A_SW
       case PH_COMP_PAL_ISO14443P3A:

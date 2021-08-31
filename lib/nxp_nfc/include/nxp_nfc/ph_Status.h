@@ -306,6 +306,9 @@ Completes Rx chaining with the card if RxBuffer is full.
 /** Mask for custom exchange bits. These 4 bits can be used for custom exchange behavior. */
 #define PH_EXCHANGE_CUSTOM_BITS_MASK    0x00F0U
 
+/** Masking out the exchange bits. */
+#define PH_EXCHANGE_BUFFER_MASK         0xF000U
+
 /**
 Does not clear the internal buffer before operation.
 If this bit is set and data is transmitted,

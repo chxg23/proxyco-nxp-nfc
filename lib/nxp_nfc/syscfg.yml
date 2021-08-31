@@ -53,3 +53,56 @@ syscfg.defs:
         description: >
             - 'Log events for logging hexdump'
         value: 10
+
+    PN5180_LOG_MODULE:
+        description: 'Numeric module ID to use for PN5180 log messages'
+        value: 150
+
+    PN5180_LOG_LVL:
+        description: 'Minimum level for PN5180 logs'
+        value: 1
+
+    SAMAV3_PWM:
+        description: 'PWM definition to be used for SAM AV3 CLK generation'
+        value:
+        restrictions:
+            - '((PWM_0 && (SAMAV3_PWM == "NRF_PWM0")) || (PWM_1 && (SAMAV3_PWM == "NRF_PWM1")) ||
+                (PWM_2 && (SAMAV3_PWM == "NRF_PWM2")) || (PWM_3 && (SAMAV3_PWM == "NRF_PWM3")) )'
+
+    SAMAV3_PWM_DRV:
+        description: 'PWM driver definition to be used for SAM AV3 CLK generation'
+        value:
+        restrictions:
+            - '((PWM_0 && (SAMAV3_PWM_DRV == "NRFX_PWM0_INST_IDX")) || (PWM_1 && (SAMAV3_PWM_DRV == "NRFX_PWM1_INST_IDX")) ||
+                (PWM_2 && (SAMAV3_PWM_DRV == "NRFX_PWM2_INST_IDX")) || (PWM_3 && (SAMAV3_PWM_DRV == "NRFX_PWM3_INST_IDX")) )'
+
+    SAMAV3_PWM_COUNT:
+        description: '16MHz clock cycles to get 1.778MHz clk signal'
+        value: 9
+
+    SAMAV3_PWM_DUTY_CYCLE:
+        description: 'Duty cycle value to get a 55% in the 1.778MHz clk signal'
+        value: 5
+
+    SAMAV3_UART:
+        description: 'Set the UART to be used for the transmission layer of the SAM AV3'
+        value:
+        restrictions:
+            - '((UART_0 && (SAMAV3_UART == "NRF_UARTE0")) || (UART_1 && (SAMAV3_UART == "NRF_UARTE1")) ||
+                (UART_2 && (SAMAV3_UART == "NRF_UARTE2")) || (UART_3 && (SAMAV3_UART == "NRF_UARTE3")) )'
+
+    SAMAV3_UART_DRV:
+        description: 'Set the UART driver instance to be used for the transmission layer of the SAM AV3'
+        value:
+        restrictions:
+            - '((UART_0 && (SAMAV3_UART_DRV == "NRFX_UARTE0_INST_IDX")) || (UART_1 && (SAMAV3_UART_DRV == "NRFX_UARTE1_INST_IDX")) ||
+                (UART_2 && (SAMAV3_UART_DRV == "NRFX_UARTE2_INST_IDX")) || (UART_3 && (SAMAV3_UART_DRV == "NRFX_UARTE3_INST_IDX")) )'
+
+    SAMAV3_UART_BAUDRATE:
+        description: 'Set the UART baud rate to be used for the transmission layer of the SAM AV3'
+        value: "NRF_UARTE_BAUDRATE_4800"
+
+syscfg.logs:
+    PN5180_LOG:
+        module: MYNEWT_VAL(PN5180_LOG_MODULE)
+        level: MYNEWT_VAL(PN5180_LOG_LVL)
