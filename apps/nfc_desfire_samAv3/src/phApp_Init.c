@@ -1,5 +1,3 @@
-
-
 /* Status header */
 #include <nxp_nfc/ph_Status.h>
 
@@ -87,7 +85,8 @@ extern uint8_t  poll_res[18]   ;
 /**
 * This function will initialize Reader LIbrary Component
 */
-phStatus_t phApp_Comp_Init(void *pDiscLoopParams)
+phStatus_t
+phApp_Comp_Init(void *pDiscLoopParams)
 {
   phStatus_t wStatus = PH_ERR_SUCCESS;
 #if defined(NXPBUILD__PHPAL_I18092MPI_SW) || defined(NXPBUILD__PHPAL_I18092MT_SW) || \
@@ -144,7 +143,8 @@ phStatus_t phApp_Comp_Init(void *pDiscLoopParams)
 /**
 * This function will initialize Hal Target Config
 */
-phStatus_t phApp_HALConfigAutoColl(void)
+phStatus_t
+phApp_HALConfigAutoColl(void)
 {
 #ifdef NXPBUILD__PHHAL_HW_TARGET
   phStatus_t wStatus;
@@ -201,7 +201,8 @@ phStatus_t phApp_HALConfigAutoColl(void)
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phApp_Configure_IRQ()
+phStatus_t
+phApp_Configure_IRQ()
 {
 #ifdef PH_PLATFORM_HAS_ICFRONTEND
   int rc = hal_gpio_irq_init(PHDRIVER_PIN_IRQ, (hal_gpio_irq_handler_t)CLIF_IRQHandler, NULL,
@@ -217,7 +218,8 @@ phStatus_t phApp_Configure_IRQ()
 }
 
 #ifdef PH_PLATFORM_HAS_ICFRONTEND
-void CLIF_IRQHandler(void)
+void
+CLIF_IRQHandler(void)
 {
   hal_gpio_irq_disable(PHDRIVER_PIN_IRQ);
   /* Call application registered callback. */
@@ -230,7 +232,8 @@ void CLIF_IRQHandler(void)
 
 #ifdef NXPBUILD__PHHAL_HW_PN5180
 /* Configure LPCD (for PN5180) */
-phStatus_t phApp_ConfigureLPCD(void)
+phStatus_t
+phApp_ConfigureLPCD(void)
 {
   /**
    * PHHAL_HW_CONFIG_SET_LPCD_WAKEUPTIME_MS  0x0070U     //< Used value for wakeup counter in msecs, i.e. after this amount of time IC will wakes up from standby.
@@ -260,7 +263,8 @@ phStatus_t phApp_ConfigureLPCD(void)
 #endif
 
 /* Print technology being resolved */
-void phApp_PrintTech(uint8_t TechType)
+void
+phApp_PrintTech(uint8_t TechType)
 {
   switch (TechType) {
     case PHAC_DISCLOOP_POS_BIT_MASK_A:
@@ -293,7 +297,8 @@ void phApp_PrintTech(uint8_t TechType)
 * \param   *pBuff   Buffer Reference
 * \param   num      data size to be print
 */
-void phApp_Print_Buff(uint8_t *pBuff, uint8_t num)
+void
+phApp_Print_Buff(uint8_t *pBuff, uint8_t num)
 {
   uint32_t    i;
 
@@ -308,7 +313,8 @@ void phApp_Print_Buff(uint8_t *pBuff, uint8_t num)
 * \param   wNumberOfTags    Total number of tags detected
 * \param   wTagsDetected    Technology Detected
 */
-void phApp_PrintTagInfo(phacDiscLoop_Sw_DataParams_t *pDataParams, uint16_t wNumberOfTags,
+void
+phApp_PrintTagInfo(phacDiscLoop_Sw_DataParams_t *pDataParams, uint16_t wNumberOfTags,
     uint16_t wTagsDetected)
 {
 #if defined(NXPBUILD__PHAC_DISCLOOP_TYPEA_TAGS) || \
@@ -445,7 +451,8 @@ void phApp_PrintTagInfo(phacDiscLoop_Sw_DataParams_t *pDataParams, uint16_t wNum
 * This function will print Error information received from Reader Lib
 * \param   wStatus      Error status
 */
-void PrintErrorInfo(phStatus_t wStatus)
+void
+PrintErrorInfo(phStatus_t wStatus)
 {
   console_printf("\n ErrorInfo Comp:");
 

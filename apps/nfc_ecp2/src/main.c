@@ -228,7 +228,8 @@ init_tasks(void)
 /*******************************************************************************
 **   Main Function
 *******************************************************************************/
-int main(void)
+int
+main(void)
 {
   phStatus_t status = PH_ERR_INTERNAL_ERROR;
   phNfcLib_Status_t     dwStatus;
@@ -298,7 +299,8 @@ int main(void)
 * \param   pDataParams      The discovery loop data parameters
 * \note    This function will never return
 */
-void ECP_Demo(void  *pDataParams)
+void
+ECP_Demo(void  *pDataParams)
 {
   phStatus_t    status, statustmp;
   uint16_t      wEntryPoint;
@@ -349,7 +351,8 @@ void ECP_Demo(void  *pDataParams)
   }
 }
 
-static uint16_t ProcessDiscLoopStatus(uint16_t wEntryPoint, phStatus_t DiscLoopStatus)
+static uint16_t
+ProcessDiscLoopStatus(uint16_t wEntryPoint, phStatus_t DiscLoopStatus)
 {
   phStatus_t    status = PH_ERR_SUCCESS;
   uint16_t      wTechDetected = 0;
@@ -559,7 +562,8 @@ static uint16_t ProcessDiscLoopStatus(uint16_t wEntryPoint, phStatus_t DiscLoopS
 * \param   bProfile      Reader Library Profile
 * \note    Values used below are default and is for demonstration purpose.
 */
-static phStatus_t LoadProfile(phacDiscLoop_Profile_t bProfile)
+static phStatus_t
+LoadProfile(phacDiscLoop_Profile_t bProfile)
 {
   phStatus_t status = PH_ERR_SUCCESS;
   uint16_t   wPasPollConfig = 0;

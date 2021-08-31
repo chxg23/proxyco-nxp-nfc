@@ -1,4 +1,3 @@
-
 #ifndef NFCRDLIBEX_SAMAV3_H
 #define NFCRDLIBEX_SAMAV3_H
 

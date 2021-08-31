@@ -147,7 +147,6 @@ main(void)
 
   struct pn5180 *pn5180 = NULL;
 
-
   /* Initialize packages (see: syscfg.yml). */
   sysinit();
 

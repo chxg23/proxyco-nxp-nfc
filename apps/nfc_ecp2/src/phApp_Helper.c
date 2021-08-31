@@ -40,7 +40,8 @@
 **   Function Definitions
 *******************************************************************************/
 /* Print technology being resolved */
-void phApp_PrintTech(uint8_t TechType)
+void
+phApp_PrintTech(uint8_t TechType)
 {
   switch (TechType) {
     case PHAC_DISCLOOP_POS_BIT_MASK_A:
@@ -77,7 +78,8 @@ void phApp_PrintTech(uint8_t TechType)
 * \param   *pBuff   Buffer Reference
 * \param   num      data size to be print
 */
-void phApp_Print_Buff(uint8_t *pBuff, uint8_t num)
+void
+phApp_Print_Buff(uint8_t *pBuff, uint8_t num)
 {
   uint32_t    i;
 
@@ -92,7 +94,8 @@ void phApp_Print_Buff(uint8_t *pBuff, uint8_t num)
 * \param   wNumberOfTags    Total number of tags detected
 * \param   wTagsDetected    Technology Detected
 */
-void phApp_PrintTagInfo(phacDiscLoop_Sw_DataParams_t *pDataParams, uint16_t wNumberOfTags,
+void
+phApp_PrintTagInfo(phacDiscLoop_Sw_DataParams_t *pDataParams, uint16_t wNumberOfTags,
     uint16_t wTagsDetected)
 {
 #if defined(NXPBUILD__PHAC_DISCLOOP_TYPEA_TAGS) || \
@@ -236,7 +239,8 @@ void phApp_PrintTagInfo(phacDiscLoop_Sw_DataParams_t *pDataParams, uint16_t wNum
 * This function will print Error information received from Reader Lib
 * \param   wStatus      Error status
 */
-void PrintErrorInfo(phStatus_t wStatus)
+void
+PrintErrorInfo(phStatus_t wStatus)
 {
   DEBUG_PRINTF("\n ErrorInfo Comp:");
 
