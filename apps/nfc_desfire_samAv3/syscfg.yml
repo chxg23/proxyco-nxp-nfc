@@ -16,6 +16,7 @@ syscfg.vals:
     CONSOLE_UART: 0
     CONSOLE_RTT: 1
     CONSOLE_ECHO: 0
+    PN5180_LOG_LVL: 14
     OS_CLI: 1
     PN5180_CLI: 1
     SHELL_MGMT: 0

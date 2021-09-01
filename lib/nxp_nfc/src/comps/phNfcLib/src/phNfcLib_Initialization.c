@@ -662,11 +662,11 @@ phNfcLib_Init(void)
               &gphNfcLib_Params.sBalSam,
               &gphNfcLib_Params.sHal,
               PH_NFCLIB_KEYSTORE_DATAPARAMS,
-              NULL,
-              NULL,
-              NULL,
-              NULL,
-              NULL,
+			        &sCryptoEnc,
+			        &sCryptoMac,
+			        &sCryptoRng,
+			        &sPLUpload_CryptoEnc,
+			        &sPLUpload_CryptoMAC,
               PHHAL_HW_SAMAV3_OPMODE_NON_X,
               0x00,
               gphNfcLib_State.bHalBufferTxSam,
@@ -1005,11 +1005,17 @@ phNfcLib_GetDataParams(
         break;
 #endif /* NXPBUILD__PHCE_T4T_SW */
 
-#if defined(NXPBUILD__PH_KEYSTORE_SW) || defined(NXPBUILD__PH_KEYSTORE_RC663) || defined(NXPBUILD__PH_KEYSTORE_SAMAV3)
+#if defined(NXPBUILD__PH_KEYSTORE_SW) || defined(NXPBUILD__PH_KEYSTORE_RC663)
       case PH_COMP_KEYSTORE:
         pDataparam = (void *) &gphNfcLib_Params.sKeyStore;
         break;
 #endif /* NXPBUILD__PH_CRYPTOSYM_SW */
+
+#ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
+      case (PH_COMP_KEYSTORE | PH_KEYSTORE_SAMAV3_ID):
+		pDataparam = (void *) &gphNfcLib_Params.sKeyStoreSam;
+		break;
+#endif
 
 #ifdef NXPBUILD__PH_CRYPTOSYM_SW
       case PH_COMP_CRYPTOSYM:

@@ -149,7 +149,7 @@ void increaseValueOneUnit(uint8_t v[4]);
 void
 Desfire_Detection_Demo(void *pDataParams)
 {
-  console_printf("\n starting demo task: \n");
+  console_printf("Starting demo task: \n");
 
   uint8_t versionBuffer[31];
   uint8_t versionLen = 0;
@@ -158,7 +158,7 @@ Desfire_Detection_Demo(void *pDataParams)
   uint8_t dfAid[3] = {0x00, 0x00, 0x00};
   phStatus_t status;
 
-  console_printf("\n %s: Start creating SAM device\n", __func__);
+  console_printf("%s: Start creating SAM device\n", __func__);
 
   status = phKeyStore_FormatKeyEntry(pKeyStore, SAM_MASTER_KEY_ADDRESS,
           PH_CRYPTOSYM_KEY_TYPE_AES128);
@@ -171,57 +171,57 @@ Desfire_Detection_Demo(void *pDataParams)
 
   for (uint8_t i = 0; i < 2; i++) {
     os_time_delay(50);
-    console_printf("\n starting SAM AV3 GetVersion, loop iteration %d: \n", i + 1);
+    console_printf("Starting SAM AV3 GetVersion, loop iteration %d: \n", i + 1);
     phhalHw_SamAV3_Cmd_SAM_GetVersion(g_sam_itf->hal_params, versionBuffer, &versionLen);
 
-    console_printf("\n SAM AV3 GetVersion response: \n 0x ");
+    console_printf("SAM AV3 GetVersion response len=%d, data: \n 0x ", versionLen);
     for (uint8_t i = 0; i < versionLen; i++) {
       console_printf("%02X ", versionBuffer[i]);
     }
-    console_printf("\n ");
+    console_printf("\n");
 
     if ((versionBuffer[versionLen - 1] == 0x03) && (unlocked == 0)) {
       unlocked = 1;
       os_time_delay(10);
-      console_printf(" Activating SAM AV3 \n");
+      console_printf("Activating SAM AV3 \n");
       status = phhalHw_SamAV3_Cmd_SAM_LockUnlock(g_sam_itf->hal_params,
               PHHAL_HW_SAMAV3_CMD_SAM_LOCK_UNLOCK_TYPE_ACTIVATE_SAM,
               SAM_MASTER_KEY_ADDRESS, SAM_MASTER_KEY_VERSION, SAM_MASTER_KEY, 0, 0, 0, 0);
       CHECK_STATUS(status);
     } else if (versionBuffer[versionLen - 1] == 0xA3) {
-      console_printf(" SAM AV3 is activated \n");
+      console_printf("SAM AV3 is activated \n");
       break;
     }
   }
 
   //Check if the DES keys are stored in the SAM
-  console_printf("\n\n\n SAM AV3 Get DES keys\n");
+  console_printf("SAM AV3 Get DES keys\n");
   status = phhalHw_SamAV3_Cmd_SAM_GetKeyEntry(g_sam_itf->hal_params, SAM_DES_KEY_ENTRY,
           PHHAL_HW_SAMAV3_CMD_SAM_GET_KEY_ENTRY_KEY_ENTRY_NEW,
           aKeyEntry, &bKeyEntryLen);
   CHECK_STATUS(status);
   if (bKeyEntryLen > 0) {
-    console_printf("\n SAM AV3 Get DES keys data received: 0x ");
+    console_printf("SAM AV3 Get DES keys data received: 0x ");
     for (int i = 0; i < bKeyEntryLen; i++) {
       console_printf("%02X ", aKeyEntry[i]);
     }
-    console_printf("\n ");
+    console_printf("\n");
 
     if ((aKeyEntry[0] == SAM_KEY_VER_A) && (aKeyEntry[1] == SAM_KEY_VER_B) &&
         (aKeyEntry[2] == SAM_KEY_VER_C)) {
-      console_printf("Stored DES keys match the requested versions");
+      console_printf("Stored DES keys match the requested versions\n");
     } else if ((aKeyEntry[0] == 0x00) && (aKeyEntry[1] == 0x00) && (aKeyEntry[2] == 0x00)) {
       console_printf("Stored DES keys are default values, versions are not the expected ones\n");
 
       //Authenticate Host before to write new keys
-      console_printf("\n SAM AV3 host authentication\n");
+      console_printf("SAM AV3 host authentication\n");
       status = phhalHw_SamAV3_Cmd_SAM_AuthenticateHost(g_sam_itf->hal_params,
               PHHAL_HW_SAMAV3_CMD_SAM_AUTHENTICATE_HOST_MODE_FULL,
               SAM_MASTER_KEY_ADDRESS, SAM_MASTER_KEY_VERSION, SAM_MASTER_KEY, 0);
       CHECK_STATUS(status);
 
       //charge new keys
-      console_printf("\n SAM AV3 host change DES keys\n");
+      console_printf("SAM AV3 host change DES keys\n");
       bKeyEntryLen = 64;
       memset(aKeyEntry, 0x00, sizeof(aKeyEntry));
       memcpy(aKeyEntry, aPICC_MasterKey_DES_0, 16);
@@ -254,18 +254,18 @@ Desfire_Detection_Demo(void *pDataParams)
       CHECK_STATUS(status);
 
       //Check if the DES keys are stored in the SAM
-      console_printf("\n SAM AV3 Get DES keys\n");
+      console_printf("SAM AV3 Get DES keys\n");
       memset(aKeyEntry, 0x00, sizeof(aKeyEntry));
       status = phhalHw_SamAV3_Cmd_SAM_GetKeyEntry(g_sam_itf->hal_params, SAM_DES_KEY_ENTRY,
               PHHAL_HW_SAMAV3_CMD_SAM_GET_KEY_ENTRY_KEY_ENTRY_NEW,
               aKeyEntry, &bKeyEntryLen);
       CHECK_STATUS(status);
       if (bKeyEntryLen > 0) {
-        console_printf("\n SAM AV3 Get DES keys data received: 0x ");
+        console_printf("SAM AV3 Get DES keys data received: 0x ");
         for (int i = 0; i < bKeyEntryLen; i++) {
           console_printf("%02X ", aKeyEntry[i]);
         }
-        console_printf("\n ");
+        console_printf("\n");
 
         if ((aKeyEntry[0] == 0x00) && (aKeyEntry[1] == 0x00) && (aKeyEntry[2] == 0x00)) {
           console_printf("Stored DES keys are default values, versions are not the expected ones\n");
@@ -280,34 +280,34 @@ Desfire_Detection_Demo(void *pDataParams)
   }
 
   //Check if the AES keys are stored in the SAM
-  console_printf("\n\n\n SAM AV3 Get AES keys\n");
+  console_printf("SAM AV3 Get AES keys\n");
   memset(aKeyEntry, 0x00, sizeof(aKeyEntry));
   status = phhalHw_SamAV3_Cmd_SAM_GetKeyEntry(g_sam_itf->hal_params, SAM_AES_KEY_ENTRY,
           PHHAL_HW_SAMAV3_CMD_SAM_GET_KEY_ENTRY_KEY_ENTRY_NEW,
           aKeyEntry, &bKeyEntryLen);
   CHECK_STATUS(status);
   if (bKeyEntryLen > 0) {
-    console_printf("\n SAM AV3 Get AES keys data received: 0x ");
+    console_printf("SAM AV3 Get AES keys data received: 0x ");
     for (int i = 0; i < bKeyEntryLen; i++) {
       console_printf("%02X ", aKeyEntry[i]);
     }
-    console_printf("\n ");
+    console_printf("\n");
 
     if ((aKeyEntry[0] == SAM_KEY_VER_A) && (aKeyEntry[1] == SAM_KEY_VER_B) &&
         (aKeyEntry[2] == SAM_KEY_VER_C)) {
-      console_printf("Stored AES keys match the requested versions");
+      console_printf("Stored AES keys match the requested versions\n");
     } else if ((aKeyEntry[0] == 0x00) && (aKeyEntry[1] == 0x00) && (aKeyEntry[2] == 0x00)) {
       console_printf("Stored AES keys are default values, versions are not the expected ones\n");
 
       //Authenticate Host before to write new keys
-      console_printf("\n SAM AV3 host authentication\n");
+      console_printf("SAM AV3 host authentication\n");
       status = phhalHw_SamAV3_Cmd_SAM_AuthenticateHost(g_sam_itf->hal_params,
               PHHAL_HW_SAMAV3_CMD_SAM_AUTHENTICATE_HOST_MODE_FULL,
               SAM_MASTER_KEY_ADDRESS, SAM_MASTER_KEY_VERSION, SAM_MASTER_KEY, 0);
       CHECK_STATUS(status);
 
       //charge new keys
-      console_printf("\n SAM AV3 host change AES keys\n");
+      console_printf("SAM AV3 host change AES keys\n");
       bKeyEntryLen = 64;
       memset(aKeyEntry, 0x00, sizeof(aKeyEntry));
       memcpy(aKeyEntry, aPICC_MasterKey_AES_0, 16);
@@ -340,18 +340,18 @@ Desfire_Detection_Demo(void *pDataParams)
       CHECK_STATUS(status);
 
       //Check if the AES keys are stored in the SAM
-      console_printf("\n SAM AV3 Get AES keys\n");
+      console_printf("SAM AV3 Get AES keys\n");
       memset(aKeyEntry, 0x00, sizeof(aKeyEntry));
       status = phhalHw_SamAV3_Cmd_SAM_GetKeyEntry(g_sam_itf->hal_params, SAM_AES_KEY_ENTRY,
               PHHAL_HW_SAMAV3_CMD_SAM_GET_KEY_ENTRY_KEY_ENTRY_NEW,
               aKeyEntry, &bKeyEntryLen);
       CHECK_STATUS(status);
       if (bKeyEntryLen > 0) {
-        console_printf("\n SAM AV3 Get AES keys data received: 0x ");
+        console_printf("SAM AV3 Get AES keys data received: 0x ");
         for (int i = 0; i < bKeyEntryLen; i++) {
           console_printf("%02X ", aKeyEntry[i]);
         }
-        console_printf("\n ");
+        console_printf("\n");
 
         if ((aKeyEntry[0] == 0x00) && (aKeyEntry[1] == 0x00) && (aKeyEntry[2] == 0x00)) {
           console_printf("Stored AES keys are default values, versions are not the expected ones\n");
@@ -391,11 +391,11 @@ Test_PlainText(void)
   CHECK_STATUS(status);
 
   if (pNumAid > 0) {
-    console_printf(" Get application IDs stored in the detected card: \n 0x ");
+    console_printf("Get application IDs stored in the detected card: \n 0x ");
     for (int i = 0; i < (pNumAid * 3); i++) {
       console_printf("%02X ", pAidBuff[i]);
     }
-    console_printf("\n ");
+    console_printf("\n");
 
     //select 0x123456 application
     status = phalMfdfEVx_SelectApplication(palMfdfEV, PHAL_MFDFEVX_SELECT_PRIMARY_APP, appID, 0x00);
@@ -408,11 +408,11 @@ Test_PlainText(void)
     CHECK_STATUS(status);
 
     if (Rxlen > 0) {
-      console_printf(" Get application file 0x01 content: \n 0x ");
+      console_printf("Get application file 0x01 content: \n 0x ");
       for (int i = 0; i < Rxlen; i++) {
         console_printf("%02X ", pRecv[i]);
       }
-      console_printf("\n ");
+      console_printf("\n");
 
       //Write application content
       status = phalMfdfEVx_WriteData(palMfdfEV, PHAL_MFDF_COMMUNICATION_PLAIN,
@@ -426,14 +426,14 @@ Test_PlainText(void)
               bLength, &pRecv, &Rxlen);
 
       if (Rxlen > 0) {
-        console_printf(" Get application file 0x01 content after writing: \n 0x ");
+        console_printf("Get application file 0x01 content after writing: \n 0x ");
         for (int i = 0; i < Rxlen; i++) {
           console_printf("%02X ", pRecv[i]);
         }
-        console_printf("\n ");
+        console_printf("\n");
       }
     } else {
-      console_printf(" There is no content in the card to read \n");
+      console_printf("There is no content in the card to read \n");
     }
   }
 
@@ -479,11 +479,11 @@ Test_DES_SW_keyStore(void)
           bLength, &pRecv, &Rxlen);
   CHECK_STATUS(status);
   if (Rxlen > 0) {
-    console_printf(" Get application file 0x02 content: \n 0x ");
+    console_printf("Get application file 0x02 content: \n 0x ");
     for (int i = 0; i < Rxlen; i++) {
       console_printf("%02X ", pRecv[i]);
     }
-    console_printf("\n ");
+    console_printf("\n");
   }
 
   //Authenticate DES key 01
@@ -508,11 +508,11 @@ Test_DES_SW_keyStore(void)
           bLength, &pRecv, &Rxlen);
   CHECK_STATUS(status);
   if (Rxlen > 0) {
-    console_printf(" Get application file 0x02 content after writing: \n 0x ");
+    console_printf("Get application file 0x02 content after writing: \n 0x ");
     for (int i = 0; i < Rxlen; i++) {
       console_printf("%02X ", pRecv[i]);
     }
-    console_printf("\n ");
+    console_printf("\n");
   }
 
   //Authenticate DES key 00
@@ -523,11 +523,11 @@ Test_DES_SW_keyStore(void)
   //Get Balance ENC
   status = phalMfdfEVx_GetValue(palMfdfEV, PHAL_MFDFEVX_COMMUNICATION_ENC, 0x03, pValue);
   CHECK_STATUS(status);
-  console_printf(" Card value content: \n 0x ");
+  console_printf("Card value content: \n 0x ");
   for (int i = 0; i < sizeof(pValue); i++) {
     console_printf("%02X ",  pValue[i]);
   }
-  console_printf("\n ");
+  console_printf("\n");
 
   //Authenticate DES key 01
   status = phalMfdfEVx_Authenticate(palMfdfEV, PHAL_MFDFEVX_NO_DIVERSIFICATION, DES_KEY_ADDRESS_1,
@@ -556,11 +556,11 @@ Test_DES_SW_keyStore(void)
   //Get balance ENC
   status = phalMfdfEVx_GetValue(palMfdfEV, PHAL_MFDFEVX_COMMUNICATION_ENC, 0x03, pValue);
   CHECK_STATUS(status);
-  console_printf(" Card value content after changing credit: \n 0x ");
+  console_printf("Card value content after changing credit: \n 0x ");
   for (int i = 0; i < sizeof(pValue); i++) {
     console_printf("%02X ",  pValue[i]);
   }
-  console_printf("\n ");
+  console_printf("\n");
 
   return PH_ERR_SUCCESS;
 }
@@ -603,11 +603,11 @@ Test_AES_SW_keyStore(void)
           PHAL_MFDFEVX_APPLICATION_CHAINING, 0x02, bOffSet,
           bLength, &pRecv, &Rxlen);
   if (Rxlen > 0) {
-    console_printf(" Get application file 0x02 content: \n 0x ");
+    console_printf("Get application file 0x02 content: \n 0x ");
     for (int i = 0; i < Rxlen; i++) {
       console_printf("%02X ", pRecv[i]);
     }
-    console_printf("\n ");
+    console_printf("\n");
   }
 
   //Authenticate AES key 0x01
@@ -631,11 +631,11 @@ Test_AES_SW_keyStore(void)
           PHAL_MFDFEVX_APPLICATION_CHAINING, 0x02, bOffSet,
           bLength, &pRecv, &Rxlen);
   if (Rxlen > 0) {
-    console_printf(" Get application file 0x02 content after writing: \n 0x ");
+    console_printf("Get application file 0x02 content after writing: \n 0x ");
     for (int i = 0; i < Rxlen; i++) {
       console_printf("%02X ", pRecv[i]);
     }
-    console_printf("\n ");
+    console_printf("\n");
   }
 
   //Authenticate AES key 0x00
@@ -646,11 +646,11 @@ Test_AES_SW_keyStore(void)
   //Get Balance ENC
   status = phalMfdfEVx_GetValue(palMfdfEV, PHAL_MFDFEVX_COMMUNICATION_ENC, 0x03, pValue);
   CHECK_STATUS(status);
-  console_printf(" Card value content: \n 0x ");
+  console_printf("Card value content: \n 0x ");
   for (int i = 0; i < sizeof(pValue); i++) {
     console_printf("%02X ",  pValue[i]);
   }
-  console_printf("\n ");
+  console_printf("\n");
 
   //Authenticate AES key 0x01
   status = phalMfdfEVx_AuthenticateAES(palMfdfEV, PHAL_MFDFEVX_NO_DIVERSIFICATION,
@@ -679,11 +679,11 @@ Test_AES_SW_keyStore(void)
   //Get Balance ENC
   status = phalMfdfEVx_GetValue(palMfdfEV, PHAL_MFDFEVX_COMMUNICATION_ENC, 0x03, pValue);
   CHECK_STATUS(status);
-  console_printf(" Card value content after changing credit: \n 0x ");
+  console_printf("Card value content after changing credit: \n 0x ");
   for (int i = 0; i < sizeof(pValue); i++) {
     console_printf("%02X ",  pValue[i]);
   }
-  console_printf("\n ");
+  console_printf("\n");
 
   return PH_ERR_SUCCESS;
 }
@@ -736,7 +736,7 @@ main(void)
   phStatus_t status 	= PH_ERR_INTERNAL_ERROR;
   phNfcLib_Status_t dwStatus;
 
-  console_printf("\n MIFARE DESFIRE example started: \n");
+  console_printf("MIFARE DESFIRE example started: \n");
   /* Initialize packages (see: syscfg.yml). */
   sysinit();
 
@@ -745,16 +745,16 @@ main(void)
   struct pn5180 *pn5180 = NULL;
   struct mf4sam3 *mf4sam3 = NULL;
   config_pn5180();
-  pn5180 = (struct pn5180 *)os_dev_lookup("pn5180_0");
+  pn5180 = (struct pn5180 *)os_dev_lookup(MYNEWT_VAL(PN5180_ONB_DEVICE_NAME));
   assert(pn5180);
   AppContext.pBalDataparams = &(pn5180->cfg);
   dwStatus = phNfcLib_SetContext(&AppContext);
   CHECK_NFCLIB_STATUS(dwStatus);
-  console_printf("\n pn5180 configured: %ld \n", dwStatus - PH_NFCLIB_STATUS_SUCCESS);
+  console_printf("PN5180 configured; rc=%ld\n", dwStatus - PH_NFCLIB_STATUS_SUCCESS);
 
   /* Initialize library */
   dwStatus = phNfcLib_Init();
-  console_printf("\n Libraries initialized: %ld\n", dwStatus - PH_NFCLIB_STATUS_SUCCESS);
+  console_printf("Libraries initialized; rc=%ld\n", dwStatus - PH_NFCLIB_STATUS_SUCCESS);
   CHECK_NFCLIB_STATUS(dwStatus);
   if (dwStatus != PH_NFCLIB_STATUS_SUCCESS) {
     assert(0);
@@ -762,7 +762,7 @@ main(void)
 
   /* Create SAM AV3 device */
   mf4sam3_create_dev();
-  mf4sam3 = (struct mf4sam3 *)os_dev_lookup("mf4sam3_0");
+  mf4sam3 = (struct mf4sam3 *)os_dev_lookup(MYNEWT_VAL(MF4SAM3_ONB_DEVICE_NAME));
   assert(mf4sam3);
 
   g_sam_itf = mf4sam3->sam_itf;
@@ -785,22 +785,22 @@ main(void)
 #endif
 
   if (palMfdfEV == NULL) {
-    console_printf("\n No MIFARE DESFire PAL component included in NFC lib. Check system defines\n");
+    console_printf("No MIFARE DESFire PAL component included in NFC lib. Check system defines\n");
   }
   if (palMifare == NULL) {
-    console_printf("\n No MIFARE PAL component included in NFC lib. Check system defines\n");
+    console_printf("No MIFARE PAL component included in NFC lib. Check system defines\n");
   }
   if (I14443p4 == NULL) {
-    console_printf("\n No ISO 14443P4 PAL component included in NFC lib. Check system defines\n");
+    console_printf("No ISO 14443P4 PAL component included in NFC lib. Check system defines\n");
   }
   if (I14443p4a == NULL) {
-    console_printf("\n No ISO 14443P4A PAL component included in NFC lib. Check system defines\n");
+    console_printf("No ISO 14443P4A PAL component included in NFC lib. Check system defines\n");
   }
   if (I14443p3a == NULL) {
-    console_printf("\n No ISO 14443P3A PAL component included in NFC lib. Check system defines\n");
+    console_printf("No ISO 14443P3A PAL component included in NFC lib. Check system defines\n");
   }
   if (pKeyStore == NULL) {
-    console_printf("\n No Keystore included in NFC lib. Check system defines\n");
+    console_printf("No Keystore included in NFC lib. Check system defines\n");
   } else {
 #if((TEST_SELECT != SAM_KEYSTORE_AES_TEST) && (TEST_SELECT != SAM_KEYSTORE_DES_TEST))
     //Initialize SW KeyStore with application parameters
@@ -838,7 +838,7 @@ main(void)
     return -1;
   }
 
-  console_printf("\n system initialization ended successfully: \n");
+  console_printf("System initialization ended successfully.\n");
 
   nfc_task_init();
   /*
@@ -888,7 +888,7 @@ keyStore_Config(void)
           aPICC_MasterKey_AES_2, AES_KEY_VERSION);
   CHECK_SUCCESS(status);
 
-  console_printf("\n keystore is configured.");
+  console_printf("keystore is configured.");
 
   return status;
 }
@@ -1143,7 +1143,7 @@ discoveryDetection(void *pDataParams)
         status = phhalHw_FieldReset(pHal);
         CHECK_STATUS(status);
       } else {
-        console_printf("\n Non A type card detected: \n");
+        console_printf("Non A type card detected: \n");
       }
     }
   }
@@ -1161,7 +1161,7 @@ nfcCardDetection(void)
   phStatus_t status;
 
   while (1) {
-    console_printf("\n\n\n Start Card detection loop: \n");
+    console_printf("Start Card detection loop: \n");
 
     /* Switch on the field */
     status = phhalHw_FieldOn(pHal);
@@ -1178,7 +1178,7 @@ nfcCardDetection(void)
     CHECK_SUCCESS(status);
 
     os_time_delay(20); // This fixes AES authentication
-    console_printf("\n Card detected: \n");
+    console_printf("Card detected: \n");
 
 //		/* switch on time mesaurement */
 //		status = phhalHw_SetConfig(pHal, PHHAL_HW_CONFIG_TIMING_MODE, PHHAL_HW_TIMING_MODE_COMM);
@@ -1187,7 +1187,7 @@ nfcCardDetection(void)
     /* Send RATS */
     status = phpalI14443p4a_Rats(I14443p4a, 0x08, 0x01, pAts);
     CHECK_SUCCESS_AND_CONTINUE(status);
-    console_printf("\n Rats performed \n");
+    console_printf("Rats performed \n");
 
     status = phpalI14443p4a_GetProtocolParams(I14443p4a, &bCidEnable, &bCid, &bNadSupported, &bFwi,
             &bFsdi, &bFsci);
@@ -1198,25 +1198,25 @@ nfcCardDetection(void)
     CHECK_SUCCESS_AND_CONTINUE(status);
 
     if ((TEST_SELECT < PLAIN_TEST) || (TEST_SELECT > SAM_KEYSTORE_AES_TEST)) {
-      console_printf(" Test ID not valid, select an available ID \n");
+      console_printf("Test ID not valid, select an available ID \n");
     } else if (TEST_SELECT == PLAIN_TEST) {
-      console_printf("\n\n\n Stating PLAIN TEST: \n");
+      console_printf("Stating PLAIN TEST: \n");
       status = Test_PlainText();
       CHECK_SUCCESS_AND_CONTINUE(status);
     } else if (TEST_SELECT == SW_KEYSTORE_DES_TEST) {
-      console_printf("\n\n\n Stating SW KEYSTORE DES TEST: \n");
+      console_printf("Stating SW KEYSTORE DES TEST: \n");
       status = Test_DES_SW_keyStore();
       CHECK_SUCCESS_AND_CONTINUE(status);
     } else if (TEST_SELECT == SW_KEYSTORE_AES_TEST) {
-      console_printf("\n\n\n Stating SW KEYSTORE AES TEST: \n");
+      console_printf("Stating SW KEYSTORE AES TEST: \n");
       status = Test_AES_SW_keyStore();
       CHECK_SUCCESS_AND_CONTINUE(status);
     } else if (TEST_SELECT == SAM_KEYSTORE_DES_TEST) {
-      console_printf("\n\n\n Stating SAM KEYSTORE DES TEST: \n");
+      console_printf("Stating SAM KEYSTORE DES TEST: \n");
       status = Test_DES_SAM_keyStore();
       CHECK_SUCCESS_AND_CONTINUE(status);
     } else if (TEST_SELECT == SAM_KEYSTORE_AES_TEST) {
-      console_printf("\n\n\n Stating SAM KEYSTORE AES TEST: \n");
+      console_printf("Stating SAM KEYSTORE AES TEST: \n");
       status = Test_AES_SAM_keyStore();
       CHECK_SUCCESS_AND_CONTINUE(status);
     }
