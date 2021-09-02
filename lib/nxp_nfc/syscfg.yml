@@ -56,7 +56,7 @@ syscfg.defs:
 
     PN5180_LOG_MODULE:
         description: 'Numeric module ID to use for PN5180 log messages'
-        value: 150
+        value: 180
 
     PN5180_LOG_LVL:
         description: 'Minimum level for PN5180 logs'
