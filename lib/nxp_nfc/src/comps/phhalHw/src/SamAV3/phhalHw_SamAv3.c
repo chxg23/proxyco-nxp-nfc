@@ -56,11 +56,21 @@ samAV3_create_ISO7816_dev(struct os_dev *odev, void *arg)
   rc = hal_gpio_init_out(MYNEWT_VAL(MF4SAM3_ONB_RST), 1);
   assert(rc == 0);
   /* Disable I2C communication with SAM AV3, we will use UART */
-  rc = hal_gpio_init_out(MYNEWT_VAL(MF4SAM3_ONB_EN), 0);
-  assert(rc == 0);
-  /* Configuration data as an input with pull up resistor */
+  if (MYNEWT_VAL(MF4SAM3_ONB_EN) > 0) {
+      rc = hal_gpio_init_out(MYNEWT_VAL(MF4SAM3_ONB_EN), 0);
+      assert(rc == 0);
+  }
+  /* Configure data line IO1 as an input with pull up resistor */
   rc = hal_gpio_init_in(MYNEWT_VAL(MF4SAM3_ONB_IO1), HAL_GPIO_PULL_UP);
   assert(rc == 0);
+  /* Configure data line IO2 as an input with pull up resistor */
+  rc = hal_gpio_init_in(MYNEWT_VAL(MF4SAM3_ONB_IO2), HAL_GPIO_PULL_UP);
+  assert(rc == 0);
+  /* Disable oscillator control */
+  if (MYNEWT_VAL(MF4SAM3_ONB_OSC_CTRL) > 0) {
+      rc = hal_gpio_init_out(MYNEWT_VAL(MF4SAM3_ONB_OSC_CTRL), 0);
+      assert(rc == 0);
+  }
 
   /* Initialize TML */
   rc = phbalReg_T1SamAV3_tml_ISO7816_init(itf->tml, &dev->pwm_dev, &dev->uart_dev, dev->uart_baud);
