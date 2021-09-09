@@ -28,7 +28,8 @@
 #endif /* NXPBUILD__PHAL_VCA_SW */
 
 #ifdef NXPBUILD__PHAL_VCA
-phStatus_t phalVca_StartCardSelection(void *pDataParams)
+phStatus_t
+phalVca_StartCardSelection(void *pDataParams)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -72,7 +73,8 @@ phStatus_t phalVca_StartCardSelection(void *pDataParams)
   return status;
 }
 
-phStatus_t phalVca_FinalizeCardSelection(void *pDataParams, uint16_t *pNumValidIids)
+phStatus_t
+phalVca_FinalizeCardSelection(void *pDataParams, uint16_t *pNumValidIids)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -120,7 +122,8 @@ phStatus_t phalVca_FinalizeCardSelection(void *pDataParams, uint16_t *pNumValidI
 }
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalVca_SelectVc(void *pDataParams, uint16_t wValidIidIndex, uint16_t wKeyNumber,
+phStatus_t
+phalVca_SelectVc(void *pDataParams, uint16_t wValidIidIndex, uint16_t wKeyNumber,
     uint16_t wKeyVersion)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -173,7 +176,8 @@ phStatus_t phalVca_SelectVc(void *pDataParams, uint16_t wValidIidIndex, uint16_t
 }
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 
-phStatus_t phalVca_DeselectVc(void *pDataParams)
+phStatus_t
+phalVca_DeselectVc(void *pDataParams)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -217,7 +221,8 @@ phStatus_t phalVca_DeselectVc(void *pDataParams)
   return status;
 }
 
-phStatus_t phalVca_VcSupport(void *pDataParams, uint8_t *pIid, uint16_t wKeyEncNumber,
+phStatus_t
+phalVca_VcSupport(void *pDataParams, uint8_t *pIid, uint16_t wKeyEncNumber,
     uint16_t wKeyEncVersion, uint16_t wKeyMacNumber,
     uint16_t wKeyMacVersion)
 {
@@ -275,7 +280,8 @@ phStatus_t phalVca_VcSupport(void *pDataParams, uint8_t *pIid, uint16_t wKeyEncN
 }
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalVca_VcSupportLast(void *pDataParams, uint8_t *pIid, uint8_t bLenCap,
+phStatus_t
+phalVca_VcSupportLast(void *pDataParams, uint8_t *pIid, uint8_t bLenCap,
     uint8_t *pPcdCapabilities, uint16_t wKeyEncNumber,
     uint16_t wKeyEncVersion, uint16_t wKeyMacNumber, uint16_t wKeyMacVersion)
 {
@@ -343,7 +349,8 @@ phStatus_t phalVca_VcSupportLast(void *pDataParams, uint8_t *pIid, uint8_t bLenC
 }
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 
-phStatus_t phalVca_GetIidInfo(void *pDataParams, uint16_t wValidIidIndex, uint16_t *pIidIndex,
+phStatus_t
+phalVca_GetIidInfo(void *pDataParams, uint16_t wValidIidIndex, uint16_t *pIidIndex,
     uint8_t *pVcUidSize, uint8_t *pVcUid,
     uint8_t *pInfo, uint8_t *pPdCapabilities)
 {
@@ -413,7 +420,8 @@ phStatus_t phalVca_GetIidInfo(void *pDataParams, uint16_t wValidIidIndex, uint16
 }
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalVca_IsoSelect(void *pDataParams, uint8_t bSelectionControl, uint8_t bOption,
+phStatus_t
+phalVca_IsoSelect(void *pDataParams, uint8_t bSelectionControl, uint8_t bOption,
     uint8_t  bDFnameLen, uint8_t *pDFname,
     uint8_t *pDivInput, uint8_t bDivInputLen, uint8_t bEncKeyNo, uint8_t bEncKeyVer,
     uint8_t bMacKeyNo, uint8_t bMacKeyVer,
@@ -498,7 +506,8 @@ phStatus_t phalVca_IsoSelect(void *pDataParams, uint8_t bSelectionControl, uint8
   return status;
 }
 
-phStatus_t phalVca_IsoExternalAuthenticate(void   *pDataParams, uint8_t *pInData,
+phStatus_t
+phalVca_IsoExternalAuthenticate(void   *pDataParams, uint8_t *pInData,
     uint16_t wKeyNumber, uint16_t wKeyVersion)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -550,7 +559,8 @@ phStatus_t phalVca_IsoExternalAuthenticate(void   *pDataParams, uint8_t *pInData
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalVca_ProximityCheck(void *pDataParams, uint8_t bGenerateRndC, uint8_t *pRndC,
+phStatus_t
+phalVca_ProximityCheck(void *pDataParams, uint8_t bGenerateRndC, uint8_t *pRndC,
     uint8_t bPps1, uint8_t bNumSteps,
     uint16_t wKeyNumber, uint16_t wKeyVersion, uint8_t *pUsedRndC)
 {
@@ -624,7 +634,8 @@ phStatus_t phalVca_ProximityCheck(void *pDataParams, uint8_t bGenerateRndC, uint
   return status;
 }
 
-phStatus_t phalVca_ProximityCheckNew(void *pDataParams, uint8_t bOption, uint8_t *pPrndC,
+phStatus_t
+phalVca_ProximityCheckNew(void *pDataParams, uint8_t bOption, uint8_t *pPrndC,
     uint8_t  bNumSteps, uint16_t wKeyNumber, uint16_t wKeyVersion,
     uint8_t *pDivInput, uint8_t bDivInputLen, uint8_t *pOption, uint8_t *pPubRespTime,
     uint8_t *pResponse, uint16_t *pRespLen, uint8_t *pCumRndRC)
@@ -713,7 +724,8 @@ phStatus_t phalVca_ProximityCheckNew(void *pDataParams, uint8_t bOption, uint8_t
   return status;
 }
 
-phStatus_t phalVca_PrepareProximityCheckNew(void *pDataParams, uint8_t *bOption,
+phStatus_t
+phalVca_PrepareProximityCheckNew(void *pDataParams, uint8_t *bOption,
     uint8_t *pPubRespTime, uint8_t *pResponse, uint16_t *pRespLen)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -764,7 +776,8 @@ phStatus_t phalVca_PrepareProximityCheckNew(void *pDataParams, uint8_t *bOption,
   return status;
 }
 
-phStatus_t phalVca_ExecuteProximityCheckNew(void *pDataParams, uint8_t bGenerateRndC,
+phStatus_t
+phalVca_ExecuteProximityCheckNew(void *pDataParams, uint8_t bGenerateRndC,
     uint8_t *pPrndC, uint8_t bNumSteps, uint8_t *pPubRespTime,
     uint8_t *pCumRndRC)
 {
@@ -830,7 +843,8 @@ phStatus_t phalVca_ExecuteProximityCheckNew(void *pDataParams, uint8_t bGenerate
   return status;
 }
 
-phStatus_t phalVca_VerifyProximityCheckNew(void *pDataParams, uint8_t bOption,
+phStatus_t
+phalVca_VerifyProximityCheckNew(void *pDataParams, uint8_t bOption,
     uint8_t *pPubRespTime, uint8_t *pResponse, uint16_t wRespLen,
     uint16_t wKeyNumber, uint16_t wKeyVersion, uint8_t *pRndCmdResp)
 {
@@ -886,7 +900,8 @@ phStatus_t phalVca_VerifyProximityCheckNew(void *pDataParams, uint8_t bOption,
 }
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 
-phStatus_t phalVca_VerifyProximityCheckUtility(void *pDataParams, uint8_t *pCmdMac,
+phStatus_t
+phalVca_VerifyProximityCheckUtility(void *pDataParams, uint8_t *pCmdMac,
     uint8_t *pCmdResp)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -934,7 +949,8 @@ phStatus_t phalVca_VerifyProximityCheckUtility(void *pDataParams, uint8_t *pCmdM
   return status;
 }
 
-phStatus_t phalVca_SetConfig(void *pDataParams, uint16_t wConfig, uint16_t wValue)
+phStatus_t
+phalVca_SetConfig(void *pDataParams, uint16_t wConfig, uint16_t wValue)
 {
   phStatus_t PH_MEMLOC_REM status;
   PH_LOG_HELPER_ALLOCATE_TEXT(bFunctionName, "phalVca_SetConfig");
@@ -976,7 +992,8 @@ phStatus_t phalVca_SetConfig(void *pDataParams, uint16_t wConfig, uint16_t wValu
   return status;
 }
 
-phStatus_t phalVca_GetConfig(void *pDataParams, uint16_t wConfig, uint16_t *pValue)
+phStatus_t
+phalVca_GetConfig(void *pDataParams, uint16_t wConfig, uint16_t *pValue)
 {
   phStatus_t PH_MEMLOC_REM status;
   PH_LOG_HELPER_ALLOCATE_TEXT(bFunctionName, "phalVca_GetConfig");
@@ -1024,7 +1041,8 @@ phStatus_t phalVca_GetConfig(void *pDataParams, uint16_t wConfig, uint16_t *pVal
   return status;
 }
 
-phStatus_t phalVca_SetSessionKeyUtility(void *pDataParams, uint8_t *pSessionKey,
+phStatus_t
+phalVca_SetSessionKeyUtility(void *pDataParams, uint8_t *pSessionKey,
     uint8_t bAuthMode)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -1072,7 +1090,8 @@ phStatus_t phalVca_SetSessionKeyUtility(void *pDataParams, uint8_t *pSessionKey,
   return status;
 }
 
-phStatus_t phalVca_SetApplicationType(void *pDataParams, void *pAlDataParams)
+phStatus_t
+phalVca_SetApplicationType(void *pDataParams, void *pAlDataParams)
 {
   phStatus_t PH_MEMLOC_REM status;
   PH_LOG_HELPER_ALLOCATE_TEXT(bFunctionName, "phalVca_SetApplicationType");
@@ -1114,7 +1133,8 @@ phStatus_t phalVca_SetApplicationType(void *pDataParams, void *pAlDataParams)
 }
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalVca_DecryptResponse(void *pDataParams, uint16_t wKeyNo, uint16_t wKeyVersion,
+phStatus_t
+phalVca_DecryptResponse(void *pDataParams, uint16_t wKeyNo, uint16_t wKeyVersion,
     uint8_t *pInData, uint8_t *pRandChal,
     uint8_t *pVCData)
 {

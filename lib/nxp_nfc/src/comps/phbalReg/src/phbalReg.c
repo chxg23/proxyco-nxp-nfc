@@ -32,50 +32,51 @@
 #include "T1SamAV3/phbalReg_SamAV3_T1.h"
 #endif /* NXPBUILD__PHBAL_REG_T1SAMAV3 */
 
-phStatus_t phbalReg_Init(
-	void *pDataParams,     					/**< [In] Pointer to this layer's parameter structure phbalReg_Type_t. */
+phStatus_t
+phbalReg_Init(
+    void *pDataParams,     					/**< [In] Pointer to this layer's parameter structure phbalReg_Type_t. */
     uint16_t wSizeOfDataParams,              /**< [In] Size of this layer's parameter structure. */
-	void *attr
+    void *attr
 )
 {
-    phStatus_t PH_MEMLOC_REM status;
-    PH_LOG_HELPER_ALLOCATE_TEXT(bFunctionName, "phbalReg_Init");
-    PH_LOG_HELPER_ADDSTRING(PH_LOG_LOGTYPE_INFO, bFunctionName);
+  phStatus_t PH_MEMLOC_REM status;
+  PH_LOG_HELPER_ALLOCATE_TEXT(bFunctionName, "phbalReg_Init");
+  PH_LOG_HELPER_ADDSTRING(PH_LOG_LOGTYPE_INFO, bFunctionName);
 
-    /* Check data parameters */
-    if (PH_GET_COMPCODE(pDataParams) != PH_COMP_BAL)
-    {
-        status = PH_ADD_COMPCODE(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_BAL);
-
-        PH_LOG_HELPER_ADDSTRING(PH_LOG_LOGTYPE_INFO, bFunctionName);
-        PH_LOG_HELPER_ADDPARAM_UINT16(PH_LOG_LOGTYPE_INFO, status_log, &status);
-        PH_LOG_HELPER_EXECUTE(PH_LOG_OPTION_CATEGORY_LEAVE);
-
-        return status;
-    }
-
-    /* perform operation on active layer */
-    switch (PH_GET_COMPID(pDataParams))
-    {
-	#ifdef NXPBUILD__PHBAL_REG_T1SAMAV3
-    case PHBAL_REG_T1SAMAV3_ID:
-        status = phbalReg_T1SamAv3_Init((phbalReg_T1SamAV3_DataParams_t*)pDataParams, wSizeOfDataParams, (phbalReg_T1SamAV3_tml_t *)attr);
-        break;
-	#endif /* NXPBUILD__PHBAL_REG_T1SAMAV3 */
-
-    default:
-        status = PH_ADD_COMPCODE(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_BAL);
-        break;
-    }
+  /* Check data parameters */
+  if (PH_GET_COMPCODE(pDataParams) != PH_COMP_BAL) {
+    status = PH_ADD_COMPCODE(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_BAL);
 
     PH_LOG_HELPER_ADDSTRING(PH_LOG_LOGTYPE_INFO, bFunctionName);
     PH_LOG_HELPER_ADDPARAM_UINT16(PH_LOG_LOGTYPE_INFO, status_log, &status);
     PH_LOG_HELPER_EXECUTE(PH_LOG_OPTION_CATEGORY_LEAVE);
 
-	return status;
+    return status;
+  }
+
+  /* perform operation on active layer */
+  switch (PH_GET_COMPID(pDataParams)) {
+#ifdef NXPBUILD__PHBAL_REG_T1SAMAV3
+    case PHBAL_REG_T1SAMAV3_ID:
+      status = phbalReg_T1SamAv3_Init((phbalReg_T1SamAV3_DataParams_t *)pDataParams, wSizeOfDataParams,
+              (phbalReg_T1SamAV3_tml_t *)attr);
+      break;
+#endif /* NXPBUILD__PHBAL_REG_T1SAMAV3 */
+
+    default:
+      status = PH_ADD_COMPCODE(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_BAL);
+      break;
+  }
+
+  PH_LOG_HELPER_ADDSTRING(PH_LOG_LOGTYPE_INFO, bFunctionName);
+  PH_LOG_HELPER_ADDPARAM_UINT16(PH_LOG_LOGTYPE_INFO, status_log, &status);
+  PH_LOG_HELPER_EXECUTE(PH_LOG_OPTION_CATEGORY_LEAVE);
+
+  return status;
 }
 
-phStatus_t phbalReg_Exchange(
+phStatus_t
+phbalReg_Exchange(
     void *pDataParams,     /**< [In] Pointer to this layer's parameter structure. */
     uint16_t wOption,      /**< [In] Option parameter, for future use. */
     uint8_t *pTxBuffer,    /**< [In] Data to transmit. */
@@ -85,61 +86,61 @@ phStatus_t phbalReg_Exchange(
     uint16_t *pRxLength    /**< [Out] Number of received data bytes. */
 )
 {
-    phStatus_t PH_MEMLOC_REM status;
-    PH_LOG_HELPER_ALLOCATE_TEXT(bFunctionName, "phbalReg_Exchange");
-    /*PH_LOG_HELPER_ALLOCATE_PARAMNAME(pDataParams);*/
-    PH_LOG_HELPER_ALLOCATE_PARAMNAME(wOption);
-    PH_LOG_HELPER_ALLOCATE_PARAMNAME(pTxBuffer);
-    PH_LOG_HELPER_ALLOCATE_PARAMNAME(wRxBufSize);
-    PH_LOG_HELPER_ALLOCATE_PARAMNAME(pRxBuffer);
-    PH_LOG_HELPER_ALLOCATE_PARAMNAME(status);
-    PH_LOG_HELPER_ADDSTRING(PH_LOG_LOGTYPE_INFO, bFunctionName);
-    PH_LOG_HELPER_ADDPARAM_UINT16(PH_LOG_LOGTYPE_DEBUG, wOption_log, &wOption);
-    PH_LOG_HELPER_ADDPARAM_BUFFER(PH_LOG_LOGTYPE_DEBUG, pTxBuffer_log, pTxBuffer, wTxLength);
-    PH_LOG_HELPER_ADDPARAM_UINT16(PH_LOG_LOGTYPE_DEBUG, wRxBufSize_log, &wRxBufSize);
-    PH_LOG_HELPER_EXECUTE(PH_LOG_OPTION_CATEGORY_ENTER);
-    PH_ASSERT_NULL (pDataParams);
-    if (wTxLength) PH_ASSERT_NULL (pTxBuffer);
+  phStatus_t PH_MEMLOC_REM status;
+  PH_LOG_HELPER_ALLOCATE_TEXT(bFunctionName, "phbalReg_Exchange");
+  /*PH_LOG_HELPER_ALLOCATE_PARAMNAME(pDataParams);*/
+  PH_LOG_HELPER_ALLOCATE_PARAMNAME(wOption);
+  PH_LOG_HELPER_ALLOCATE_PARAMNAME(pTxBuffer);
+  PH_LOG_HELPER_ALLOCATE_PARAMNAME(wRxBufSize);
+  PH_LOG_HELPER_ALLOCATE_PARAMNAME(pRxBuffer);
+  PH_LOG_HELPER_ALLOCATE_PARAMNAME(status);
+  PH_LOG_HELPER_ADDSTRING(PH_LOG_LOGTYPE_INFO, bFunctionName);
+  PH_LOG_HELPER_ADDPARAM_UINT16(PH_LOG_LOGTYPE_DEBUG, wOption_log, &wOption);
+  PH_LOG_HELPER_ADDPARAM_BUFFER(PH_LOG_LOGTYPE_DEBUG, pTxBuffer_log, pTxBuffer, wTxLength);
+  PH_LOG_HELPER_ADDPARAM_UINT16(PH_LOG_LOGTYPE_DEBUG, wRxBufSize_log, &wRxBufSize);
+  PH_LOG_HELPER_EXECUTE(PH_LOG_OPTION_CATEGORY_ENTER);
+  PH_ASSERT_NULL(pDataParams);
+  if (wTxLength) {
+    PH_ASSERT_NULL(pTxBuffer);
+  }
 
-    /* Check data parameters */
-    if (PH_GET_COMPCODE(pDataParams) != PH_COMP_BAL)
-    {
-        status = PH_ADD_COMPCODE(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_BAL);
-
-        PH_LOG_HELPER_ADDSTRING(PH_LOG_LOGTYPE_INFO, bFunctionName);
-        PH_LOG_HELPER_ADDPARAM_UINT16(PH_LOG_LOGTYPE_INFO, status_log, &status);
-        PH_LOG_HELPER_EXECUTE(PH_LOG_OPTION_CATEGORY_LEAVE);
-
-        return status;
-    }
-
-    /* perform operation on active layer */
-    switch (PH_GET_COMPID(pDataParams))
-    {
-#ifdef NXPBUILD__PHBAL_REG_T1SAMAV3
-    case PHBAL_REG_T1SAMAV3_ID:
-        status = phbalReg_T1SamAV3_Exchange((phbalReg_T1SamAV3_DataParams_t*)pDataParams, wOption, pTxBuffer, wTxLength, wRxBufSize, pRxBuffer, pRxLength);
-        break;
-#endif /* NXPBUILD__PHBAL_REG_T1SAMAV3 */
-    default:
-    	status = PH_ADD_COMPCODE(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_BAL);
-    	break;
-    }
+  /* Check data parameters */
+  if (PH_GET_COMPCODE(pDataParams) != PH_COMP_BAL) {
+    status = PH_ADD_COMPCODE(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_BAL);
 
     PH_LOG_HELPER_ADDSTRING(PH_LOG_LOGTYPE_INFO, bFunctionName);
-#ifdef NXPBUILD__PH_LOG
-    if ((((status & PH_ERR_MASK) == PH_ERR_SUCCESS) ||
-        ((status & PH_ERR_MASK) == PH_ERR_SUCCESS_CHAINING) ||
-        ((status & PH_ERR_MASK) == PH_ERR_SUCCESS_INCOMPLETE_BYTE))
-        &&
-        (pRxBuffer != NULL) &&
-        (pRxLength != NULL))
-    {
-        PH_LOG_HELPER_ADDPARAM_BUFFER(PH_LOG_LOGTYPE_DEBUG, pRxBuffer_log, pRxBuffer, *pRxLength);
-    }
-#endif
     PH_LOG_HELPER_ADDPARAM_UINT16(PH_LOG_LOGTYPE_INFO, status_log, &status);
     PH_LOG_HELPER_EXECUTE(PH_LOG_OPTION_CATEGORY_LEAVE);
 
     return status;
+  }
+
+  /* perform operation on active layer */
+  switch (PH_GET_COMPID(pDataParams)) {
+#ifdef NXPBUILD__PHBAL_REG_T1SAMAV3
+    case PHBAL_REG_T1SAMAV3_ID:
+      status = phbalReg_T1SamAV3_Exchange((phbalReg_T1SamAV3_DataParams_t *)pDataParams, wOption,
+              pTxBuffer, wTxLength, wRxBufSize, pRxBuffer, pRxLength);
+      break;
+#endif /* NXPBUILD__PHBAL_REG_T1SAMAV3 */
+    default:
+      status = PH_ADD_COMPCODE(PH_ERR_INVALID_DATA_PARAMS, PH_COMP_BAL);
+      break;
+  }
+
+  PH_LOG_HELPER_ADDSTRING(PH_LOG_LOGTYPE_INFO, bFunctionName);
+#ifdef NXPBUILD__PH_LOG
+  if ((((status & PH_ERR_MASK) == PH_ERR_SUCCESS) ||
+          ((status & PH_ERR_MASK) == PH_ERR_SUCCESS_CHAINING) ||
+          ((status & PH_ERR_MASK) == PH_ERR_SUCCESS_INCOMPLETE_BYTE))
+      &&
+      (pRxBuffer != NULL) &&
+      (pRxLength != NULL)) {
+    PH_LOG_HELPER_ADDPARAM_BUFFER(PH_LOG_LOGTYPE_DEBUG, pRxBuffer_log, pRxBuffer, *pRxLength);
+  }
+#endif
+  PH_LOG_HELPER_ADDPARAM_UINT16(PH_LOG_LOGTYPE_INFO, status_log, &status);
+  PH_LOG_HELPER_EXECUTE(PH_LOG_OPTION_CATEGORY_LEAVE);
+
+  return status;
 }

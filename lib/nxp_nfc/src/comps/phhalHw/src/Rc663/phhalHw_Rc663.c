@@ -219,7 +219,8 @@ static phStatus_t phhalHw_Rc663_TransmitJewelCmd(
     uint8_t *pTmpBuffer
 );
 
-static void phhalHw_Rc663_EventCallback(void *pDataParams)
+static void
+phhalHw_Rc663_EventCallback(void *pDataParams)
 {
 #ifndef _WIN32
   phhalHw_Rc663_DataParams_t *pRc663DataParams = NULL;
@@ -234,7 +235,8 @@ static void phhalHw_Rc663_EventCallback(void *pDataParams)
 #endif /* _WIN32 */
 }
 
-static phStatus_t phhalHw_Rc663_ConfigTimeout(phhalHw_Rc663_DataParams_t *pDataParams,
+static phStatus_t
+phhalHw_Rc663_ConfigTimeout(phhalHw_Rc663_DataParams_t *pDataParams,
     uint16_t wConfig, uint16_t wValue)
 {
   phStatus_t PH_MEMLOC_REM statusTmp;
@@ -287,7 +289,8 @@ static phStatus_t phhalHw_Rc663_ConfigTimeout(phhalHw_Rc663_DataParams_t *pDataP
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Rc663_Init(
+phStatus_t
+phhalHw_Rc663_Init(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pBalDataParams,
@@ -429,7 +432,8 @@ phStatus_t phhalHw_Rc663_Init(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Rc663_Exchange(
+phStatus_t
+phhalHw_Rc663_Exchange(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -576,6 +580,9 @@ phStatus_t phhalHw_Rc663_Exchange(
       /* First Jewel byte to be transmitted is with 7 bits. */
       PH_CHECK_FAILURE_FCT(statusTmp, phhalHw_Rc663_SetConfig(pDataParams, PHHAL_HW_CONFIG_TXLASTBITS,
               7));
+
+      PH_CHECK_FAILURE_FCT(statusTmp, phhalHw_Rc663_SetConfig(pDataParams, PHHAL_HW_CONFIG_TXWAIT_US,
+              500));
     }
 
     /* check for TX CRC enable or not ?? */
@@ -919,7 +926,9 @@ phStatus_t phhalHw_Rc663_Exchange(
           PHHAL_HW_RC663_BIT_IDLEIRQ | PHHAL_HW_RC663_BIT_EMDIRQ;
     }
 
-    if (pDataParams->bCheckEmdErr != PH_ON) {
+    /* EMD Handling logic will be enabled only when EMD is enabled and SPI interface is selected. */
+    if ((pDataParams->bCheckEmdErr != PH_ON) ||
+        (pDataParams->bBalConnectionType != PHHAL_HW_BAL_CONNECTION_SPI)) {
       /* wait until reception */
       PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_Rc663_WaitIrq(
               pDataParams,
@@ -938,8 +947,12 @@ phStatus_t phhalHw_Rc663_Exchange(
           PHHAL_HW_RC663_BIT_IDLEIRQ | PHHAL_HW_RC663_BIT_EMDIRQ;
       bIrq1WaitFor = PHHAL_HW_RC663_BIT_TIMER1IRQ;
 
-      status = phhalHw_Rc663_CheckForEmdError(pDataParams, bIrq0WaitFor, bIrq1WaitFor, &dwMultiReg,
-              &dwSaveReg);
+      PH_CHECK_SUCCESS_FCT(status, phhalHw_Rc663_CheckForEmdError(
+              pDataParams,
+              bIrq0WaitFor,
+              bIrq1WaitFor,
+              &dwMultiReg,
+              &dwSaveReg));
 
       /* Parse Irq0 and Irq1 data */
       bIrq0Reg = (uint8_t)dwMultiReg;
@@ -1082,9 +1095,7 @@ phStatus_t phhalHw_Rc663_Exchange(
     * read the error register
     */
     status =  phhalHw_Rc663_GetErrorStatus(pDataParams, &wTmpBufferLen, &wTmpBufferSize);
-    /* Emvco: case_id TA335_XY */
-    if ((pDataParams->bOpeMode != RD_LIB_MODE_ISO) &&
-        (status == PH_ERR_FRAMING_ERROR)) {
+    if (status == PH_ERR_FRAMING_ERROR) {
       if ((dwMultiReg >> 24U) == 0x05U) {
         status = PH_ERR_SUCCESS;
       }
@@ -1278,7 +1289,8 @@ phStatus_t phhalHw_Rc663_Exchange(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Rc663_Transmit(
+phStatus_t
+phhalHw_Rc663_Transmit(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -1559,7 +1571,8 @@ phStatus_t phhalHw_Rc663_Transmit(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Rc663_Receive(
+phStatus_t
+phhalHw_Rc663_Receive(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t **ppRxBuffer,
@@ -1904,7 +1917,8 @@ phStatus_t phhalHw_Rc663_Receive(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Rc663_ApplyProtocolSettings(
+phStatus_t
+phhalHw_Rc663_ApplyProtocolSettings(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint8_t bMode
 )
@@ -1946,11 +1960,13 @@ phStatus_t phhalHw_Rc663_ApplyProtocolSettings(
         SET_RC663_SHADOW(wRc663_Emvco_I14443a_DefaultShadow);
 
         /* Max EMD noise length is 2 bytes (excluding 2 bytes of CRC) */
-        pDataParams->bEmdNoiseMaxDataLen = PHHAL_HW_RC663_EMV_NOISE_MAXLEN;
+        pDataParams->bEmdNoiseMaxDataLen = PHHAL_HW_RC663_EMD_NOISE_MAXLEN;
       } else {
         /* Use 14443a default shadow */
         SET_RC663_SHADOW(wRc663_DefaultShadow_I14443a);
-        pDataParams->bEmdNoiseMaxDataLen = 0x00;
+
+        /* Max EMD noise length is 1 byte (excluding 2 bytes of CRC) */
+        pDataParams->bEmdNoiseMaxDataLen = PHHAL_HW_RC663_EMD_NOISE_MAXLEN_ISO_MODE;
       }
       break;
 
@@ -1970,11 +1986,16 @@ phStatus_t phhalHw_Rc663_ApplyProtocolSettings(
         * For Type B, RX last bits will not be updated in register. So
         * to manage noise error due to residual bits, max noise length
         * is set to 3 bytes (2u + 1 bytes). */
-        pDataParams->bEmdNoiseMaxDataLen = PHHAL_HW_RC663_EMV_NOISE_MAXLEN + 1U;
+        pDataParams->bEmdNoiseMaxDataLen = PHHAL_HW_RC663_EMD_NOISE_MAXLEN + 1U;
       } else {
         /* Use 14443b shadow */
         SET_RC663_SHADOW(wRc663_DefaultShadow_I14443b);
-        pDataParams->bEmdNoiseMaxDataLen = 0x00;
+
+        /* Max EMD noise length is 1 byte (excluding 2 bytes of CRC).
+        * For Type B, RX last bits will not be updated in register. So
+        * to manage noise error due to residual bits, max noise length
+        * is set to 2 bytes (1u + 1 bytes). */
+        pDataParams->bEmdNoiseMaxDataLen = PHHAL_HW_RC663_EMD_NOISE_MAXLEN_ISO_MODE + 1U;
       }
       break;
 
@@ -2144,7 +2165,8 @@ phStatus_t phhalHw_Rc663_ApplyProtocolSettings(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Rc663_SetConfigMultiple(
+phStatus_t
+phhalHw_Rc663_SetConfigMultiple(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint16_t wNumOfConfigs,
     uint16_t (*arr2dConfig) [PHHAL_HW_ARRY_COLUMNS_SIZE]
@@ -2168,7 +2190,8 @@ phStatus_t phhalHw_Rc663_SetConfigMultiple(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Rc663_SetConfig(
+phStatus_t
+phhalHw_Rc663_SetConfig(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -3119,7 +3142,8 @@ phStatus_t phhalHw_Rc663_SetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Rc663_GetConfig(
+phStatus_t
+phhalHw_Rc663_GetConfig(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -3446,7 +3470,8 @@ phStatus_t phhalHw_Rc663_GetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Rc663_FieldOn(
+phStatus_t
+phhalHw_Rc663_FieldOn(
     phhalHw_Rc663_DataParams_t *pDataParams
 )
 {
@@ -3467,7 +3492,8 @@ phStatus_t phhalHw_Rc663_FieldOn(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Rc663_FieldOff(
+phStatus_t
+phhalHw_Rc663_FieldOff(
     phhalHw_Rc663_DataParams_t *pDataParams
 )
 {
@@ -3491,7 +3517,8 @@ phStatus_t phhalHw_Rc663_FieldOff(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Rc663_FieldReset(
+phStatus_t
+phhalHw_Rc663_FieldReset(
     phhalHw_Rc663_DataParams_t *pDataParams
 )
 {
@@ -3518,7 +3545,8 @@ phStatus_t phhalHw_Rc663_FieldReset(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Rc663_Wait(
+phStatus_t
+phhalHw_Rc663_Wait(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint8_t bUnit,
     uint16_t wTimeout
@@ -3603,7 +3631,8 @@ phStatus_t phhalHw_Rc663_Wait(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Rc663_MfcAuthenticateKeyNo(
+phStatus_t
+phhalHw_Rc663_MfcAuthenticateKeyNo(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint8_t bBlockNo,
     uint8_t bKeyType,
@@ -3652,7 +3681,8 @@ phStatus_t phhalHw_Rc663_MfcAuthenticateKeyNo(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Rc663_MfcAuthenticate(
+phStatus_t
+phhalHw_Rc663_MfcAuthenticate(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint8_t bBlockNo,
     uint8_t bKeyType,
@@ -3677,7 +3707,8 @@ phStatus_t phhalHw_Rc663_MfcAuthenticate(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Rc663_SetMinFDT(
+phStatus_t
+phhalHw_Rc663_SetMinFDT(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint16_t wValue
 )
@@ -3722,7 +3753,8 @@ phStatus_t phhalHw_Rc663_SetMinFDT(
   return status;
 }
 
-phStatus_t phhalHw_Rc663_AsyncAbort(
+phStatus_t
+phhalHw_Rc663_AsyncAbort(
     phhalHw_Rc663_DataParams_t *pDataParams
 )
 {
@@ -3738,7 +3770,8 @@ phStatus_t phhalHw_Rc663_AsyncAbort(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Rc663_I18000p3m3Inventory(
+phStatus_t
+phhalHw_Rc663_I18000p3m3Inventory(
     phhalHw_Rc663_DataParams_t   *pDataParams,
     uint8_t *pSelCmd,
     uint8_t bSelCmdLen,
@@ -3798,12 +3831,12 @@ phStatus_t phhalHw_Rc663_I18000p3m3Inventory(
     /* Perform SELECT */
     if ((bSelCmdLen > 0U) &&
         (pSelCmd != NULL)) {
-      status = phhalHw_Rc663_18000p3m3_Sw_Select(
+      PH_CHECK_SUCCESS_FCT(status, phhalHw_Rc663_18000p3m3_Sw_Select(
               pDataParams,
               pSelCmd,
               bSelCmdLen,
-              bNumValidBitsinLastByte);
-
+              bNumValidBitsinLastByte
+          ));
     }
   }
 
@@ -4025,7 +4058,8 @@ phStatus_t phhalHw_Rc663_I18000p3m3Inventory(
   }
 }
 
-phStatus_t phhalHw_Rc663_I18000p3m3ResumeInventory(
+phStatus_t
+phhalHw_Rc663_I18000p3m3ResumeInventory(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint8_t **ppRxBuffer,
     uint16_t *pRxBufferLen
@@ -4134,7 +4168,8 @@ phStatus_t phhalHw_Rc663_I18000p3m3ResumeInventory(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Rc663_EventWait(phhalHw_Rc663_DataParams_t *pDataParams,
+phStatus_t
+phhalHw_Rc663_EventWait(phhalHw_Rc663_DataParams_t *pDataParams,
     uint32_t dwEventTimeout)
 {
   return phOsal_EventPend((volatile phOsal_Event_t *)(&pDataParams->HwEventObj.EventHandle),
@@ -4142,13 +4177,15 @@ phStatus_t phhalHw_Rc663_EventWait(phhalHw_Rc663_DataParams_t *pDataParams,
           dwEventTimeout, (E_PH_OSAL_EVT_RF | E_PH_OSAL_EVT_ABORT), NULL);
 }
 
-phStatus_t phhalHw_Rc663_EventConsume(phhalHw_Rc663_DataParams_t *pDataParams)
+phStatus_t
+phhalHw_Rc663_EventConsume(phhalHw_Rc663_DataParams_t *pDataParams)
 {
   return phOsal_EventClear(&pDataParams->HwEventObj.EventHandle, E_OS_EVENT_OPT_NONE,
           (E_PH_OSAL_EVT_RF | E_PH_OSAL_EVT_ABORT), NULL);
 }
 
-phStatus_t phhalHw_Rc663_DeInit(
+phStatus_t
+phhalHw_Rc663_DeInit(
     phhalHw_Rc663_DataParams_t *pDataParams
 )
 {
@@ -4214,7 +4251,8 @@ phStatus_t phhalHw_Rc663_DeInit(
   return phOsal_EventDelete(&pDataParams->HwEventObj.EventHandle);
 }
 
-static void phhalHw_Rc663_Reset(void)
+static void
+phhalHw_Rc663_Reset(void)
 {
 #ifndef _WIN32
   /* Send the reset pulse to FE to reset. */
@@ -4238,7 +4276,8 @@ static void phhalHw_Rc663_Reset(void)
 #endif /* _WIN32 */
 }
 
-static phStatus_t phhalHw_Rc663_TransmitJewelCmd(
+static phStatus_t
+phhalHw_Rc663_TransmitJewelCmd(
     phhalHw_Rc663_DataParams_t *pDataParams,
     uint16_t wJewelBufferLen,
     uint8_t *pTmpBuffer

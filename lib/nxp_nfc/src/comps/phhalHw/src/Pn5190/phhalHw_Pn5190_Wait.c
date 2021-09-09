@@ -43,7 +43,8 @@ static phStatus_t phhalHw_Pn5190_EventWait_AbortHandling(phhalHw_Pn5190_DataPara
     uint32_t *dwEventsReceived, uint32_t dwEvtsTimeOut);
 #endif
 
-phStatus_t phhalHw_Pn5190_WaitIrq(
+phStatus_t
+phhalHw_Pn5190_WaitIrq(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint32_t *pReceivedEvents
 )
@@ -84,7 +85,8 @@ phStatus_t phhalHw_Pn5190_WaitIrq(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5190_WaitForEvent(
+phStatus_t
+phhalHw_Pn5190_WaitForEvent(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint32_t dwEvtsWaitFor,
     uint32_t dwEvtsTimeOut,
@@ -176,7 +178,8 @@ phStatus_t phhalHw_Pn5190_WaitForEvent(
 }
 
 #ifndef _WIN32
-phStatus_t  phhalHw_Pn5190_Wait_IrqAbortHandling(phhalHw_Pn5190_DataParams_t *pDataParams,
+phStatus_t
+phhalHw_Pn5190_Wait_IrqAbortHandling(phhalHw_Pn5190_DataParams_t *pDataParams,
     phhalHw_InstMngr_CmdParams_t *pCmdParams)
 {
   phStatus_t PH_MEMLOC_REM status = PH_ERR_INTERNAL_ERROR;
@@ -245,7 +248,8 @@ phStatus_t  phhalHw_Pn5190_Wait_IrqAbortHandling(phhalHw_Pn5190_DataParams_t *pD
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-static phStatus_t phhalHw_Pn5190_EventWait_AbortHandling(phhalHw_Pn5190_DataParams_t *pDataParams,
+static phStatus_t
+phhalHw_Pn5190_EventWait_AbortHandling(phhalHw_Pn5190_DataParams_t *pDataParams,
     uint32_t *dwEventsReceived, uint32_t dwEvtsTimeOut)
 {
   phStatus_t PH_MEMLOC_REM status = PH_ERR_INTERNAL_ERROR;

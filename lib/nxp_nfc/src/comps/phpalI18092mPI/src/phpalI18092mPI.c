@@ -34,7 +34,8 @@
 
 #ifndef  NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phpalI18092mPI_ResetProtocol(
+phStatus_t
+phpalI18092mPI_ResetProtocol(
     void *pDataParams
 )
 {
@@ -77,7 +78,8 @@ phStatus_t phpalI18092mPI_ResetProtocol(
   return status;
 }
 
-phStatus_t phpalI18092mPI_Atr(
+phStatus_t
+phpalI18092mPI_Atr(
     void *pDataParams,
     uint8_t *pNfcid3i,
     uint8_t bDid,
@@ -163,7 +165,8 @@ phStatus_t phpalI18092mPI_Atr(
   return status;
 }
 
-phStatus_t phpalI18092mPI_Psl(
+phStatus_t
+phpalI18092mPI_Psl(
     void *pDataParams,
     uint8_t bDsi,
     uint8_t bDri,
@@ -215,7 +218,8 @@ phStatus_t phpalI18092mPI_Psl(
   return status;
 }
 
-phStatus_t phpalI18092mPI_ActivateCard(
+phStatus_t
+phpalI18092mPI_ActivateCard(
     void *pDataParams,
     uint8_t *pNfcid3i,
     uint8_t bDid,
@@ -309,7 +313,8 @@ phStatus_t phpalI18092mPI_ActivateCard(
   return status;
 }
 
-phStatus_t phpalI18092mPI_Deselect(
+phStatus_t
+phpalI18092mPI_Deselect(
     void *pDataParams,
     uint8_t bDeselectCommand
 )
@@ -365,7 +370,8 @@ phStatus_t phpalI18092mPI_Deselect(
   return status;
 }
 
-phStatus_t phpalI18092mPI_PresCheck(
+phStatus_t
+phpalI18092mPI_PresCheck(
     void *pDataParams
 )
 {
@@ -408,7 +414,8 @@ phStatus_t phpalI18092mPI_PresCheck(
   return status;
 }
 
-phStatus_t phpalI18092mPI_Exchange(
+phStatus_t
+phpalI18092mPI_Exchange(
     void *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -474,7 +481,8 @@ phStatus_t phpalI18092mPI_Exchange(
   return status;
 }
 
-phStatus_t phpalI18092mPI_Transmit(
+phStatus_t
+phpalI18092mPI_Transmit(
     void *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -528,7 +536,8 @@ phStatus_t phpalI18092mPI_Transmit(
   return status;
 }
 
-phStatus_t phpalI18092mPI_Receive(
+phStatus_t
+phpalI18092mPI_Receive(
     void *pDataParams,
     uint16_t wOption,
     uint8_t **ppRxBuffer,
@@ -587,7 +596,8 @@ phStatus_t phpalI18092mPI_Receive(
   return status;
 }
 
-phStatus_t phpalI18092mPI_SetConfig(
+phStatus_t
+phpalI18092mPI_SetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -637,7 +647,8 @@ phStatus_t phpalI18092mPI_SetConfig(
   return status;
 }
 
-phStatus_t phpalI18092mPI_GetConfig(
+phStatus_t
+phpalI18092mPI_GetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -688,7 +699,8 @@ phStatus_t phpalI18092mPI_GetConfig(
   return status;
 }
 
-phStatus_t phpalI18092mPI_GetSerialNo(
+phStatus_t
+phpalI18092mPI_GetSerialNo(
     void *pDataParams,
     uint8_t *pNfcId3Out
 )
@@ -740,7 +752,8 @@ phStatus_t phpalI18092mPI_GetSerialNo(
   return status;
 }
 
-phStatus_t phpalI18092mPI_Wakeup(
+phStatus_t
+phpalI18092mPI_Wakeup(
     void *pDataParams
 )
 {

@@ -28,7 +28,7 @@
 #include <nxp_nfc/ph_Status.h>
 #include <nxp_nfc/ph_RefDefs.h>
 #include <nxp_nfc/phOsal.h>
-#include "nxp_nfc/phTools.h"
+#include <nxp_nfc/phTools.h>
 
 #ifdef __cplusplus
 extern "C" {

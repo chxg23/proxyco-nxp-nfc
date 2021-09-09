@@ -89,7 +89,8 @@ phStatus_t phpalI14443p3a_Sw_Init(
 }
 
 /* Emvco: Added for EMVCO This function is used to config parameter for phpalI14443p3a */
-phStatus_t phpalI14443p3a_Sw_SetConfig(
+phStatus_t
+phpalI14443p3a_Sw_SetConfig(
     phpalI14443p3a_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -133,7 +134,8 @@ phStatus_t phpalI14443p3a_Sw_SetConfig(
 }
 
 /* Emvco: Added for EMVCO This function is used to config parameter for phpalI14443p3a */
-phStatus_t phpalI14443p3a_Sw_GetConfig(
+phStatus_t
+phpalI14443p3a_Sw_GetConfig(
     phpalI14443p3a_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -169,7 +171,8 @@ phStatus_t phpalI14443p3a_Sw_GetConfig(
 
 }
 
-phStatus_t phpalI14443p3a_Sw_RequestA(
+phStatus_t
+phpalI14443p3a_Sw_RequestA(
     phpalI14443p3a_Sw_DataParams_t *pDataParams,
     uint8_t *pAtqa
 )
@@ -182,7 +185,8 @@ phStatus_t phpalI14443p3a_Sw_RequestA(
   return status;
 }
 
-phStatus_t phpalI14443p3a_Sw_WakeUpA(
+phStatus_t
+phpalI14443p3a_Sw_WakeUpA(
     phpalI14443p3a_Sw_DataParams_t *pDataParams,
     uint8_t *pAtqa
 )
@@ -196,7 +200,8 @@ phStatus_t phpalI14443p3a_Sw_WakeUpA(
 }
 
 #ifdef NXPBUILD__PHPAL_I14443P3A_SW_ECP
-phStatus_t phpalI14443p3a_Sw_VASUpA(
+phStatus_t
+phpalI14443p3a_Sw_VASUpA(
     phpalI14443p3a_Sw_DataParams_t *pDataParams,
     uint8_t  bFormatByte,
     uint8_t *pCmdBytes,
@@ -259,7 +264,7 @@ phStatus_t phpalI14443p3a_Sw_VASUpA(
     STATS_INC(g_nfc_I14443_stats, vasupa_err);
     return statusTmp;
   }
-  
+
 
   if (pDataParams->bSkipTOSet == PH_OFF) {
     /* Set FDT timeout */
@@ -280,7 +285,7 @@ phStatus_t phpalI14443p3a_Sw_VASUpA(
     STATS_INC(g_nfc_I14443_stats, vasupa_err);
     return statusTmp;
   }
-  
+
   /* Set RxWaitTime to 76 microseconds equivalent to 8 Bits. */
   statusTmp = phhalHw_SetConfig(pDataParams->pHalDataParams,
           PHHAL_HW_CONFIG_RXWAIT_US, 76);
@@ -366,7 +371,8 @@ phStatus_t phpalI14443p3a_Sw_VASUpA(
 }
 #endif /* NXPBUILD__PHPAL_I14443P3A_SW_ECP */
 
-phStatus_t phpalI14443p3a_Sw_HaltA(
+phStatus_t
+phpalI14443p3a_Sw_HaltA(
     phpalI14443p3a_Sw_DataParams_t *pDataParams
 )
 {
@@ -421,7 +427,8 @@ phStatus_t phpalI14443p3a_Sw_HaltA(
   }
 }
 
-phStatus_t phpalI14443p3a_Sw_Anticollision(
+phStatus_t
+phpalI14443p3a_Sw_Anticollision(
     phpalI14443p3a_Sw_DataParams_t *pDataParams,
     uint8_t bCascadeLevel,
     uint8_t *pUidIn,
@@ -703,7 +710,8 @@ phStatus_t phpalI14443p3a_Sw_Anticollision(
   return PH_ADD_COMPCODE(status, PH_COMP_PAL_ISO14443P3A);
 }
 
-phStatus_t phpalI14443p3a_Sw_Select(
+phStatus_t
+phpalI14443p3a_Sw_Select(
     phpalI14443p3a_Sw_DataParams_t *pDataParams,
     uint8_t bCascadeLevel,
     uint8_t *pUidIn,
@@ -711,15 +719,17 @@ phStatus_t phpalI14443p3a_Sw_Select(
 )
 {
   uint8_t PH_MEMLOC_REM bDummy;
-  phStatus_t status = phpalI14443p3a_Sw_Anticollision(pDataParams, bCascadeLevel, pUidIn, 0x40, pSak, &bDummy);
-  
+  phStatus_t status = phpalI14443p3a_Sw_Anticollision(pDataParams, bCascadeLevel, pUidIn, 0x40,
+          pSak, &bDummy);
+
   if (status != PH_ERR_SUCCESS) {
     STATS_INC(g_nfc_I14443_stats, select_err);
   }
   return status;
 }
 
-phStatus_t phpalI14443p3a_Sw_ActivateCard(
+phStatus_t
+phpalI14443p3a_Sw_ActivateCard(
     phpalI14443p3a_Sw_DataParams_t *pDataParams,
     uint8_t *pUidIn,
     uint8_t bLenUidIn,
@@ -965,7 +975,8 @@ phStatus_t phpalI14443p3a_Sw_ActivateCard(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p3a_Sw_Exchange(
+phStatus_t
+phpalI14443p3a_Sw_Exchange(
     phpalI14443p3a_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -984,7 +995,8 @@ phStatus_t phpalI14443p3a_Sw_Exchange(
           pRxLength);
 }
 
-phStatus_t phpalI14443p3a_Sw_RequestAEx(
+phStatus_t
+phpalI14443p3a_Sw_RequestAEx(
     phpalI14443p3a_Sw_DataParams_t *pDataParams,
     uint8_t bReqCode,
     uint8_t *pAtqa
@@ -1069,7 +1081,8 @@ phStatus_t phpalI14443p3a_Sw_RequestAEx(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p3a_Sw_GetSerialNo(
+phStatus_t
+phpalI14443p3a_Sw_GetSerialNo(
     phpalI14443p3a_Sw_DataParams_t *pDataParams,
     uint8_t *pUidOut,
     uint8_t *pLenUidOut

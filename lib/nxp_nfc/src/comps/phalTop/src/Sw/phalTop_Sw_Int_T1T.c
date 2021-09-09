@@ -35,7 +35,8 @@
 
 static void phMemCpy(void *dest, void *src, uint16_t wLength);
 
-phStatus_t phalTop_Sw_Int_T1T_SetReadOnly(
+phStatus_t
+phalTop_Sw_Int_T1T_SetReadOnly(
     phalTop_Sw_DataParams_t *pDataParams
 )
 {
@@ -127,7 +128,8 @@ phStatus_t phalTop_Sw_Int_T1T_SetReadOnly(
   return PH_ERR_SUCCESS;
 }
 
-void phalTop_Sw_Int_T1T_CalculateMaxNdefSize(
+void
+phalTop_Sw_Int_T1T_CalculateMaxNdefSize(
     phalTop_Sw_DataParams_t *pDataParams,
     phalTop_T1T_t *pT1T
 )
@@ -185,7 +187,8 @@ void phalTop_Sw_Int_T1T_CalculateMaxNdefSize(
   }
 }
 
-phStatus_t phalTop_Sw_Int_T1T_UpdateLockReservedOtp(
+phStatus_t
+phalTop_Sw_Int_T1T_UpdateLockReservedOtp(
     phalTop_T1T_t *pT1T
 )
 {
@@ -234,7 +237,8 @@ phStatus_t phalTop_Sw_Int_T1T_UpdateLockReservedOtp(
   return PH_ERR_SUCCESS;
 }
 
-uint8_t phalTop_Sw_Int_T1T_CheckLockReservedOtp(
+uint8_t
+phalTop_Sw_Int_T1T_CheckLockReservedOtp(
     phalTop_T1T_t *pT1T,
     uint16_t wIndex
 )
@@ -249,7 +253,8 @@ uint8_t phalTop_Sw_Int_T1T_CheckLockReservedOtp(
   }
 }
 
-phStatus_t phalTop_Sw_Int_T1T_Read(
+phStatus_t
+phalTop_Sw_Int_T1T_Read(
     phalTop_T1T_t *pT1T,
     uint16_t wAddress,
     uint8_t *pData,
@@ -300,7 +305,8 @@ phStatus_t phalTop_Sw_Int_T1T_Read(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T1T_Write(
+phStatus_t
+phalTop_Sw_Int_T1T_Write(
     phalTop_Sw_DataParams_t *pDataParams,
     phalTop_T1T_t *pT1T,
     uint16_t wAddress,
@@ -431,7 +437,8 @@ phStatus_t phalTop_Sw_Int_T1T_Write(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T1T_ClearState(
+phStatus_t
+phalTop_Sw_Int_T1T_ClearState(
     phalTop_Sw_DataParams_t *pDataParams,
     phalTop_T1T_t *pT1T
 )
@@ -455,7 +462,8 @@ phStatus_t phalTop_Sw_Int_T1T_ClearState(
 }
 
 /* Finds the count and position of memory, lock and NDEF TLV */
-phStatus_t phalTop_Sw_Int_T1T_DetectTlvBlocks(
+phStatus_t
+phalTop_Sw_Int_T1T_DetectTlvBlocks(
     phalTop_Sw_DataParams_t *pDataParams,
     phalTop_T1T_t *pT1T
 )
@@ -698,7 +706,8 @@ phStatus_t phalTop_Sw_Int_T1T_DetectTlvBlocks(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T1T_CheckNdef(
+phStatus_t
+phalTop_Sw_Int_T1T_CheckNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pTagState
 )
@@ -831,7 +840,8 @@ phStatus_t phalTop_Sw_Int_T1T_CheckNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T1T_FormatNdef(
+phStatus_t
+phalTop_Sw_Int_T1T_FormatNdef(
     phalTop_Sw_DataParams_t *pDataParams
 )
 {
@@ -1047,7 +1057,8 @@ phStatus_t phalTop_Sw_Int_T1T_FormatNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T1T_EraseNdef(
+phStatus_t
+phalTop_Sw_Int_T1T_EraseNdef(
     phalTop_Sw_DataParams_t *pDataParams
 )
 {
@@ -1094,7 +1105,8 @@ phStatus_t phalTop_Sw_Int_T1T_EraseNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T1T_ReadNdef(
+phStatus_t
+phalTop_Sw_Int_T1T_ReadNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pData,
     uint16_t *pLength
@@ -1168,7 +1180,8 @@ phStatus_t phalTop_Sw_Int_T1T_ReadNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T1T_WriteNdef(
+phStatus_t
+phalTop_Sw_Int_T1T_WriteNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pData,
     uint16_t wLength
@@ -1334,7 +1347,8 @@ phStatus_t phalTop_Sw_Int_T1T_WriteNdef(
   return PH_ERR_SUCCESS;
 }
 
-static void phMemCpy(void *dest, void *src, uint16_t wLength)
+static void
+phMemCpy(void *dest, void *src, uint16_t wLength)
 {
   uint32_t dwLength = 0;
   dwLength = wLength;

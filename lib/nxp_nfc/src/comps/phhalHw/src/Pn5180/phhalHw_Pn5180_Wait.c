@@ -37,7 +37,8 @@
 #include <nxp_nfc/phOsal_WinOs.h>
 #endif
 
-phStatus_t phhalHw_Pn5180_WaitIrq(
+phStatus_t
+phhalHw_Pn5180_WaitIrq(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bEnableIrq,
     uint8_t bWaitUntilPowerUp,

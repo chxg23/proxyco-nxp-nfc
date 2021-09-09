@@ -94,7 +94,8 @@ static phStatus_t phNfcLib_MFDF_IsoRead(
     uint16_t *pBytesRead
 );
 
-phStatus_t phNfcLib_MFDF_Transmit(void *const pTxBuffer, uint16_t wTxBufferLength)
+phStatus_t
+phNfcLib_MFDF_Transmit(void *const pTxBuffer, uint16_t wTxBufferLength)
 {
   phStatus_t wStatus = PH_ERR_INVALID_PARAMETER;
   uint8_t aCommand[32] = {0};
@@ -427,7 +428,8 @@ phStatus_t phNfcLib_MFDF_Transmit(void *const pTxBuffer, uint16_t wTxBufferLengt
 /*
  * To perform the write plain option of MIFARE DESFire, contains bCommOption extra parameter for crypto integration
  */
-static phStatus_t phNfcLib_MFDF_Write_Plain(uint8_t *bCmdBuff,
+static phStatus_t
+phNfcLib_MFDF_Write_Plain(uint8_t *bCmdBuff,
     uint16_t wCmdLen,/* uint8_t bCommOption, */ uint8_t *pData, uint16_t  wDataLen)
 {
   phStatus_t   statusTmp = 0;
@@ -615,7 +617,8 @@ static phStatus_t phNfcLib_MFDF_Write_Plain(uint8_t *bCmdBuff,
 /*
  * This api performs the MIFARE DESFire exchange
  */
-static phStatus_t phNfcLib_MFDF_Exchange_Cmd(uint8_t bWrappedMode,  uint8_t *pSendBuff,
+static phStatus_t
+phNfcLib_MFDF_Exchange_Cmd(uint8_t bWrappedMode,  uint8_t *pSendBuff,
     uint16_t wCmdLen,  uint8_t **ppResponse, uint16_t *pRxlen)
 {
   uint8_t       *pRecv = NULL;
@@ -718,7 +721,8 @@ static phStatus_t phNfcLib_MFDF_Exchange_Cmd(uint8_t bWrappedMode,  uint8_t *pSe
 /**
  * This is purely internal api to send the data to PICC
  */
-static phStatus_t phNfcLib_MFDF_SendDataToPICC(uint8_t *pCmd, uint16_t wCmdLen, uint8_t *pData,
+static phStatus_t
+phNfcLib_MFDF_SendDataToPICC(uint8_t *pCmd, uint16_t wCmdLen, uint8_t *pData,
     uint16_t wDataLen, uint8_t *pResp, uint16_t *pRespLen)
 {
   /* Utility function to send encrypted data to PICC as and when it is available from SAM */
@@ -869,7 +873,8 @@ static phStatus_t phNfcLib_MFDF_SendDataToPICC(uint8_t *pCmd, uint16_t wCmdLen, 
  * This api is used to plain read the MIFARE product data, the parameter option is considered for further crypto option of mac,
  * this api is further calling get data instead of directly performing the same functionality to accomodate crypto
  */
-static phStatus_t phNfcLib_MFDF_ReadData_Plain(
+static phStatus_t
+phNfcLib_MFDF_ReadData_Plain(
     uint8_t bOption,
     uint8_t *bCmdBuff,
     uint16_t wCmdLen,
@@ -907,7 +912,8 @@ static phStatus_t phNfcLib_MFDF_ReadData_Plain(
  * This api is used to get the data for read api
  * this api is entirely for non crypto mode, used for wrapped data
  */
-static phStatus_t phNfcLib_MFDF_GetData(
+static phStatus_t
+phNfcLib_MFDF_GetData(
     uint8_t *pSendBuff,
     uint16_t wCmdLen,
     uint8_t **pResponse,
@@ -1253,7 +1259,8 @@ static phStatus_t phNfcLib_MFDF_GetData(
   return statusTmp;
 }
 
-static phStatus_t phNfcLib_MFDF_Send7816Apdu(
+static phStatus_t
+phNfcLib_MFDF_Send7816Apdu(
     uint8_t bOption,
     uint8_t bIns,
     uint8_t bP1,
@@ -1338,7 +1345,8 @@ static phStatus_t phNfcLib_MFDF_Send7816Apdu(
 /**
 * This api is to perform the iso read
 */
-static phStatus_t phNfcLib_MFDF_IsoRead(
+static phStatus_t
+phNfcLib_MFDF_IsoRead(
     uint16_t wOption,
     uint8_t *bCmdBuff,
     uint16_t wCmdLen,

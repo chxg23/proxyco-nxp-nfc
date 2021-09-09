@@ -35,7 +35,8 @@
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phpalEpcUid_ActivateCard(
+phStatus_t
+phpalEpcUid_ActivateCard(
     void *pDataParams,
     uint8_t bTagType,
     uint8_t bNumSlots,
@@ -128,7 +129,8 @@ phStatus_t phpalEpcUid_ActivateCard(
   return status;
 }
 
-phStatus_t phpalEpcUid_BeginRound(
+phStatus_t
+phpalEpcUid_BeginRound(
     void *pDataParams,
     uint8_t bTagType,
     uint8_t bNumSlots,
@@ -216,7 +218,8 @@ phStatus_t phpalEpcUid_BeginRound(
   return status;
 }
 
-phStatus_t phpalEpcUid_CloseSlot(
+phStatus_t
+phpalEpcUid_CloseSlot(
     void *pDataParams,
     uint8_t bOption,
     uint8_t *pRxBuffer,
@@ -277,7 +280,8 @@ phStatus_t phpalEpcUid_CloseSlot(
   return status;
 }
 
-phStatus_t phpalEpcUid_FixSlot(
+phStatus_t
+phpalEpcUid_FixSlot(
     void *pDataParams,
     uint8_t bTagType,
     uint8_t *pMask,
@@ -345,7 +349,8 @@ phStatus_t phpalEpcUid_FixSlot(
   return status;
 }
 
-phStatus_t phpalEpcUid_Write(
+phStatus_t
+phpalEpcUid_Write(
     void *pDataParams,
     uint8_t bTagType,
     uint8_t bBlockNo,
@@ -402,7 +407,8 @@ phStatus_t phpalEpcUid_Write(
   return status;
 }
 
-phStatus_t phpalEpcUid_Destroy(
+phStatus_t
+phpalEpcUid_Destroy(
     void *pDataParams,
     uint8_t bTagType,
     uint8_t *pData,
@@ -463,7 +469,8 @@ phStatus_t phpalEpcUid_Destroy(
   return status;
 }
 
-phStatus_t phpalEpcUid_GetSerialNo(
+phStatus_t
+phpalEpcUid_GetSerialNo(
     void *pDataParams,
     uint8_t *pRxBuffer,
     uint8_t *pRxLength

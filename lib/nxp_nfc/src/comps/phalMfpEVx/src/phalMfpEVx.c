@@ -34,7 +34,8 @@
 /***************************************************************************************************************************************/
 /* MIFARE Plus EV1 contactless IC Generic command for personalization.                                                                                */
 /***************************************************************************************************************************************/
-phStatus_t phalMfpEVx_WritePerso(void *pDataParams, uint8_t bLayer4Comm, uint16_t wBlockNr,
+phStatus_t
+phalMfpEVx_WritePerso(void *pDataParams, uint8_t bLayer4Comm, uint16_t wBlockNr,
     uint8_t bNumBlocks,
     uint8_t *pValue)
 {
@@ -88,7 +89,8 @@ phStatus_t phalMfpEVx_WritePerso(void *pDataParams, uint8_t bLayer4Comm, uint16_
   return status;
 }
 
-phStatus_t phalMfpEVx_CommitPerso(void *pDataParams, uint8_t bOption, uint8_t bLayer4Comm)
+phStatus_t
+phalMfpEVx_CommitPerso(void *pDataParams, uint8_t bOption, uint8_t bLayer4Comm)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -138,7 +140,8 @@ phStatus_t phalMfpEVx_CommitPerso(void *pDataParams, uint8_t bOption, uint8_t bL
 /***************************************************************************************************************************************/
 /* Mifare Plus EV1 Generic command for authentication.                                                                                 */
 /***************************************************************************************************************************************/
-phStatus_t phalMfpEVx_AuthenticateMfc(void *pDataParams, uint8_t bBlockNo, uint8_t bKeyType,
+phStatus_t
+phalMfpEVx_AuthenticateMfc(void *pDataParams, uint8_t bBlockNo, uint8_t bKeyType,
     uint16_t wKeyNumber, uint16_t wKeyVersion,
     uint8_t *pUid, uint8_t bUidLength)
 {
@@ -195,7 +198,8 @@ phStatus_t phalMfpEVx_AuthenticateMfc(void *pDataParams, uint8_t bBlockNo, uint8
 }
 
 #ifdef NXPBUILD__PHAL_MFPEVX_NDA
-phStatus_t phalMfpEVx_AuthenticateSL0(void *pDataParams, uint8_t bLayer4Comm, uint8_t bFirstAuth,
+phStatus_t
+phalMfpEVx_AuthenticateSL0(void *pDataParams, uint8_t bLayer4Comm, uint8_t bFirstAuth,
     uint16_t wBlockNr, uint16_t wKeyNumber,
     uint16_t wKeyVersion, uint8_t bLenDivInput, uint8_t *pDivInput, uint8_t bLenPcdCap2,
     uint8_t *pPcdCap2In, uint8_t *pPcdCap2Out,
@@ -273,7 +277,8 @@ phStatus_t phalMfpEVx_AuthenticateSL0(void *pDataParams, uint8_t bLayer4Comm, ui
   return status;
 }
 
-phStatus_t phalMfpEVx_AuthenticateSL1(void *pDataParams, uint8_t bLayer4Comm, uint8_t bFirstAuth,
+phStatus_t
+phalMfpEVx_AuthenticateSL1(void *pDataParams, uint8_t bLayer4Comm, uint8_t bFirstAuth,
     uint16_t wBlockNr, uint16_t wKeyNumber,
     uint16_t wKeyVersion, uint8_t bLenDivInput, uint8_t *pDivInput, uint8_t bLenPcdCap2,
     uint8_t *pPcdCap2In, uint8_t *pPcdCap2Out,
@@ -351,7 +356,8 @@ phStatus_t phalMfpEVx_AuthenticateSL1(void *pDataParams, uint8_t bLayer4Comm, ui
   return status;
 }
 
-phStatus_t phalMfpEVx_AuthenticateSL3(void *pDataParams, uint8_t bFirstAuth, uint16_t wBlockNr,
+phStatus_t
+phalMfpEVx_AuthenticateSL3(void *pDataParams, uint8_t bFirstAuth, uint16_t wBlockNr,
     uint16_t wKeyNumber, uint16_t wKeyVersion,
     uint8_t bLenDivInput, uint8_t *pDivInput, uint8_t bLenPcdCap2, uint8_t *pPcdCap2In,
     uint8_t *pPcdCap2Out, uint8_t *pPdCap2)
@@ -426,7 +432,8 @@ phStatus_t phalMfpEVx_AuthenticateSL3(void *pDataParams, uint8_t bFirstAuth, uin
   return status;
 }
 
-phStatus_t phalMfpEVx_SSAuthenticate(void *pDataParams, uint8_t bOption, uint16_t wSSKeyBNr,
+phStatus_t
+phalMfpEVx_SSAuthenticate(void *pDataParams, uint8_t bOption, uint16_t wSSKeyBNr,
     uint16_t wSSKeyNr, uint16_t wSSKeyVer,
     uint8_t bLenDivInputSSKey, uint8_t *pDivInputSSKey, uint8_t bSecCount, uint16_t *pSectorNos,
     uint16_t *pKeyNos, uint16_t *pKeyVers,
@@ -513,7 +520,8 @@ phStatus_t phalMfpEVx_SSAuthenticate(void *pDataParams, uint8_t bOption, uint16_
   return status;
 }
 
-phStatus_t phalMfpEVx_AuthenticatePDC(void *pDataParams, uint16_t wBlockNr, uint16_t wKeyNumber,
+phStatus_t
+phalMfpEVx_AuthenticatePDC(void *pDataParams, uint16_t wBlockNr, uint16_t wKeyNumber,
     uint16_t wKeyVersion, uint8_t bLenDivInput,
     uint8_t *pDivInput, uint8_t bUpgradeInfo)
 {
@@ -577,7 +585,8 @@ phStatus_t phalMfpEVx_AuthenticatePDC(void *pDataParams, uint16_t wBlockNr, uint
 /***************************************************************************************************************************************/
 /* Mifare Plus EV1 Generic command for data operations.                                                                                */
 /***************************************************************************************************************************************/
-phStatus_t phalMfpEVx_Write(void *pDataParams, uint8_t bEncrypted, uint8_t bWriteMaced,
+phStatus_t
+phalMfpEVx_Write(void *pDataParams, uint8_t bEncrypted, uint8_t bWriteMaced,
     uint16_t wBlockNr, uint8_t bNumBlocks,
     uint8_t *pBlocks, uint8_t *pTMC, uint8_t *pTMV)
 {
@@ -641,7 +650,8 @@ phStatus_t phalMfpEVx_Write(void *pDataParams, uint8_t bEncrypted, uint8_t bWrit
   return status;
 }
 
-phStatus_t phalMfpEVx_Read(void *pDataParams, uint8_t bEncrypted, uint8_t bReadMaced,
+phStatus_t
+phalMfpEVx_Read(void *pDataParams, uint8_t bEncrypted, uint8_t bReadMaced,
     uint8_t bMacOnCmd, uint16_t wBlockNr,
     uint8_t bNumBlocks, uint8_t *pBlocks)
 {
@@ -706,7 +716,8 @@ phStatus_t phalMfpEVx_Read(void *pDataParams, uint8_t bEncrypted, uint8_t bReadM
 /***************************************************************************************************************************************/
 /* Mifare Plus EV1 Generic command for value operations.                                                                               */
 /***************************************************************************************************************************************/
-phStatus_t phalMfpEVx_WriteValue(void *pDataParams, uint8_t bEncrypted, uint8_t bWriteMaced,
+phStatus_t
+phalMfpEVx_WriteValue(void *pDataParams, uint8_t bEncrypted, uint8_t bWriteMaced,
     uint16_t wBlockNr, uint8_t *pValue,
     uint8_t bAddrData, uint8_t *pTMC, uint8_t *pTMV)
 {
@@ -770,7 +781,8 @@ phStatus_t phalMfpEVx_WriteValue(void *pDataParams, uint8_t bEncrypted, uint8_t 
   return status;
 }
 
-phStatus_t phalMfpEVx_ReadValue(void *pDataParams, uint8_t bEncrypted, uint8_t bReadMaced,
+phStatus_t
+phalMfpEVx_ReadValue(void *pDataParams, uint8_t bEncrypted, uint8_t bReadMaced,
     uint8_t bMacOnCmd, uint16_t wBlockNr,
     uint8_t *pValue, uint8_t *pAddrData)
 {
@@ -833,7 +845,8 @@ phStatus_t phalMfpEVx_ReadValue(void *pDataParams, uint8_t bEncrypted, uint8_t b
   return status;
 }
 
-phStatus_t phalMfpEVx_Increment(void *pDataParams, uint8_t bIncrementMaced, uint16_t wBlockNr,
+phStatus_t
+phalMfpEVx_Increment(void *pDataParams, uint8_t bIncrementMaced, uint16_t wBlockNr,
     uint8_t *pValue)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -884,7 +897,8 @@ phStatus_t phalMfpEVx_Increment(void *pDataParams, uint8_t bIncrementMaced, uint
   return status;
 }
 
-phStatus_t phalMfpEVx_Decrement(void *pDataParams, uint8_t bDecrementMaced, uint16_t wBlockNr,
+phStatus_t
+phalMfpEVx_Decrement(void *pDataParams, uint8_t bDecrementMaced, uint16_t wBlockNr,
     uint8_t *pValue)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -935,7 +949,8 @@ phStatus_t phalMfpEVx_Decrement(void *pDataParams, uint8_t bDecrementMaced, uint
   return status;
 }
 
-phStatus_t phalMfpEVx_IncrementTransfer(void *pDataParams, uint8_t bIncrementTransferMaced,
+phStatus_t
+phalMfpEVx_IncrementTransfer(void *pDataParams, uint8_t bIncrementTransferMaced,
     uint16_t wSourceBlockNr,
     uint16_t wDestinationBlockNr, uint8_t *pValue, uint8_t *pTMC, uint8_t *pTMV)
 {
@@ -999,7 +1014,8 @@ phStatus_t phalMfpEVx_IncrementTransfer(void *pDataParams, uint8_t bIncrementTra
   return status;
 }
 
-phStatus_t phalMfpEVx_DecrementTransfer(void *pDataParams, uint8_t bDecrementTransferMaced,
+phStatus_t
+phalMfpEVx_DecrementTransfer(void *pDataParams, uint8_t bDecrementTransferMaced,
     uint16_t wSourceBlockNr,
     uint16_t wDestinationBlockNr, uint8_t *pValue, uint8_t *pTMC, uint8_t *pTMV)
 {
@@ -1063,7 +1079,8 @@ phStatus_t phalMfpEVx_DecrementTransfer(void *pDataParams, uint8_t bDecrementTra
   return status;
 }
 
-phStatus_t phalMfpEVx_Transfer(void *pDataParams, uint8_t bTransferMaced, uint16_t wBlockNr,
+phStatus_t
+phalMfpEVx_Transfer(void *pDataParams, uint8_t bTransferMaced, uint16_t wBlockNr,
     uint8_t *pTMC, uint8_t *pTMV)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -1119,7 +1136,8 @@ phStatus_t phalMfpEVx_Transfer(void *pDataParams, uint8_t bTransferMaced, uint16
   return status;
 }
 
-phStatus_t phalMfpEVx_Restore(void *pDataParams, uint8_t bRestoreMaced, uint16_t wBlockNr)
+phStatus_t
+phalMfpEVx_Restore(void *pDataParams, uint8_t bRestoreMaced, uint16_t wBlockNr)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1170,7 +1188,8 @@ phStatus_t phalMfpEVx_Restore(void *pDataParams, uint8_t bRestoreMaced, uint16_t
 /***************************************************************************************************************************************/
 /* Mifare Plus EV1 Generic command for special operations.                                                                             */
 /***************************************************************************************************************************************/
-phStatus_t phalMfpEVx_GetVersion(void *pDataParams, uint8_t *pVerInfo)
+phStatus_t
+phalMfpEVx_GetVersion(void *pDataParams, uint8_t *pVerInfo)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1215,7 +1234,8 @@ phStatus_t phalMfpEVx_GetVersion(void *pDataParams, uint8_t *pVerInfo)
   return status;
 }
 
-phStatus_t phalMfpEVx_ReadSign(void *pDataParams, uint8_t bLayer4Comm, uint8_t bAddr,
+phStatus_t
+phalMfpEVx_ReadSign(void *pDataParams, uint8_t bLayer4Comm, uint8_t bAddr,
     uint8_t **pSignature)
 {
   phStatus_t PH_MEMLOC_REM status = 0;
@@ -1261,7 +1281,8 @@ phStatus_t phalMfpEVx_ReadSign(void *pDataParams, uint8_t bLayer4Comm, uint8_t b
   return status;
 }
 
-phStatus_t phalMfpEVx_ResetAuth(void *pDataParams)
+phStatus_t
+phalMfpEVx_ResetAuth(void *pDataParams)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1303,7 +1324,8 @@ phStatus_t phalMfpEVx_ResetAuth(void *pDataParams)
   return status;
 }
 
-phStatus_t phalMfpEVx_PersonalizeUid(void *pDataParams, uint8_t bUidType)
+phStatus_t
+phalMfpEVx_PersonalizeUid(void *pDataParams, uint8_t bUidType)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1347,7 +1369,8 @@ phStatus_t phalMfpEVx_PersonalizeUid(void *pDataParams, uint8_t bUidType)
   return status;
 }
 
-phStatus_t phalMfpEVx_SetConfigSL1(void *pDataParams, uint8_t bOption)
+phStatus_t
+phalMfpEVx_SetConfigSL1(void *pDataParams, uint8_t bOption)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1389,7 +1412,8 @@ phStatus_t phalMfpEVx_SetConfigSL1(void *pDataParams, uint8_t bOption)
   return status;
 }
 
-phStatus_t phalMfpEVx_ReadSL1TMBlock(void *pDataParams, uint16_t wBlockNr, uint8_t *pBlocks)
+phStatus_t
+phalMfpEVx_ReadSL1TMBlock(void *pDataParams, uint16_t wBlockNr, uint8_t *pBlocks)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1441,7 +1465,8 @@ phStatus_t phalMfpEVx_ReadSL1TMBlock(void *pDataParams, uint16_t wBlockNr, uint8
   return status;
 }
 
-phStatus_t phalMfpEVx_VCSupportLastISOL3(void *pDataParams, uint8_t *pIid, uint8_t *pPcdCapL3,
+phStatus_t
+phalMfpEVx_VCSupportLastISOL3(void *pDataParams, uint8_t *pIid, uint8_t *pPcdCapL3,
     uint8_t *pInfo)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -1491,7 +1516,8 @@ phStatus_t phalMfpEVx_VCSupportLastISOL3(void *pDataParams, uint8_t *pIid, uint8
 }
 
 #ifdef NXPBUILD__PHAL_MFPEVX_NDA
-phStatus_t phalMfpEVx_ChangeKey(void *pDataParams, uint8_t bChangeKeyMaced, uint16_t wBlockNr,
+phStatus_t
+phalMfpEVx_ChangeKey(void *pDataParams, uint8_t bChangeKeyMaced, uint16_t wBlockNr,
     uint16_t wKeyNumber,
     uint16_t wKeyVersion, uint8_t bLenDivInput, uint8_t *pDivInput)
 {
@@ -1549,7 +1575,8 @@ phStatus_t phalMfpEVx_ChangeKey(void *pDataParams, uint8_t bChangeKeyMaced, uint
   return status;
 }
 
-phStatus_t phalMfpEVx_CommitReaderID(void *pDataParams, uint16_t wBlockNr, uint8_t *pTMRI,
+phStatus_t
+phalMfpEVx_CommitReaderID(void *pDataParams, uint16_t wBlockNr, uint8_t *pTMRI,
     uint8_t *pEncTMRI)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -1606,7 +1633,8 @@ phStatus_t phalMfpEVx_CommitReaderID(void *pDataParams, uint16_t wBlockNr, uint8
 /***************************************************************************************************************************************/
 /* Mifare Plus EV1 Generic command for utility operations.                                                                             */
 /***************************************************************************************************************************************/
-phStatus_t phalMfpEVx_ResetSecMsgState(void *pDataParams)
+phStatus_t
+phalMfpEVx_ResetSecMsgState(void *pDataParams)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1648,7 +1676,8 @@ phStatus_t phalMfpEVx_ResetSecMsgState(void *pDataParams)
   return status;
 }
 
-phStatus_t phalMfpEVx_SetConfig(void *pDataParams, uint16_t wOption, uint16_t wValue)
+phStatus_t
+phalMfpEVx_SetConfig(void *pDataParams, uint16_t wOption, uint16_t wValue)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1693,7 +1722,8 @@ phStatus_t phalMfpEVx_SetConfig(void *pDataParams, uint16_t wOption, uint16_t wV
   return status;
 }
 
-phStatus_t phalMfpEVx_GetConfig(void *pDataParams, uint16_t wOption, uint16_t *pValue)
+phStatus_t
+phalMfpEVx_GetConfig(void *pDataParams, uint16_t wOption, uint16_t *pValue)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1742,7 +1772,8 @@ phStatus_t phalMfpEVx_GetConfig(void *pDataParams, uint16_t wOption, uint16_t *p
   return status;
 }
 
-phStatus_t phalMfpEVx_SetVCAParams(void *pDataParams, void *pAlVCADataParams)
+phStatus_t
+phalMfpEVx_SetVCAParams(void *pDataParams, void *pAlVCADataParams)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1786,7 +1817,8 @@ phStatus_t phalMfpEVx_SetVCAParams(void *pDataParams, void *pAlVCADataParams)
 }
 
 #ifdef NXPBUILD__PHAL_MFPEVX_NDA
-phStatus_t phalMfpEVx_CalculateTMV(void *pDataParams, uint16_t wOption, uint16_t wKeyNoTMACKey,
+phStatus_t
+phalMfpEVx_CalculateTMV(void *pDataParams, uint16_t wOption, uint16_t wKeyNoTMACKey,
     uint16_t wKeyVerTMACKey,
     uint16_t wRamKeyNo, uint16_t wRamKeyVer,
     uint8_t *pDivInput, uint8_t bDivInputLen, uint8_t *pTMC, uint8_t *pUid, uint8_t bUidLen,
@@ -1869,7 +1901,8 @@ phStatus_t phalMfpEVx_CalculateTMV(void *pDataParams, uint16_t wOption, uint16_t
   return status;
 }
 
-phStatus_t phalMfpEVx_DecryptReaderID(void *pDataParams, uint16_t wOption, uint16_t wKeyNoTMACKey,
+phStatus_t
+phalMfpEVx_DecryptReaderID(void *pDataParams, uint16_t wOption, uint16_t wKeyNoTMACKey,
     uint16_t wKeyVerTMACKey,
     uint16_t wRamKeyNo, uint16_t wRamKeyVer, uint8_t *pDivInput, uint8_t bDivInputLen, uint8_t *pTMC,
     uint8_t *pUid,

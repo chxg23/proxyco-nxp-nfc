@@ -31,7 +31,8 @@
 
 #ifdef NXPBUILD__PHAL_MFP
 
-phStatus_t phalMfp_Int_ComputeErrorResponse(
+phStatus_t
+phalMfp_Int_ComputeErrorResponse(
     uint16_t wNumBytesReceived,
     uint8_t bStatus,
     uint8_t bLayer4Comm
@@ -135,7 +136,8 @@ phStatus_t phalMfp_Int_ComputeErrorResponse(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfp_Int_WritePerso(
+phStatus_t
+phalMfp_Int_WritePerso(
     void *pPalMifareDataParams,
     uint8_t bLayer4Comm,
     uint16_t wBlockNr,
@@ -207,7 +209,8 @@ phStatus_t phalMfp_Int_WritePerso(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfp_Int_CommitPerso(
+phStatus_t
+phalMfp_Int_CommitPerso(
     void *pPalMifareDataParams,
     uint8_t bLayer4Comm
 )
@@ -252,7 +255,8 @@ phStatus_t phalMfp_Int_CommitPerso(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfp_Int_ResetAuth(void *pPalMifareDataParams)
+phStatus_t
+phalMfp_Int_ResetAuth(void *pPalMifareDataParams)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
   uint8_t     PH_MEMLOC_REM aCmd[1 /* command code */];
@@ -277,7 +281,8 @@ phStatus_t phalMfp_Int_ResetAuth(void *pPalMifareDataParams)
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfp_Int_PrepareProximityCheck(
+phStatus_t
+phalMfp_Int_PrepareProximityCheck(
     void *pPalMifareDataParams
 )
 {
@@ -308,7 +313,8 @@ phStatus_t phalMfp_Int_PrepareProximityCheck(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfp_Int_ProximityCheck(
+phStatus_t
+phalMfp_Int_ProximityCheck(
     void *pPalMifareDataParams,
     uint8_t bNumSteps,
     uint8_t *pRndC,
@@ -388,7 +394,8 @@ phStatus_t phalMfp_Int_ProximityCheck(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfp_Int_MultiBlockRead(
+phStatus_t
+phalMfp_Int_MultiBlockRead(
     void *pPalMifareDataParams,
     uint8_t bBlockNr,
     uint8_t bNumBlocks,
@@ -431,7 +438,8 @@ phStatus_t phalMfp_Int_MultiBlockRead(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfp_Int_MultiBlockWrite(
+phStatus_t
+phalMfp_Int_MultiBlockWrite(
     void *pPalMifareDataParams,
     uint8_t bBlockNr,
     uint8_t bNumBlocks,
@@ -474,7 +482,8 @@ phStatus_t phalMfp_Int_MultiBlockWrite(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfp_Int_CreateValueBlock(
+phStatus_t
+phalMfp_Int_CreateValueBlock(
     uint8_t *pValue,
     uint8_t bAddrData,
     uint8_t *pBlock
@@ -499,7 +508,8 @@ phStatus_t phalMfp_Int_CreateValueBlock(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfp_Int_CheckValueBlockFormat(
+phStatus_t
+phalMfp_Int_CheckValueBlockFormat(
     uint8_t *pBlock
 )
 {

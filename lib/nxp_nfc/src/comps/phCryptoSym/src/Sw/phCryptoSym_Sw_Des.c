@@ -92,7 +92,8 @@ static const uint8_t PH_CRYPTOSYM_SW_CONST_ROM SBOX[8][64] = {
   }
 };
 
-phStatus_t  phCryptoSym_Sw_Des_KeyInit(
+phStatus_t
+phCryptoSym_Sw_Des_KeyInit(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     const uint8_t *pKey,
     uint8_t bNumKeys
@@ -146,7 +147,8 @@ phStatus_t  phCryptoSym_Sw_Des_KeyInit(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t  phCryptoSym_Sw_Des_EncryptBlock(
+phStatus_t
+phCryptoSym_Sw_Des_EncryptBlock(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     uint8_t PH_CRYTOSYM_SW_FAST_RAM *pBlock,
     uint8_t bKeyNumber
@@ -201,7 +203,8 @@ phStatus_t  phCryptoSym_Sw_Des_EncryptBlock(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t  phCryptoSym_Sw_Des_DecryptBlock(
+phStatus_t
+phCryptoSym_Sw_Des_DecryptBlock(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     uint8_t PH_CRYTOSYM_SW_FAST_RAM *pBlock,
     uint8_t bKeyNumber
@@ -250,7 +253,8 @@ phStatus_t  phCryptoSym_Sw_Des_DecryptBlock(
   return PH_ERR_SUCCESS;
 }
 
-void  phCryptoSym_Sw_Des_Permutate_IP(
+void
+phCryptoSym_Sw_Des_Permutate_IP(
     uint8_t PH_CRYTOSYM_SW_FAST_RAM *pStateIn,
     uint8_t PH_CRYTOSYM_SW_FAST_RAM *pStateOut
 )
@@ -312,7 +316,8 @@ void  phCryptoSym_Sw_Des_Permutate_IP(
   }
 }
 
-void  phCryptoSym_Sw_Des_Permutate_IP_Inv(
+void
+phCryptoSym_Sw_Des_Permutate_IP_Inv(
     uint8_t PH_CRYTOSYM_SW_FAST_RAM *pStateIn,
     uint8_t PH_CRYTOSYM_SW_FAST_RAM *pStateOut
 )
@@ -371,7 +376,8 @@ void  phCryptoSym_Sw_Des_Permutate_IP_Inv(
   }
 }
 
-void  phCryptoSym_Sw_Des_PC1_Permutation(
+void
+phCryptoSym_Sw_Des_PC1_Permutation(
     const uint8_t *pKeyIn,
     uint8_t PH_CRYTOSYM_SW_FAST_RAM *pKeyOut
 )
@@ -422,7 +428,8 @@ void  phCryptoSym_Sw_Des_PC1_Permutation(
 
 }
 
-void phCryptoSym_Sw_Des_PC2_Permutation(
+void
+phCryptoSym_Sw_Des_PC2_Permutation(
     uint8_t PH_CRYTOSYM_SW_FAST_RAM *pKeyIn,
     uint8_t *pKeyOut
 )
@@ -489,7 +496,8 @@ void phCryptoSym_Sw_Des_PC2_Permutation(
 }
 
 #ifdef  PH_CRYPTOSYM_SW_ONLINE_KEYSCHEDULING
-void  phCryptoSym_Sw_Des_RotateRight28(
+void
+phCryptoSym_Sw_Des_RotateRight28(
     uint8_t PH_CRYTOSYM_SW_FAST_RAM *pArray,
     uint8_t bNumPos
 )
@@ -523,7 +531,8 @@ void  phCryptoSym_Sw_Des_RotateRight28(
 }
 #endif /* PH_CRYPTOSYM_SW_ONLINE_KEYSCHEDULING */
 
-void  phCryptoSym_Sw_Des_RotateLeft28(
+void
+phCryptoSym_Sw_Des_RotateLeft28(
     uint8_t PH_CRYTOSYM_SW_FAST_RAM *pArray,
     uint8_t bNumPos
 )
@@ -557,7 +566,8 @@ void  phCryptoSym_Sw_Des_RotateLeft28(
   }
 }
 
-void phCryptoSym_Sw_Des_ComputeRound(
+void
+phCryptoSym_Sw_Des_ComputeRound(
     uint8_t PH_CRYTOSYM_SW_FAST_RAM *pState,
     uint8_t *pRoundKey
 )
@@ -572,7 +582,8 @@ void phCryptoSym_Sw_Des_ComputeRound(
   pState[7] ^= temp[3];
 }
 
-void phCryptoSym_Sw_Des_Swap(uint8_t PH_CRYTOSYM_SW_FAST_RAM *bState)
+void
+phCryptoSym_Sw_Des_Swap(uint8_t PH_CRYTOSYM_SW_FAST_RAM *bState)
 {
   uint8_t PH_CRYTOSYM_SW_FAST_RAM tmp[4];
 
@@ -581,7 +592,8 @@ void phCryptoSym_Sw_Des_Swap(uint8_t PH_CRYTOSYM_SW_FAST_RAM *bState)
   (void)memcpy(&bState[4], tmp, 4);
 }
 
-void phCryptoSym_Sw_Des_F(
+void
+phCryptoSym_Sw_Des_F(
     uint8_t PH_CRYTOSYM_SW_FAST_RAM *pR,
     uint8_t *pRoundKey
 )
@@ -657,7 +669,8 @@ void phCryptoSym_Sw_Des_F(
 
 }
 
-void phCryptoSym_Sw_Des_Expand(
+void
+phCryptoSym_Sw_Des_Expand(
     uint8_t PH_CRYTOSYM_SW_FAST_RAM *pR,
     uint8_t PH_CRYTOSYM_SW_FAST_RAM *pRexp
 )
@@ -680,7 +693,8 @@ void phCryptoSym_Sw_Des_Expand(
           MASK6); /* Input bits 28 29 30 31 32 1 */
 }
 
-phStatus_t phCryptoSym_Sw_Des_DecodeVersion(
+phStatus_t
+phCryptoSym_Sw_Des_DecodeVersion(
     uint8_t *pKey,
     uint16_t *pKeyVersion
 )
@@ -698,7 +712,8 @@ phStatus_t phCryptoSym_Sw_Des_DecodeVersion(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phCryptoSym_Sw_Des_EncodeVersion(
+phStatus_t
+phCryptoSym_Sw_Des_EncodeVersion(
     uint8_t *pKey,
     uint16_t wKeyVersion,
     uint16_t wKeyType,

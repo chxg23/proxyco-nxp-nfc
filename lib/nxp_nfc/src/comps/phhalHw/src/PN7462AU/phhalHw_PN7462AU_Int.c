@@ -44,7 +44,8 @@
 /*   DEFINES                                                                                                         */
 /*********************************************************************************************************************/
 
-phStatus_t phhalHw_PN7462AU_18000p3m3_Sw_Exchange(
+phStatus_t
+phhalHw_PN7462AU_18000p3m3_Sw_Exchange(
     phhalHw_PN7462AU_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -106,7 +107,8 @@ phStatus_t phhalHw_PN7462AU_18000p3m3_Sw_Exchange(
   return status;
 }
 
-phStatus_t phhalHw_PN7462AU_18000p3m3_Sw_Select(
+phStatus_t
+phhalHw_PN7462AU_18000p3m3_Sw_Select(
     phhalHw_PN7462AU_DataParams_t *pDataParams,
     uint8_t *pSelCmd,
     uint8_t bSelCmdLen,
@@ -183,7 +185,8 @@ phStatus_t phhalHw_PN7462AU_18000p3m3_Sw_Select(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_PN7462AU_18000p3m3_Sw_BeginRound(
+phStatus_t
+phhalHw_PN7462AU_18000p3m3_Sw_BeginRound(
     phhalHw_PN7462AU_DataParams_t *pDataParams,
     uint8_t *pBeginRndCmd
 )
@@ -251,7 +254,8 @@ phStatus_t phhalHw_PN7462AU_18000p3m3_Sw_BeginRound(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_PN7462AU_18000p3m3_Sw_NextSlot(
+phStatus_t
+phhalHw_PN7462AU_18000p3m3_Sw_NextSlot(
     phhalHw_PN7462AU_DataParams_t *pDataParams
 )
 {
@@ -319,7 +323,8 @@ phStatus_t phhalHw_PN7462AU_18000p3m3_Sw_NextSlot(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_PN7462AU_18000p3m3_Sw_Ack(
+phStatus_t
+phhalHw_PN7462AU_18000p3m3_Sw_Ack(
     phhalHw_PN7462AU_DataParams_t *pDataParams,
     uint8_t **ppRxBuffer,
     uint16_t *pRxLength,
@@ -403,7 +408,8 @@ phStatus_t phhalHw_PN7462AU_18000p3m3_Sw_Ack(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_PN7462AU_lI18000p3m3ReqRn(
+phStatus_t
+phhalHw_PN7462AU_lI18000p3m3ReqRn(
     phhalHw_PN7462AU_DataParams_t *pDataParams,
     uint8_t **ppRxBuffer
 )

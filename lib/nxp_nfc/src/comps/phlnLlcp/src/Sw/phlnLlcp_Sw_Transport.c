@@ -33,7 +33,8 @@
 #include "phlnLlcp_Sw_Int.h"
 #include "phlnLlcp_Sw_Mac.h"
 
-phStatus_t phlnLlcp_Sw_Int_Socket_SendInt(phlnLlcp_Transport_Socket_t *psSocket,
+phStatus_t
+phlnLlcp_Sw_Int_Socket_SendInt(phlnLlcp_Transport_Socket_t *psSocket,
     uint8_t *pTxBuffer,
     uint32_t dwLength,
     uint16_t wFrameOpt,
@@ -75,7 +76,8 @@ phStatus_t phlnLlcp_Sw_Int_Socket_SendInt(phlnLlcp_Transport_Socket_t *psSocket,
   return PH_ADD_COMPCODE(wStatus, PH_COMP_LN_LLCP);
 }
 
-phStatus_t phlnLlcp_Sw_Int_Pdu_CcOrC(phlnLlcp_Transport_Socket_t *psSocket,
+phStatus_t
+phlnLlcp_Sw_Int_Pdu_CcOrC(phlnLlcp_Transport_Socket_t *psSocket,
     uint8_t bPtype,
     uint8_t *pServiceName,
     uint8_t bSnLength
@@ -128,7 +130,8 @@ phStatus_t phlnLlcp_Sw_Int_Pdu_CcOrC(phlnLlcp_Transport_Socket_t *psSocket,
   return wStatus;
 }
 
-phStatus_t phlnLlcp_Sw_Int_Pdu_Frmr(phlnLlcp_Transport_Socket_t *psSocket,
+phStatus_t
+phlnLlcp_Sw_Int_Pdu_Frmr(phlnLlcp_Transport_Socket_t *psSocket,
     uint8_t bPtype,
     uint8_t bLsap,
     uint8_t bRsap,
@@ -153,7 +156,8 @@ phStatus_t phlnLlcp_Sw_Int_Pdu_Frmr(phlnLlcp_Transport_Socket_t *psSocket,
   }
 }
 
-phStatus_t phlnLlcp_Sw_Int_Pdu_DiscOrDm(phlnLlcp_Transport_Socket_t *psSocket,
+phStatus_t
+phlnLlcp_Sw_Int_Pdu_DiscOrDm(phlnLlcp_Transport_Socket_t *psSocket,
     uint8_t bPtype,
     uint8_t bReason)
 {
@@ -172,7 +176,8 @@ phStatus_t phlnLlcp_Sw_Int_Pdu_DiscOrDm(phlnLlcp_Transport_Socket_t *psSocket,
   return phlnLlcp_Sw_Int_HandleMsgQueue(pDiscPdu, wLength, (uint8_t)PH_TOOLS_Q_DATA_TO_BE_SENT);
 }
 
-phStatus_t phlnLlcp_Sw_Int_Pdu_Snl(uint8_t bTid, uint8_t bSap)
+phStatus_t
+phlnLlcp_Sw_Int_Pdu_Snl(uint8_t bTid, uint8_t bSap)
 {
   uint16_t PH_MEMLOC_REM wLength;
   uint8_t  PH_MEMLOC_REM pSnlPdu[6];
@@ -189,7 +194,8 @@ phStatus_t phlnLlcp_Sw_Int_Pdu_Snl(uint8_t bTid, uint8_t bSap)
   return phlnLlcp_Sw_Int_HandleMsgQueue(pSnlPdu, wLength, (uint8_t)PH_TOOLS_Q_DATA_TO_BE_SENT);
 }
 
-phStatus_t phlnLlcp_Sw_Int_Pdu_RrOrRnr(phlnLlcp_Transport_Socket_t *psSocket,
+phStatus_t
+phlnLlcp_Sw_Int_Pdu_RrOrRnr(phlnLlcp_Transport_Socket_t *psSocket,
     uint8_t bPtype)
 {
   uint16_t PH_MEMLOC_REM wLength;

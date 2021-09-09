@@ -33,7 +33,8 @@ static const uint8_t bmcEventName[] = "mcEvent";
 /* Frame size table */
 static const uint16_t PH_MEMLOC_CONST_ROM aI14443p4mC_FsTable[PHPALI14443P4MC_FS_INDEX] = {14, 22, 30, 38, 46, 62, 94, 126, 254, 510, 1022, 2046, 4094};
 
-phStatus_t phpalI14443p4mC_Sw_Init(
+phStatus_t
+phpalI14443p4mC_Sw_Init(
     phpalI14443p4mC_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pHalDataParams,
@@ -73,7 +74,8 @@ phStatus_t phpalI14443p4mC_Sw_Init(
   return wStatus;
 }
 
-phStatus_t phpalI14443p4mC_Sw_DeInit(
+phStatus_t
+phpalI14443p4mC_Sw_DeInit(
     phpalI14443p4mC_Sw_DataParams_t *pDataParams
 )
 {
@@ -105,7 +107,8 @@ phStatus_t phpalI14443p4mC_Sw_DeInit(
   return wStatus;
 }
 
-phStatus_t phpalI14443p4mC_Sw_ResetProtocol(
+phStatus_t
+phpalI14443p4mC_Sw_ResetProtocol(
     phpalI14443p4mC_Sw_DataParams_t *pDataParams
 )
 {
@@ -138,7 +141,8 @@ phStatus_t phpalI14443p4mC_Sw_ResetProtocol(
   return wStatus;
 }
 
-phStatus_t phpalI14443p4mC_Sw_Activate(
+phStatus_t
+phpalI14443p4mC_Sw_Activate(
     phpalI14443p4mC_Sw_DataParams_t *pDataParams,
     uint8_t *pRats,
     uint8_t bRatsLength,
@@ -345,7 +349,8 @@ phStatus_t phpalI14443p4mC_Sw_Activate(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4mC_Sw_Receive(
+phStatus_t
+phpalI14443p4mC_Sw_Receive(
     phpalI14443p4mC_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t **ppRxBuffer,
@@ -536,7 +541,8 @@ phStatus_t phpalI14443p4mC_Sw_Receive(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4mC_Sw_Transmit(
+phStatus_t
+phpalI14443p4mC_Sw_Transmit(
     phpalI14443p4mC_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -820,7 +826,8 @@ phStatus_t phpalI14443p4mC_Sw_Transmit(
   return status;
 }
 
-phStatus_t phpalI14443p4mC_Sw_Wtx(
+phStatus_t
+phpalI14443p4mC_Sw_Wtx(
     phpalI14443p4mC_Sw_DataParams_t *pDataParams
 )
 {
@@ -863,7 +870,8 @@ phStatus_t phpalI14443p4mC_Sw_Wtx(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4mC_Sw_SetConfig(
+phStatus_t
+phpalI14443p4mC_Sw_SetConfig(
     phpalI14443p4mC_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -919,7 +927,8 @@ phStatus_t phpalI14443p4mC_Sw_SetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4mC_Sw_GetConfig(
+phStatus_t
+phpalI14443p4mC_Sw_GetConfig(
     phpalI14443p4mC_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue

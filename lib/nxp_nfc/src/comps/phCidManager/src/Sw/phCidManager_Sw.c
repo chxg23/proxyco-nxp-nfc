@@ -31,7 +31,8 @@
 
 #include "nxp_nfc/phCidManager_Sw.h"
 
-phStatus_t phCidManager_Sw_Init(
+phStatus_t
+phCidManager_Sw_Init(
     phCidManager_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams
 )
@@ -50,7 +51,8 @@ phStatus_t phCidManager_Sw_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phCidManager_Sw_GetFreeCid(
+phStatus_t
+phCidManager_Sw_GetFreeCid(
     phCidManager_Sw_DataParams_t *pDataParams,
     uint8_t *pCid
 )
@@ -80,7 +82,8 @@ phStatus_t phCidManager_Sw_GetFreeCid(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phCidManager_Sw_FreeCid(
+phStatus_t
+phCidManager_Sw_FreeCid(
     phCidManager_Sw_DataParams_t *pDataParams,
     uint8_t bCid
 )

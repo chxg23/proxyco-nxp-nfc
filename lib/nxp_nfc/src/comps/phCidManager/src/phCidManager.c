@@ -35,7 +35,8 @@
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phCidManager_GetFreeCid(
+phStatus_t
+phCidManager_GetFreeCid(
     void *pDataParams,
     uint8_t *pCid
 )
@@ -86,7 +87,8 @@ phStatus_t phCidManager_GetFreeCid(
   return status;
 }
 
-phStatus_t phCidManager_FreeCid(
+phStatus_t
+phCidManager_FreeCid(
     void *pDataParams,
     uint8_t bCid
 )

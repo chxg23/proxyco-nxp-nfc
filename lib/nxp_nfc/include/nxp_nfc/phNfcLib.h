@@ -152,7 +152,7 @@
 #endif /* NXPBUILD__PH_CRYPTORNG_SW */
 
 /* Keystore Header */
-#if defined (NXPBUILD__PH_KEYSTORE_SW) || defined (NXPBUILD__PH_KEYSTORE_RC663)
+#if defined (NXPBUILD__PH_KEYSTORE_SW) || defined (NXPBUILD__PH_KEYSTORE_RC663) || defined (NXPBUILD__PH_KEYSTORE_SAMAV3)
 #include <nxp_nfc/phKeyStore.h>
 #endif
 

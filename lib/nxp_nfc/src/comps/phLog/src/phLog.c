@@ -35,7 +35,8 @@ static const uint8_t       *PH_MEMLOC_CONST_ROM gpkphLog_String_BufferOverflow =
     (uint8_t *)"OVERFLOW";
 static phLog_DataParams_t   PH_MEMLOC_REM gphLog_LogDataParams = {NULL, NULL, 0, 0};
 
-phStatus_t phLog_Init(
+phStatus_t
+phLog_Init(
     pphLog_Callback_t pLogCallback,
     phLog_RegisterEntry_t *pRegisterEntries,
     uint16_t wMaxRegisterEntries
@@ -57,7 +58,8 @@ phStatus_t phLog_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phLog_Register(
+phStatus_t
+phLog_Register(
     void *pDataParams,
     phLog_LogEntry_t *pLogEntries,
     uint16_t wMaxLogEntries
@@ -94,7 +96,8 @@ phStatus_t phLog_Register(
   return PH_ERR_SUCCESS;
 }
 
-void phLog_AddString(
+void
+phLog_AddString(
     void *pDataParams,
     uint8_t bLogType,
     char const *pFunctionName
@@ -103,7 +106,8 @@ void phLog_AddString(
   phLog_AddParam_Raw(pDataParams, bLogType, pFunctionName, NULL, 0, PH_LOG_DATATYPE_BUFFER);
 }
 
-void phLog_AddParam_Uint8(
+void
+phLog_AddParam_Uint8(
     void *pDataParams,
     uint8_t bLogType,
     char const *pName,
@@ -113,7 +117,8 @@ void phLog_AddParam_Uint8(
   phLog_AddParam_Raw(pDataParams, bLogType, pName, pParam, sizeof(uint8_t), PH_LOG_DATATYPE_VALUE);
 }
 
-void phLog_AddParam_Uint16(
+void
+phLog_AddParam_Uint16(
     void *pDataParams,
     uint8_t bLogType,
     char const *pName,
@@ -123,7 +128,8 @@ void phLog_AddParam_Uint16(
   phLog_AddParam_Raw(pDataParams, bLogType, pName, pParam, sizeof(uint16_t), PH_LOG_DATATYPE_VALUE);
 }
 
-void phLog_AddParam_Uint32(
+void
+phLog_AddParam_Uint32(
     void *pDataParams,
     uint8_t bLogType,
     char const *pName,
@@ -133,7 +139,8 @@ void phLog_AddParam_Uint32(
   phLog_AddParam_Raw(pDataParams, bLogType, pName, pParam, sizeof(uint32_t), PH_LOG_DATATYPE_VALUE);
 }
 
-void phLog_AddParam_Buffer(
+void
+phLog_AddParam_Buffer(
     void *pDataParams,
     uint8_t bLogType,
     char const *pName,
@@ -144,7 +151,8 @@ void phLog_AddParam_Buffer(
   phLog_AddParam_Raw(pDataParams, bLogType, pName, pParam, wLength, PH_LOG_DATATYPE_BUFFER);
 }
 
-void phLog_Execute(
+void
+phLog_Execute(
     void *pDataParams,
     uint8_t bOption
 )
@@ -170,7 +178,8 @@ void phLog_Execute(
   pRegisterEntry->wNumLogEntries = 0;
 }
 
-phLog_RegisterEntry_t *phLog_GetRegisteredEntry(
+phLog_RegisterEntry_t *
+phLog_GetRegisteredEntry(
     void *pDataParams
 )
 {
@@ -190,7 +199,8 @@ phLog_RegisterEntry_t *phLog_GetRegisteredEntry(
   return pRegisterEntry;
 }
 
-void phLog_AddParam_Raw(
+void
+phLog_AddParam_Raw(
     void *pDataParams,
     uint8_t bLogType,
     char const *pName,

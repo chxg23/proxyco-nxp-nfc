@@ -30,7 +30,8 @@
 #include <nxp_nfc/phalVca.h>
 #include "phalVca_Int.h"
 
-phStatus_t phalVca_Int_ComputeErrorResponse(uint16_t wNumBytesReceived, uint8_t bStatus)
+phStatus_t
+phalVca_Int_ComputeErrorResponse(uint16_t wNumBytesReceived, uint8_t bStatus)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -82,7 +83,8 @@ phStatus_t phalVca_Int_ComputeErrorResponse(uint16_t wNumBytesReceived, uint8_t 
   }
 }
 
-phStatus_t phalVca_Int_ComputeErrorResponse_Extended(void *pDataParams, uint16_t wStatus)
+phStatus_t
+phalVca_Int_ComputeErrorResponse_Extended(void *pDataParams, uint16_t wStatus)
 {
   phStatus_t PH_MEMLOC_REM status = PH_ERR_SUCCESS;
   phStatus_t  PH_MEMLOC_REM statusTmp;
@@ -134,7 +136,8 @@ phStatus_t phalVca_Int_ComputeErrorResponse_Extended(void *pDataParams, uint16_t
   return PH_ADD_COMPCODE(status, PH_COMP_AL_VCA);
 }
 
-phStatus_t phalVca_Int_PrepareProximityCheck(void *pPalMifareDataParams)
+phStatus_t
+phalVca_Int_PrepareProximityCheck(void *pPalMifareDataParams)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
   uint8_t     PH_MEMLOC_REM bCmd[1];
@@ -163,7 +166,8 @@ phStatus_t phalVca_Int_PrepareProximityCheck(void *pPalMifareDataParams)
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalVca_Int_PrepareProximityCheckNew(phalVca_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalVca_Int_PrepareProximityCheckNew(phalVca_Sw_DataParams_t *pDataParams,
     uint8_t *pOption, uint8_t *pPubRespTime, uint8_t *pResponse, uint16_t *pRespLen)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
@@ -237,7 +241,8 @@ phStatus_t phalVca_Int_PrepareProximityCheckNew(phalVca_Sw_DataParams_t *pDataPa
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalVca_Int_ProximityCheck(void *pPalMifareDataParams, uint8_t bNumSteps,
+phStatus_t
+phalVca_Int_ProximityCheck(void *pPalMifareDataParams, uint8_t bNumSteps,
     uint8_t *pRndC, uint8_t *pRndRC)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
@@ -302,7 +307,8 @@ phStatus_t phalVca_Int_ProximityCheck(void *pPalMifareDataParams, uint8_t bNumSt
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalVca_Int_ProximityCheckNew(phalVca_Sw_DataParams_t *pDataParams, uint8_t bNumSteps,
+phStatus_t
+phalVca_Int_ProximityCheckNew(phalVca_Sw_DataParams_t *pDataParams, uint8_t bNumSteps,
     uint8_t *pPubRespTime, uint8_t *pRndC, uint8_t *pRndRC)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
@@ -428,7 +434,8 @@ phStatus_t phalVca_Int_ProximityCheckNew(phalVca_Sw_DataParams_t *pDataParams, u
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalVca_Int_SendISOWrappedCmd(phalVca_Sw_DataParams_t *pDataParams, uint8_t *pSendBuff,
+phStatus_t
+phalVca_Int_SendISOWrappedCmd(phalVca_Sw_DataParams_t *pDataParams, uint8_t *pSendBuff,
     uint8_t  bLc, uint8_t **pResponse, uint16_t *pRxlen)
 {
   phStatus_t PH_MEMLOC_REM statusTmp = 0;

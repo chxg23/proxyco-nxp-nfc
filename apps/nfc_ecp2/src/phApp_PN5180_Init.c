@@ -66,7 +66,8 @@ extern uint8_t  poll_res[18]   ;
 /**
 * This function will initialize Hal Target Config
 */
-phStatus_t phApp_HALConfigAutoColl(void)
+phStatus_t
+phApp_HALConfigAutoColl(void)
 {
 #ifdef NXPBUILD__PHHAL_HW_TARGET
   phStatus_t wStatus;
@@ -100,7 +101,8 @@ phStatus_t phApp_HALConfigAutoColl(void)
 }
 
 /* Configure LPCD (for PN5180) */
-phStatus_t phApp_ConfigureLPCD(void)
+phStatus_t
+phApp_ConfigureLPCD(void)
 {
   /**
    * PHHAL_HW_CONFIG_SET_LPCD_WAKEUPTIME_MS  0x0070U     //< Used value for wakeup counter in msecs, i.e. after this amount of time IC will wakes up from standby.
@@ -128,7 +130,8 @@ phStatus_t phApp_ConfigureLPCD(void)
   return status;
 }
 
-void CLIF_IRQHandler(void)
+void
+CLIF_IRQHandler(void)
 {
   hal_gpio_irq_disable(PHDRIVER_PIN_IRQ);
   /* Call application registered callback. */

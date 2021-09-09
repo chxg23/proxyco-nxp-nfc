@@ -34,7 +34,8 @@
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phpalFelica_ReqC(
+phStatus_t
+phpalFelica_ReqC(
     void *pDataParams,
     uint8_t *pSystemCode,
     uint8_t bTimeSlot,
@@ -94,7 +95,8 @@ phStatus_t phpalFelica_ReqC(
   return status;
 }
 
-phStatus_t phpalFelica_ActivateCard(
+phStatus_t
+phpalFelica_ActivateCard(
     void *pDataParams,
     uint8_t *pIDmPMm,
     uint8_t bIDmPMmLength,
@@ -167,7 +169,8 @@ phStatus_t phpalFelica_ActivateCard(
   return status;
 }
 
-phStatus_t phpalFelica_Exchange(
+phStatus_t
+phpalFelica_Exchange(
     void *pDataParams,
     uint16_t wOption,
     uint16_t wN,
@@ -237,7 +240,8 @@ phStatus_t phpalFelica_Exchange(
   return status;
 }
 
-phStatus_t phpalFelica_SetConfig(
+phStatus_t
+phpalFelica_SetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -287,7 +291,8 @@ phStatus_t phpalFelica_SetConfig(
   return status;
 }
 
-phStatus_t phpalFelica_GetConfig(
+phStatus_t
+phpalFelica_GetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -338,7 +343,8 @@ phStatus_t phpalFelica_GetConfig(
   return status;
 }
 
-phStatus_t phpalFelica_GetSerialNo(
+phStatus_t
+phpalFelica_GetSerialNo(
     void *pDataParams,
     uint8_t *pIDmPMmOut,
     uint8_t *pLenIDmPMmOut
@@ -389,7 +395,8 @@ phStatus_t phpalFelica_GetSerialNo(
   return status;
 }
 
-phStatus_t phpalFelica_SetSerialNo(
+phStatus_t
+phpalFelica_SetSerialNo(
     void *pDataParams,
     uint8_t *pIDmPMm
 )
@@ -434,7 +441,8 @@ phStatus_t phpalFelica_SetSerialNo(
   return status;
 }
 
-phStatus_t  phpalFelica_GetFrameInfo(
+phStatus_t
+phpalFelica_GetFrameInfo(
     void *pDataParams,
     uint8_t bFrameNum,
     uint8_t *pResponseBuffer,

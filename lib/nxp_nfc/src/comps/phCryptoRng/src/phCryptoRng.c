@@ -31,7 +31,8 @@
 
 #ifdef NXPBUILD__PH_CRYPTORNG
 
-phStatus_t phCryptoRng_Seed(
+phStatus_t
+phCryptoRng_Seed(
     void *pDataParams,
     uint8_t *pSeed,
     uint8_t bSeedLength
@@ -65,7 +66,8 @@ phStatus_t phCryptoRng_Seed(
   return status;
 }
 
-phStatus_t phCryptoRng_Rnd(
+phStatus_t
+phCryptoRng_Rnd(
     void *pDataParams,
     uint16_t  wNoOfRndBytes,
     uint8_t *pRnd

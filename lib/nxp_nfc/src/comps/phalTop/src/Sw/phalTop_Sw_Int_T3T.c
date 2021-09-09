@@ -32,7 +32,8 @@
 
 #include "phalTop_Sw_Int_T3T.h"
 
-void phalTop_Sw_Int_T3T_CreateBlockList(
+void
+phalTop_Sw_Int_T3T_CreateBlockList(
     uint8_t *pBlockList,
     uint16_t wStartIndex,
     uint8_t bCount,
@@ -65,7 +66,8 @@ void phalTop_Sw_Int_T3T_CreateBlockList(
   *pBlockListLength = bIndex;
 }
 
-phStatus_t phalTop_Sw_Int_T3T_ClearState(
+phStatus_t
+phalTop_Sw_Int_T3T_ClearState(
     phalTop_Sw_DataParams_t *pDataParams,
     phalTop_T3T_t *pT3T
 )
@@ -84,7 +86,8 @@ phStatus_t phalTop_Sw_Int_T3T_ClearState(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T3T_CheckNdef(
+phStatus_t
+phalTop_Sw_Int_T3T_CheckNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pTagState
 )
@@ -225,7 +228,8 @@ phStatus_t phalTop_Sw_Int_T3T_CheckNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T3T_FormatNdef(
+phStatus_t
+phalTop_Sw_Int_T3T_FormatNdef(
     phalTop_Sw_DataParams_t *pDataParams
 )
 {
@@ -371,7 +375,8 @@ phStatus_t phalTop_Sw_Int_T3T_FormatNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T3T_ReadNdef(
+phStatus_t
+phalTop_Sw_Int_T3T_ReadNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pData,
     uint16_t *pLength
@@ -513,7 +518,8 @@ phStatus_t phalTop_Sw_Int_T3T_ReadNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T3T_WriteNdef(
+phStatus_t
+phalTop_Sw_Int_T3T_WriteNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pData,
     uint16_t wLength
@@ -690,7 +696,8 @@ phStatus_t phalTop_Sw_Int_T3T_WriteNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T3T_EraseNdef(
+phStatus_t
+phalTop_Sw_Int_T3T_EraseNdef(
     phalTop_Sw_DataParams_t *pDataParams
 )
 {

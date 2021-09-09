@@ -53,7 +53,8 @@ static const uint8_t gPasTechPollSeqMapTable[] = {
 #endif /* NXPBUILD__PHAC_DISCLOOP_SW_ECP */
 };
 
-phStatus_t phacDiscLoop_Sw_Init(
+phStatus_t
+phacDiscLoop_Sw_Init(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pHalDataParams
@@ -276,7 +277,8 @@ phStatus_t phacDiscLoop_Sw_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phacDiscLoop_Sw_Run(
+phStatus_t
+phacDiscLoop_Sw_Run(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint8_t bEntryPoint
 )
@@ -371,7 +373,8 @@ phStatus_t phacDiscLoop_Sw_Run(
   }
 }
 
-phStatus_t phacDiscLoop_Sw_SetConfig(
+phStatus_t
+phacDiscLoop_Sw_SetConfig(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -766,7 +769,8 @@ phStatus_t phacDiscLoop_Sw_SetConfig(
   return status;
 }
 
-phStatus_t phacDiscLoop_Sw_GetConfig(
+phStatus_t
+phacDiscLoop_Sw_GetConfig(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -1017,7 +1021,8 @@ phStatus_t phacDiscLoop_Sw_GetConfig(
   return status;
 }
 
-phStatus_t phacDiscLoop_Sw_ActivateCard(
+phStatus_t
+phacDiscLoop_Sw_ActivateCard(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint8_t bTechType,
     uint8_t bTagIndex
@@ -1026,7 +1031,8 @@ phStatus_t phacDiscLoop_Sw_ActivateCard(
   return phacDiscLoop_Sw_Int_ActivateDevice(pDataParams, bTechType, bTagIndex);
 }
 
-phStatus_t phacDiscLoop_Sw_CfgPollSeq(
+phStatus_t
+phacDiscLoop_Sw_CfgPollSeq(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint8_t *pDiscloopCfgPollSeq
 )

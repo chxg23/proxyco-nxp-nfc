@@ -47,7 +47,8 @@ static const uint8_t aCascadeCodes[] = {
 /* *****************************************************************************************************************
  * Internal Definitions
  * ***************************************************************************************************************** */
-phStatus_t phacDiscLoop_Sw_DetTechTypeA(
+phStatus_t
+phacDiscLoop_Sw_DetTechTypeA(
     phacDiscLoop_Sw_DataParams_t *pDataParams
 )
 {
@@ -123,7 +124,8 @@ phStatus_t phacDiscLoop_Sw_DetTechTypeA(
 #endif /* NXPBUILD__PHAC_DISCLOOP_TYPEA_TAGS */
 }
 
-phStatus_t phacDiscLoop_Sw_Int_CollisionResolutionA(
+phStatus_t
+phacDiscLoop_Sw_Int_CollisionResolutionA(
     phacDiscLoop_Sw_DataParams_t *pDataParams
 )
 {
@@ -485,7 +487,8 @@ phStatus_t phacDiscLoop_Sw_Int_CollisionResolutionA(
 #endif /* NXPBUILD__PHAC_DISCLOOP_TYPEA_TAGS */
 }
 
-phStatus_t phacDiscLoop_Sw_Int_ActivateA(
+phStatus_t
+phacDiscLoop_Sw_Int_ActivateA(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint8_t bTypeATagIdx
 )

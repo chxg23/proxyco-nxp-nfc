@@ -1,0 +1,30 @@
+#
+# @Copyright Proxy
+#
+
+pkg.name: apps/nfc_disc_loop
+pkg.type: app
+pkg.description: "Example app nfc advanced discovery loop from NXP NFC library"
+pkg.author: "Vipul Rahane <vipul@proxy.com>"
+pkg.homepage: "www.proxy.com"
+pkg.keywords: nfc, advance discovery loop
+
+pkg.deps:
+    - "@mcuboot/boot/bootutil"
+    - "@apache-mynewt-core/hw/bus"
+    - "@apache-mynewt-core/kernel/os"
+    - "@apache-mynewt-core/hw/hal"
+    - "@apache-mynewt-core/sys/console/full"
+    - "@apache-mynewt-core/sys/id"
+    - "@apache-mynewt-core/sys/log/full"
+    - "@apache-mynewt-core/sys/log/modlog"
+    - "@apache-mynewt-core/sys/shell"
+    - "@apache-mynewt-core/sys/stats/full"
+    - "@apache-mynewt-core/util/parse"
+    - "lib/nxp_nfc"
+    - "@apache-mynewt-core/sys/shell"
+
+pkg.cflags:
+    - "-DPH_OSAL_MYNEWT"
+    - "-DPHOSAL_MYNEWT_STATIC_MEM_ALLOCATION"
+    - "-DPHDRIVER_NRF5340DK_PN5180_BOARD"

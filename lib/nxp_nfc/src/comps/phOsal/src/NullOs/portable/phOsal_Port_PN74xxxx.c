@@ -14,7 +14,7 @@
  */
 #if defined(PH_OSAL_NULLOS) && (defined(__PN74XXXX__) || defined (__PN73XXXX__))
 
-#include "phOsal_Cortex_Port.h"
+#include "nxp_nfc/phOsal_Cortex_Port.h"
 
 #ifdef __GNUC__
 #define __ENABLE_IRQ() __asm volatile ("cpsie i")
@@ -37,37 +37,44 @@
 #   define __DISABLE_IRQ     __disable_interrupt
 #endif
 
-phStatus_t phOsal_InitTickTimer(pphOsal_TickTimerISRCallBck_t pTickTimerCallback)
+phStatus_t
+phOsal_InitTickTimer(pphOsal_TickTimerISRCallBck_t pTickTimerCallback)
 {
   return PH_OSAL_SUCCESS;
 }
 
-phStatus_t phOsal_StartTickTimer(uint32_t dwTimeMilliSecs)
+phStatus_t
+phOsal_StartTickTimer(uint32_t dwTimeMilliSecs)
 {
   return PH_OSAL_SUCCESS;
 }
 
-phStatus_t phOsal_StopTickTimer(void)
+phStatus_t
+phOsal_StopTickTimer(void)
 {
   return PH_OSAL_SUCCESS;
 }
 
-void phOsal_EnterCriticalSection(void)
+void
+phOsal_EnterCriticalSection(void)
 {
   __DISABLE_IRQ();
 }
 
-void phOsal_ExitCriticalSection(void)
+void
+phOsal_ExitCriticalSection(void)
 {
   __ENABLE_IRQ();
 }
 
-void phOsal_Sleep(void)
+void
+phOsal_Sleep(void)
 {
   __WFE();
 }
 
-void phOsal_WakeUp(void)
+void
+phOsal_WakeUp(void)
 {
   __SEV();
 }

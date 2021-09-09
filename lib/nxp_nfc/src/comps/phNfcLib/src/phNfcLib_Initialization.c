@@ -28,7 +28,7 @@
 /*******************************************************************************
 **   Macro Declaration
 *******************************************************************************/
-#if defined (NXPBUILD__PH_KEYSTORE_SW) || defined(NXPBUILD__PH_KEYSTORE_RC663)
+#if defined (NXPBUILD__PH_KEYSTORE_SW) || defined(NXPBUILD__PH_KEYSTORE_RC663) || defined(NXPBUILD__PH_KEYSTORE_SAMAV3)
 #define PH_NFCLIB_KEYSTORE_DATAPARAMS    (&gphNfcLib_Params.sKeyStore)
 #else
 #define PH_NFCLIB_KEYSTORE_DATAPARAMS (NULL)
@@ -89,6 +89,8 @@ static phCryptoSym_Sw_DataParams_t sCryptoEnc;
 static phCryptoSym_Sw_DataParams_t sCryptoMac;
 static phCryptoSym_Sw_DataParams_t sCryptoSymRng;
 static phCryptoRng_Sw_DataParams_t sCryptoRng;
+static phCryptoSym_Sw_DataParams_t sPLUpload_CryptoEnc;
+static phCryptoSym_Sw_DataParams_t sPLUpload_CryptoMAC;
 
 static phTMIUtils_t                sTMI;
 static phalVca_Sw_DataParams_t     sVca;
@@ -132,8 +134,18 @@ uint8_t aAppHCEBuf[PH_NXPNFCRDLIB_CONFIG_HCE_BUFF_LENGTH];
 
 #ifdef NXPBUILD__PH_CRYPTOSYM_SW
 #   define PTR_sCryptoSym (&gphNfcLib_Params.sCryptoSym)
+#   define PTR_sCryptoEnc (&gphNfcLib_Params.PTR_sCryptoEnc)
+#   define PTR_sCryptoMAC (&gphNfcLib_Params.sCryptoMAC)
+#   define PTR_sCryptoSymRnd (&gphNfcLib_Params.sCryptoSymRnd)
+#   define PTR_sPLUpload_CryptoEnc (&gphNfcLib_Params.sPLUpload_CryptoEnc)
+#   define PTR_sPLUpload_CryptoMAC (&gphNfcLib_Params.sPLUpload_CryptoMAC)
 #else
 #   define PTR_sCryptoSym NULL
+#   define PTR_sCryptoEnc NULL
+#   define PTR_sCryptoMAC NULL
+#   define PTR_sCryptoSymRnd NULL
+#   define PTR_sPLUpload_CryptoEnc NULL
+#   define PTR_sPLUpload_CryptoMAC NULL
 #endif
 
 #ifdef NXPBUILD__PH_CRYPTORNG_SW
@@ -194,7 +206,8 @@ static phStatus_t phNfcLib_AL_Init(void);
 /*******************************************************************************
 **   Function Definitions
 *******************************************************************************/
-phNfcLib_Status_t phNfcLib_SetContext(phNfcLib_AppContext_t *pAppContext)
+phNfcLib_Status_t
+phNfcLib_SetContext(phNfcLib_AppContext_t *pAppContext)
 {
   if (pAppContext == NULL) {
     return PH_NFCLIB_STATUS_INVALID_PARAMETER;
@@ -215,7 +228,8 @@ phNfcLib_Status_t phNfcLib_SetContext(phNfcLib_AppContext_t *pAppContext)
 /**
 * This function will initialize Reader LIbrary PAL Components
 */
-static phStatus_t phNfcLib_PAL_Init(void)
+static phStatus_t
+phNfcLib_PAL_Init(void)
 {
   phStatus_t wStatus = PH_ERR_SUCCESS;
 
@@ -330,7 +344,8 @@ static phStatus_t phNfcLib_PAL_Init(void)
 /**
 * This function will initialize the Reader Library AL Components
 */
-static phStatus_t phNfcLib_AL_Init(void)
+static phStatus_t
+phNfcLib_AL_Init(void)
 {
   phStatus_t wStatus = PH_ERR_SUCCESS;
 
@@ -468,6 +483,16 @@ static phStatus_t phNfcLib_AL_Init(void)
             sizeof(phCryptoSym_Sw_DataParams_t),
             NULL));
 
+    PH_CHECK_NFCLIB_INIT_FCT(wStatus, phCryptoSym_Sw_Init(
+            &sPLUpload_CryptoEnc,
+            sizeof(phCryptoSym_Sw_DataParams_t),
+            &gphNfcLib_Params.sKeyStore));
+
+    PH_CHECK_NFCLIB_INIT_FCT(wStatus, phCryptoSym_Sw_Init(
+            &sPLUpload_CryptoMAC,
+            sizeof(phCryptoSym_Sw_DataParams_t),
+            &gphNfcLib_Params.sKeyStore));
+
     /* Initialize CryptoSym for key diversification. */
     PH_CHECK_NFCLIB_INIT_FCT(wStatus, phCryptoSym_Sw_Init(
             &sCryptoDiversify,
@@ -580,7 +605,8 @@ static phStatus_t phNfcLib_AL_Init(void)
   return wStatus;
 }
 
-phNfcLib_Status_t phNfcLib_Init(void)
+phNfcLib_Status_t
+phNfcLib_Init(void)
 {
   phStatus_t        wStatus  = PH_ERR_SUCCESS;
   phNfcLib_Status_t dwStatus = PH_NFCLIB_STATUS_INVALID_STATE;
@@ -636,11 +662,11 @@ phNfcLib_Status_t phNfcLib_Init(void)
               &gphNfcLib_Params.sBalSam,
               &gphNfcLib_Params.sHal,
               PH_NFCLIB_KEYSTORE_DATAPARAMS,
-              NULL,
-              NULL,
-              NULL,
-              NULL,
-              NULL,
+			        &sCryptoEnc,
+			        &sCryptoMac,
+			        &sCryptoRng,
+			        &sPLUpload_CryptoEnc,
+			        &sPLUpload_CryptoMAC,
               PHHAL_HW_SAMAV3_OPMODE_NON_X,
               0x00,
               gphNfcLib_State.bHalBufferTxSam,
@@ -779,7 +805,8 @@ phNfcLib_Status_t phNfcLib_Init(void)
   return dwStatus;
 }
 
-phNfcLib_Status_t phNfcLib_DeInit(void)
+phNfcLib_Status_t
+phNfcLib_DeInit(void)
 {
   phNfcLib_Status_t dwStatus = PH_NFCLIB_STATUS_INVALID_STATE;
   phStatus_t  wStatus;
@@ -808,12 +835,12 @@ phNfcLib_Status_t phNfcLib_DeInit(void)
   return dwStatus;
 }
 
-void *phNfcLib_GetDataParams(
+void *
+phNfcLib_GetDataParams(
     uint16_t wComponent
 )
 {
   void *pDataparam = NULL;
-
   if (((phNfcLib_StateMachine_t)gphNfcLib_State.bNfcLibState) != eNfcLib_ResetState) {
     switch (wComponent) {
 #ifdef NXPBUILD__PHHAL_HW
@@ -821,7 +848,6 @@ void *phNfcLib_GetDataParams(
         pDataparam = (void *) &gphNfcLib_Params.sHal;
         break;
 #endif /* NXPBUILD__PHHAL_HW */
-
 
 #ifdef NXPBUILD__PHHAL_HW_SAMAV3
       case (PH_COMP_HAL | PHHAL_HW_SAMAV3_ID):
@@ -834,7 +860,6 @@ void *phNfcLib_GetDataParams(
         pDataparam = (void *) &gphNfcLib_Params.sBalSam;
         break;
 #endif /* NXPBUILD__PHBAL_REG_T1SAMAV3 */
-
 
 #ifdef NXPBUILD__PHPAL_I14443P3A_SW
       case PH_COMP_PAL_ISO14443P3A:
@@ -985,6 +1010,12 @@ void *phNfcLib_GetDataParams(
         pDataparam = (void *) &gphNfcLib_Params.sKeyStore;
         break;
 #endif /* NXPBUILD__PH_CRYPTOSYM_SW */
+
+#ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
+      case (PH_COMP_KEYSTORE | PH_KEYSTORE_SAMAV3_ID):
+		pDataparam = (void *) &gphNfcLib_Params.sKeyStoreSam;
+		break;
+#endif
 
 #ifdef NXPBUILD__PH_CRYPTOSYM_SW
       case PH_COMP_CRYPTOSYM:

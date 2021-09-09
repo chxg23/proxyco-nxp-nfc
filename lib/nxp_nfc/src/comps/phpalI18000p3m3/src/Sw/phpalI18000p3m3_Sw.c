@@ -34,7 +34,8 @@
 #include "phpalI18000p3m3_Sw.h"
 #include "phpalI18000p3m3_Sw_Int.h"
 
-phStatus_t phpalI18000p3m3_Sw_Init(
+phStatus_t
+phpalI18000p3m3_Sw_Init(
     phpalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pHalDataParams
@@ -54,7 +55,8 @@ phStatus_t phpalI18000p3m3_Sw_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18000p3m3_Sw_Exchange(
+phStatus_t
+phpalI18000p3m3_Sw_Exchange(
     phpalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -116,7 +118,8 @@ phStatus_t phpalI18000p3m3_Sw_Exchange(
   return status;
 }
 
-phStatus_t phpalI18000p3m3_Sw_Select(
+phStatus_t
+phpalI18000p3m3_Sw_Select(
     phpalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t bTarget,
     uint8_t bAction,
@@ -260,7 +263,8 @@ phStatus_t phpalI18000p3m3_Sw_Select(
 }
 
 #ifdef NXPBUILD__PHPAL_I18000P3M3_DEPRECATED
-phStatus_t phpalI18000p3m3_Sw_BeginRound(
+phStatus_t
+phpalI18000p3m3_Sw_BeginRound(
     phpalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t bDr,
     uint8_t bM,
@@ -392,7 +396,8 @@ phStatus_t phpalI18000p3m3_Sw_BeginRound(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18000p3m3_Sw_ResizeRound(
+phStatus_t
+phpalI18000p3m3_Sw_ResizeRound(
     phpalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t bUpDn,
     uint8_t *pStoredCRC
@@ -483,7 +488,8 @@ phStatus_t phpalI18000p3m3_Sw_ResizeRound(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18000p3m3_Sw_NextSlot(
+phStatus_t
+phpalI18000p3m3_Sw_NextSlot(
     phpalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t *pStoredCRC
 )
@@ -562,7 +568,8 @@ phStatus_t phpalI18000p3m3_Sw_NextSlot(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18000p3m3_Sw_GetSerialNo(
+phStatus_t
+phpalI18000p3m3_Sw_GetSerialNo(
     phpalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t *pRxBuffer,
     uint8_t *pRxLength
@@ -581,7 +588,8 @@ phStatus_t phpalI18000p3m3_Sw_GetSerialNo(
 }
 #endif /* NXPBUILD__PHPAL_I18000P3M3_DEPRECATED */
 
-phStatus_t phpalI18000p3m3_Sw_CreateSelectCmd(
+phStatus_t
+phpalI18000p3m3_Sw_CreateSelectCmd(
     phpalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t bTarget,
     uint8_t bAction,
@@ -667,7 +675,8 @@ phStatus_t phpalI18000p3m3_Sw_CreateSelectCmd(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18000p3m3_Sw_CreateBeginRoundCmd(
+phStatus_t
+phpalI18000p3m3_Sw_CreateBeginRoundCmd(
     phpalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t bDr,
     uint8_t bM,
@@ -733,7 +742,8 @@ phStatus_t phpalI18000p3m3_Sw_CreateBeginRoundCmd(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18000p3m3_Sw_Ack(
+phStatus_t
+phpalI18000p3m3_Sw_Ack(
     phpalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t bOption,
     uint8_t *pHandle,
@@ -838,7 +848,8 @@ phStatus_t phpalI18000p3m3_Sw_Ack(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18000p3m3_Sw_Nak(
+phStatus_t
+phpalI18000p3m3_Sw_Nak(
     phpalI18000p3m3_Sw_DataParams_t *pDataParams
 )
 {
@@ -901,7 +912,8 @@ phStatus_t phpalI18000p3m3_Sw_Nak(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18000p3m3_Sw_ActivateCard(
+phStatus_t
+phpalI18000p3m3_Sw_ActivateCard(
     phpalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t *pSelCmd,
     uint8_t bSelCmdLen,
@@ -1137,7 +1149,8 @@ phStatus_t phpalI18000p3m3_Sw_ActivateCard(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18000p3m3_Sw_SetConfig(
+phStatus_t
+phpalI18000p3m3_Sw_SetConfig(
     phpalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue

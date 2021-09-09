@@ -31,7 +31,8 @@
 #include "phpalSli15693_Sw.h"
 #include "phpalSli15693_Sw_Int.h"
 
-phStatus_t phpalSli15693_Sw_Init(
+phStatus_t
+phpalSli15693_Sw_Init(
     phpalSli15693_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pHalDataParams
@@ -58,7 +59,8 @@ phStatus_t phpalSli15693_Sw_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalSli15693_Sw_Inventory(
+phStatus_t
+phpalSli15693_Sw_Inventory(
     phpalSli15693_Sw_DataParams_t *pDataParams,
     uint8_t bFlags,
     uint8_t bAfi,
@@ -86,7 +88,8 @@ phStatus_t phpalSli15693_Sw_Inventory(
           &wDataLength);
 }
 
-phStatus_t phpalSli15693_Sw_SendEof(
+phStatus_t
+phpalSli15693_Sw_SendEof(
     phpalSli15693_Sw_DataParams_t *pDataParams,
     uint8_t bOption,
     uint8_t *pDsfid,
@@ -317,7 +320,8 @@ phStatus_t phpalSli15693_Sw_SendEof(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalSli15693_Sw_StayQuiet(
+phStatus_t
+phpalSli15693_Sw_StayQuiet(
     phpalSli15693_Sw_DataParams_t *pDataParams
 )
 {
@@ -360,7 +364,8 @@ phStatus_t phpalSli15693_Sw_StayQuiet(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalSli15693_Sw_StayQuietPersistent(
+phStatus_t
+phpalSli15693_Sw_StayQuietPersistent(
     phpalSli15693_Sw_DataParams_t *pDataParams
 )
 {
@@ -403,7 +408,8 @@ phStatus_t phpalSli15693_Sw_StayQuietPersistent(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalSli15693_Sw_Select(
+phStatus_t
+phpalSli15693_Sw_Select(
     phpalSli15693_Sw_DataParams_t *pDataParams
 )
 {
@@ -450,7 +456,8 @@ phStatus_t phpalSli15693_Sw_Select(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalSli15693_Sw_ResetToReady(
+phStatus_t
+phpalSli15693_Sw_ResetToReady(
     phpalSli15693_Sw_DataParams_t *pDataParams
 )
 {
@@ -488,7 +495,8 @@ phStatus_t phpalSli15693_Sw_ResetToReady(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalSli15693_Sw_Exchange(
+phStatus_t
+phpalSli15693_Sw_Exchange(
     phpalSli15693_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -631,7 +639,8 @@ phStatus_t phpalSli15693_Sw_Exchange(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalSli15693_Sw_ActivateCard(
+phStatus_t
+phpalSli15693_Sw_ActivateCard(
     phpalSli15693_Sw_DataParams_t *pDataParams,
     uint8_t  bOption,
     uint8_t bFlags,
@@ -816,7 +825,8 @@ phStatus_t phpalSli15693_Sw_ActivateCard(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalSli15693_Sw_GetSerialNo(
+phStatus_t
+phpalSli15693_Sw_GetSerialNo(
     phpalSli15693_Sw_DataParams_t *pDataParams,
     uint8_t *pUid,
     uint8_t *pUidLength
@@ -835,7 +845,8 @@ phStatus_t phpalSli15693_Sw_GetSerialNo(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalSli15693_Sw_SetSerialNo(
+phStatus_t
+phpalSli15693_Sw_SetSerialNo(
     phpalSli15693_Sw_DataParams_t *pDataParams,
     uint8_t *pUid,
     uint8_t bUidLength
@@ -853,7 +864,8 @@ phStatus_t phpalSli15693_Sw_SetSerialNo(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalSli15693_Sw_SetConfig(
+phStatus_t
+phpalSli15693_Sw_SetConfig(
     phpalSli15693_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -1081,7 +1093,8 @@ phStatus_t phpalSli15693_Sw_SetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalSli15693_Sw_GetConfig(
+phStatus_t
+phpalSli15693_Sw_GetConfig(
     phpalSli15693_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -1190,7 +1203,8 @@ phStatus_t phpalSli15693_Sw_GetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalSli15693_Sw_InventoryRead(
+phStatus_t
+phpalSli15693_Sw_InventoryRead(
     phpalSli15693_Sw_DataParams_t *pDataParams,
     uint8_t bFlags,
     uint8_t bAfi,
@@ -1219,7 +1233,8 @@ phStatus_t phpalSli15693_Sw_InventoryRead(
           wLength);
 }
 
-phStatus_t phpalSli15693_Sw_InventoryReadExtended(
+phStatus_t
+phpalSli15693_Sw_InventoryReadExtended(
     phpalSli15693_Sw_DataParams_t *pDataParams,
     uint8_t bFlags,
     uint8_t bAfi,
@@ -1255,7 +1270,8 @@ phStatus_t phpalSli15693_Sw_InventoryReadExtended(
           wLength);
 }
 
-phStatus_t phpalSli15693_Sw_FastInventoryRead(
+phStatus_t
+phpalSli15693_Sw_FastInventoryRead(
     phpalSli15693_Sw_DataParams_t *pDataParams,
     uint8_t bFlags,
     uint8_t bAfi,
@@ -1284,7 +1300,8 @@ phStatus_t phpalSli15693_Sw_FastInventoryRead(
           pDataLength);
 }
 
-phStatus_t phpalSli15693_Sw_FastInventoryReadExtended(
+phStatus_t
+phpalSli15693_Sw_FastInventoryReadExtended(
     phpalSli15693_Sw_DataParams_t *pDataParams,
     uint8_t bFlags,
     uint8_t bAfi,
@@ -1320,7 +1337,8 @@ phStatus_t phpalSli15693_Sw_FastInventoryReadExtended(
           wLength);
 }
 
-phStatus_t phpalSli15693_Sw_InventoryPageRead(
+phStatus_t
+phpalSli15693_Sw_InventoryPageRead(
     phpalSli15693_Sw_DataParams_t *pDataParams,
     uint8_t bFlags,
     uint8_t bAfi,
@@ -1349,7 +1367,8 @@ phStatus_t phpalSli15693_Sw_InventoryPageRead(
           pDataLength);
 }
 
-phStatus_t phpalSli15693_Sw_FastInventoryPageRead(
+phStatus_t
+phpalSli15693_Sw_FastInventoryPageRead(
     phpalSli15693_Sw_DataParams_t *pDataParams,
     uint8_t bFlags,
     uint8_t bAfi,
@@ -1378,7 +1397,8 @@ phStatus_t phpalSli15693_Sw_FastInventoryPageRead(
           pDataLength);
 }
 
-phStatus_t phpalSli15693_Sw_InventoryEx(
+phStatus_t
+phpalSli15693_Sw_InventoryEx(
     phpalSli15693_Sw_DataParams_t *pDataParams,
     uint8_t bCmd,
     uint8_t bFlags,
@@ -1413,7 +1433,8 @@ phStatus_t phpalSli15693_Sw_InventoryEx(
       );
 }
 
-phStatus_t phpalSli15693_Sw_InventoryExt(
+phStatus_t
+phpalSli15693_Sw_InventoryExt(
     phpalSli15693_Sw_DataParams_t *pDataParams,
     uint8_t bCmd,
     uint8_t bFlags,

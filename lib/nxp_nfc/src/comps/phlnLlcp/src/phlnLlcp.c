@@ -33,7 +33,8 @@
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phlnLlcp_Activate(
+phStatus_t
+phlnLlcp_Activate(
     void      *pDataParams,
     uint8_t   *pRemoteGnrlBytes,
     uint8_t    bRemoteGnrBytesLen,
@@ -78,7 +79,8 @@ phStatus_t phlnLlcp_Activate(
   return status;
 }
 
-phStatus_t phlnLlcp_Deactivate(
+phStatus_t
+phlnLlcp_Deactivate(
     void *pDataParams
 )
 {
@@ -120,7 +122,8 @@ phStatus_t phlnLlcp_Deactivate(
   return status;
 }
 
-phStatus_t phlnLlcp_WaitForActivation(
+phStatus_t
+phlnLlcp_WaitForActivation(
     void *pDataParams
 )
 {
@@ -161,7 +164,8 @@ phStatus_t phlnLlcp_WaitForActivation(
   return status;
 }
 
-phStatus_t phlnLlcp_Transport_Socket_Init(
+phStatus_t
+phlnLlcp_Transport_Socket_Init(
     void   *pDataParams,
     phlnLlcp_Transport_Socket_t *psSocket,
     phlnLlcp_Transport_Socket_Type_t eSocketType,
@@ -208,7 +212,8 @@ phStatus_t phlnLlcp_Transport_Socket_Init(
   return status;
 }
 
-phStatus_t phlnLlcp_Transport_Socket_Register(
+phStatus_t
+phlnLlcp_Transport_Socket_Register(
     void  *pDataParams,
     phlnLlcp_Transport_Socket_t *pSocket,
     phlnLlcp_Transport_Socket_Type_t eSocketType,
@@ -254,7 +259,8 @@ phStatus_t phlnLlcp_Transport_Socket_Register(
   return status;
 }
 
-phStatus_t phlnLlcp_Transport_Socket_WaitForConnection(
+phStatus_t
+phlnLlcp_Transport_Socket_WaitForConnection(
     void  *pDataParams,
     phlnLlcp_Transport_Socket_t *pServerSocket,
     phlnLlcp_Transport_Socket_t *pConnServerSocket
@@ -299,7 +305,8 @@ phStatus_t phlnLlcp_Transport_Socket_WaitForConnection(
   return status;
 }
 
-phStatus_t phlnLlcp_Transport_Socket_Connect(
+phStatus_t
+phlnLlcp_Transport_Socket_Connect(
     void  *pDataParams,
     phlnLlcp_Transport_Socket_t *pClientSocket,
     uint8_t bDsap
@@ -344,7 +351,8 @@ phStatus_t phlnLlcp_Transport_Socket_Connect(
   return status;
 }
 
-phStatus_t phlnLlcp_Transport_Socket_ConnectViaUri(
+phStatus_t
+phlnLlcp_Transport_Socket_ConnectViaUri(
     void *pDataParams,
     phlnLlcp_Transport_Socket_t *pClientSocket,
     uint8_t *pUri
@@ -389,7 +397,8 @@ phStatus_t phlnLlcp_Transport_Socket_ConnectViaUri(
   return status;
 }
 
-phStatus_t phlnLlcp_Transport_Socket_Receive(
+phStatus_t
+phlnLlcp_Transport_Socket_Receive(
     void  *pDataParams,
     phlnLlcp_Transport_Socket_t *psSocket)
 {
@@ -431,7 +440,8 @@ phStatus_t phlnLlcp_Transport_Socket_Receive(
   return status;
 }
 
-phStatus_t phlnLlcp_Transport_Socket_Send(
+phStatus_t
+phlnLlcp_Transport_Socket_Send(
     void *pDataParams,
     phlnLlcp_Transport_Socket_t *pClientSocket,
     uint8_t *pTxBuffer,
@@ -478,7 +488,8 @@ phStatus_t phlnLlcp_Transport_Socket_Send(
   return status;
 }
 
-phStatus_t phlnLlcp_Transport_Socket_DiscoverServices(
+phStatus_t
+phlnLlcp_Transport_Socket_DiscoverServices(
     void *pDataParams,
     phlnLlcp_Transport_Socket_t *pSocket,
     uint8_t  bListSize,
@@ -526,7 +537,8 @@ phStatus_t phlnLlcp_Transport_Socket_DiscoverServices(
   return status;
 }
 
-phStatus_t phlnLlcp_Transport_Socket_SendTo(
+phStatus_t
+phlnLlcp_Transport_Socket_SendTo(
     void *pDataParams,
     phlnLlcp_Transport_Socket_t *pClientSocket,
     uint8_t   bDsap,
@@ -574,7 +586,8 @@ phStatus_t phlnLlcp_Transport_Socket_SendTo(
   return status;
 }
 
-phStatus_t phlnLlcp_Transport_Socket_Disconnect(
+phStatus_t
+phlnLlcp_Transport_Socket_Disconnect(
     void *pDataParams,
     phlnLlcp_Transport_Socket_t *pClientSocket
 )
@@ -618,7 +631,8 @@ phStatus_t phlnLlcp_Transport_Socket_Disconnect(
   return status;
 }
 
-phStatus_t phlnLlcp_Transport_Socket_Unregister(
+phStatus_t
+phlnLlcp_Transport_Socket_Unregister(
     void *pDataParams,
     phlnLlcp_Transport_Socket_t *pSocket
 )
@@ -662,7 +676,8 @@ phStatus_t phlnLlcp_Transport_Socket_Unregister(
   return status;
 }
 
-phStatus_t phlnLlcp_DeInit(
+phStatus_t
+phlnLlcp_DeInit(
     void *pDataParams
 )
 {

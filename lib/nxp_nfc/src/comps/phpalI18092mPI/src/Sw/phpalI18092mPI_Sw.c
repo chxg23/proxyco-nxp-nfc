@@ -39,7 +39,8 @@
 static const uint16_t PH_MEMLOC_CONST_ROM aI18092_FsTable[4] = {65, 129, 193, 255};
 static const uint16_t PH_MEMLOC_CONST_ROM aI18092_DrTable[4] = {PHHAL_HW_RF_DATARATE_106, PHHAL_HW_RF_DATARATE_212, PHHAL_HW_RF_DATARATE_424, PHHAL_HW_RF_DATARATE_848};
 
-phStatus_t phpalI18092mPI_Sw_Init(
+phStatus_t
+phpalI18092mPI_Sw_Init(
     phpalI18092mPI_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pHalDataParams
@@ -59,7 +60,8 @@ phStatus_t phpalI18092mPI_Sw_Init(
   return phpalI18092mPI_Sw_ResetProtocol(pDataParams);
 }
 
-phStatus_t phpalI18092mPI_Sw_ResetProtocol(
+phStatus_t
+phpalI18092mPI_Sw_ResetProtocol(
     phpalI18092mPI_Sw_DataParams_t *pDataParams
 )
 {
@@ -85,7 +87,8 @@ phStatus_t phpalI18092mPI_Sw_ResetProtocol(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mPI_Sw_Atr(
+phStatus_t
+phpalI18092mPI_Sw_Atr(
     phpalI18092mPI_Sw_DataParams_t *pDataParams,
     uint8_t *pNfcid3i,
     uint8_t bDid,
@@ -367,7 +370,8 @@ phStatus_t phpalI18092mPI_Sw_Atr(
   return status;
 }
 
-phStatus_t phpalI18092mPI_Sw_Psl(
+phStatus_t
+phpalI18092mPI_Sw_Psl(
     phpalI18092mPI_Sw_DataParams_t *pDataParams,
     uint8_t bDsi,
     uint8_t bDri,
@@ -544,7 +548,8 @@ phStatus_t phpalI18092mPI_Sw_Psl(
   return status;
 }
 
-phStatus_t phpalI18092mPI_Sw_ActivateCard(
+phStatus_t
+phpalI18092mPI_Sw_ActivateCard(
     phpalI18092mPI_Sw_DataParams_t *pDataParams,
     uint8_t *pNfcid3i,
     uint8_t bDid,
@@ -587,7 +592,8 @@ phStatus_t phpalI18092mPI_Sw_ActivateCard(
   return phpalI18092mPI_Sw_Psl(pDataParams, bDsi, bDri, bFsl);
 }
 
-phStatus_t phpalI18092mPI_Sw_Deselect(
+phStatus_t
+phpalI18092mPI_Sw_Deselect(
     phpalI18092mPI_Sw_DataParams_t *pDataParams,
     uint8_t bDeselectCommand
 )
@@ -704,7 +710,8 @@ phStatus_t phpalI18092mPI_Sw_Deselect(
   return status;
 }
 
-phStatus_t phpalI18092mPI_Sw_PresCheck(
+phStatus_t
+phpalI18092mPI_Sw_PresCheck(
     phpalI18092mPI_Sw_DataParams_t *pDataParams
 )
 {
@@ -797,7 +804,8 @@ phStatus_t phpalI18092mPI_Sw_PresCheck(
   return status;
 }
 
-phStatus_t phpalI18092mPI_Sw_Exchange(
+phStatus_t
+phpalI18092mPI_Sw_Exchange(
     phpalI18092mPI_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -1217,7 +1225,8 @@ phStatus_t phpalI18092mPI_Sw_Exchange(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mPI_Sw_Transmit(
+phStatus_t
+phpalI18092mPI_Sw_Transmit(
     phpalI18092mPI_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -1462,7 +1471,8 @@ phStatus_t phpalI18092mPI_Sw_Transmit(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mPI_Sw_Receive(
+phStatus_t
+phpalI18092mPI_Sw_Receive(
     phpalI18092mPI_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t **ppRxBuffer,
@@ -1731,7 +1741,8 @@ phStatus_t phpalI18092mPI_Sw_Receive(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mPI_Sw_SetConfig(
+phStatus_t
+phpalI18092mPI_Sw_SetConfig(
     phpalI18092mPI_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -1789,7 +1800,8 @@ phStatus_t phpalI18092mPI_Sw_SetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mPI_Sw_GetConfig(
+phStatus_t
+phpalI18092mPI_Sw_GetConfig(
     phpalI18092mPI_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -1840,7 +1852,8 @@ phStatus_t phpalI18092mPI_Sw_GetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mPI_Sw_GetSerialNo(
+phStatus_t
+phpalI18092mPI_Sw_GetSerialNo(
     phpalI18092mPI_Sw_DataParams_t *pDataParams,
     uint8_t *pNfcId3Out
 )
@@ -1853,7 +1866,8 @@ phStatus_t phpalI18092mPI_Sw_GetSerialNo(
   }
 }
 
-phStatus_t phpalI18092mPI_Sw_Wakeup(phpalI18092mPI_Sw_DataParams_t *pDataParams)
+phStatus_t
+phpalI18092mPI_Sw_Wakeup(phpalI18092mPI_Sw_DataParams_t *pDataParams)
 {
   phStatus_t  PH_MEMLOC_REM status;
   phStatus_t  PH_MEMLOC_REM statusTmp;

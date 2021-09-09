@@ -272,7 +272,8 @@ static const uint16_t PH_MEMLOC_CONST_ROM wPn5180_DefShadow_I18092m_424_Active[]
 
 #ifdef _WIN32
 
-phStatus_t phhalHw_Pn5180_GetDataParamsSize(uint16_t *pDataParamsSize)
+phStatus_t
+phhalHw_Pn5180_GetDataParamsSize(uint16_t *pDataParamsSize)
 {
   if (pDataParamsSize == NULL) {
     return PH_ERR_INVALID_PARAMETER;
@@ -285,7 +286,8 @@ phStatus_t phhalHw_Pn5180_GetDataParamsSize(uint16_t *pDataParamsSize)
 
 #endif
 
-static void phhalHw_Pn5180_EventCallback(void *pDataParams)
+static void
+phhalHw_Pn5180_EventCallback(void *pDataParams)
 {
   phhalHw_Pn5180_DataParams_t *pPn5180DataParams = NULL;
 
@@ -295,14 +297,16 @@ static void phhalHw_Pn5180_EventCallback(void *pDataParams)
       E_PH_OSAL_EVT_RF, NULL);
 }
 
-static void phhalHw_Pn5180_GuardTimeCallBck(void)
+static void
+phhalHw_Pn5180_GuardTimeCallBck(void)
 {
   if (xEventHandle != NULL) {
     (void)phOsal_EventPost(xEventHandle, E_OS_EVENT_OPT_POST_ISR, E_PH_OSAL_EVT_GT_EXP, NULL);
   }
 }
 
-void phhalHw_Pn5180_hal_timer_cb(void *arg)
+void
+phhalHw_Pn5180_hal_timer_cb(void *arg)
 {
   uint32_t timer_arg_val;
 
@@ -400,7 +404,8 @@ print_exchange(uint8_t *txbuf, uint16_t txlen, uint8_t *rxbuf, uint16_t rxlen)
 #endif
 }
 
-phStatus_t phhalHw_Pn5180_Init(
+phStatus_t
+phhalHw_Pn5180_Init(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pBalDataParams,
@@ -627,7 +632,8 @@ phStatus_t phhalHw_Pn5180_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_WriteRegister(
+phStatus_t
+phhalHw_Pn5180_WriteRegister(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t  bAddress,
     uint32_t dwValue
@@ -639,7 +645,8 @@ phStatus_t phhalHw_Pn5180_WriteRegister(
           dwValue);
 }
 
-phStatus_t phhalHw_Pn5180_ReadRegister(
+phStatus_t
+phhalHw_Pn5180_ReadRegister(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bAddress,
     uint32_t *pValue)
@@ -652,7 +659,8 @@ phStatus_t phhalHw_Pn5180_ReadRegister(
 
 }
 
-phStatus_t phhalHw_Pn5180_ApplyProtocolSettings(
+phStatus_t
+phhalHw_Pn5180_ApplyProtocolSettings(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bCardType)
 {
@@ -834,7 +842,8 @@ phStatus_t phhalHw_Pn5180_ApplyProtocolSettings(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Exchange(
+phStatus_t
+phhalHw_Pn5180_Exchange(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -1100,7 +1109,8 @@ phStatus_t phhalHw_Pn5180_Exchange(
   return status;
 }
 
-phStatus_t phhalHw_Pn5180_FieldOn(
+phStatus_t
+phhalHw_Pn5180_FieldOn(
     phhalHw_Pn5180_DataParams_t *pDataParams
 )
 {
@@ -1138,7 +1148,8 @@ phStatus_t phhalHw_Pn5180_FieldOn(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_FieldOff(
+phStatus_t
+phhalHw_Pn5180_FieldOff(
     phhalHw_Pn5180_DataParams_t *pDataParams
 )
 {
@@ -1156,7 +1167,8 @@ phStatus_t phhalHw_Pn5180_FieldOff(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Wait(
+phStatus_t
+phhalHw_Pn5180_Wait(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bUnit,
     uint16_t wTimeout
@@ -1205,7 +1217,8 @@ phStatus_t phhalHw_Pn5180_Wait(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_FieldReset(
+phStatus_t
+phhalHw_Pn5180_FieldReset(
     phhalHw_Pn5180_DataParams_t *pDataParams
 )
 {
@@ -1232,7 +1245,8 @@ phStatus_t phhalHw_Pn5180_FieldReset(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_SetConfig(
+phStatus_t
+phhalHw_Pn5180_SetConfig(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -2194,7 +2208,8 @@ phStatus_t phhalHw_Pn5180_SetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_GetConfig(
+phStatus_t
+phhalHw_Pn5180_GetConfig(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -2440,7 +2455,8 @@ phStatus_t phhalHw_Pn5180_GetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_MfcAuthenticateKeyNo(
+phStatus_t
+phhalHw_Pn5180_MfcAuthenticateKeyNo(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bBlockNo,
     uint8_t bKeyType,
@@ -2506,7 +2522,8 @@ phStatus_t phhalHw_Pn5180_MfcAuthenticateKeyNo(
 #endif /* NXPBUILD__PH_KEYSTORE */
 }
 
-phStatus_t phhalHw_Pn5180_MfcAuthenticate(
+phStatus_t
+phhalHw_Pn5180_MfcAuthenticate(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bBlockNo,
     uint8_t bKeyType,
@@ -2533,7 +2550,8 @@ phStatus_t phhalHw_Pn5180_MfcAuthenticate(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5180_SetMinFDT(
+phStatus_t
+phhalHw_Pn5180_SetMinFDT(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint16_t wValue
 )
@@ -2578,7 +2596,8 @@ phStatus_t phhalHw_Pn5180_SetMinFDT(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Transmit(
+phStatus_t
+phhalHw_Pn5180_Transmit(
     phhalHw_Pn5180_DataParams_t
     *pDataParams,    /**< [In] Pointer to this layer's parameter structure. */
     uint16_t wOption,                            /**< [In] Option parameter. */
@@ -2821,7 +2840,8 @@ phStatus_t phhalHw_Pn5180_Transmit(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5180_Receive(
+phStatus_t
+phhalHw_Pn5180_Receive(
     phhalHw_Pn5180_DataParams_t
     *pDataParams,      /**< [In]  Pointer to this layer's parameter structure. */
     uint16_t wOption,                              /**< [In]  Option parameter. */
@@ -2973,7 +2993,8 @@ phStatus_t phhalHw_Pn5180_Receive(
   return status;
 }
 
-phStatus_t phhalHw_Pn5180_BalExchange(
+phStatus_t
+phhalHw_Pn5180_BalExchange(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t *pTxBuffer,
     uint16_t wTxLength,
@@ -3068,7 +3089,8 @@ phStatus_t phhalHw_Pn5180_BalExchange(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Autocoll(
+phStatus_t
+phhalHw_Pn5180_Autocoll(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint16_t wMode,
     uint8_t **ppRxBuffer,
@@ -3299,7 +3321,8 @@ phStatus_t phhalHw_Pn5180_Autocoll(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5180_Lpcd(
+phStatus_t
+phhalHw_Pn5180_Lpcd(
     phhalHw_Pn5180_DataParams_t *pDataParams)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
@@ -3409,7 +3432,8 @@ phStatus_t phhalHw_Pn5180_Lpcd(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5180_SetListenParameters(
+phStatus_t
+phhalHw_Pn5180_SetListenParameters(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t *pSensRes,
     uint8_t *pNfcId1,
@@ -3432,7 +3456,8 @@ phStatus_t phhalHw_Pn5180_SetListenParameters(
           PHHAL_HW_PN5180_SET_LISTEN_LEN);
 }
 
-phStatus_t phhalHw_Pn5180_AsyncAbort(
+phStatus_t
+phhalHw_Pn5180_AsyncAbort(
     phhalHw_Pn5180_DataParams_t *pDataParams
 )
 {
@@ -3450,7 +3475,8 @@ phStatus_t phhalHw_Pn5180_AsyncAbort(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_I18000p3m3Inventory(phhalHw_Pn5180_DataParams_t *pDataParams,
+phStatus_t
+phhalHw_Pn5180_I18000p3m3Inventory(phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t *pSelCmd,                   /**< [In] ISO 18000p3m3 Select command frame. */
     uint8_t bSelCmdLen,                 /**< [In] Select command length in bytes- 1 to 39 bytes. */
     uint8_t bNumValidBitsinLastByte,    /**< [In] Number of valid bits in last byte of pSelCmd. */
@@ -3615,7 +3641,8 @@ phStatus_t phhalHw_Pn5180_I18000p3m3Inventory(phhalHw_Pn5180_DataParams_t *pData
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5180_18000p3m3ResumeInventory(
+phStatus_t
+phhalHw_Pn5180_18000p3m3ResumeInventory(
     phhalHw_Pn5180_DataParams_t
     *pDataParams,   /**< [In] Pointer to this layer's parameter structure. */
     uint8_t **ppRxBuffer,                       /**< [In] Pointer to HAL Rx Buffer containing response from single/multiple tags. */
@@ -3674,7 +3701,8 @@ phStatus_t phhalHw_Pn5180_18000p3m3ResumeInventory(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5180_EventWait(phhalHw_Pn5180_DataParams_t *pDataParams,
+phStatus_t
+phhalHw_Pn5180_EventWait(phhalHw_Pn5180_DataParams_t *pDataParams,
     uint32_t dwEventTimeout)
 {
   return phOsal_EventPend((volatile phOsal_Event_t *)(&pDataParams->HwEventObj.EventHandle),
@@ -3682,13 +3710,15 @@ phStatus_t phhalHw_Pn5180_EventWait(phhalHw_Pn5180_DataParams_t *pDataParams,
           (E_PH_OSAL_EVT_RF | E_PH_OSAL_EVT_ABORT), NULL);
 }
 
-phStatus_t phhalHw_Pn5180_EventConsume(phhalHw_Pn5180_DataParams_t *pDataParams)
+phStatus_t
+phhalHw_Pn5180_EventConsume(phhalHw_Pn5180_DataParams_t *pDataParams)
 {
   return phOsal_EventClear(&pDataParams->HwEventObj.EventHandle, E_OS_EVENT_OPT_NONE,
           (E_PH_OSAL_EVT_RF | E_PH_OSAL_EVT_ABORT), NULL);
 }
 
-phStatus_t phhalHw_Pn5180_DeInit(
+phStatus_t
+phhalHw_Pn5180_DeInit(
     phhalHw_Pn5180_DataParams_t *pDataParams
 )
 {
@@ -3748,7 +3778,8 @@ phStatus_t phhalHw_Pn5180_DeInit(
   return phOsal_EventDelete(&pDataParams->HwEventObj.EventHandle);
 }
 
-static void phhalHw_Pn5180_Reset(void)
+static void
+phhalHw_Pn5180_Reset(void)
 {
   /* As per current design, phDriver will not be implemented on PC Host side */
 #ifndef _WIN32
@@ -3771,7 +3802,8 @@ static void phhalHw_Pn5180_Reset(void)
 }
 
 #ifndef _WIN32
-static void phhalHw_Pn5180_WriteSSEL(phbalReg_Type_t *pBalDataParams, uint8_t bValue)
+static void
+phhalHw_Pn5180_WriteSSEL(phbalReg_Type_t *pBalDataParams, uint8_t bValue)
 {
   if (pBalDataParams->bBalType == PHBAL_REG_TYPE_SPI) {
     hal_gpio_write(PHDRIVER_PIN_SSEL, bValue);

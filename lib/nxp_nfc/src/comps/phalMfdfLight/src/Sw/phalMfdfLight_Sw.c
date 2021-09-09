@@ -43,7 +43,8 @@
 #include "nxp_nfc/phalMfdfLight_Sw.h"
 #include "nxp_nfc/phalMfdfLight_Sw_Int.h"
 
-phStatus_t phalMfdfLight_Sw_Init(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_Init(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams, void *pPalMifareDataParams, void *pKeyStoreDataParams,
     void *pCryptoDataParamsEnc, void *pCryptoDataParamsMac, void *pCryptoRngDataParams,
     void *pTMIDataParams, void *pHalDataParams)
@@ -102,7 +103,8 @@ phStatus_t phalMfdfLight_Sw_Init(phalMfdfLight_Sw_DataParams_t *pDataParams,
 }
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalMfdfLight_Sw_AuthenticateEv2(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_AuthenticateEv2(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bAuthOption, uint16_t wOption, uint16_t wKeyNo, uint16_t wKeyVer,
     uint8_t bKeyNoCard, uint8_t *pDivInput, uint8_t bDivLen, uint8_t bLenPcdCapsIn,
     uint8_t *pPcdCapsIn, uint8_t *pPcdCapsOut, uint8_t *pPdCapsOut)
@@ -132,7 +134,8 @@ phStatus_t phalMfdfLight_Sw_AuthenticateEv2(phalMfdfLight_Sw_DataParams_t *pData
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfLight_Sw_SetConfiguration(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_SetConfiguration(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bOption, uint8_t *pData, uint8_t bDataLen)
 {
   uint8_t  PH_MEMLOC_REM bCmdBuff[8];
@@ -214,7 +217,8 @@ phStatus_t phalMfdfLight_Sw_SetConfiguration(phalMfdfLight_Sw_DataParams_t *pDat
   return statusTmp;
 }
 
-phStatus_t phalMfdfLight_Sw_GetCardUID(phalMfdfLight_Sw_DataParams_t *pDataParams, uint8_t *pUid,
+phStatus_t
+phalMfdfLight_Sw_GetCardUID(phalMfdfLight_Sw_DataParams_t *pDataParams, uint8_t *pUid,
     uint8_t *pUidLength)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
@@ -265,7 +269,8 @@ phStatus_t phalMfdfLight_Sw_GetCardUID(phalMfdfLight_Sw_DataParams_t *pDataParam
 }
 #endif /*NXPBUILD__PH_CRYPTOSYM */
 
-phStatus_t phalMfdfLight_Sw_GetVersion(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_GetVersion(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t *pVerInfo, uint8_t *pVerLength)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
@@ -311,7 +316,8 @@ phStatus_t phalMfdfLight_Sw_GetVersion(phalMfdfLight_Sw_DataParams_t *pDataParam
 }
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalMfdfLight_Sw_ChangeKey(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_ChangeKey(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint16_t wOption, uint16_t wOldKeyNo, uint16_t wOldKeyVer, uint16_t wNewKeyNo,
     uint16_t wNewKeyVer, uint8_t bKeyNoCard, uint8_t *pDivInput, uint8_t bDivLen)
 {
@@ -776,7 +782,8 @@ phStatus_t phalMfdfLight_Sw_ChangeKey(phalMfdfLight_Sw_DataParams_t *pDataParams
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfLight_Sw_GetKeyVersion(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_GetKeyVersion(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bKeyNo, uint8_t bKeySetNo, uint8_t *pKeyVersion, uint8_t *bRxLen)
 {
   /**
@@ -835,7 +842,8 @@ phStatus_t phalMfdfLight_Sw_GetKeyVersion(phalMfdfLight_Sw_DataParams_t *pDataPa
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfLight_Sw_CreateTransactionMacFile(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_CreateTransactionMacFile(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bFileNo, uint8_t bCommMode, uint8_t *pAccessRights,
     uint8_t bKeyType, uint8_t *bTMKey, uint8_t bTMKeyVer)
 {
@@ -901,7 +909,8 @@ phStatus_t phalMfdfLight_Sw_CreateTransactionMacFile(phalMfdfLight_Sw_DataParams
   }
 }
 
-phStatus_t phalMfdfLight_Sw_ChangeFileSettings(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_ChangeFileSettings(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bCommMode, uint8_t bFileNo, uint8_t bFileOption, uint8_t *pAccessRights,
     uint8_t bTmcLimitLen, uint8_t *pTmcLimit)
 {
@@ -990,7 +999,8 @@ phStatus_t phalMfdfLight_Sw_ChangeFileSettings(phalMfdfLight_Sw_DataParams_t *pD
 }
 #endif /*NXPBUILD__PH_CRYPTOSYM */
 
-phStatus_t phalMfdfLight_Sw_DeleteFile(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_DeleteFile(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bFileNo)
 {
   uint8_t     PH_MEMLOC_REM bCmdBuff[8];
@@ -1011,7 +1021,8 @@ phStatus_t phalMfdfLight_Sw_DeleteFile(phalMfdfLight_Sw_DataParams_t *pDataParam
       );
 }
 
-phStatus_t phalMfdfLight_Sw_GetFileIDs(phalMfdfLight_Sw_DataParams_t *pDataParams, uint8_t *pFid,
+phStatus_t
+phalMfdfLight_Sw_GetFileIDs(phalMfdfLight_Sw_DataParams_t *pDataParams, uint8_t *pFid,
     uint8_t *bNumFID)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
@@ -1043,7 +1054,8 @@ phStatus_t phalMfdfLight_Sw_GetFileIDs(phalMfdfLight_Sw_DataParams_t *pDataParam
  * But this cannot be returned in one exchange. Should check the possibility of returning pointer to
  * RxBuffer instead of doing a memcpy of the RxBuffer to user buffer.
  */
-phStatus_t phalMfdfLight_Sw_GetISOFileIDs(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_GetISOFileIDs(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t *pFidBuffer, uint8_t *pNumFID)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
@@ -1079,7 +1091,8 @@ phStatus_t phalMfdfLight_Sw_GetISOFileIDs(phalMfdfLight_Sw_DataParams_t *pDataPa
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfLight_Sw_GetFileSettings(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_GetFileSettings(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bFileNo, uint8_t *pFSBuffer, uint8_t *pBufferLen)
 {
   uint16_t    PH_MEMLOC_REM statusTmp;
@@ -1143,7 +1156,8 @@ phStatus_t phalMfdfLight_Sw_GetFileSettings(phalMfdfLight_Sw_DataParams_t *pData
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfLight_Sw_ReadData(phalMfdfLight_Sw_DataParams_t *pDataParams, uint8_t bOption,
+phStatus_t
+phalMfdfLight_Sw_ReadData(phalMfdfLight_Sw_DataParams_t *pDataParams, uint8_t bOption,
     uint8_t bIns, uint8_t bFileNo, uint8_t *pOffset, uint8_t *pLength,
     uint8_t **ppRxdata, uint16_t *pRxdataLen)
 {
@@ -1273,7 +1287,8 @@ phStatus_t phalMfdfLight_Sw_ReadData(phalMfdfLight_Sw_DataParams_t *pDataParams,
   return status;
 }
 
-phStatus_t phalMfdfLight_Sw_WriteData(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_WriteData(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bCommOption, uint8_t bIns, uint8_t bFileNo, uint8_t *pOffset, uint8_t *pData,
     uint8_t *pDataLen)
 {
@@ -1428,7 +1443,8 @@ phStatus_t phalMfdfLight_Sw_WriteData(phalMfdfLight_Sw_DataParams_t *pDataParams
 
 }
 
-phStatus_t phalMfdfLight_Sw_GetValue(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_GetValue(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bCommOption, uint8_t bFileNo, uint8_t *pValue)
 {
 
@@ -1510,7 +1526,8 @@ phStatus_t phalMfdfLight_Sw_GetValue(phalMfdfLight_Sw_DataParams_t *pDataParams,
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfLight_Sw_Credit(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_Credit(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bCommOption, uint8_t bFileNo, uint8_t *pValue)
 {
   uint8_t     PH_MEMLOC_REM bCmdBuff[8];
@@ -1578,7 +1595,8 @@ phStatus_t phalMfdfLight_Sw_Credit(phalMfdfLight_Sw_DataParams_t *pDataParams,
   return status;
 }
 
-phStatus_t phalMfdfLight_Sw_Debit(phalMfdfLight_Sw_DataParams_t *pDataParams, uint8_t bCommOption,
+phStatus_t
+phalMfdfLight_Sw_Debit(phalMfdfLight_Sw_DataParams_t *pDataParams, uint8_t bCommOption,
     uint8_t bFileNo, uint8_t *pValue)
 {
   uint8_t     PH_MEMLOC_REM bCmdBuff[8];
@@ -1642,7 +1660,8 @@ phStatus_t phalMfdfLight_Sw_Debit(phalMfdfLight_Sw_DataParams_t *pDataParams, ui
   return status;
 }
 
-phStatus_t phalMfdfLight_Sw_LimitedCredit(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_LimitedCredit(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bCommOption, uint8_t bFileNo, uint8_t *pValue)
 {
   uint8_t     PH_MEMLOC_REM bCmdBuff[8];
@@ -1706,7 +1725,8 @@ phStatus_t phalMfdfLight_Sw_LimitedCredit(phalMfdfLight_Sw_DataParams_t *pDataPa
   return status;
 }
 
-phStatus_t phalMfdfLight_Sw_ReadRecords(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_ReadRecords(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bCommOption, uint8_t bIns, uint8_t bFileNo, uint8_t *pRecNo,
     uint8_t *pRecCount, uint8_t *pRecSize, uint8_t **ppRxdata, uint16_t *pRxdataLen)
 {
@@ -1903,7 +1923,8 @@ phStatus_t phalMfdfLight_Sw_ReadRecords(phalMfdfLight_Sw_DataParams_t *pDataPara
   return status;
 }
 
-phStatus_t phalMfdfLight_Sw_WriteRecord(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_WriteRecord(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bCommOption, uint8_t bIns, uint8_t bFileNo, uint8_t *pOffset,
     uint8_t *pData, uint8_t *pDataLen)
 {
@@ -2057,7 +2078,8 @@ phStatus_t phalMfdfLight_Sw_WriteRecord(phalMfdfLight_Sw_DataParams_t *pDataPara
   return statusTmp;
 }
 
-phStatus_t phalMfdfLight_Sw_UpdateRecord(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_UpdateRecord(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bCommOption, uint8_t bIns, uint8_t bFileNo, uint8_t *pRecNo,
     uint8_t *pOffset, uint8_t *pData, uint8_t *pDataLen)
 {
@@ -2213,7 +2235,8 @@ phStatus_t phalMfdfLight_Sw_UpdateRecord(phalMfdfLight_Sw_DataParams_t *pDataPar
   return statusTmp;
 }
 
-phStatus_t phalMfdfLight_Sw_ClearRecordFile(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_ClearRecordFile(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bFileNo)
 {
   uint8_t PH_MEMLOC_REM bCmdBuff[8];
@@ -2251,7 +2274,8 @@ phStatus_t phalMfdfLight_Sw_ClearRecordFile(phalMfdfLight_Sw_DataParams_t *pData
       );
 }
 
-phStatus_t phalMfdfLight_Sw_CommitTransaction(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_CommitTransaction(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bOption, uint8_t *pTMC, uint8_t *pTMAC)
 {
   uint16_t    PH_MEMLOC_REM statusTmp;
@@ -2306,7 +2330,8 @@ phStatus_t phalMfdfLight_Sw_CommitTransaction(phalMfdfLight_Sw_DataParams_t *pDa
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfLight_Sw_AbortTransaction(phalMfdfLight_Sw_DataParams_t *pDataParams)
+phStatus_t
+phalMfdfLight_Sw_AbortTransaction(phalMfdfLight_Sw_DataParams_t *pDataParams)
 {
   uint8_t     PH_MEMLOC_REM bCmdBuff[8];
 
@@ -2325,7 +2350,8 @@ phStatus_t phalMfdfLight_Sw_AbortTransaction(phalMfdfLight_Sw_DataParams_t *pDat
       );
 }
 
-phStatus_t phalMfdfLight_Sw_CommitReaderID(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_CommitReaderID(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t *pTMRI, uint8_t *pEncTMRI)
 {
   uint16_t    PH_MEMLOC_REM statusTmp;
@@ -2416,7 +2442,8 @@ phStatus_t phalMfdfLight_Sw_CommitReaderID(phalMfdfLight_Sw_DataParams_t *pDataP
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfLight_Sw_IsoSelectFile(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_IsoSelectFile(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bOption, uint8_t bSelector, uint8_t *pFid, uint8_t *pDFname,
     uint8_t bDFnameLen, uint8_t bExtendedLenApdu, uint8_t **ppFCI, uint16_t *pwFCILen)
 {
@@ -2509,7 +2536,8 @@ phStatus_t phalMfdfLight_Sw_IsoSelectFile(phalMfdfLight_Sw_DataParams_t *pDataPa
   return PH_ADD_COMPCODE(statusTmp, PH_COMP_AL_MFDFLIGHT);
 }
 
-phStatus_t phalMfdfLight_Sw_IsoReadBinary(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_IsoReadBinary(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint16_t wOption, uint8_t bOffset, uint8_t bSfid, uint32_t dwBytesToRead,
     uint8_t bExtendedLenApdu, uint8_t **ppRxBuffer, uint32_t *pBytesRead)
 {
@@ -2576,7 +2604,8 @@ phStatus_t phalMfdfLight_Sw_IsoReadBinary(phalMfdfLight_Sw_DataParams_t *pDataPa
       );
 }
 
-phStatus_t phalMfdfLight_Sw_IsoUpdateBinary(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_IsoUpdateBinary(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint8_t bOffset, uint8_t bSfid, uint8_t bExtendedLenApdu, uint8_t *pData,
     uint32_t dwDataLen)
 
@@ -2629,7 +2658,8 @@ phStatus_t phalMfdfLight_Sw_IsoUpdateBinary(phalMfdfLight_Sw_DataParams_t *pData
   return status;
 }
 
-phStatus_t phalMfdfLight_Sw_ReadSign(phalMfdfLight_Sw_DataParams_t *pDataParams, uint8_t bAddr,
+phStatus_t
+phalMfdfLight_Sw_ReadSign(phalMfdfLight_Sw_DataParams_t *pDataParams, uint8_t bAddr,
     uint8_t **pSignature)
 {
 
@@ -2680,7 +2710,8 @@ phStatus_t phalMfdfLight_Sw_ReadSign(phalMfdfLight_Sw_DataParams_t *pDataParams,
 
 }
 
-phStatus_t phalMfdfLight_Sw_GetConfig(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_GetConfig(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint16_t wConfig, uint16_t *pValue)
 {
   switch (wConfig) {
@@ -2702,7 +2733,8 @@ phStatus_t phalMfdfLight_Sw_GetConfig(phalMfdfLight_Sw_DataParams_t *pDataParams
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfLight_Sw_SetConfig(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_SetConfig(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint16_t wConfig, uint16_t wValue)
 {
   switch (wConfig) {
@@ -2723,7 +2755,8 @@ phStatus_t phalMfdfLight_Sw_SetConfig(phalMfdfLight_Sw_DataParams_t *pDataParams
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfLight_Sw_ResetAuthentication(phalMfdfLight_Sw_DataParams_t *pDataParams)
+phStatus_t
+phalMfdfLight_Sw_ResetAuthentication(phalMfdfLight_Sw_DataParams_t *pDataParams)
 {
   phStatus_t PH_MEMLOC_REM status;
   uint16_t    PH_MEMLOC_REM pValue;
@@ -2740,7 +2773,8 @@ phStatus_t phalMfdfLight_Sw_ResetAuthentication(phalMfdfLight_Sw_DataParams_t *p
 }
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalMfdfLight_Sw_CalculateTMV(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_CalculateTMV(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint16_t wOption, uint16_t wKeyNoTMACKey, uint16_t wKeyVerTMACKey,
     uint8_t *pDivInput, uint8_t bDivInputLen, uint8_t *pTMC, uint8_t *pUid, uint8_t bUidLen,
     uint8_t  *pTMI, uint32_t dwTMILen, uint8_t *pTMV)
@@ -2944,7 +2978,8 @@ phStatus_t phalMfdfLight_Sw_CalculateTMV(phalMfdfLight_Sw_DataParams_t *pDataPar
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdfLight_Sw_DecryptReaderID(phalMfdfLight_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfdfLight_Sw_DecryptReaderID(phalMfdfLight_Sw_DataParams_t *pDataParams,
     uint16_t wOption, uint16_t wKeyNoTMACKey, uint16_t wKeyVerTMACKey,
     uint8_t *pDivInput, uint8_t bDivInputLen, uint8_t *pTMC, uint8_t *pUid, uint8_t bUidLen,
     uint8_t  *pEncTMRI, uint8_t *pTMRIPrev)

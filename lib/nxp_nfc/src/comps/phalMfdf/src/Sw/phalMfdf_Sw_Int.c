@@ -36,7 +36,8 @@
 #include "phalMfdf_Sw.h"
 #include "phalMfdf_Sw_Int.h"
 
-phStatus_t phalMfdf_Sw_Int_GetData(
+phStatus_t
+phalMfdf_Sw_Int_GetData(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t *pSendBuff,
     uint16_t wCmdLen,
@@ -348,7 +349,8 @@ phStatus_t phalMfdf_Sw_Int_GetData(
   return phalMfdf_Int_ComputeErrorResponse(pDataParams, bStatusByte);
 }
 
-phStatus_t phalMfdf_Sw_Int_ReadData_Plain(
+phStatus_t
+phalMfdf_Sw_Int_ReadData_Plain(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bOption,
     uint8_t *bCmdBuff,
@@ -579,7 +581,8 @@ phStatus_t phalMfdf_Sw_Int_ReadData_Plain(
 
 #ifdef NXPBUILD__PH_NDA_MFDF
 
-phStatus_t phalMfdf_Sw_Int_ReadData_Enc(
+phStatus_t
+phalMfdf_Sw_Int_ReadData_Enc(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bOption,
     uint8_t *bCmdBuff,
@@ -923,7 +926,8 @@ phStatus_t phalMfdf_Sw_Int_ReadData_Enc(
   return status;
 }
 
-phStatus_t phalMfdf_Sw_Int_Write_Enc(
+phStatus_t
+phalMfdf_Sw_Int_Write_Enc(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t *bCmdBuff,
     uint16_t wCmdLen,
@@ -1379,7 +1383,8 @@ phStatus_t phalMfdf_Sw_Int_Write_Enc(
 
 #endif /* NXPBUILD__PH_NDA_MFDF */
 
-phStatus_t phalMfdf_Sw_Int_Write_Plain(
+phStatus_t
+phalMfdf_Sw_Int_Write_Plain(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t *bCmdBuff,
     uint16_t wCmdLen,
@@ -1846,7 +1851,8 @@ phStatus_t phalMfdf_Sw_Int_Write_Plain(
 
 #ifdef NXPBUILD__PH_NDA_MFDF
 
-void phalMfdf_Sw_Int_ResetAuthStatus(phalMfdf_Sw_DataParams_t *pDataParams)
+void
+phalMfdf_Sw_Int_ResetAuthStatus(phalMfdf_Sw_DataParams_t *pDataParams)
 {
   (void)memset(pDataParams->bSessionKey, 0x00, (size_t)sizeof(pDataParams->bSessionKey));
   pDataParams->bKeyNo = 0xFF;
@@ -1858,7 +1864,8 @@ void phalMfdf_Sw_Int_ResetAuthStatus(phalMfdf_Sw_DataParams_t *pDataParams)
 
 #endif /* NXPBUILD__PH_NDA_MFDF */
 
-phStatus_t phalMfdf_Sw_Int_SendDataToPICC(
+phStatus_t
+phalMfdf_Sw_Int_SendDataToPICC(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t *pCmd,
     uint16_t wCmdLen,
@@ -1998,7 +2005,8 @@ phStatus_t phalMfdf_Sw_Int_SendDataToPICC(
   return phalMfdf_Int_ComputeErrorResponse(pDataParams, bStatusByte);
 }
 
-phStatus_t phalMfdf_Sw_Int_IsoRead(
+phStatus_t
+phalMfdf_Sw_Int_IsoRead(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *bCmdBuff,

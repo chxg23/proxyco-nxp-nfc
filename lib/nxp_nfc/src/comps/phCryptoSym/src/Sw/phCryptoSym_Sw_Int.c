@@ -39,7 +39,8 @@
 #endif
 #include "phCryptoSym_Sw_Int.h"
 
-phStatus_t phCryptoSym_Sw_CMAC_GenerateK1K2(
+phStatus_t
+phCryptoSym_Sw_CMAC_GenerateK1K2(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     uint8_t *pSubKey1,
     uint8_t *pSubKey2
@@ -106,7 +107,8 @@ phStatus_t phCryptoSym_Sw_CMAC_GenerateK1K2(
   return PH_ERR_SUCCESS;
 }
 
-void phCryptoSym_Sw_CMAC_LeftShift(
+void
+phCryptoSym_Sw_CMAC_LeftShift(
     const uint8_t *pInBuffer,
     uint8_t bInputLen,
     uint8_t *pOutBuffer
@@ -122,7 +124,8 @@ void phCryptoSym_Sw_CMAC_LeftShift(
   } while (0U != bInputLen);
 }
 
-phStatus_t phCryptoSym_Sw_EncryptBlock(
+phStatus_t
+phCryptoSym_Sw_EncryptBlock(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     uint8_t PH_CRYTOSYM_SW_FAST_RAM *pBlock
 )
@@ -193,7 +196,8 @@ phStatus_t phCryptoSym_Sw_EncryptBlock(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phCryptoSym_Sw_DecryptBlock(
+phStatus_t
+phCryptoSym_Sw_DecryptBlock(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     uint8_t PH_CRYTOSYM_SW_FAST_RAM *pBlock
 )
@@ -263,7 +267,8 @@ phStatus_t phCryptoSym_Sw_DecryptBlock(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phCryptoSym_Sw_Diversify_CMAC(
+phStatus_t
+phCryptoSym_Sw_Diversify_CMAC(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     const uint8_t *pData,
     uint16_t  wDataLength,

@@ -45,7 +45,8 @@
 #ifdef NXPBUILD__PH_CRYPTOSYM
 static const uint8_t PH_MEMLOC_CONST_ROM phalMful_Sw_FirstIv[PHAL_MFUL_AES_BLOCK_SIZE] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 #endif /* NXPBUILD__PH_CRYPTOSYM */
-phStatus_t phalMful_Sw_Init(
+phStatus_t
+phalMful_Sw_Init(
     phalMful_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pPalMifareDataParams,
@@ -73,7 +74,8 @@ phStatus_t phalMful_Sw_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMful_Sw_UlcAuthenticate(phalMful_Sw_DataParams_t *pDataParams, uint16_t wKeyNumber,
+phStatus_t
+phalMful_Sw_UlcAuthenticate(phalMful_Sw_DataParams_t *pDataParams, uint16_t wKeyNumber,
     uint16_t wKeyVersion)
 {
 #ifdef NXPBUILD__PH_CRYPTOSYM
@@ -231,7 +233,8 @@ phStatus_t phalMful_Sw_UlcAuthenticate(phalMful_Sw_DataParams_t *pDataParams, ui
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 }
 
-phStatus_t phalMful_Sw_AuthenticateAES(phalMful_Sw_DataParams_t *pDataParams, uint16_t wKeyNo,
+phStatus_t
+phalMful_Sw_AuthenticateAES(phalMful_Sw_DataParams_t *pDataParams, uint16_t wKeyNo,
     uint16_t wKeyVer, uint8_t bKeyNoCard)
 {
   phStatus_t  PH_MEMLOC_REM wStatus = 0;
@@ -424,7 +427,8 @@ phStatus_t phalMful_Sw_AuthenticateAES(phalMful_Sw_DataParams_t *pDataParams, ui
   return PH_ADD_COMPCODE(PH_ERR_SUCCESS, PH_COMP_AL_MFUL);
 }
 
-phStatus_t phalMful_Sw_Read(
+phStatus_t
+phalMful_Sw_Read(
     phalMful_Sw_DataParams_t *pDataParams,
     uint8_t bAddress,
     uint8_t *pData
@@ -433,7 +437,8 @@ phStatus_t phalMful_Sw_Read(
   return phalMful_Int_Read(pDataParams, bAddress, pData);
 }
 
-phStatus_t phalMful_Sw_Write(
+phStatus_t
+phalMful_Sw_Write(
     phalMful_Sw_DataParams_t *pDataParams,
     uint8_t bAddress,
     uint8_t *pData
@@ -442,7 +447,8 @@ phStatus_t phalMful_Sw_Write(
   return phalMful_Int_Write(pDataParams, bAddress, pData);
 }
 
-phStatus_t phalMful_Sw_FastWrite(
+phStatus_t
+phalMful_Sw_FastWrite(
     phalMful_Sw_DataParams_t *pDataParams,
     uint8_t *pData
 )
@@ -450,7 +456,8 @@ phStatus_t phalMful_Sw_FastWrite(
   return phalMful_Int_FastWrite(pDataParams->pPalMifareDataParams, pData);
 }
 
-phStatus_t phalMful_Sw_CompatibilityWrite(
+phStatus_t
+phalMful_Sw_CompatibilityWrite(
     phalMful_Sw_DataParams_t *pDataParams,
     uint8_t bAddress,
     uint8_t *pData
@@ -459,7 +466,8 @@ phStatus_t phalMful_Sw_CompatibilityWrite(
   return phalMful_Int_CompatibilityWrite(pDataParams->pPalMifareDataParams, bAddress, pData);
 }
 
-phStatus_t phalMful_Sw_IncrCnt(
+phStatus_t
+phalMful_Sw_IncrCnt(
     phalMful_Sw_DataParams_t *pDataParams,
     uint8_t bCntNum,
     uint8_t *pCnt
@@ -468,7 +476,8 @@ phStatus_t phalMful_Sw_IncrCnt(
   return phalMful_Int_IncrCnt(pDataParams, bCntNum, pCnt);
 }
 
-phStatus_t phalMful_Sw_ReadCnt(
+phStatus_t
+phalMful_Sw_ReadCnt(
     phalMful_Sw_DataParams_t *pDataParams,
     uint8_t bCntNum,
     uint8_t *pCntValue
@@ -477,7 +486,8 @@ phStatus_t phalMful_Sw_ReadCnt(
   return phalMful_Int_ReadCnt(pDataParams, bCntNum, pCntValue);
 }
 
-phStatus_t phalMful_Sw_PwdAuth(
+phStatus_t
+phalMful_Sw_PwdAuth(
     phalMful_Sw_DataParams_t *pDataParams,
     uint8_t *pPwd,
     uint8_t *pPack
@@ -486,7 +496,8 @@ phStatus_t phalMful_Sw_PwdAuth(
   return phalMful_Int_PwdAuth(pDataParams->pPalMifareDataParams, pPwd, pPack);
 }
 
-phStatus_t phalMful_Sw_GetVersion(
+phStatus_t
+phalMful_Sw_GetVersion(
     phalMful_Sw_DataParams_t *pDataParams,
     uint8_t *pPwd
 )
@@ -494,7 +505,8 @@ phStatus_t phalMful_Sw_GetVersion(
   return phalMful_Int_GetVersion(pDataParams, pPwd);
 }
 
-phStatus_t phalMful_Sw_FastRead(
+phStatus_t
+phalMful_Sw_FastRead(
     phalMful_Sw_DataParams_t *pDataParams,
     uint8_t  bStartAddr,
     uint8_t bEndAddr,
@@ -505,7 +517,8 @@ phStatus_t phalMful_Sw_FastRead(
   return phalMful_Int_FastRead(pDataParams, bStartAddr, bEndAddr, ppData, pNumBytes);
 }
 
-phStatus_t phalMful_Sw_SectorSelect(
+phStatus_t
+phalMful_Sw_SectorSelect(
     phalMful_Sw_DataParams_t *pDataParams,
     uint8_t bSecNo
 )
@@ -513,13 +526,15 @@ phStatus_t phalMful_Sw_SectorSelect(
   return phalMful_Int_SectorSelect(pDataParams->pPalMifareDataParams, bSecNo);
 }
 
-phStatus_t phalMful_Sw_ReadSign(phalMful_Sw_DataParams_t *pDataParams, uint8_t bAddr,
+phStatus_t
+phalMful_Sw_ReadSign(phalMful_Sw_DataParams_t *pDataParams, uint8_t bAddr,
     uint8_t **pSignature, uint16_t *pDataLen)
 {
   return phalMful_Int_ReadSign(pDataParams, bAddr, pSignature, pDataLen);
 }
 
-phStatus_t phalMful_Sw_ChkTearingEvent(
+phStatus_t
+phalMful_Sw_ChkTearingEvent(
     phalMful_Sw_DataParams_t *pDataParams,
     uint8_t bCntNum,
     uint8_t *pValidFlag
@@ -528,7 +543,8 @@ phStatus_t phalMful_Sw_ChkTearingEvent(
   return phalMful_Int_ChkTearingEvent(pDataParams->pPalMifareDataParams, bCntNum, pValidFlag);
 }
 
-phStatus_t phalMful_Sw_WriteSign(
+phStatus_t
+phalMful_Sw_WriteSign(
     phalMful_Sw_DataParams_t *pDataParams,
     uint8_t bAddress,
     uint8_t *pSignature
@@ -537,7 +553,8 @@ phStatus_t phalMful_Sw_WriteSign(
   return phalMful_Int_WriteSign(pDataParams, bAddress, pSignature);
 }
 
-phStatus_t phalMful_Sw_LockSign(
+phStatus_t
+phalMful_Sw_LockSign(
     phalMful_Sw_DataParams_t *pDataParams,
     uint8_t bLockMode
 )
@@ -545,7 +562,8 @@ phStatus_t phalMful_Sw_LockSign(
   return phalMful_Int_LockSign(pDataParams, bLockMode);
 }
 
-phStatus_t phalMful_Sw_VirtualCardSelect(
+phStatus_t
+phalMful_Sw_VirtualCardSelect(
     phalMful_Sw_DataParams_t *pDataParams,
     uint8_t *pVCIID,
     uint8_t bVCIIDLen,
@@ -556,13 +574,15 @@ phStatus_t phalMful_Sw_VirtualCardSelect(
           pVCTID);
 }
 
-phStatus_t phalMful_Sw_ReadTTStatus(phalMful_Sw_DataParams_t *pDataParams, uint8_t bAddr,
+phStatus_t
+phalMful_Sw_ReadTTStatus(phalMful_Sw_DataParams_t *pDataParams, uint8_t bAddr,
     uint8_t  *pData)
 {
   return phalMful_Int_ReadTTStatus(pDataParams->pPalMifareDataParams, bAddr, pData);
 }
 
-phStatus_t phalMful_Sw_GetConfig(phalMful_Sw_DataParams_t *pDataParams, uint16_t wConfig,
+phStatus_t
+phalMful_Sw_GetConfig(phalMful_Sw_DataParams_t *pDataParams, uint16_t wConfig,
     uint16_t *pValue)
 {
   switch (wConfig) {
@@ -581,7 +601,8 @@ phStatus_t phalMful_Sw_GetConfig(phalMful_Sw_DataParams_t *pDataParams, uint16_t
   return PH_ADD_COMPCODE(PH_ERR_SUCCESS, PH_COMP_AL_MFUL);
 }
 
-phStatus_t phalMful_Sw_SetConfig(phalMful_Sw_DataParams_t *pDataParams, uint16_t wConfig,
+phStatus_t
+phalMful_Sw_SetConfig(phalMful_Sw_DataParams_t *pDataParams, uint16_t wConfig,
     uint16_t wValue)
 {
   switch (wConfig) {
@@ -600,7 +621,8 @@ phStatus_t phalMful_Sw_SetConfig(phalMful_Sw_DataParams_t *pDataParams, uint16_t
   return PH_ADD_COMPCODE(PH_ERR_SUCCESS, PH_COMP_AL_MFUL);
 }
 
-phStatus_t phalMful_Sw_CalculateSunCMAC(phalMful_Sw_DataParams_t *pDataParams, uint16_t wKeyNo,
+phStatus_t
+phalMful_Sw_CalculateSunCMAC(phalMful_Sw_DataParams_t *pDataParams, uint16_t wKeyNo,
     uint16_t wKeyVer, uint8_t *pInData, uint16_t wInDataLen, uint8_t *pRespMac)
 {
   phStatus_t  PH_MEMLOC_REM wStatus = 0;

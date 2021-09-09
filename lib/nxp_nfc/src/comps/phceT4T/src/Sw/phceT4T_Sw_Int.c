@@ -28,7 +28,8 @@
 #include "phceT4T_Sw.h"
 #include "phceT4T_Sw_Int.h"
 
-phStatus_t phceT4T_Sw_Int_SetCcFile(
+phStatus_t
+phceT4T_Sw_Int_SetCcFile(
     phceT4T_Sw_DataParams_t *pDataParams,
     uint8_t *pCcFile,
     uint16_t wCcFileId,
@@ -240,7 +241,8 @@ phStatus_t phceT4T_Sw_Int_SetCcFile(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phceT4T_Sw_Int_SetNdefFile(
+phStatus_t
+phceT4T_Sw_Int_SetNdefFile(
     phceT4T_Sw_DataParams_t *pDataParams,
     uint8_t *pNdefFile,
     uint16_t wNdefFileId,
@@ -351,7 +353,8 @@ phStatus_t phceT4T_Sw_Int_SetNdefFile(
 }
 
 #ifdef NXPBUILD__PHCE_T4T_PROPRIETARY
-phStatus_t phceT4T_Sw_Int_SetProprietaryFile(
+phStatus_t
+phceT4T_Sw_Int_SetProprietaryFile(
     phceT4T_Sw_DataParams_t *pDataParams,
     uint8_t *pFile,
     uint16_t wFileId,
@@ -462,7 +465,8 @@ phStatus_t phceT4T_Sw_Int_SetProprietaryFile(
 }
 #endif /* NXPBUILD__PHCE_T4T_PROPRIETARY */
 
-phStatus_t phceT4T_Sw_Int_Select(
+phStatus_t
+phceT4T_Sw_Int_Select(
     phceT4T_Sw_DataParams_t *pDataParams,
     uint8_t *pRxData,
     uint16_t wRxDataLen,
@@ -599,7 +603,8 @@ phStatus_t phceT4T_Sw_Int_Select(
   }
 }
 
-phStatus_t phceT4T_Sw_Int_ReadBinary(
+phStatus_t
+phceT4T_Sw_Int_ReadBinary(
     phceT4T_Sw_DataParams_t *pDataParams,
     uint8_t *pRxData,
     uint16_t wRxDataLen,
@@ -701,7 +706,8 @@ phStatus_t phceT4T_Sw_Int_ReadBinary(
   return (PH_CE_T4T_READ_BINARY | PH_COMP_CE_T4T);
 }
 
-phStatus_t phceT4T_Sw_Int_UpdateBinary(
+phStatus_t
+phceT4T_Sw_Int_UpdateBinary(
     phceT4T_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pRxData,
@@ -821,7 +827,8 @@ phStatus_t phceT4T_Sw_Int_UpdateBinary(
   return (PH_CE_T4T_UPDATE_BINARY | PH_COMP_CE_T4T);
 }
 
-phStatus_t phceT4T_Sw_Int_Activate(
+phStatus_t
+phceT4T_Sw_Int_Activate(
     phceT4T_Sw_DataParams_t *pDataParams
 )
 {
@@ -1092,7 +1099,8 @@ phStatus_t phceT4T_Sw_Int_Activate(
 #endif /* _WIN32 */
 }
 
-void phceT4T_Sw_Int_UpdateFile(
+void
+phceT4T_Sw_Int_UpdateFile(
     phceT4T_Sw_DataParams_t *pDataParams,
     uint8_t *pData,
     uint32_t dwDataLen

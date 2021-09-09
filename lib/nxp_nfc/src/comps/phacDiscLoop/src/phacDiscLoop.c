@@ -30,7 +30,8 @@
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phacDiscLoop_Run(void *pDataParams,
+phStatus_t
+phacDiscLoop_Run(void *pDataParams,
     uint8_t bEntryPoint)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -67,7 +68,8 @@ phStatus_t phacDiscLoop_Run(void *pDataParams,
   return status;
 }
 
-phStatus_t phacDiscLoop_GetConfig(void *pDataParams,
+phStatus_t
+phacDiscLoop_GetConfig(void *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue)
 {
@@ -111,7 +113,8 @@ phStatus_t phacDiscLoop_GetConfig(void *pDataParams,
   return status;
 }
 
-phStatus_t phacDiscLoop_SetConfig(
+phStatus_t
+phacDiscLoop_SetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -156,7 +159,8 @@ phStatus_t phacDiscLoop_SetConfig(
   return status;
 }
 
-phStatus_t phacDiscLoop_ActivateCard(
+phStatus_t
+phacDiscLoop_ActivateCard(
     void *pDataParams,
     uint8_t bTagType,
     uint8_t bTagIndex
@@ -201,7 +205,8 @@ phStatus_t phacDiscLoop_ActivateCard(
   return status;
 }
 
-phStatus_t phacDiscLoop_CfgPollSeq(
+phStatus_t
+phacDiscLoop_CfgPollSeq(
     void *pDataParams,
     uint8_t *pDiscloopCfgPollSeq
 )

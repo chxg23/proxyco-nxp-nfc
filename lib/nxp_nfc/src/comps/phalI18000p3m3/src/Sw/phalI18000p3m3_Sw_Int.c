@@ -31,7 +31,8 @@
 #include <nxp_nfc/phalI18000p3m3.h>
 #include "phalI18000p3m3_Sw_Int.h"
 
-phStatus_t phalI18000p3m3_Sw_ParseError(
+phStatus_t
+phalI18000p3m3_Sw_ParseError(
     phalI18000p3m3_Sw_DataParams_t *pDataParams,
     uint8_t *pRxData,
     uint16_t wRxDataLength,

@@ -29,7 +29,8 @@
 #include "phalMfdf_Int.h"
 #include <nxp_nfc/ph_RefDefs.h>
 
-phStatus_t phalMfdf_Int_ComputeErrorResponse(
+phStatus_t
+phalMfdf_Int_ComputeErrorResponse(
     void *pDataParams,
     uint16_t wStatus
 )
@@ -159,7 +160,8 @@ phStatus_t phalMfdf_Int_ComputeErrorResponse(
 * Should take care of wrapping and unwrapping if ISO 7816 Wrapped mode
 * Does not handle any chaining or CMAC generation/verification or encryption/decryption
 */
-phStatus_t phalMfdf_ExchangeCmd(
+phStatus_t
+phalMfdf_ExchangeCmd(
     void *pDataParams,
     void *pPalMifareDataParams,
     uint8_t bWrappedMode,
@@ -242,7 +244,8 @@ phStatus_t phalMfdf_ExchangeCmd(
 /*
 * Should return SW1+SW2
 */
-phStatus_t phalMfdf_Int_Send7816Apdu(
+phStatus_t
+phalMfdf_Int_Send7816Apdu(
     void *pDataParams,
     void *pPalMifareDataParams,
     uint8_t bOption,

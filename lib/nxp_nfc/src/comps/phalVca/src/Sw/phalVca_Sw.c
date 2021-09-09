@@ -51,7 +51,8 @@
 static const uint8_t PH_MEMLOC_CONST_ROM phalVca_Sw_FirstIv[PH_CRYPTOSYM_AES_BLOCK_SIZE] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 
-phStatus_t phalVca_Sw_Init(phalVca_Sw_DataParams_t *pDataParams, uint16_t wSizeOfDataParams,
+phStatus_t
+phalVca_Sw_Init(phalVca_Sw_DataParams_t *pDataParams, uint16_t wSizeOfDataParams,
     void *pPalMifareDataParams, void *pKeyStoreDataParams,
     void *pCryptoDataParams, void *pCryptoRngDataParams, phalVca_Sw_IidTableEntry_t *pIidTableStorage,
     uint16_t wNumIidTableStorageEntries,
@@ -100,7 +101,8 @@ phStatus_t phalVca_Sw_Init(phalVca_Sw_DataParams_t *pDataParams, uint16_t wSizeO
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalVca_Sw_StartCardSelection(phalVca_Sw_DataParams_t *pDataParams)
+phStatus_t
+phalVca_Sw_StartCardSelection(phalVca_Sw_DataParams_t *pDataParams)
 {
   uint16_t PH_MEMLOC_REM wIndex;
 
@@ -115,7 +117,8 @@ phStatus_t phalVca_Sw_StartCardSelection(phalVca_Sw_DataParams_t *pDataParams)
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalVca_Sw_FinalizeCardSelection(phalVca_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalVca_Sw_FinalizeCardSelection(phalVca_Sw_DataParams_t *pDataParams,
     uint16_t *pNumValidIids)
 {
   uint16_t PH_MEMLOC_REM wDummyValidIids = 0;
@@ -136,7 +139,8 @@ phStatus_t phalVca_Sw_FinalizeCardSelection(phalVca_Sw_DataParams_t *pDataParams
 }
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalVca_Sw_SelectVc(phalVca_Sw_DataParams_t *pDataParams, uint16_t wValidIidIndex,
+phStatus_t
+phalVca_Sw_SelectVc(phalVca_Sw_DataParams_t *pDataParams, uint16_t wValidIidIndex,
     uint16_t wKeyNumber, uint16_t wKeyVersion)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp, status;
@@ -223,7 +227,8 @@ phStatus_t phalVca_Sw_SelectVc(phalVca_Sw_DataParams_t *pDataParams, uint16_t wV
 }
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 
-phStatus_t phalVca_Sw_DeselectVc(phalVca_Sw_DataParams_t *pDataParams)
+phStatus_t
+phalVca_Sw_DeselectVc(phalVca_Sw_DataParams_t *pDataParams)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
   uint8_t     PH_MEMLOC_REM aTxBuffer[1];
@@ -253,7 +258,8 @@ phStatus_t phalVca_Sw_DeselectVc(phalVca_Sw_DataParams_t *pDataParams)
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalVca_Sw_VcSupport(phalVca_Sw_DataParams_t *pDataParams, uint8_t *pIid,
+phStatus_t
+phalVca_Sw_VcSupport(phalVca_Sw_DataParams_t *pDataParams, uint8_t *pIid,
     uint16_t wKeyEncNumber, uint16_t wKeyEncVersion,
     uint16_t wKeyMacNumber, uint16_t wKeyMacVersion)
 {
@@ -309,7 +315,8 @@ phStatus_t phalVca_Sw_VcSupport(phalVca_Sw_DataParams_t *pDataParams, uint8_t *p
 }
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalVca_Sw_VcSupportLast(phalVca_Sw_DataParams_t *pDataParams, uint8_t *pIid,
+phStatus_t
+phalVca_Sw_VcSupportLast(phalVca_Sw_DataParams_t *pDataParams, uint8_t *pIid,
     uint8_t bLenCap, uint8_t *pPcdCapabilities,
     uint16_t wKeyEncNumber, uint16_t wKeyEncVersion, uint16_t wKeyMacNumber, uint16_t wKeyMacVersion)
 {
@@ -502,7 +509,8 @@ phStatus_t phalVca_Sw_VcSupportLast(phalVca_Sw_DataParams_t *pDataParams, uint8_
 }
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 
-phStatus_t phalVca_Sw_GetIidInfo(phalVca_Sw_DataParams_t *pDataParams, uint16_t wValidIidIndex,
+phStatus_t
+phalVca_Sw_GetIidInfo(phalVca_Sw_DataParams_t *pDataParams, uint16_t wValidIidIndex,
     uint16_t *pIidIndex, uint8_t *pVcUidSize,
     uint8_t *pVcUid, uint8_t *pInfo, uint8_t *pPdCapabilities)
 {
@@ -530,7 +538,8 @@ phStatus_t phalVca_Sw_GetIidInfo(phalVca_Sw_DataParams_t *pDataParams, uint16_t 
 }
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalVca_Sw_IsoSelect(phalVca_Sw_DataParams_t *pDataParams, uint8_t   bSelectionControl,
+phStatus_t
+phalVca_Sw_IsoSelect(phalVca_Sw_DataParams_t *pDataParams, uint8_t   bSelectionControl,
     uint8_t bOption, uint8_t bDFnameLen,
     uint8_t *pDFname, uint8_t *pFCI, uint16_t *pwFCILen)
 {
@@ -710,7 +719,8 @@ phStatus_t phalVca_Sw_IsoSelect(phalVca_Sw_DataParams_t *pDataParams, uint8_t   
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalVca_Sw_IsoExternalAuthenticate(phalVca_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalVca_Sw_IsoExternalAuthenticate(phalVca_Sw_DataParams_t *pDataParams,
     uint8_t *pInData, uint16_t wKeyNumber, uint16_t wKeyVersion)
 {
   phStatus_t  PH_MEMLOC_REM status;
@@ -863,7 +873,8 @@ phStatus_t phalVca_Sw_IsoExternalAuthenticate(phalVca_Sw_DataParams_t *pDataPara
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalVca_Sw_ProximityCheck(phalVca_Sw_DataParams_t *pDataParams, uint8_t bGenerateRndC,
+phStatus_t
+phalVca_Sw_ProximityCheck(phalVca_Sw_DataParams_t *pDataParams, uint8_t bGenerateRndC,
     uint8_t *pRndC, uint8_t bPps1,
     uint8_t bNumSteps, uint16_t wKeyNumber, uint16_t wKeyVersion, uint8_t *pUsedRndRC)
 {
@@ -878,7 +889,8 @@ phStatus_t phalVca_Sw_ProximityCheck(phalVca_Sw_DataParams_t *pDataParams, uint8
               wKeyVersion));
 }
 
-phStatus_t phalVca_Sw_ProximityCheckNew(phalVca_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalVca_Sw_ProximityCheckNew(phalVca_Sw_DataParams_t *pDataParams,
     uint8_t bGenerateRndC, uint8_t *pPrndC, uint8_t bNumSteps,
     uint16_t wKeyNumber, uint16_t wKeyVersion, uint8_t *pOption, uint8_t *pPubRespTime,
     uint8_t *pResponse, uint16_t *pRespLen,
@@ -896,13 +908,15 @@ phStatus_t phalVca_Sw_ProximityCheckNew(phalVca_Sw_DataParams_t *pDataParams,
               *pRespLen, wKeyNumber, wKeyVersion, pCumRndRC));
 }
 
-phStatus_t phalVca_Sw_Cmd_PrepareProximityCheck(phalVca_Sw_DataParams_t *pDataParams)
+phStatus_t
+phalVca_Sw_Cmd_PrepareProximityCheck(phalVca_Sw_DataParams_t *pDataParams)
 {
   /* send "Prepare Proximity Check" command */
   return (phalVca_Int_PrepareProximityCheck(pDataParams->pPalMifareDataParams));
 }
 
-phStatus_t phalVca_Sw_Cmd_PrepareProximityCheckNew(phalVca_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalVca_Sw_Cmd_PrepareProximityCheckNew(phalVca_Sw_DataParams_t *pDataParams,
     uint8_t  *pOption,  uint8_t *pPubRespTime, uint8_t *pResponse,
     uint16_t *pRespLen)
 {
@@ -926,7 +940,8 @@ phStatus_t phalVca_Sw_Cmd_PrepareProximityCheckNew(phalVca_Sw_DataParams_t *pDat
   return statusTmp;
 }
 
-phStatus_t phalVca_Sw_Cmd_ProximityCheck(phalVca_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalVca_Sw_Cmd_ProximityCheck(phalVca_Sw_DataParams_t *pDataParams,
     uint8_t bGenerateRndC, uint8_t *pRndC, uint8_t bNumSteps,
     uint8_t *pUsedRndRC)
 {
@@ -958,7 +973,8 @@ phStatus_t phalVca_Sw_Cmd_ProximityCheck(phalVca_Sw_DataParams_t *pDataParams,
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalVca_Sw_Cmd_ProximityCheckNew(phalVca_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalVca_Sw_Cmd_ProximityCheckNew(phalVca_Sw_DataParams_t *pDataParams,
     uint8_t bGenerateRndC, uint8_t *pPrndC, uint8_t bNumSteps,
     uint8_t *pPubRespTime, uint8_t *pCumRndRC)
 {
@@ -1009,7 +1025,8 @@ phStatus_t phalVca_Sw_Cmd_ProximityCheckNew(phalVca_Sw_DataParams_t *pDataParams
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalVca_Sw_Cmd_VerifyProximityCheck(phalVca_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalVca_Sw_Cmd_VerifyProximityCheck(phalVca_Sw_DataParams_t *pDataParams,
     uint8_t *pRndRC, uint8_t bPps1, uint16_t wKeyNumber,
     uint16_t wKeyVersion)
 {
@@ -1107,7 +1124,8 @@ phStatus_t phalVca_Sw_Cmd_VerifyProximityCheck(phalVca_Sw_DataParams_t *pDataPar
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalVca_Sw_Cmd_VerifyProximityCheckNew(phalVca_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalVca_Sw_Cmd_VerifyProximityCheckNew(phalVca_Sw_DataParams_t *pDataParams,
     uint8_t bOption, uint8_t *pPubRespTime, uint8_t *pResponse,
     uint16_t wRespLen, uint16_t wKeyNumber, uint16_t wKeyVersion, uint8_t *pRndCmdResp)
 {
@@ -1356,7 +1374,8 @@ phStatus_t phalVca_Sw_Cmd_VerifyProximityCheckNew(phalVca_Sw_DataParams_t *pData
 }
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 
-phStatus_t phalVca_Sw_Cmd_VerifyProximityCheckUtility(phalVca_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalVca_Sw_Cmd_VerifyProximityCheckUtility(phalVca_Sw_DataParams_t *pDataParams,
     uint8_t *pCmdMac, uint8_t *pCmdResp)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
@@ -1397,7 +1416,8 @@ phStatus_t phalVca_Sw_Cmd_VerifyProximityCheckUtility(phalVca_Sw_DataParams_t *p
   return statusTmp;
 }
 
-phStatus_t phalVca_Sw_SetConfig(phalVca_Sw_DataParams_t *pDataParams, uint16_t wConfig,
+phStatus_t
+phalVca_Sw_SetConfig(phalVca_Sw_DataParams_t *pDataParams, uint16_t wConfig,
     uint16_t wValue)
 {
   switch (wConfig) {
@@ -1423,7 +1443,8 @@ phStatus_t phalVca_Sw_SetConfig(phalVca_Sw_DataParams_t *pDataParams, uint16_t w
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalVca_Sw_GetConfig(phalVca_Sw_DataParams_t *pDataParams, uint16_t wConfig,
+phStatus_t
+phalVca_Sw_GetConfig(phalVca_Sw_DataParams_t *pDataParams, uint16_t wConfig,
     uint16_t  *pValue)
 {
   switch (wConfig) {
@@ -1449,7 +1470,8 @@ phStatus_t phalVca_Sw_GetConfig(phalVca_Sw_DataParams_t *pDataParams, uint16_t w
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalVca_Sw_SetSessionKeyUtility(phalVca_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalVca_Sw_SetSessionKeyUtility(phalVca_Sw_DataParams_t *pDataParams,
     uint8_t *pSessionKey, uint8_t bAuthMode)
 {
   /*
@@ -1518,7 +1540,8 @@ phStatus_t phalVca_Sw_SetSessionKeyUtility(phalVca_Sw_DataParams_t *pDataParams,
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalVca_Sw_SetApplicationType(phalVca_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalVca_Sw_SetApplicationType(phalVca_Sw_DataParams_t *pDataParams,
     void *pAlDataParams)
 {
   PH_ASSERT_NULL(pDataParams);
@@ -1530,7 +1553,8 @@ phStatus_t phalVca_Sw_SetApplicationType(phalVca_Sw_DataParams_t *pDataParams,
 }
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-phStatus_t phalVca_Sw_DecryptResponse(phalVca_Sw_DataParams_t *pDataParams, uint16_t wKeyNo,
+phStatus_t
+phalVca_Sw_DecryptResponse(phalVca_Sw_DataParams_t *pDataParams, uint16_t wKeyNo,
     uint16_t wKeyVersion, uint8_t *pInData,
     uint8_t *pRandChal, uint8_t *pVCData)
 {
@@ -1619,7 +1643,8 @@ phStatus_t phalVca_Sw_DecryptResponse(phalVca_Sw_DataParams_t *pDataParams, uint
 }
 #endif /* NXPBUILD__PH_CRYPTOSYM */
 
-phStatus_t phalVca_Sw_Int_ResolveValidIndex(phalVca_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalVca_Sw_Int_ResolveValidIndex(phalVca_Sw_DataParams_t *pDataParams,
     uint16_t wIidIndex, uint16_t *pValidIndex)
 {
   uint8_t     PH_MEMLOC_REM bCurrentValidIndex = 0;
@@ -1658,7 +1683,8 @@ phStatus_t phalVca_Sw_Int_ResolveValidIndex(phalVca_Sw_DataParams_t *pDataParams
 }
 
 #ifdef NXPBUILD__PH_CRYPTOSYM
-void phalVca_Sw_Int_TruncateMac(uint8_t *pMac, uint8_t *pTruncatedMac)
+void
+phalVca_Sw_Int_TruncateMac(uint8_t *pMac, uint8_t *pTruncatedMac)
 {
   uint8_t PH_MEMLOC_REM bIndex;
 

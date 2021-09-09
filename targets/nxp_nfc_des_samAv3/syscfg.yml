@@ -1,0 +1,39 @@
+syscfg.vals:
+    CONFIG_FCB_FLASH_AREA: FLASH_AREA_CONFIG
+    REBOOT_LOG_FLASH_AREA: FLASH_AREA_EVENT_RECORDER
+    CONSOLE_UART: 0
+    CONSOLE_RTT: 1
+    # Turn off all master bus
+    SPI_0_MASTER: 1
+    SPI_1_MASTER: 0
+    SPI_2_MASTER: 0
+    SPI_3_MASTER: 0
+    SPI_4_MASTER: 1
+    PWM_0: 0
+    PWM_1: 1
+    PWM_2: 0
+    PWM_3: 0
+    UART_0: 0
+    UART_1: 1
+    UART_2: 0
+    UART_3: 0
+    I2C_0: 0
+    I2C_1: 0
+    I2C_2: 0
+    I2C_3: 0
+    # Turn off all onboard peripherals
+    PN5180_ONB: 1
+    M41T82_ONB: 0
+    SX9325_ONB: 0
+    MF4SAM3_ONB: 1
+    DWM3000_ONB: 0
+    PAC1921_ONB: 0
+    LIS2DT_ONB: 0
+    TAS2563_ONB: 0
+    FRAM_ONB: 0
+    SRAM_ONB: 0
+    FLASH_ONB: 0
+    NEOPIXELS_ONB: 0
+    PN5180_RXTX_HEXDUMP: 1
+    PN5180_CLI: 1
+    OS_CLI: 1

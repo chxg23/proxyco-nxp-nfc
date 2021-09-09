@@ -31,7 +31,8 @@
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phceT4T_SetElementaryFile(
+phStatus_t
+phceT4T_SetElementaryFile(
     void *pDataParams,
     uint8_t bFileType,
     uint8_t *pFile,
@@ -90,7 +91,8 @@ phStatus_t phceT4T_SetElementaryFile(
   return status;
 }
 
-phStatus_t phceT4T_ProcessCmd(
+phStatus_t
+phceT4T_ProcessCmd(
     void *pDataParams,
     uint16_t wOption,
     uint8_t *pRxData,
@@ -145,7 +147,8 @@ phStatus_t phceT4T_ProcessCmd(
   return status;
 }
 
-phStatus_t phceT4T_Activate(
+phStatus_t
+phceT4T_Activate(
     void *pDataParams
 )
 {
@@ -187,7 +190,8 @@ phStatus_t phceT4T_Activate(
   return status;
 }
 
-phStatus_t phceT4T_AppProcessCmd(
+phStatus_t
+phceT4T_AppProcessCmd(
     void *pDataParams,
     phceT4T_AppCallback_t pAppCallback
 )
@@ -232,7 +236,8 @@ phStatus_t phceT4T_AppProcessCmd(
   return status;
 }
 
-phStatus_t phceT4T_GetSelectedFileInfo(
+phStatus_t
+phceT4T_GetSelectedFileInfo(
     void *pDataParams,
     uint16_t *pFileId,
     uint8_t **ppFile,
@@ -285,7 +290,8 @@ phStatus_t phceT4T_GetSelectedFileInfo(
   return status;
 }
 
-phStatus_t phceT4T_Reset(
+phStatus_t
+phceT4T_Reset(
     void *pDataParams
 )
 {
@@ -327,7 +333,8 @@ phStatus_t phceT4T_Reset(
   return status;
 }
 
-phStatus_t phceT4T_SetConfig(
+phStatus_t
+phceT4T_SetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -380,7 +387,8 @@ phStatus_t phceT4T_SetConfig(
   return status;
 }
 
-phStatus_t phceT4T_GetConfig(
+phStatus_t
+phceT4T_GetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue

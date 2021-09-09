@@ -35,7 +35,8 @@
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phalI18000p3m3_Ack(
+phStatus_t
+phalI18000p3m3_Ack(
     void *pDataParams,
     uint8_t **ppRxBuffer,
     uint16_t *pRxBitLength
@@ -98,7 +99,8 @@ phStatus_t phalI18000p3m3_Ack(
   return status;
 }
 
-phStatus_t phalI18000p3m3_ReqRn(
+phStatus_t
+phalI18000p3m3_ReqRn(
     void *pDataParams,
     uint8_t bOption,
     uint8_t **ppRxBuffer
@@ -156,7 +158,8 @@ phStatus_t phalI18000p3m3_ReqRn(
   return status;
 }
 
-phStatus_t phalI18000p3m3_Read(
+phStatus_t
+phalI18000p3m3_Read(
     void *pDataParams,
     uint8_t bMemBank,
     uint8_t *pWordPtr,
@@ -236,7 +239,8 @@ phStatus_t phalI18000p3m3_Read(
   return status;
 }
 
-phStatus_t phalI18000p3m3_Write(
+phStatus_t
+phalI18000p3m3_Write(
     void *pDataParams,
     uint8_t bOption,
     uint8_t bMemBank,
@@ -300,7 +304,8 @@ phStatus_t phalI18000p3m3_Write(
   return status;
 }
 
-phStatus_t phalI18000p3m3_Kill(
+phStatus_t
+phalI18000p3m3_Kill(
     void *pDataParams,
     uint8_t bOption,
     uint8_t *pPassword,
@@ -355,7 +360,8 @@ phStatus_t phalI18000p3m3_Kill(
   return status;
 }
 
-phStatus_t phalI18000p3m3_Lock(
+phStatus_t
+phalI18000p3m3_Lock(
     void *pDataParams,
     uint8_t *pMask,
     uint8_t *pAction
@@ -407,7 +413,8 @@ phStatus_t phalI18000p3m3_Lock(
   return status;
 }
 
-phStatus_t phalI18000p3m3_Access(
+phStatus_t
+phalI18000p3m3_Access(
     void *pDataParams,
     uint8_t bOption,
     uint8_t *pPassword
@@ -458,7 +465,8 @@ phStatus_t phalI18000p3m3_Access(
   return status;
 }
 
-phStatus_t phalI18000p3m3_BlockWrite(
+phStatus_t
+phalI18000p3m3_BlockWrite(
     void *pDataParams,
     uint8_t bMemBank,
     uint8_t *pWordPtr,
@@ -522,7 +530,8 @@ phStatus_t phalI18000p3m3_BlockWrite(
   return status;
 }
 
-phStatus_t phalI18000p3m3_BlockErase(
+phStatus_t
+phalI18000p3m3_BlockErase(
     void *pDataParams,
     uint8_t bMemBank,
     uint8_t *pWordPtr,
@@ -581,7 +590,8 @@ phStatus_t phalI18000p3m3_BlockErase(
   return status;
 }
 
-phStatus_t phalI18000p3m3_BlockPermaLock(
+phStatus_t
+phalI18000p3m3_BlockPermaLock(
     void *pDataParams,
     uint8_t bRFU,
     uint8_t bReadLock,
@@ -675,7 +685,8 @@ phStatus_t phalI18000p3m3_BlockPermaLock(
   return status;
 }
 
-phStatus_t phalI18000p3m3_SetHandle(
+phStatus_t
+phalI18000p3m3_SetHandle(
     void *pDataParams,
     uint8_t *pHandle
 )

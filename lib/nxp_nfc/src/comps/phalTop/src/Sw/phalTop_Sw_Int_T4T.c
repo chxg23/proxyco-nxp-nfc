@@ -33,7 +33,8 @@
 
 #include "phalTop_Sw_Int_T4T.h"
 
-phStatus_t phalTop_Sw_Int_T4T_ClearState(
+phStatus_t
+phalTop_Sw_Int_T4T_ClearState(
     phalTop_Sw_DataParams_t *pDataParams,
     phalTop_T4T_t *pT4T
 )
@@ -82,7 +83,8 @@ phStatus_t phalTop_Sw_Int_T4T_ClearState(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T4T_CheckNdef(
+phStatus_t
+phalTop_Sw_Int_T4T_CheckNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pTagState
 )
@@ -271,7 +273,8 @@ phStatus_t phalTop_Sw_Int_T4T_CheckNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T4T_FormatNdef(
+phStatus_t
+phalTop_Sw_Int_T4T_FormatNdef(
     phalTop_Sw_DataParams_t *pDataParams
 )
 {
@@ -517,7 +520,8 @@ phStatus_t phalTop_Sw_Int_T4T_FormatNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T4T_ReadNdef(
+phStatus_t
+phalTop_Sw_Int_T4T_ReadNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pData,
     uint16_t *pLength
@@ -611,7 +615,8 @@ phStatus_t phalTop_Sw_Int_T4T_ReadNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T4T_WriteNdef(
+phStatus_t
+phalTop_Sw_Int_T4T_WriteNdef(
     phalTop_Sw_DataParams_t *pDataParams,
     uint8_t *pData,
     uint16_t wLength
@@ -716,7 +721,8 @@ phStatus_t phalTop_Sw_Int_T4T_WriteNdef(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalTop_Sw_Int_T4T_EraseNdef(
+phStatus_t
+phalTop_Sw_Int_T4T_EraseNdef(
     phalTop_Sw_DataParams_t *pDataParams
 )
 {

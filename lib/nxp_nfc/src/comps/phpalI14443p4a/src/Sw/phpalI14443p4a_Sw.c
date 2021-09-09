@@ -43,7 +43,8 @@
     ? 1U : 0U                                                                 \
     )
 
-phStatus_t phpalI14443p4a_Sw_Init(
+phStatus_t
+phpalI14443p4a_Sw_Init(
     phpalI14443p4a_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pHalDataParams
@@ -73,7 +74,8 @@ phStatus_t phpalI14443p4a_Sw_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4a_Sw_SetConfig(
+phStatus_t
+phpalI14443p4a_Sw_SetConfig(
     phpalI14443p4a_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -102,7 +104,8 @@ phStatus_t phpalI14443p4a_Sw_SetConfig(
 
   return PH_ERR_SUCCESS;
 }
-phStatus_t phpalI14443p4a_Sw_Rats(
+phStatus_t
+phpalI14443p4a_Sw_Rats(
     phpalI14443p4a_Sw_DataParams_t *pDataParams,
     uint8_t bFsdi,
     uint8_t bCid,
@@ -409,7 +412,8 @@ phStatus_t phpalI14443p4a_Sw_Rats(
   return PH_ADD_COMPCODE(status, PH_COMP_PAL_ISO14443P4A);
 }
 
-phStatus_t phpalI14443p4a_Sw_Pps(
+phStatus_t
+phpalI14443p4a_Sw_Pps(
     phpalI14443p4a_Sw_DataParams_t *pDataParams,
     uint8_t bDri,
     uint8_t bDsi
@@ -497,7 +501,8 @@ phStatus_t phpalI14443p4a_Sw_Pps(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p4a_Sw_ActivateCard(
+phStatus_t
+phpalI14443p4a_Sw_ActivateCard(
     phpalI14443p4a_Sw_DataParams_t *pDataParams,
     uint8_t bFsdi,
     uint8_t bCid,
@@ -549,7 +554,8 @@ phStatus_t phpalI14443p4a_Sw_ActivateCard(
   return PH_ADD_COMPCODE(statusTmp, PH_COMP_PAL_ISO14443P4A);
 }
 
-phStatus_t phpalI14443p4a_Sw_GetProtocolParams(
+phStatus_t
+phpalI14443p4a_Sw_GetProtocolParams(
     phpalI14443p4a_Sw_DataParams_t *pDataParams,
     uint8_t *pCidEnabled,
     uint8_t *pCid,

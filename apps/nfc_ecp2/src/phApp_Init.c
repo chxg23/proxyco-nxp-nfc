@@ -181,7 +181,8 @@ uint8_t    aResponseHolder[64];
 **   Function Definitions
 *******************************************************************************/
 #ifdef PHDRIVER_KINETIS_K82
-static void phApp_K82_Init(void)
+static void
+phApp_K82_Init(void)
 {
 #ifdef DEBUG
   uint32_t uartClkSrcFreq;
@@ -244,7 +245,8 @@ static void phApp_K82_Init(void)
 * Any initialization which is not generic across Platforms, should be done here.
 * Note: For NXP NFC Controllers HOST initialization is not required.
 */
-void phApp_CPU_Init(void)
+void
+phApp_CPU_Init(void)
 {
 #if defined PHDRIVER_KINETIS_K82
   phApp_K82_Init();
@@ -260,7 +262,8 @@ void phApp_CPU_Init(void)
 /**
 * This function will initialize Reader LIbrary Component
 */
-phStatus_t phApp_Comp_Init(void *pDiscLoopParams)
+phStatus_t
+phApp_Comp_Init(void *pDiscLoopParams)
 {
   phStatus_t wStatus = PH_ERR_SUCCESS;
 #if defined(NXPBUILD__PHPAL_I18092MPI_SW) || defined(NXPBUILD__PHPAL_I18092MT_SW) || \
@@ -314,7 +317,8 @@ phStatus_t phApp_Comp_Init(void *pDiscLoopParams)
   return wStatus;
 }
 
-phStatus_t phApp_Configure_IRQ()
+phStatus_t
+phApp_Configure_IRQ()
 {
 #ifdef PH_OSAL_LINUX
   phStatus_t  wStatus;
@@ -348,7 +352,8 @@ phStatus_t phApp_Configure_IRQ()
 /*
  * \brief: The purpose of this Thread is to detect RF signal from an External Peer .
  */
-static void phExample_IrqPolling(void *param)
+static void
+phExample_IrqPolling(void *param)
 {
   uint8_t bgpioVal = 0;
   uint8_t bhighOrLow = 0;

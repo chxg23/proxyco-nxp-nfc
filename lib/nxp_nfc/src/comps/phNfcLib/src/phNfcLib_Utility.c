@@ -29,7 +29,8 @@
 #include "phNfcLib_Initialization.h"
 #include "phNfcLib_Int.h"
 
-phStatus_t phNfcLib_Mifare_Transmit(uint8_t *pTxBuffer, uint16_t wTxLength)
+phStatus_t
+phNfcLib_Mifare_Transmit(uint8_t *pTxBuffer, uint16_t wTxLength)
 {
   phStatus_t wStatus = PH_ERR_INVALID_PARAMETER;
   uint16_t wValidBits = 0;

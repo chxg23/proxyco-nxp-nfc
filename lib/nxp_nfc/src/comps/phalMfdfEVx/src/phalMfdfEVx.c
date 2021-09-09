@@ -31,7 +31,8 @@
 
 #ifdef NXPBUILD__PHAL_MFDFEVX_NDA
 /* MIFARE DESFire EVx secure messaging related commands. ------------------------------------------------------------------------------- */
-phStatus_t phalMfdfEVx_Authenticate(void *pDataParams, uint16_t wOption, uint16_t wKeyNo,
+phStatus_t
+phalMfdfEVx_Authenticate(void *pDataParams, uint16_t wOption, uint16_t wKeyNo,
     uint16_t wKeyVer, uint8_t bKeyNoCard,
     uint8_t *pDivInput, uint8_t bDivLen)
 {
@@ -84,7 +85,8 @@ phStatus_t phalMfdfEVx_Authenticate(void *pDataParams, uint16_t wOption, uint16_
   return status;
 }
 
-phStatus_t phalMfdfEVx_AuthenticateISO(void *pDataParams, uint16_t wOption, uint16_t wKeyNo,
+phStatus_t
+phalMfdfEVx_AuthenticateISO(void *pDataParams, uint16_t wOption, uint16_t wKeyNo,
     uint16_t wKeyVer, uint8_t bKeyNoCard,
     uint8_t *pDivInput, uint8_t bDivLen)
 {
@@ -143,7 +145,8 @@ phStatus_t phalMfdfEVx_AuthenticateISO(void *pDataParams, uint16_t wOption, uint
   return status;
 }
 
-phStatus_t phalMfdfEVx_AuthenticateAES(void *pDataParams, uint16_t wOption, uint16_t wKeyNo,
+phStatus_t
+phalMfdfEVx_AuthenticateAES(void *pDataParams, uint16_t wOption, uint16_t wKeyNo,
     uint16_t wKeyVer, uint8_t bKeyNoCard,
     uint8_t *pDivInput, uint8_t bDivLen)
 {
@@ -204,7 +207,8 @@ phStatus_t phalMfdfEVx_AuthenticateAES(void *pDataParams, uint16_t wOption, uint
   return status;
 }
 
-phStatus_t phalMfdfEVx_AuthenticateEv2(void *pDataParams, uint8_t bFirstAuth, uint16_t wOption,
+phStatus_t
+phalMfdfEVx_AuthenticateEv2(void *pDataParams, uint8_t bFirstAuth, uint16_t wOption,
     uint16_t wKeyNo, uint16_t wKeyVer,
     uint8_t bKeyNoCard, uint8_t *pDivInput, uint8_t bDivLen, uint8_t bLenPcdCapsIn,
     uint8_t *bPcdCapsIn, uint8_t *bPcdCapsOut,
@@ -279,7 +283,8 @@ phStatus_t phalMfdfEVx_AuthenticateEv2(void *pDataParams, uint8_t bFirstAuth, ui
 #endif /* NXPBUILD__PHAL_MFDFEVX_NDA */
 
 /* MIFARE DESFire EVX Memory and Configuration mamangement commands. ------------------------------------------------------------------- */
-phStatus_t phalMfdfEVx_FreeMem(void *pDataParams, uint8_t *pMemInfo)
+phStatus_t
+phalMfdfEVx_FreeMem(void *pDataParams, uint8_t *pMemInfo)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -324,7 +329,8 @@ phStatus_t phalMfdfEVx_FreeMem(void *pDataParams, uint8_t *pMemInfo)
 }
 
 #ifdef NXPBUILD__PHAL_MFDFEVX_NDA
-phStatus_t phalMfdfEVx_Format(void *pDataParams)
+phStatus_t
+phalMfdfEVx_Format(void *pDataParams)
 {
   phStatus_t  PH_MEMLOC_REM status = 0;
 
@@ -363,7 +369,8 @@ phStatus_t phalMfdfEVx_Format(void *pDataParams)
   return status;
 }
 
-phStatus_t phalMfdfEVx_SetConfiguration(void *pDataParams, uint8_t bOption, uint8_t *pData,
+phStatus_t
+phalMfdfEVx_SetConfiguration(void *pDataParams, uint8_t bOption, uint8_t *pData,
     uint8_t bDataLen)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -414,7 +421,8 @@ phStatus_t phalMfdfEVx_SetConfiguration(void *pDataParams, uint8_t bOption, uint
 }
 #endif /* NXPBUILD__PHAL_MFDFEVX_NDA */
 
-phStatus_t phalMfdfEVx_GetVersion(void *pDataParams, uint8_t *pVerInfo)
+phStatus_t
+phalMfdfEVx_GetVersion(void *pDataParams, uint8_t *pVerInfo)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -458,7 +466,8 @@ phStatus_t phalMfdfEVx_GetVersion(void *pDataParams, uint8_t *pVerInfo)
 }
 
 #ifdef NXPBUILD__PHAL_MFDFEVX_NDA
-phStatus_t phalMfdfEVx_GetCardUID(void *pDataParams, uint8_t bExchangeOption, uint8_t bOption,
+phStatus_t
+phalMfdfEVx_GetCardUID(void *pDataParams, uint8_t bExchangeOption, uint8_t bOption,
     uint8_t *pUid)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -514,7 +523,8 @@ phStatus_t phalMfdfEVx_GetCardUID(void *pDataParams, uint8_t bExchangeOption, ui
 
 /* MIFARE DESFire EVX Key mamangement commands. ---------------------------------------------------------------------------------------- */
 #ifdef NXPBUILD__PHAL_MFDFEVX_NDA
-phStatus_t phalMfdfEVx_ChangeKey(void *pDataParams, uint16_t wOption, uint16_t wOldKeyNo,
+phStatus_t
+phalMfdfEVx_ChangeKey(void *pDataParams, uint16_t wOption, uint16_t wOldKeyNo,
     uint16_t wOldKeyVer, uint16_t wNewKeyNo,
     uint16_t wNewKeyVer, uint8_t bKeyNoCard, uint8_t *pDivInput, uint8_t bDivLen)
 {
@@ -584,7 +594,8 @@ phStatus_t phalMfdfEVx_ChangeKey(void *pDataParams, uint16_t wOption, uint16_t w
   return status;
 }
 
-phStatus_t phalMfdfEVx_ChangeKeyEv2(void *pDataParams, uint16_t wOption, uint16_t wOldKeyNo,
+phStatus_t
+phalMfdfEVx_ChangeKeyEv2(void *pDataParams, uint16_t wOption, uint16_t wOldKeyNo,
     uint16_t wOldKeyVer, uint16_t wNewKeyNo,
     uint16_t wNewKeyVer, uint8_t bKeySetNo, uint8_t bKeyNoCard, uint8_t *pDivInput, uint8_t bDivLen)
 {
@@ -648,7 +659,8 @@ phStatus_t phalMfdfEVx_ChangeKeyEv2(void *pDataParams, uint16_t wOption, uint16_
   return status;
 }
 
-phStatus_t phalMfdfEVx_InitializeKeySet(void *pDataParams, uint8_t bKeySetNo, uint8_t bKeyType)
+phStatus_t
+phalMfdfEVx_InitializeKeySet(void *pDataParams, uint8_t bKeySetNo, uint8_t bKeyType)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -694,7 +706,8 @@ phStatus_t phalMfdfEVx_InitializeKeySet(void *pDataParams, uint8_t bKeySetNo, ui
   return status;
 }
 
-phStatus_t phalMfdfEVx_FinalizeKeySet(void *pDataParams, uint8_t bKeySetNo,
+phStatus_t
+phalMfdfEVx_FinalizeKeySet(void *pDataParams, uint8_t bKeySetNo,
     uint8_t bKeySetVersion)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -741,7 +754,8 @@ phStatus_t phalMfdfEVx_FinalizeKeySet(void *pDataParams, uint8_t bKeySetNo,
   return status;
 }
 
-phStatus_t  phalMfdfEVx_RollKeySet(void *pDataParams, uint8_t bKeySetNo)
+phStatus_t
+phalMfdfEVx_RollKeySet(void *pDataParams, uint8_t bKeySetNo)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -785,7 +799,8 @@ phStatus_t  phalMfdfEVx_RollKeySet(void *pDataParams, uint8_t bKeySetNo)
 }
 #endif /* NXPBUILD__PHAL_MFDFEVX_NDA */
 
-phStatus_t phalMfdfEVx_GetKeySettings(void *pDataParams, uint8_t *pKeySettings, uint8_t *bRespLen)
+phStatus_t
+phalMfdfEVx_GetKeySettings(void *pDataParams, uint8_t *pKeySettings, uint8_t *bRespLen)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -832,7 +847,8 @@ phStatus_t phalMfdfEVx_GetKeySettings(void *pDataParams, uint8_t *pKeySettings, 
 }
 
 #ifdef NXPBUILD__PHAL_MFDFEVX_NDA
-phStatus_t phalMfdfEVx_ChangeKeySettings(void *pDataParams, uint8_t bKeySettings)
+phStatus_t
+phalMfdfEVx_ChangeKeySettings(void *pDataParams, uint8_t bKeySettings)
 {
   /**
   * This  function will handle all the three authentication modes: 0x0A, 1A and AA.
@@ -884,7 +900,8 @@ phStatus_t phalMfdfEVx_ChangeKeySettings(void *pDataParams, uint8_t bKeySettings
   return status;
 }
 
-phStatus_t phalMfdfEVx_GetKeyVersion(void *pDataParams, uint8_t bKeyNo, uint8_t bKeySetNo,
+phStatus_t
+phalMfdfEVx_GetKeyVersion(void *pDataParams, uint8_t bKeyNo, uint8_t bKeySetNo,
     uint8_t *pKeyVersion, uint8_t *bRxLen)
 {
   /**
@@ -942,7 +959,8 @@ phStatus_t phalMfdfEVx_GetKeyVersion(void *pDataParams, uint8_t bKeyNo, uint8_t 
 #endif /* NXPBUILD__PHAL_MFDFEVX_NDA */
 
 /* MIFARE DESFire EVX Application mamangement commands. -------------------------------------------------------------------------------- */
-phStatus_t phalMfdfEVx_CreateApplication(void *pDataParams, uint8_t bOption, uint8_t *pAid,
+phStatus_t
+phalMfdfEVx_CreateApplication(void *pDataParams, uint8_t bOption, uint8_t *pAid,
     uint8_t bKeySettings1, uint8_t bKeySettings2,
     uint8_t bKeySettings3, uint8_t *pKeySetValues, uint8_t *pISOFileId, uint8_t *pISODFName,
     uint8_t bISODFNameLen)
@@ -1017,7 +1035,8 @@ phStatus_t phalMfdfEVx_CreateApplication(void *pDataParams, uint8_t bOption, uin
   return status;
 }
 
-phStatus_t phalMfdfEVx_DeleteApplication(void *pDataParams, uint8_t *pAid, uint8_t *pDAMMAC,
+phStatus_t
+phalMfdfEVx_DeleteApplication(void *pDataParams, uint8_t *pAid, uint8_t *pDAMMAC,
     uint8_t bDAMMAC_Len)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -1069,7 +1088,8 @@ phStatus_t phalMfdfEVx_DeleteApplication(void *pDataParams, uint8_t *pAid, uint8
   return status;
 }
 
-phStatus_t phalMfdfEVx_CreateDelegatedApplication(void *pDataParams, uint8_t bOption,
+phStatus_t
+phalMfdfEVx_CreateDelegatedApplication(void *pDataParams, uint8_t bOption,
     uint8_t *pAid, uint8_t *pDamParams, uint8_t bKeySettings1,
     uint8_t bKeySettings2, uint8_t bKeySettings3, uint8_t *bKeySetValues, uint8_t *pISOFileId,
     uint8_t *pISODFName, uint8_t bISODFNameLen,
@@ -1150,7 +1170,8 @@ phStatus_t phalMfdfEVx_CreateDelegatedApplication(void *pDataParams, uint8_t bOp
   return status;
 }
 
-phStatus_t phalMfdfEVx_SelectApplication(void *pDataParams, uint8_t bOption, uint8_t *pAid,
+phStatus_t
+phalMfdfEVx_SelectApplication(void *pDataParams, uint8_t bOption, uint8_t *pAid,
     uint8_t *pAid2)
 {
   phStatus_t  PH_MEMLOC_REM status = 0;
@@ -1205,7 +1226,8 @@ phStatus_t phalMfdfEVx_SelectApplication(void *pDataParams, uint8_t bOption, uin
   return status;
 }
 
-phStatus_t phalMfdfEVx_GetApplicationIDs(void *pDataParams, uint8_t bOption, uint8_t **pAidBuff,
+phStatus_t
+phalMfdfEVx_GetApplicationIDs(void *pDataParams, uint8_t bOption, uint8_t **pAidBuff,
     uint8_t *pNumAIDs)
 {
   /**
@@ -1261,7 +1283,8 @@ phStatus_t phalMfdfEVx_GetApplicationIDs(void *pDataParams, uint8_t bOption, uin
 }
 
 #ifdef NXPBUILD__PHAL_MFDFEVX_NDA
-phStatus_t phalMfdfEVx_GetDFNames(void *pDataParams, uint8_t bOption, uint8_t *pDFBuffer,
+phStatus_t
+phalMfdfEVx_GetDFNames(void *pDataParams, uint8_t bOption, uint8_t *pDFBuffer,
     uint8_t  *pDFInfoLen)
 {
   /*
@@ -1315,7 +1338,8 @@ phStatus_t phalMfdfEVx_GetDFNames(void *pDataParams, uint8_t bOption, uint8_t *p
 }
 #endif /* NXPBUILD__PHAL_MFDFEVX_NDA */
 
-phStatus_t phalMfdfEVx_GetDelegatedInfo(void *pDataParams, uint8_t *pDAMSlot,
+phStatus_t
+phalMfdfEVx_GetDelegatedInfo(void *pDataParams, uint8_t *pDAMSlot,
     uint8_t *pDamSlotVer, uint8_t *pQuotaLimit,
     uint8_t *pFreeBlocks, uint8_t *pAid)
 {
@@ -1375,7 +1399,8 @@ phStatus_t phalMfdfEVx_GetDelegatedInfo(void *pDataParams, uint8_t *pDAMSlot,
 }
 
 /* MIFARE DESFire EVX File mamangement commands. --------------------------------------------------------------------------------------- */
-phStatus_t phalMfdfEVx_CreateStdDataFile(void *pDataParams, uint8_t bOption, uint8_t bFileNo,
+phStatus_t
+phalMfdfEVx_CreateStdDataFile(void *pDataParams, uint8_t bOption, uint8_t bFileNo,
     uint8_t *pISOFileId, uint8_t bFileOption,
     uint8_t *pAccessRights, uint8_t *pFileSize)
 {
@@ -1440,7 +1465,8 @@ phStatus_t phalMfdfEVx_CreateStdDataFile(void *pDataParams, uint8_t bOption, uin
   return status;
 }
 
-phStatus_t phalMfdfEVx_CreateBackupDataFile(void *pDataParams, uint8_t bOption, uint8_t bFileNo,
+phStatus_t
+phalMfdfEVx_CreateBackupDataFile(void *pDataParams, uint8_t bOption, uint8_t bFileNo,
     uint8_t *pISOFileId, uint8_t bFileOption,
     uint8_t *pAccessRights, uint8_t *pFileSize)
 {
@@ -1503,7 +1529,8 @@ phStatus_t phalMfdfEVx_CreateBackupDataFile(void *pDataParams, uint8_t bOption, 
   return status;
 }
 
-phStatus_t phalMfdfEVx_CreateValueFile(void *pDataParams, uint8_t bFileNo, uint8_t bCommSett,
+phStatus_t
+phalMfdfEVx_CreateValueFile(void *pDataParams, uint8_t bFileNo, uint8_t bCommSett,
     uint8_t *pAccessRights, uint8_t *pLowerLmit,
     uint8_t *pUpperLmit, uint8_t *pValue, uint8_t bLimitedCredit)
 {
@@ -1566,7 +1593,8 @@ phStatus_t phalMfdfEVx_CreateValueFile(void *pDataParams, uint8_t bFileNo, uint8
   return status;
 }
 
-phStatus_t phalMfdfEVx_CreateLinearRecordFile(void *pDataParams, uint8_t bOption,
+phStatus_t
+phalMfdfEVx_CreateLinearRecordFile(void *pDataParams, uint8_t bOption,
     uint8_t  bFileNo, uint8_t  *pIsoFileId, uint8_t bCommSett,
     uint8_t *pAccessRights, uint8_t *pRecordSize, uint8_t *pMaxNoOfRec)
 
@@ -1634,7 +1662,8 @@ phStatus_t phalMfdfEVx_CreateLinearRecordFile(void *pDataParams, uint8_t bOption
   return status;
 }
 
-phStatus_t phalMfdfEVx_CreateCyclicRecordFile(void *pDataParams, uint8_t bOption,
+phStatus_t
+phalMfdfEVx_CreateCyclicRecordFile(void *pDataParams, uint8_t bOption,
     uint8_t  bFileNo, uint8_t  *pIsoFileId, uint8_t bCommSett,
     uint8_t *pAccessRights, uint8_t *pRecordSize, uint8_t *pMaxNoOfRec)
 {
@@ -1702,7 +1731,8 @@ phStatus_t phalMfdfEVx_CreateCyclicRecordFile(void *pDataParams, uint8_t bOption
 }
 
 #ifdef NXPBUILD__PHAL_MFDFEVX_NDA
-phStatus_t phalMfdfEVx_CreateTransactionMacFile(void *pDataParams, uint16_t wOption,
+phStatus_t
+phalMfdfEVx_CreateTransactionMacFile(void *pDataParams, uint16_t wOption,
     uint8_t bFileNo, uint8_t bCommSett, uint8_t *pAccessRights,
     uint16_t wKeyNo, uint8_t bKeyType, uint8_t *bTMKey, uint8_t bTMKeyVer, uint8_t *pDivInput,
     uint8_t bDivInputLength)
@@ -1776,7 +1806,8 @@ phStatus_t phalMfdfEVx_CreateTransactionMacFile(void *pDataParams, uint16_t wOpt
 }
 #endif /* NXPBUILD__PHAL_MFDFEVX_NDA */
 
-phStatus_t phalMfdfEVx_DeleteFile(void *pDataParams, uint8_t bFileNo)
+phStatus_t
+phalMfdfEVx_DeleteFile(void *pDataParams, uint8_t bFileNo)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1819,7 +1850,8 @@ phStatus_t phalMfdfEVx_DeleteFile(void *pDataParams, uint8_t bFileNo)
   return status;
 }
 
-phStatus_t phalMfdfEVx_GetFileIDs(void *pDataParams, uint8_t *pFid, uint8_t *bNumFID)
+phStatus_t
+phalMfdfEVx_GetFileIDs(void *pDataParams, uint8_t *pFid, uint8_t *bNumFID)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1866,7 +1898,8 @@ phStatus_t phalMfdfEVx_GetFileIDs(void *pDataParams, uint8_t *pFid, uint8_t *bNu
   return status;
 }
 
-phStatus_t phalMfdfEVx_GetISOFileIDs(void *pDataParams, uint8_t *pFidBuffer, uint8_t *pNumFID)
+phStatus_t
+phalMfdfEVx_GetISOFileIDs(void *pDataParams, uint8_t *pFidBuffer, uint8_t *pNumFID)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -1914,7 +1947,8 @@ phStatus_t phalMfdfEVx_GetISOFileIDs(void *pDataParams, uint8_t *pFidBuffer, uin
   return status;
 }
 
-phStatus_t phalMfdfEVx_GetFileSettings(void *pDataParams, uint8_t bFileNo, uint8_t *pFSBuffer,
+phStatus_t
+phalMfdfEVx_GetFileSettings(void *pDataParams, uint8_t bFileNo, uint8_t *pFSBuffer,
     uint8_t *bBufferLen)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -1964,7 +1998,8 @@ phStatus_t phalMfdfEVx_GetFileSettings(void *pDataParams, uint8_t bFileNo, uint8
   return status;
 }
 
-phStatus_t phalMfdfEVx_GetFileCounters(void *pDataParams, uint8_t bOption, uint8_t bFileNo,
+phStatus_t
+phalMfdfEVx_GetFileCounters(void *pDataParams, uint8_t bOption, uint8_t bFileNo,
     uint8_t *pFileCounters, uint8_t *pRxLen)
 {
   phStatus_t PH_MEMLOC_REM status = 0;
@@ -2019,7 +2054,8 @@ phStatus_t phalMfdfEVx_GetFileCounters(void *pDataParams, uint8_t bOption, uint8
   return status;
 }
 
-phStatus_t phalMfdfEVx_ChangeFileSettings(void *pDataParams, uint8_t bOption, uint8_t bFileNo,
+phStatus_t
+phalMfdfEVx_ChangeFileSettings(void *pDataParams, uint8_t bOption, uint8_t bFileNo,
     uint8_t bFileOption, uint8_t *pAccessRights,
     uint8_t bAddInfoLen, uint8_t *pAddInfo)
 {
@@ -2079,7 +2115,8 @@ phStatus_t phalMfdfEVx_ChangeFileSettings(void *pDataParams, uint8_t bOption, ui
 }
 
 /* MIFARE DESFire EVX Data mamangement commands. --------------------------------------------------------------------------------------- */
-phStatus_t phalMfdfEVx_ReadData(void *pDataParams, uint8_t bOption, uint8_t bIns, uint8_t bFileNo,
+phStatus_t
+phalMfdfEVx_ReadData(void *pDataParams, uint8_t bOption, uint8_t bIns, uint8_t bFileNo,
     uint8_t *pOffset, uint8_t *pLength,
     uint8_t **ppRxdata, uint16_t *pRxdataLen)
 {
@@ -2144,7 +2181,8 @@ phStatus_t phalMfdfEVx_ReadData(void *pDataParams, uint8_t bOption, uint8_t bIns
   return status;
 }
 
-phStatus_t phalMfdfEVx_WriteData(void *pDataParams, uint8_t bOption, uint8_t bIns,
+phStatus_t
+phalMfdfEVx_WriteData(void *pDataParams, uint8_t bOption, uint8_t bIns,
     uint8_t bFileNo, uint8_t *pOffset, uint8_t *pTxData,
     uint8_t *pTxDataLen)
 {
@@ -2210,7 +2248,8 @@ phStatus_t phalMfdfEVx_WriteData(void *pDataParams, uint8_t bOption, uint8_t bIn
   return status;
 }
 
-phStatus_t phalMfdfEVx_GetValue(void *pDataParams, uint8_t bOption, uint8_t bFileNo,
+phStatus_t
+phalMfdfEVx_GetValue(void *pDataParams, uint8_t bOption, uint8_t bFileNo,
     uint8_t *pValue)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -2260,7 +2299,8 @@ phStatus_t phalMfdfEVx_GetValue(void *pDataParams, uint8_t bOption, uint8_t bFil
   return status;
 }
 
-phStatus_t phalMfdfEVx_Credit(void *pDataParams, uint8_t bOption, uint8_t bFileNo,
+phStatus_t
+phalMfdfEVx_Credit(void *pDataParams, uint8_t bOption, uint8_t bFileNo,
     uint8_t *pValue)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -2310,7 +2350,8 @@ phStatus_t phalMfdfEVx_Credit(void *pDataParams, uint8_t bOption, uint8_t bFileN
 
 }
 
-phStatus_t phalMfdfEVx_Debit(void *pDataParams, uint8_t bCommOption, uint8_t bFileNo,
+phStatus_t
+phalMfdfEVx_Debit(void *pDataParams, uint8_t bCommOption, uint8_t bFileNo,
     uint8_t *pValue)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -2360,7 +2401,8 @@ phStatus_t phalMfdfEVx_Debit(void *pDataParams, uint8_t bCommOption, uint8_t bFi
   return status;
 }
 
-phStatus_t phalMfdfEVx_LimitedCredit(void *pDataParams, uint8_t bCommOption, uint8_t bFileNo,
+phStatus_t
+phalMfdfEVx_LimitedCredit(void *pDataParams, uint8_t bCommOption, uint8_t bFileNo,
     uint8_t *pValue)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -2410,7 +2452,8 @@ phStatus_t phalMfdfEVx_LimitedCredit(void *pDataParams, uint8_t bCommOption, uin
   return status;
 }
 
-phStatus_t phalMfdfEVx_WriteRecord(void *pDataParams, uint8_t bCommOption, uint8_t bIns,
+phStatus_t
+phalMfdfEVx_WriteRecord(void *pDataParams, uint8_t bCommOption, uint8_t bIns,
     uint8_t bFileNo, uint8_t *pOffset, uint8_t *pData,
     uint8_t *pDataLen)
 {
@@ -2476,7 +2519,8 @@ phStatus_t phalMfdfEVx_WriteRecord(void *pDataParams, uint8_t bCommOption, uint8
   return status;
 }
 
-phStatus_t phalMfdfEVx_ReadRecords(void *pDataParams, uint8_t bCommOption, uint8_t bIns,
+phStatus_t
+phalMfdfEVx_ReadRecords(void *pDataParams, uint8_t bCommOption, uint8_t bIns,
     uint8_t bFileNo, uint8_t *pRecNo, uint8_t *pRecCount,
     uint8_t *pRecSize, uint8_t **ppRxdata, uint16_t *pRxdataLen)
 {
@@ -2543,7 +2587,8 @@ phStatus_t phalMfdfEVx_ReadRecords(void *pDataParams, uint8_t bCommOption, uint8
   return status;
 }
 
-phStatus_t phalMfdfEVx_UpdateRecord(void *pDataParams, uint8_t bCommOption, uint8_t bIns,
+phStatus_t
+phalMfdfEVx_UpdateRecord(void *pDataParams, uint8_t bCommOption, uint8_t bIns,
     uint8_t bFileNo, uint8_t *pRecNo, uint8_t *pOffset,
     uint8_t *pData, uint8_t *pDataLen)
 {
@@ -2611,7 +2656,8 @@ phStatus_t phalMfdfEVx_UpdateRecord(void *pDataParams, uint8_t bCommOption, uint
   return status;
 }
 
-phStatus_t phalMfdfEVx_ClearRecordFile(void *pDataParams, uint8_t bFileNo)
+phStatus_t
+phalMfdfEVx_ClearRecordFile(void *pDataParams, uint8_t bFileNo)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -2655,7 +2701,8 @@ phStatus_t phalMfdfEVx_ClearRecordFile(void *pDataParams, uint8_t bFileNo)
 }
 
 /* MIFARE DESFire EVX Transaction mamangement commands. -------------------------------------------------------------------------------- */
-phStatus_t phalMfdfEVx_CommitTransaction(void *pDataParams, uint8_t bOption, uint8_t *pTMC,
+phStatus_t
+phalMfdfEVx_CommitTransaction(void *pDataParams, uint8_t bOption, uint8_t *pTMC,
     uint8_t *pTMV)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -2710,7 +2757,8 @@ phStatus_t phalMfdfEVx_CommitTransaction(void *pDataParams, uint8_t bOption, uin
   return status;
 }
 
-phStatus_t phalMfdfEVx_AbortTransaction(void *pDataParams)
+phStatus_t
+phalMfdfEVx_AbortTransaction(void *pDataParams)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -2751,7 +2799,8 @@ phStatus_t phalMfdfEVx_AbortTransaction(void *pDataParams)
   return status;
 }
 
-phStatus_t phalMfdfEVx_CommitReaderID(void *pDataParams, uint8_t *pTMRI, uint8_t *pEncTMRI)
+phStatus_t
+phalMfdfEVx_CommitReaderID(void *pDataParams, uint8_t *pTMRI, uint8_t *pEncTMRI)
 
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -2804,7 +2853,8 @@ phStatus_t phalMfdfEVx_CommitReaderID(void *pDataParams, uint8_t *pTMRI, uint8_t
 }
 
 /* MIFARE DESFire EVX ISO7816-4 commands. ---------------------------------------------------------------------------------------------- */
-phStatus_t phalMfdfEVx_IsoSelectFile(void *pDataParams, uint8_t bOption, uint8_t bSelector,
+phStatus_t
+phalMfdfEVx_IsoSelectFile(void *pDataParams, uint8_t bOption, uint8_t bSelector,
     uint8_t *pFid, uint8_t *pDFname,
     uint8_t bDFnameLen, uint8_t bExtendedLenApdu, uint8_t **ppFCI, uint16_t *pwFCILen)
 {
@@ -2859,7 +2909,8 @@ phStatus_t phalMfdfEVx_IsoSelectFile(void *pDataParams, uint8_t bOption, uint8_t
   return status;
 }
 
-phStatus_t phalMfdfEVx_IsoReadBinary(void *pDataParams, uint16_t wOption, uint8_t bOffset,
+phStatus_t
+phalMfdfEVx_IsoReadBinary(void *pDataParams, uint16_t wOption, uint8_t bOffset,
     uint8_t bSfid, uint32_t dwBytesToRead,
     uint8_t bExtendedLenApdu, uint8_t **ppRxBuffer, uint32_t *pBytesRead)
 {
@@ -2917,7 +2968,8 @@ phStatus_t phalMfdfEVx_IsoReadBinary(void *pDataParams, uint16_t wOption, uint8_
   return status;
 }
 
-phStatus_t phalMfdfEVx_IsoUpdateBinary(void *pDataParams, uint8_t bOffset, uint8_t bSfid,
+phStatus_t
+phalMfdfEVx_IsoUpdateBinary(void *pDataParams, uint8_t bOffset, uint8_t bSfid,
     uint8_t bExtendedLenApdu, uint8_t *pData,
     uint32_t dwDataLen)
 {
@@ -2972,7 +3024,8 @@ phStatus_t phalMfdfEVx_IsoUpdateBinary(void *pDataParams, uint8_t bOffset, uint8
   return status;
 }
 
-phStatus_t phalMfdfEVx_IsoReadRecords(void *pDataParams, uint16_t wOption, uint8_t bRecNo,
+phStatus_t
+phalMfdfEVx_IsoReadRecords(void *pDataParams, uint16_t wOption, uint8_t bRecNo,
     uint8_t bReadAllFromP1, uint8_t bSfid,
     uint32_t dwBytesToRead, uint8_t bExtendedLenApdu, uint8_t **ppRxBuffer, uint32_t *pBytesRead)
 {
@@ -3032,7 +3085,8 @@ phStatus_t phalMfdfEVx_IsoReadRecords(void *pDataParams, uint16_t wOption, uint8
   return status;
 }
 
-phStatus_t phalMfdfEVx_IsoAppendRecord(void *pDataParams, uint8_t bSfid, uint8_t *pData,
+phStatus_t
+phalMfdfEVx_IsoAppendRecord(void *pDataParams, uint8_t bSfid, uint8_t *pData,
     uint32_t dwDataLen, uint8_t bExtendedLenApdu)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -3083,7 +3137,8 @@ phStatus_t phalMfdfEVx_IsoAppendRecord(void *pDataParams, uint8_t bSfid, uint8_t
   return status;
 }
 
-phStatus_t phalMfdfEVx_IsoUpdateRecord(void *pDataParams, uint8_t bIns, uint8_t bRecNo,
+phStatus_t
+phalMfdfEVx_IsoUpdateRecord(void *pDataParams, uint8_t bIns, uint8_t bRecNo,
     uint8_t bSfid, uint8_t bRefCtrl, uint8_t *pData,
     uint8_t bDataLen)
 {
@@ -3140,7 +3195,8 @@ phStatus_t phalMfdfEVx_IsoUpdateRecord(void *pDataParams, uint8_t bIns, uint8_t 
   return status;
 }
 
-phStatus_t phalMfdfEVx_IsoGetChallenge(void *pDataParams, uint16_t wKeyNo, uint16_t wKeyVer,
+phStatus_t
+phalMfdfEVx_IsoGetChallenge(void *pDataParams, uint16_t wKeyNo, uint16_t wKeyVer,
     uint8_t bExtendedLenApdu, uint32_t dwLe,
     uint8_t *pRPICC1)
 {
@@ -3195,7 +3251,8 @@ phStatus_t phalMfdfEVx_IsoGetChallenge(void *pDataParams, uint16_t wKeyNo, uint1
 }
 
 #ifdef NXPBUILD__PHAL_MFDFEVX_NDA
-phStatus_t phalMfdfEVx_IsoExternalAuthenticate(void *pDataParams, uint8_t *pInput,
+phStatus_t
+phalMfdfEVx_IsoExternalAuthenticate(void *pDataParams, uint8_t *pInput,
     uint8_t bInputLen, uint8_t bExtendedLenApdu,
     uint8_t *pDataOut, uint8_t *pOutLen)
 {
@@ -3243,7 +3300,8 @@ phStatus_t phalMfdfEVx_IsoExternalAuthenticate(void *pDataParams, uint8_t *pInpu
   return status;
 }
 
-phStatus_t phalMfdfEVx_IsoInternalAuthenticate(void *pDataParams, uint8_t *pInput,
+phStatus_t
+phalMfdfEVx_IsoInternalAuthenticate(void *pDataParams, uint8_t *pInput,
     uint8_t bInputLen, uint8_t bExtendedLenApdu,
     uint8_t *pDataOut, uint8_t *pOutLen)
 {
@@ -3291,7 +3349,8 @@ phStatus_t phalMfdfEVx_IsoInternalAuthenticate(void *pDataParams, uint8_t *pInpu
   return status;
 }
 
-phStatus_t phalMfdfEVx_IsoAuthenticate(void *pDataParams, uint16_t wKeyNo, uint16_t wKeyVer,
+phStatus_t
+phalMfdfEVx_IsoAuthenticate(void *pDataParams, uint16_t wKeyNo, uint16_t wKeyVer,
     uint8_t bKeyNoCard, uint8_t bIsPICCkey)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -3346,7 +3405,8 @@ phStatus_t phalMfdfEVx_IsoAuthenticate(void *pDataParams, uint16_t wKeyNo, uint1
 #endif /* NXPBUILD__PHAL_MFDFEVX_NDA */
 
 /* MIFARE DESFire EVX Originality Check functions. ------------------------------------------------------------------------------------- */
-phStatus_t phalMfdfEVx_ReadSign(void *pDataParams, uint8_t bAddr, uint8_t **pSignature)
+phStatus_t
+phalMfdfEVx_ReadSign(void *pDataParams, uint8_t bAddr, uint8_t **pSignature)
 {
   phStatus_t PH_MEMLOC_REM status = 0;
   PH_LOG_HELPER_ALLOCATE_TEXT(bFunctionName, "phalMfdfEVx_ReadSign");
@@ -3391,7 +3451,8 @@ phStatus_t phalMfdfEVx_ReadSign(void *pDataParams, uint8_t bAddr, uint8_t **pSig
 }
 
 /* MIFARE DESFire EVX MIFARE Classic contactless IC functions. ---------------------------------------------------------------------------------------- */
-phStatus_t phalMfdfEVx_CreateMFCMapping(void *pDataParams, uint8_t bCommOption, uint8_t bFileNo,
+phStatus_t
+phalMfdfEVx_CreateMFCMapping(void *pDataParams, uint8_t bCommOption, uint8_t bFileNo,
     uint8_t bFileOption, uint8_t *pMFCBlockList,
     uint8_t bMFCBlocksLen, uint8_t bRestoreSource, uint8_t *pMFCLicense, uint8_t bMFCLicenseLen,
     uint8_t *pMFCLicenseMAC)
@@ -3462,7 +3523,8 @@ phStatus_t phalMfdfEVx_CreateMFCMapping(void *pDataParams, uint8_t bCommOption, 
   return status;
 }
 
-phStatus_t phalMfdfEVx_RestoreTransfer(void *pDataParams, uint8_t bCommOption,
+phStatus_t
+phalMfdfEVx_RestoreTransfer(void *pDataParams, uint8_t bCommOption,
     uint8_t bTargetFileNo, uint8_t bSourceFileNo)
 {
   phStatus_t PH_MEMLOC_REM status;
@@ -3513,7 +3575,8 @@ phStatus_t phalMfdfEVx_RestoreTransfer(void *pDataParams, uint8_t bCommOption,
 }
 
 #ifdef NXPBUILD__PHAL_MFDFEVX_NDA
-phStatus_t phalMfdfEVx_RestrictMFCUpdate(void *pDataParams, uint8_t bOption, uint8_t *pMFCConfig,
+phStatus_t
+phalMfdfEVx_RestrictMFCUpdate(void *pDataParams, uint8_t bOption, uint8_t *pMFCConfig,
     uint8_t bMFCConfigLen,
     uint8_t *pMFCLicense, uint8_t bMFCLicenseLen, uint8_t *pMFCLicenseMAC)
 {
@@ -3578,7 +3641,8 @@ phStatus_t phalMfdfEVx_RestrictMFCUpdate(void *pDataParams, uint8_t bOption, uin
 }
 
 /* MIFARE DESFire EVX POST Delivery Configuration function. ---------------------------------------------------------------------------- */
-phStatus_t phalMfdfEVx_AuthenticatePDC(void *pDataParams, uint8_t bRfu, uint8_t bKeyNoCard,
+phStatus_t
+phalMfdfEVx_AuthenticatePDC(void *pDataParams, uint8_t bRfu, uint8_t bKeyNoCard,
     uint8_t wKeyNo, uint16_t wKeyVer,
     uint8_t bUpgradeInfo)
 {
@@ -3638,7 +3702,8 @@ phStatus_t phalMfdfEVx_AuthenticatePDC(void *pDataParams, uint8_t bRfu, uint8_t 
 #endif /* NXPBUILD__PHAL_MFDFEVX_NDA */
 
 /* MIFARE DESFire EVX Miscellaneous functions. ----------------------------------------------------------------------------------------- */
-phStatus_t phalMfdfEVx_GetConfig(void *pDataParams, uint16_t wConfig, uint16_t *pValue)
+phStatus_t
+phalMfdfEVx_GetConfig(void *pDataParams, uint16_t wConfig, uint16_t *pValue)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -3687,7 +3752,8 @@ phStatus_t phalMfdfEVx_GetConfig(void *pDataParams, uint16_t wConfig, uint16_t *
   return status;
 }
 
-phStatus_t phalMfdfEVx_SetConfig(void *pDataParams, uint16_t wConfig, uint16_t wValue)
+phStatus_t
+phalMfdfEVx_SetConfig(void *pDataParams, uint16_t wConfig, uint16_t wValue)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -3732,7 +3798,8 @@ phStatus_t phalMfdfEVx_SetConfig(void *pDataParams, uint16_t wConfig, uint16_t w
   return status;
 }
 
-phStatus_t phalMfdfEVx_ResetAuthentication(void *pDataParams)
+phStatus_t
+phalMfdfEVx_ResetAuthentication(void *pDataParams)
 {
   phStatus_t PH_MEMLOC_REM status;
 
@@ -3773,7 +3840,8 @@ phStatus_t phalMfdfEVx_ResetAuthentication(void *pDataParams)
 }
 
 #ifdef NXPBUILD__PHAL_MFDFEVX_NDA
-phStatus_t phalMfdfEVx_GenerateDAMEncKey(void *pDataParams, uint16_t wKeyNoDAMEnc,
+phStatus_t
+phalMfdfEVx_GenerateDAMEncKey(void *pDataParams, uint16_t wKeyNoDAMEnc,
     uint16_t wKeyVerDAMEnc, uint16_t wKeyNoAppDAMDefault,
     uint16_t wKeyVerAppDAMDefault, uint8_t bAppDAMDefaultKeyVer, uint8_t *pDAMEncKey)
 {
@@ -3833,7 +3901,8 @@ phStatus_t phalMfdfEVx_GenerateDAMEncKey(void *pDataParams, uint16_t wKeyNoDAMEn
   return status;
 }
 
-phStatus_t phalMfdfEVx_GenerateDAMMAC(void *pDataParams, uint8_t bOption, uint16_t wKeyNoDAMMAC,
+phStatus_t
+phalMfdfEVx_GenerateDAMMAC(void *pDataParams, uint8_t bOption, uint16_t wKeyNoDAMMAC,
     uint16_t wKeyVerDAMMAC, uint8_t *pAid,
     uint8_t *pDamParams, uint8_t bKeySettings1, uint8_t bKeySettings2, uint8_t bKeySettings3,
     uint8_t  *pKeySetValues, uint8_t *pISOFileId,
@@ -3934,7 +4003,8 @@ phStatus_t phalMfdfEVx_GenerateDAMMAC(void *pDataParams, uint8_t bOption, uint16
   return status;
 }
 
-phStatus_t phalMfdfEVx_GenerateDAMMACSetConfig(void   *pDataParams, uint16_t wKeyNoDAMMAC,
+phStatus_t
+phalMfdfEVx_GenerateDAMMACSetConfig(void   *pDataParams, uint16_t wKeyNoDAMMAC,
     uint16_t wKeyVerDAMMAC, uint16_t wOldDFNameLen,
     uint8_t *pOldISODFName, uint16_t wNewDFNameLen, uint8_t *pNewISODFName, uint8_t *pDAMMAC)
 {
@@ -3991,7 +4061,8 @@ phStatus_t phalMfdfEVx_GenerateDAMMACSetConfig(void   *pDataParams, uint16_t wKe
   return status;
 }
 
-phStatus_t phalMfdfEVx_CalculateTMV(void *pDataParams, uint16_t wOption, uint16_t wKeyNoTMACKey,
+phStatus_t
+phalMfdfEVx_CalculateTMV(void *pDataParams, uint16_t wOption, uint16_t wKeyNoTMACKey,
     uint16_t wKeyVerTMACKey,
     uint16_t wRamKeyNo, uint16_t wRamKeyVer, uint8_t *pDivInput, uint8_t bDivInputLen, uint8_t *pTMC,
     uint8_t *pUid,
@@ -4073,7 +4144,8 @@ phStatus_t phalMfdfEVx_CalculateTMV(void *pDataParams, uint16_t wOption, uint16_
   return status;
 }
 
-phStatus_t phalMfdfEVx_DecryptReaderID(void *pDataParams, uint16_t wOption,
+phStatus_t
+phalMfdfEVx_DecryptReaderID(void *pDataParams, uint16_t wOption,
     uint16_t wKeyNoTMACKey, uint16_t wKeyVerTMACKey,
     uint16_t wRamKeyNo, uint16_t wRamKeyVer, uint8_t *pDivInput, uint8_t bDivInputLen, uint8_t *pTMC,
     uint8_t *pUid,
@@ -4151,7 +4223,8 @@ phStatus_t phalMfdfEVx_DecryptReaderID(void *pDataParams, uint16_t wOption,
   return status;
 }
 
-phStatus_t phalMfdfEVx_ComputeMFCLicenseMAC(void *pDataParams, uint16_t wOption,
+phStatus_t
+phalMfdfEVx_ComputeMFCLicenseMAC(void *pDataParams, uint16_t wOption,
     uint16_t wMFCLicenseMACKeyNo, uint16_t wMFCLicenseMACKeyVer,
     uint8_t *pInput, uint16_t wInputLen, uint8_t *pDivInput, uint8_t bDivInputLen,
     uint8_t *pMFCLicenseMAC)
@@ -4223,7 +4296,8 @@ phStatus_t phalMfdfEVx_ComputeMFCLicenseMAC(void *pDataParams, uint16_t wOption,
   return status;
 }
 
-phStatus_t phalMfdfEVx_CalculateMACSDM(void *pDataParams, uint8_t bSdmOption,
+phStatus_t
+phalMfdfEVx_CalculateMACSDM(void *pDataParams, uint8_t bSdmOption,
     uint16_t wSDMMacKeyNo, uint16_t wSDMMacKeyVer,
     uint16_t wRamKeyNo, uint16_t wRamKeyVer, uint8_t *pUid, uint8_t bUidLen, uint8_t *pSDMReadCtr,
     uint8_t *pInData, uint16_t wInDataLen, uint8_t *pRespMac)
@@ -4300,7 +4374,8 @@ phStatus_t phalMfdfEVx_CalculateMACSDM(void *pDataParams, uint8_t bSdmOption,
   return status;
 }
 
-phStatus_t phalMfdfEVx_DecryptSDMENCFileData(void *pDataParams, uint8_t bSdmOption,
+phStatus_t
+phalMfdfEVx_DecryptSDMENCFileData(void *pDataParams, uint8_t bSdmOption,
     uint16_t wEncKeyNo, uint16_t wEncKeyVer,
     uint16_t wRamKeyNo, uint16_t wRamKeyVer, uint8_t *pUid, uint8_t bUidLen, uint8_t *pSDMReadCtr,
     uint8_t *pEncdata,
@@ -4374,7 +4449,8 @@ phStatus_t phalMfdfEVx_DecryptSDMENCFileData(void *pDataParams, uint8_t bSdmOpti
   return status;
 }
 
-phStatus_t phalMfdfEVx_DecryptSDMPICCData(void *pDataParams, uint16_t wKeyNo, uint16_t wKeyVer,
+phStatus_t
+phalMfdfEVx_DecryptSDMPICCData(void *pDataParams, uint16_t wKeyNo, uint16_t wKeyVer,
     uint8_t *pEncdata, uint16_t wEncDataLen,
     uint8_t *pPlainData)
 {
@@ -4432,7 +4508,8 @@ phStatus_t phalMfdfEVx_DecryptSDMPICCData(void *pDataParams, uint16_t wKeyNo, ui
 }
 #endif /* NXPBUILD__PHAL_MFDFEVX_NDA */
 
-phStatus_t phalMfdfEVx_SetVCAParams(void *pDataParams, void *pAlVCADataParams)
+phStatus_t
+phalMfdfEVx_SetVCAParams(void *pDataParams, void *pAlVCADataParams)
 {
   phStatus_t PH_MEMLOC_REM status = 0;
 

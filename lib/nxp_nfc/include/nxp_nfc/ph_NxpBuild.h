@@ -55,10 +55,11 @@
 
 /* HAL components */
 
-#if defined (NXPBUILD__PHHAL_HW_RC663) || \
+#if defined (NXPBUILD__PHHAL_HW_RC663)    || \
     defined (NXPBUILD__PHHAL_HW_PN7462AU) || \
-    defined (NXPBUILD__PHHAL_HW_SAMAV3) || \
-    defined (NXPBUILD__PHHAL_HW_PN5180)
+    defined (NXPBUILD__PHHAL_HW_PN5180)   || \
+    defined (NXPBUILD__PHHAL_HW_PN5190)   || \
+    defined (NXPBUILD__PHHAL_HW_SAMAV3)
 #define NXPBUILD__PHHAL_HW                  /**< Generic HAL definition */
 #endif
 
@@ -195,15 +196,31 @@
 
 /* AL MIFARE Plus contactless IC components */
 
+#if defined (NXPBUILD__PHAL_MFP_SW)
+#define NXPBUILD__PHAL_MFP                  /**< Generic AL MIFARE Plus definition */
+#endif
+
 /* AL MIFARE Plus EV1 contactless IC components */
+
+#if defined (NXPBUILD__PHAL_MFPEVX_SW)
+#define NXPBUILD__PHAL_MFPEVX                           /**< Generic AL MIFARE Plus EVx contactless IC definition */
+#endif
 
 /* AL MIFARE DESFire contactless IC Components */
 
 #if defined (NXPBUILD__PHAL_MFDF_SW)
 #define NXPBUILD__PHAL_MFDF                  /**< Generic AL MIFARE DESFire definition */
+#else
+#define NXPBUILD__PHAL_MFDF
+#define NXPBUILD__PH_NDA_MFDF
+#define NXPBUILD__PHAL_MFDF_SAMAV3_NONX
 #endif
 
-/* AL MIFARE DESFire EV2 contactless IC Components */
+/* AL MIFARE DESFire EVx contactless IC Components */
+
+#if defined (NXPBUILD__PHAL_MFDFEVX_SW)
+#define NXPBUILD__PHAL_MFDFEVX                          /**< Generic AL MIFARE Desfire EVx definition */
+#endif
 
 /* AL MIFARE DESFire Light contactless IC Components */
 
@@ -294,9 +311,13 @@
 /* KeyStore components */
 
 #if defined (NXPBUILD__PH_KEYSTORE_SW) || \
-    defined (NXPBUILD__PH_KEYSTORE_RC663)
+    defined (NXPBUILD__PH_KEYSTORE_RC663) || \
+    defined (NXPBUILD__PH_KEYSTORE_SAMAV3)
 #define NXPBUILD__PH_KEYSTORE               /**< Generic KeyStore definition */
 #endif
+
+/* TMIUtils component */
+#define NXPBUILD__PH_TMIUTILS
 
 /* LN components */
 
@@ -310,8 +331,9 @@
 #define NXPBUILD__PHNP_SNEP                 /**< Generic HAL definition */
 #endif
 
-#if defined(NXPBUILD__PHHAL_HW_RC663)      || \
-    defined(NXPBUILD__PHHAL_HW_PN5180)
+#if defined(NXPBUILD__PHHAL_HW_RC663)  || \
+    defined(NXPBUILD__PHHAL_HW_PN5180) || \
+    defined(NXPBUILD__PHHAL_HW_PN5190)
 #define PH_PLATFORM_HAS_ICFRONTEND /* Platform has IC Frontend */
 #endif
 

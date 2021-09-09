@@ -42,17 +42,18 @@
 #ifdef NXPBUILD__PHAL_MFPEVX_SW
 
 #include "../phalMfpEVx_Int.h"
-#include "nxp_nfc/phalMfpEVx_Sw.h"
+#include "phalMfpEVx_Sw.h"
 
 #ifdef NXPBUILD__PHAL_MFPEVX_NDA
-#include "nxp_nfc/phalMfpEVx_Sw_Int.h"
+#include "phalMfpEVx_Sw_Int.h"
 #endif /* NXPBUILD__PHAL_MFPEVX_NDA */
 
 #ifdef NXPBUILD__PHAL_MFPEVX_NDA
 static const uint8_t PH_MEMLOC_CONST_ROM phalMfpEVx_Sw_FirstIv[PH_CRYPTOSYM_AES_BLOCK_SIZE] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 #endif /* NXPBUILD__PHAL_MFPEVX_NDA */
 
-phStatus_t phalMfpEVx_Sw_Init(phalMfpEVx_Sw_DataParams_t *pDataParams, uint16_t wSizeOfDataParams,
+phStatus_t
+phalMfpEVx_Sw_Init(phalMfpEVx_Sw_DataParams_t *pDataParams, uint16_t wSizeOfDataParams,
     void *pPalMifareDataParams,
     void *pKeyStoreDataParams, void *pCryptoDataParamsEnc, void *pCryptoDataParamsMac,
     void *pCryptoRngDataParams,
@@ -105,7 +106,8 @@ phStatus_t phalMfpEVx_Sw_Init(phalMfpEVx_Sw_DataParams_t *pDataParams, uint16_t 
 /***************************************************************************************************************************************/
 /* Mifare Plus EVx Software command for personalization.                                                                               */
 /***************************************************************************************************************************************/
-phStatus_t phalMfpEVx_Sw_WritePerso(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bLayer4Comm,
+phStatus_t
+phalMfpEVx_Sw_WritePerso(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bLayer4Comm,
     uint16_t wBlockNr,
     uint8_t bNumBlocks, uint8_t *pValue)
 {
@@ -114,7 +116,8 @@ phStatus_t phalMfpEVx_Sw_WritePerso(phalMfpEVx_Sw_DataParams_t *pDataParams, uin
           wBlockNr, bNumBlocks, pValue);
 }
 
-phStatus_t phalMfpEVx_Sw_CommitPerso(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bOption,
+phStatus_t
+phalMfpEVx_Sw_CommitPerso(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bOption,
     uint8_t bLayer4Comm)
 {
   return phalMfpEVx_Int_CommitPerso(pDataParams->pPalMifareDataParams, bOption, bLayer4Comm,
@@ -125,7 +128,8 @@ phStatus_t phalMfpEVx_Sw_CommitPerso(phalMfpEVx_Sw_DataParams_t *pDataParams, ui
 /***************************************************************************************************************************************/
 /* Mifare Plus EVx Software command for authentication.                                                                                */
 /***************************************************************************************************************************************/
-phStatus_t phalMfpEVx_Sw_AuthenticateMfc(phalMfpEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfpEVx_Sw_AuthenticateMfc(phalMfpEVx_Sw_DataParams_t *pDataParams,
     uint8_t bBlockNo, uint8_t bKeyType, uint16_t wKeyNo,
     uint16_t wKeyVersion, uint8_t *pUid, uint8_t bUidLength)
 {
@@ -191,7 +195,8 @@ phStatus_t phalMfpEVx_Sw_AuthenticateMfc(phalMfpEVx_Sw_DataParams_t *pDataParams
 }
 
 #ifdef NXPBUILD__PHAL_MFPEVX_NDA
-phStatus_t phalMfpEVx_Sw_AuthenticateSL0(phalMfpEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfpEVx_Sw_AuthenticateSL0(phalMfpEVx_Sw_DataParams_t *pDataParams,
     uint8_t bLayer4Comm, uint8_t bFirstAuth, uint16_t wBlockNr,
     uint16_t wKeyNumber, uint16_t wKeyVersion, uint8_t bLenDivInput, uint8_t *pDivInput,
     uint8_t bLenPcdCap2, uint8_t *pPcdCap2In,
@@ -212,7 +217,8 @@ phStatus_t phalMfpEVx_Sw_AuthenticateSL0(phalMfpEVx_Sw_DataParams_t *pDataParams
           pPdCap2);
 }
 
-phStatus_t phalMfpEVx_Sw_AuthenticateSL1(phalMfpEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfpEVx_Sw_AuthenticateSL1(phalMfpEVx_Sw_DataParams_t *pDataParams,
     uint8_t bLayer4Comm, uint8_t bFirstAuth, uint16_t wBlockNr,
     uint16_t wKeyNumber, uint16_t wKeyVersion, uint8_t bLenDivInput, uint8_t *pDivInput,
     uint8_t bLenPcdCap2, uint8_t *pPcdCap2In,
@@ -256,7 +262,8 @@ phStatus_t phalMfpEVx_Sw_AuthenticateSL1(phalMfpEVx_Sw_DataParams_t *pDataParams
   return statusTmp;
 }
 
-phStatus_t phalMfpEVx_Sw_AuthenticateSL3(phalMfpEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfpEVx_Sw_AuthenticateSL3(phalMfpEVx_Sw_DataParams_t *pDataParams,
     uint8_t bFirstAuth, uint16_t wBlockNr, uint16_t wKeyNumber,
     uint16_t wKeyVersion, uint8_t bLenDivInput, uint8_t *pDivInput, uint8_t bLenPcdCap2,
     uint8_t *pPcdCap2In, uint8_t *pPcdCap2Out,
@@ -294,7 +301,8 @@ phStatus_t phalMfpEVx_Sw_AuthenticateSL3(phalMfpEVx_Sw_DataParams_t *pDataParams
   return statusTmp;
 }
 
-phStatus_t phalMfpEVx_Sw_SSAuthenticate(phalMfpEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfpEVx_Sw_SSAuthenticate(phalMfpEVx_Sw_DataParams_t *pDataParams,
     uint16_t wSSKeyBNr, uint16_t wSSKeyNr, uint16_t wSSKeyVer,
     uint8_t bLenDivInputSSKey, uint8_t *pDivInputSSKey, uint8_t  bSecCount, uint16_t *pSectorNos,
     uint16_t *pKeyBKeyNos,
@@ -731,7 +739,8 @@ phStatus_t phalMfpEVx_Sw_SSAuthenticate(phalMfpEVx_Sw_DataParams_t *pDataParams,
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_AuthenticatePDC(phalMfpEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfpEVx_Sw_AuthenticatePDC(phalMfpEVx_Sw_DataParams_t *pDataParams,
     uint16_t wBlockNr, uint16_t wKeyNumber,
     uint16_t wKeyVersion, uint8_t bLenDivInput, uint8_t *pDivInput, uint8_t bUpgradeInfo)
 {
@@ -976,7 +985,8 @@ phStatus_t phalMfpEVx_Sw_AuthenticatePDC(phalMfpEVx_Sw_DataParams_t *pDataParams
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_AuthenticateGeneral(phalMfpEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfpEVx_Sw_AuthenticateGeneral(phalMfpEVx_Sw_DataParams_t *pDataParams,
     uint8_t bLayer4Comm, uint8_t bFirstAuth, uint16_t wBlockNr,
     uint16_t wKeyNumber, uint16_t wKeyVersion, uint8_t bLenDivInput, uint8_t *pDivInput,
     uint8_t bLenPcdCap2, uint8_t *pPcdCap2In,
@@ -1438,7 +1448,8 @@ phStatus_t phalMfpEVx_Sw_AuthenticateGeneral(phalMfpEVx_Sw_DataParams_t *pDataPa
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_Int_KDF_EV0(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t *pRndA,
+phStatus_t
+phalMfpEVx_Sw_Int_KDF_EV0(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t *pRndA,
     uint8_t *pRndB)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
@@ -1537,7 +1548,8 @@ phStatus_t phalMfpEVx_Sw_Int_KDF_EV0(phalMfpEVx_Sw_DataParams_t *pDataParams, ui
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_Int_KDF_EV1(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t *pRndA,
+phStatus_t
+phalMfpEVx_Sw_Int_KDF_EV1(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t *pRndA,
     uint8_t *pRndB)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
@@ -1639,7 +1651,8 @@ phStatus_t phalMfpEVx_Sw_Int_KDF_EV1(phalMfpEVx_Sw_DataParams_t *pDataParams, ui
 /***************************************************************************************************************************************/
 /* Mifare Plus EVx Software command for data operations.                                                                               */
 /***************************************************************************************************************************************/
-phStatus_t phalMfpEVx_Sw_Write(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bEncrypted,
+phStatus_t
+phalMfpEVx_Sw_Write(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bEncrypted,
     uint8_t bWriteMaced, uint16_t wBlockNr, uint8_t bNumBlocks,
     uint8_t *pBlocks, uint8_t *pTMC, uint8_t *pTMV)
 {
@@ -1706,7 +1719,8 @@ phStatus_t phalMfpEVx_Sw_Write(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t 
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_Read(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bEncrypted,
+phStatus_t
+phalMfpEVx_Sw_Read(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bEncrypted,
     uint8_t bReadMaced, uint8_t bMacOnCmd,
     uint16_t wBlockNr, uint8_t bNumBlocks, uint8_t *pBlocks)
 {
@@ -1748,7 +1762,8 @@ phStatus_t phalMfpEVx_Sw_Read(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t b
 /***************************************************************************************************************************************/
 /* Mifare Plus EVx Software command for value operations.                                                                              */
 /***************************************************************************************************************************************/
-phStatus_t phalMfpEVx_Sw_WriteValue(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bEncrypted,
+phStatus_t
+phalMfpEVx_Sw_WriteValue(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bEncrypted,
     uint8_t bWriteMaced, uint16_t wBlockNr, uint8_t *pValue,
     uint8_t bAddrData, uint8_t *pTMC, uint8_t *pTMV)
 {
@@ -1821,7 +1836,8 @@ phStatus_t phalMfpEVx_Sw_WriteValue(phalMfpEVx_Sw_DataParams_t *pDataParams, uin
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_ReadValue(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bEncrypted,
+phStatus_t
+phalMfpEVx_Sw_ReadValue(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bEncrypted,
     uint8_t bReadMaced, uint8_t bMacOnCmd,
     uint16_t wBlockNr, uint8_t *pValue, uint8_t *pAddrData)
 {
@@ -1869,7 +1885,8 @@ phStatus_t phalMfpEVx_Sw_ReadValue(phalMfpEVx_Sw_DataParams_t *pDataParams, uint
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_Increment(phalMfpEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfpEVx_Sw_Increment(phalMfpEVx_Sw_DataParams_t *pDataParams,
     uint8_t bIncrementMaced, uint16_t wBlockNr, uint8_t *pValue)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
@@ -1922,7 +1939,8 @@ phStatus_t phalMfpEVx_Sw_Increment(phalMfpEVx_Sw_DataParams_t *pDataParams,
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_Decrement(phalMfpEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfpEVx_Sw_Decrement(phalMfpEVx_Sw_DataParams_t *pDataParams,
     uint8_t bDecrementMaced, uint16_t wBlockNr, uint8_t *pValue)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
@@ -1975,7 +1993,8 @@ phStatus_t phalMfpEVx_Sw_Decrement(phalMfpEVx_Sw_DataParams_t *pDataParams,
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_IncrementTransfer(phalMfpEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfpEVx_Sw_IncrementTransfer(phalMfpEVx_Sw_DataParams_t *pDataParams,
     uint8_t bIncrementTransferMaced, uint16_t wSourceBlockNr,
     uint16_t wDestinationBlockNr, uint8_t *pValue, uint8_t *pTMC, uint8_t *pTMV)
 {
@@ -2038,7 +2057,8 @@ phStatus_t phalMfpEVx_Sw_IncrementTransfer(phalMfpEVx_Sw_DataParams_t *pDataPara
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_DecrementTransfer(phalMfpEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfpEVx_Sw_DecrementTransfer(phalMfpEVx_Sw_DataParams_t *pDataParams,
     uint8_t bDecrementTransferMaced, uint16_t wSourceBlockNr,
     uint16_t wDestinationBlockNr, uint8_t *pValue, uint8_t *pTMC, uint8_t *pTMV)
 {
@@ -2101,7 +2121,8 @@ phStatus_t phalMfpEVx_Sw_DecrementTransfer(phalMfpEVx_Sw_DataParams_t *pDataPara
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_Transfer(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bTransferMaced,
+phStatus_t
+phalMfpEVx_Sw_Transfer(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bTransferMaced,
     uint16_t wBlockNr, uint8_t *pTMC,
     uint8_t *pTMV)
 {
@@ -2155,7 +2176,8 @@ phStatus_t phalMfpEVx_Sw_Transfer(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_Restore(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bRestoreMaced,
+phStatus_t
+phalMfpEVx_Sw_Restore(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bRestoreMaced,
     uint16_t wBlockNr)
 {
   phStatus_t PH_MEMLOC_REM wStatus = 0;
@@ -2208,7 +2230,8 @@ phStatus_t phalMfpEVx_Sw_Restore(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_ReadExt(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bEncrypted,
+phStatus_t
+phalMfpEVx_Sw_ReadExt(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bEncrypted,
     uint8_t bReadMaced, uint8_t bMacOnCmd,
     uint16_t wBlockNr, uint8_t bNumBlocks, uint8_t *pBlocks)
 {
@@ -2727,7 +2750,8 @@ phStatus_t phalMfpEVx_Sw_ReadExt(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_WriteExt(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bCmdCode,
+phStatus_t
+phalMfpEVx_Sw_WriteExt(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bCmdCode,
     uint16_t wSrcBnr, uint16_t wDstBnr,
     uint8_t *pData, uint16_t wDataLength, uint8_t bEncrypted, uint8_t *pTMC, uint8_t *pTMV)
 {
@@ -3116,7 +3140,8 @@ phStatus_t phalMfpEVx_Sw_WriteExt(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_ReadExtMfc(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bBlockNo,
+phStatus_t
+phalMfpEVx_Sw_ReadExtMfc(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bBlockNo,
     uint8_t *pBlockData)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
@@ -3171,7 +3196,8 @@ phStatus_t phalMfpEVx_Sw_ReadExtMfc(phalMfpEVx_Sw_DataParams_t *pDataParams, uin
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_WriteExtMfc(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bCmdCode,
+phStatus_t
+phalMfpEVx_Sw_WriteExtMfc(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bCmdCode,
     uint8_t bBlockNo, uint8_t *pData,
     uint16_t wDataLength, uint8_t *pTMC, uint8_t *pTMV)
 {
@@ -3294,7 +3320,8 @@ phStatus_t phalMfpEVx_Sw_WriteExtMfc(phalMfpEVx_Sw_DataParams_t *pDataParams, ui
 /***************************************************************************************************************************************/
 /* Mifare Plus EVx Software command for special operations.                                                                            */
 /***************************************************************************************************************************************/
-phStatus_t phalMfpEVx_Sw_GetVersion(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t *pResponse)
+phStatus_t
+phalMfpEVx_Sw_GetVersion(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t *pResponse)
 {
   uint16_t    PH_MEMLOC_REM statusTmp = 0;
   uint8_t     PH_MEMLOC_REM aCmdBuf[PHAL_MFPEVX_VERSION_COMMAND_LENGTH];
@@ -3522,7 +3549,8 @@ phStatus_t phalMfpEVx_Sw_GetVersion(phalMfpEVx_Sw_DataParams_t *pDataParams, uin
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_ReadSign(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bLayer4Comm,
+phStatus_t
+phalMfpEVx_Sw_ReadSign(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bLayer4Comm,
     uint8_t bAddr, uint8_t **pSignature)
 {
 
@@ -3768,7 +3796,8 @@ phStatus_t phalMfpEVx_Sw_ReadSign(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_ResetAuth(phalMfpEVx_Sw_DataParams_t *pDataParams)
+phStatus_t
+phalMfpEVx_Sw_ResetAuth(phalMfpEVx_Sw_DataParams_t *pDataParams)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp = 0;
 
@@ -3792,23 +3821,27 @@ phStatus_t phalMfpEVx_Sw_ResetAuth(phalMfpEVx_Sw_DataParams_t *pDataParams)
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_PersonalizeUid(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bUidType)
+phStatus_t
+phalMfpEVx_Sw_PersonalizeUid(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bUidType)
 {
   return phalMfpEVx_Int_PersonalizeUid(pDataParams->pPalMifareDataParams, bUidType);
 }
 
-phStatus_t phalMfpEVx_Sw_SetConfigSL1(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bOption)
+phStatus_t
+phalMfpEVx_Sw_SetConfigSL1(phalMfpEVx_Sw_DataParams_t *pDataParams, uint8_t bOption)
 {
   return phalMfpEVx_Int_SetConfigSL1(pDataParams->pPalMifareDataParams, bOption);
 }
 
-phStatus_t phalMfpEVx_Sw_ReadSL1TMBlock(phalMfpEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfpEVx_Sw_ReadSL1TMBlock(phalMfpEVx_Sw_DataParams_t *pDataParams,
     uint16_t wBlockNr, uint8_t *pBlocks)
 {
   return phalMfpEVx_Int_ReadSL1TMBlock(pDataParams->pPalMifareDataParams, wBlockNr, pBlocks);
 }
 
-phStatus_t phalMfpEVx_Sw_VCSupportLastISOL3(phalMfpEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfpEVx_Sw_VCSupportLastISOL3(phalMfpEVx_Sw_DataParams_t *pDataParams,
     uint8_t *pIid, uint8_t *pPcdCapL3, uint8_t *pInfo)
 {
   return phalMfpEVx_Int_VCSupportLastISOL3(pDataParams->pPalMifareDataParams, pIid, pPcdCapL3,
@@ -3816,7 +3849,8 @@ phStatus_t phalMfpEVx_Sw_VCSupportLastISOL3(phalMfpEVx_Sw_DataParams_t *pDataPar
 }
 
 #ifdef NXPBUILD__PHAL_MFPEVX_NDA
-phStatus_t phalMfpEVx_Sw_ChangeKey(phalMfpEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfpEVx_Sw_ChangeKey(phalMfpEVx_Sw_DataParams_t *pDataParams,
     uint8_t bChangeKeyMaced, uint16_t wBlockNr, uint16_t wKeyNumber,
     uint16_t wKeyVersion, uint8_t bLenDivInput, uint8_t *pDivInput)
 {
@@ -3872,7 +3906,8 @@ phStatus_t phalMfpEVx_Sw_ChangeKey(phalMfpEVx_Sw_DataParams_t *pDataParams,
           NULL);
 }
 
-phStatus_t phalMfpEVx_Sw_CommitReaderID(phalMfpEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfpEVx_Sw_CommitReaderID(phalMfpEVx_Sw_DataParams_t *pDataParams,
     uint16_t wBlockNr, uint8_t *pTMRI, uint8_t *pEncTMRI)
 {
   uint16_t    PH_MEMLOC_REM statusTmp;
@@ -4068,7 +4103,8 @@ phStatus_t phalMfpEVx_Sw_CommitReaderID(phalMfpEVx_Sw_DataParams_t *pDataParams,
 /***************************************************************************************************************************************/
 /* Mifare Plus EVx Software command for utility operations.                                                                            */
 /***************************************************************************************************************************************/
-phStatus_t phalMfpEVx_Sw_ResetSecMsgState(phalMfpEVx_Sw_DataParams_t *pDataParams)
+phStatus_t
+phalMfpEVx_Sw_ResetSecMsgState(phalMfpEVx_Sw_DataParams_t *pDataParams)
 {
   phStatus_t statusTmp;
 
@@ -4108,7 +4144,8 @@ phStatus_t phalMfpEVx_Sw_ResetSecMsgState(phalMfpEVx_Sw_DataParams_t *pDataParam
   return PH_ADD_COMPCODE(statusTmp, PH_COMP_AL_MFPEVX);
 }
 
-phStatus_t phalMfpEVx_Sw_SetConfig(phalMfpEVx_Sw_DataParams_t *pDataParams, uint16_t wOption,
+phStatus_t
+phalMfpEVx_Sw_SetConfig(phalMfpEVx_Sw_DataParams_t *pDataParams, uint16_t wOption,
     uint16_t wValue)
 {
   switch (wOption) {
@@ -4130,7 +4167,8 @@ phStatus_t phalMfpEVx_Sw_SetConfig(phalMfpEVx_Sw_DataParams_t *pDataParams, uint
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_GetConfig(phalMfpEVx_Sw_DataParams_t *pDataParams, uint16_t wOption,
+phStatus_t
+phalMfpEVx_Sw_GetConfig(phalMfpEVx_Sw_DataParams_t *pDataParams, uint16_t wOption,
     uint16_t *pValue)
 {
   switch (wOption) {
@@ -4152,7 +4190,8 @@ phStatus_t phalMfpEVx_Sw_GetConfig(phalMfpEVx_Sw_DataParams_t *pDataParams, uint
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_SetVCAParams(phalMfpEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfpEVx_Sw_SetVCAParams(phalMfpEVx_Sw_DataParams_t *pDataParams,
     void *pAlVCADataParams)
 {
   PH_ASSERT_NULL(pDataParams);
@@ -4164,7 +4203,8 @@ phStatus_t phalMfpEVx_Sw_SetVCAParams(phalMfpEVx_Sw_DataParams_t *pDataParams,
 }
 
 #ifdef NXPBUILD__PHAL_MFPEVX_NDA
-phStatus_t phalMfpEVx_Sw_CalculateTMV(phalMfpEVx_Sw_DataParams_t *pDataParams, uint16_t wOption,
+phStatus_t
+phalMfpEVx_Sw_CalculateTMV(phalMfpEVx_Sw_DataParams_t *pDataParams, uint16_t wOption,
     uint16_t wKeyNoTMACKey, uint16_t wKeyVerTMACKey,
     uint8_t *pDivInput, uint8_t bDivInputLen, uint8_t *pTMC, uint8_t *pUid, uint8_t bUidLen,
     uint8_t  *pTMI, uint16_t wTMILen, uint8_t *pTMV)
@@ -4316,7 +4356,8 @@ phStatus_t phalMfpEVx_Sw_CalculateTMV(phalMfpEVx_Sw_DataParams_t *pDataParams, u
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_DecryptReaderID(phalMfpEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfpEVx_Sw_DecryptReaderID(phalMfpEVx_Sw_DataParams_t *pDataParams,
     uint16_t wOption, uint16_t wKeyNoTMACKey, uint16_t wKeyVerTMACKey,
     uint8_t *pDivInput, uint8_t bDivInputLen, uint8_t *pTMC, uint8_t *pUid, uint8_t bUidLen,
     uint8_t  *pEncTMRI, uint8_t *pTMRIPrev)
@@ -4440,7 +4481,8 @@ phStatus_t phalMfpEVx_Sw_DecryptReaderID(phalMfpEVx_Sw_DataParams_t *pDataParams
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Sw_Int_ComputeIv(phalMfpEVx_Sw_DataParams_t *pDataParams,
+phStatus_t
+phalMfpEVx_Sw_Int_ComputeIv(phalMfpEVx_Sw_DataParams_t *pDataParams,
     uint8_t bIsResponse, uint8_t *pTi, uint16_t wRCtr,
     uint16_t wWCtr, uint8_t *pIv)
 {
@@ -4548,7 +4590,8 @@ phStatus_t phalMfpEVx_Sw_Int_ComputeIv(phalMfpEVx_Sw_DataParams_t *pDataParams,
 #endif /* NXPBUILD__PHAL_MFPEVX_NDA */
 
 #if defined(NXPBUILD__PHAL_MFPEVX_NDA)
-void phalMfpEVx_Sw_Int_TruncateMac(uint8_t *pMac, uint8_t *pTruncatedMac)
+void
+phalMfpEVx_Sw_Int_TruncateMac(uint8_t *pMac, uint8_t *pTruncatedMac)
 {
 #if PHAL_MFPEVX_TAPEOUT_VERSION >= 20
 

@@ -65,7 +65,8 @@ extern uint8_t  poll_res[18]   ;
 /**
 * This function will initialize NXP NFC Controller.
 */
-void phApp_CPU_Init(void)
+void
+phApp_CPU_Init(void)
 {
   phFlashBoot_Main();
 
@@ -75,7 +76,8 @@ void phApp_CPU_Init(void)
 /**
 * This function will initialize Hal Target Config
 */
-phStatus_t phApp_HALConfigAutoColl(void)
+phStatus_t
+phApp_HALConfigAutoColl(void)
 {
 #ifdef NXPBUILD__PHHAL_HW_TARGET
   phStatus_t wStatus;
@@ -98,7 +100,8 @@ phStatus_t phApp_HALConfigAutoColl(void)
 }
 
 /* Configure LPCD (for PN7462AU) */
-phStatus_t phApp_ConfigureLPCD(void)
+phStatus_t
+phApp_ConfigureLPCD(void)
 {
   phStatus_t status;
   uint16_t wLpcdValue;

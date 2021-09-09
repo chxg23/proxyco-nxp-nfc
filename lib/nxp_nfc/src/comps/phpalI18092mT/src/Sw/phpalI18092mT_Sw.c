@@ -32,7 +32,8 @@
 #include "phpalI18092mT_Sw_Int.h"
 
 static const uint8_t bmtEventName[] = "mtEvent";
-phStatus_t phpalI18092mT_Sw_Init(
+phStatus_t
+phpalI18092mT_Sw_Init(
     phpalI18092mT_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pHalDataParams,
@@ -65,7 +66,8 @@ phStatus_t phpalI18092mT_Sw_Init(
   return wStatus;
 }
 
-phStatus_t phpalI18092mT_Sw_ResetProtocol(
+phStatus_t
+phpalI18092mT_Sw_ResetProtocol(
     phpalI18092mT_Sw_DataParams_t *pDataParams
 )
 {
@@ -99,7 +101,8 @@ phStatus_t phpalI18092mT_Sw_ResetProtocol(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mT_Sw_DslRes(
+phStatus_t
+phpalI18092mT_Sw_DslRes(
     phpalI18092mT_Sw_DataParams_t *pDataParams,
     uint8_t *pDslReq,
     uint8_t wDslReqLength
@@ -184,7 +187,8 @@ phStatus_t phpalI18092mT_Sw_DslRes(
   return status;
 }
 
-phStatus_t phpalI18092mT_Sw_PslRes(
+phStatus_t
+phpalI18092mT_Sw_PslRes(
     phpalI18092mT_Sw_DataParams_t *pDataParams,
     uint8_t *pPslReq,
     uint16_t  wPslReqLength,
@@ -372,7 +376,8 @@ phStatus_t phpalI18092mT_Sw_PslRes(
   return status;
 }
 
-phStatus_t phpalI18092mT_Sw_RlsRes(
+phStatus_t
+phpalI18092mT_Sw_RlsRes(
     phpalI18092mT_Sw_DataParams_t *pDataParams,
     uint8_t *pRlsReq,
     uint16_t wRlsReqLength
@@ -465,7 +470,8 @@ phStatus_t phpalI18092mT_Sw_RlsRes(
 
 }
 
-phStatus_t phpalI18092mT_Sw_WupRes(
+phStatus_t
+phpalI18092mT_Sw_WupRes(
     phpalI18092mT_Sw_DataParams_t *pDataParams,
     uint8_t *pWupReq,
     uint16_t  wWupReqLength,
@@ -542,7 +548,8 @@ phStatus_t phpalI18092mT_Sw_WupRes(
 
 }
 
-phStatus_t phpalI18092mT_Sw_Activate(
+phStatus_t
+phpalI18092mT_Sw_Activate(
     phpalI18092mT_Sw_DataParams_t *pDataParams,
     uint8_t *pAtrReq,
     uint16_t wAtrReqLength,
@@ -850,7 +857,8 @@ phStatus_t phpalI18092mT_Sw_Activate(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mT_Sw_Receive(
+phStatus_t
+phpalI18092mT_Sw_Receive(
     phpalI18092mT_Sw_DataParams_t *pDataParams,
     uint16_t   wOption,
     uint8_t **ppTransportDataBytes,
@@ -1140,7 +1148,8 @@ phStatus_t phpalI18092mT_Sw_Receive(
   return PH_ADD_COMPCODE(status, PH_COMP_PAL_I18092MT);
 }
 
-phStatus_t phpalI18092mT_Sw_Transmit(
+phStatus_t
+phpalI18092mT_Sw_Transmit(
     phpalI18092mT_Sw_DataParams_t *pDataParams,
     uint16_t   wOption,
     uint8_t *pTransportDataBytes,
@@ -1375,7 +1384,8 @@ phStatus_t phpalI18092mT_Sw_Transmit(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mT_Sw_Rtox(
+phStatus_t
+phpalI18092mT_Sw_Rtox(
     phpalI18092mT_Sw_DataParams_t *pDataParams
 )
 {
@@ -1475,7 +1485,8 @@ phStatus_t phpalI18092mT_Sw_Rtox(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mT_Sw_SetConfig(
+phStatus_t
+phpalI18092mT_Sw_SetConfig(
     phpalI18092mT_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -1519,7 +1530,8 @@ phStatus_t phpalI18092mT_Sw_SetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mT_Sw_GetConfig(
+phStatus_t
+phpalI18092mT_Sw_GetConfig(
     phpalI18092mT_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue

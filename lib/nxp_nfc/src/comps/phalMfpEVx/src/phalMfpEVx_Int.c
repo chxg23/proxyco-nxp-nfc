@@ -30,7 +30,8 @@
 
 #ifdef NXPBUILD__PHAL_MFPEVX
 
-phStatus_t phalMfpEVx_Int_ComputeErrorResponse(uint16_t wNumBytesReceived, uint16_t wStatus,
+phStatus_t
+phalMfpEVx_Int_ComputeErrorResponse(uint16_t wNumBytesReceived, uint16_t wStatus,
     uint8_t bLayer4Comm)
 {
   phStatus_t  PH_MEMLOC_REM status;
@@ -164,7 +165,8 @@ phStatus_t phalMfpEVx_Int_ComputeErrorResponse(uint16_t wNumBytesReceived, uint1
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Int_ComputeErrorResponseMfc(uint16_t wNumBytesReceived, uint8_t bStatus)
+phStatus_t
+phalMfpEVx_Int_ComputeErrorResponseMfc(uint16_t wNumBytesReceived, uint8_t bStatus)
 {
   phStatus_t  PH_MEMLOC_REM status;
 
@@ -204,7 +206,8 @@ phStatus_t phalMfpEVx_Int_ComputeErrorResponseMfc(uint16_t wNumBytesReceived, ui
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Int_WritePerso(void *pPalMifareDataParams, uint8_t bLayer4Comm,
+phStatus_t
+phalMfpEVx_Int_WritePerso(void *pPalMifareDataParams, uint8_t bLayer4Comm,
     uint8_t bWrappedMode, uint8_t bExtendedLenApdu,
     uint16_t wBlockNr, uint8_t bNumBlocks, uint8_t *pValue)
 {
@@ -295,7 +298,8 @@ phStatus_t phalMfpEVx_Int_WritePerso(void *pPalMifareDataParams, uint8_t bLayer4
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Int_CommitPerso(void *pPalMifareDataParams, uint8_t bOption,
+phStatus_t
+phalMfpEVx_Int_CommitPerso(void *pPalMifareDataParams, uint8_t bOption,
     uint8_t bLayer4Comm, uint8_t bWrappedMode,
     uint8_t bExtendedLenApdu)
 {
@@ -360,7 +364,8 @@ phStatus_t phalMfpEVx_Int_CommitPerso(void *pPalMifareDataParams, uint8_t bOptio
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Int_ResetAuth(void *pPalMifareDataParams, uint8_t bWrappedMode,
+phStatus_t
+phalMfpEVx_Int_ResetAuth(void *pPalMifareDataParams, uint8_t bWrappedMode,
     uint8_t bExtendedLenApdu)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
@@ -400,7 +405,8 @@ phStatus_t phalMfpEVx_Int_ResetAuth(void *pPalMifareDataParams, uint8_t bWrapped
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Int_PersonalizeUid(void *pPalMifareDataParams, uint8_t bUidType)
+phStatus_t
+phalMfpEVx_Int_PersonalizeUid(void *pPalMifareDataParams, uint8_t bUidType)
 {
   uint8_t     PH_MEMLOC_REM aCmdBuff[2];
   uint8_t    *PH_MEMLOC_REM pResponse = NULL;
@@ -420,7 +426,8 @@ phStatus_t phalMfpEVx_Int_PersonalizeUid(void *pPalMifareDataParams, uint8_t bUi
           &wRespLen);
 }
 
-phStatus_t phalMfpEVx_Int_SetConfigSL1(void *pPalMifareDataParams, uint8_t bOption)
+phStatus_t
+phalMfpEVx_Int_SetConfigSL1(void *pPalMifareDataParams, uint8_t bOption)
 {
   phStatus_t  PH_MEMLOC_REM wStatus = 0;
   uint8_t     PH_MEMLOC_REM bCmdBuff[3];
@@ -447,7 +454,8 @@ phStatus_t phalMfpEVx_Int_SetConfigSL1(void *pPalMifareDataParams, uint8_t bOpti
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Int_ReadSL1TMBlock(void *pPalMifareDataParams, uint16_t wBlockNr,
+phStatus_t
+phalMfpEVx_Int_ReadSL1TMBlock(void *pPalMifareDataParams, uint16_t wBlockNr,
     uint8_t *pBlocks)
 {
   phStatus_t  PH_MEMLOC_REM wStatus = 0;
@@ -484,7 +492,8 @@ phStatus_t phalMfpEVx_Int_ReadSL1TMBlock(void *pPalMifareDataParams, uint16_t wB
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Int_VCSupportLastISOL3(void *pPalMifareDataParams, uint8_t *pIid,
+phStatus_t
+phalMfpEVx_Int_VCSupportLastISOL3(void *pPalMifareDataParams, uint8_t *pIid,
     uint8_t *pPcdCapL3, uint8_t *pInfo)
 {
   phStatus_t  PH_MEMLOC_REM wStatus = 0;
@@ -522,7 +531,8 @@ phStatus_t phalMfpEVx_Int_VCSupportLastISOL3(void *pPalMifareDataParams, uint8_t
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Int_CreateValueBlock(uint8_t *pValue, uint8_t bAddrData, uint8_t *pBlock)
+phStatus_t
+phalMfpEVx_Int_CreateValueBlock(uint8_t *pValue, uint8_t bAddrData, uint8_t *pBlock)
 {
   pBlock[0]  = (uint8_t)pValue[0];
   pBlock[1]  = (uint8_t)pValue[1];
@@ -544,7 +554,8 @@ phStatus_t phalMfpEVx_Int_CreateValueBlock(uint8_t *pValue, uint8_t bAddrData, u
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Int_CheckValueBlockFormat(uint8_t *pBlock)
+phStatus_t
+phalMfpEVx_Int_CheckValueBlockFormat(uint8_t *pBlock)
 {
   /* check format of value block */
   if ((pBlock[0] != pBlock[8]) ||
@@ -563,7 +574,8 @@ phStatus_t phalMfpEVx_Int_CheckValueBlockFormat(uint8_t *pBlock)
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfpEVx_Int_Send7816Apdu(void *pPalMifareDataParams, uint16_t wOptions,
+phStatus_t
+phalMfpEVx_Int_Send7816Apdu(void *pPalMifareDataParams, uint16_t wOptions,
     uint16_t wLc, uint8_t bExtendedLenApdu, uint8_t *pData,
     uint16_t wDataLen, uint8_t **ppRxBuffer, uint16_t *pRxBufLen)
 {

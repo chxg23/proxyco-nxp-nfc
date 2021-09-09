@@ -55,7 +55,8 @@ static const uint16_t PH_MEMLOC_CONST_ROM gkphhalHw_Pn5180_DigiDelays_Us[][4] = 
   {/* 106KBaud */ 17, /* 212KBaud */ 322, /* 424KBaud */ 165, /* N/A */ 0}
 };
 
-phStatus_t phhalHw_Pn5180_GetTxBuffer(
+phStatus_t
+phhalHw_Pn5180_GetTxBuffer(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bIsExchange,
     uint8_t **pTxBuffer,
@@ -89,7 +90,8 @@ phStatus_t phhalHw_Pn5180_GetTxBuffer(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_GetRxBuffer(
+phStatus_t
+phhalHw_Pn5180_GetRxBuffer(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bIsExchange,
     uint8_t **pRxBuffer,
@@ -148,7 +150,8 @@ phStatus_t phhalHw_Pn5180_GetRxBuffer(
 
   return PH_ERR_SUCCESS;
 }
-phStatus_t phhalHw_Pn5180_ReadData(
+phStatus_t
+phhalHw_Pn5180_ReadData(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t **ppData,
     uint16_t *pBytesRead
@@ -187,7 +190,8 @@ phStatus_t phhalHw_Pn5180_ReadData(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_TimerStart(
+phStatus_t
+phhalHw_Pn5180_TimerStart(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bTimer,
     uint32_t dwStartCond,
@@ -263,7 +267,8 @@ phStatus_t phhalHw_Pn5180_TimerStart(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_SetConfig_Int(
+phStatus_t
+phhalHw_Pn5180_SetConfig_Int(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -410,7 +415,8 @@ phStatus_t phhalHw_Pn5180_SetConfig_Int(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_SetConfig_FelicaEmdReg(
+phStatus_t
+phhalHw_Pn5180_SetConfig_FelicaEmdReg(
     phhalHw_Pn5180_DataParams_t *pDataParams
 )
 {
@@ -433,7 +439,8 @@ phStatus_t phhalHw_Pn5180_SetConfig_FelicaEmdReg(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_SetConfig_FelicaEmdRegBit(
+phStatus_t
+phhalHw_Pn5180_SetConfig_FelicaEmdRegBit(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint16_t wValue,
     uint32_t dwMaskValue
@@ -467,7 +474,8 @@ phStatus_t phhalHw_Pn5180_SetConfig_FelicaEmdRegBit(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_SetConfig_FelicaEmdRegByte(
+phStatus_t
+phhalHw_Pn5180_SetConfig_FelicaEmdRegByte(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint16_t wValue,
     uint8_t bBytePos,
@@ -495,7 +503,8 @@ phStatus_t phhalHw_Pn5180_SetConfig_FelicaEmdRegByte(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_SetCardMode(
+phStatus_t
+phhalHw_Pn5180_SetCardMode(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint16_t wTxDataRate,
     uint16_t wRxDataRate,
@@ -957,7 +966,8 @@ phStatus_t phhalHw_Pn5180_SetCardMode(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_SetTmo(
+phStatus_t
+phhalHw_Pn5180_SetTmo(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint16_t wTimeout,
     uint8_t  bUnit
@@ -1015,7 +1025,8 @@ phStatus_t phhalHw_Pn5180_SetTmo(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Int_Wait(
+phStatus_t
+phhalHw_Pn5180_Int_Wait(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint32_t dwLoadValue,
     uint32_t wPrescaler)
@@ -1091,7 +1102,8 @@ phStatus_t phhalHw_Pn5180_Int_Wait(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Int_GetDigiDelay(
+phStatus_t
+phhalHw_Pn5180_Int_GetDigiDelay(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     uint8_t bIsTimeout,
     uint16_t *pDelayUs
@@ -1152,7 +1164,8 @@ phStatus_t phhalHw_Pn5180_Int_GetDigiDelay(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Int_GetFdt(
+phStatus_t
+phhalHw_Pn5180_Int_GetFdt(
     phhalHw_Pn5180_DataParams_t *pDataParams,
     phStatus_t wExchangeStatus,
     uint32_t *pTime
@@ -1210,7 +1223,8 @@ phStatus_t phhalHw_Pn5180_Int_GetFdt(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Receive_Int(phhalHw_Pn5180_DataParams_t *pDataParams,
+phStatus_t
+phhalHw_Pn5180_Receive_Int(phhalHw_Pn5180_DataParams_t *pDataParams,
     uint32_t dwIrqWaitFor,
     uint8_t **ppRxBuffer,
     uint16_t *pRxLength,
@@ -1482,7 +1496,8 @@ phStatus_t phhalHw_Pn5180_Receive_Int(phhalHw_Pn5180_DataParams_t *pDataParams,
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5180_Int_IdleCommand(phhalHw_Pn5180_DataParams_t *pDataParams)
+phStatus_t
+phhalHw_Pn5180_Int_IdleCommand(phhalHw_Pn5180_DataParams_t *pDataParams)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
   PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_Pn5180_Instr_WriteRegisterAndMask(
@@ -1497,7 +1512,8 @@ phStatus_t phhalHw_Pn5180_Int_IdleCommand(phhalHw_Pn5180_DataParams_t *pDataPara
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5180_Int_LoadCommand(phhalHw_Pn5180_DataParams_t *pDataParams, uint8_t bCmd)
+phStatus_t
+phhalHw_Pn5180_Int_LoadCommand(phhalHw_Pn5180_DataParams_t *pDataParams, uint8_t bCmd)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
 
@@ -1533,7 +1549,8 @@ phStatus_t phhalHw_Pn5180_Int_LoadCommand(phhalHw_Pn5180_DataParams_t *pDataPara
 
 }
 
-phStatus_t phhalHw_Pn5180_AutoSyncByte(phhalHw_Pn5180_DataParams_t *pDataParams)
+phStatus_t
+phhalHw_Pn5180_AutoSyncByte(phhalHw_Pn5180_DataParams_t *pDataParams)
 {
   phStatus_t PH_MEMLOC_REM statusTmp;
   uint32_t PH_MEMLOC_REM dwValue;

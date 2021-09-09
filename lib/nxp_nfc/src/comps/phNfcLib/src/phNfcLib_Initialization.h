@@ -78,7 +78,8 @@ typedef struct {
 #endif /* NXPBUILD__PH_KEYSTORE_RC663 */
 
 #ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
-  phKeyStore_SamAV3_DataParams_t      sKeyStore;          /**< SamAV3 HW Keystore component holder */
+  phKeyStore_SamAV3_DataParams_t
+  sKeyStore;          /**< SamAV3 HW Keystore component holder */
 #endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
 
   pphNfcLib_ErrCallbck
@@ -250,7 +251,7 @@ typedef struct {
 #endif /* NXPBUILD__PHHAL_HW_SAMAV3 */
   uint8_t  *pRxBuffer;                                           /* Pointer to the RX */
   uint16_t wRxLength;                                            /* Stores the length of the received Data */
-  uint16_t  wRxDataPoin;                                         /* Points to the starting address of the rx buffer to perform Chaining */
+  uint16_t wRxDataPoin;                                          /* Points to the starting address of the rx buffer to perform Chaining */
   uint8_t  bHalBufferTx[PH_NXPNFCRDLIB_CONFIG_HAL_TX_BUFFSIZE];  /* HAL TX buffer. */
   uint8_t  bHalBufferRx[PH_NXPNFCRDLIB_CONFIG_HAL_RX_BUFFSIZE];  /* HAL RX buffer. */
   uint8_t bWrappedMode;                                          /* Tells about the MIFARE DESFire Wrapped Mode Status */

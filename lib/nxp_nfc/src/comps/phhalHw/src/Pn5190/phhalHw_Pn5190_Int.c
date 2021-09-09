@@ -25,7 +25,7 @@
 
 #ifdef NXPBUILD__PHHAL_HW_PN5190
 #ifndef _WIN32
-#include "nxp_nfc/BoardSelection.h"
+#include <nxp_nfc/BoardSelection.h>
 #endif
 #include <nxp_nfc/phTools.h>
 #include "phhalHw_Pn5190.h"
@@ -45,7 +45,8 @@
 extern phOsal_Event_t xEventHandle;
 #endif
 
-phStatus_t phhalHw_Pn5190_Int_GetTxBuffer(
+phStatus_t
+phhalHw_Pn5190_Int_GetTxBuffer(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t **pTxBuffer,
     uint16_t *pTxBufferLen,
@@ -69,7 +70,8 @@ phStatus_t phhalHw_Pn5190_Int_GetTxBuffer(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5190_Int_GetRxBuffer(
+phStatus_t
+phhalHw_Pn5190_Int_GetRxBuffer(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t **pRxBuffer,
     uint16_t *pRxBufferLen,
@@ -89,7 +91,8 @@ phStatus_t phhalHw_Pn5190_Int_GetRxBuffer(
   return PH_ERR_SUCCESS;
 }
 
-void phhalHw_Pn5190_Int_Reset(void)
+void
+phhalHw_Pn5190_Int_Reset(void)
 {
 #ifndef _WIN32
   /* Send the reset pulse to FE to reset. */
@@ -125,7 +128,8 @@ void phhalHw_Pn5190_Int_Reset(void)
 #endif /*_WIN32*/
 }
 
-phStatus_t phhalHw_Pn5190_Int_TimerStart(
+phStatus_t
+phhalHw_Pn5190_Int_TimerStart(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bTimer,
     uint32_t dwStartCond,
@@ -217,7 +221,8 @@ phStatus_t phhalHw_Pn5190_Int_TimerStart(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5190_SetConfig_Int(
+phStatus_t
+phhalHw_Pn5190_SetConfig_Int(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -390,7 +395,8 @@ phStatus_t phhalHw_Pn5190_SetConfig_Int(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5190_Int_SetConfig_FelicaEmdReg(
+phStatus_t
+phhalHw_Pn5190_Int_SetConfig_FelicaEmdReg(
     phhalHw_Pn5190_DataParams_t *pDataParams
 )
 {
@@ -413,7 +419,8 @@ phStatus_t phhalHw_Pn5190_Int_SetConfig_FelicaEmdReg(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5190_Int_SetConfig_FelicaEmdRegBit(
+phStatus_t
+phhalHw_Pn5190_Int_SetConfig_FelicaEmdRegBit(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wValue,
     uint32_t dwMaskValue
@@ -447,7 +454,8 @@ phStatus_t phhalHw_Pn5190_Int_SetConfig_FelicaEmdRegBit(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5190_Int_SetConfig_FelicaEmdRegByte(
+phStatus_t
+phhalHw_Pn5190_Int_SetConfig_FelicaEmdRegByte(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wValue,
     uint8_t bBytePos,
@@ -475,7 +483,8 @@ phStatus_t phhalHw_Pn5190_Int_SetConfig_FelicaEmdRegByte(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5190_Int_SetCardMode(
+phStatus_t
+phhalHw_Pn5190_Int_SetCardMode(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wTxDataRate,
     uint16_t wRxDataRate,
@@ -929,7 +938,8 @@ phStatus_t phhalHw_Pn5190_Int_SetCardMode(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5190_Int_SetTxDataRateFraming(phhalHw_Pn5190_DataParams_t *pDataParams,
+phStatus_t
+phhalHw_Pn5190_Int_SetTxDataRateFraming(phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wConfig, uint16_t wValue)
 {
   uint16_t   PH_MEMLOC_REM wFraming = 0U;
@@ -1002,7 +1012,8 @@ phStatus_t phhalHw_Pn5190_Int_SetTxDataRateFraming(phhalHw_Pn5190_DataParams_t *
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5190_Int_SetRxDataRateFraming(phhalHw_Pn5190_DataParams_t *pDataParams,
+phStatus_t
+phhalHw_Pn5190_Int_SetRxDataRateFraming(phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wConfig, uint16_t wValue)
 {
   uint16_t   PH_MEMLOC_REM wFraming = 0U;
@@ -1036,7 +1047,8 @@ phStatus_t phhalHw_Pn5190_Int_SetRxDataRateFraming(phhalHw_Pn5190_DataParams_t *
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5190_Int_SetMinFdt(
+phStatus_t
+phhalHw_Pn5190_Int_SetMinFdt(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wValue
 )
@@ -1102,7 +1114,8 @@ phStatus_t phhalHw_Pn5190_Int_SetMinFdt(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5190_Int_SetTmo(
+phStatus_t
+phhalHw_Pn5190_Int_SetTmo(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wTimeout,
     uint8_t  bUnit
@@ -1153,7 +1166,8 @@ phStatus_t phhalHw_Pn5190_Int_SetTmo(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5190_Int_Retrieve_Data(
+phStatus_t
+phhalHw_Pn5190_Int_Retrieve_Data(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t **ppRxBuffer,
     uint16_t *pRxLength
@@ -1301,7 +1315,8 @@ phStatus_t phhalHw_Pn5190_Int_Retrieve_Data(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Int_ClearNSetRegFields(phhalHw_Pn5190_DataParams_t *pDataParams,
+phStatus_t
+phhalHw_Pn5190_Int_ClearNSetRegFields(phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bRegister, uint32_t dwMask, uint32_t dwPos, uint16_t wValue)
 {
   uint8_t     PH_MEMLOC_BUF wRegTypeValueSets[12] = {0};
@@ -1341,7 +1356,8 @@ phStatus_t phhalHw_Pn5190_Int_ClearNSetRegFields(phhalHw_Pn5190_DataParams_t *pD
  *  aISRReadBuf[3] = Length
  *  aISRReadBuf[4] = Value[0]
  */
-void phhalHw_Pn5190_ISR_Callback(void *pDataParams)
+void
+phhalHw_Pn5190_ISR_Callback(void *pDataParams)
 {
 #ifndef _WIN32
   uint32_t dwEventStatusReg = 0x0U;
@@ -1377,7 +1393,8 @@ void phhalHw_Pn5190_ISR_Callback(void *pDataParams)
 #endif
 }
 
-void phhalHw_Pn5190_Int_GuardTimeCallBck(void)
+void
+phhalHw_Pn5190_Int_GuardTimeCallBck(void)
 {
 #ifndef _WIN32
   if (xEventHandle != NULL) {
@@ -1390,7 +1407,8 @@ void phhalHw_Pn5190_Int_GuardTimeCallBck(void)
 #endif
 }
 
-void phhalHw_Pn5190_Int_WriteSSEL(
+void
+phhalHw_Pn5190_Int_WriteSSEL(
     void *pBalDataParams,
     uint8_t bValue
 )
@@ -1402,7 +1420,8 @@ void phhalHw_Pn5190_Int_WriteSSEL(
 #endif
 }
 
-phStatus_t phhalHw_Pn5190_Int_UserAbort(
+phStatus_t
+phhalHw_Pn5190_Int_UserAbort(
     phhalHw_Pn5190_DataParams_t *pDataParams
 )
 {
@@ -1433,7 +1452,8 @@ phStatus_t phhalHw_Pn5190_Int_UserAbort(
 #endif
 }
 
-phStatus_t phhalHw_Pn5190_Int_EventWait(
+phStatus_t
+phhalHw_Pn5190_Int_EventWait(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint32_t dwExpectedEvents,
     uint32_t dwEventTimeOut,

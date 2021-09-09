@@ -57,7 +57,8 @@ static phStatus_t phOsal_NullOs_ReturnUnsupportedCmd(void);
 
 static phStatus_t phOsal_Object_Take(HANDLE pObj, phOsal_TimerPeriodObj_t timePeriodToWait);
 
-static volatile phOsalWinOsEventHandle_t *getEventStructure(HANDLE eventHandle)
+static volatile phOsalWinOsEventHandle_t *
+getEventStructure(HANDLE eventHandle)
 {
   int i;
   for (i = 0 ; i < sizeof(gphOsalWinOsEventHandles) / sizeof(gphOsalWinOsEventHandles[0]); i++) {
@@ -69,7 +70,8 @@ static volatile phOsalWinOsEventHandle_t *getEventStructure(HANDLE eventHandle)
   return NULL;
 }
 
-phStatus_t phOsal_Init(void)
+phStatus_t
+phOsal_Init(void)
 {
   memset((void *)&gphOsalWinOsEventHandles[0], 0, sizeof(phOsalWinOsEventHandle_t));
   gdwEventBitMap = 0;
@@ -77,13 +79,15 @@ phStatus_t phOsal_Init(void)
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phOsal_ThreadDelete(phOsal_Thread_t *threadHandle)
+phStatus_t
+phOsal_ThreadDelete(phOsal_Thread_t *threadHandle)
 {
   UNUSED(threadHandle);
   return phOsal_NullOs_ReturnUnsupportedCmd();
 }
 
-phStatus_t phOsal_ThreadCreate(phOsal_Thread_t *threadHandle, pphOsal_ThreadObj_t threadObj,
+phStatus_t
+phOsal_ThreadCreate(phOsal_Thread_t *threadHandle, pphOsal_ThreadObj_t threadObj,
     pphOsal_StartFunc_t startFunc, void *arg)
 {
   UNUSED(threadHandle);
@@ -93,25 +97,29 @@ phStatus_t phOsal_ThreadCreate(phOsal_Thread_t *threadHandle, pphOsal_ThreadObj_
   return phOsal_NullOs_ReturnUnsupportedCmd();
 }
 
-phStatus_t phOsal_ThreadChangePrio(phOsal_Thread_t *threadHandle, uint32_t newPrio)
+phStatus_t
+phOsal_ThreadChangePrio(phOsal_Thread_t *threadHandle, uint32_t newPrio)
 {
   UNUSED(threadHandle);
   UNUSED(newPrio);
   return phOsal_NullOs_ReturnUnsupportedCmd();
 }
 
-phStatus_t phOsal_ThreadExit(void)
+phStatus_t
+phOsal_ThreadExit(void)
 {
   return phOsal_NullOs_ReturnUnsupportedCmd();
 }
 
-phStatus_t phOsal_ThreadDelay(phOsal_Ticks_t ticksToSleep)
+phStatus_t
+phOsal_ThreadDelay(phOsal_Ticks_t ticksToSleep)
 {
   Sleep(ticksToSleep);
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phOsal_EventCreate(phOsal_Event_t *eventHandle, pphOsal_EventObj_t eventObj)
+phStatus_t
+phOsal_EventCreate(phOsal_Event_t *eventHandle, pphOsal_EventObj_t eventObj)
 {
   uint32_t bEventIndex = 0;
   HANDLE OsalEventHandle;
@@ -148,7 +156,8 @@ phStatus_t phOsal_EventCreate(phOsal_Event_t *eventHandle, pphOsal_EventObj_t ev
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phOsal_EventPend(volatile phOsal_Event_t *eventHandle, phOsal_EventOpt_t options,
+phStatus_t
+phOsal_EventPend(volatile phOsal_Event_t *eventHandle, phOsal_EventOpt_t options,
     phOsal_Ticks_t ticksToWait,
     phOsal_EventBits_t FlagsToWait, phOsal_EventBits_t *pCurrFlags)
 {
@@ -224,7 +233,8 @@ phStatus_t phOsal_EventPend(volatile phOsal_Event_t *eventHandle, phOsal_EventOp
   return eStatus;
 }
 
-phStatus_t phOsal_EventPost(phOsal_Event_t *eventHandle, phOsal_EventOpt_t options,
+phStatus_t
+phOsal_EventPost(phOsal_Event_t *eventHandle, phOsal_EventOpt_t options,
     phOsal_EventBits_t FlagsToPost,
     phOsal_EventBits_t *pCurrFlags)
 {
@@ -254,7 +264,8 @@ phStatus_t phOsal_EventPost(phOsal_Event_t *eventHandle, phOsal_EventOpt_t optio
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phOsal_EventClear(phOsal_Event_t *eventHandle, phOsal_EventOpt_t options,
+phStatus_t
+phOsal_EventClear(phOsal_Event_t *eventHandle, phOsal_EventOpt_t options,
     phOsal_EventBits_t FlagsToClear,
     phOsal_EventBits_t *pCurrFlags)
 {
@@ -282,7 +293,8 @@ phStatus_t phOsal_EventClear(phOsal_Event_t *eventHandle, phOsal_EventOpt_t opti
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phOsal_EventGet(phOsal_Event_t   *eventHandle, phOsal_EventBits_t *pCurrFlags)
+phStatus_t
+phOsal_EventGet(phOsal_Event_t   *eventHandle, phOsal_EventBits_t *pCurrFlags)
 {
   phStatus_t statusTmp;
   phOsal_TimerPeriodObj_t timePeriodToWait;
@@ -306,7 +318,8 @@ phStatus_t phOsal_EventGet(phOsal_Event_t   *eventHandle, phOsal_EventBits_t *pC
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phOsal_EventDelete(phOsal_Event_t   *eventHandle)
+phStatus_t
+phOsal_EventDelete(phOsal_Event_t   *eventHandle)
 {
   phOsalWinOsEventHandle_t *ipEvHandle;
 
@@ -324,7 +337,8 @@ phStatus_t phOsal_EventDelete(phOsal_Event_t   *eventHandle)
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phOsal_SemCreate(phOsal_Semaphore_t *semHandle, pphOsal_SemObj_t semObj,
+phStatus_t
+phOsal_SemCreate(phOsal_Semaphore_t *semHandle, pphOsal_SemObj_t semObj,
     phOsal_SemOpt_t opt)
 {
   /* TODO : when binary semaphore update the max count here */
@@ -346,12 +360,14 @@ phStatus_t phOsal_SemCreate(phOsal_Semaphore_t *semHandle, pphOsal_SemObj_t semO
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phOsal_SemPend(phOsal_Semaphore_t *semHandle, phOsal_TimerPeriodObj_t timePeriodToWait)
+phStatus_t
+phOsal_SemPend(phOsal_Semaphore_t *semHandle, phOsal_TimerPeriodObj_t timePeriodToWait)
 {
   return phOsal_Object_Take((HANDLE) * semHandle, timePeriodToWait);
 }
 
-phStatus_t phOsal_SemPost(phOsal_Semaphore_t *semHandle, phOsal_SemOpt_t opt)
+phStatus_t
+phOsal_SemPost(phOsal_Semaphore_t *semHandle, phOsal_SemOpt_t opt)
 {
   UNUSED(opt);
   if (!ReleaseSemaphore((HANDLE) semHandle, 1, NULL)) {
@@ -361,7 +377,8 @@ phStatus_t phOsal_SemPost(phOsal_Semaphore_t *semHandle, phOsal_SemOpt_t opt)
   }
 }
 
-phStatus_t phOsal_SemDelete(phOsal_Semaphore_t *semHandle)
+phStatus_t
+phOsal_SemDelete(phOsal_Semaphore_t *semHandle)
 {
   if (semHandle == NULL) {
     return PH_ADD_COMPCODE(PH_ERR_INVALID_PARAMETER, PH_COMP_OSAL);
@@ -372,7 +389,8 @@ phStatus_t phOsal_SemDelete(phOsal_Semaphore_t *semHandle)
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phOsal_MutexCreate(phOsal_Mutex_t *mutexHandle, pphOsal_MutexObj_t mutexObj)
+phStatus_t
+phOsal_MutexCreate(phOsal_Mutex_t *mutexHandle, pphOsal_MutexObj_t mutexObj)
 {
   if ((mutexHandle == NULL) || (mutexObj == NULL)) {
     return (PH_ERR_INVALID_PARAMETER | PH_COMP_OSAL);
@@ -390,12 +408,14 @@ phStatus_t phOsal_MutexCreate(phOsal_Mutex_t *mutexHandle, pphOsal_MutexObj_t mu
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phOsal_MutexLock(phOsal_Mutex_t *mutexHandle, phOsal_TimerPeriodObj_t timePeriodToWait)
+phStatus_t
+phOsal_MutexLock(phOsal_Mutex_t *mutexHandle, phOsal_TimerPeriodObj_t timePeriodToWait)
 {
   return phOsal_Object_Take((HANDLE) * mutexHandle, timePeriodToWait);
 }
 
-phStatus_t phOsal_MutexUnLock(phOsal_Mutex_t *mutexHandle)
+phStatus_t
+phOsal_MutexUnLock(phOsal_Mutex_t *mutexHandle)
 {
   if (mutexHandle == NULL) {
     return (PH_ERR_INVALID_PARAMETER | PH_COMP_OSAL);
@@ -408,7 +428,8 @@ phStatus_t phOsal_MutexUnLock(phOsal_Mutex_t *mutexHandle)
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phOsal_MutexDelete(phOsal_Mutex_t *mutexHandle)
+phStatus_t
+phOsal_MutexDelete(phOsal_Mutex_t *mutexHandle)
 {
   if (mutexHandle == NULL) {
     return (PH_ERR_INVALID_PARAMETER | PH_COMP_OSAL);
@@ -417,7 +438,8 @@ phStatus_t phOsal_MutexDelete(phOsal_Mutex_t *mutexHandle)
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phOsal_TimerCreate(phOsal_Timer_t *timerHandle, pphOsal_TimerObj_t timerObj)
+phStatus_t
+phOsal_TimerCreate(phOsal_Timer_t *timerHandle, pphOsal_TimerObj_t timerObj)
 {
   if ((timerHandle == NULL) || (timerObj == NULL)) {
     return (PH_ERR_INVALID_PARAMETER | PH_COMP_OSAL);
@@ -434,7 +456,8 @@ phStatus_t phOsal_TimerCreate(phOsal_Timer_t *timerHandle, pphOsal_TimerObj_t ti
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phOsal_TimerStart(phOsal_Timer_t *timerHandle)
+phStatus_t
+phOsal_TimerStart(phOsal_Timer_t *timerHandle)
 {
   phOsal_TimerObj_t timerObj;
   uint32_t dwUnitCov[] = {(1000 * 10), (1000 * 1000 * 10)};
@@ -466,7 +489,8 @@ phStatus_t phOsal_TimerStart(phOsal_Timer_t *timerHandle)
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phOsal_TimerStop(phOsal_Timer_t *timerHandle)
+phStatus_t
+phOsal_TimerStop(phOsal_Timer_t *timerHandle)
 {
   if (timerHandle == NULL) {
     return (PH_ERR_INVALID_PARAMETER | PH_COMP_OSAL);
@@ -480,7 +504,8 @@ phStatus_t phOsal_TimerStop(phOsal_Timer_t *timerHandle)
 
 phStatus_t phOsal_TimerGetCurrent(phOsal_Timer_t *timerHandle, uint32_t *dwGetElapsedTime);
 
-phStatus_t phOsal_TimerModify(phOsal_Timer_t *timerHandle, pphOsal_TimerObj_t timerObj)
+phStatus_t
+phOsal_TimerModify(phOsal_Timer_t *timerHandle, pphOsal_TimerObj_t timerObj)
 {
   if ((timerHandle == NULL) || (timerObj == NULL)) {
     return (PH_ERR_INVALID_PARAMETER | PH_COMP_OSAL);
@@ -490,7 +515,8 @@ phStatus_t phOsal_TimerModify(phOsal_Timer_t *timerHandle, pphOsal_TimerObj_t ti
 
 }
 
-phStatus_t phOsal_TimerDelete(phOsal_Timer_t *timerHandle)
+phStatus_t
+phOsal_TimerDelete(phOsal_Timer_t *timerHandle)
 {
   if (timerHandle == NULL) {
     return (PH_ERR_INVALID_PARAMETER | PH_COMP_OSAL);
@@ -501,17 +527,20 @@ phStatus_t phOsal_TimerDelete(phOsal_Timer_t *timerHandle)
   return PH_ERR_SUCCESS;
 }
 
-void phOsal_StartScheduler(void)
+void
+phOsal_StartScheduler(void)
 {
   phOsal_NullOs_ReturnUnsupportedCmd();
 }
 
-static phStatus_t phOsal_NullOs_ReturnUnsupportedCmd(void)
+static phStatus_t
+phOsal_NullOs_ReturnUnsupportedCmd(void)
 {
   return (PH_ERR_UNSUPPORTED_COMMAND | PH_COMP_OSAL);
 }
 
-static phStatus_t phOsal_Object_Take(HANDLE pObj, phOsal_TimerPeriodObj_t timePeriodToWait)
+static phStatus_t
+phOsal_Object_Take(HANDLE pObj, phOsal_TimerPeriodObj_t timePeriodToWait)
 {
   uint32_t dwMilliseconds;
   uint32_t dwMsCov[] = {1, 1000};
@@ -533,7 +562,8 @@ static phStatus_t phOsal_Object_Take(HANDLE pObj, phOsal_TimerPeriodObj_t timePe
   return PH_ERR_SUCCESS;
 }
 
-static phStatus_t phOsal_NullOs_GetFreeIndex(uint32_t *dwFreeIndex, uint32_t dwBitMap,
+static phStatus_t
+phOsal_NullOs_GetFreeIndex(uint32_t *dwFreeIndex, uint32_t dwBitMap,
     uint32_t dwMaxLimit)
 {
   phStatus_t status;

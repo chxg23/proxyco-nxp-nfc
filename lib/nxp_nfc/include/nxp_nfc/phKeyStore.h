@@ -140,6 +140,127 @@ phStatus_t phKeyStore_Rc663_Init(
 /** @} */
 #endif /* NXPBUILD__PH_KEYSTORE_RC663 */
 
+#ifdef NXPBUILD__PH_KEYSTORE_SAMAV3
+
+#include <nxp_nfc/phhalHw.h>
+
+/** \defgroup phKeyStore_SamAV3 Component : SamAV3
+ * \brief SamAV3 implementation of the phSam interface
+ * @{
+ */
+
+#define PH_KEYSTORE_SAMAV3_ID										0x06		/**< ID for SamAV3 KeyStore component. */
+
+#define PH_KEYSTORE_SAMAV3_AV2_MODE									0x02		/**< Define the AV2 mode of the KeyStore */
+#define PH_KEYSTORE_SAMAV3_AV3_MODE									0x03		/**< Define the AV3 mode of the KeyStore */
+
+/** \name Key Classes. Should be used to set the ExtSET information. */
+/* @{ */
+#define PH_KEYSTORE_SAMAV3_KEY_CLASS_HOST							0x00U		/**< Configuring key entry as Host. */
+#define PH_KEYSTORE_SAMAV3_KEY_CLASS_PICC							0x01U		/**< Configuring key entry as PICC. */
+#define PH_KEYSTORE_SAMAV3_KEY_CLASS_OFFLINE_CHANGE					0x02U		/**< Configuring key entry as Offline Change. */
+#define PH_KEYSTORE_SAMAV3_KEY_CLASS_OFFLINE_CRYPTO					0x04U		/**< Configuring key entry as Offline Crypto. */
+#define PH_KEYSTORE_SAMAV3_KEY_CLASS_OFFLINE_UPLOAD					0x05U		/**< Configuring key entry as Offline Upload. */
+#define PH_KEYSTORE_SAMAV3_KEY_CLASS_OFFLINE_PERSO					0x06U		/**< Configuring key entry as Offline Perso. */
+/* @} */
+
+/** \name DES Key Options */
+/* @{ */
+#define PH_KEYSTORE_SAMAV3_DES_OPTION_DESFIRE4						0x00		/**< DESFire 4 compatibility mode. */
+#define PH_KEYSTORE_SAMAV3_DES_OPTION_ISO_CRC16						0x01		/**< ISO 10116 mode with CRC16 protection and 4 bytes MAC. */
+#define PH_KEYSTORE_SAMAV3_DES_OPTION_ISO_CRC32						0x02		/**< ISO 10116 mode with CRC32 protection and 8 bytes MAC. */
+/* @} */
+
+/** \name KeyStore Configs for SET configurations. */
+/* @{ */
+#define PH_KEYSTORE_SAMAV3_CONFIG_ALLOW_DUMP_SESSION_KEY			0x0000U		/**< Enable or Disable SAM_ChangeKeyMIFARE and SAM_DumpSessionKey command. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_KEEP_IV							0x0001U		/**< Enable or Disable the reset of init vector after a crypto command. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_PL_KEY							0x0002U		/**< Enable or Disable the Host key type to provide permissions for Cmd.PLExec execution. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_AUTH_KEY							0x0003U		/**< Enable or Disable Host Authentication with key other that MasterKey. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_DISABLE_KEY_ENTRY					0x0004U		/**< Enable or Disable Key Entry. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_LOCK_KEY							0x0005U		/**< Enable or Disable LockUnlock. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_DISABLE_CHANGE_KEY_PICC			0x0006U		/**< Enable or Disable writing the key to a PICC. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_DISABLE_DECRYPTION				0x0007U		/**< Enable or Disable SAM_DecipherData command. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_DISABLE_ENCRYPTION				0x0008U		/**< Enable or Disable SAM_EncipherData command. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_DISABLE_VERIFY_MAC				0x0009U		/**< Enable or Disable SAM_VerifyMAC command. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_DISABLE_GENERATE_MAC				0x000AU		/**< Enable or Disable SAM_GenerateMAC command. */
+/* @} */
+
+/** \name KeyStore Configs for ExtSET configurations. */
+/* @{ */
+#define PH_KEYSTORE_SAMAV3_CONFIG_KEYCLASS							0x000BU		/**< Key Class used in key store. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_ALLOW_DUMP_SECRET_KEY				0x000CU		/**< Enable or Disable SAM_DumpSecretKey command. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_MANDATE_KEY_DIVERSIFICATION		0x000DU		/**< Mandate or not key diversification. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_RESERVED_SAM_PRESONALIZATION		0x000EU		/**< Enable or disable the Key Entry for Sam Personalization. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_KEY_USAGE_INT_HOST				0x000FU		/**< Enable or disable the Key Entry usage by Internal Host. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_KEY_CHANGE_INT_HOST				0x0010U		/**< Enable or disable the Key Entry change by Internal Host. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_SESSION_KEY_USAGE_INT_HOST		0x0011U		/**< Enable or disable the Session Key usage by Internal Host. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_ALLOW_DUMP_SECRET_KEY_INT_HOST	0x0012U		/**< Enable or disable the dumping of Secret Key by Internal Host. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_ALLOW_DUMP_SESSION_KEY_INT_HOST	0x0013U		/**< Enable or disable the dumping of Session Key by Internal Host. */
+/* @} */
+
+/** \name KeyStore Configs for SAM Key Storage Table's Key Entry. */
+/* @{ */
+#define PH_KEYSTORE_SAMAV3_CONFIG_DF_AID							0x0014U		/**< DESFire application ID. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_DF_KEY_NO							0x0015U		/**< DESFire key number. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_KEYNO_CEK							0x0016U		/**< Key Number of Change Entry key. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_KEYV_CEK							0x0017U		/**< Key Version of Change Entry key. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_REF_NO_KUC						0x0018U		/**< Reference number of key usage counter. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_KEYNO_AEK							0x0019U		/**< Key Number of Access Entry key. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_KEYV_AEK							0x001AU		/**< Key Version of Access Entry key. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_KEYNO_CKUC						0x001BU		/**< Key Number of Change KUC. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_KEYV_CKUC							0x001CU		/**< Key Version of Change KUC. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_DES_KEY_OPTION					0x001DU		/**< Option for single DES and 2 Key Triple DES keys. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_KEYNO_MF_DIV_A					0x001EU		/**< Key Number used for MIFARE key A diversification. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_KEYV_MF_DIV_A						0x001FU		/**< Key Version used for MIFARE key A diversification. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_KEYNO_MF_DIV_B					0x0020U		/**< Key Number used for MIFARE key B diversification. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_KEYV_MF_DIV_B						0x0021U		/**< Key Version used for MIFARE key B diversification. */
+#define PH_KEYSTORE_SAMAV3_CONFIG_ENABLE_LRP						0x0022U		/**< The AES key to be used is for LRP algorithm. */
+/* @} */
+
+/** \brief Sam parameter structure */
+typedef struct {
+  uint16_t  wId;																/**< Layer ID for this component, NEVER MODIFY! */
+  phhalHw_SamAV3_DataParams_t
+  *pHalDataParams;								/**< Pointer to the parameter structure of the underlying layer.*/
+  uint8_t aSet[2];															/**< Configuration settings. */
+  uint8_t aExtSet[2];															/**< Extended configuration settings. */
+  uint8_t aDFAid[3];															/**< DESFire application ID. */
+  uint8_t bDFKeyNo;															/**< DESFire key number. */
+  uint8_t bKeyNoCEK;															/**< Key Number of Change Entry Key. */
+  uint8_t bKeyVCEK;															/**< Key Version of Change Entry Key. */
+  uint8_t bRefNoKUC;															/**< Reference number of key usage counter. */
+  uint8_t bKeyNoAEK;															/**< Key Number of Access Entry Key. */
+  uint8_t bKeyVAEK;															/**< Key Version of Access Entry Key. */
+  uint8_t bKeyNoCKUC;															/**< Key Number of Change KUC. */
+  uint8_t bKeyVCKUC;															/**< Key Version of Change KUC. */
+  uint8_t bKeyNoMfDivA;														/**< Key Number used for MIFARE key A diversification (has to point to a DES key). */
+  uint8_t bKeyVMfDivA;														/**< Key Version used for MIFARE key A diversification (has to point to a DES key). */
+  uint8_t bKeyNoMfDivB;														/**< Key Number used for MIFARE key B diversification (has to point to a DES key). */
+  uint8_t bKeyVMfDivB;														/**< Key Version used for MIFARE key B diversification (has to point to a DES key). */
+  uint8_t b2K3DESOption;														/**< Option for single DES and 2 Key Triple DES keys. Can be set either to
+																				 *   #PH_KEYSTORE_SAMAV3_DES_OPTION_DESFIRE4, #PH_KEYSTORE_SAMAV3_DES_OPTION_ISO_CRC16
+																				 *   or #PH_KEYSTORE_SAMAV3_DES_OPTION_ISO_CRC32
+																				 */
+  uint8_t bIsLRPKey;															/**< Option for LRP key type. If set indicated that the AES key is of LRP type. */
+} phKeyStore_SamAV3_DataParams_t;
+
+/**
+ * \brief Initialise this layer.
+ * \return Status code
+ * \retval #PH_ERR_SUCCESS Operation successful.
+ */
+phStatus_t phKeyStore_SamAV3_Init(
+    phKeyStore_SamAV3_DataParams_t
+    *pDataParams,							/**< [In] Pointer to this layer's parameter structure. */
+    uint16_t wSizeOfDataParams,												/**< [In] Specifies the size of the data parameter structure. */
+    phhalHw_SamAV3_DataParams_t
+    *pHalDataParams							/**< [In] Pointer to the parameter structure of the underlying layer.*/
+);
+
+/** @} */
+#endif /* NXPBUILD__PH_KEYSTORE_SAMAV3 */
+
 #ifdef NXPBUILD__PH_KEYSTORE
 
 /** \defgroup phKeyStore KeyStore

@@ -55,7 +55,8 @@ phhalHw_Rc663_DataParams_t     *pHal;
 *******************************************************************************/
 
 /* Configure LPCD (for CLRC663) */
-phStatus_t phApp_ConfigureLPCD(void)
+phStatus_t
+phApp_ConfigureLPCD(void)
 {
   phStatus_t status;
   uint8_t bValueI;
@@ -86,7 +87,8 @@ phStatus_t phApp_ConfigureLPCD(void)
   return status;
 }
 
-void CLIF_IRQHandler(void)
+void
+CLIF_IRQHandler(void)
 {
   /* Read the interrupt status of external interrupt attached to the reader IC IRQ pin */
   if (phDriver_PinRead(PHDRIVER_PIN_IRQ, PH_DRIVER_PINFUNC_INTERRUPT)) {

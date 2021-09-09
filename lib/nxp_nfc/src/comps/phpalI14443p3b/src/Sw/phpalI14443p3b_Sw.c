@@ -34,7 +34,8 @@
 #include "phpalI14443p3b_Sw.h"
 #include "phpalI14443p3b_Sw_Int.h"
 
-phStatus_t phpalI14443p3b_Sw_Init(
+phStatus_t
+phpalI14443p3b_Sw_Init(
     phpalI14443p3b_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pHalDataParams
@@ -73,7 +74,8 @@ phStatus_t phpalI14443p3b_Sw_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p3b_Sw_SetConfig(
+phStatus_t
+phpalI14443p3b_Sw_SetConfig(
     phpalI14443p3b_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -111,7 +113,8 @@ phStatus_t phpalI14443p3b_Sw_SetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p3b_Sw_GetConfig(
+phStatus_t
+phpalI14443p3b_Sw_GetConfig(
     phpalI14443p3b_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -133,7 +136,8 @@ phStatus_t phpalI14443p3b_Sw_GetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p3b_Sw_RequestB(
+phStatus_t
+phpalI14443p3b_Sw_RequestB(
     phpalI14443p3b_Sw_DataParams_t *pDataParams,
     uint8_t bNumSlots,
     uint8_t bAfi,
@@ -145,7 +149,8 @@ phStatus_t phpalI14443p3b_Sw_RequestB(
   return phpalI14443p3b_Sw_RequestBEx(pDataParams, 0, bNumSlots, bAfi, bExtAtqb, pAtqb, pAtqbLen);
 }
 
-phStatus_t phpalI14443p3b_Sw_WakeUpB(
+phStatus_t
+phpalI14443p3b_Sw_WakeUpB(
     phpalI14443p3b_Sw_DataParams_t *pDataParams,
     uint8_t bNumSlots,
     uint8_t bAfi,
@@ -157,7 +162,8 @@ phStatus_t phpalI14443p3b_Sw_WakeUpB(
   return phpalI14443p3b_Sw_RequestBEx(pDataParams, 1, bNumSlots, bAfi, bExtAtqb, pAtqb, pAtqbLen);
 }
 
-phStatus_t phpalI14443p3b_Sw_SlotMarker(
+phStatus_t
+phpalI14443p3b_Sw_SlotMarker(
     phpalI14443p3b_Sw_DataParams_t *pDataParams,
     uint8_t bSlotNumber,
     uint8_t *pAtqb,
@@ -197,7 +203,8 @@ phStatus_t phpalI14443p3b_Sw_SlotMarker(
       );
 }
 
-phStatus_t phpalI14443p3b_Sw_HaltB(
+phStatus_t
+phpalI14443p3b_Sw_HaltB(
     phpalI14443p3b_Sw_DataParams_t *pDataParams
 )
 {
@@ -235,7 +242,8 @@ phStatus_t phpalI14443p3b_Sw_HaltB(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p3b_Sw_Attrib(
+phStatus_t
+phpalI14443p3b_Sw_Attrib(
     phpalI14443p3b_Sw_DataParams_t *pDataParams,
     uint8_t *pAtqb,
     uint8_t bAtqbLen,
@@ -527,7 +535,8 @@ phStatus_t phpalI14443p3b_Sw_Attrib(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p3b_Sw_ActivateCard(
+phStatus_t
+phpalI14443p3b_Sw_ActivateCard(
     phpalI14443p3b_Sw_DataParams_t *pDataParams,
     uint8_t *pPupi,
     uint8_t  bPupiLength,
@@ -683,7 +692,8 @@ phStatus_t phpalI14443p3b_Sw_ActivateCard(
   return status;
 }
 
-phStatus_t phpalI14443p3b_Sw_Exchange(
+phStatus_t
+phpalI14443p3b_Sw_Exchange(
     phpalI14443p3b_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -702,7 +712,8 @@ phStatus_t phpalI14443p3b_Sw_Exchange(
           pRxLength);
 }
 
-phStatus_t phpalI14443p3b_Sw_GetSerialNo(
+phStatus_t
+phpalI14443p3b_Sw_GetSerialNo(
     phpalI14443p3b_Sw_DataParams_t *pDataParams,
     uint8_t *pPupi
 )
@@ -718,7 +729,8 @@ phStatus_t phpalI14443p3b_Sw_GetSerialNo(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p3b_Sw_SetHigherLayerInf(
+phStatus_t
+phpalI14443p3b_Sw_SetHigherLayerInf(
     phpalI14443p3b_Sw_DataParams_t *pDataParams,
     uint8_t *pTxBuffer,
     uint16_t  wTxLength,
@@ -734,7 +746,8 @@ phStatus_t phpalI14443p3b_Sw_SetHigherLayerInf(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p3b_Sw_GetHigherLayerResp(
+phStatus_t
+phpalI14443p3b_Sw_GetHigherLayerResp(
     phpalI14443p3b_Sw_DataParams_t *pDataParams,
     uint8_t **pRxBuffer,
     uint16_t *pRxLength
@@ -746,7 +759,8 @@ phStatus_t phpalI14443p3b_Sw_GetHigherLayerResp(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p3b_Sw_GetProtocolParams(
+phStatus_t
+phpalI14443p3b_Sw_GetProtocolParams(
     phpalI14443p3b_Sw_DataParams_t *pDataParams,
     uint8_t *pCidEnabled,
     uint8_t *pCid,
@@ -766,7 +780,8 @@ phStatus_t phpalI14443p3b_Sw_GetProtocolParams(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p3b_Sw_CheckATQBEx(
+phStatus_t
+phpalI14443p3b_Sw_CheckATQBEx(
     phpalI14443p3b_Sw_DataParams_t *pDataParams,
     uint8_t *pResp,
     uint16_t wRespLength,
@@ -863,7 +878,8 @@ phStatus_t phpalI14443p3b_Sw_CheckATQBEx(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p3b_Sw_RequestBEx(
+phStatus_t
+phpalI14443p3b_Sw_RequestBEx(
     phpalI14443p3b_Sw_DataParams_t *pDataParams,
     uint8_t bIsWakeUp,
     uint8_t bNumSlots,
@@ -952,7 +968,8 @@ phStatus_t phpalI14443p3b_Sw_RequestBEx(
       );
 }
 
-phStatus_t phpalI14443p3b_Sw_SetReaderBaudRateEx(phpalI14443p3b_Sw_DataParams_t *pDataParams)
+phStatus_t
+phpalI14443p3b_Sw_SetReaderBaudRateEx(phpalI14443p3b_Sw_DataParams_t *pDataParams)
 {
   phStatus_t  PH_MEMLOC_REM statusTmp;
   uint16_t    PH_MEMLOC_REM wTxDataRate;
@@ -1004,7 +1021,8 @@ phStatus_t phpalI14443p3b_Sw_SetReaderBaudRateEx(phpalI14443p3b_Sw_DataParams_t 
 
 }
 
-phStatus_t phpalI14443p3b_Sw_DecideBaudRateEx(uint8_t bBitRateCapability, uint8_t *pbDri,
+phStatus_t
+phpalI14443p3b_Sw_DecideBaudRateEx(uint8_t bBitRateCapability, uint8_t *pbDri,
     uint8_t *pbDsi)
 {
   uint8_t bMaxSymBitRate = 0;
@@ -1119,7 +1137,8 @@ phStatus_t phpalI14443p3b_Sw_DecideBaudRateEx(uint8_t bBitRateCapability, uint8_
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI14443p3b_Sw_SetSerialNo(phpalI14443p3b_Sw_DataParams_t *pDataParams,
+phStatus_t
+phpalI14443p3b_Sw_SetSerialNo(phpalI14443p3b_Sw_DataParams_t *pDataParams,
     uint8_t *pPupi)
 {
   (void)memcpy(pDataParams->pPupi, pPupi, (uint32_t)(sizeof(pDataParams->pPupi)));

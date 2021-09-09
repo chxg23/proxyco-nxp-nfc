@@ -39,7 +39,8 @@
 #include "phalMfdf_Sw.h"
 #include "phalMfdf_Sw_Int.h"
 
-phStatus_t phalMfdf_Sw_Init(
+phStatus_t
+phalMfdf_Sw_Init(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pPalMifareDataParams,
@@ -93,7 +94,8 @@ phStatus_t phalMfdf_Sw_Init(
 
 #ifdef NXPBUILD__PH_NDA_MFDF
 
-phStatus_t phalMfdf_Sw_Authenticate(
+phStatus_t
+phalMfdf_Sw_Authenticate(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint16_t wKeyNo,
@@ -322,7 +324,8 @@ phStatus_t phalMfdf_Sw_Authenticate(
       );
 }
 
-phStatus_t phalMfdf_Sw_AuthenticateISO(
+phStatus_t
+phalMfdf_Sw_AuthenticateISO(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint16_t wKeyNo,
@@ -608,7 +611,8 @@ phStatus_t phalMfdf_Sw_AuthenticateISO(
           PH_CRYPTOSYM_VALUE_KEEP_IV_ON);
 }
 
-phStatus_t phalMfdf_Sw_AuthenticateAES(
+phStatus_t
+phalMfdf_Sw_AuthenticateAES(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint16_t wKeyNo,
@@ -841,7 +845,8 @@ phStatus_t phalMfdf_Sw_AuthenticateAES(
       );
 }
 
-phStatus_t phalMfdf_Sw_ChangeKeySettings(
+phStatus_t
+phalMfdf_Sw_ChangeKeySettings(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bKeySettings
 )
@@ -871,7 +876,8 @@ phStatus_t phalMfdf_Sw_ChangeKeySettings(
       );
 }
 
-phStatus_t phalMfdf_Sw_GetKeySettings(
+phStatus_t
+phalMfdf_Sw_GetKeySettings(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t *pResponse
 )
@@ -903,7 +909,8 @@ phStatus_t phalMfdf_Sw_GetKeySettings(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdf_Sw_ChangeKey(
+phStatus_t
+phalMfdf_Sw_ChangeKey(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint16_t wOldKeyNo,
@@ -1402,7 +1409,8 @@ phStatus_t phalMfdf_Sw_ChangeKey(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdf_Sw_GetKeyVersion(
+phStatus_t
+phalMfdf_Sw_GetKeyVersion(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bKeyNo,
     uint8_t *pResponse
@@ -1444,7 +1452,8 @@ phStatus_t phalMfdf_Sw_GetKeyVersion(
 /**
 * PICC level commands
 */
-phStatus_t phalMfdf_Sw_CreateApplication(
+phStatus_t
+phalMfdf_Sw_CreateApplication(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bOption,
     uint8_t *pAid,
@@ -1500,7 +1509,8 @@ phStatus_t phalMfdf_Sw_CreateApplication(
 
 #ifdef NXPBUILD__PH_NDA_MFDF
 
-phStatus_t phalMfdf_Sw_DeleteApplication(
+phStatus_t
+phalMfdf_Sw_DeleteApplication(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t *pAppId
 )
@@ -1523,7 +1533,8 @@ phStatus_t phalMfdf_Sw_DeleteApplication(
       );
 }
 
-phStatus_t phalMfdf_Sw_GetApplicationIDs(
+phStatus_t
+phalMfdf_Sw_GetApplicationIDs(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t *pResponse,
     uint8_t *pNumAIDs
@@ -1568,7 +1579,8 @@ phStatus_t phalMfdf_Sw_GetApplicationIDs(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdf_Sw_GetDFNames(
+phStatus_t
+phalMfdf_Sw_GetDFNames(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t  bOption,
     uint8_t *pDFBuffer,
@@ -1643,7 +1655,8 @@ phStatus_t phalMfdf_Sw_GetDFNames(
 
 #endif /* NXPBUILD__PH_NDA_MFDF */
 
-phStatus_t phalMfdf_Sw_SelectApplication(
+phStatus_t
+phalMfdf_Sw_SelectApplication(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t *pAppId
 )
@@ -1686,7 +1699,8 @@ phStatus_t phalMfdf_Sw_SelectApplication(
 
 #ifdef NXPBUILD__PH_NDA_MFDF
 
-phStatus_t phalMfdf_Sw_FormatPICC(
+phStatus_t
+phalMfdf_Sw_FormatPICC(
     phalMfdf_Sw_DataParams_t *pDataParams
 )
 {
@@ -1700,7 +1714,8 @@ phStatus_t phalMfdf_Sw_FormatPICC(
 
 #endif /* NXPBUILD__PH_NDA_MFDF */
 
-phStatus_t phalMfdf_Sw_GetVersion(
+phStatus_t
+phalMfdf_Sw_GetVersion(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t *pResponse
 )
@@ -1734,7 +1749,8 @@ phStatus_t phalMfdf_Sw_GetVersion(
 
 #ifdef NXPBUILD__PH_NDA_MFDF
 
-phStatus_t phalMfdf_Sw_FreeMem(
+phStatus_t
+phalMfdf_Sw_FreeMem(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t *pResponse
 )
@@ -1764,7 +1780,8 @@ phStatus_t phalMfdf_Sw_FreeMem(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdf_Sw_SetConfiguration(
+phStatus_t
+phalMfdf_Sw_SetConfiguration(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bOption,
     uint8_t *pData,
@@ -1814,7 +1831,8 @@ phStatus_t phalMfdf_Sw_SetConfiguration(
       );
 }
 
-phStatus_t phalMfdf_Sw_GetCardUID(
+phStatus_t
+phalMfdf_Sw_GetCardUID(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t *pResponse
 )
@@ -1847,7 +1865,8 @@ phStatus_t phalMfdf_Sw_GetCardUID(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdf_Sw_GetFileIDs(
+phStatus_t
+phalMfdf_Sw_GetFileIDs(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t *pResponse,
     uint8_t *bNumFIDs
@@ -1878,7 +1897,8 @@ phStatus_t phalMfdf_Sw_GetFileIDs(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdf_Sw_GetISOFileIDs(
+phStatus_t
+phalMfdf_Sw_GetISOFileIDs(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t *pResponse,
     uint8_t *pNumFIDs
@@ -1917,7 +1937,8 @@ phStatus_t phalMfdf_Sw_GetISOFileIDs(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdf_Sw_GetFileSettings(
+phStatus_t
+phalMfdf_Sw_GetFileSettings(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bFileNo,
     uint8_t *pResponse,
@@ -1960,7 +1981,8 @@ phStatus_t phalMfdf_Sw_GetFileSettings(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdf_Sw_ChangeFileSettings(
+phStatus_t
+phalMfdf_Sw_ChangeFileSettings(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bOption,
     uint8_t bFileNo,
@@ -2012,7 +2034,8 @@ phStatus_t phalMfdf_Sw_ChangeFileSettings(
 
 #endif /* NXPBUILD__PH_NDA_MFDF */
 
-phStatus_t phalMfdf_Sw_CreateStdDataFile(
+phStatus_t
+phalMfdf_Sw_CreateStdDataFile(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bOption,
     uint8_t bFileNo,
@@ -2088,7 +2111,8 @@ phStatus_t phalMfdf_Sw_CreateStdDataFile(
 
 #ifdef NXPBUILD__PH_NDA_MFDF
 
-phStatus_t phalMfdf_Sw_CreateBackupDataFile(
+phStatus_t
+phalMfdf_Sw_CreateBackupDataFile(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bOption,
     uint8_t bFileNo,
@@ -2142,7 +2166,8 @@ phStatus_t phalMfdf_Sw_CreateBackupDataFile(
       );
 }
 
-phStatus_t phalMfdf_Sw_CreateValueFile(
+phStatus_t
+phalMfdf_Sw_CreateValueFile(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bFileNo,
     uint8_t bCommSett,
@@ -2195,7 +2220,8 @@ phStatus_t phalMfdf_Sw_CreateValueFile(
       );
 }
 
-phStatus_t phalMfdf_Sw_CreateLinearRecordFile(
+phStatus_t
+phalMfdf_Sw_CreateLinearRecordFile(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bOption,
     uint8_t  bFileNo,
@@ -2250,7 +2276,8 @@ phStatus_t phalMfdf_Sw_CreateLinearRecordFile(
       );
 }
 
-phStatus_t phalMfdf_Sw_CreateCyclicRecordFile(
+phStatus_t
+phalMfdf_Sw_CreateCyclicRecordFile(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bOption,
     uint8_t  bFileNo,
@@ -2305,7 +2332,8 @@ phStatus_t phalMfdf_Sw_CreateCyclicRecordFile(
       );
 }
 
-phStatus_t phalMfdf_Sw_DeleteFile(
+phStatus_t
+phalMfdf_Sw_DeleteFile(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bFileNo
 )
@@ -2337,7 +2365,8 @@ phStatus_t phalMfdf_Sw_DeleteFile(
 * \name Data Manipulation Commands
 */
 
-phStatus_t phalMfdf_Sw_ReadData(
+phStatus_t
+phalMfdf_Sw_ReadData(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bOption,
     uint8_t bFileNo,
@@ -2415,7 +2444,8 @@ phStatus_t phalMfdf_Sw_ReadData(
 
 #endif /* NXPBUILD__PH_NDA_MFDF */
 
-phStatus_t phalMfdf_Sw_WriteData(
+phStatus_t
+phalMfdf_Sw_WriteData(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bCommOption,
     uint8_t bFileNo,
@@ -2516,7 +2546,8 @@ phStatus_t phalMfdf_Sw_WriteData(
 
 #ifdef NXPBUILD__PH_NDA_MFDF
 
-phStatus_t phalMfdf_Sw_GetValue(
+phStatus_t
+phalMfdf_Sw_GetValue(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bCommOption,
     uint8_t bFileNo,
@@ -2576,7 +2607,8 @@ phStatus_t phalMfdf_Sw_GetValue(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdf_Sw_Credit(
+phStatus_t
+phalMfdf_Sw_Credit(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bCommOption,
     uint8_t bFileNo,
@@ -2621,7 +2653,8 @@ phStatus_t phalMfdf_Sw_Credit(
   }
 }
 
-phStatus_t phalMfdf_Sw_Debit(
+phStatus_t
+phalMfdf_Sw_Debit(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bCommOption,
     uint8_t bFileNo,
@@ -2666,7 +2699,8 @@ phStatus_t phalMfdf_Sw_Debit(
   }
 }
 
-phStatus_t phalMfdf_Sw_LimitedCredit(
+phStatus_t
+phalMfdf_Sw_LimitedCredit(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bCommOption,
     uint8_t bFileNo,
@@ -2711,7 +2745,8 @@ phStatus_t phalMfdf_Sw_LimitedCredit(
   }
 }
 
-phStatus_t phalMfdf_Sw_WriteRecord(
+phStatus_t
+phalMfdf_Sw_WriteRecord(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bCommOption,
     uint8_t bFileNo,
@@ -2772,7 +2807,8 @@ phStatus_t phalMfdf_Sw_WriteRecord(
   }
 }
 
-phStatus_t phalMfdf_Sw_ReadRecords(
+phStatus_t
+phalMfdf_Sw_ReadRecords(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bCommOption,
     uint8_t bFileNo,
@@ -2865,7 +2901,8 @@ phStatus_t phalMfdf_Sw_ReadRecords(
   return status;
 }
 
-phStatus_t phalMfdf_Sw_ClearRecordFile(
+phStatus_t
+phalMfdf_Sw_ClearRecordFile(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bFileNo
 )
@@ -2891,7 +2928,8 @@ phStatus_t phalMfdf_Sw_ClearRecordFile(
       );
 }
 
-phStatus_t phalMfdf_Sw_CommitTransaction(
+phStatus_t
+phalMfdf_Sw_CommitTransaction(
     phalMfdf_Sw_DataParams_t *pDataParams
 )
 {
@@ -2911,7 +2949,8 @@ phStatus_t phalMfdf_Sw_CommitTransaction(
       );
 }
 
-phStatus_t phalMfdf_Sw_AbortTransaction(
+phStatus_t
+phalMfdf_Sw_AbortTransaction(
     phalMfdf_Sw_DataParams_t *pDataParams
 )
 {
@@ -2933,7 +2972,8 @@ phStatus_t phalMfdf_Sw_AbortTransaction(
 
 #endif /* NXPBUILD__PH_NDA_MFDF */
 
-phStatus_t phalMfdf_Sw_IsoSelectFile(
+phStatus_t
+phalMfdf_Sw_IsoSelectFile(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bOption,
     uint8_t bSelector,
@@ -3001,7 +3041,8 @@ phStatus_t phalMfdf_Sw_IsoSelectFile(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdf_Sw_IsoReadBinary(
+phStatus_t
+phalMfdf_Sw_IsoReadBinary(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t bOffset,
@@ -3053,7 +3094,8 @@ phStatus_t phalMfdf_Sw_IsoReadBinary(
       );
 }
 
-phStatus_t phalMfdf_Sw_IsoUpdateBinary(
+phStatus_t
+phalMfdf_Sw_IsoUpdateBinary(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bOffset,
     uint8_t bSfid,
@@ -3108,7 +3150,8 @@ phStatus_t phalMfdf_Sw_IsoUpdateBinary(
 
 #ifdef NXPBUILD__PH_NDA_MFDF
 
-phStatus_t phalMfdf_Sw_IsoReadRecords(
+phStatus_t
+phalMfdf_Sw_IsoReadRecords(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t bRecNo,
@@ -3163,7 +3206,8 @@ phStatus_t phalMfdf_Sw_IsoReadRecords(
       );
 }
 
-phStatus_t phalMfdf_Sw_IsoAppendRecord(
+phStatus_t
+phalMfdf_Sw_IsoAppendRecord(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t bSfid,
     uint8_t *pData,
@@ -3204,7 +3248,8 @@ phStatus_t phalMfdf_Sw_IsoAppendRecord(
   return status;
 }
 
-phStatus_t phalMfdf_Sw_IsoGetChallenge(
+phStatus_t
+phalMfdf_Sw_IsoGetChallenge(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint16_t wKeyNo,
     uint16_t wKeyVer,
@@ -3263,7 +3308,8 @@ phStatus_t phalMfdf_Sw_IsoGetChallenge(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdf_Sw_IsoExternalAuthenticate(
+phStatus_t
+phalMfdf_Sw_IsoExternalAuthenticate(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t *pInput,
     uint8_t bInputLen,
@@ -3430,7 +3476,8 @@ phStatus_t phalMfdf_Sw_IsoExternalAuthenticate(
   return statusTmp;
 }
 
-phStatus_t phalMfdf_Sw_IsoInternalAuthenticate(
+phStatus_t
+phalMfdf_Sw_IsoInternalAuthenticate(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint8_t *pInput,
     uint8_t bInputLen,
@@ -3596,7 +3643,8 @@ phStatus_t phalMfdf_Sw_IsoInternalAuthenticate(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phalMfdf_Sw_IsoAuthenticate(
+phStatus_t
+phalMfdf_Sw_IsoAuthenticate(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint16_t wKeyNo,
     uint16_t wKeyVer,
@@ -3789,7 +3837,8 @@ phStatus_t phalMfdf_Sw_IsoAuthenticate(
 
 #endif /* NXPBUILD__PH_NDA_MFDF */
 
-phStatus_t phalMfdf_Sw_GetConfig(
+phStatus_t
+phalMfdf_Sw_GetConfig(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -3805,7 +3854,8 @@ phStatus_t phalMfdf_Sw_GetConfig(
   }
   return PH_ERR_SUCCESS;
 }
-phStatus_t phalMfdf_Sw_SetConfig(
+phStatus_t
+phalMfdf_Sw_SetConfig(
     phalMfdf_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -3823,7 +3873,8 @@ phStatus_t phalMfdf_Sw_SetConfig(
 }
 
 #ifdef NXPBUILD__PH_NDA_MFDF
-phStatus_t phalMfdf_Sw_ResetAuthStatus(
+phStatus_t
+phalMfdf_Sw_ResetAuthStatus(
     phalMfdf_Sw_DataParams_t *pDataParams
 )
 {

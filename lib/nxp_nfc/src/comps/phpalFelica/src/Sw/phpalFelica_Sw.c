@@ -45,7 +45,8 @@ static const uint16_t PH_MEMLOC_CONST_ROM aFelica_TR1_Value_Us[][2] = {
   {PHPAL_FELICA_SW_TR1_72BITS_AT212_US, PHPAL_FELICA_SW_TR1_72BITS_AT424_US},
 };
 
-phStatus_t phpalFelica_Sw_Init(
+phStatus_t
+phpalFelica_Sw_Init(
     phpalFelica_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pHalDataParams
@@ -69,7 +70,8 @@ phStatus_t phpalFelica_Sw_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalFelica_Sw_ReqC(
+phStatus_t
+phpalFelica_Sw_ReqC(
     phpalFelica_Sw_DataParams_t *pDataParams,
     uint8_t *pSystemCode,
     uint8_t  bNumTimeSlots,
@@ -202,7 +204,8 @@ phStatus_t phpalFelica_Sw_ReqC(
 
   return PH_ERR_SUCCESS;
 }
-phStatus_t  phpalFelica_Sw_GetFrameInfo(
+phStatus_t
+phpalFelica_Sw_GetFrameInfo(
     phpalFelica_Sw_DataParams_t *pDataParams,
     uint8_t bFrameNum,
     uint8_t *pResponseBuffer,
@@ -278,7 +281,8 @@ phStatus_t  phpalFelica_Sw_GetFrameInfo(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalFelica_Sw_SetSerialNo(
+phStatus_t
+phpalFelica_Sw_SetSerialNo(
     phpalFelica_Sw_DataParams_t *pDataParams,
     uint8_t *pIDmPMm
 )
@@ -292,7 +296,8 @@ phStatus_t phpalFelica_Sw_SetSerialNo(
 
 }
 
-phStatus_t phpalFelica_Sw_ActivateCard(
+phStatus_t
+phpalFelica_Sw_ActivateCard(
     phpalFelica_Sw_DataParams_t *pDataParams,
     uint8_t *pIDmPMm,
     uint8_t bIDmPMmLength,
@@ -389,7 +394,8 @@ phStatus_t phpalFelica_Sw_ActivateCard(
   return status;
 }
 
-phStatus_t phpalFelica_Sw_Exchange(
+phStatus_t
+phpalFelica_Sw_Exchange(
     phpalFelica_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint16_t wN,
@@ -658,7 +664,8 @@ phStatus_t phpalFelica_Sw_Exchange(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalFelica_Sw_SetConfig(
+phStatus_t
+phpalFelica_Sw_SetConfig(
     phpalFelica_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -690,7 +697,8 @@ phStatus_t phpalFelica_Sw_SetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalFelica_Sw_GetConfig(
+phStatus_t
+phpalFelica_Sw_GetConfig(
     phpalFelica_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -711,7 +719,8 @@ phStatus_t phpalFelica_Sw_GetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalFelica_Sw_GetSerialNo(
+phStatus_t
+phpalFelica_Sw_GetSerialNo(
     phpalFelica_Sw_DataParams_t *pDataParams,
     uint8_t *pIDmPMmOut,
     uint8_t *pLenIDmPMmOut

@@ -77,7 +77,8 @@ uint32_t g_Raw_Data_Index = 0;
 /**
 * This function will initialize Hal Target Config
 */
-phStatus_t phApp_HALConfigAutoColl(void)
+phStatus_t
+phApp_HALConfigAutoColl(void)
 {
 #ifdef NXPBUILD__PHHAL_HW_TARGET
   phStatus_t wStatus;
@@ -108,7 +109,8 @@ phStatus_t phApp_HALConfigAutoColl(void)
 }
 
 /* Read the data over SPI */
-phStatus_t phApp_Pn5190_SPIRead(uint8_t *pRxBuffer,
+phStatus_t
+phApp_Pn5190_SPIRead(uint8_t *pRxBuffer,
     uint16_t wRxLength)
 {
   phStatus_t  PH_MEMLOC_REM status = PH_ERR_SUCCESS;
@@ -158,7 +160,8 @@ phStatus_t phApp_Pn5190_SPIRead(uint8_t *pRxBuffer,
 
 volatile uint8_t bSkipEventPost = 0x0U;
 /* Application callback to handle Asynchronous events which cannot be processed by RdLib */
-void phApp_CallBack(void)
+void
+phApp_CallBack(void)
 {
   uint32_t dwEventStatusReg = 0x0U;
   uint16_t wEventLen = 0x0U;
@@ -206,7 +209,8 @@ void phApp_CallBack(void)
 }
 
 /* Configure LPCD (for PN5190) */
-phStatus_t phApp_ConfigureLPCD(void)
+phStatus_t
+phApp_ConfigureLPCD(void)
 {
   phStatus_t status = PH_ERR_SUCCESS;
 
@@ -238,7 +242,8 @@ phStatus_t phApp_ConfigureLPCD(void)
   return status;
 }
 
-void CLIF_IRQHandler(void)
+void
+CLIF_IRQHandler(void)
 {
   /* Read the interrupt status of external interrupt attached to the reader IC IRQ pin */
   if (phDriver_PinRead(PHDRIVER_PIN_IRQ, PH_DRIVER_PINFUNC_INTERRUPT)) {

@@ -29,7 +29,8 @@
 #ifdef NXPBUILD__PHPAL_I18092MT_SW
 #include "phpalI18092mT_Sw.h"
 #include "phpalI18092mT_Sw_Int.h"
-phStatus_t phpalI18092mT_Sw_WriteFrameHeader(
+phStatus_t
+phpalI18092mT_Sw_WriteFrameHeader(
     phpalI18092mT_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t bCommandCode,
@@ -61,7 +62,8 @@ phStatus_t phpalI18092mT_Sw_WriteFrameHeader(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mT_Sw_ValidateAndNormalizeResponseFrame(
+phStatus_t
+phpalI18092mT_Sw_ValidateAndNormalizeResponseFrame(
     phpalI18092mT_Sw_DataParams_t *pDataParams,
     uint8_t *pFrame,
     uint16_t wFrameLength,
@@ -194,7 +196,8 @@ phStatus_t phpalI18092mT_Sw_ValidateAndNormalizeResponseFrame(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mT_Sw_GetPduHeaderLength(
+phStatus_t
+phpalI18092mT_Sw_GetPduHeaderLength(
     phpalI18092mT_Sw_DataParams_t *pDataParams,
     uint8_t *pProtLength
 )
@@ -221,7 +224,8 @@ phStatus_t phpalI18092mT_Sw_GetPduHeaderLength(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mT_Sw_UpdatePduHeader(
+phStatus_t
+phpalI18092mT_Sw_UpdatePduHeader(
     phpalI18092mT_Sw_DataParams_t *pDataParams,
     uint8_t bDataLength
 )
@@ -260,7 +264,8 @@ phStatus_t phpalI18092mT_Sw_UpdatePduHeader(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mT_Sw_WritePduHeader(
+phStatus_t
+phpalI18092mT_Sw_WritePduHeader(
     phpalI18092mT_Sw_DataParams_t *pDataParams,
     uint8_t bPduMask,
     uint8_t bOption,
@@ -320,7 +325,8 @@ phStatus_t phpalI18092mT_Sw_WritePduHeader(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mT_Sw_PerformTxChaining(
+phStatus_t
+phpalI18092mT_Sw_PerformTxChaining(
     phpalI18092mT_Sw_DataParams_t *pDataParams,
     uint16_t   wOption,
     uint16_t wBytesToSend,
@@ -406,7 +412,8 @@ phStatus_t phpalI18092mT_Sw_PerformTxChaining(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mT_Sw_ResponseToPfb(phpalI18092mT_Sw_DataParams_t *pDataParams,
+phStatus_t
+phpalI18092mT_Sw_ResponseToPfb(phpalI18092mT_Sw_DataParams_t *pDataParams,
     uint8_t bPfbMask)
 {
   phStatus_t  PH_MEMLOC_REM status;
@@ -462,7 +469,8 @@ phStatus_t phpalI18092mT_Sw_ResponseToPfb(phpalI18092mT_Sw_DataParams_t *pDataPa
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phpalI18092mT_Sw_HandlechainedData(
+phStatus_t
+phpalI18092mT_Sw_HandlechainedData(
     phpalI18092mT_Sw_DataParams_t *pDataParams,
     uint8_t *pRxBuf,
     uint16_t  wRxLen,
@@ -512,7 +520,8 @@ phStatus_t phpalI18092mT_Sw_HandlechainedData(
   return PH_ADD_COMPCODE_FIXED(PH_ERR_INTERNAL_ERROR, PH_COMP_PAL_I18092MT);
 }
 
-phStatus_t phpalI18092mT_Sw_ValidatePfb(phpalI18092mT_Sw_DataParams_t *pDataParams,
+phStatus_t
+phpalI18092mT_Sw_ValidatePfb(phpalI18092mT_Sw_DataParams_t *pDataParams,
     uint8_t bPfb,
     uint8_t *bDataRec
 )

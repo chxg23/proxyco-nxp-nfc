@@ -49,7 +49,8 @@ static phStatus_t phNfcLib_18000p3m3_ReqRN(void);
 static phStatus_t phNfcLib_18000p3m3_Exchange(uint8_t bSymbol, uint8_t bTxLastBits,
     uint16_t wTimeout, uint8_t *pCmd, uint16_t wCmdLength, uint16_t *pRxLastBits);
 
-phStatus_t phNfcLib_ISO18000_Transmit(void *const pTxBuffer, uint16_t wTxBufferLength)
+phStatus_t
+phNfcLib_ISO18000_Transmit(void *const pTxBuffer, uint16_t wTxBufferLength)
 {
   uint8_t    bCmd[10] = {0};
   uint16_t   wCmdLength = 0;
@@ -957,7 +958,8 @@ phStatus_t phNfcLib_ISO18000_Transmit(void *const pTxBuffer, uint16_t wTxBufferL
   return statusTmp;
 }
 
-static phStatus_t phNfcLib_18000p3m3_ReqRN(void)
+static phStatus_t
+phNfcLib_18000p3m3_ReqRN(void)
 {
   phStatus_t statusTmp;
   uint8_t bCmd[3] = {0};
@@ -978,7 +980,8 @@ static phStatus_t phNfcLib_18000p3m3_ReqRN(void)
 
 }
 
-static phStatus_t phNfcLib_18000p3m3_Exchange(uint8_t bSymbol, uint8_t bTxLastBits,
+static phStatus_t
+phNfcLib_18000p3m3_Exchange(uint8_t bSymbol, uint8_t bTxLastBits,
     uint16_t wTimeout, uint8_t *pCmd, uint16_t wCmdLength, uint16_t *pRxLastBits)
 {
   phStatus_t statusTmp = PH_ERR_SUCCESS;

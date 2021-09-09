@@ -25,10 +25,11 @@
 #include <string.h>
 #include <nxp_nfc/phpalMifare.h>
 #include <nxp_nfc/phalMfdfLight.h>
-#include "nxp_nfc/phalMfdfLight_Int.h"
+#include <nxp_nfc/phalMfdfLight_Int.h>
 #include <nxp_nfc/ph_RefDefs.h>
 
-phStatus_t phalMfdfLight_Int_ComputeErrorResponse(void *pDataParams, uint16_t wStatus)
+phStatus_t
+phalMfdfLight_Int_ComputeErrorResponse(void *pDataParams, uint16_t wStatus)
 {
   phStatus_t  PH_MEMLOC_REM status = PH_ERR_SUCCESS;
   phStatus_t  PH_MEMLOC_REM statusTmp;
@@ -157,7 +158,8 @@ phStatus_t phalMfdfLight_Int_ComputeErrorResponse(void *pDataParams, uint16_t wS
  * Should take care of wrapping and unwrapping if ISO 7816 Wrapped mode
  * Does not handle any chaining or CMAC generation/verification or encryption/decryption
  */
-phStatus_t phalMfdfLight_ExchangeCmd(void *pDataParams, void *pPalMifareDataParams,
+phStatus_t
+phalMfdfLight_ExchangeCmd(void *pDataParams, void *pPalMifareDataParams,
     uint8_t bWrappedMode, uint8_t *pSendBuff, uint16_t wCmdLen,
     uint8_t **ppResponse, uint16_t *pRxlen)
 {
@@ -232,7 +234,8 @@ phStatus_t phalMfdfLight_ExchangeCmd(void *pDataParams, void *pPalMifareDataPara
 }
 
 /* Should return SW1+SW2 */
-phStatus_t phalMfdfLight_Int_Send7816Apdu(void *pDataParams, void *pPalMifareDataParams,
+phStatus_t
+phalMfdfLight_Int_Send7816Apdu(void *pDataParams, void *pPalMifareDataParams,
     uint8_t bOption, uint8_t bIns, uint8_t bP1, uint8_t bP2,
     uint32_t bLc, uint8_t bExtendedLenApdu, uint8_t *pDataIn, uint32_t bLe, uint8_t **ppDataOut,
     uint16_t *pDataLen)
@@ -267,7 +270,8 @@ phStatus_t phalMfdfLight_Int_Send7816Apdu(void *pDataParams, void *pPalMifareDat
   return statusTmp;
 }
 
-phStatus_t phalMfdfLight_Int_ISOSelectFile(void *pDataParams, void *pPalMifareDataParams,
+phStatus_t
+phalMfdfLight_Int_ISOSelectFile(void *pDataParams, void *pPalMifareDataParams,
     uint8_t bOption, uint8_t *bCmdBuff, uint16_t wCmdLen,
     uint8_t bLc, uint8_t bExtendedLenApdu, uint8_t *pDataIn, uint8_t bLe, uint8_t **ppDataOut,
     uint16_t *pDataLen)
@@ -372,7 +376,8 @@ phStatus_t phalMfdfLight_Int_ISOSelectFile(void *pDataParams, void *pPalMifareDa
 
 }
 
-phStatus_t phalMfdfLight_Int_ISOUpdateBinary(void *pDataParams, void *pPalMifareDataParams,
+phStatus_t
+phalMfdfLight_Int_ISOUpdateBinary(void *pDataParams, void *pPalMifareDataParams,
     uint8_t bOption, uint8_t *bCmdBuff, uint16_t wCmdLen,
     uint32_t dwLc, uint8_t bExtendedLenApdu, uint8_t *pDataIn, uint8_t **ppDataOut,
     uint16_t *pDataLen)

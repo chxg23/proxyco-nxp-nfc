@@ -174,7 +174,8 @@ phOsal_Event_t xEventHandle;
 static phStatus_t phhalHw_Pn5190_EnBootNormalMode(phhalHw_Pn5190_DataParams_t *pDataParams);
 #endif /* _WIN32 */
 
-phStatus_t phhalHw_Pn5190_Init(
+phStatus_t
+phhalHw_Pn5190_Init(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pBalDataParams,
@@ -330,7 +331,8 @@ phStatus_t phhalHw_Pn5190_Init(
 }
 
 #ifndef _WIN32
-static phStatus_t phhalHw_Pn5190_EnBootNormalMode(phhalHw_Pn5190_DataParams_t *pDataParams)
+static phStatus_t
+phhalHw_Pn5190_EnBootNormalMode(phhalHw_Pn5190_DataParams_t *pDataParams)
 {
   uint32_t   PH_MEMLOC_REM dwEventStatusReg = 0x0U;
   phStatus_t PH_MEMLOC_REM status = PH_ERR_SUCCESS;
@@ -396,7 +398,8 @@ static phStatus_t phhalHw_Pn5190_EnBootNormalMode(phhalHw_Pn5190_DataParams_t *p
 }
 #endif /* _WIN32 */
 
-phStatus_t phhalHw_Pn5190_DeInit(
+phStatus_t
+phhalHw_Pn5190_DeInit(
     phhalHw_Pn5190_DataParams_t *pDataParams
 )
 {
@@ -458,7 +461,8 @@ phStatus_t phhalHw_Pn5190_DeInit(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5190_AsyncAbort(
+phStatus_t
+phhalHw_Pn5190_AsyncAbort(
     phhalHw_Pn5190_DataParams_t *pDataParams
 )
 {
@@ -478,7 +482,8 @@ phStatus_t phhalHw_Pn5190_AsyncAbort(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5190_FieldOn(
+phStatus_t
+phhalHw_Pn5190_FieldOn(
     phhalHw_Pn5190_DataParams_t *pDataParams
 )
 {
@@ -504,7 +509,8 @@ phStatus_t phhalHw_Pn5190_FieldOn(
   return statusTmp;
 }
 
-phStatus_t phhalHw_Pn5190_FieldOff(
+phStatus_t
+phhalHw_Pn5190_FieldOff(
     phhalHw_Pn5190_DataParams_t *pDataParams
 )
 {
@@ -517,7 +523,8 @@ phStatus_t phhalHw_Pn5190_FieldOff(
   return phhalHw_Pn5190_Instr_RfOff(pDataParams);
 }
 
-phStatus_t phhalHw_Pn5190_FieldReset(
+phStatus_t
+phhalHw_Pn5190_FieldReset(
     phhalHw_Pn5190_DataParams_t *pDataParams
 )
 {
@@ -554,7 +561,8 @@ phStatus_t phhalHw_Pn5190_FieldReset(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5190_ApplyProtocolSettings(
+phStatus_t
+phhalHw_Pn5190_ApplyProtocolSettings(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bCardType
 )
@@ -730,7 +738,8 @@ phStatus_t phhalHw_Pn5190_ApplyProtocolSettings(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5190_SetConfig(
+phStatus_t
+phhalHw_Pn5190_SetConfig(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -1077,6 +1086,12 @@ phStatus_t phhalHw_Pn5190_SetConfig(
         }
         PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_Pn5190_Instr_WriteRegister(pDataParams, EMD_CONTROL,
                 dwRegister));
+
+        /* Set the RM RESYNC ENABLE in SIGPRO RM ENABLE Register. */
+        if (pDataParams->bCardType == PHHAL_HW_CARDTYPE_ISO14443A) {
+          PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_Pn5190_Instr_WriteRegisterOrMask(pDataParams,
+                  CLIF_SIGPRO_RM_ENABLES, CLIF_SIGPRO_RM_ENABLES_RM_RESYNC_RESET_ENABLE_MASK));
+        }
       } else {
         /* Clear EMD Enable bit in EMD Control Register */
         PH_CHECK_SUCCESS_FCT(statusTmp, phhalHw_Pn5190_Instr_WriteRegisterAndMask(pDataParams,
@@ -1467,7 +1482,8 @@ phStatus_t phhalHw_Pn5190_SetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5190_GetConfig(
+phStatus_t
+phhalHw_Pn5190_GetConfig(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
@@ -1664,7 +1680,8 @@ phStatus_t phhalHw_Pn5190_GetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phhalHw_Pn5190_SetListenParameters(
+phStatus_t
+phhalHw_Pn5190_SetListenParameters(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t *pSensRes,
     uint8_t *pNfcId1,
@@ -1687,7 +1704,8 @@ phStatus_t phhalHw_Pn5190_SetListenParameters(
           PHHAL_HW_PN5190_SET_LISTEN_LEN);
 }
 
-phStatus_t phhalHw_Pn5190_Exchange(
+phStatus_t
+phhalHw_Pn5190_Exchange(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -1835,7 +1853,8 @@ phStatus_t phhalHw_Pn5190_Exchange(
   return status;
 }
 
-phStatus_t phhalHw_Pn5190_Transmit(
+phStatus_t
+phhalHw_Pn5190_Transmit(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pTxBuffer,
@@ -1913,7 +1932,8 @@ phStatus_t phhalHw_Pn5190_Transmit(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Receive(
+phStatus_t
+phhalHw_Pn5190_Receive(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t **ppRxBuffer,
@@ -1978,7 +1998,8 @@ phStatus_t phhalHw_Pn5190_Receive(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Autocoll(
+phStatus_t
+phhalHw_Pn5190_Autocoll(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint16_t wMode,
     uint8_t **ppRxBuffer,
@@ -2208,7 +2229,8 @@ phStatus_t phhalHw_Pn5190_Autocoll(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Wait(
+phStatus_t
+phhalHw_Pn5190_Wait(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bUnit,
     uint16_t wTimeout
@@ -2282,7 +2304,8 @@ phStatus_t phhalHw_Pn5190_Wait(
   return PH_ADD_COMPCODE(wStatus, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_Lpcd(
+phStatus_t
+phhalHw_Pn5190_Lpcd(
     phhalHw_Pn5190_DataParams_t *pDataParams
 )
 {
@@ -2351,7 +2374,8 @@ phStatus_t phhalHw_Pn5190_Lpcd(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_MfcAuthenticateKeyNo(
+phStatus_t
+phhalHw_Pn5190_MfcAuthenticateKeyNo(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bBlockNo,
     uint8_t bKeyType,
@@ -2421,7 +2445,8 @@ phStatus_t phhalHw_Pn5190_MfcAuthenticateKeyNo(
 #endif /* NXPBUILD__PH_KEYSTORE */
 }
 
-phStatus_t phhalHw_Pn5190_MfcAuthenticate(
+phStatus_t
+phhalHw_Pn5190_MfcAuthenticate(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t bBlockNo,
     uint8_t bKeyType,
@@ -2437,7 +2462,8 @@ phStatus_t phhalHw_Pn5190_MfcAuthenticate(
           pUid);
 }
 
-phStatus_t phhalHw_Pn5190_I18000p3m3Inventory(
+phStatus_t
+phhalHw_Pn5190_I18000p3m3Inventory(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint8_t *pSelCmd,
     uint8_t bSelCmdLen,
@@ -2584,7 +2610,8 @@ phStatus_t phhalHw_Pn5190_I18000p3m3Inventory(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_18000p3m3ResumeInventory(
+phStatus_t
+phhalHw_Pn5190_18000p3m3ResumeInventory(
     phhalHw_Pn5190_DataParams_t
     *pDataParams,   /**< [In] Pointer to this layer's parameter structure. */
     uint8_t **ppRxBuffer,                       /**< [In] Pointer to HAL Rx Buffer containing response from single/multiple tags. */
@@ -2650,7 +2677,8 @@ phStatus_t phhalHw_Pn5190_18000p3m3ResumeInventory(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_EventWait(
+phStatus_t
+phhalHw_Pn5190_EventWait(
     phhalHw_Pn5190_DataParams_t *pDataParams,
     uint32_t dwEventTimeout
 )
@@ -2714,7 +2742,8 @@ phStatus_t phhalHw_Pn5190_EventWait(
   return PH_ADD_COMPCODE(status, PH_COMP_HAL);
 }
 
-phStatus_t phhalHw_Pn5190_EventConsume(
+phStatus_t
+phhalHw_Pn5190_EventConsume(
     phhalHw_Pn5190_DataParams_t *pDataParams
 )
 {
@@ -2728,7 +2757,8 @@ phStatus_t phhalHw_Pn5190_EventConsume(
 }
 
 #ifdef _WIN32
-phStatus_t phhalHw_Pn5190_GetDataParamsSize(
+phStatus_t
+phhalHw_Pn5190_GetDataParamsSize(
     uint16_t *pDataParamsSize
 )
 {

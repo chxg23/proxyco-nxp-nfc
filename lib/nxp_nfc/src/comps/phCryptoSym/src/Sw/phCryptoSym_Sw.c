@@ -44,7 +44,8 @@
 
 #include "phCryptoSym_Sw_Int.h"
 
-phStatus_t phCryptoSym_Sw_Init(
+phStatus_t
+phCryptoSym_Sw_Init(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     uint16_t wSizeOfDataParams,
     void *pKeyStoreDataParams
@@ -65,7 +66,8 @@ phStatus_t phCryptoSym_Sw_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phCryptoSym_Sw_InvalidateKey(
+phStatus_t
+phCryptoSym_Sw_InvalidateKey(
     phCryptoSym_Sw_DataParams_t *pDataParams
 )
 {
@@ -84,7 +86,8 @@ phStatus_t phCryptoSym_Sw_InvalidateKey(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phCryptoSym_Sw_Encrypt(
+phStatus_t
+phCryptoSym_Sw_Encrypt(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     const uint8_t *pPlainBuffer,
@@ -183,7 +186,8 @@ phStatus_t phCryptoSym_Sw_Encrypt(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phCryptoSym_Sw_Decrypt(
+phStatus_t
+phCryptoSym_Sw_Decrypt(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     const uint8_t *pEncryptedBuffer,
@@ -282,7 +286,8 @@ phStatus_t phCryptoSym_Sw_Decrypt(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phCryptoSym_Sw_CalculateMac(
+phStatus_t
+phCryptoSym_Sw_CalculateMac(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     const uint8_t *pData,
@@ -473,7 +478,8 @@ phStatus_t phCryptoSym_Sw_CalculateMac(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phCryptoSym_Sw_LoadIv(
+phStatus_t
+phCryptoSym_Sw_LoadIv(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     const uint8_t *pIV,
     uint8_t bIVLength
@@ -497,7 +503,8 @@ phStatus_t phCryptoSym_Sw_LoadIv(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phCryptoSym_Sw_LoadKey(
+phStatus_t
+phCryptoSym_Sw_LoadKey(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     uint16_t wKeyNo,
     uint16_t wKeyVersion,
@@ -542,7 +549,8 @@ phStatus_t phCryptoSym_Sw_LoadKey(
 #endif /* NXPBUILD__PH_KEYSTORE */
 }
 
-phStatus_t phCryptoSym_Sw_LoadKeyDirect(
+phStatus_t
+phCryptoSym_Sw_LoadKeyDirect(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     const uint8_t *pKey,
     uint16_t wKeyType
@@ -604,7 +612,8 @@ phStatus_t phCryptoSym_Sw_LoadKeyDirect(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phCryptoSym_Sw_DiversifyKey(
+phStatus_t
+phCryptoSym_Sw_DiversifyKey(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint16_t wKeyNo,
@@ -662,7 +671,8 @@ phStatus_t phCryptoSym_Sw_DiversifyKey(
 #endif  /* NXPBUILD__PH_KEYSTORE */
 }
 
-phStatus_t phCryptoSym_Sw_DiversifyDirectKey(
+phStatus_t
+phCryptoSym_Sw_DiversifyDirectKey(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     uint16_t wOption,
     uint8_t *pKey,
@@ -962,7 +972,8 @@ phStatus_t phCryptoSym_Sw_DiversifyDirectKey(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phCryptoSym_Sw_SetConfig(
+phStatus_t
+phCryptoSym_Sw_SetConfig(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -985,7 +996,8 @@ phStatus_t phCryptoSym_Sw_SetConfig(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phCryptoSym_Sw_GetConfig(
+phStatus_t
+phCryptoSym_Sw_GetConfig(
     phCryptoSym_Sw_DataParams_t *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue

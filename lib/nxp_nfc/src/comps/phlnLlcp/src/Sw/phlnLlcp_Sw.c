@@ -53,7 +53,8 @@ phlnLlcp_Transport_Socket_t gsphlnLlcp_Socket;
 * Functions
 * ***************************************************************************************************************** */
 
-phStatus_t phlnLlcp_Sw_Init(
+phStatus_t
+phlnLlcp_Sw_Init(
     phlnLlcp_Sw_DataParams_t  *pDataParams,
     uint16_t  wSizeOfDataParams,
     uint8_t *pLocalGenBytes,
@@ -118,7 +119,8 @@ phStatus_t phlnLlcp_Sw_Init(
   return phOsal_EventCreate(&pDataParams->LlcpEventObj.EventHandle, &pDataParams->LlcpEventObj);
 }
 
-phStatus_t phlnLlcp_Sw_Activate(
+phStatus_t
+phlnLlcp_Sw_Activate(
     phlnLlcp_Sw_DataParams_t *pDataParams,
     uint8_t                   *pRemoteGnrlBytes,
     uint8_t                    bRemoteGnrBytesLen,
@@ -336,7 +338,8 @@ phStatus_t phlnLlcp_Sw_Activate(
   }
 }
 
-phStatus_t phlnLlcp_Sw_Deactivate(phlnLlcp_Sw_DataParams_t *pDataParams)
+phStatus_t
+phlnLlcp_Sw_Deactivate(phlnLlcp_Sw_DataParams_t *pDataParams)
 {
   phTools_Q_t   *PH_MEMLOC_REM psMsgQueue = NULL;
   uint16_t       PH_MEMLOC_REM wLength;
@@ -363,7 +366,8 @@ phStatus_t phlnLlcp_Sw_Deactivate(phlnLlcp_Sw_DataParams_t *pDataParams)
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phlnLlcp_Sw_WaitForActivation(phlnLlcp_Sw_DataParams_t *pDataParams)
+phStatus_t
+phlnLlcp_Sw_WaitForActivation(phlnLlcp_Sw_DataParams_t *pDataParams)
 {
   if (phOsal_EventPend((volatile phOsal_Event_t *)(&pDataParams->LlcpEventObj.EventHandle),
           E_OS_EVENT_OPT_PEND_SET_ANY, PHOSAL_MAX_DELAY, E_PH_OSAL_EVT_LLCP_ACTIVATED,
@@ -373,7 +377,8 @@ phStatus_t phlnLlcp_Sw_WaitForActivation(phlnLlcp_Sw_DataParams_t *pDataParams)
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phlnLlcp_Sw_Transport_Socket_Init(
+phStatus_t
+phlnLlcp_Sw_Transport_Socket_Init(
     phlnLlcp_Sw_DataParams_t  *pDataParams,
     phlnLlcp_Transport_Socket_t *psSocket,
     phlnLlcp_Transport_Socket_Type_t eSocketType,
@@ -417,7 +422,8 @@ phStatus_t phlnLlcp_Sw_Transport_Socket_Init(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phlnLlcp_Sw_Transport_Socket_Register(
+phStatus_t
+phlnLlcp_Sw_Transport_Socket_Register(
     phlnLlcp_Sw_DataParams_t *pDataParams,
     phlnLlcp_Transport_Socket_t *pSocket,
     phlnLlcp_Transport_Socket_Type_t eSocketType,
@@ -446,7 +452,8 @@ phStatus_t phlnLlcp_Sw_Transport_Socket_Register(
           PHLN_LLCP_LOGICALLINK_SOCKET);
 }
 
-phStatus_t phlnLlcp_Sw_Transport_Socket_Receive(
+phStatus_t
+phlnLlcp_Sw_Transport_Socket_Receive(
     phlnLlcp_Sw_DataParams_t *pDataParams,
     phlnLlcp_Transport_Socket_t *psSocket
 )
@@ -467,7 +474,8 @@ phStatus_t phlnLlcp_Sw_Transport_Socket_Receive(
   return PH_ADD_COMPCODE(psSocket->wStatus, PH_COMP_LN_LLCP);
 }
 
-phStatus_t phlnLlcp_Sw_Transport_Socket_Unregister(
+phStatus_t
+phlnLlcp_Sw_Transport_Socket_Unregister(
     phlnLlcp_Sw_DataParams_t *pDataParams,
     phlnLlcp_Transport_Socket_t *pSocket
 )
@@ -514,7 +522,8 @@ phStatus_t phlnLlcp_Sw_Transport_Socket_Unregister(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phlnLlcp_Sw_Transport_Socket_UnblockAll(phlnLlcp_Sw_DataParams_t *pDataParams)
+phStatus_t
+phlnLlcp_Sw_Transport_Socket_UnblockAll(phlnLlcp_Sw_DataParams_t *pDataParams)
 {
   phlnLlcp_Transport_Socket_t PH_MEMLOC_REM *psSockets = NULL;
   phStatus_t bRetstatus = PH_ERR_INTERNAL_ERROR;
@@ -543,7 +552,8 @@ phStatus_t phlnLlcp_Sw_Transport_Socket_UnblockAll(phlnLlcp_Sw_DataParams_t *pDa
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phlnLlcp_Sw_DeInit(phlnLlcp_Sw_DataParams_t *pDataParams)
+phStatus_t
+phlnLlcp_Sw_DeInit(phlnLlcp_Sw_DataParams_t *pDataParams)
 {
   phStatus_t PH_MEMLOC_REM wStatus = PH_ERR_SUCCESS;
 

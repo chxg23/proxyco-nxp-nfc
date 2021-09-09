@@ -103,7 +103,8 @@ static const pphacDiscLoop_Sw_DeviceActivate pfDeviceActivate[] = {
 /* *****************************************************************************************************************
  * Private Functions
  * ***************************************************************************************************************** */
-phStatus_t phacDiscLoop_Sw_Int_ListenMode(
+phStatus_t
+phacDiscLoop_Sw_Int_ListenMode(
     phacDiscLoop_Sw_DataParams_t *pDataParams
 )
 {
@@ -155,7 +156,8 @@ phStatus_t phacDiscLoop_Sw_Int_ListenMode(
 #endif /* NXPBUILD__PHAC_DISCLOOP_TARGET */
 }
 
-phStatus_t phacDiscLoop_Sw_Int_Stop(
+phStatus_t
+phacDiscLoop_Sw_Int_Stop(
     phacDiscLoop_Sw_DataParams_t *pDataParams
 )
 {
@@ -164,7 +166,8 @@ phStatus_t phacDiscLoop_Sw_Int_Stop(
   return PH_ERR_SUCCESS;
 }
 
-phStatus_t phacDiscLoop_Sw_Int_ActivePollMode(
+phStatus_t
+phacDiscLoop_Sw_Int_ActivePollMode(
     phacDiscLoop_Sw_DataParams_t *pDataParams
 )
 {
@@ -313,7 +316,8 @@ phStatus_t phacDiscLoop_Sw_Int_ActivePollMode(
   return PH_ADD_COMPCODE_FIXED(PHAC_DISCLOOP_NO_TECH_DETECTED, PH_COMP_AC_DISCLOOP);
 }
 
-phStatus_t phacDiscLoop_Sw_Int_PollMode(
+phStatus_t
+phacDiscLoop_Sw_Int_PollMode(
     phacDiscLoop_Sw_DataParams_t *pDataParams
 )
 {
@@ -392,7 +396,8 @@ phStatus_t phacDiscLoop_Sw_Int_PollMode(
   return PH_ADD_COMPCODE(status, PH_COMP_AC_DISCLOOP);
 }
 
-phStatus_t phacDiscLoop_Sw_Int_EmvcoRemovalProcedure(
+phStatus_t
+phacDiscLoop_Sw_Int_EmvcoRemovalProcedure(
     phacDiscLoop_Sw_DataParams_t *pDataParams
 )
 {
@@ -487,7 +492,8 @@ phStatus_t phacDiscLoop_Sw_Int_EmvcoRemovalProcedure(
 #endif
 }
 
-phStatus_t phacDiscLoop_Sw_Int_TechDetectActivity(
+phStatus_t
+phacDiscLoop_Sw_Int_TechDetectActivity(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint8_t bPasPollBailOut,
     uint8_t bDetectConfig,
@@ -601,7 +607,8 @@ phStatus_t phacDiscLoop_Sw_Int_TechDetectActivity(
   }
 }
 
-phStatus_t phacDiscLoop_Sw_Int_EmvcoTechDetectActivity(
+phStatus_t
+phacDiscLoop_Sw_Int_EmvcoTechDetectActivity(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint8_t bDetectConfig,
     uint8_t *pNumOfTechsDetect
@@ -767,7 +774,8 @@ phStatus_t phacDiscLoop_Sw_Int_EmvcoTechDetectActivity(
 #endif
 }
 
-phStatus_t phacDiscLoop_Sw_Int_ColsnReslnActivity(
+phStatus_t
+phacDiscLoop_Sw_Int_ColsnReslnActivity(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint8_t bTechType
 )
@@ -800,7 +808,8 @@ phStatus_t phacDiscLoop_Sw_Int_ColsnReslnActivity(
   return wStatus;
 }
 
-phStatus_t phacDiscLoop_Sw_Int_ActivateDevice(
+phStatus_t
+phacDiscLoop_Sw_Int_ActivateDevice(
     phacDiscLoop_Sw_DataParams_t *pDataParams,
     uint8_t bTechType,
     uint8_t bTagIndex
@@ -827,7 +836,8 @@ phStatus_t phacDiscLoop_Sw_Int_ActivateDevice(
   return status;
 }
 
-phStatus_t phacDiscLoop_Sw_Int_RfcaOff_FieldOn(
+phStatus_t
+phacDiscLoop_Sw_Int_RfcaOff_FieldOn(
     phacDiscLoop_Sw_DataParams_t *pDataParams
 )
 {
@@ -846,7 +856,8 @@ phStatus_t phacDiscLoop_Sw_Int_RfcaOff_FieldOn(
   return status;
 }
 
-phStatus_t phacDiscLoop_Sw_Int_FieldOn(
+phStatus_t
+phacDiscLoop_Sw_Int_FieldOn(
     phacDiscLoop_Sw_DataParams_t *pDataParams
 )
 {
@@ -869,7 +880,8 @@ phStatus_t phacDiscLoop_Sw_Int_FieldOn(
   }
 }
 
-uint8_t phacDiscLoop_Sw_Int_IsValidPollStatus(
+uint8_t
+phacDiscLoop_Sw_Int_IsValidPollStatus(
     phStatus_t wStatus
 )
 {

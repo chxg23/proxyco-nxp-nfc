@@ -34,7 +34,8 @@
 
 #ifndef NXPRDLIB_REM_GEN_INTFS
 
-phStatus_t phpalI18092mT_ResetProtocol(
+phStatus_t
+phpalI18092mT_ResetProtocol(
     void *pDataParams
 )
 {
@@ -77,7 +78,8 @@ phStatus_t phpalI18092mT_ResetProtocol(
   return status;
 }
 
-phStatus_t phpalI18092mT_Activate(
+phStatus_t
+phpalI18092mT_Activate(
     void *pDataParams,
     uint8_t *pAtrReq,
     uint16_t wAtrReqLength,
@@ -148,7 +150,8 @@ phStatus_t phpalI18092mT_Activate(
   return status;
 }
 
-phStatus_t phpalI18092mT_Transmit(
+phStatus_t
+phpalI18092mT_Transmit(
     void *pDataParams,
     uint16_t   wOption,
     uint8_t *pTransportDataBytes,
@@ -205,7 +208,8 @@ phStatus_t phpalI18092mT_Transmit(
   return status;
 }
 
-phStatus_t phpalI18092mT_Receive(
+phStatus_t
+phpalI18092mT_Receive(
     void *pDataParams,
     uint16_t   wOption,
     uint8_t **ppTransportDataBytes,
@@ -270,7 +274,8 @@ phStatus_t phpalI18092mT_Receive(
   return status;
 }
 
-phStatus_t phpalI18092mT_Rtox(
+phStatus_t
+phpalI18092mT_Rtox(
     void *pDataParams
 )
 {
@@ -313,7 +318,8 @@ phStatus_t phpalI18092mT_Rtox(
   return status;
 }
 
-phStatus_t phpalI18092mT_SetConfig(
+phStatus_t
+phpalI18092mT_SetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t wValue
@@ -363,7 +369,8 @@ phStatus_t phpalI18092mT_SetConfig(
   return status;
 }
 
-phStatus_t phpalI18092mT_GetConfig(
+phStatus_t
+phpalI18092mT_GetConfig(
     void *pDataParams,
     uint16_t wConfig,
     uint16_t *pValue
