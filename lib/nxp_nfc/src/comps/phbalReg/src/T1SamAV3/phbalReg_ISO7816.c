@@ -31,7 +31,7 @@ phbalReg_T1SamAV3_ISO7816_init(void)
   /* PWM configuration */
   nrfx_pwm_config_t pwmCfg = {
     .output_pins = {
-      MYNEWT_VAL(MF4SAM3_ONB_CLK) | NRFX_PWM_PIN_INVERTED,
+      MYNEWT_VAL(MF4SAM3_ONB_CLK_PIN) | NRFX_PWM_PIN_INVERTED,
       NRFX_PWM_PIN_NOT_USED,
       NRFX_PWM_PIN_NOT_USED,
       NRFX_PWM_PIN_NOT_USED
@@ -52,8 +52,8 @@ phbalReg_T1SamAV3_ISO7816_init(void)
    * Start comms with SAM at 4800 bit/s,
    */
   nrfx_uarte_config_t uarteCfg = {
-    .pseltxd            = MYNEWT_VAL(MF4SAM3_ONB_IO1),
-    .pselrxd            = MYNEWT_VAL(MF4SAM3_ONB_IO2),
+    .pseltxd            = MYNEWT_VAL(MF4SAM3_ONB_IO1_PIN),
+    .pselrxd            = MYNEWT_VAL(MF4SAM3_ONB_IO2_PIN),
     .pselcts            = NRF_UARTE_PSEL_DISCONNECTED,
     .pselrts            = NRF_UARTE_PSEL_DISCONNECTED,
     .p_context          = NULL,

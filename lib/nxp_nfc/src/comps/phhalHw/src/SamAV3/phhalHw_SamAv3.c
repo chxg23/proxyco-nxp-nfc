@@ -53,22 +53,22 @@ samAV3_create_ISO7816_dev(struct os_dev *odev, void *arg)
 
   /* Initialize GPIOs */
   /* Configure reset status for SAM AV3, active LOW */
-  rc = hal_gpio_init_out(MYNEWT_VAL(MF4SAM3_ONB_RST), 1);
+  rc = hal_gpio_init_out(MYNEWT_VAL(MF4SAM3_ONB_RST_PIN), 1);
   assert(rc == 0);
   /* Disable I2C communication with SAM AV3, we will use UART */
-  if (MYNEWT_VAL(MF4SAM3_ONB_EN) > 0) {
-      rc = hal_gpio_init_out(MYNEWT_VAL(MF4SAM3_ONB_EN), 0);
+  if (MYNEWT_VAL(MF4SAM3_ONB_EN_PIN) > 0) {
+      rc = hal_gpio_init_out(MYNEWT_VAL(MF4SAM3_ONB_EN_PIN), 0);
       assert(rc == 0);
   }
   /* Configure data line IO1 as an input with pull up resistor */
-  rc = hal_gpio_init_in(MYNEWT_VAL(MF4SAM3_ONB_IO1), HAL_GPIO_PULL_UP);
+  rc = hal_gpio_init_in(MYNEWT_VAL(MF4SAM3_ONB_IO1_PIN), HAL_GPIO_PULL_UP);
   assert(rc == 0);
   /* Configure data line IO2 as an input with pull up resistor */
-  rc = hal_gpio_init_in(MYNEWT_VAL(MF4SAM3_ONB_IO2), HAL_GPIO_PULL_UP);
+  rc = hal_gpio_init_in(MYNEWT_VAL(MF4SAM3_ONB_IO2_PIN), HAL_GPIO_PULL_UP);
   assert(rc == 0);
   /* Disable oscillator control */
-  if (MYNEWT_VAL(MF4SAM3_ONB_OSC_CTRL) > 0) {
-      rc = hal_gpio_init_out(MYNEWT_VAL(MF4SAM3_ONB_OSC_CTRL), 0);
+  if (MYNEWT_VAL(MF4SAM3_ONB_OSC_CTRL_PIN) > 0) {
+      rc = hal_gpio_init_out(MYNEWT_VAL(MF4SAM3_ONB_OSC_CTRL_PIN), 0);
       assert(rc == 0);
   }
 
@@ -1594,7 +1594,7 @@ phhalHw_SamAV3_WarmReset(void)
   os_time_t ticks;
 
   PN5180_LOG_INFO("%s: Start warm reset. Set RST to 0\n", __func__);
-  hal_gpio_write(MYNEWT_VAL(MF4SAM3_ONB_RST), 0);
+  hal_gpio_write(MYNEWT_VAL(MF4SAM3_ONB_RST_PIN), 0);
 
   if (OS_EINVAL != os_time_ms_to_ticks(WARM_RESET_DELAY, &ticks)) {
     os_time_delay(ticks);
@@ -1602,7 +1602,7 @@ phhalHw_SamAV3_WarmReset(void)
 
   /* Remove reset status */
   PN5180_LOG_INFO("%s: Start warm reset. Set RST to 1\n", __func__);
-  hal_gpio_write(MYNEWT_VAL(MF4SAM3_ONB_RST), 1);
+  hal_gpio_write(MYNEWT_VAL(MF4SAM3_ONB_RST_PIN), 1);
 }
 
 #endif /* NXPBUILD__PHHAL_HW_SAMAV3 */
