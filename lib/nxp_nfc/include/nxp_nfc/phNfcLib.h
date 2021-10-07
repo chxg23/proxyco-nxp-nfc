@@ -1380,6 +1380,15 @@ void *phNfcLib_GetDataParams(
 );
 
 /**
+ * \brief We need a way to perform Removal for ECP ,the NFCLib functions for activation and deactivation only work together
+ * and the Discovery loop example does not perform removal using the NFCLib functions, hence this is needed
+ *
+ * \retval PH_NFCLIB_STATUS_SUCCESS
+ * Operation successful.
+ */
+phStatus_t phNfcLib_ECP_Removal_Cycle(void);
+
+/**
  * \}
  */
 

@@ -15,6 +15,7 @@ pkg.deps.PN5180_CLI:
   - "@apache-mynewt-core/util/parse"
 
 pkg.cflags:
+    - "-DNXPBUILD__PH_NFCLIB_ECP"
     - "-DNXPBUILD__PHAC_DISCLOOP_SW_ECP"
     - "-DNXPBUILD__PHPAL_I14443P3A_SW_ECP"
 

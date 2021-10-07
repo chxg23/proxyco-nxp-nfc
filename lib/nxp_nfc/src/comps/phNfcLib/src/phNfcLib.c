@@ -42,6 +42,7 @@ static phStatus_t phNfcLib_NFC_Transmit(void *const pTxBuffer, uint16_t wTxBuffe
 static phStatus_t phNfcLib_EMVCo_Transmit(void *const pTxBuffer, uint16_t wTxBufferLength);
 static phStatus_t phNfcLib_ISO_Transmit(void *const pTxBuffer, uint16_t wTxBufferLength);
 
+phStatus_t phNfcLib_ECP_Removal_Cycle(void);
 #ifdef NXPBUILD__PH_NFCLIB_EMVCO
 static phStatus_t phNfcLib_EmvcoRfReset(void);
 static phStatus_t phNfcLib_Configure_DiscLoop_EMVCo(uint16_t wTechnologyMask);
@@ -1051,6 +1052,50 @@ phNfcLib_EMVCo_ConfigureRemoval_Cycle(void)
   return wStatus;
 }
 #endif /* NXPBUILD__PH_NFCLIB_EMVCO */
+
+/**
+ * This API is a copy of the EMVCo Removal procedure as requested by Cascade,
+ * we are defining it because EMVCo support is not compiled in
+ */
+phStatus_t
+phNfcLib_ECP_Removal_Cycle(void)
+{
+  phStatus_t wStatus  = PH_ERR_SUCCESS;
+#ifdef NXPBUILD__PH_NFCLIB_ECP
+  uint8_t    bPollingCount = 0;
+
+  /* Check which technology was activated. */
+  if (PHAC_DISCLOOP_CHECK_ANDMASK(gphNfcLib_Params.sDiscLoop.bDetectedTechs,
+          PHAC_DISCLOOP_POS_BIT_MASK_A)) {
+    while (bPollingCount < PH_NXPNFCRDLIB_CONFIG_EMVCO_REMOVAL_RETRY_COUNT) {
+      PH_CHECK_SUCCESS_FCT(wStatus, phhalHw_SetConfig(
+              &gphNfcLib_Params.sHal,
+              PHHAL_HW_CONFIG_POLL_GUARD_TIME_US,
+              gphNfcLib_Params.sDiscLoop.waPasPollGTimeUs[PHAC_DISCLOOP_TECH_TYPE_A])
+      );
+
+      wStatus = phpalI14443p3a_WakeUpA(
+              &gphNfcLib_Params.spalI14443p3a,
+              gphNfcLib_Params.sDiscLoop.sTypeATargetInfo.aTypeA_I3P3[0].aAtqa);
+      if ((wStatus & PH_ERR_MASK) != PH_ERR_IO_TIMEOUT) {
+        /* Return if status is aborted. */
+        PH_CHECK_ABORT(wStatus);
+
+        PH_CHECK_ABORT_FCT(wStatus, phpalI14443p3a_HaltA(&gphNfcLib_Params.spalI14443p3a));
+        break;
+      }
+      bPollingCount++;
+      wStatus = PH_ERR_SUCCESS;
+    }
+  }
+
+  if (PH_NXPNFCRDLIB_CONFIG_EMVCO_REMOVAL_RETRY_COUNT != bPollingCount) {
+    gphNfcLib_State.bNfcLibState = eNfcLib_DeactOngoingState;
+    wStatus = PH_ERR_INTERNAL_ERROR;
+  }
+#endif /* NXPBUILD__PH_NFCLIB_ECP */
+  return wStatus;
+}
 
 static phStatus_t
 phNfcLib_EMVCo_Removal_Cycle(void)
